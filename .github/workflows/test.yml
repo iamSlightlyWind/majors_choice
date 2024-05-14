@@ -29,6 +29,11 @@ jobs:
         ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
         ngrok http --region=ap http://localhost:8080 &
 
+    - name: Open ngrok ssh
+      uses: tmshkr/ngrok-ssh@latest
+      with:
+        NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+
     - name: Check current directory
       run: ls -la
 
