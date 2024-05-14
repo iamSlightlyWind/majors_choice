@@ -30,7 +30,6 @@ jobs:
       uses: tmshkr/ngrok-ssh@latest
       with:
         NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-        NGROK_CONFIG_FILE: "ngrok.yml"
 
     - name: Keep the workflow running
       run: |
