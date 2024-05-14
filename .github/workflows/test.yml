@@ -37,10 +37,10 @@ jobs:
         echo "Runner IP:"
         curl ifconfig.me
 
-    - name: NGROK
-      uses: tmshkr/ngrok-ssh@latest
-      with:
-        NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+    #- name: NGROK
+    #  uses: tmshkr/ngrok-ssh@latest
+    #  with:
+    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
 
     - name: Keep the workflow running
       run: |
