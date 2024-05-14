@@ -1,2 +1,0 @@
-authtoken: ${{ secrets.NGROK_AUTHTOKEN }}
-region: ap
