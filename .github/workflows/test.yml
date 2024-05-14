@@ -1,4 +1,4 @@
-name: Run Tomcat and Access it
+name: Run Tomcat and Keep Workflow Running
 
 on: [push, pull_request]
 
@@ -21,7 +21,12 @@ jobs:
     - name: Check running containers
       run: docker ps
 
-    - name: Get runner IP address
+    - name: Print runner IP address
       run: |
         echo "Runner IP:"
         curl ifconfig.me
+
+    - name: Keep the workflow running
+      run: |
+        echo "Entering infinite loop to keep the workflow running..."
+        while true; do sleep 1000; done
