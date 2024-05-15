@@ -18,7 +18,7 @@ jobs:
         docker pull tomcat:latest
         docker run -d --name tomcat -p 8080:8080 tomcat:latest
 
-    - name: Install and start ngrok
+    - name: Install ngrok
       run: |
         curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
         | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
@@ -27,14 +27,16 @@ jobs:
         && sudo apt update \
         && sudo apt install ngrok
         ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
-        ngrok http --region=ap http://localhost:8080 &
 
-    - name: Open ngrok ssh
+    - name: Start ngrok ssh
       id: ngrok
       uses: tmshkr/ngrok-ssh@latest
       with:
         NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-      
+
+    - name: Start ngrok tomcat
+      run: ngrok http --region=ap http://localhost:8080 &
+
     - name: Use SSH port
       run: echo "The public port of the SSH server is ${{ steps.ngrok.outputs.SSH_PORT }}"
 
