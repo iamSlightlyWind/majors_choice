@@ -27,23 +27,16 @@ jobs:
         && sudo apt update \
         && sudo apt install ngrok
         ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
-        ngrok http --region=ap http://localhost:8080 &
+        ngrok http --region=ap --ngrok-skip-browser-warning http://localhost:8080 &
 
     - name: Open ngrok ssh
+      id: ngrok
       uses: tmshkr/ngrok-ssh@latest
       with:
         NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-
-    - name: Check current directory
-      run: ls -la
-
-    - name: Check running containers
-      run: docker ps
-
-    - name: Print runner IP address
-      run: |
-        echo "Runner IP:"
-        curl ifconfig.me
+      
+    - name: Use SSH port
+      run: echo "The public port of the SSH server is ${{ steps.ngrok.outputs.SSH_PORT }}"
 
     - name: Keep the workflow running
       run: |
