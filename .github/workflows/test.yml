@@ -20,6 +20,11 @@ jobs:
         docker pull tomcat:latest
         docker run -d --name tomcat -p 8080:8080 tomcat:latest
 
+    - name: Run MSSQL container
+      run: |
+        docker pull microsoft-mssql-server:latest
+        docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=${{ secrets.SQLPASSWORD }}" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
+
     - name: Install ngrok
       run: |
         curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
