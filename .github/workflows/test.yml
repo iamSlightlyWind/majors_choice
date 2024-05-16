@@ -20,11 +20,6 @@ jobs:
         docker pull tomcat:latest
         docker run -d --name tomcat -p 8080:8080 tomcat:latest
 
-    - name: Run Tomcat container
-      run: |
-        sudo apt-get install neofetch
-        neofetch
-
     - name: Run MSSQL container
       run: |
         docker pull mcr.microsoft.com/mssql/server
@@ -48,6 +43,9 @@ jobs:
 
     - name: Start ngrok Tomcat forward
       run: ngrok http --region=ap http://localhost:8080 &
+
+    - name: Check running containers
+      run: docker ps
 
     - name: Wait time for testing
       run: sleep 300
