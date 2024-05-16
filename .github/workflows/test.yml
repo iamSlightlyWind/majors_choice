@@ -20,9 +20,14 @@ jobs:
         docker pull tomcat:latest
         docker run -d --name tomcat -p 8080:8080 tomcat:latest
 
+    - name: Run Tomcat container
+      run: |
+        sudo apt-get install neofetch
+        neofetch
+
     - name: Run MSSQL container
       run: |
-        docker pull microsoft-mssql-server:latest
+        docker pull mcr.microsoft.com/mssql/server
         docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=${{ secrets.SQLPASSWORD }}" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
 
     - name: Install ngrok
@@ -42,7 +47,7 @@ jobs:
         NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
 
     - name: Start ngrok Tomcat forward
-      run: ngrok http --region=ap http://localhost:8080 &
+      run: ngrok start --all &
 
     - name: Wait time for testing
       run: sleep 300
