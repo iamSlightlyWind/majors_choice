@@ -1,5 +1,3 @@
-use major
-
 create procedure login
     @username varchar(25),
     @password varchar(25),
@@ -15,6 +13,7 @@ begin
         set @result = 0 -- login failed
     end
 end;
+GO
 
 create procedure register
     @username varchar(25),
@@ -53,3 +52,4 @@ begin
         set @result = 1 -- registration successful
     end
 end;
+Go
