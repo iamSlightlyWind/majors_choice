@@ -43,11 +43,11 @@ jobs:
         echo "creating database"
         sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/reset.sql
         echo "creating tables"
-        sqlcmd -S localhost -d Final -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/table.sql
+        sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/table.sql
         echo "creating procedures"
-        sqlcmd -S localhost -d Final -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/procedure.sql
+        sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/procedure.sql
         echo "inserting data"
-        sqlcmd -S localhost -d Final -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
+        sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
 
     - name: Run ngrok SSH
       id: ngrok
