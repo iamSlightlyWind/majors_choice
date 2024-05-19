@@ -11,4 +11,4 @@ While the backend of things seems simple enough, having the server run on the op
 
 - [x] Proof of concept for running a Tomcat server ([tomcat branch](https://github.com/iamSlightlyWind/majors_choice/tree/poc_tomcat)).
 - [x] Proof of concept for running a MSSQL server ([mssql branch](https://github.com/iamSlightlyWind/majors_choice/tree/poc_mssql)).
-- [ ] Proof of concept for deploying to Tomcat server ([deploy branch](https://github.com/iamSlightlyWind/majors_choice/tree/poc_deploy)).
+- [x] Proof of concept for deploying to Tomcat server ([deploy branch](https://github.com/iamSlightlyWind/majors_choice/tree/poc_deploy)).
