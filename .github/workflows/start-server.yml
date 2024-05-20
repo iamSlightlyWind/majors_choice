@@ -38,7 +38,8 @@ jobs:
       run: |
         docker pull tomcat:latest
         docker run -d --name tomcat -p 8080:8080 -e "MSSQL_PASSWORD=${{ secrets.SQLPASSWORD }}" tomcat:latest
-        docker cp ./server/tomcat/dist/*.war `docker ps -q --filter ancestor=tomcat`:/usr/local/tomcat/webapps/
+        mv ./server/tomcat/dist/*.war ./server/tomcat/dist/ROOT.war
+        docker cp ./server/tomcat/dist/ROOT.war `docker ps -q --filter ancestor=tomcat`:/usr/local/tomcat/webapps/
         docker restart `docker ps -q --filter ancestor=tomcat`
 
     - name: Create database
