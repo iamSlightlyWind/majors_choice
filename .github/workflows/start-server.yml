@@ -38,7 +38,7 @@ jobs:
     - name: Run MSSQL container
       run: |
         docker run --network host -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrong@Passw0rd" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
-        sleep 5
+        sleep 10
         sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -Q "ALTER LOGIN [sa] WITH PASSWORD= '${{ secrets.SQLPASSWORD }}', CHECK_POLICY = OFF"
         
     - name: Run Tomcat container
