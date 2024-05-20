@@ -13,7 +13,7 @@ public class Database {
             String password = System.getenv("SQLPASSWORD") != null ? System.getenv("SQLPASSWORD") : "123";
             String database = "major";
 
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=" + database;
+            String url = "jdbc:sqlserver://host.docker.internal:1433;databaseName=" + database;
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException | SQLException ex) {
