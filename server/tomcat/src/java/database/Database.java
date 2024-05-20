@@ -10,7 +10,7 @@ public class Database {
     public Database(){
         try {
             String username = "sa";
-            String password = System.getenv("SQLPASSWORD") != null ? System.getenv("SQLPASSWORD") : "123";
+            String password = System.getenv("SQLPASSWORD") != null ? System.getenv("SQLPASSWORD") : "YourStrong@Passw0rd";
             String database = "major";
 
             String url = "jdbc:sqlserver://localhost:1433;databaseName=" + database;
