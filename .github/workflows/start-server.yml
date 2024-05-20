@@ -2,7 +2,10 @@ name: Run Tomcat and Keep Workflow Running
 concurrency:
   group: ${{ github.workflow }}
 
-on: [push, pull_request]
+on: 
+  workflow_dispatch:
+  #push:
+  #pull_request:
 
 jobs:
   start-server:
