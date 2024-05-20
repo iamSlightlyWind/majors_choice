@@ -62,5 +62,5 @@ jobs:
     - name: Run ngrok forward ports
       run: ngrok http --region=ap http://localhost:8080 &
 
-    #- name: Wait time for testing
-    #  run: sleep 900
+    - name: Wait time for testing
+      run: sleep 900
