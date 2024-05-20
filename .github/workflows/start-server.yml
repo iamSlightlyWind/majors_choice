@@ -45,6 +45,8 @@ jobs:
         mv ./server/tomcat/dist/*.war ./server/tomcat/dist/ROOT.war
         docker cp ./server/tomcat/dist/ROOT.war `docker ps -q --filter ancestor=tomcat`:/usr/local/tomcat/webapps/
         docker restart `docker ps -q --filter ancestor=tomcat`
+      env:
+        SQLPASSWORD: ${{ secrets.SQLPASSWORD }}
 
     - name: Run ngrok SSH
       id: ngrok
