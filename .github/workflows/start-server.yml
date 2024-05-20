@@ -31,7 +31,7 @@ jobs:
       run: |
         docker pull mcr.microsoft.com/mssql/server
         docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrong@Passw0rd" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
-        sleep 10
+        sleep 5
         sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -Q "ALTER LOGIN [sa] WITH PASSWORD= '${{ secrets.SQLPASSWORD }}', CHECK_POLICY = OFF"
         
     - name: Run Tomcat container
@@ -62,5 +62,5 @@ jobs:
     - name: Run ngrok to forward code-server port
       run: ngrok http --region=ap http://localhost:8080 &
 
-    - name: Wait time for testing
-      run: sleep 900
+    - name: Show tomcat Logs
+      run: docker logs -f `docker ps -q --filter ancestor=tomcat`

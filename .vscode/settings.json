@@ -4,6 +4,7 @@
         "server/tomcat/libraries/jakarta.servlet.jsp.jstl-2.0.0.jar",
         "server/tomcat/libraries/jakarta.servlet.jsp.jstl-api-2.0.0.jar",
         "server/tomcat/libraries/jaxb-api-2.1.jar",
-        "server/tomcat/libraries/sqljdbc42.jar"
+        "server/tomcat/libraries/sqljdbc42.jar",
+        "/usr/share/tomcat10/lib/*.jar"
     ]
 }
