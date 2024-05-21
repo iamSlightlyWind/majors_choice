@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.User;
 
 public class Test extends HttpServlet {
     Database database = new Database();
@@ -32,5 +33,13 @@ public class Test extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
+    }
+
+    public static void main(String[] args) {
+        User newUser = new User();
+        newUser.username = "davitscott";
+        newUser.password = "password123";
+
+        System.out.println(newUser.login());
     }
 }
