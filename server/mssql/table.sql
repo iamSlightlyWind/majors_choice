@@ -1,3 +1,5 @@
+use major
+
 create table users
 (
     id int identity(1,1) primary key,
@@ -52,6 +54,14 @@ create table products(
     description nvarchar(max),
     sellingPrice decimal(18,2),
     costPrice decimal(18,2)
+)
+
+create table ratings(
+    id int identity(1,1) primary key,
+    userId int references users(id),
+    productId int references products(id),
+    rating int,
+    dateRated date default getdate()
 )
 
 create table cpus(
