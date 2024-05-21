@@ -28,7 +28,6 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
         String dateOfBirth = request.getParameter("dateOfBirth");
 
-        boolean status = true;
         String error = checkInfo(email, phone, pass, repass);
         int result = 0;
 
@@ -39,7 +38,6 @@ public class RegisterServlet extends HttpServlet {
 
         switch (result) {
             case 1:
-                status = true;
                 break;
 
             case -1:
@@ -50,7 +48,6 @@ public class RegisterServlet extends HttpServlet {
 
             case -3:
                 error = "Phone number already exists.";
-                status = false;
         }
 
         if (result == 1) {

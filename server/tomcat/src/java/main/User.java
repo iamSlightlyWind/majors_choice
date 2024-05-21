@@ -68,6 +68,6 @@ public class User {
             System.out.println(ex);
         }
 
-        return 0;
+        return result;
     }
 }
