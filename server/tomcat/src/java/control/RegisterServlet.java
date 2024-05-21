@@ -81,7 +81,7 @@ public class RegisterServlet extends HttpServlet {
         return matcher.matches();
     }
 
-    public boolean passwordMatches(String password, String repass){
+    public boolean isValidPasswordMatches(String password, String repass){
         return password.equals(repass);
     }
 
@@ -92,7 +92,7 @@ public class RegisterServlet extends HttpServlet {
         if(!isValidPhoneNumber(phoneNumber)){
             return "Wrong phone number format.";
         }
-        if(!passwordMatches(password, repass)){
+        if(!isValidPasswordMatches(password, repass)){
             return "Passwords don't match.";
         }
         return "";
