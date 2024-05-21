@@ -1,77 +1,73 @@
 package main;
 
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+import java.sql.Types;
+
+import database.Database;
+
 public class User {
     public String username, password;
     public String fullName, email, phoneNumber, address;
-    public String birthDate;
+    public String dateOfBirth;
+
+    Database db = new Database();
 
     public User() {
     }
 
-    public User(String username, String password, String fullName, String email, String phoneNumber, String address, String birthDate) {
-        this.username = username;
-        this.password = password;
-        this.fullName = fullName;
+    public User(String user, String pass, String name, String email, String phone, String address, String dob) {
+        this.username = user;
+        this.password = pass;
+        this.fullName = name;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phone;
         this.address = address;
-        this.birthDate = birthDate;
+        this.dateOfBirth = dob;
     }
 
-    public String getUsername() {
-        return username;
+    public int login() {
+        int result = 0;
+
+        try {
+            String sql = "{call login(?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.registerOutParameter(3, Types.INTEGER);
+
+            statement.execute();
+            result = statement.getInt(3);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return result;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public int register() {
+        int result = 0;
 
-    public String getPassword() {
-        return password;
-    }
+        try {
+            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setString(3, fullName);
+            statement.setString(4, email);
+            statement.setString(5, phoneNumber);
+            statement.setString(6, address);
+            statement.setString(7, dateOfBirth);
+            statement.registerOutParameter(8, Types.INTEGER);
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+            statement.execute();
 
-    public String getFullName() {
-        return fullName;
-    }
+            result = statement.getInt(8);
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
 
-    public String getEmail() {
-        return email;
+        return 0;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-    
 }
