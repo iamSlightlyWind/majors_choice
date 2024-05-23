@@ -1,8 +1,11 @@
+use major
+
 create table users
 (
     id int identity(1,1) primary key,
     username varchar(25),
     password varchar(25),
+    confirmCode varchar(10),
     active int default 0
 );
 
@@ -16,6 +19,3 @@ create table userDetails
     dateOfBirth date,
     dateJoined date default getdate()
 );
-
-select * from users
-select * from userDetails
