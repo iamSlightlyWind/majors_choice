@@ -3,7 +3,7 @@ create table users
     id int identity(1,1) primary key,
     username varchar(25),
     password varchar(25),
-    active int default 1
+    active int default 0
 );
 
 create table userDetails
