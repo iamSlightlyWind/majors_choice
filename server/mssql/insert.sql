@@ -104,3 +104,320 @@ EXEC register
     @result = @result OUTPUT
     
 PRINT @result
+
+-- >> Add CPUs
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 5 5500',
+    @generation = 'Cezanne',
+    @socket = 'AM4',
+    @cores = 6,
+    @threads = 12,
+    @baseClock = 3.6,
+    @boostClock = 4.2,
+    @tdp = 65,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 7 5700X',
+    @generation = 'Vermeer',
+    @socket = 'AM4',
+    @cores = 8,
+    @threads = 16,
+    @baseClock = 3.4,
+    @boostClock = 4.6,
+    @tdp = 65,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 7 7700X',
+    @generation = 'Raphael',
+    @socket = 'AM5',
+    @cores = 8,
+    @threads = 16,
+    @baseClock = 4.5,
+    @boostClock = 5.4,
+    @tdp = 105,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 9 7950X',
+    @generation = 'Raphael',
+    @socket = 'AM5',
+    @cores = 16,
+    @threads = 32,
+    @baseClock = 4.5,
+    @boostClock = 5.7,
+    @tdp = 170,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 5 5600',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 6,
+    @threads = 12,
+    @baseClock = 3.7,
+    @boostClock = 4.6,
+    @tdp = 65,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 7 5800X',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 8,
+    @threads = 16,
+    @baseClock = 3.8,
+    @boostClock = 4.7,
+    @tdp = 105,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 9 5900X',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 12,
+    @threads = 24,
+    @baseClock = 3.7,
+    @boostClock = 4.8,
+    @tdp = 105,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 9 5950X',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 16,
+    @threads = 32,
+    @baseClock = 3.4,
+    @boostClock = 4.9,
+    @tdp = 105,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 7 7700X',
+    @generation = 'Raphael',
+    @socket = 'AM5',
+    @cores = 8,
+    @threads = 16,
+    @baseClock = 4.5,
+    @boostClock = 5.4,
+    @tdp = 105,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'AMD Ryzen 9 7950X',
+    @generation = 'Raphael',
+    @socket = 'AM5',
+    @cores = 16,
+    @threads = 32,
+    @baseClock = 4.5,
+    @boostClock = 5.7,
+    @tdp = 170,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i7-13700K',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 16,
+    @threads = 24,
+    @baseClock = 3.4,
+    @boostClock = 5.4,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i9-13900K',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 24,
+    @threads = 32,
+    @baseClock = 3,
+    @boostClock = 5.8,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i7-14700F',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 20,
+    @threads = 28,
+    @baseClock = 3.6,
+    @boostClock = 5.5,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i9-14900F',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 24,
+    @threads = 32,
+    @baseClock = 3.5,
+    @boostClock = 5.8,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i5-13600K',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 14,
+    @threads = 20,
+    @baseClock = 3.5,
+    @boostClock = 5.1,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i5-13600KF',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 14,
+    @threads = 20,
+    @baseClock = 3.5,
+    @boostClock = 5.1,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i9-13900KF',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 24,
+    @threads = 32,
+    @baseClock = 3,
+    @boostClock = 5.8,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i7-13700KF',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 16,
+    @threads = 24,
+    @baseClock = 3.4,
+    @boostClock = 5.4,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i9-14900K',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 24,
+    @threads = 32,
+    @baseClock = 3.2,
+    @boostClock = 6,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i9-14900KF',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 24,
+    @threads = 32,
+    @baseClock = 3.2,
+    @boostClock = 6,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result
+
+EXEC addProductCPU
+    @sellingPrice = 0,
+    @costPrice = 0,
+    @name = 'Intel Core i7-14700K',
+    @generation = 'Raptor Lake',
+    @socket = 'LGA 1700',
+    @cores = 20,
+    @threads = 28,
+    @baseClock = 3.4,
+    @boostClock = 5.6,
+    @tdp = 125,
+    @result = @result OUTPUT
+
+PRINT @result

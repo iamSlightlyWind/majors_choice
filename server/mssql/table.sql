@@ -41,7 +41,8 @@ create table staffDetails
 create table products(
     id int identity(1,1) primary key,
     sellingPrice decimal(18,2),
-    costPrice decimal(18,2)
+    costPrice decimal(18,2),
+    description nvarchar(max)
 );
 
 create table cpus(
@@ -73,7 +74,7 @@ create table motherboard(
     chipset nvarchar(10),
     formFactor nvarchar(50),
     ramType nvarchar(10),
-    maxramSpeed int,
+    maxRamSpeed int,
     ramSlots int,
     wifi int
 );
@@ -89,6 +90,7 @@ create table rams(
 
 create table ssds(
     id int references products(id),
+    name nvarchar(50),
     interface nvarchar(20),
     capacity int,
     cache int
@@ -103,6 +105,7 @@ create table psus(
 
 create table cases(
     id int references products(id),
+    name nvarchar(50),
     type nvarchar(50),
     formFactor nvarchar(50),
     color nvarchar(50)
