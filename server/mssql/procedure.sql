@@ -86,12 +86,12 @@ create PROCEDURE addProductCPU
     @baseClock int,
     @boostClock int,
     @tdp int,
-    @result int output
+    @result varchar(50) output
 AS
 BEGIN
     IF EXISTS (SELECT 1 FROM cpus WHERE name = @name)
     BEGIN
-        SET @result = -1
+        SET @result = "Already exists:" + @name
         RETURN
     END
 
@@ -121,12 +121,12 @@ create PROCEDURE addProductGPU
     @baseClock int,
     @boostClock int,
     @tdp int,
-    @result int output
+    @result varchar(50) output
 AS
 BEGIN
     IF EXISTS (SELECT 1 FROM gpus WHERE name = @name)
     BEGIN
-        SET @result = -1
+        SET @result = "Already exists:" + @name
         RETURN
     END
 
@@ -155,12 +155,12 @@ create PROCEDURE addProductRAM
     @capacity int,
     @speed int,
     @latentcy int,
-    @result int output
+    @result varchar(50) output
 AS
 BEGIN
     IF EXISTS (SELECT 1 FROM rams WHERE name = @name)
     BEGIN
-        SET @result = -1
+        SET @result = "Already exists:" + @name
         RETURN
     END
 
@@ -192,12 +192,12 @@ create PROCEDURE addProductMotherboard
     @maxRamSpeed int,
     @ramSlots int,
     @wifi int,
-    @result int output
+    @result varchar(50) output
 AS
 BEGIN
     IF EXISTS (SELECT 1 FROM motherboards WHERE name = @name)
     BEGIN
-        SET @result = -1
+        SET @result = "Already exists:" + @name
         RETURN
     END
 
@@ -225,12 +225,12 @@ create PROCEDURE addProductSSD
     @interface nvarchar(20),
     @capacity int,
     @cache int,
-    @result int output
+    @result varchar(50) output
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM ssd WHERE name = @name)
+    IF EXISTS (SELECT 1 FROM ssds WHERE name = @name)
     BEGIN
-        SET @result = -1
+        SET @result = "Already exists:" + @name
         RETURN
     END
 
@@ -257,12 +257,12 @@ create PROCEDURE addProductPSU
     @name nvarchar(50),
     @wattage int,
     @efficiency nvarchar(10),
-    @result int output
+    @result varchar(50) output
 AS
 BEGIN
     IF EXISTS (SELECT 1 FROM psus WHERE name = @name)
     BEGIN
-        SET @result = -1
+        SET @result = "Already exists:" + @name
         RETURN
     END
 
