@@ -91,7 +91,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM cpus WHERE name = @name)
     BEGIN
-        SET @result = "Already exists:" + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -126,7 +126,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM gpus WHERE name = @name)
     BEGIN
-        SET @result = "Already exists:" + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -160,7 +160,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM rams WHERE name = @name)
     BEGIN
-        SET @result = "Already exists:" + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -197,7 +197,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM motherboards WHERE name = @name)
     BEGIN
-        SET @result = "Already exists:" + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -230,7 +230,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM ssds WHERE name = @name)
     BEGIN
-        SET @result = "Already exists:" + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -262,7 +262,7 @@ AS
 BEGIN
     IF EXISTS (SELECT 1 FROM psus WHERE name = @name)
     BEGIN
-        SET @result = "Already exists:" + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 

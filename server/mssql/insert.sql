@@ -1,6 +1,6 @@
 use major
 
-DECLARE @result int
+DECLARE @resultInt int
 -- User 1
 EXEC register 
     @username = 'davitscott', 
@@ -10,9 +10,9 @@ EXEC register
     @phoneNumber = '123-456-7890', 
     @address = '123 Main St, Anytown, USA', 
     @dateOfBirth = '1980-01-01', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
 
-PRINT @result
+PRINT @resultInt
 
 -- User 2
 EXEC register 
@@ -23,9 +23,9 @@ EXEC register
     @phoneNumber = '234-567-8901', 
     @address = '456 Elm St, Anytown, USA', 
     @dateOfBirth = '1985-02-02', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
 
-PRINT @result
+PRINT @resultInt
 
 -- User 3
 EXEC register 
@@ -36,9 +36,9 @@ EXEC register
     @phoneNumber = '345-678-9012', 
     @address = '789 Pine St, Anytown, USA', 
     @dateOfBirth = '1990-03-03', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
 
-PRINT @result
+PRINT @resultInt
 
 -- User 4
 EXEC register 
@@ -49,9 +49,9 @@ EXEC register
     @phoneNumber = '456-789-0123', 
     @address = '012 Oak St, Anytown, USA', 
     @dateOfBirth = '1995-04-04', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
 
-PRINT @result
+PRINT @resultInt
 
 -- User 5
 EXEC register 
@@ -62,9 +62,9 @@ EXEC register
     @phoneNumber = '567-890-1234', 
     @address = '345 Maple St, Anytown, USA', 
     @dateOfBirth = '2000-05-05', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
 
-PRINT @result
+PRINT @resultInt
 
 -- User 6 with duplicate username from User 1
 EXEC register 
@@ -75,9 +75,9 @@ EXEC register
     @phoneNumber = '678-901-2345', 
     @address = '678 Cedar St, Anytown, USA', 
     @dateOfBirth = '1985-06-06', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
 
-PRINT @result
+PRINT @resultInt
 
 -- User 7 with duplicate email from User 2
 EXEC register 
@@ -88,9 +88,9 @@ EXEC register
     @phoneNumber = '789-012-3456', 
     @address = '901 Willow St, Anytown, USA', 
     @dateOfBirth = '1990-07-07', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
 
-PRINT @result
+PRINT @resultInt
 
 -- User 8 with duplicate phone number from User 3
 EXEC register 
@@ -101,11 +101,12 @@ EXEC register
     @phoneNumber = '345-678-9012', 
     @address = '234 Pine St, Anytown, USA', 
     @dateOfBirth = '1995-08-08', 
-    @result = @result OUTPUT
+    @result = @resultInt OUTPUT
     
-PRINT @result
+PRINT @resultInt
 
 -- >> Add CPUs
+DECLARE @result varchar(50)
 
 EXEC addProductCPU
     @sellingPrice = 0,
@@ -421,3 +422,5 @@ EXEC addProductCPU
     @result = @result OUTPUT
 
 PRINT @result
+
+select * from cpus
