@@ -209,7 +209,7 @@ BEGIN
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
-    INSERT INTO motherboard
+    INSERT INTO motherboards
         (id, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi)
     VALUES
         (@id, @name, @socket, @chipset, @formFactor, @ramType, @maxRamSpeed, @ramSlots, @wifi)
