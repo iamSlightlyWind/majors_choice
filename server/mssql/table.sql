@@ -67,7 +67,7 @@ create table gpus(
     tdp int
 );
 
-create table motherboard(
+create table motherboards(
     id int references products(id),
     name nvarchar(50),
     socket nvarchar(10),

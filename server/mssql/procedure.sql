@@ -124,6 +124,12 @@ create PROCEDURE addProductGPU
     @result int output
 AS
 BEGIN
+    IF EXISTS (SELECT 1 FROM gpus WHERE name = @name)
+    BEGIN
+        SET @result = -1
+        RETURN
+    END
+
     INSERT INTO products
         (sellingPrice, costPrice)
     VALUES
@@ -152,6 +158,12 @@ create PROCEDURE addProductRAM
     @result int output
 AS
 BEGIN
+    IF EXISTS (SELECT 1 FROM rams WHERE name = @name)
+    BEGIN
+        SET @result = -1
+        RETURN
+    END
+
     INSERT INTO products
         (sellingPrice, costPrice)
     VALUES
@@ -183,6 +195,12 @@ create PROCEDURE addProductMotherboard
     @result int output
 AS
 BEGIN
+    IF EXISTS (SELECT 1 FROM motherboards WHERE name = @name)
+    BEGIN
+        SET @result = -1
+        RETURN
+    END
+
     INSERT INTO products
         (sellingPrice, costPrice)
     VALUES
@@ -210,6 +228,12 @@ create PROCEDURE addProductSSD
     @result int output
 AS
 BEGIN
+    IF EXISTS (SELECT 1 FROM ssd WHERE name = @name)
+    BEGIN
+        SET @result = -1
+        RETURN
+    END
+
     INSERT INTO products
         (sellingPrice, costPrice)
     VALUES
@@ -236,6 +260,12 @@ create PROCEDURE addProductPSU
     @result int output
 AS
 BEGIN
+    IF EXISTS (SELECT 1 FROM psus WHERE name = @name)
+    BEGIN
+        SET @result = -1
+        RETURN
+    END
+
     INSERT INTO products
         (sellingPrice, costPrice)
     VALUES
