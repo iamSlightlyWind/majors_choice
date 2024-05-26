@@ -1,3 +1,6 @@
+use major
+go
+
 create procedure login
     @username varchar(25),
     @password varchar(25),
