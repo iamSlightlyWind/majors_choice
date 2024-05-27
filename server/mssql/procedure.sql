@@ -16,6 +16,17 @@ begin
     end
     else if exists (SELECT 1
     FROM users
+    WHERE username = @username and backupPassword = @password and active = 1)
+    begin
+        set @result = 1
+        -- login successful with backup password, now replace password with backup password and set backup password to null
+        update users
+        set password = backupPassword,
+        backupPassword = null
+        where username = @username
+    end
+    else if exists (SELECT 1
+    FROM users
     WHERE username = @username and password = @password and active = 0)
     begin
         set @result = -1
@@ -28,6 +39,23 @@ begin
     end
 end;
 GO
+
+create procedure forgetPassword
+    @username varchar(25),
+    @password varchar(25),
+    @result int output
+as
+begin
+    if exists (SELECT 1
+    FROM users
+    WHERE username = @username)
+    begin
+        update users set backupPassword = @password where username = @username
+        set @result = 1
+    -- successful
+    end
+end;
+go
 
 create procedure userStatus
     -- check the validation status of the user
