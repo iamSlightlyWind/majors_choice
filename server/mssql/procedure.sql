@@ -14,6 +14,13 @@ begin
         set @result = 1
     -- login successful
     end
+    else if exists (SELECT 1
+    FROM users
+    WHERE username = @username and password = @password and active = 0)
+    begin
+        set @result = -1
+    -- user not active
+    end
     else
     begin
         set @result = 0
