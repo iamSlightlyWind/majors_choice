@@ -1,6 +1,5 @@
 use major
-
-use major
+go
 
 create table users
 (
@@ -41,14 +40,16 @@ create table staffDetails
     dateJoined date default getdate()
 );
 
-create table products(
+create table products
+(
     id int identity(1,1) primary key,
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
     description nvarchar(max)
 );
 
-create table cpus(
+create table cpus
+(
     id int references products(id),
     name nvarchar(50),
     generation nvarchar(50),
@@ -60,7 +61,8 @@ create table cpus(
     tdp int
 );
 
-create table gpus(
+create table gpus
+(
     id int references products(id),
     name nvarchar(50),
     generation nvarchar(50),
@@ -70,7 +72,8 @@ create table gpus(
     tdp int
 );
 
-create table motherboards(
+create table motherboards
+(
     id int references products(id),
     name nvarchar(50),
     socket nvarchar(10),
@@ -82,7 +85,8 @@ create table motherboards(
     wifi int
 );
 
-create table rams(
+create table rams
+(
     id int references products(id),
     name nvarchar(50),
     generation nvarchar(50),
@@ -91,7 +95,8 @@ create table rams(
     latency int
 );
 
-create table ssds(
+create table ssds
+(
     id int references products(id),
     name nvarchar(50),
     interface nvarchar(20),
@@ -99,14 +104,16 @@ create table ssds(
     cache int
 );
 
-create table psus(
+create table psus
+(
     id int references products(id),
     name nvarchar(50),
     wattage int,
     efficiency nvarchar(50),
 );
 
-create table cases(
+create table cases
+(
     id int references products(id),
     name nvarchar(50),
     type nvarchar(50),
@@ -123,7 +130,8 @@ create table warehouses
     quantity int
 );
 
-create table ratings(
+create table ratings
+(
     id int identity(1,1) primary key,
     userId int references users(id),
     productId int references products(id),
@@ -140,7 +148,8 @@ create table carts
     dateAdded date default getdate()
 );
 
-create table feedback (
+create table feedback
+(
     id int identity(1,1) primary key,
     userId int references users(id),
     feedback nvarchar(max),

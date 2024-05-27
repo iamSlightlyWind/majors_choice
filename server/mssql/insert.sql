@@ -71,47 +71,6 @@ EXEC register
 
 PRINT @resultInt
 
--- User 6 with duplicate username from User 1
-EXEC register 
-    @username = 'davitscott', 
-    @password = 'password678', 
-    @fullname = 'Robert White', 
-    @email = 'robertwhite@example.com', 
-    @phoneNumber = '678-901-2345', 
-    @address = '678 Cedar St, Anytown, USA', 
-    @dateOfBirth = '1985-06-06', 
-    @confirmCode = 'NpQrS',
-    @result = @resultInt OUTPUT
-
-PRINT @resultInt
-
--- User 7 with duplicate email from User 2
-EXEC register 
-    @username = 'jenniferblack', 
-    @password = 'password901', 
-    @fullname = 'Jennifer Black', 
-    @email = 'emilyjohnson@example.com', 
-    @phoneNumber = '789-012-3456', 
-    @address = '901 Willow St, Anytown, USA', 
-    @dateOfBirth = '1990-07-07', 
-    @confirmCode = 'QrStU',
-    @result = @resultInt OUTPUT
-
-PRINT @resultInt
-
--- User 8 with duplicate phone number from User 3
-EXEC register 
-    @username = 'williamgreen', 
-    @password = 'password234', 
-    @fullname = 'William Green', 
-    @email = 'williamgreen@example.com', 
-    @phoneNumber = '345-678-9012', 
-    @address = '234 Pine St, Anytown, USA', 
-    @dateOfBirth = '1995-08-08', 
-    @result = @resultInt OUTPUT
-    
-PRINT @resultInt
-
 -- >> Add CPUs
 DECLARE @result varchar(50)
 
