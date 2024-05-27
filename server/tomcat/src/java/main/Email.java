@@ -1,34 +1,34 @@
 package main;
 
 import jakarta.mail.*;
-import jakarta.mail.internet.InternetAddress;
-import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.*;
+
 import java.util.Properties;
 
 public class Email {
+    private final String username = System.getenv("EMAIL_ADDRESS");
+    private final String password = System.getenv("EMAIL_PASSWORD");
 
-    private static final String USERNAME = "your-email@gmail";
-    private static final String PASSWORD = "your-password";
+    public void sendEmail(String to, String subject) {
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
 
-    public static void sendEmail(String to, String content) {
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(properties, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(USERNAME, PASSWORD);
-            }
-        });
+        Session session = Session.getInstance(props,
+                new jakarta.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
 
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(USERNAME));
+            message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject("Test Email");
-            message.setText(content);
+            message.setSubject(subject);
+            message.setText("Hello, this is a test email!");
 
             Transport.send(message);
 

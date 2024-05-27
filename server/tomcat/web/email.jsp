@@ -7,7 +7,8 @@
     </head>
     <body>
         <form action="Test" method="post">
-            <input type="text" name="command" placeholder="Email">
+            <input type="text" name="address" placeholder="address">
+            <input type="text" name="title" placeholder="title">
             <input type="submit" value="Submit">
         </form>
         <p>${output}</p>
