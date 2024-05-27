@@ -1,6 +1,6 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
+        "server/tomcat/libraries/*.jar",
         "server/tomcat/libraries/jakarta.servlet.jsp.jstl-2.0.0.jar",
         "server/tomcat/libraries/jakarta.servlet.jsp.jstl-api-2.0.0.jar",
         "server/tomcat/libraries/jaxb-api-2.1.jar",

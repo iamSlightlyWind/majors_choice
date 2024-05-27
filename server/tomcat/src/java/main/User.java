@@ -15,6 +15,9 @@ public class User {
 
     Database db = new Database();
 
+    public User() {
+    }
+
     public User(String user, String pass) {
         this.username = user;
         this.password = pass;
