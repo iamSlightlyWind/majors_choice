@@ -19,7 +19,7 @@ public class Test extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
         // Write the content of the system out to the response
         response.getWriter().println(database.selectAll("users"));
     }
@@ -36,10 +36,9 @@ public class Test extends HttpServlet {
     }
 
     public static void main(String[] args) {
-        User newUser = new User();
-        newUser.username = "davitscott";
-        newUser.password = "password123";
-
-        System.out.println(newUser.login());
+        User newUser = new User("emilyjohnson", "password456");
+        System.out.println("first validation: " + newUser.validate("AsdbD"));
+        System.out.println("second validation: " + newUser.validate("DfjgR"));
+        System.out.println("third validation: " + newUser.validate("DfjgR")); // wont work since the user is already validated
     }
 }

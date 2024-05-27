@@ -9,7 +9,8 @@ EXEC register
     @email = 'davitscott@example.com', 
     @phoneNumber = '123-456-7890', 
     @address = '123 Main St, Anytown, USA', 
-    @dateOfBirth = '1980-01-01', 
+    @dateOfBirth = '1980-01-01',
+    @confirmCode = 'BfklE',
     @result = @resultInt OUTPUT
 
 PRINT @resultInt
@@ -23,6 +24,7 @@ EXEC register
     @phoneNumber = '234-567-8901', 
     @address = '456 Elm St, Anytown, USA', 
     @dateOfBirth = '1985-02-02', 
+    @confirmCode = 'DfjgR',
     @result = @resultInt OUTPUT
 
 PRINT @resultInt
@@ -36,6 +38,7 @@ EXEC register
     @phoneNumber = '345-678-9012', 
     @address = '789 Pine St, Anytown, USA', 
     @dateOfBirth = '1990-03-03', 
+    @confirmCode = 'GhjKl',
     @result = @resultInt OUTPUT
 
 PRINT @resultInt
@@ -49,6 +52,7 @@ EXEC register
     @phoneNumber = '456-789-0123', 
     @address = '012 Oak St, Anytown, USA', 
     @dateOfBirth = '1995-04-04', 
+    @confirmCode = 'JkLmN',
     @result = @resultInt OUTPUT
 
 PRINT @resultInt
@@ -62,6 +66,7 @@ EXEC register
     @phoneNumber = '567-890-1234', 
     @address = '345 Maple St, Anytown, USA', 
     @dateOfBirth = '2000-05-05', 
+    @confirmCode = 'LmNoP',
     @result = @resultInt OUTPUT
 
 PRINT @resultInt
@@ -75,6 +80,7 @@ EXEC register
     @phoneNumber = '678-901-2345', 
     @address = '678 Cedar St, Anytown, USA', 
     @dateOfBirth = '1985-06-06', 
+    @confirmCode = 'NpQrS',
     @result = @resultInt OUTPUT
 
 PRINT @resultInt
@@ -88,6 +94,7 @@ EXEC register
     @phoneNumber = '789-012-3456', 
     @address = '901 Willow St, Anytown, USA', 
     @dateOfBirth = '1990-07-07', 
+    @confirmCode = 'QrStU',
     @result = @resultInt OUTPUT
 
 PRINT @resultInt
@@ -119,6 +126,7 @@ EXEC addProductCPU
     @baseClock = 3.6,
     @boostClock = 4.2,
     @tdp = 65,
+    @confirmCode = 'StUvW',
     @result = @result OUTPUT
 
 PRINT @result
