@@ -7,86 +7,82 @@ create procedure login
     @result int output
 as
 begin
-    if exists (SELECT 1 FROM users WHERE username = @username and password = @password and active = 1)
+    if exists (SELECT 1
+    FROM users
+    WHERE username = @username and password = @password and active = 1)
     begin
-        set @result = 1 -- login successful
+        set @result = 1
+    -- login successful
     end
     else
     begin
-        set @result = 0 -- login failed
+        set @result = 0
+    -- login failed
     end
 end;
 GO
 
-create procedure userStatus -- check the validation status of the user
+create procedure userStatus
+    -- check the validation status of the user
     @username varchar(25),
-    @result int output -- -1: deleted, 0: not activated, 1: active, -2: not found
+    @result int output
+-- -1: deleted, 0: not activated, 1: active, -2: not found
 as
 begin
-    if exists (SELECT 1 FROM users WHERE username = @username)
+    if exists (SELECT 1
+    FROM users
+    WHERE username = @username)
     begin
-        if exists (SELECT 1 FROM users WHERE username = @username and active = 1)
+        if exists (SELECT 1
+        FROM users
+        WHERE username = @username and active = 1)
         begin
-            set @result = 1 -- active
+            set @result = 1
+        -- active
         end
-        else if exists (SELECT 1 FROM users WHERE username = @username and active = 0)
+        else if exists (SELECT 1
+        FROM users
+        WHERE username = @username and active = 0)
         begin
-            set @result = 0 -- not activated
+            set @result = 0
+        -- not activated
         end
-        else if exists (SELECT 1 FROM users WHERE username = @username and active = -1)
+        else if exists (SELECT 1
+        FROM users
+        WHERE username = @username and active = -1)
         begin
-            set @result = -1 -- deleted
+            set @result = -1
+        -- deleted
         end
     end
     else
     begin
-        set @result = -2 -- not found
+        set @result = -2
+    -- not found
     end
 end;
 GO
 
-
-create procedure userStatus -- check the validation status of the user
-    @username varchar(25),
-    @result int output -- -1: deleted, 0: not activated, 1: active, -2: not found
-as
-begin
-    if exists (SELECT 1 FROM users WHERE username = @username)
-    begin
-        if exists (SELECT 1 FROM users WHERE username = @username and active = 1)
-        begin
-            set @result = 1 -- active
-        end
-        else if exists (SELECT 1 FROM users WHERE username = @username and active = 0)
-        begin
-            set @result = 0 -- not activated
-        end
-        else if exists (SELECT 1 FROM users WHERE username = @username and active = -1)
-        begin
-            set @result = -1 -- deleted
-        end
-    end
-    else
-    begin
-        set @result = -2 -- not found
-    end
-end;
-GO
-
-create procedure validate -- if confirm code var = user confirm code, update active to 1 if active = 0
+create procedure validate
+    -- if confirm code var = user confirm code, update active to 1 if active = 0
     @username varchar(25),
     @confirmCode varchar(10),
-    @result int output -- 1: successful, 0: failed
+    @result int output
+-- 1: successful, 0: failed
 as
 begin
-    if exists (SELECT 1 FROM users WHERE username = @username and confirmCode = @confirmCode and active = 0)
+    if exists (SELECT 1
+    FROM users
+    WHERE username = @username and confirmCode = @confirmCode and active = 0)
     begin
         update users set active = 1 where username = @username
-        set @result = 1 -- successful
+        set @result = 1
+    -- successful
     end
     else
     begin
-        set @result = 0 -- failed
+        set @result = 0
+    -- failed
     end
 end;
 go
@@ -126,8 +122,10 @@ begin
     end
     else
     begin
-        INSERT INTO users(username, password, confirmCode)
-        VALUES (@username, @password, @confirmCode)
+        INSERT INTO users
+            (username, password, confirmCode)
+        VALUES
+            (@username, @password, @confirmCode)
 
         DECLARE @id int
         set @id = SCOPE_IDENTITY()
@@ -157,7 +155,9 @@ create PROCEDURE addProductCPU
     @result varchar(50) output
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM cpus WHERE name = @name)
+    IF EXISTS (SELECT 1
+    FROM cpus
+    WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -192,7 +192,9 @@ create PROCEDURE addProductGPU
     @result varchar(50) output
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM gpus WHERE name = @name)
+    IF EXISTS (SELECT 1
+    FROM gpus
+    WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -226,7 +228,9 @@ create PROCEDURE addProductRAM
     @result varchar(50) output
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM rams WHERE name = @name)
+    IF EXISTS (SELECT 1
+    FROM rams
+    WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -263,7 +267,9 @@ create PROCEDURE addProductMotherboard
     @result varchar(50) output
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM motherboards WHERE name = @name)
+    IF EXISTS (SELECT 1
+    FROM motherboards
+    WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -296,7 +302,9 @@ create PROCEDURE addProductSSD
     @result varchar(50) output
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM ssds WHERE name = @name)
+    IF EXISTS (SELECT 1
+    FROM ssds
+    WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -328,7 +336,9 @@ create PROCEDURE addProductPSU
     @result varchar(50) output
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM psus WHERE name = @name)
+    IF EXISTS (SELECT 1
+    FROM psus
+    WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
