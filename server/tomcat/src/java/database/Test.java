@@ -1,6 +1,8 @@
 package database;
 
 import java.io.IOException;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +14,11 @@ public class Test extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute("output", database.runCommand(request.getParameter("command")));
         response.setContentType("text/html;charset=UTF-8");
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/email.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
@@ -39,6 +45,7 @@ public class Test extends HttpServlet {
         User newUser = new User("emilyjohnson", "password456");
         System.out.println("first validation: " + newUser.validate("AsdbD"));
         System.out.println("second validation: " + newUser.validate("DfjgR"));
-        System.out.println("third validation: " + newUser.validate("DfjgR")); // wont work since the user is already validated
+        System.out.println("third validation: " + newUser.validate("DfjgR")); // wont work since the user is already
+                                                                              // validated
     }
 }
