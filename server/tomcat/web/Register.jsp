@@ -40,73 +40,54 @@
                         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                             <div class="card" style="border-radius: 15px;">
                                 <div class="card-body p-5">
-                                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-                                    <c:if test="${requestScope.u1!=null}">
-                                        <c:set var="u" value="${requestScope.u1}"/>
-                                    </c:if>
-                                    <form action="register" method="get">
-                                        <c:if test="${requestScope.errorU!=null}">
-                                            <c:set var="eU" value="${requestScope.errorU}"/>
-                                        </c:if>
+                                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>          
+                                    <form action="register" method="post">
+ 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="user" value="${u.username}" id="username" class="form-control form-control-lg" required/>
-                                            <label class="form-label" for="form3Example1cg">Username &nbsp;&nbsp;${eU} </label>
+                                            <input type="text" name="user" id="username" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example1cg">Username </label>
                                         </div>
-                                        <c:if test="${requestScope.errorP!=null}">
-                                            <c:set var="eP" value="${requestScope.errorP}"/>
-                                        </c:if>
+
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" name="pass" value="${u.password}" id="password" class="form-control form-control-lg" required/>
-                                            <label class="form-label" for="form3Example4cg">Password &nbsp;&nbsp;${eP}</label>
+                                            <input type="password" name="pass" id="password" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example4cg">Password </label>
                                         </div>
-                                        <c:if test="${requestScope.reP!=null}">
-                                            <c:set var="reP" value="${requestScope.reP}"/>
-                                        </c:if>    
+   
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" name="repass" value="${reP}" id="repassword" class="form-control form-control-lg" required/>
+                                            <input type="password" name="repass" id="repassword" class="form-control form-control-lg" required/>
                                             <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                                         </div>                           
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="name" value="${u.fullName}" id="fullname" class="form-control form-control-lg" required/>
+                                            <input type="text" name="name" id="fullname" class="form-control form-control-lg" required/>
                                             <label class="form-label" for="form3Example3cg">Full Name</label>
                                         </div>
-                                        <c:if test="${requestScope.errorEE!=null}">
-                                            <c:set var="EE" value="${requestScope.errorEE}"/>
-                                        </c:if>  
-                                        <c:if test="${requestScope.errorFE!=null}">
-                                            <c:set var="FE" value="${requestScope.errorFE}"/>
-                                        </c:if> 
+ 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="email" value="${u.email}" id="email" class="form-control form-control-lg" required/>
-                                            <label class="form-label" for="form3Example3cg">Email  &nbsp;&nbsp;${EE}${FE}</label>
-                                        </div>
-                                        <c:if test="${requestScope.errorEP!=null}">
-                                            <c:set var="EP" value="${requestScope.errorEP}"/>
-                                        </c:if>  
-                                        <c:if test="${requestScope.errorFP!=null}">
-                                            <c:set var="FP" value="${requestScope.errorFP}"/>
-                                        </c:if> 
-                                        <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="phone" value="${u.phoneNumber}" id="phone" class="form-control form-control-lg" required/>
-                                            <label class="form-label" for="form3Example3cg">Phone &nbsp;&nbsp;${EP}${FP}</label>
+                                            <input type="text" name="email" id="email" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example3cg">Emai  &nbsp;&nbsp;${EE}${FE}</label>
                                         </div>
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" name="address" value="${u.address}" id="address" class="form-control form-control-lg" required/>
+                                            <input type="text" name="phone" id="phone" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example3cg">Phone</label>
+                                        </div>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="text" name="address" id="address" class="form-control form-control-lg" required/>
                                             <label class="form-label" for="form3Example3cg">Address </label>
                                         </div>
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="date" name="dateOfBirth" value="${u.birthDate}" id="birthDate" class="form-control form-control-lg" required/>
+                                            <input type="date" name="dateOfBirth" id="birthDate" class="form-control form-control-lg" required/>
                                             <label class="form-label" for="form3Example3cg">Date Of Birth</label>
                                         </div>
 
                                         <div class="d-flex justify-content-center">
-                                            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                            <input type="submit" value ="Register" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" />
                                         </div>
-                                        <c:if test="${requestScope.success!=null}">
-                                            <p style="color: aqua; font-family:sans-serif"> &nbsp;${requestScope.success}</p>
+                                        <c:if test="${requestScope.error!=null}">
+                                            <p style="color: aqua; font-family:sans-serif"> &nbsp;${requestScope.error}</p>
                                         </c:if>
                                         <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="Login.jsp" class="fw-bold text-body"><u>Login here</u></a></p>
 

@@ -5,8 +5,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import main.Email;
 import main.User;
 
 public class RegisterServlet extends HttpServlet {
@@ -28,31 +30,37 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
         String dateOfBirth = request.getParameter("dateOfBirth");
 
-        String error = checkInfo(email, phone, pass, repass);
+        String error = checkInfo(email, phone, pass, repass, username);
         int result = 0;
-
-        if (!error.isEmpty()) {
+        String confirmCode = "";
+        if (error.isEmpty()) {
             User user = new User(username, pass, name, email, phone, address, dateOfBirth);
             result = user.register();
+            confirmCode = user.getConfirmCode();
         }
 
         switch (result) {
             case 1:
                 break;
-
             case -1:
                 error = "Username already exists.";
-
+                break;
             case -2:
                 error = "Email already exists.";
-
+                break;
             case -3:
                 error = "Phone number already exists.";
+                break;
+            default:
+                break;
         }
 
         if (result == 1) {
-            request.setAttribute("success", "Succesfully Registered. You can now Login.");
-            request.getRequestDispatcher("Register.jsp").forward(request, response);
+            Email.sendEmail(email, confirmCode);
+            HttpSession session = request.getSession();
+            session.setAttribute("userName", username);
+            session.setAttribute("password", pass);
+            response.sendRedirect("VerifyEmail.jsp");
         } else {
             request.setAttribute("error", error);
             request.getRequestDispatcher("Register.jsp").forward(request, response);
@@ -62,7 +70,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doGet(request, response);
     }
 
     private boolean isValidEmail(String email) {
@@ -81,19 +89,26 @@ public class RegisterServlet extends HttpServlet {
         return matcher.matches();
     }
 
-    public boolean isValidPasswordMatches(String password, String repass){
+    public boolean isValidPasswordMatches(String password, String repass) {
         return password.equals(repass);
     }
 
-    public String checkInfo(String emailAddress, String phoneNumber, String password, String repass){
-        if(!isValidEmail(emailAddress)){
+    public static boolean isvValidUsername(String username) {
+        return username.trim().matches("^[A-Za-z0-9]+$");
+    }
+
+    public String checkInfo(String emailAddress, String phoneNumber, String password, String repass, String username) {
+        if (!isValidEmail(emailAddress)) {
             return "Wrong email format.";
         }
-        if(!isValidPhoneNumber(phoneNumber)){
+        if (!isValidPhoneNumber(phoneNumber)) {
             return "Wrong phone number format.";
         }
-        if(!isValidPasswordMatches(password, repass)){
+        if (!isValidPasswordMatches(password, repass)) {
             return "Passwords don't match.";
+        }
+        if (!isvValidUsername(username)){
+            return "Wrong username format.";
         }
         return "";
     }

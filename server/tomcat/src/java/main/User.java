@@ -4,10 +4,14 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Random;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import database.Database;
 
 public class User {
+
     public String username, password;
     public String fullName, email, phoneNumber, address;
     public String dateOfBirth;
@@ -35,14 +39,19 @@ public class User {
     }
 
     private String randomString(int length) {
+        List<String> listConfirmCode = ListConfirmCode();
+
         int leftLimit = 97;
         int rightLimit = 122;
         Random random = new Random();
 
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
-                .limit(length)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
+        String generatedString = "";
+        do {
+            generatedString = random.ints(leftLimit, rightLimit + 1)
+                    .limit(length)
+                    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                    .toString();
+        } while (listConfirmCode.contains(generatedString));
 
         return generatedString;
     }
@@ -86,7 +95,7 @@ public class User {
         int result = 0;
 
         try {
-            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
@@ -95,11 +104,12 @@ public class User {
             statement.setString(5, phoneNumber);
             statement.setString(6, address);
             statement.setString(7, dateOfBirth);
-            statement.registerOutParameter(8, Types.INTEGER);
+            statement.setString(8, confirmCode);
+            statement.registerOutParameter(9, Types.INTEGER);
 
             statement.execute();
 
-            result = statement.getInt(8);
+            result = statement.getInt(9);
 
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -107,4 +117,30 @@ public class User {
 
         return result;
     }
+
+    public List<String> ListConfirmCode() {
+        List<String> list = new ArrayList<>();
+
+        try {
+            String sql = "SELECT [confirmCode]\n"
+                    + "  FROM [dbo].[users]";
+            PreparedStatement statement = db.connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String code = resultSet.getString("confirmCode");
+                list.add(code);
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return list;
+    }
+
+    public String getConfirmCode() {
+        return confirmCode;
+    }
+
 }
