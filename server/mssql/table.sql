@@ -156,7 +156,3 @@ create table feedback
     feedback nvarchar(max),
     dateSent date default getdate()
 );
-
---use major
---select * from users
---select * from userdetails

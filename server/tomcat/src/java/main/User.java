@@ -47,6 +47,31 @@ public class User {
         return generatedString;
     }
 
+    public int resetPassword() {
+        int result = 0;
+        String newPassword = randomString(8);
+
+        try {
+            String sql = "{call resetPassword(?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, newPassword);
+            statement.registerOutParameter(3, Types.INTEGER);
+
+            statement.execute();
+            result = statement.getInt(3);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        if(result == 1){
+            Email mail = new Email();
+            mail.sendRecoveryPassword(email, newPassword);
+        }
+
+        return result;
+    }
+
     public int activate(String confirmCode) {
         try {
             String sql = "{call activate(?, ?, ?)}";

@@ -41,20 +41,27 @@ end;
 GO
 
 create procedure resetPassword
-    @username varchar(25),
+    @email varchar(25),
     @password varchar(25),
     @result int output
 as
 begin
     if exists (SELECT 1
-    FROM users
-    WHERE username = @username)
+    FROM userDetails
+    WHERE email = @email)
     begin
-        update users set backupPassword = @password where username = @username
+        update users
+        set backupPassword = @password
+        where id = (select id from userDetails where email = @email)
         set @result = 1
     -- successful
     end
-end;
+    else
+    begin
+        set @result = 0
+    -- failed
+    end
+end;    
 go
 
 create procedure userStatus

@@ -18,9 +18,6 @@ public class ActivateServlet extends HttpServlet {
         User user = new User((String) session.getAttribute("username"), "");
         int result = user.activate(code);
 
-        System.out.println(user.toString());
-        System.out.println(result);
-
         switch (result) {
             case 0:
                 request.setAttribute("user", session.getAttribute("username"));

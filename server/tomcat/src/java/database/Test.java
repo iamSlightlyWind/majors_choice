@@ -16,15 +16,6 @@ public class Test extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //request.setAttribute("output", database.runCommand(request.getParameter("command")));
-        //response.setContentType("text/html;charset=UTF-8");
-        Email mail = new Email();
-        String address = request.getParameter("address");
-        String title = request.getParameter("title");
-        mail.sendEmail(address, title);
-
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/email.jsp");
-        dispatcher.forward(request, response);
     }
 
     @Override

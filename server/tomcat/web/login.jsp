@@ -30,7 +30,7 @@
                   <input type="text" name="pass" id="" class="form-control my-4 py-2" placeholder="Password" />
                   <div class="text-center mt-3">
                     <button class="btn btn-primary">Login</button>
-                    <a href="resetpassword.jsp" class="nav-link">Forgot Password ?</a>
+                    <a href="recovery.jsp" class="nav-link">Forgot Password ?</a>
                     <a href="register.jsp" class="nav-link">Don't Have An Account ?</a>
                   </div>
                 </form>

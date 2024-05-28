@@ -31,8 +31,8 @@ public class RegisterServlet extends HttpServlet {
             result = user.register();
             switch (result) {
                 case 1:
-                    request.setAttribute("registerStatus", "Succesfully Registered. You can now Login.");
-                    request.getRequestDispatcher("/register.jsp").forward(request, response);
+                    request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
+                    request.getRequestDispatcher("/login.jsp").forward(request, response);
                     break;
 
                 case -1:

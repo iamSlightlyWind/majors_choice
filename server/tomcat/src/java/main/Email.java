@@ -10,10 +10,14 @@ public class Email {
     private final String password = "swra dvwj agvc nlmy"; //System.getenv("EMAIL_PASSWORD");
 
     public void sendConfirmCode(String email, String code){
-        sendEmail(email, "Your account register confirmation code is " + code);
+        sendEmail(email, "Confirmation Code", "Your account register confirmation code is " + code);
     }
 
-    public void sendEmail(String address, String content) {
+    public void sendRecoveryPassword(String email, String password){
+        sendEmail(email, "Recover Password", "Your new password is: " + password + "\nIf you decide to login using this password, it will become your new password.");
+    }
+
+    public void sendEmail(String address, String subject, String content) {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
