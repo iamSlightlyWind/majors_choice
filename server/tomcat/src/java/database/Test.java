@@ -48,9 +48,5 @@ public class Test extends HttpServlet {
     }
 
     public static void main(String[] args) {
-        User newUser = new User("emilyjohnson", "password456");
-        System.out.println("first validation: " + newUser.validate("AsdbD"));
-        System.out.println("second validation: " + newUser.validate("DfjgR"));
-        System.out.println("third validation: " + newUser.validate("DfjgR"));
     }
 }

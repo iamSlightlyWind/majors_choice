@@ -23,29 +23,6 @@ public class Database {
         }
     }
 
-    public void sendConfirmationCode(String code) {
-        //runCommand(code); // This function will be used to send the confirmation code to the user through email. Do not modify
-    }
-
-    public String runCommand(String command) {
-        try {
-            ProcessBuilder processBuilder = new ProcessBuilder();
-            processBuilder.command("bash", "-c", command);
-            Process process = processBuilder.start();
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
-            }
-            return output.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
     // The following function is meant for testing, to be used with class Test of
     // the same package.
     // For more example of how to use this class, check out:

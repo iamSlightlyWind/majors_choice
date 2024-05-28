@@ -11,7 +11,7 @@ public class User {
     public String username, password;
     public String fullName, email, phoneNumber, address;
     public String dateOfBirth;
-    private String confirmCode;
+    public String confirmCode;
 
     Database db = new Database();
 
@@ -82,11 +82,16 @@ public class User {
         return result;
     }
 
+    public String toString() {
+        return "User: " + username + " " + password + " " + fullName + " " + email + " " + phoneNumber + " " + address
+                + " " + dateOfBirth;
+    }
+
     public int register() {
         int result = 0;
 
         try {
-            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
@@ -95,14 +100,21 @@ public class User {
             statement.setString(5, phoneNumber);
             statement.setString(6, address);
             statement.setString(7, dateOfBirth);
-            statement.registerOutParameter(8, Types.INTEGER);
+            statement.setString(8, confirmCode);
+            statement.registerOutParameter(9, Types.INTEGER);
 
             statement.execute();
 
-            result = statement.getInt(8);
+            result = statement.getInt(9);
 
         } catch (SQLException ex) {
             System.out.println(ex);
+        }
+
+        if (result == 1) {
+            Email mail = new Email();
+            System.out.println("Sending email to " + email + " with code " + confirmCode);
+            mail.sendConfirmCode(email, confirmCode);
         }
 
         return result;

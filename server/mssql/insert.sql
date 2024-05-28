@@ -85,7 +85,6 @@ EXEC addProductCPU
     @baseClock = 3.6,
     @boostClock = 4.2,
     @tdp = 65,
-    @confirmCode = 'StUvW',
     @result = @result OUTPUT
 
 PRINT @result
@@ -101,21 +100,6 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 4.6,
     @tdp = 65,
-    @result = @result OUTPUT
-
-PRINT @result
-
-EXEC addProductCPU
-    @sellingPrice = 0,
-    @costPrice = 0,
-    @name = 'AMD Ryzen 7 7700X',
-    @generation = 'Raphael',
-    @socket = 'AM5',
-    @cores = 8,
-    @threads = 16,
-    @baseClock = 4.5,
-    @boostClock = 5.4,
-    @tdp = 105,
     @result = @result OUTPUT
 
 PRINT @result
@@ -206,21 +190,6 @@ EXEC addProductCPU
     @baseClock = 4.5,
     @boostClock = 5.4,
     @tdp = 105,
-    @result = @result OUTPUT
-
-PRINT @result
-
-EXEC addProductCPU
-    @sellingPrice = 0,
-    @costPrice = 0,
-    @name = 'AMD Ryzen 9 7950X',
-    @generation = 'Raphael',
-    @socket = 'AM5',
-    @cores = 16,
-    @threads = 32,
-    @baseClock = 4.5,
-    @boostClock = 5.7,
-    @tdp = 170,
     @result = @result OUTPUT
 
 PRINT @result

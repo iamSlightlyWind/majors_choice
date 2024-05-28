@@ -40,7 +40,7 @@ begin
 end;
 GO
 
-create procedure forgetPassword
+create procedure resetPassword
     @username varchar(25),
     @password varchar(25),
     @result int output

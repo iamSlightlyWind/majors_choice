@@ -6,10 +6,14 @@ import jakarta.mail.internet.*;
 import java.util.Properties;
 
 public class Email {
-    private final String username = System.getenv("EMAIL_ADDRESS");
-    private final String password = System.getenv("EMAIL_PASSWORD");
+    private final String username = "phongpthe182589@fpt.edu.vn";//System.getenv("EMAIL_ADDRESS");
+    private final String password = "swra dvwj agvc nlmy"; //System.getenv("EMAIL_PASSWORD");
 
-    public void sendEmail(String to, String subject) {
+    public void sendConfirmCode(String email, String code){
+        sendEmail(email, "Your account register confirmation code is " + code);
+    }
+
+    public void sendEmail(String address, String content) {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -26,14 +30,11 @@ public class Email {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject(subject);
-            message.setText("Hello, this is a test email!");
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(address));
+            message.setSubject("Confirmation Code");
+            message.setText(content);
 
             Transport.send(message);
-
-            System.out.println("Email sent successfully");
-
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
