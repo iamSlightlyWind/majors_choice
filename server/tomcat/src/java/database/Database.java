@@ -1,7 +1,5 @@
 package database;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,10 +21,6 @@ public class Database {
         }
     }
 
-    // The following function is meant for testing, to be used with class Test of
-    // the same package.
-    // For more example of how to use this class, check out:
-    // https://github.com/iamSlightlyWind/WebDevelop/blob/main/Final/src/java/SQL/DBContext.java
     public String selectAll(String table) {
         try {
             Statement statement = connection.createStatement();

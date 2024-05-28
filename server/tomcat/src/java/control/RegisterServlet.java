@@ -25,30 +25,31 @@ public class RegisterServlet extends HttpServlet {
 
         String error = checkInfo(email, phoneNumber, password, repass);
         int result = 0;
-
         User user = new User(username, password, fullName, email, phoneNumber, address, dateOfBirth);
-        result = user.register();
 
-        switch (result) {
-            case 1:
-                break;
+        if (error.equals("")) {
+            result = user.register();
+            switch (result) {
+                case 1:
+                    request.setAttribute("registerStatus", "Succesfully Registered. You can now Login.");
+                    request.getRequestDispatcher("/register.jsp").forward(request, response);
+                    break;
 
-            case -1:
-                error = "Username already exists.";
-                break;
+                case -1:
+                    error = "Username already exists.";
+                    break;
 
-            case -2:
-                error = "Email already exists.";
-                break;
+                case -2:
+                    error = "Email already exists.";
+                    break;
 
-            case -3:
-                error = "Phone number already exists.";
-                break;
-        }
-
-        if (result == 1) {
-            request.setAttribute("registerStatus", "Succesfully Registered. You can now Login.");
+                case -3:
+                    error = "Phone number already exists.";
+                    break;
+            }
+            request.setAttribute("registerStatus", error);
             request.getRequestDispatcher("/register.jsp").forward(request, response);
+
         } else {
             request.setAttribute("registerStatus", error);
             request.getRequestDispatcher("/register.jsp").forward(request, response);
@@ -65,14 +66,13 @@ public class RegisterServlet extends HttpServlet {
     }
 
     public boolean isValidPhoneNumber(String phoneNumber) {
-        /*
-         * String phoneRegex = "^\\d{3}-\\d{3}-\\d{3,6}$";
-         * Pattern pattern = Pattern.compile(phoneRegex);
-         * Matcher matcher = pattern.matcher(phoneNumber);
-         * 
-         * return matcher.matches();
-         */
-        return true; // something is wrong here
+        /* String phoneRegex = "^\\d{3}-\\d{3}-\\d{3,6}$";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        Matcher matcher = pattern.matcher(phoneNumber);
+
+        return matcher.matches(); */
+
+        return true;
     }
 
     public boolean isValidPasswordMatches(String password, String repass) {
