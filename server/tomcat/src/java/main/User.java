@@ -47,19 +47,19 @@ public class User {
         return generatedString;
     }
 
-    public boolean validate(String confirmCode) {
+    public int activate(String confirmCode) {
         try {
-            String sql = "{call validate(?, ?, ?)}";
+            String sql = "{call activate(?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, confirmCode);
             statement.registerOutParameter(3, Types.INTEGER);
 
             statement.execute();
-            return statement.getInt(3) == 1;
+            return statement.getInt(3);
         } catch (SQLException ex) {
             System.out.println(ex);
-            return false;
+            return 0;
         }
     }
 
@@ -113,7 +113,6 @@ public class User {
 
         if (result == 1) {
             Email mail = new Email();
-            System.out.println("Sending email to " + email + " with code " + confirmCode);
             mail.sendConfirmCode(email, confirmCode);
         }
 

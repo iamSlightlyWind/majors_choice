@@ -25,16 +25,14 @@
                   <path fill-rule="evenodd"
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                 </svg>
-                <form id="loginForm" action="login" method="post">
-                  <input type="text" name="user" id="" class="form-control my-4 py-2" placeholder="Username" />
-                  <input type="text" name="pass" id="" class="form-control my-4 py-2" placeholder="Password" />
+                <form id="loginForm" action="activate" method="post">
+                  <p>Activating for user: ${user}</p>
+                  <input type="text" name="code" id="" class="form-control my-4 py-2" placeholder="Activation Code" />
                   <div class="text-center mt-3">
-                    <button class="btn btn-primary">Login</button>
-                    <a href="resetpassword.jsp" class="nav-link">Forgot Password ?</a>
-                    <a href="register.jsp" class="nav-link">Don't Have An Account ?</a>
+                    <button class="btn btn-primary">Activate</button>
                   </div>
                 </form>
-                <p>${loginStatus}</p>
+                <p>${activateStatus}</p>
 
               </div>
             </div>

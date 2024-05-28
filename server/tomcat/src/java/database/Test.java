@@ -48,5 +48,7 @@ public class Test extends HttpServlet {
     }
 
     public static void main(String[] args) {
+        User user = new User("emilyjohnson", "password456");
+        user.activate("DfjgR");
     }
 }

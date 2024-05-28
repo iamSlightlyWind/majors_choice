@@ -9,3 +9,4 @@ BEGIN
 END
 
 create database major
+-- select * from users

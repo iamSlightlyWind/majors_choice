@@ -98,7 +98,7 @@ begin
 end;
 GO
 
-create procedure validate
+create procedure activate
     -- if confirm code var = user confirm code, update active to 1 if active = 0
     @username varchar(25),
     @confirmCode varchar(10),
