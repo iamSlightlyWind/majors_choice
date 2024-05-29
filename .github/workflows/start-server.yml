@@ -50,14 +50,14 @@ jobs:
       env:
         SQLPASSWORD: ${{ secrets.SQLPASSWORD }}
 
-    - name: Run ngrok SSH
-      id: ngrok
-      uses: tmshkr/ngrok-ssh@latest
-      with:
-        SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
-        NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+    #- name: Run ngrok SSH
+    #  id: ngrok
+    #  uses: tmshkr/ngrok-ssh@latest
+    #  with:
+    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
 
-    - name: Run ngrok to forward code-server port
+    - name: Run ngrok to forward port
       run: ngrok http --region=ap http://localhost:8080 &
 
     - name: Create database
