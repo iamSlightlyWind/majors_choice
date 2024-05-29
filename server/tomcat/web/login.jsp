@@ -27,7 +27,7 @@
                 </svg>
                 <form id="loginForm" action="login" method="post">
                   <input type="text" name="user" id="" class="form-control my-4 py-2" placeholder="Username" />
-                  <input type="text" name="pass" id="" class="form-control my-4 py-2" placeholder="Password" />
+                  <input type="password" name="pass" id="" class="form-control my-4 py-2" placeholder="Password" />
                   <div class="text-center mt-3">
                     <button class="btn btn-primary">Login</button>
                     <a href="recovery.jsp" class="nav-link">Forgot Password ?</a>
