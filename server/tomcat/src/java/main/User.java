@@ -54,7 +54,7 @@ public class User {
         try {
             String sql = "{call resetPassword(?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
-            statement.setString(1, username);
+            statement.setString(1, email);
             statement.setString(2, newPassword);
             statement.registerOutParameter(3, Types.INTEGER);
 

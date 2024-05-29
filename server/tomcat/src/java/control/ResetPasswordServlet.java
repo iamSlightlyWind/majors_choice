@@ -14,18 +14,20 @@ public class ResetPasswordServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
 
+        System.out.println(email);
+
         User user = new User();
         user.email = email;
         int result = user.resetPassword();
 
         switch (result) {
             case 0:
-                request.setAttribute("resetStatus", "Email is not registered.");
-                request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
+                request.setAttribute("recoveryStatus", "Email is not registered.");
+                request.getRequestDispatcher("recovery.jsp").forward(request, response);
                 break;
             case 1:
-                request.setAttribute("resetStatus", "A new, unactivated password has been sent to your email address.");
-                request.getRequestDispatcher("resetPassword.jsp").forward(request, response);
+                request.setAttribute("loginStatus", "A new, unactivated password has been sent to your email address.");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
                 break;
         }
     }

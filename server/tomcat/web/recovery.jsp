@@ -27,7 +27,7 @@
                 </svg>
                 <form id="loginForm" action="recovery" method="post">
                   <p>Recovery password</p>
-                  <input type="text" name="code" id="" class="form-control my-4 py-2" placeholder="Email address" />
+                  <input type="text" name="email" id="" class="form-control my-4 py-2" placeholder="Email address" />
                   <div class="text-center mt-3">
                     <button class="btn btn-primary">Recover Password</button>
                   </div>

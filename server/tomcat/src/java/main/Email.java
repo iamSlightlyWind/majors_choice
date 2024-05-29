@@ -6,8 +6,8 @@ import jakarta.mail.internet.*;
 import java.util.Properties;
 
 public class Email {
-    private final String username = "phongpthe182589@fpt.edu.vn";//System.getenv("EMAIL_ADDRESS");
-    private final String password = "swra dvwj agvc nlmy"; //System.getenv("EMAIL_PASSWORD");
+    private final String username = System.getenv("EMAIL_ADDRESS");
+    private final String password = System.getenv("EMAIL_PASSWORD");
 
     public void sendConfirmCode(String email, String code){
         sendEmail(email, "Confirmation Code", "Your account register confirmation code is " + code);
