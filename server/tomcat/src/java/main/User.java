@@ -35,24 +35,16 @@ public class User {
     }
 
     private String randomString(int length) {
-        String possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+        int leftLimit = 97;
+        int rightLimit = 122;
         Random random = new Random();
-        StringBuilder generatedString = new StringBuilder(length);
-    
-        for (int i = 0; i < length; i++) {
-            int randomIndex = random.nextInt(possibleCharacters.length());
-            generatedString.append(possibleCharacters.charAt(randomIndex));
-        }
-    
-        while (db.checkDuplicateConfirmCode(generatedString.toString())) {
-            generatedString.setLength(0);
-            for (int i = 0; i < length; i++) {
-                int randomIndex = random.nextInt(possibleCharacters.length());
-                generatedString.append(possibleCharacters.charAt(randomIndex));
-            }
-        }
-    
-        return generatedString.toString();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .limit(length)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
+        return generatedString;
     }
 
     public int resetPassword() {
@@ -72,7 +64,7 @@ public class User {
             System.out.println(ex);
         }
 
-        if (result == 1) {
+        if(result == 1){
             Email mail = new Email();
             mail.sendRecoveryPassword(email, newPassword);
         }
