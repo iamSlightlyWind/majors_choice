@@ -64,7 +64,7 @@ public class User {
             System.out.println(ex);
         }
 
-        if(result == 1){
+        if (result == 1) {
             Email mail = new Email();
             mail.sendRecoveryPassword(email, newPassword);
         }
@@ -112,7 +112,7 @@ public class User {
                 + " " + dateOfBirth;
     }
 
-    public int register() {
+    public int register(boolean isUserGoogle) {
         int result = 0;
 
         try {
@@ -136,7 +136,7 @@ public class User {
             System.out.println(ex);
         }
 
-        if (result == 1) {
+        if (result == 1 && !isUserGoogle) {
             Email mail = new Email();
             mail.sendConfirmCode(email, confirmCode);
         }

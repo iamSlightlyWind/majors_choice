@@ -4,6 +4,7 @@ go
 create table users
 (
     id int identity(1,1) primary key,
+    googleUser int default 0,
     username varchar(25),
     password varchar(25),
     backupPassword varchar(25),

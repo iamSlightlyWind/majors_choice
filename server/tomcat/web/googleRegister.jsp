@@ -47,8 +47,8 @@
                                             placeholder="Enter your full name" required>
 
                                         <label for="email">Email:</label><br>
-                                        <input type="email" id="email" name="email" value="${gmail}" class="form-control my-4 py-2"
-                                            placeholder="Enter your email" required>
+                                        <input type="email" id="email" name="email" value="${gmail}"
+                                            class="form-control my-4 py-2" placeholder="Enter your email" readonly required>
 
                                         <label for="phone">Phone:</label><br>
                                         <input type="text" id="phone" name="phoneNumber" class="form-control my-4 py-2"

@@ -9,6 +9,13 @@ as
 begin
     if exists (SELECT 1
     FROM users
+    WHERE username = @username and googleUser = 1)
+    begin
+        set @result = -2
+    -- login failed, cannot login google account with normal login
+    end
+    else if exists (SELECT 1
+    FROM users
     WHERE username = @username and password = @password and active = 1)
     begin
         set @result = 1
@@ -39,6 +46,71 @@ begin
     end
 end;
 GO
+
+create procedure googleLogin -- you only need to check username, password, googleUser and active
+    @username varchar(25),
+    @password varchar(25),
+    @result int output
+as
+begin
+    if exists (SELECT 1
+    FROM users
+    WHERE username = @username and password = @password and googleUser = 1 and active = 1)
+    begin
+        set @result = 1
+    -- login successful
+    end
+    else
+    begin
+        set @result = 0
+    -- login failed
+    end
+end;
+go
+
+create procedure setGoogleUser
+    @username varchar(25),
+    @result int output
+as
+begin
+    update users
+    set googleUser = 1
+    where username = @username
+    set @result = 1
+end;
+go
+
+create procedure userExists
+    @email varchar(50),
+    @result int output
+as
+begin
+    if exists (SELECT 1
+    FROM userDetails
+    WHERE email = @email)
+    begin
+        set @result = 1
+    -- exists
+    end
+    else
+    begin
+        set @result = 0
+    -- not exists
+    end
+end;
+go
+
+create procedure forceActivate
+    @username varchar(25),
+    @result int output
+as
+begin
+    update users
+    set active = 1
+    where username = @username
+    set @result = 1
+end;
+go
 
 create procedure resetPassword
     @email varchar(25),
