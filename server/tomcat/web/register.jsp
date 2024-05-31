@@ -1,97 +1,128 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-    <!DOCTYPE html>
-    <html lang="en">
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
-            crossorigin="anonymous" />
-
-        <title>Login Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create an Account</title>
         <style>
-            .error {
-                color: red;
-                display: none;
+            .gradient-custom-3 {
+                /* fallback for old browsers */
+                background: #84fab0;
+
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+                /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+            }
+            .gradient-custom-4 {
+                /* fallback for old browsers */
+                background: #84fab0;
+
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+                /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
             }
         </style>
+        <!-- Include any additional CSS or JS libraries as needed -->
+        <!-- Example: Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </head>
-
     <body>
+        <section class="vh-100 bg-image" style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+            <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                            <div class="card" style="border-radius: 15px;">
+                                <div class="card-body p-5">
+                                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                                    <c:if test="${requestScope.u1!=null}">
+                                        <c:set var="u" value="${requestScope.u1}"/>
+                                    </c:if>
+                                    <form action="register" method="get">
+                                        <c:if test="${requestScope.errorU!=null}">
+                                            <c:set var="eU" value="${requestScope.errorU}"/>
+                                        </c:if>
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="text" name="user" value="${u.username}" id="username" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example1cg">Username &nbsp;&nbsp;${eU} </label>
+                                        </div>
+                                        <c:if test="${requestScope.errorP!=null}">
+                                            <c:set var="eP" value="${requestScope.errorP}"/>
+                                        </c:if>
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="password" name="pass" value="${u.password}" id="password" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example4cg">Password &nbsp;&nbsp;${eP}</label>
+                                        </div>
+                                        <c:if test="${requestScope.reP!=null}">
+                                            <c:set var="reP" value="${requestScope.reP}"/>
+                                        </c:if>    
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="password" name="repass" value="${reP}" id="repassword" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                        </div>                           
 
-        <body>
-            <section>
-                <div class="container mt-5 pt-5">
-                    <div class="row">
-                        <div class="col-12 col-sm-7 col-md-6 m-auto">
-                            <div class="card border-0 shadow">
-                                <div class="card-body">
-                                    <svg class="mx-auto my-3" xmlns="http://www.w3.org/2000/svg" width="50" height="50"
-                                        fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                        <path fill-rule="evenodd"
-                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                    </svg>
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="text" name="name" value="${u.fullName}" id="fullname" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example3cg">Full Name</label>
+                                        </div>
+                                        <c:if test="${requestScope.errorEE!=null}">
+                                            <c:set var="EE" value="${requestScope.errorEE}"/>
+                                        </c:if>  
+                                        <c:if test="${requestScope.errorFE!=null}">
+                                            <c:set var="FE" value="${requestScope.errorFE}"/>
+                                        </c:if> 
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="text" name="email" value="${u.email}" id="email" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example3cg">Email  &nbsp;&nbsp;${EE}${FE}</label>
+                                        </div>
+                                        <c:if test="${requestScope.errorEP!=null}">
+                                            <c:set var="EP" value="${requestScope.errorEP}"/>
+                                        </c:if>  
+                                        <c:if test="${requestScope.errorFP!=null}">
+                                            <c:set var="FP" value="${requestScope.errorFP}"/>
+                                        </c:if> 
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="text" name="phone" value="${u.phoneNumber}" id="phone" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example3cg">Phone &nbsp;&nbsp;${EP}${FP}</label>
+                                        </div>
 
-                                    <form id="registerForm" action="register" method="post">
-                                        <label for="username">Username:</label><br>
-                                        <input type="text" id="username" name="username" class="form-control my-4 py-2"
-                                            placeholder="Enter your username" required>
-                                        <span id="usernameError" class="error">Username must contain only
-                                            letters.</span>
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="text" name="address" value="${u.address}" id="address" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example3cg">Address </label>
+                                        </div>
 
-                                        <label for="password">Password:</label>
-                                        <input type="password" id="password" name="password"
-                                            class="form-control my-4 py-2" placeholder="Enter your password" required>
-                                        <span id="passwordError" class="error">Password must contain a special
-                                            character, an uppercase letter, and a number.</span>
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input type="date" name="dateOfBirth" value="${u.birthDate}" id="birthDate" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="form3Example3cg">Date Of Birth</label>
+                                        </div>
 
-                                        <label for="repass">Repeat your password:</label>
-                                        <input type="password" id="repass" name="repass" class="form-control my-4 py-2"
-                                            placeholder="Re-enter your password" required>
-                                        <span id="confirmPasswordError" class="error">Passwords do not match.</span>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                        </div>
+                                        <c:if test="${requestScope.success!=null}">
+                                            <p style="color: aqua; font-family:sans-serif"> &nbsp;${requestScope.success}</p>
+                                        </c:if>
+                                        <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login.jsp" class="fw-bold text-body"><u>Login here</u></a></p>
 
-                                        <label for="fullname">Full Name:</label>
-                                        <input type="text" id="fullname" name="fullname" class="form-control my-4 py-2"
-                                            placeholder="Enter your full name" required>
-
-                                        <label for="email">Email:</label><br>
-                                        <input type="email" id="email" name="email" class="form-control my-4 py-2"
-                                            placeholder="Enter your email" required>
-                                        <span id="emailError" class="error">Email must end with @gmail.com.</span>
-
-                                        <label for="phone">Phone:</label><br>
-                                        <input type="text" id="phone" name="phoneNumber" class="form-control my-4 py-2"
-                                            placeholder="Enter your phone number" required>
-                                        <span id="phoneError" class="error">Phone must be a number with up to 8
-                                            digits.</span>
-
-                                        <label for="address">Address:</label>
-                                        <input type="text" id="address" name="address" class="form-control my-4 py-2"
-                                            placeholder="Enter your address" required>
-
-                                        <label for="dob">Date of Birth:</label>
-                                        <input type="date" id="dob" name="dateOfBirth" class="form-control my-4 py-2"
-                                            placeholder="dd/mm/yyyy" required>
-                                        <span id="dobError" class="error">Date of Birth must be in the format
-                                            dd/mm/yyyy.</span>
-
-                                        <input type="submit" value="Register">
-                                        <p>${registerStatus}</p>
                                     </form>
-            </section>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-                crossorigin="anonymous"></script>
-
-        </body>
-
-    </html>
+        </section>
+        <!-- Include any additional JS libraries as needed -->
+        <!-- Example: Bootstrap JS and dependencies -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
