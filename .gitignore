@@ -25,6 +25,7 @@ temp.sql
 
 # NetBeans specific #
 server/tomcat/nbproject/private/
+server/tomcat/nbproject/genfiles.properties
 server/tomcat/build/
 server/tomcat/nbbuild/
 server/tomcat/nbdist/
