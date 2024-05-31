@@ -24,19 +24,6 @@ jobs:
         && sudo apt install ngrok
         ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
 
-    #- name: Run ngrok SSH
-    #  id: ngrok
-    #  uses: tmshkr/ngrok-ssh@latest
-    #  with:
-    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
-    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-
-    - name: Run ngrok to forward port
-      run: |
-        ngrok http http://localhost:8080 &
-        sleep 15
-        curl http://localhost:4040/api/tunnels
-
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -73,6 +60,19 @@ jobs:
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/procedure.sql
         echo "inserting data"
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
+
+    #- name: Run ngrok SSH
+    #  id: ngrok
+    #  uses: tmshkr/ngrok-ssh@latest
+    #  with:
+    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+
+    - name: Run ngrok to forward port
+      run: |
+        ngrok http http://localhost:8080 &
+        sleep 15
+        curl http://localhost:4040/api/tunnels
 
     - name: Show tomcat Logs
       run: docker logs -f `docker ps -q --filter ancestor=tomcat`
