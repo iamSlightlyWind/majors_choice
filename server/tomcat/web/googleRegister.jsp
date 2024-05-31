@@ -30,25 +30,14 @@
                                     </svg>
 
                                     <form id="registerForm" action="register" method="post">
-                                        <label for="username">Username:</label><br>
-                                        <input type="text" id="username" name="username" class="form-control my-4 py-2"
-                                            placeholder="Enter your username" required>
-
-                                        <label for="password">Password:</label>
-                                        <input type="password" id="password" name="password"
-                                            class="form-control my-4 py-2" placeholder="Enter your password" required>
-
-                                        <label for="repass">Repeat your password:</label>
-                                        <input type="password" id="repass" name="repass" class="form-control my-4 py-2"
-                                            placeholder="Re-enter your password" required>
-
                                         <label for="fullname">Full Name:</label>
                                         <input type="text" id="fullname" name="fullname" class="form-control my-4 py-2"
                                             placeholder="Enter your full name" required>
 
                                         <label for="email">Email:</label><br>
                                         <input type="email" id="email" name="email" value="${gmail}"
-                                            class="form-control my-4 py-2" placeholder="Enter your email" readonly required>
+                                            class="form-control my-4 py-2" placeholder="Enter your email" readonly
+                                            required>
 
                                         <label for="phone">Phone:</label><br>
                                         <input type="text" id="phone" name="phoneNumber" class="form-control my-4 py-2"
