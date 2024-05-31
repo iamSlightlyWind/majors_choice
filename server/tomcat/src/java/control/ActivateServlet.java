@@ -8,30 +8,26 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import main.User;
 
-public class LoginServlet extends HttpServlet {
+public class ActivateServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        User user = new User();
+        String code = request.getParameter("code");
+        User user = new User((String) session.getAttribute("username"), "");
+        int result = user.activate(code);
 
-        user.username = request.getParameter("user");
-        user.password = request.getParameter("pass");
-        int result = user.login();
-        
-        if (result == 1) {
-            session.setAttribute("username", user.username);
-            request.setAttribute("loginStatus", "Logged in successfully");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else if (result == -1) {
-            session.setAttribute("username", user.username);
-            request.setAttribute("user", user.username);
-            request.getRequestDispatcher("activate.jsp").forward(request, response);
-        } else {
-            String error = "Login failed!";
-            request.setAttribute("loginStatus", error);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        switch (result) {
+            case 0:
+                request.setAttribute("user", session.getAttribute("username"));
+                request.setAttribute("activateStatus", "Activation code is incorrect.");
+                request.getRequestDispatcher("activate.jsp").forward(request, response);
+                break;
+            case 1:
+                request.setAttribute("loginStatus", "Logged in successfully");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                break;
         }
     }
 

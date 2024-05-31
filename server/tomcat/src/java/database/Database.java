@@ -1,7 +1,5 @@
 package database;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,33 +21,6 @@ public class Database {
         }
     }
 
-    public void sendConfirmationCode(String code) {
-        //runCommand(code); // This function will be used to send the confirmation code to the user through email. Do not modify
-    }
-
-    public String runCommand(String command) {
-        try {
-            ProcessBuilder processBuilder = new ProcessBuilder();
-            processBuilder.command("bash", "-c", command);
-            Process process = processBuilder.start();
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            StringBuilder output = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output.append(line).append("\n");
-            }
-            return output.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    // The following function is meant for testing, to be used with class Test of
-    // the same package.
-    // For more example of how to use this class, check out:
-    // https://github.com/iamSlightlyWind/WebDevelop/blob/main/Final/src/java/SQL/DBContext.java
     public String selectAll(String table) {
         try {
             Statement statement = connection.createStatement();
@@ -68,5 +39,20 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public boolean checkDuplicateConfirmCode(String confirmCode) {
+        try {
+            String sql = "{call checkDuplicateConfirmCode(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, confirmCode);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(2) == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

@@ -40,21 +40,48 @@ begin
 end;
 GO
 
-create procedure forgetPassword
-    @username varchar(25),
-    @password varchar(25),
+create procedure checkDuplicateConfirmCode
+    @confirmCode varchar(10),
     @result int output
 as
 begin
     if exists (SELECT 1
     FROM users
-    WHERE username = @username)
+    WHERE confirmCode = @confirmCode)
     begin
-        update users set backupPassword = @password where username = @username
+        set @result = 1
+    -- duplicate
+    end
+    else
+    begin
+        set @result = 0
+    -- not duplicate
+    end
+end;
+go
+
+create procedure resetPassword
+    @email varchar(25),
+    @password varchar(25),
+    @result int output
+as
+begin
+    if exists (SELECT 1
+    FROM userDetails
+    WHERE email = @email)
+    begin
+        update users
+        set backupPassword = @password
+        where id = (select id from userDetails where email = @email)
         set @result = 1
     -- successful
     end
-end;
+    else
+    begin
+        set @result = 0
+    -- failed
+    end
+end;    
 go
 
 create procedure userStatus
@@ -98,7 +125,7 @@ begin
 end;
 GO
 
-create procedure validate
+create procedure activate
     -- if confirm code var = user confirm code, update active to 1 if active = 0
     @username varchar(25),
     @confirmCode varchar(10),
