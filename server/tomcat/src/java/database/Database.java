@@ -40,4 +40,19 @@ public class Database {
         }
         return null;
     }
+
+    public boolean checkDuplicateConfirmCode(String confirmCode) {
+        try {
+            String sql = "{call checkDuplicateConfirmCode(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, confirmCode);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(2) == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

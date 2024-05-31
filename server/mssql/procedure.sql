@@ -40,6 +40,26 @@ begin
 end;
 GO
 
+create procedure checkDuplicateConfirmCode
+    @confirmCode varchar(10),
+    @result int output
+as
+begin
+    if exists (SELECT 1
+    FROM users
+    WHERE confirmCode = @confirmCode)
+    begin
+        set @result = 1
+    -- duplicate
+    end
+    else
+    begin
+        set @result = 0
+    -- not duplicate
+    end
+end;
+go
+
 create procedure resetPassword
     @email varchar(25),
     @password varchar(25),
