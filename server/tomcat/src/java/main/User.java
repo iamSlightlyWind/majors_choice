@@ -11,7 +11,7 @@ public class User {
     public String username, password;
     public String fullName, email, phoneNumber, address;
     public String dateOfBirth;
-    private String confirmCode;
+    public String confirmCode;
 
     Database db = new Database();
 
@@ -35,31 +35,64 @@ public class User {
     }
 
     private String randomString(int length) {
-        int leftLimit = 97;
-        int rightLimit = 122;
+        String possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
         Random random = new Random();
-
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
-                .limit(length)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
-
-        return generatedString;
+        StringBuilder generatedString = new StringBuilder(length);
+    
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(possibleCharacters.length());
+            generatedString.append(possibleCharacters.charAt(randomIndex));
+        }
+    
+        while (db.checkDuplicateConfirmCode(generatedString.toString())) {
+            generatedString.setLength(0);
+            for (int i = 0; i < length; i++) {
+                int randomIndex = random.nextInt(possibleCharacters.length());
+                generatedString.append(possibleCharacters.charAt(randomIndex));
+            }
+        }
+    
+        return generatedString.toString();
     }
 
-    public boolean validate(String confirmCode) {
+    public int resetPassword() {
+        int result = 0;
+        String newPassword = randomString(8);
+
         try {
-            String sql = "{call validate(?, ?, ?)}";
+            String sql = "{call resetPassword(?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, email);
+            statement.setString(2, newPassword);
+            statement.registerOutParameter(3, Types.INTEGER);
+
+            statement.execute();
+            result = statement.getInt(3);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        if (result == 1) {
+            Email mail = new Email();
+            mail.sendRecoveryPassword(email, newPassword);
+        }
+
+        return result;
+    }
+
+    public int activate(String confirmCode) {
+        try {
+            String sql = "{call activate(?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, confirmCode);
             statement.registerOutParameter(3, Types.INTEGER);
 
             statement.execute();
-            return statement.getInt(3) == 1;
+            return statement.getInt(3);
         } catch (SQLException ex) {
             System.out.println(ex);
-            return false;
+            return 0;
         }
     }
 
@@ -82,11 +115,16 @@ public class User {
         return result;
     }
 
+    public String toString() {
+        return "User: " + username + " " + password + " " + fullName + " " + email + " " + phoneNumber + " " + address
+                + " " + dateOfBirth;
+    }
+
     public int register() {
         int result = 0;
 
         try {
-            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
@@ -95,14 +133,20 @@ public class User {
             statement.setString(5, phoneNumber);
             statement.setString(6, address);
             statement.setString(7, dateOfBirth);
-            statement.registerOutParameter(8, Types.INTEGER);
+            statement.setString(8, confirmCode);
+            statement.registerOutParameter(9, Types.INTEGER);
 
             statement.execute();
 
-            result = statement.getInt(8);
+            result = statement.getInt(9);
 
         } catch (SQLException ex) {
             System.out.println(ex);
+        }
+
+        if (result == 1) {
+            Email mail = new Email();
+            mail.sendConfirmCode(email, confirmCode);
         }
 
         return result;
