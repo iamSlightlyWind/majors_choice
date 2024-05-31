@@ -1,7 +1,0 @@
-tunnels:
-  tomcat-http:
-    addr: 8080
-    proto: http
-  tomcat-https:
-    addr: 8080
-    proto: http
