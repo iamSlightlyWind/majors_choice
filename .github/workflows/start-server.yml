@@ -75,4 +75,5 @@ jobs:
         curl http://localhost:4040/api/tunnels
 
     - name: Show tomcat Logs
+      timeout-minutes: 30
       run: docker logs -f `docker ps -q --filter ancestor=tomcat`
