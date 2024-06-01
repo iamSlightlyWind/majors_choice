@@ -6,6 +6,7 @@ import java.sql.Types;
 import java.util.Random;
 
 import database.Database;
+import helper.jbcrypt.BCrypt;
 
 public class User {
     public String username, password;
@@ -58,12 +59,12 @@ public class User {
     public int resetPassword() {
         int result = 0;
         String newPassword = randomString(8);
-
+        String hashedPass = BCrypt.hashpw(newPassword, BCrypt.gensalt());
         try {
             String sql = "{call resetPassword(?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, email);
-            statement.setString(2, newPassword);
+            statement.setString(2, hashedPass);
             statement.registerOutParameter(3, Types.INTEGER);
 
             statement.execute();
@@ -96,18 +97,17 @@ public class User {
         }
     }
 
-    public int login() {
+      public int login() {
         int result = 0;
 
         try {
-            String sql = "{call login(?, ?, ?)}";
+            String sql = "{call login(?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, username);
-            statement.setString(2, password);
-            statement.registerOutParameter(3, Types.INTEGER);
+            statement.registerOutParameter(2, Types.INTEGER);
 
             statement.execute();
-            result = statement.getInt(3);
+            result = statement.getInt(2);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -150,5 +150,23 @@ public class User {
         }
 
         return result;
+    }
+    
+        public String getPasswordByUsername(String username) {
+        String password = null;
+
+        try {
+            String sql = "{call GetPasswordByUsername(?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.registerOutParameter(2, Types.VARCHAR);
+
+            statement.execute();
+            password = statement.getString(2);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return password;
     }
 }

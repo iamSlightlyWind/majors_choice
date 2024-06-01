@@ -1,5 +1,6 @@
 package control;
 
+import helper.jbcrypt.BCrypt;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -15,10 +16,20 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         User user = new User();
-
+        String hashedPass = null;
+        int result = 0;
+        
         user.username = request.getParameter("user");
         user.password = request.getParameter("pass");
-        int result = user.login();
+        
+        if(!user.username.isEmpty()){
+            hashedPass = user.getPasswordByUsername(user.username);
+        }
+        if(hashedPass!=null){
+            if(BCrypt.checkpw(user.password, hashedPass)){
+                result = user.login();
+            }
+        }
         
         if (result == 1) {
             session.setAttribute("username", user.username);

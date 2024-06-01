@@ -3,20 +3,19 @@ go
 
 create procedure login
     @username varchar(25),
-    @password varchar(25),
     @result int output
 as
 begin
     if exists (SELECT 1
     FROM users
-    WHERE username = @username and password = @password and active = 1)
+    WHERE username = @username and active = 1)
     begin
         set @result = 1
     -- login successful
     end
     else if exists (SELECT 1
     FROM users
-    WHERE username = @username and backupPassword = @password and active = 1)
+    WHERE username = @username and active = 1)
     begin
         set @result = 1
         -- login successful with backup password, now replace password with backup password and set backup password to null
@@ -27,7 +26,7 @@ begin
     end
     else if exists (SELECT 1
     FROM users
-    WHERE username = @username and password = @password and active = 0)
+    WHERE username = @username and active = 0)
     begin
         set @result = -1
     -- user not active
@@ -62,7 +61,7 @@ go
 
 create procedure resetPassword
     @email varchar(25),
-    @password varchar(25),
+    @password varchar(100),
     @result int output
 as
 begin
@@ -151,7 +150,7 @@ go
 
 create procedure register
     @username varchar(25),
-    @password varchar(25),
+    @password varchar(100),
     @fullname nvarchar(50),
     @email varchar(100),
     @phoneNumber varchar(15),

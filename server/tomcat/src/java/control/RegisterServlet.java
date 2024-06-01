@@ -1,5 +1,6 @@
 package control;
 
+import helper.jbcrypt.BCrypt;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -28,6 +29,8 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, password, fullName, email, phoneNumber, address, dateOfBirth);
 
         if (error.equals("")) {
+            String hashedPass = BCrypt.hashpw(password, BCrypt.gensalt());
+            user.password = hashedPass;
             result = user.register();
             switch (result) {
                 case 1:
@@ -76,7 +79,7 @@ public class RegisterServlet extends HttpServlet {
     }
 
     public boolean isValidPasswordMatches(String password, String repass) {
-        return password.equals(repass);
+        return password.trim().equals(repass.trim());
     }
 
     public String checkInfo(String emailAddress, String phoneNumber, String password, String repass) {
