@@ -12,3 +12,4 @@ While the backend of things seems simple enough, having the server run on the op
 - [x] Proof of concept for running a Tomcat server (merged).
 - [x] Proof of concept for running a MSSQL server (merged).
 - [x] Proof of concept for deploying to Tomcat server (merged).
+- [] Proof of concept for deploying to the open web ([domain branch](https://github.com/iamSlightlyWind/majors_choice/tree/poc_domain)).
