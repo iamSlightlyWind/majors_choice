@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
-/**
- *
- * @author PC
- */
 public class Constants {
     
-    public static String GOOGLE_CLIENT_ID = System.getenv("GOOGLE_CLIENT_ID");
+    public static String GOOGLE_CLIENT_ID = "171238715094-e9f1676d321k53paem4hrbfbo1113nlb.apps.googleusercontent.com";
 
     public static String GOOGLE_CLIENT_SECRET = System.getenv("GOOGLE_CLIENT_SECRET");
 
-    public static String GOOGLE_REDIRECT_URI = "GOOGLE_REDIRECT_URI";
+    public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/tomcat/LoginGoogleServlet";
 
     public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
 

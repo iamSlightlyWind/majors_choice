@@ -14,7 +14,7 @@ public class RegisterServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String username = request.getParameter("userName");
         String password = request.getParameter("password");
         String repass = request.getParameter("repass");
         String fullName = request.getParameter("fullName");
@@ -28,7 +28,7 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, password, fullName, email, phoneNumber, address, dateOfBirth);
 
         if (error.equals("")) {
-            result = user.register();
+            result = user.register(false);
             switch (result) {
                 case 1:
                     request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
@@ -66,11 +66,13 @@ public class RegisterServlet extends HttpServlet {
     }
 
     public boolean isValidPhoneNumber(String phoneNumber) {
-        /* String phoneRegex = "^\\d{3}-\\d{3}-\\d{3,6}$";
-        Pattern pattern = Pattern.compile(phoneRegex);
-        Matcher matcher = pattern.matcher(phoneNumber);
-
-        return matcher.matches(); */
+        /*
+         * String phoneRegex = "^\\d{3}-\\d{3}-\\d{3,6}$";
+         * Pattern pattern = Pattern.compile(phoneRegex);
+         * Matcher matcher = pattern.matcher(phoneNumber);
+         * 
+         * return matcher.matches();
+         */
 
         return true;
     }
