@@ -23,9 +23,20 @@ jobs:
         && sudo apt update \
         && sudo apt install ngrok
         ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
+        curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+        sudo apt-get update && sudo apt-get install cloudflare-warp
+        warp-cli --accept-tos connect
 
     - name: Checkout repository
       uses: actions/checkout@v2
+
+    #- name: Run ngrok SSH
+    #  id: ngrok
+    #  uses: tmshkr/ngrok-ssh@latest
+    #  with:
+    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
 
     - name: Set up Docker Build
       uses: docker/setup-buildx-action@v1
@@ -60,19 +71,6 @@ jobs:
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/procedure.sql
         echo "inserting data"
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
-
-    #- name: Run ngrok SSH
-    #  id: ngrok
-    #  uses: tmshkr/ngrok-ssh@latest
-    #  with:
-    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
-    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-
-    - name: Run ngrok to forward port
-      run: |
-        ngrok http http://localhost:8080 &
-        sleep 15
-        curl http://localhost:4040/api/tunnels
 
     - name: Show tomcat Logs
       timeout-minutes: 30
