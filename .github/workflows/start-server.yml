@@ -6,7 +6,7 @@ concurrency:
 
 on: 
   workflow_dispatch:
-  #push:
+  push:
   #pull_request:
 
 jobs:
@@ -74,6 +74,9 @@ jobs:
 
     - name: Reverse proxy with serveo
       run: |
+        touch ~/.ssh/known_hosts
+        touch ~/.ssh/id_ed25519
+        touch ~/.ssh/id_ed25519.pub
         echo "${{ secrets.SERVEO_KEY }}" > ~/.ssh/id_ed25519
         echo "${{ secrets.SERVEO_PUBLIC_KEY }}" > ~/.ssh/id_ed25519.pub
         echo "${{ secrets.SERVEO_HOST}}" > ~/.ssh/known_hosts
