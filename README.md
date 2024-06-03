@@ -1,4 +1,5 @@
 # Major's Choice
+
 Major's Choice is a SWP391 project that lists computer components as a website selling them
 
 ## Project Overview
@@ -9,6 +10,7 @@ The rough idea is to sell the latest generations of PC parts which include the m
 
 While the backend of things seems simple enough, having the server run on the open web is an order of magnitude more knowledge than what I currently have right now. What I have in mind is to have GitHub runner run the server, preferably having it run a docker image that I created, so it doesn't have to start over whenever I boot it up. or even better, have it run on GitHub codespace, if I understand correctly, is the same as GitHub Runner, but I will have GUI access to a port forwarding terminal. This will have to be successfully tested working, as well as deployed to the server before starting the project.
 
-- [x] Proof of concept for running a Tomcat server (merged).
-- [x] Proof of concept for running a MSSQL server (merged).
-- [x] Proof of concept for deploying to Tomcat server (merged).
+- [X] Proof of concept for running a Tomcat server (merged).
+- [X] Proof of concept for running a MSSQL server (merged).
+- [X] Proof of concept for deploying to Tomcat server (merged).
+- [X] Proof of concept for deploying to the open web (merged).
