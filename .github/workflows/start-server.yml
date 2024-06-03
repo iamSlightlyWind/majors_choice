@@ -6,7 +6,7 @@ concurrency:
 
 on: 
   workflow_dispatch:
-  push:
+  #push:
   #pull_request:
 
 jobs:
@@ -84,5 +84,5 @@ jobs:
         ssh -R choice.themajorones.dev:80:localhost:8080 serveo.net &
 
     - name: Show tomcat Logs
-      timeout-minutes: 30
+      timeout-minutes: 60
       run: docker logs -f `docker ps -q --filter ancestor=tomcat`
