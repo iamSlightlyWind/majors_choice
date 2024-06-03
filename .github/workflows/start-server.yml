@@ -72,6 +72,13 @@ jobs:
         echo "inserting data"
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
 
+    - name: Reverse proxy with serveo
+      run: |
+        echo ${{ secrets.SERVEO_KEY }} > ~/.ssh/id_ed25519
+        echo ${{ secrets.SERVEO_PUBLIC_KEY }} > ~/.ssh/id_ed25519.pub
+        echo ${{ secrets.SERVEO_HOST}} > ~/.ssh/known_hosts
+        ssh -R choice.themajorones.dev:80:localhost:8080 serveo.net &
+
     - name: Show tomcat Logs
       timeout-minutes: 30
       run: docker logs -f `docker ps -q --filter ancestor=tomcat`
