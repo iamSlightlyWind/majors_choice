@@ -9,6 +9,13 @@ as
 begin
     if exists (SELECT 1
     FROM users
+    WHERE username = @username and googleUser = 1)
+    begin
+        set @result = -2
+    -- login failed, cannot login google account with normal login
+    end
+    else if exists (SELECT 1
+    FROM users
     WHERE username = @username and password = @password and active = 1)
     begin
         set @result = 1
@@ -39,6 +46,71 @@ begin
     end
 end;
 GO
+
+create procedure googleLogin -- you only need to check username, password, googleUser and active
+    @username varchar(25),
+    @password varchar(25),
+    @result int output
+as
+begin
+    if exists (SELECT 1
+    FROM users
+    WHERE username = @username and password = @password and googleUser = 1 and active = 1)
+    begin
+        set @result = 1
+    -- login successful
+    end
+    else
+    begin
+        set @result = 0
+    -- login failed
+    end
+end;
+go
+
+create procedure setGoogleUser
+    @username varchar(25),
+    @result int output
+as
+begin
+    update users
+    set googleUser = 1
+    where username = @username
+    set @result = 1
+end;
+go
+
+create procedure userExists
+    @email varchar(50),
+    @result int output
+as
+begin
+    if exists (SELECT 1
+    FROM userDetails
+    WHERE email = @email)
+    begin
+        set @result = 1
+    -- exists
+    end
+    else
+    begin
+        set @result = 0
+    -- not exists
+    end
+end;
+go
+
+create procedure forceActivate
+    @username varchar(25),
+    @result int output
+as
+begin
+    update users
+    set active = 1
+    where username = @username
+    set @result = 1
+end;
+go
 
 create procedure resetPassword
     @email varchar(25),
@@ -398,6 +470,66 @@ BEGIN
         (id, name, wattage, efficiency)
     VALUES
         (@id, @name, @wattage, @efficiency)
+
+    set @result = 1
+END;
+go
+
+create PROCEDURE updateUserInformation
+    @username varchar(25),
+    @password varchar(25),
+    @fullname nvarchar(50),
+    @email varchar(100),
+    @phoneNumber varchar(15),
+    @address nvarchar(100),
+    @dateOfBirth date,
+    @result int output
+AS
+BEGIN
+    DECLARE @id int
+    set @id = (select id from users where username = @username)
+
+    IF @password IS NOT NULL
+    BEGIN
+        UPDATE users
+        SET password = @password
+        WHERE id = @id
+    END
+
+    IF @fullname IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET fullname = @fullname
+        WHERE id = @id
+    END
+
+    IF @email IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET email = @email
+        WHERE id = @id
+    END
+
+    IF @phoneNumber IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET phoneNumber = @phoneNumber
+        WHERE id = @id
+    END
+
+    IF @address IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET address = @address
+        WHERE id = @id
+    END
+
+    IF @dateOfBirth IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET dateOfBirth = @dateOfBirth
+        WHERE id = @id
+    END
 
     set @result = 1
 END;

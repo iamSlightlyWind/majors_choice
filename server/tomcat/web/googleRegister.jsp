@@ -29,26 +29,15 @@
                                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                     </svg>
 
-                                    <form id="registerForm" action="register" method="post">
-                                        <label for="username">Username:</label><br>
-                                        <input type="text" id="userName" name="userName" class="form-control my-4 py-2"
-                                            placeholder="Enter your username" required>
-
-                                        <label for="password">Password:</label>
-                                        <input type="password" id="password" name="password"
-                                            class="form-control my-4 py-2" placeholder="Enter your password" required>
-
-                                        <label for="repass">Repeat your password:</label>
-                                        <input type="password" id="repass" name="repass" class="form-control my-4 py-2"
-                                            placeholder="Re-enter your password" required>
-
+                                    <form id="registerForm" action="LoginGoogleServlet" method="post">
                                         <label for="fullname">Full Name:</label>
                                         <input type="text" id="fullName" name="fullName" class="form-control my-4 py-2"
                                             placeholder="Enter your full name" required>
 
                                         <label for="email">Email:</label><br>
-                                        <input type="email" id="email" name="email" value="${gmail}" class="form-control my-4 py-2"
-                                            placeholder="Enter your email" required>
+                                        <input type="email" id="email" name="email" value="${gmail}"
+                                            class="form-control my-4 py-2" placeholder="Enter your email" readonly
+                                            required>
 
                                         <label for="phone">Phone:</label><br>
                                         <input type="text" id="phoneNumber" name="phoneNumber" class="form-control my-4 py-2"
@@ -62,7 +51,7 @@
                                         <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control my-4 py-2"
                                             placeholder="dd/mm/yyyy" required>
 
-                                        <input type="submit" value="Register">
+                                        <input type="submit" name="action" value="Update Information">
                                         <p>${registerStatus}</p>
                                     </form>
             </section>

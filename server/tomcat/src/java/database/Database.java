@@ -40,4 +40,34 @@ public class Database {
         }
         return null;
     }
+
+    public boolean forceActivate(String username) {
+        try {
+            String sql = "{call forceActivate(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(2) == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean userExists(String email) { // check if email exists, use exclusively for google login/register
+        try {
+            String sql = "{call userExists(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, email);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(2) == 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

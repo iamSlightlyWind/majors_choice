@@ -14,8 +14,6 @@ public class ResetPasswordServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String email = request.getParameter("email");
 
-        System.out.println(email);
-
         User user = new User();
         user.email = email;
         int result = user.resetPassword();
