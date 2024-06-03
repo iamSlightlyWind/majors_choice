@@ -31,7 +31,7 @@
 
                                     <form id="registerForm" action="register" method="post">
                                         <label for="username">Username:</label><br>
-                                        <input type="text" id="username" name="username" class="form-control my-4 py-2"
+                                        <input type="text" id="userName" name="userName" class="form-control my-4 py-2"
                                             placeholder="Enter your username" required>
 
                                         <label for="password">Password:</label>
@@ -43,7 +43,7 @@
                                             placeholder="Re-enter your password" required>
 
                                         <label for="fullname">Full Name:</label>
-                                        <input type="text" id="fullname" name="fullname" class="form-control my-4 py-2"
+                                        <input type="text" id="fullName" name="fullName" class="form-control my-4 py-2"
                                             placeholder="Enter your full name" required>
 
                                         <label for="email">Email:</label><br>
@@ -51,7 +51,7 @@
                                             placeholder="Enter your email" required>
 
                                         <label for="phone">Phone:</label><br>
-                                        <input type="text" id="phone" name="phoneNumber" class="form-control my-4 py-2"
+                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control my-4 py-2"
                                             placeholder="Enter your phone number" required>
 
                                         <label for="address">Address:</label>
@@ -59,7 +59,7 @@
                                             placeholder="Enter your address" required>
 
                                         <label for="dob">Date of Birth:</label>
-                                        <input type="date" id="dob" name="dateOfBirth" class="form-control my-4 py-2"
+                                        <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control my-4 py-2"
                                             placeholder="dd/mm/yyyy" required>
 
                                         <input type="submit" value="Register">

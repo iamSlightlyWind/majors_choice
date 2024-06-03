@@ -19,8 +19,8 @@ public class Test extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        // Write the content of the system out to the response
         response.getWriter().println(database.selectAll("users"));
+        response.getWriter().println(database.selectAll("userDetails"));
     }
 
     @Override

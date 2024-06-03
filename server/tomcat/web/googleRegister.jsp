@@ -29,9 +29,9 @@
                                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                     </svg>
 
-                                    <form id="registerForm" action="register" method="post">
+                                    <form id="registerForm" action="LoginGoogleServlet" method="post">
                                         <label for="fullname">Full Name:</label>
-                                        <input type="text" id="fullname" name="fullname" class="form-control my-4 py-2"
+                                        <input type="text" id="fullName" name="fullName" class="form-control my-4 py-2"
                                             placeholder="Enter your full name" required>
 
                                         <label for="email">Email:</label><br>
@@ -40,7 +40,7 @@
                                             required>
 
                                         <label for="phone">Phone:</label><br>
-                                        <input type="text" id="phone" name="phoneNumber" class="form-control my-4 py-2"
+                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control my-4 py-2"
                                             placeholder="Enter your phone number" required>
 
                                         <label for="address">Address:</label>
@@ -48,10 +48,10 @@
                                             placeholder="Enter your address" required>
 
                                         <label for="dob">Date of Birth:</label>
-                                        <input type="date" id="dob" name="dateOfBirth" class="form-control my-4 py-2"
+                                        <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control my-4 py-2"
                                             placeholder="dd/mm/yyyy" required>
 
-                                        <input type="submit" value="Register">
+                                        <input type="submit" name="action" value="Update Information">
                                         <p>${registerStatus}</p>
                                     </form>
             </section>

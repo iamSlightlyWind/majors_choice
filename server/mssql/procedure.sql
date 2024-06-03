@@ -474,3 +474,63 @@ BEGIN
     set @result = 1
 END;
 go
+
+create PROCEDURE updateUserInformation
+    @username varchar(25),
+    @password varchar(25),
+    @fullname nvarchar(50),
+    @email varchar(100),
+    @phoneNumber varchar(15),
+    @address nvarchar(100),
+    @dateOfBirth date,
+    @result int output
+AS
+BEGIN
+    DECLARE @id int
+    set @id = (select id from users where username = @username)
+
+    IF @password IS NOT NULL
+    BEGIN
+        UPDATE users
+        SET password = @password
+        WHERE id = @id
+    END
+
+    IF @fullname IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET fullname = @fullname
+        WHERE id = @id
+    END
+
+    IF @email IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET email = @email
+        WHERE id = @id
+    END
+
+    IF @phoneNumber IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET phoneNumber = @phoneNumber
+        WHERE id = @id
+    END
+
+    IF @address IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET address = @address
+        WHERE id = @id
+    END
+
+    IF @dateOfBirth IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET dateOfBirth = @dateOfBirth
+        WHERE id = @id
+    END
+
+    set @result = 1
+END;
+go

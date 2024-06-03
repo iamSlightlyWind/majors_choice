@@ -25,25 +25,39 @@ public class LoginGoogleServlet extends HttpServlet {
         Database db = new Database();
         int result;
 
-        String code = request.getParameter("code");
-        String accessToken = getToken(code);
-        UserGoogle user = getUserInfo(accessToken);
+        String action = request.getParameter("action") == null ? "" : request.getParameter("action");
 
-        if (!db.userExists(user.email)) {
-            user.register();
-            request.setAttribute("registerStatus", "enter information to continue");
-            request.setAttribute("gmail", user.email);
-            request.getRequestDispatcher("googleRegister.jsp").forward(request, response);
-        } else {
-            result = user.login();
-            if (result == 1) {
-                session.setAttribute("username", user.username);
-                request.setAttribute("loginStatus", "Logged in successfully");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+        if (!action.equals("Update Information")) {
+            UserGoogle user = getUserInfo(getToken(request.getParameter("code")));
+            session.setAttribute("username", user.email);
+            if (!db.userExists(user.email)) {
+                user.register();
+                request.setAttribute("registerStatus", "Please enter the remaining information to continue");
+                request.setAttribute("registerButton", "Update Information");
+                request.setAttribute("gmail", user.email);
+                request.getRequestDispatcher("googleRegister.jsp").forward(request, response);
             } else {
-                request.setAttribute("loginStatus", "Login failed!");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                result = user.login();
+                if (result == 1) {
+                    session.setAttribute("username", user.username);
+                    request.setAttribute("loginStatus", "Logged in successfully");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("loginStatus", "Login failed!");
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                }
             }
+        } else {
+            UserGoogle user = new UserGoogle();
+            user.username = (String) session.getAttribute("username");
+            user.fullName = request.getParameter("fullName");
+            user.phoneNumber = request.getParameter("phoneNumber");
+            user.address = request.getParameter("address");
+            user.dateOfBirth = request.getParameter("dateOfBirth");
+
+            System.out.println("Update: " + user.updateInformation());
+            request.setAttribute("loginStatus", "Logged in successfully");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

@@ -143,4 +143,36 @@ public class User {
 
         return result;
     }
+
+    public int updateInformation() {
+        int result = 0;
+
+        System.out.println("username: " + username);
+        System.out.println("password: " + password);
+        System.out.println("fullName: " + fullName);
+        System.out.println("email: " + email);
+        System.out.println("phoneNumber: " + phoneNumber);
+        System.out.println("address: " + address);
+        System.out.println("dateOfBirth: " + dateOfBirth);
+
+        try {
+            String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setString(3, fullName);
+            statement.setString(4, email);
+            statement.setString(5, phoneNumber);
+            statement.setString(6, address);
+            statement.setString(7, dateOfBirth);
+            statement.registerOutParameter(8, Types.INTEGER);
+
+            statement.execute();
+            result = statement.getInt(8);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return result;
+    }
 }
