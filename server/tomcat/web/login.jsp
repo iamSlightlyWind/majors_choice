@@ -33,7 +33,7 @@
                     <a href="recovery.jsp" class="nav-link">Forgot Password ?</a>
                     <a href="register.jsp" class="nav-link">Don't Have An Account ?</a>
                     <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://choice.themajorones.dev/LoginGoogleServlet&response_type=code
-		   &client_id=171238715094-e9f1676d321k53paem4hrbfbo1113nlb.apps.googleusercontent.com&approval_prompt=force" class="nav-link">Login with Google ?</a>
+		   &client_id=960808694899-61oujrd0icfujs3ds3qmqqu0lb8rtuhv.apps.googleusercontent.com&approval_prompt=force" class="nav-link">Login with Google ?</a>
                   </div>
                 </form>
                 <p>${loginStatus}</p>
