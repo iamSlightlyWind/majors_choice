@@ -1,9 +1,9 @@
 package packages;
 
-import packages.wrap.Package;
+import packages.wrap.Product;
 
-public class SSD extends Package {
-    public String name;
+public class SSD extends Product {
+
     public String connectionInterface;
     public int capacity;
     public int cache;

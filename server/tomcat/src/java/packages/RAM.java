@@ -1,9 +1,9 @@
 package packages;
 
-import packages.wrap.Package;
+import packages.wrap.Product;
 
-public class RAM extends Package {
-    public String name;
+public class RAM extends Product {
+
     public String generation;
     public int capacity;
     public int speed;

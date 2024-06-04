@@ -1,9 +1,9 @@
 package packages;
 
-import packages.wrap.Package;
+import packages.wrap.Product;
 
-public class PSU extends Package {
-    public String name;
+public class PSU extends Product {
+
     public int wattage;
     public String efficiency;
 

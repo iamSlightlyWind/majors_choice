@@ -1,9 +1,9 @@
 package packages;
 
-import packages.wrap.Package;
+import packages.wrap.Product;
 
-public class Motherboard extends Package {
-    public String name;
+public class Motherboard extends Product {
+
     public String socket;
     public String chipset;
     public String formFactor;

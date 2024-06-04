@@ -1,9 +1,9 @@
 package packages;
 
-import packages.wrap.Package;
+import packages.wrap.Product;
 
-public class GPU extends Package {
-    public String name;
+public class GPU extends Product {
+
     public String generation;
     public int vram;
     public int baseClock;

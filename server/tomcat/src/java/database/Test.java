@@ -1,11 +1,13 @@
 package database;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import main.User;
+import packages.*;
 
 public class Test extends HttpServlet {
     Database database = new Database();
@@ -19,8 +21,30 @@ public class Test extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        response.getWriter().println(database.selectAll("users"));
-        response.getWriter().println(database.selectAll("userDetails"));
+        System.out.println("got here");
+
+        Database db = new Database();
+
+        ArrayList<CPU> cpus = db.getCPUs();
+        ArrayList<GPU> gpus = db.getGPUs();
+        ArrayList<RAM> rams = db.getRAMs();
+        ArrayList<Motherboard> motherboards = db.getMotherboards();
+        ArrayList<SSD> ssds = db.getSSDs();
+        ArrayList<PSU> psus = db.getPSUs();
+
+        System.out.println(cpus);
+
+        request.setAttribute("cpus", cpus);
+        request.setAttribute("gpus", gpus);
+        request.setAttribute("rams", rams);
+        request.setAttribute("motherboards", motherboards);
+        request.setAttribute("ssds", ssds);
+        request.setAttribute("psus", psus);
+        request.getRequestDispatcher("test/products.jsp").forward(request, response);
+
+
+        //response.getWriter().println(database.selectAll("users"));
+        //response.getWriter().println(database.selectAll("userDetails"));
     }
 
     @Override

@@ -147,14 +147,6 @@ public class User {
     public int updateInformation() {
         int result = 0;
 
-        System.out.println("username: " + username);
-        System.out.println("password: " + password);
-        System.out.println("fullName: " + fullName);
-        System.out.println("email: " + email);
-        System.out.println("phoneNumber: " + phoneNumber);
-        System.out.println("address: " + address);
-        System.out.println("dateOfBirth: " + dateOfBirth);
-
         try {
             String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
