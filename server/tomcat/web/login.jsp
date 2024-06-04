@@ -32,7 +32,7 @@
                     <button class="btn btn-primary">Login</button>
                     <a href="recovery.jsp" class="nav-link">Forgot Password ?</a>
                     <a href="register.jsp" class="nav-link">Don't Have An Account ?</a>
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/tomcat/LoginGoogleServlet&response_type=code
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://choice.themajorones.dev/tomcat/LoginGoogleServlet&response_type=code
 		   &client_id=171238715094-e9f1676d321k53paem4hrbfbo1113nlb.apps.googleusercontent.com&approval_prompt=force" class="nav-link">Login with Google ?</a>
                   </div>
                 </form>
