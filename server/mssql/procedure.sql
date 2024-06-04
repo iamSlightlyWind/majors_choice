@@ -1,6 +1,72 @@
 use major
 go
 
+CREATE PROCEDURE UpdateUserDetailsByUsername
+    @inputUsername varchar(25),
+    @newFullname nvarchar(50),
+    @newEmail varchar(100),
+    @newPhoneNumber varchar(15),
+    @newAddress nvarchar(100),
+    @newDateOfBirth date
+AS
+BEGIN
+    -- Update informations in userDetails table
+    UPDATE userDetails
+    SET fullname = @newFullname,
+        email = @newEmail,
+        phoneNumber = @newPhoneNumber,
+        address = @newAddress,
+        dateOfBirth = @newDateOfBirth
+    FROM users
+    WHERE users.username = @inputUsername AND users.id = userDetails.id;
+END;
+
+
+CREATE PROCEDURE GetUserDetailsByUsername
+    @inputUsername varchar(25)
+AS
+BEGIN
+    -- find userId from username
+    DECLARE @userId int;
+    SELECT @userId = id FROM users WHERE username = @inputUsername;
+
+        -- get informations from users and userDetails
+        SELECT users.username,
+               users.password,
+               userDetails.fullname AS name,
+               userDetails.email,
+               userDetails.phoneNumber AS phone,
+               userDetails.address,
+               CONVERT(varchar(10), userDetails.dateOfBirth, 103) AS dob
+        FROM users
+        JOIN userDetails ON users.id = userDetails.id
+        WHERE users.id = @userId;
+END;
+
+
+CREATE PROCEDURE changepassword
+    @username varchar(25),
+    @newpassword varchar(25),
+    @result int OUTPUT
+AS
+BEGIN
+    UPDATE users
+    SET password = @newpassword
+    WHERE username = @username;
+
+    IF @@ROWCOUNT > 0
+    BEGIN
+        -- UPDATE successful
+        SET @result = 1;
+    END
+    ELSE
+    BEGIN
+        -- UPDATE fail
+        SET @result = 0;
+    END
+END;
+GO
+
 create procedure login
     @username varchar(25),
     @password varchar(25),

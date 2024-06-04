@@ -4,7 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Random;
-
+import java.sql.ResultSet;
 import database.Database;
 
 public class User {
@@ -174,5 +174,66 @@ public class User {
         }
 
         return result;
+    }
+    
+    public int changepassword(String username, String newPassword) {
+        try {
+            String sql = "{call changepassword(?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, newPassword);
+            statement.registerOutParameter(3, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(3);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return 0;
+        }
+    }
+    
+    public User getUserDetailsByUsername(String username) {
+        User user = null; 
+        try {
+            String sql = "{call GetUserDetailsByUsername(?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                user = new User();
+                user.username = rs.getString("username");
+                user.password = rs.getString("password");
+                user.fullName = rs.getString("name"); 
+                user.email = rs.getString("email");
+                user.phoneNumber = rs.getString("phone");
+                user.address = rs.getString("address"); 
+                user.dateOfBirth = rs.getString("dob");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return user;
+    }
+    
+    public boolean updateUserDetailsByUsername(String username, String fullname, String email, String phone, String address, String dateOfBirth) {
+        boolean updated = false;
+        try {
+            String sql = "{call UpdateUserDetailsByUsername(?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, fullname);
+            statement.setString(3, email);
+            statement.setString(4, phone);
+            statement.setString(5, address);
+            statement.setDate(6, java.sql.Date.valueOf(dateOfBirth));
+
+            int rowsAffected = statement.executeUpdate();
+            updated = rowsAffected > 0;  // Check if any rows were affected
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return updated;
     }
 }
