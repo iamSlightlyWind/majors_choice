@@ -21,8 +21,6 @@ public class Test extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
 
-        System.out.println("got here");
-
         Database db = new Database();
 
         ArrayList<CPU> cpus = db.getCPUs();
@@ -31,8 +29,6 @@ public class Test extends HttpServlet {
         ArrayList<Motherboard> motherboards = db.getMotherboards();
         ArrayList<SSD> ssds = db.getSSDs();
         ArrayList<PSU> psus = db.getPSUs();
-
-        System.out.println(cpus);
 
         request.setAttribute("cpus", cpus);
         request.setAttribute("gpus", gpus);

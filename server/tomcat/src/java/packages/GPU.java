@@ -1,5 +1,7 @@
 package packages;
 
+import java.util.ArrayList;
+import database.Database;
 import packages.wrap.Product;
 
 public class GPU extends Product {
@@ -19,5 +21,26 @@ public class GPU extends Product {
         this.baseClock = baseClock;
         this.boostClock = boostClock;
         this.tdp = tdp;
+    }
+
+    public GPU(int id) {
+        super(id);
+        Database db = new Database();
+        ArrayList<GPU> gpus = db.getGPUs();
+
+        for (GPU gpu : gpus) {
+            if (gpu.id == id) {
+                this.sellingPrice = gpu.sellingPrice;
+                this.costPrice = gpu.costPrice;
+                this.description = gpu.description;
+                this.name = gpu.name;
+                this.generation = gpu.generation;
+                this.vram = gpu.vram;
+                this.baseClock = gpu.baseClock;
+                this.boostClock = gpu.boostClock;
+                this.tdp = gpu.tdp;
+                return;
+            }
+        }
     }
 }

@@ -1,9 +1,11 @@
 package packages;
 
+import java.util.ArrayList;
+import database.Database;
 import packages.wrap.Product;
 
 public class CPU extends Product {
-    
+
     public String generation;
     public String socket;
     public int cores;
@@ -24,8 +26,27 @@ public class CPU extends Product {
         this.boostClock = boostClock;
         this.tdp = tdp;
     }
-    
-    public void getInformation() {
-        
+
+    public CPU(int id) {
+        super(id);
+        Database db = new Database();
+        ArrayList<CPU> cpus = db.getCPUs();
+
+        for (CPU cpu : cpus) {
+            if (cpu.id == id) {
+                this.sellingPrice = cpu.sellingPrice;
+                this.costPrice = cpu.costPrice;
+                this.description = cpu.description;
+                this.name = cpu.name;
+                this.generation = cpu.generation;
+                this.socket = cpu.socket;
+                this.cores = cpu.cores;
+                this.threads = cpu.threads;
+                this.baseClock = cpu.baseClock;
+                this.boostClock = cpu.boostClock;
+                this.tdp = cpu.tdp;
+                return;
+            }
+        }
     }
 }

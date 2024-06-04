@@ -14,11 +14,32 @@ public class Product {
         this.description = description;
     }
 
+    public Product(int id) {
+        this.id = id;
+    }
+
     public void getProduct() {
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
-    public String toString(){
-        return this.name;
+    public String toString() {
+        if (name == null) {
+            return id + "";
+        }
+        return id + " " + name;
+    }
+}
+
+class ProductCount {
+    public int id;
+    public int count;
+
+    public ProductCount(int id, int count) {
+        this.id = id;
+        this.count = count;
     }
 }
