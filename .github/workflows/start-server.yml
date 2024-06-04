@@ -72,7 +72,7 @@ jobs:
         echo "inserting data"
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
 
-    - name: Reverse proxy with serveo
+    - name: Reverse proxy
       run: |
         mkdir -p ~/.ssh
         touch ~/.ssh/known_hosts
