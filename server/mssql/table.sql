@@ -6,7 +6,7 @@ create table users
     id int identity(1,1) primary key,
     googleUser int default 0,
     username varchar(25),
-    password varchar(25),
+    password varchar(100),
     backupPassword varchar(25),
     confirmCode varchar(10),
     active int default 0
@@ -27,7 +27,7 @@ create table staffs
 (
     id int identity(1,1) primary key,
     username varchar(25),
-    password varchar(25),
+    password varchar(100),
     possition varchar(25),
     active int default 1
 );
@@ -123,12 +123,9 @@ create table cases
     color nvarchar(50)
 );
 
-create table warehouses
+create table warehouse
 (
-    id int identity(1,1) primary key,
-    name nvarchar(50),
-    location nvarchar(100),
-    productid int references products(id),
+    productId int references products(id),
     quantity int
 );
 
@@ -156,4 +153,14 @@ create table feedback
     userId int references users(id),
     feedback nvarchar(max),
     dateSent date default getdate()
+);
+
+create table orders
+(
+    id int identity(1,1) primary key,
+    userId int references users(id),
+    productId int references products(id),
+    pricePer decimal(18,2),
+    quantity int,
+    dateOrdered date default getdate()
 );
