@@ -19,13 +19,12 @@ jobs:
         curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
         | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
         && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" \
-        | sudo tee /etc/apt/sources.list.d/ngrok.list \
-        && sudo apt update \
-        && sudo apt install ngrok
-        ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
+        | sudo tee /etc/apt/sources.list.d/ngrok.list
         curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-        sudo apt-get update && sudo apt-get install cloudflare-warp
+        sudo apt update 
+        sudo apt install ngrok cloudflare-warp
+        ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
         warp-cli --accept-tos connect
 
     - name: Checkout repository
@@ -54,7 +53,7 @@ jobs:
         
     - name: Run Tomcat container
       run: |
-        docker run --network host -d --name tomcat -p 8080:8080 -e "SQLPASSWORD=${{ secrets.SQLPASSWORD }}" -e "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" -e "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" tomcat:latest
+        docker run --network host -d --name tomcat -p 8080:8080 -e "SQLPASSWORD=${{ secrets.SQLPASSWORD }}" -e "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" -e "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" -e "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" tomcat:latest
         mv ./server/tomcat/dist/*.war ./server/tomcat/dist/ROOT.war
         docker cp ./server/tomcat/dist/ROOT.war `docker ps -q --filter ancestor=tomcat`:/usr/local/tomcat/webapps/
         docker restart `docker ps -q --filter ancestor=tomcat`
