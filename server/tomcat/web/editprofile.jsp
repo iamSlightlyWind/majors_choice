@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <!DOCTYPE html>
         <html>
 
@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-item">
                         <label>Ngày Sinh:</label>
-                        <input type="date" name="dateOfBirth" value="<c:out value=" ${user.dateOfBirth}"></c:out>">
+                        <input type="date" name="dateOfBirth" value="${user.dateOfBirth}">
                     </div>
                     <div class="font-item">
                         <span style="color: greenyellow; font-size: 30px">${requestScope.status} </span>

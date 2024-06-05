@@ -34,7 +34,7 @@ public class User {
         return this.dateOfBirth;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return this.username;
     }
   
@@ -229,5 +229,5 @@ public class User {
         System.out.println(user);
         return user;
     }
-     
+
 }
