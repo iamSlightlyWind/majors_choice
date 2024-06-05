@@ -1,9 +1,11 @@
 package packages;
 
-import packages.wrap.Package;
+import java.util.ArrayList;
+import database.Database;
+import packages.wrap.Product;
 
-public class Motherboard extends Package {
-    public String name;
+public class Motherboard extends Product {
+
     public String socket;
     public String chipset;
     public String formFactor;
@@ -23,5 +25,28 @@ public class Motherboard extends Package {
         this.maxRamSpeed = maxRamSpeed;
         this.ramSlots = ramSlots;
         this.wifi = wifi;
+    }
+
+    public Motherboard(int id) {
+        super(id);
+        Database db = new Database();
+        ArrayList<Motherboard> motherboards = db.getMotherboards();
+
+        for (Motherboard motherboard : motherboards) {
+            if (motherboard.id == id) {
+                this.sellingPrice = motherboard.sellingPrice;
+                this.costPrice = motherboard.costPrice;
+                this.description = motherboard.description;
+                this.name = motherboard.name;
+                this.socket = motherboard.socket;
+                this.chipset = motherboard.chipset;
+                this.formFactor = motherboard.formFactor;
+                this.ramType = motherboard.ramType;
+                this.maxRamSpeed = motherboard.maxRamSpeed;
+                this.ramSlots = motherboard.ramSlots;
+                this.wifi = motherboard.wifi;
+                return;
+            }
+        }
     }
 }

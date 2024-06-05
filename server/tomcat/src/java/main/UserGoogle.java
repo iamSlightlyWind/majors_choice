@@ -31,7 +31,6 @@ public class UserGoogle extends User {
 
     public int login() {
         setCredentials();
-        System.out.println("username : " + username + " password : " + password);
         try {
             String sql = "{call googleLogin(?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
