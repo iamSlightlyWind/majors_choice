@@ -10,6 +10,7 @@
                 body {
                     font-family: Arial, sans-serif;
                 }
+<<<<<<< HEAD
 
                 .container {
                     width: 50%;
@@ -53,6 +54,20 @@
                     <div class="form-item">
                         <label>Tên Đăng Nhập:</label>
                         <input type="text" name="username" value="<c:out value=" ${user.username}"></c:out>" readonly>
+=======
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Edit Profile</h1>
+            <form action="editprofile" method="post" onsubmit="return confirmChange();">
+                <c:if test="${requestScope.status!=null}">${requestScope.status}</c:if>
+                <c:set var="user" value="${requestScope.user}"/>
+                <div class="form-item">
+                    <label>Tên Đăng Nhập:</label>
+                    <input type="text" name="username" value="<c:out value="${user.username}"></c:out>" readonly>
+>>>>>>> b9c09e5 (Update EditProfile 3)
                     </div>
                     <div class="form-item">
                         <label>Mật khẩu:</label>
