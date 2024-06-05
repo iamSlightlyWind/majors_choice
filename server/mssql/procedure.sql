@@ -488,7 +488,21 @@ AS
 BEGIN
     DECLARE @id int
     set @id = (select id from users where username = @username)
+	    -- Ki?m tra tr�ng l?p email tr??c khi c?p nh?t
+    IF @email IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE email = @email and id<>@id)
+    BEGIN
+        -- Email ?� t?n t?i
+        SET @result = -1
+        RETURN
+    END
 
+    -- Ki?m tra tr�ng l?p s? ?i?n tho?i tr??c khi c?p nh?t
+    IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE phoneNumber = @phoneNumber and id<>@id)
+    BEGIN
+        -- PhoneNumber ?� t?n t?i
+        SET @result = -2
+        RETURN
+    END
     IF @password IS NOT NULL
     BEGIN
         UPDATE users
@@ -662,4 +676,177 @@ begin
     from products
     join cases on products.id = cases.id
 end
+go
+
+create procedure getCPU
+    @id int output,
+    @sellingPrice decimal(18,2) output,
+    @costPrice decimal(18,2) output,
+    @description nvarchar(max) output,
+    @name nvarchar(50) output,
+    @generation nvarchar(50) output,
+    @socket nvarchar(10) output,
+    @cores int output,
+    @threads int output,
+    @baseClock int output,
+    @boostClock int output,
+    @tdp int output
+as
+begin
+    select @id = cpus.id, @sellingPrice = sellingPrice, @costPrice = costPrice, @description = description, @name = name, @generation = generation, @socket = socket, @cores = cores, @threads = threads, @baseClock = baseClock, @boostClock = boostClock, @tdp = tdp
+    from products
+    join cpus on products.id = cpus.id
+end
+go
+
+create procedure getGPU
+    @id int output,
+    @sellingPrice decimal(18,2) output,
+    @costPrice decimal(18,2) output,
+    @description nvarchar(max) output,
+    @name nvarchar(50) output,
+    @generation nvarchar(50) output,
+    @vram int output,
+    @baseClock int output,
+    @boostClock int output,
+    @tdp int output
+as
+begin
+    select @id = gpus.id, @sellingPrice = sellingPrice, @costPrice = costPrice, @description = description, @name = name, @generation = generation, @vram = vram, @baseClock = baseClock, @boostClock = boostClock, @tdp = tdp
+    from products
+    join gpus on products.id = gpus.id
+end
+go
+
+create procedure getMotherboard
+    @id int output,
+    @sellingPrice decimal(18,2) output,
+    @costPrice decimal(18,2) output,
+    @description nvarchar(max) output,
+    @name nvarchar(50) output,
+    @socket nvarchar(10) output,
+    @chipset nvarchar(10) output,
+    @formFactor nvarchar(50) output,
+    @ramType nvarchar(10) output,
+    @maxRamSpeed int output,
+    @ramSlots int output,
+    @wifi int output
+as
+begin
+    select @id = motherboards.id, @sellingPrice = sellingPrice, @costPrice = costPrice, @description = description, @name = name, @socket = socket, @chipset = chipset, @formFactor = formFactor, @ramType = ramType, @maxRamSpeed = maxRamSpeed, @ramSlots = ramSlots, @wifi = wifi
+    from products
+    join motherboards on products.id = motherboards.id
+end
+go
+
+create procedure getRAM
+    @id int output,
+    @sellingPrice decimal(18,2) output,
+    @costPrice decimal(18,2) output,
+    @description nvarchar(max) output,
+    @name nvarchar(50) output,
+    @generation nvarchar(50) output,
+    @capacity int output,
+    @speed int output,
+    @latency int output
+as
+begin
+    select @id = rams.id, @sellingPrice = sellingPrice, @costPrice = costPrice, @description = description, @name = name, @generation = generation, @capacity = capacity, @speed = speed, @latency = latency
+    from products
+    join rams on products.id = rams.id
+end
+go
+
+create procedure getSSD
+    @id int output,
+    @sellingPrice decimal(18,2) output,
+    @costPrice decimal(18,2) output,
+    @description nvarchar(max) output,
+    @name nvarchar(50) output,
+    @interface nvarchar(20) output,
+    @capacity int output,
+    @cache int output
+as
+begin
+    select @id = ssds.id, @sellingPrice = sellingPrice, @costPrice = costPrice, @description = description, @name = name, @interface = interface, @capacity = capacity, @cache = cache
+    from products
+    join ssds on products.id = ssds.id
+end
+go
+
+create procedure getPSU
+    @id int output,
+    @sellingPrice decimal(18,2) output,
+    @costPrice decimal(18,2) output,
+    @description nvarchar(max) output,
+    @name nvarchar(50) output,
+    @wattage int output,
+    @efficiency nvarchar(50) output
+as
+begin
+    select @id = psus.id, @sellingPrice = sellingPrice, @costPrice = costPrice, @description = description, @name = name, @wattage = wattage, @efficiency = efficiency
+    from products
+    join psus on products.id = psus.id
+end
+go
+
+create procedure getCase
+    @id int output,
+    @sellingPrice decimal(18,2) output,
+    @costPrice decimal(18,2) output,
+    @description nvarchar(max) output,
+    @name nvarchar(50) output,
+    @type nvarchar(50) output,
+    @formFactor nvarchar(50) output,
+    @color nvarchar(50) output
+as
+begin
+    select @id = cases.id, @sellingPrice = sellingPrice, @costPrice = costPrice, @description = description, @name = name, @type = type, @formFactor = formFactor, @color = color
+    from products
+    join cases on products.id = cases.id
+end
+go
+
+CREATE PROCEDURE GetUserDetailsByUsername
+    @inputUsername varchar(25)
+AS
+BEGIN
+    -- find userId from username
+    DECLARE @userId int;
+    SELECT @userId = id FROM users WHERE username = @inputUsername;
+
+        -- get informations from users and userDetails
+        SELECT users.username,
+               users.password,
+               userDetails.fullname AS name,
+               userDetails.email,
+               userDetails.phoneNumber AS phone,
+               userDetails.address,
+               CONVERT(varchar(10), userDetails.dateOfBirth, 103) AS dob
+        FROM users
+        JOIN userDetails ON users.id = userDetails.id
+        WHERE users.id = @userId;
+END;
+go
+
+CREATE PROCEDURE GetUserDetailsByUsername
+    @inputUsername varchar(25)
+AS
+BEGIN
+    -- find userId from username
+    DECLARE @userId int;
+    SELECT @userId = id FROM users WHERE username = @inputUsername;
+
+        -- get informations from users and userDetails
+        SELECT users.username,
+               users.password,
+               userDetails.fullname AS name,
+               userDetails.email,
+               userDetails.phoneNumber AS phone,
+               userDetails.address,
+               CONVERT(varchar(10), userDetails.dateOfBirth, 103) AS dob
+        FROM users
+        JOIN userDetails ON users.id = userDetails.id
+        WHERE users.id = @userId;
+END;
 go
