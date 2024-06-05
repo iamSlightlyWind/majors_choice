@@ -71,6 +71,9 @@
                         <label>Ngày Sinh:</label>
                         <input type="date" name="dateOfBirth" value="<c:out value="${user.dateOfBirth}"></c:out>">
                 </div>
+                <div class="font-item">
+                    <span style="color: greenyellow; font-size: 30px">${requestScope.status} </span>
+                    </div>
                 <div class="buttons">
                     <button type="submit">Save</button>
                 </div>

@@ -40,12 +40,23 @@ public class Editprofile extends HttpServlet {
         
         User user = new User(username, password, fullname, email, phone, address, dob);
         int result = user.updateInformation();
-        if(result==1){
-            request.setAttribute("status", "Update Successful!");
-            request.getRequestDispatcher("profile.jsp").forward(request, response);
-        }else{
-            request.setAttribute("status", "Update Failed!");
-            request.getRequestDispatcher("profile.jsp").forward(request, response);
+        switch (result) {
+            case 1:
+                request.setAttribute("status", "Update Successful!");
+                request.getRequestDispatcher("profile.jsp").forward(request, response);
+                break;
+            case -1:
+                request.setAttribute("status", "Update Failed! Email had existed.");
+                request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+                break;
+            case -2:
+                request.setAttribute("status", "Update Failed! Phone had existed.");
+                request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+                break;
+            default:
+                request.setAttribute("status", "Update Failed!");
+                request.getRequestDispatcher("profile.jsp").forward(request, response);
+                break;
         }
     } 
 

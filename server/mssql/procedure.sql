@@ -488,7 +488,21 @@ AS
 BEGIN
     DECLARE @id int
     set @id = (select id from users where username = @username)
+	    -- Ki?m tra trùng l?p email tr??c khi c?p nh?t
+    IF @email IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE email = @email and id<>@id)
+    BEGIN
+        -- Email ?ã t?n t?i
+        SET @result = -1
+        RETURN
+    END
 
+    -- Ki?m tra trùng l?p s? ?i?n tho?i tr??c khi c?p nh?t
+    IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE phoneNumber = @phoneNumber and id<>@id)
+    BEGIN
+        -- PhoneNumber ?ã t?n t?i
+        SET @result = -2
+        RETURN
+    END
     IF @password IS NOT NULL
     BEGIN
         UPDATE users
@@ -534,3 +548,24 @@ BEGIN
     set @result = 1
 END;
 go
+
+CREATE PROCEDURE GetUserDetailsByUsername
+    @inputUsername varchar(25)
+AS
+BEGIN
+    -- find userId from username
+    DECLARE @userId int;
+    SELECT @userId = id FROM users WHERE username = @inputUsername;
+
+        -- get informations from users and userDetails
+        SELECT users.username,
+               users.password,
+               userDetails.fullname AS name,
+               userDetails.email,
+               userDetails.phoneNumber AS phone,
+               userDetails.address,
+               CONVERT(varchar(10), userDetails.dateOfBirth, 103) AS dob
+        FROM users
+        JOIN userDetails ON users.id = userDetails.id
+        WHERE users.id = @userId;
+END;
