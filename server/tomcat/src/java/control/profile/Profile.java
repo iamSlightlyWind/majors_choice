@@ -21,24 +21,18 @@ public class Profile extends HttpServlet {
         User user1 = user.getUserDetailsByUsername(username);
 
         request.setAttribute("user", user1);
+        request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        request.getRequestDispatcher("editprofile.jsp").forward(request, response);
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
     }
 }

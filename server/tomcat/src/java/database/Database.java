@@ -56,7 +56,7 @@ public class Database {
         return false;
     }
 
-    public boolean userExists(String email) { // check if email exists, use exclusively for google login/register
+    public boolean userExists(String email) {
         try {
             String sql = "{call userExists(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);

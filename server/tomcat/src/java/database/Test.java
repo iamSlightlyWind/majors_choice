@@ -29,11 +29,6 @@ public class Test extends HttpServlet {
         processRequest(request, response);
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
     public static void main(String[] args) {
         User user = new User("emilyjohnson", "password456");
         user.activate("DfjgR");
