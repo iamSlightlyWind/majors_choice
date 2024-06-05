@@ -489,36 +489,18 @@ create PROCEDURE updateUserInformation
 AS
 BEGIN
     DECLARE @id int
-<<<<<<< HEAD
-    set @id = (select id
-    from users
-    where username = @username)
-    IF @email IS NOT NULL AND EXISTS (SELECT 1
-        FROM userDetails
-        WHERE email = @email and id<>@id)
-    BEGIN
-=======
     set @id = (select id from users where username = @username)
-	    -- check email had existed?
+    -- check email had existed?
     IF @email IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE email = @email and id<>@id)
     BEGIN
         -- Email had existed
->>>>>>> b9c09e5 (Update EditProfile 3)
         SET @result = -1
         RETURN
     END
-
-<<<<<<< HEAD
-    IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1
-        FROM userDetails
-        WHERE phoneNumber = @phoneNumber and id<>@id)
-    BEGIN
-=======
     -- check phone had existed?
     IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE phoneNumber = @phoneNumber and id<>@id)
     BEGIN
         -- PhoneNumber had existed
->>>>>>> b9c09e5 (Update EditProfile 3)
         SET @result = -2
         RETURN
     END

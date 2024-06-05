@@ -37,7 +37,10 @@ public class User {
     public String getUserName() {
         return this.username;
     }
-
+  
+    public String getPassword() {
+        return password;
+    }
     Database db = new Database();
 
     public User() {
@@ -226,8 +229,5 @@ public class User {
         System.out.println(user);
         return user;
     }
-
-    public String getPassword() {
-        return password;
-    }     
+     
 }

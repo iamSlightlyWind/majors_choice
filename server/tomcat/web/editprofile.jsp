@@ -10,8 +10,6 @@
                 body {
                     font-family: Arial, sans-serif;
                 }
-<<<<<<< HEAD
-
                 .container {
                     width: 50%;
                     margin: 0 auto;
@@ -55,7 +53,6 @@
                 <div class="form-item">
                     <label>Tên Đăng Nhập:</label>
                     <input type="text" name="username" value="<c:out value="${user.username}"></c:out>" readonly>
->>>>>>> b9c09e5 (Update EditProfile 3)
                     </div>
                     <div class="form-item">
                         <label>Mật khẩu:</label>
@@ -63,7 +60,7 @@
                     </div>
                     <div class="form-item">
                         <label>Họ và Tên:</label>
-                        <input type="text" name="fullname" value="<c:out value=" ${user.fullname}"></c:out>">
+                        <input type="text" name="fullname" value="<c:out value=" ${user.fullName}"></c:out>">
                     </div>
                     <div class="form-item">
                         <label>Email:</label>

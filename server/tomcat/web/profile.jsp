@@ -51,7 +51,7 @@
             <h2>Thông Tin Cá Nhân</h2>
             <div class="info-item">
                 <label>Họ và Tên:</label>
-                <span><c:out value="${user.fullname}"></c:out></span>
+                <span><c:out value="${user.fullName}"></c:out></span>
             </div>
             <div class="info-item">
                 <label>Email:</label>
@@ -100,8 +100,16 @@
                 '"': '&quot;',
                 "'": '&#039;'
             };
-            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });           
         }
+        // Lấy mật khẩu từ đối tượng user và thoát ký tự đặc biệt
+        var password = escapeHtml("${user.password}");
+
+        // Tạo chuỗi dấu chấm có cùng độ dài với mật khẩu
+        var maskedPassword = "*".repeat(password.length);
+
+        // Thay thế nội dung của thẻ span bằng chuỗi dấu chấm
+        document.getElementById("maskedPassword").textContent = maskedPassword;
     </script>
   </body>
 </html>
