@@ -47,7 +47,7 @@ begin
 end;
 GO
 
-create procedure googleLogin -- you only need to check username, password, googleUser and active
+create procedure googleLogin
     @username varchar(25),
     @password varchar(25),
     @result int output
@@ -124,7 +124,9 @@ begin
     begin
         update users
         set backupPassword = @password
-        where id = (select id from userDetails where email = @email)
+        where id = (select id
+        from userDetails
+        where email = @email)
         set @result = 1
     -- successful
     end
@@ -487,19 +489,21 @@ create PROCEDURE updateUserInformation
 AS
 BEGIN
     DECLARE @id int
-    set @id = (select id from users where username = @username)
-	    -- Ki?m tra trùng l?p email tr??c khi c?p nh?t
-    IF @email IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE email = @email and id<>@id)
+    set @id = (select id
+    from users
+    where username = @username)
+    IF @email IS NOT NULL AND EXISTS (SELECT 1
+        FROM userDetails
+        WHERE email = @email and id<>@id)
     BEGIN
-        -- Email ?ã t?n t?i
         SET @result = -1
         RETURN
     END
 
-    -- Ki?m tra trùng l?p s? ?i?n tho?i tr??c khi c?p nh?t
-    IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE phoneNumber = @phoneNumber and id<>@id)
+    IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1
+        FROM userDetails
+        WHERE phoneNumber = @phoneNumber and id<>@id)
     BEGIN
-        -- PhoneNumber ?ã t?n t?i
         SET @result = -2
         RETURN
     END
@@ -553,19 +557,19 @@ CREATE PROCEDURE GetUserDetailsByUsername
     @inputUsername varchar(25)
 AS
 BEGIN
-    -- find userId from username
     DECLARE @userId int;
-    SELECT @userId = id FROM users WHERE username = @inputUsername;
+    SELECT @userId = id
+    FROM users
+    WHERE username = @inputUsername;
 
-        -- get informations from users and userDetails
-        SELECT users.username,
-               users.password,
-               userDetails.fullname AS name,
-               userDetails.email,
-               userDetails.phoneNumber AS phone,
-               userDetails.address,
-               CONVERT(varchar(10), userDetails.dateOfBirth, 103) AS dob
-        FROM users
+    SELECT users.username,
+        users.password,
+        userDetails.fullname AS name,
+        userDetails.email,
+        userDetails.phoneNumber AS phone,
+        userDetails.address,
+        CONVERT(varchar(10), userDetails.dateOfBirth, 103) AS dob
+    FROM users
         JOIN userDetails ON users.id = userDetails.id
-        WHERE users.id = @userId;
+    WHERE users.id = @userId;
 END;

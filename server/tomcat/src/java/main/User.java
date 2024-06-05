@@ -176,7 +176,7 @@ public class User {
 
         return result;
     }
-    
+
     public User getUserDetailsByUsername(String username) {
         User user = null;
         try {

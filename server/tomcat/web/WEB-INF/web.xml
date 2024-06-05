@@ -2,31 +2,31 @@
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>control.LoginServlet</servlet-class>
+        <servlet-class>control.auth.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>control.RegisterServlet</servlet-class>
+        <servlet-class>control.auth.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ActivateServlet</servlet-name>
-        <servlet-class>control.ActivateServlet</servlet-class>
+        <servlet-class>control.auth.ActivateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ResetPasswordServlet</servlet-name>
-        <servlet-class>control.ResetPasswordServlet</servlet-class>
+        <servlet-class>control.auth.ResetPasswordServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginGoogleServlet</servlet-name>
-        <servlet-class>control.LoginGoogleServlet</servlet-class>
+        <servlet-class>control.auth.LoginGoogleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Profile</servlet-name>
-        <servlet-class>control.Profile</servlet-class>
+        <servlet-class>control.profile.Profile</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Editprofile</servlet-name>
-        <servlet-class>control.Editprofile</servlet-class>
+        <servlet-name>EditProfile</servlet-name>
+        <servlet-class>control.profile.EditProfile</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -61,7 +61,7 @@
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Editprofile</servlet-name>
+        <servlet-name>EditProfile</servlet-name>
         <url-pattern>/editprofile</url-pattern>
     </servlet-mapping>
 </web-app>
