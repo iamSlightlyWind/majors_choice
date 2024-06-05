@@ -14,6 +14,30 @@ public class User {
     public String dateOfBirth;
     public String confirmCode;
 
+    public String getFullName() {
+        return this.fullName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
+    }
+
+    public String getAddress() {
+        return this.address;
+    }
+
+    public String getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+
+    public String getUserName() {
+        return this.username;
+    }
+
     Database db = new Database();
 
     public User() {
@@ -199,6 +223,7 @@ public class User {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        System.out.println(user);
         return user;
     }
 }

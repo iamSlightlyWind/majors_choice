@@ -13,6 +13,7 @@ public class Profile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        System.out.println("Loading profile page");
         HttpSession sesion = request.getSession();
         User user = new User();
 
