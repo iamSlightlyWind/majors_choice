@@ -1,4 +1,4 @@
-package control;
+package auth;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -55,7 +55,7 @@ public class LoginGoogleServlet extends HttpServlet {
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
 
-            System.out.println("Update: " + user.updateInformation());
+            user.updateInformation();
             request.setAttribute("loginStatus", "Logged in successfully");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

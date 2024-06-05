@@ -1,9 +1,9 @@
 package packages;
 
-import packages.wrap.Package;
+import packages.wrap.Product;
 
-public class Case extends Package {
-    public String name;
+public class Case extends Product {
+
     public String type;
     public String formFactor;
     public String color;

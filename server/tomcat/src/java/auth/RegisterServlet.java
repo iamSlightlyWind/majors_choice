@@ -1,4 +1,4 @@
-package control;
+package auth;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
