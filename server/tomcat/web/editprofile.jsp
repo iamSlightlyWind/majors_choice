@@ -46,18 +46,6 @@
                 }
             </script>
         </head>
-
-        <body>
-            <div class="container">
-                <h1>Edit Profile</h1>
-                <form action="editprofile" method="post" onsubmit="return confirmChange();">
-                    <div class="form-item">
-                        <label>Tên Đăng Nhập:</label>
-                        <input type="text" name="username" value="<c:out value=" ${user.username}"></c:out>" readonly>
-=======
-            }
-        </script>
-    </head>
     <body>
         <div class="container">
             <h1>Edit Profile</h1>
