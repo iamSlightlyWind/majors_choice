@@ -6,6 +6,7 @@ import java.sql.Types;
 import java.util.Random;
 
 import database.Database;
+import java.sql.ResultSet;
 
 public class User {
     public String username, password;
@@ -174,5 +175,30 @@ public class User {
         }
 
         return result;
+    }
+    
+    public User getUserDetailsByUsername(String username) {
+        User user = null;
+        try {
+            String sql = "{call GetUserDetailsByUsername(?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                user = new User();
+                user.username = rs.getString("username");
+                user.password = rs.getString("password");
+                user.fullName = rs.getString("name");
+                user.email = rs.getString("email");
+                user.phoneNumber = rs.getString("phone");
+                user.address = rs.getString("address");
+                user.dateOfBirth = rs.getString("dob");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return user;
     }
 }
