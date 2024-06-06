@@ -37,6 +37,16 @@ public class Cart {
         updateQuantity();
     }
 
+    public void addOne(int id) {
+        for (Product product : products) {
+            if (product.id == id) {
+                products.add(product);
+                break;
+            }
+        }
+        updateQuantity();
+    }
+
     public Cart() {
     }
 
