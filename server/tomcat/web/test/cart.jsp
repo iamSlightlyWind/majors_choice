@@ -14,17 +14,22 @@
                 <form action="Cart" method="post">
                     <input type="hidden" name="productID" value="${ProductCount.id}" />
                     <button type="submit" name="action" value="removeAll">${ProductCount.count}</button>
-                    <button type="submit" name="action" value="removeOne">${ProductCount.id} ${ProductCount.name}</button>
+                    <button type="submit" name="action" value="removeOne">${ProductCount.id}
+                        ${ProductCount.name}</button>
                     <button type="submit" name="action" value="addOne">+1</button>
                 </form>
                 <br>
             </c:forEach>
 
-            <form>
-                <p>Place Order</p>
-                <form action="order" method="post">
-                    <button type="submit" name="action" value="placeOrder">Place Order</button>
-                </form>
+            <p>Place Order</p>
+            <form action="order" method="post">
+                <button type="submit" name="action" value="placeOrder">Place Order</button>
+            </form>
+
+            <form action="login" method="post">
+                <input type="hidden" name="action" value="logout" />
+                <button type="submit">logout</button>
+            </form>
         </body>
 
         </html>
