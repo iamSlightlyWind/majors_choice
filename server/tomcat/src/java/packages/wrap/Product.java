@@ -33,13 +33,3 @@ public class Product {
         return id + " " + name;
     }
 }
-
-class ProductCount {
-    public int id;
-    public int count;
-
-    public ProductCount(int id, int count) {
-        this.id = id;
-        this.count = count;
-    }
-}

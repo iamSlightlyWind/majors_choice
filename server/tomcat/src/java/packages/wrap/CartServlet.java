@@ -1,84 +1,13 @@
 package packages.wrap;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import packages.*;
-
-class Cart {
-    public ArrayList<Product> products = new ArrayList<Product>();
-    public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
-    public String userName;
-
-    public void updateQuantity() {
-        HashMap<Integer, Integer> productCountMap = new HashMap<Integer, Integer>();
-        for (Product product : products) {
-            productCountMap.put(product.id, productCountMap.getOrDefault(product.id, 0) + 1);
-        }
-        quantities.clear();
-        for (Map.Entry<Integer, Integer> entry : productCountMap.entrySet()) {
-            quantities.add(new ProductCount(entry.getKey(), entry.getValue()));
-        }
-    }
-
-    public Cart(String userName) {
-        this.userName = userName;
-    }
-
-    public void addProduct(String type, int id) {
-        Product newProduct = null;
-
-        switch (type) {
-            case "cpu":
-                newProduct = new CPU(id);
-                break;
-            case "gpu":
-                newProduct = new GPU(id);
-                break;
-            case "ram":
-                newProduct = new RAM(id);
-                break;
-            case "psu":
-                newProduct = new PSU(id);
-                break;
-            case "ssd":
-                newProduct = new SSD(id);
-                break;
-            case "motherboard":
-                newProduct = new Motherboard(id);
-                break;
-        }
-        products.add(newProduct);
-        updateQuantity();
-    }
-
-    @Override
-    public String toString() {
-        int maxId = quantities.stream().mapToInt(pc -> pc.id).max().orElse(0);
-        boolean[] printed = new boolean[maxId + 1];
-        StringBuilder sb = new StringBuilder();
-
-        for (ProductCount productCount : quantities) {
-            if (!printed[productCount.id]) {
-                printed[productCount.id] = true;
-                for (Product product : products) {
-                    if (product.id == productCount.id) {
-                        sb.append(productCount.count).append(" x ").append(product.name).append("<br>");
-                        break;
-                    }
-                }
-            }
-        }
-
-        return sb.toString();
-    }
-}
 
 public class CartServlet extends HttpServlet {
 
@@ -87,25 +16,51 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String action = request.getParameter("action");
-        if (action.equals("viewCart")) {
+
+        if (action == null) {
+            action = "";
+        }
+
+        if (action.equals("viewCart") || action.equals("")) {
             tempViewCart(request, response);
             return;
         } else if (action.equals("addItem")) {
             addProduct(request, response);
             response.sendRedirect("/Test");
             return;
+        } else if (action.equals("removeOne") || action.equals("removeAll")) {
+            removeProduct(request, response);
+            response.sendRedirect("/Cart");
+            return;
         }
+    }
+
+    protected void removeProduct(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+
+        Cart cart = getCart(session);
+
+        cart.remove(Integer.parseInt(request.getParameter("productID")),
+                ((String) request.getParameter("action")).equals("removeOne"));
+    }
+
+    protected Cart getCart(HttpSession session) {
+        if (session.getAttribute("cart") == null) {
+            session.setAttribute("cart", new Cart((String) session.getAttribute("userName")));
+        }
+        return (Cart) session.getAttribute("cart");
     }
 
     protected void tempViewCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        if (session.getAttribute("cart") == null) {
-            session.setAttribute("cart", new Cart((String) session.getAttribute("userName")));
-        }
-        Cart cart = (Cart) session.getAttribute("cart");
-        request.setAttribute("cart", cart);
+
+        Cart cart = getCart(session);
+
+        request.setAttribute("ProductCount", (ArrayList<ProductCount>) cart.quantities);
         request.getRequestDispatcher("/test/cart.jsp").forward(request, response);
     }
 
@@ -114,11 +69,8 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
-        if (session.getAttribute("cart") == null) {
-            session.setAttribute("cart", new Cart((String) session.getAttribute("userName")));
-        }
+        Cart cart = getCart(session);
 
-        Cart cart = (Cart) session.getAttribute("cart");
         cart.addProduct(request.getParameter("type"), Integer.parseInt(request.getParameter("productID")));
     }
 
