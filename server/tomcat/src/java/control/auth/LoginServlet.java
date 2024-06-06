@@ -23,7 +23,8 @@ public class LoginServlet extends HttpServlet {
         if (result == 1) {
             session.setAttribute("username", user.username);
             request.setAttribute("loginStatus", "Logged in successfully");
-            request.getRequestDispatcher("profile").forward(request, response);
+            //request.getRequestDispatcher("profile").forward(request, response);
+            response.sendRedirect("profile");
         } else if (result == -1) {
             session.setAttribute("username", user.username);
             request.setAttribute("user", user.username);

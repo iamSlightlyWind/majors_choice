@@ -19,9 +19,8 @@ public class Profile extends HttpServlet {
 
         String username = (String) sesion.getAttribute("username");
 
-        //User user1 = user.getUserDetailsByUsername(username);
-        User user1 = new User("davitscott", "password", "John Doe", "john@example.com", "123456789", "123 Street, City", "2000-01-01");
-
+        User user1 = user.getUserDetailsByUsername(username);
+        //User user1 = new User("davitscott", "password", "John Doe", "john@example.com", "123456789", "123 Street, City", "2000-01-01");
         
         request.setAttribute("user", user1);
     }
@@ -36,7 +35,7 @@ public class Profile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(request, response);       
         request.getRequestDispatcher("editprofile.jsp").forward(request, response);
     }
 }
