@@ -24,31 +24,30 @@ public class EditProfile extends HttpServlet {
         String dob = request.getParameter("dateOfBirth");
 
         boolean emailFormat = isValidEmail(email);
+        User user = new User(username, password, fullname, email, phone, address, dob);
         if (emailFormat) {
-            User user = new User(username, password, fullname, email, phone, address, dob);
             int result = user.updateInformation();
+            request.setAttribute("user", user);
             switch (result) {
                 case 1:
-                    request.setAttribute("user", user);
                     request.setAttribute("status", "Update Successful!");
                     request.getRequestDispatcher("profile.jsp").forward(request, response);
                     break;
                 case -1:
-                    request.setAttribute("user", user);
                     request.setAttribute("status", "Update Failed! Email had existed.");
                     request.getRequestDispatcher("editprofile.jsp").forward(request, response);
                     break;
                 case -2:
-                    request.setAttribute("user", user);
                     request.setAttribute("status", "Update Failed! Phone had existed.");
                     request.getRequestDispatcher("editprofile.jsp").forward(request, response);
                     break;
                 default:
                     request.setAttribute("status", "Update Failed!");
-                    request.getRequestDispatcher("profile.jsp").forward(request, response);
+                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
                     break;
             }
         } else {
+            request.setAttribute("user", user);
             request.setAttribute("status", "Update Failed!Email format wrong!");
             request.getRequestDispatcher("editprofile.jsp").forward(request, response);
         }
