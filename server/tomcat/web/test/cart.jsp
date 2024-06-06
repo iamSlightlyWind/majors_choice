@@ -10,7 +10,14 @@
         </head>
 
         <body>
-            <p>${cart}</p>
-        </body>                       
+            <c:forEach var="ProductCount" items="${ProductCount}">
+                <form action="Cart" method="post">
+                    <input type="hidden" name="productID" value="${ProductCount.id}" />
+                    <button type="submit" name="action" value="removeAll">${ProductCount.count}</button>
+                    <button type="submit" name="action" value="removeOne">${ProductCount.name}</button>
+                </form>
+                <br>
+            </c:forEach>
+        </body>
 
         </html>
