@@ -111,7 +111,7 @@ create table psus
     id int references products(id),
     name nvarchar(50),
     wattage int,
-    efficiency nvarchar(50),
+    efficiency nvarchar(50)
 );
 
 create table cases

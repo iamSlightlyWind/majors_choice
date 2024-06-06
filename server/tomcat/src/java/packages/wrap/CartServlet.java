@@ -18,7 +18,7 @@ public class CartServlet extends HttpServlet {
         User currentUser = (User) request.getSession().getAttribute("userObject");
 
         if (currentUser.cart == null) {
-            currentUser.cart = new Cart();
+            currentUser.cart = new Cart(currentUser.id, currentUser.db);
         }
 
         if (action == null || action.equals("viewCart")) {

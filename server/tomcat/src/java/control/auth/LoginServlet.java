@@ -14,12 +14,21 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         User user = new User(request.getParameter("user"), request.getParameter("pass"));
 
+        if(request.getParameter("action")!= null && request.getParameter("action").equals("logout")){
+            request.getSession().invalidate();
+            request.setAttribute("loginStatus", "Logged out");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+
         switch (user.login()) {
             case 1:
                 user.retrieveData();
                 request.getSession().setAttribute("userObject", user);
-                request.setAttribute("loginStatus", "Logged in successfully");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                //request.setAttribute("loginStatus", "Logged in");
+                //request.getRequestDispatcher("login.jsp").forward(request, response);
+
+                response.sendRedirect("Test");
                 break;
             case -1:
                 request.getSession().setAttribute("userObject", user);

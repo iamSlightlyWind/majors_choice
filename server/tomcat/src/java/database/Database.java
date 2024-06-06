@@ -284,13 +284,14 @@ public class Database {
                     statement.registerOutParameter(5, Types.INTEGER);
 
                     statement.execute();
-                    return statement.getInt(5);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+                return -1;
             }
-        }
-        return -1;
+        } else
+            return -1;
+        return 1;
     }
 
     public int placeOrder(int userID) {
@@ -313,18 +314,103 @@ public class Database {
         return -1;
     }
 
-    public int getUserID(String username) {
-        try {
-            String sql = "{call getUserID(?, ?)}";
-            CallableStatement statement = connection.prepareCall(sql);
-            statement.setString(1, username);
-            statement.registerOutParameter(2, Types.INTEGER);
+    public ArrayList<Product> getCart(int userID) {
+        ArrayList<CPU> cpus = getCPUs();
+        ArrayList<GPU> gpus = getGPUs();
+        ArrayList<Motherboard> motherboards = getMotherboards();
+        ArrayList<RAM> rams = getRAMs();
+        ArrayList<SSD> ssds = getSSDs();
+        ArrayList<PSU> psus = getPSUs();
+        ArrayList<Case> cases = getCases();
+        ArrayList<Product> products = new ArrayList<>();
 
-            statement.execute();
-            return statement.getInt(2);
+        try {
+            String sql = "{call getCartItems(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, userID);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("productId");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String type = resultSet.getString("productType");
+                switch (type) {
+                    case "CPU":
+                        for (CPU cpu : cpus) {
+                            if (cpu.id == id) {
+                                cpu.sellingPrice = sellingPrice;
+                                cpu.costPrice = costPrice;
+                                products.add(cpu);
+                                break;
+                            }
+                        }
+                        break;
+                    case "GPU":
+                        for (GPU gpu : gpus) {
+                            if (gpu.id == id) {
+                                gpu.sellingPrice = sellingPrice;
+                                gpu.costPrice = costPrice;
+                                products.add(gpu);
+                                break;
+                            }
+                        }
+                        break;
+                    case "Motherboard":
+                        for (Motherboard motherboard : motherboards) {
+                            if (motherboard.id == id) {
+                                motherboard.sellingPrice = sellingPrice;
+                                motherboard.costPrice = costPrice;
+                                products.add(motherboard);
+                                break;
+                            }
+                        }
+                        break;
+                    case "RAM":
+                        for (RAM ram : rams) {
+                            if (ram.id == id) {
+                                ram.sellingPrice = sellingPrice;
+                                ram.costPrice = costPrice;
+                                products.add(ram);
+                                break;
+                            }
+                        }
+                        break;
+                    case "SSD":
+                        for (SSD ssd : ssds) {
+                            if (ssd.id == id) {
+                                ssd.sellingPrice = sellingPrice;
+                                ssd.costPrice = costPrice;
+                                products.add(ssd);
+                                break;
+                            }
+                        }
+                        break;
+                    case "PSU":
+                        for (PSU psu : psus) {
+                            if (psu.id == id) {
+                                psu.sellingPrice = sellingPrice;
+                                psu.costPrice = costPrice;
+                                products.add(psu);
+                                break;
+                            }
+                        }
+                        break;
+                    case "Case":
+                        for (Case c : cases) {
+                            if (c.id == id) {
+                                c.sellingPrice = sellingPrice;
+                                c.costPrice = costPrice;
+                                products.add(c);
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return -1;
+        return products;
     }
+
 }

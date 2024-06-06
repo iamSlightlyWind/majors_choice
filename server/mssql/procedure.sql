@@ -47,7 +47,8 @@ begin
 end;
 GO
 
-create procedure googleLogin -- you only need to check username, password, googleUser and active
+create procedure googleLogin
+    -- you only need to check username, password, googleUser and active
     @username varchar(25),
     @password varchar(100),
     @result int output
@@ -124,7 +125,9 @@ begin
     begin
         update users
         set backupPassword = @password
-        where id = (select id from userDetails where email = @email)
+        where id = (select id
+        from userDetails
+        where email = @email)
         set @result = 1
     -- successful
     end
@@ -487,7 +490,9 @@ create PROCEDURE updateUserInformation
 AS
 BEGIN
     DECLARE @id int
-    set @id = (select id from users where username = @username)
+    set @id = (select id
+    from users
+    where username = @username)
 
     IF @password IS NOT NULL
     BEGIN
@@ -538,112 +543,112 @@ go
 create procedure getCPU
 as
 begin
-    select 
-        cpus.id, 
-        sellingPrice, 
-        costPrice, 
-        description, 
-        name, 
-        generation, 
-        socket, 
-        cores, 
-        threads, 
-        baseClock, 
-        boostClock, 
+    select
+        cpus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        socket,
+        cores,
+        threads,
+        baseClock,
+        boostClock,
         tdp
     from products
-    join cpus on products.id = cpus.id
+        join cpus on products.id = cpus.id
 end
 go
 
 create procedure getGPU
 as
 begin
-    select 
-        gpus.id, 
-        sellingPrice, 
-        costPrice, 
-        description, 
-        name, 
-        generation, 
-        vram, 
-        baseClock, 
-        boostClock, 
+    select
+        gpus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        vram,
+        baseClock,
+        boostClock,
         tdp
     from products
-    join gpus on products.id = gpus.id
+        join gpus on products.id = gpus.id
 end
 go
 
 create procedure getMotherboard
 as
 begin
-    select 
-        motherboards.id, 
-        sellingPrice, 
-        costPrice, 
-        description, 
-        name, 
-        socket, 
-        chipset, 
-        formFactor, 
-        ramType, 
-        maxRamSpeed, 
-        ramSlots, 
+    select
+        motherboards.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        socket,
+        chipset,
+        formFactor,
+        ramType,
+        maxRamSpeed,
+        ramSlots,
         wifi
     from products
-    join motherboards on products.id = motherboards.id
+        join motherboards on products.id = motherboards.id
 end
 go
 
 create procedure getRAM
 as
 begin
-    select 
-        rams.id, 
-        sellingPrice, 
-        costPrice, 
-        description, 
-        name, 
-        generation, 
-        capacity, 
-        speed, 
+    select
+        rams.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        capacity,
+        speed,
         latency
     from products
-    join rams on products.id = rams.id
+        join rams on products.id = rams.id
 end
 go
 
 create procedure getSSD
 as
 begin
-    select 
-        ssds.id, 
-        sellingPrice, 
-        costPrice, 
-        description, 
-        name, 
-        interface, 
-        capacity, 
+    select
+        ssds.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        interface,
+        capacity,
         cache
     from products
-    join ssds on products.id = ssds.id
+        join ssds on products.id = ssds.id
 end
 go
 
 create procedure getPSU
 as
 begin
-    select 
-        psus.id, 
-        sellingPrice, 
-        costPrice, 
-        description, 
-        name, 
-        wattage, 
+    select
+        psus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        wattage,
         efficiency
     from products
-    join psus on products.id = psus.id
+        join psus on products.id = psus.id
 end
 go
 
@@ -652,9 +657,11 @@ create procedure deleteCart
     @result int output
 as
 begin
-    if exists (select 1 from users where id = @userID)
+    if exists (select 1
+    from users
+    where id = @userID)
     begin
-        delete from cart
+        delete from carts
         where userID = @userID
         set @result = 1
     end
@@ -673,9 +680,11 @@ create procedure addToCart
     @result int output
 as
 begin
-    if exists (select 1 from users where id = @userID)
+    if exists (select 1
+    from users
+    where id = @userID)
     begin
-        insert into cart
+        insert into carts
             (userID, productID, sellingPrice, costPrice)
         values
             (@userID, @productID, @sellingPrice, @costPrice)
@@ -692,7 +701,8 @@ create procedure getCart
     @userID int
 as
 begin
-    select * from cart
+    select *
+    from carts
     where userID = @userID
 end;
 go
@@ -702,16 +712,19 @@ create procedure placeOrder
     @result int output
 as
 begin
-    if exists (select 1 from users where id = @userID)
+    if exists (select 1
+    from users
+    where id = @userID)
     begin
         declare @orderID int
-        set @orderID = (select max(id) from orders) + 1
+        set @orderID = (select max(id)
+        from orders) + 1
 
         insert into orders
             (id, userId, productId, sellingPrice, costPrice)
         select
             @orderID, userID, productID, sellingPrice, costPrice
-        from cart
+        from carts
         where userID = @userID
 
         set @result = 1
@@ -721,4 +734,36 @@ begin
         set @result = 0
     end
 end;
+go
+
+CREATE PROCEDURE getCartItems
+    @userId int
+AS
+BEGIN
+    SELECT
+        c.productId,
+        c.sellingPrice,
+        c.costPrice,
+        CASE 
+            WHEN cpus.id IS NOT NULL THEN 'CPU'
+            WHEN gpus.id IS NOT NULL THEN 'GPU'
+            WHEN motherboards.id IS NOT NULL THEN 'Motherboard'
+            WHEN rams.id IS NOT NULL THEN 'RAM'
+            WHEN ssds.id IS NOT NULL THEN 'SSD'
+            WHEN psus.id IS NOT NULL THEN 'PSU'
+            WHEN cases.id IS NOT NULL THEN 'Case'
+            ELSE 'Unknown'
+        END AS productType
+    FROM
+        carts c
+        LEFT JOIN cpus ON c.productId = cpus.id
+        LEFT JOIN gpus ON c.productId = gpus.id
+        LEFT JOIN motherboards ON c.productId = motherboards.id
+        LEFT JOIN rams ON c.productId = rams.id
+        LEFT JOIN ssds ON c.productId = ssds.id
+        LEFT JOIN psus ON c.productId = psus.id
+        LEFT JOIN cases ON c.productId = cases.id
+    WHERE 
+        c.userId = @userId;
+END
 go

@@ -18,6 +18,11 @@
                 <button type="submit">view cart</button>
             </form>
 
+            <form action="login" method="post">
+                <input type="hidden" name="action" value="logout" />
+                <button type="submit">logout</button>
+            </form>
+
             <p> cpus </p>
             <c:forEach var="cpu" items="${cpus}">
                 <form action="Cart" method="post">

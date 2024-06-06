@@ -14,7 +14,7 @@
                 <form action="Cart" method="post">
                     <input type="hidden" name="productID" value="${ProductCount.id}" />
                     <button type="submit" name="action" value="removeAll">${ProductCount.count}</button>
-                    <button type="submit" name="action" value="removeOne">${ProductCount.name}</button>
+                    <button type="submit" name="action" value="removeOne">${ProductCount.id} ${ProductCount.name}</button>
                     <button type="submit" name="action" value="addOne">+1</button>
                 </form>
                 <br>

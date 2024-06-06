@@ -2,11 +2,14 @@ package packages.wrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import database.Database;
 import packages.*;
 
 public class Cart {
+    public String userID;
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
+    Database db;
 
     public void updateQuantity() {
         HashMap<Integer, ProductCount> productCountMap = new HashMap<>();
@@ -20,6 +23,11 @@ public class Cart {
         }
         quantities.clear();
         quantities.addAll(productCountMap.values());
+        updateCart();
+    }
+
+    public void updateCart() {
+        System.out.println("Updating cart: " + db.updateCart(Integer.parseInt(userID), products));
     }
 
     public void remove(int id, boolean removeOne) {
@@ -33,7 +41,6 @@ public class Cart {
                 }
             }
         }
-
         updateQuantity();
     }
 
@@ -47,7 +54,11 @@ public class Cart {
         updateQuantity();
     }
 
-    public Cart() {
+    public Cart(String userID, Database db) {
+        this.userID = userID;
+        this.db = db;
+        products = db.getCart(Integer.parseInt(userID));
+        updateQuantity();
     }
 
     public void addProduct(String type, int id) {

@@ -17,7 +17,7 @@ public class User {
     public String confirmCode;
 
     public Cart cart;
-    Database db = new Database();
+    public Database db = new Database();
 
     public String toString() {
         return "User: " + username + "\n" + "Password: " + password + "\n" + "Full Name: " + fullName + "\n" + "Email: "
