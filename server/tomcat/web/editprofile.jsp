@@ -48,7 +48,6 @@
         <div class="container">
             <h1>Edit Profile</h1>
             <form action="editprofile" method="post" onsubmit="return confirmChange();">
-                <c:if test="${requestScope.status!=null}">${requestScope.status}</c:if>
                 <c:set var="user" value="${requestScope.user}"/>
                 <div class="form-item">
                     <label>Tên Đăng Nhập:</label>
@@ -56,23 +55,23 @@
                     </div>
                     <div class="form-item">
                         <label>Mật khẩu:</label>
-                        <input type="password" name="password" value="<c:out value=" ${user.password}"></c:out>" >
+                        <input type="password" name="password" value="<c:out value="${user.password}"></c:out>" >
                     </div>
                     <div class="form-item">
                         <label>Họ và Tên:</label>
-                        <input type="text" name="fullname" value="<c:out value=" ${user.fullName}"></c:out>">
+                        <input type="text" name="fullname" value="<c:out value="${user.fullName}"></c:out>">
                     </div>
                     <div class="form-item">
                         <label>Email:</label>
-                        <input type="text" name="email" value="<c:out value=" ${user.email}"></c:out>">
+                        <input type="text" name="email" value="<c:out value="${user.email}"></c:out>">
                     </div>
                     <div class="form-item">
                         <label>Số Điện Thoại:</label>
-                        <input type="text" name="phoneNumber" value="<c:out value=" ${user.phoneNumber}"></c:out>">
+                        <input type="text" name="phoneNumber" value="<c:out value="${user.phoneNumber}"></c:out>">
                     </div>
                     <div class="form-item">
                         <label>Địa Chỉ:</label>
-                        <input type="text" name="address" value="<c:out value=" ${user.address}"></c:out>">
+                        <input type="text" name="address" value="<c:out value="${user.address}"></c:out>">
                     </div>
                     <div class="form-item">
                         <label>Ngày Sinh:</label>
