@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import packages.*;
 
-class Cart {
+public class Cart {
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
-    public String userName;
 
     public void updateQuantity() {
         HashMap<Integer, ProductCount> productCountMap = new HashMap<>();
@@ -38,8 +37,7 @@ class Cart {
         updateQuantity();
     }
 
-    public Cart(String userName) {
-        this.userName = userName;
+    public Cart() {
     }
 
     public void addProduct(String type, int id) {

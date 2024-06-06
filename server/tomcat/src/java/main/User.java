@@ -1,19 +1,50 @@
 package main;
 
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Random;
-
 import database.Database;
+import packages.wrap.Cart;
 
 public class User {
+    public String id;
     public String username, password;
     public String fullName, email, phoneNumber, address;
     public String dateOfBirth;
     public String confirmCode;
 
+    public Cart cart;
     Database db = new Database();
+
+    public String toString() {
+        return "User: " + username + "\n" + "Password: " + password + "\n" + "Full Name: " + fullName + "\n" + "Email: "
+                + email + "\n" + "Phone Number: " + phoneNumber + "\n" + "Address: " + address + "\n"
+                + "Date of Birth: " + dateOfBirth + "\n" + "Confirm Code: " + confirmCode;
+    }
+
+    public void retrieveData() {
+        try {
+            String sql = "select * from users join userdetails on users.id = userdetails.id WHERE users.username = ?";
+            PreparedStatement statement = db.connection.prepareStatement(sql);
+            statement.setString(1, username);
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                id = rs.getString("id");
+                fullName = rs.getString("fullName");
+                email = rs.getString("email");
+                phoneNumber = rs.getString("phoneNumber");
+                address = rs.getString("address");
+                dateOfBirth = rs.getString("dateOfBirth");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
 
     public User() {
     }
@@ -107,11 +138,6 @@ public class User {
         return result;
     }
 
-    public String toString() {
-        return "User: " + username + " " + password + " " + fullName + " " + email + " " + phoneNumber + " " + address
-                + " " + dateOfBirth;
-    }
-
     public int register(boolean isUserGoogle) {
         int result = 0;
 
@@ -145,6 +171,7 @@ public class User {
     }
 
     public int updateInformation() {
+
         int result = 0;
 
         try {

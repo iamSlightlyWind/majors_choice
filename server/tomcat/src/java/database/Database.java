@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import packages.*;
+import packages.wrap.*;
 
 public class Database {
     public Connection connection;
@@ -253,5 +254,77 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public int deleteCart(int userID) {
+        try {
+            String sql = "{call deleteCart(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, userID);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    public int updateCart(int userID, ArrayList<Product> products) {
+        if (deleteCart(userID) == 1) {
+            try {
+                String sql = "{call addToCart(?, ?, ?, ?, ?)}";
+                CallableStatement statement = connection.prepareCall(sql);
+                for (Product product : products) {
+                    statement.setInt(1, userID);
+                    statement.setInt(2, product.id);
+                    statement.setDouble(3, product.sellingPrice);
+                    statement.setDouble(4, product.costPrice);
+                    statement.registerOutParameter(5, Types.INTEGER);
+
+                    statement.execute();
+                    return statement.getInt(5);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return -1;
+    }
+
+    public int placeOrder(int userID) {
+        try {
+            String sql = "{call placeOrder(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, userID);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+
+            if (statement.getInt(2) == 1) {
+                deleteCart(userID);
+            }
+
+            return statement.getInt(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    public int getUserID(String username) {
+        try {
+            String sql = "{call getUserID(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 }

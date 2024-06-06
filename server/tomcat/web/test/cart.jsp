@@ -18,6 +18,12 @@
                 </form>
                 <br>
             </c:forEach>
+
+            <form>
+                <p>Place Order</p>
+                <form action="order" method="post">
+                    <button type="submit" name="action" value="placeOrder">Place Order</button>
+                </form>
         </body>
 
         </html>

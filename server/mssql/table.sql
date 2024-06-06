@@ -140,11 +140,20 @@ create table ratings
 
 create table carts
 (
-    id int identity(1,1) primary key,
     userId int references users(id),
     productId int references products(id),
-    quantity int,
-    dateAdded date default getdate()
+    sellingPrice decimal(18,2),
+    costPrice decimal(18,2)
+);
+
+create table orders
+(
+    id int primary key,
+    userId int references users(id),
+    productId int references products(id),
+    sellingPrice decimal(18,2),
+    costPrice decimal(18,2),
+    dateOrdered date default getdate()
 );
 
 create table feedback
@@ -153,14 +162,4 @@ create table feedback
     userId int references users(id),
     feedback nvarchar(max),
     dateSent date default getdate()
-);
-
-create table orders
-(
-    id int identity(1,1) primary key,
-    userId int references users(id),
-    productId int references products(id),
-    pricePer decimal(18,2),
-    quantity int,
-    dateOrdered date default getdate()
 );

@@ -646,3 +646,79 @@ begin
     join psus on products.id = psus.id
 end
 go
+
+create procedure deleteCart
+    @userID int,
+    @result int output
+as
+begin
+    if exists (select 1 from users where id = @userID)
+    begin
+        delete from cart
+        where userID = @userID
+        set @result = 1
+    end
+    else
+    begin
+        set @result = 0
+    end
+end;
+go
+
+create procedure addToCart
+    @userID int,
+    @productID int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @result int output
+as
+begin
+    if exists (select 1 from users where id = @userID)
+    begin
+        insert into cart
+            (userID, productID, sellingPrice, costPrice)
+        values
+            (@userID, @productID, @sellingPrice, @costPrice)
+        set @result = 1
+    end
+    else
+    begin
+        set @result = 0
+    end
+end;
+go
+
+create procedure getCart
+    @userID int
+as
+begin
+    select * from cart
+    where userID = @userID
+end;
+go
+
+create procedure placeOrder
+    @userID int,
+    @result int output
+as
+begin
+    if exists (select 1 from users where id = @userID)
+    begin
+        declare @orderID int
+        set @orderID = (select max(id) from orders) + 1
+
+        insert into orders
+            (id, userId, productId, sellingPrice, costPrice)
+        select
+            @orderID, userID, productID, sellingPrice, costPrice
+        from cart
+        where userID = @userID
+
+        set @result = 1
+    end
+    else
+    begin
+        set @result = 0
+    end
+end;
+go

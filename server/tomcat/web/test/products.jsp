@@ -11,6 +11,8 @@
 
         <body>
 
+            <p>${username}</p>
+
             <form action="Cart" method="post">
                 <input type="hidden" name="action" value="viewCart" />
                 <button type="submit">view cart</button>

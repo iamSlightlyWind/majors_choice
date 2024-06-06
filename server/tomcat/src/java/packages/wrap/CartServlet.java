@@ -2,12 +2,11 @@ package packages.wrap;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import main.User;
 
 public class CartServlet extends HttpServlet {
 
@@ -16,62 +15,26 @@ public class CartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String action = request.getParameter("action");
+        User currentUser = (User) request.getSession().getAttribute("userObject");
 
-        if (action == null) {
-            action = "";
+        if (currentUser.cart == null) {
+            currentUser.cart = new Cart();
         }
 
-        if (action.equals("viewCart") || action.equals("")) {
-            tempViewCart(request, response);
-            return;
+        if (action == null || action.equals("viewCart")) {
+            request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
+            request.getRequestDispatcher("/test/cart.jsp").forward(request, response);
         } else if (action.equals("addItem")) {
-            addProduct(request, response);
+            currentUser.cart.addProduct(request.getParameter("type"),
+                    Integer.parseInt(request.getParameter("productID")));
             response.sendRedirect("/Test");
-            return;
         } else if (action.equals("removeOne") || action.equals("removeAll")) {
-            removeProduct(request, response);
+            currentUser.cart.remove(Integer.parseInt(request.getParameter("productID")),
+                    ((String) request.getParameter("action")).equals("removeOne"));
             response.sendRedirect("/Cart");
-            return;
         }
-    }
 
-    protected void removeProduct(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-
-        Cart cart = getCart(session);
-
-        cart.remove(Integer.parseInt(request.getParameter("productID")),
-                ((String) request.getParameter("action")).equals("removeOne"));
-    }
-
-    protected Cart getCart(HttpSession session) {
-        if (session.getAttribute("cart") == null) {
-            session.setAttribute("cart", new Cart((String) session.getAttribute("userName")));
-        }
-        return (Cart) session.getAttribute("cart");
-    }
-
-    protected void tempViewCart(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-
-        Cart cart = getCart(session);
-
-        request.setAttribute("ProductCount", (ArrayList<ProductCount>) cart.quantities);
-        request.getRequestDispatcher("/test/cart.jsp").forward(request, response);
-    }
-
-    protected void addProduct(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-
-        Cart cart = getCart(session);
-
-        cart.addProduct(request.getParameter("type"), Integer.parseInt(request.getParameter("productID")));
+        request.getSession().setAttribute("userObject", currentUser);
     }
 
     @Override

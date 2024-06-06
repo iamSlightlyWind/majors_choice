@@ -14,13 +14,6 @@ public class Test extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-
         Database db = new Database();
 
         ArrayList<CPU> cpus = db.getCPUs();
@@ -30,6 +23,7 @@ public class Test extends HttpServlet {
         ArrayList<SSD> ssds = db.getSSDs();
         ArrayList<PSU> psus = db.getPSUs();
 
+        request.setAttribute("username", ((User) request.getSession().getAttribute("userObject")).fullName);
         request.setAttribute("cpus", cpus);
         request.setAttribute("gpus", gpus);
         request.setAttribute("rams", rams);
@@ -37,10 +31,12 @@ public class Test extends HttpServlet {
         request.setAttribute("ssds", ssds);
         request.setAttribute("psus", psus);
         request.getRequestDispatcher("test/products.jsp").forward(request, response);
+    }
 
-
-        //response.getWriter().println(database.selectAll("users"));
-        //response.getWriter().println(database.selectAll("userDetails"));
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     @Override
@@ -52,10 +48,5 @@ public class Test extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
-
-    public static void main(String[] args) {
-        User user = new User("emilyjohnson", "password456");
-        user.activate("DfjgR");
     }
 }
