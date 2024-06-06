@@ -28,6 +28,8 @@
                 <form id="loginForm" action="login" method="post">
                   <input type="text" name="user" id="" class="form-control my-4 py-2" placeholder="Username" />
                   <input type="password" name="pass" id="" class="form-control my-4 py-2" placeholder="Password" />
+                  <div class="g-recaptcha" data-sitekey="6LdK--8pAAAAABv-L5jPFsFySBjogEmHiFt87qcV"></div>
+		  <div class="error"></div>
                   <div class="text-center mt-3">
                     <button class="btn btn-primary">Login</button>
                     <a href="recovery.jsp" class="nav-link">Forgot Password ?</a>
@@ -44,7 +46,13 @@
         </div>
       </div>
     </section>
-
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>    
+            <script src="js/recaptchar.js"></script>
+            <script>
+                window.onload = function (){
+                handleFormSubmission("loginForm");
+		};
+            </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"></script>
