@@ -233,26 +233,27 @@ public class Database {
     }
 
     public ArrayList<Case> getCases() {
-        try {
-            String sql = "{call getCase()}";
-            CallableStatement statement = connection.prepareCall(sql);
-            ResultSet resultSet = statement.executeQuery();
-            ArrayList<Case> cases = new ArrayList<>();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                double sellingPrice = resultSet.getDouble("sellingPrice");
-                double costPrice = resultSet.getDouble("costPrice");
-                String description = resultSet.getString("description");
-                String name = resultSet.getString("name");
-                String type = resultSet.getString("type");
-                String formFactor = resultSet.getString("formFactor");
-                String color = resultSet.getString("color");
-                cases.add(new Case(id, sellingPrice, costPrice, description, name, type, formFactor, color));
-            }
-            return cases;
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // try {
+        // String sql = "{call getCase()}";
+        // CallableStatement statement = connection.prepareCall(sql);
+        // ResultSet resultSet = statement.executeQuery();
+        // ArrayList<Case> cases = new ArrayList<>();
+        // while (resultSet.next()) {
+        // int id = resultSet.getInt("id");
+        // double sellingPrice = resultSet.getDouble("sellingPrice");
+        // double costPrice = resultSet.getDouble("costPrice");
+        // String description = resultSet.getString("description");
+        // String name = resultSet.getString("name");
+        // String type = resultSet.getString("type");
+        // String formFactor = resultSet.getString("formFactor");
+        // String color = resultSet.getString("color");
+        // cases.add(new Case(id, sellingPrice, costPrice, description, name, type,
+        // formFactor, color));
+        // }
+        // return cases;
+        // } catch (SQLException ex) {
+        // Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        // }
         return null;
     }
 
@@ -295,6 +296,7 @@ public class Database {
     }
 
     public int placeOrder(int userID) {
+        System.out.println("uid: " + userID);
         try {
             String sql = "{call placeOrder(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -311,7 +313,9 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return -1;
+
+        deleteCart(userID);
+        return 1;
     }
 
     public ArrayList<Product> getCart(int userID) {
@@ -411,6 +415,43 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return products;
+    }
+
+    public ArrayList<Order> getOrders(int userID) {
+        ArrayList<Order> orders = new ArrayList<>();
+        try {
+            String sql = "{call getOrders(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, userID);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                boolean found = false;
+                for (Order order : orders) {
+                    if (order.id == resultSet.getInt("id")) {
+                        found = true;
+                        order.products
+                                .add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
+                                        resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    Order order = new Order(resultSet.getInt("id"), resultSet.getString("status"));
+                    orders.add(order);
+                    order.products.add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
+                            resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
+                }
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        for (Order order : orders) {
+            order.updateQuantity();
+        }
+        return orders;
     }
 
 }

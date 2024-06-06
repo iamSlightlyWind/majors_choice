@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.User;
 
 public class OrderServlet extends HttpServlet {
 
@@ -14,9 +15,13 @@ public class OrderServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String action = request.getParameter("action");
+        User currentUser = (User) request.getSession().getAttribute("userObject");
 
-        if (action.equals("placeOrder")) {
+        currentUser.getOrders();
 
+        if (action == null) {
+            request.setAttribute("OrderList", currentUser.orders);
+            request.getRequestDispatcher("/test/order.jsp").forward(request, response);
         }
     }
 

@@ -707,34 +707,39 @@ begin
 end;
 go
 
-create procedure placeOrder
+CREATE PROCEDURE placeOrder
     @userID int,
-    @result int output
-as
-begin
-    if exists (select 1
-    from users
-    where id = @userID)
-    begin
-        declare @orderID int
-        set @orderID = (select max(id)
-        from orders) + 1
+    @result int OUTPUT
+AS
+BEGIN
+    IF EXISTS (SELECT 1
+    FROM users
+    WHERE id = @userID)
+    BEGIN
+        INSERT INTO orders
+            (id, userId, productId, sellingPrice, costPrice, status)
+        SELECT
+            (SELECT ISNULL(MAX(id), 0) + 1
+            FROM orders),
+            userID,
+            productID,
+            sellingPrice,
+            costPrice,
+            'Pending'
+        FROM carts
+        WHERE userID = @userID;
 
-        insert into orders
-            (id, userId, productId, sellingPrice, costPrice)
-        select
-            @orderID, userID, productID, sellingPrice, costPrice
-        from carts
-        where userID = @userID
+        DELETE FROM carts
+        WHERE userID = @userID;
 
-        set @result = 1
-    end
-    else
-    begin
-        set @result = 0
-    end
-end;
-go
+        SET @result = 1;
+    END
+    ELSE
+    BEGIN
+        SET @result = 0;
+    END
+END;
+GO
 
 CREATE PROCEDURE getCartItems
     @userId int
@@ -766,4 +771,41 @@ BEGIN
     WHERE 
         c.userId = @userId;
 END
+go
+
+CREATE PROCEDURE getOrders
+    @userId int
+AS
+BEGIN
+    SELECT
+        o.id,
+        o.userId,
+        o.productId,
+        o.sellingPrice,
+        o.costPrice,
+        o.status,
+        o.dateOrdered,
+        CASE 
+            WHEN cpus.id IS NOT NULL THEN cpus.name
+            WHEN gpus.id IS NOT NULL THEN gpus.name
+            WHEN motherboards.id IS NOT NULL THEN motherboards.name
+            WHEN rams.id IS NOT NULL THEN rams.name
+            WHEN ssds.id IS NOT NULL THEN ssds.name
+            WHEN psus.id IS NOT NULL THEN psus.name
+            WHEN cases.id IS NOT NULL THEN cases.name
+            ELSE 'Unknown'
+        END AS productName
+    FROM
+        orders o
+        INNER JOIN products p ON o.productId = p.id
+        LEFT JOIN cpus ON o.productId = cpus.id
+        LEFT JOIN gpus ON o.productId = gpus.id
+        LEFT JOIN motherboards ON o.productId = motherboards.id
+        LEFT JOIN rams ON o.productId = rams.id
+        LEFT JOIN ssds ON o.productId = ssds.id
+        LEFT JOIN psus ON o.productId = psus.id
+        LEFT JOIN cases ON o.productId = cases.id
+    WHERE 
+        o.userId = @userId;
+END;
 go

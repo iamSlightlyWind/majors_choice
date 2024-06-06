@@ -27,11 +27,10 @@ public class Cart {
     }
 
     public void updateCart() {
-        System.out.println("Updating cart: " + db.updateCart(Integer.parseInt(userID), products));
+        db.updateCart(Integer.parseInt(userID), products);
     }
 
     public void remove(int id, boolean removeOne) {
-        System.out.println(removeOne);
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).id == id) {
                 products.remove(i);
@@ -42,6 +41,12 @@ public class Cart {
             }
         }
         updateQuantity();
+    }
+
+    public void placeOrder() {
+        db.placeOrder(Integer.parseInt(userID));
+        products.clear();
+        quantities.clear();
     }
 
     public void addOne(int id) {

@@ -21,9 +21,12 @@
                 <br>
             </c:forEach>
 
-            <p>Place Order</p>
             <form action="order" method="post">
-                <button type="submit" name="action" value="placeOrder">Place Order</button>
+                <button type="submit">view orders</button>
+            </form>
+
+            <form action="Cart" method="post">
+                <button type="submit" name="action" value="placeOrder">place order</button>
             </form>
 
             <form action="login" method="post">

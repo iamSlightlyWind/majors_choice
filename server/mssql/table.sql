@@ -148,11 +148,12 @@ create table carts
 
 create table orders
 (
-    id int primary key,
+    id int,
     userId int references users(id),
     productId int references products(id),
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
+    status nvarchar(50),
     dateOrdered date default getdate()
 );
 

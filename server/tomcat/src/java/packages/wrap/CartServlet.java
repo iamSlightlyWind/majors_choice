@@ -35,6 +35,9 @@ public class CartServlet extends HttpServlet {
         } else if (action.equals("addOne")) {
             currentUser.cart.addOne(Integer.parseInt(request.getParameter("productID")));
             response.sendRedirect("/Cart");
+        } else if (action.equals("placeOrder")) {
+            currentUser.cart.placeOrder();
+            response.sendRedirect("/Cart");
         }
 
         request.getSession().setAttribute("userObject", currentUser);

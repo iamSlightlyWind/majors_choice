@@ -5,9 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.Random;
 import database.Database;
 import packages.wrap.Cart;
+import packages.wrap.Order;
 
 public class User {
     public String id;
@@ -17,6 +19,7 @@ public class User {
     public String confirmCode;
 
     public Cart cart;
+    public ArrayList<Order> orders = new ArrayList<Order>();
     public Database db = new Database();
 
     public String toString() {
@@ -44,6 +47,10 @@ public class User {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+    }
+
+    public void getOrders(){
+        orders = db.getOrders(Integer.parseInt(this.id));
     }
 
     public User() {
