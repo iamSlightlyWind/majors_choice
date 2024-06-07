@@ -18,7 +18,7 @@ public class ActivateServlet extends HttpServlet {
 
         switch (result) {
             case 0:
-                request.setAttribute("user", ((User) request.getSession().getAttribute("user")).username);
+                request.setAttribute("user", ((User) request.getSession().getAttribute("userObject")).username);
                 request.setAttribute("activateStatus", "Activation code is incorrect.");
                 request.getRequestDispatcher("activate.jsp").forward(request, response);
                 break;
