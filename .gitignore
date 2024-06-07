@@ -24,16 +24,16 @@ replay_pid*
 temp.sql
 
 # NetBeans specific #
-server/tomcat/nbproject/private/
-server/tomcat/nbproject/genfiles.properties
-server/tomcat/build/
-server/tomcat/nbbuild/
-server/tomcat/nbdist/
-server/tomcat/nbactions.xml
-server/tomcat/nb-configuration.xml
+nbproject/private/
+build/
+nbbuild/
+nbdist/
+nbactions.xml
+nb-configuration.xml
 
 # Class Files #
 *.class
 
 # Package Files #
 *.ear
+/server/tomcat/dist/

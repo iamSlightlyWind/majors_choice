@@ -6,7 +6,7 @@ concurrency:
 
 on: 
   workflow_dispatch:
-  #push:
+  push:
   #pull_request:
 
 jobs:
@@ -50,6 +50,16 @@ jobs:
       env:
         SQLPASSWORD: ${{ secrets.SQLPASSWORD }}
 
+    #- name: Run ngrok SSH
+    #  id: ngrok
+    #  uses: tmshkr/ngrok-ssh@latest
+    #  with:
+    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+
+    - name: Run ngrok to forward port
+      run: ngrok http --region=ap http://localhost:8080 &
+
     - name: Create database
       run: | 
         echo "creating database"
@@ -61,19 +71,5 @@ jobs:
         echo "inserting data"
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
 
-    #- name: Run ngrok SSH
-    #  id: ngrok
-    #  uses: tmshkr/ngrok-ssh@latest
-    #  with:
-    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
-    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-
-    - name: Run ngrok to forward port
-      run: |
-        ngrok http http://localhost:8080 &
-        sleep 15
-        curl http://localhost:4040/api/tunnels
-
     - name: Show tomcat Logs
-      timeout-minutes: 30
       run: docker logs -f `docker ps -q --filter ancestor=tomcat`
