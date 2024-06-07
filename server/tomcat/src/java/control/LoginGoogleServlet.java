@@ -23,8 +23,6 @@ public class LoginGoogleServlet extends HttpServlet {
         String code = request.getParameter("code");
         String accessToken = getToken(code);
         UserGoogle user = getUserInfo(accessToken);
-        System.out.println(user);
-        
     } 
     public static String getToken(String code) throws ClientProtocolException, IOException {
 		// call api to get token

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DAO;
 
 import database.Database;
@@ -14,16 +10,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import packages.CPU;
 
-/**
- *
- * @author PC
- */
 public class DAOCPU extends Database {
 
     public Vector<CPU> getAll(String sql) {
         Vector<CPU> vector = new Vector<CPU>();
         try {
-            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 int id = rs.getInt(1);
@@ -35,7 +28,8 @@ public class DAOCPU extends Database {
                 int baseClock = rs.getInt(7);
                 int boostClock = rs.getInt(8);
                 int tdp = rs.getInt(9);
-                CPU cpu = new CPU(id, baseClock, boostClock, generation, name, generation, socket, cores, threads, baseClock, boostClock, tdp);
+                CPU cpu = new CPU(id, baseClock, boostClock, generation, name, generation, socket, cores, threads,
+                        baseClock, boostClock, tdp);
                 vector.add(cpu);
             }
         } catch (SQLException ex) {
@@ -46,52 +40,55 @@ public class DAOCPU extends Database {
 
     public int insertCPU(CPU cpu) {
         int n = 0;
-        String sqlInsert = "INSERT INTO [dbo].[cpus]\n"
-                + "           ([id]\n"
-                + "           ,[name]\n"
-                + "           ,[generation]\n"
-                + "           ,[socket]\n"
-                + "           ,[cores]\n"
-                + "           ,[threads]\n"
-                + "           ,[baseClock]\n"
-                + "           ,[boostClock]\n"
-                + "           ,[tdp]"
-                + ",[images])"
-                + "VALUES\n"
-                + "(?,?,?,?,?,?,?,?,?,?);";
-        System.out.println(sqlInsert);
+
+        String sqlInsertProduct = "INSERT INTO [dbo].[products] ([sellingPrice], [costPrice]) VALUES (?, ?);";
+        String sqlInsertCPU = "INSERT INTO [dbo].[cpus] ([id], [name], [generation], [socket], [cores], [threads], [baseClock], [boostClock], [tdp], [image]) VALUES (?,?,?,?,?,?,?,?,?,?);";
         try {
-            PreparedStatement statement = connection.prepareStatement(sqlInsert);
-            statement.setInt(1, cpu.getId());
-            statement.setString(2, cpu.getName());
-            statement.setString(3, cpu.getGeneration());
-            statement.setString(4, cpu.getSocket());
-            statement.setInt(5, cpu.getCores());
-            statement.setInt(6, cpu.getThreads());
-            statement.setInt(7, cpu.getBaseClock());
-            statement.setInt(8, cpu.getBoostClock());
-            statement.setInt(9, cpu.getTdp());
-            statement.setString(10, cpu.getImages());
-            n = statement.executeUpdate();
+            PreparedStatement productStatement = connection.prepareStatement(sqlInsertProduct,
+                    Statement.RETURN_GENERATED_KEYS);
+            productStatement.setDouble(1, 0);
+            productStatement.setDouble(2, 0);
+            productStatement.executeUpdate();
+
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id");
+            }
+
+            PreparedStatement cpuStatement = connection.prepareStatement(sqlInsertCPU);
+            cpuStatement.setInt(1, productId);
+            System.out.println("name: " + cpu.getName());
+            System.out.println("generation: " + cpu.getGeneration());
+            System.out.println("socket: " + cpu.getSocket());
+            System.out.println("cores: " + cpu.getCores());
+            System.out.println("threads: " + cpu.getThreads());
+            System.out.println("baseClock: " + cpu.getBaseClock());
+            System.out.println("boostClock: " + cpu.getBoostClock());
+            System.out.println("tdp: " + cpu.getTdp());
+            System.out.println("images: " + cpu.getImages());
+
+            cpuStatement.setString(2, cpu.getName());
+            cpuStatement.setString(3, cpu.getGeneration());
+            cpuStatement.setString(4, cpu.getSocket());
+            cpuStatement.setInt(5, cpu.getCores());
+            cpuStatement.setInt(6, cpu.getThreads());
+            cpuStatement.setInt(7, cpu.getBaseClock());
+            cpuStatement.setInt(8, cpu.getBoostClock());
+            cpuStatement.setInt(9, cpu.getTdp());
+            cpuStatement.setString(10, cpu.getImages());
+            n = cpuStatement.executeUpdate();
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(DAOCPU.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOCPU.class.getName()).log(Level.SEVERE, null, ex);
         }
         return n;
     }
 
     public int updateCPU(CPU cpu) {
         int n = 0;
-        String sqlUpdate = "UPDATE [dbo].[cpus]\n"
-                + "   SET [id] = ?\n"
-                + "      ,[name] = ?\n"
-                + "      ,[generation] = ?\n"
-                + "      ,[socket] = ?\n"
-                + "      ,[cores] = ?\n"
-                + "      ,[threads] = ?\n"
-                + "      ,[baseClock] = ?\n"
-                + "      ,[boostClock] = ?\n"
-                + "      ,[tdp] = ?\n"
-                + " WHERE [id] = ?";
+        String sqlUpdate = "UPDATE [dbo].[cpus] SET [id] = ?, [name] = ?, [generation] = ?, [socket] = ?, [cores] = ?, [threads] = ?, [baseClock] = ?, [boostClock] = ?, [tdp] = ? WHERE [id] = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sqlUpdate);
             statement.setInt(1, cpu.getId());
@@ -106,7 +103,6 @@ public class DAOCPU extends Database {
             statement.setInt(10, cpu.getId());
             n = statement.executeUpdate();
         } catch (SQLException ex) {
-            //log
             Logger.getLogger(DAOCPU.class.getName()).log(Level.SEVERE, null, ex);
         }
         return n;
@@ -114,8 +110,7 @@ public class DAOCPU extends Database {
 
     public int removeCPU(int id) {
         int n = 0;
-        String sql = "DELETE FROM [dbo].[cpus]\n"
-                + "      WHERE id = " + id;
+        String sql = "DELETE FROM [dbo].[cpus]  WHERE id = " + id;
         try {
             Statement state = connection.createStatement();
             n = state.executeUpdate(sql);
@@ -129,12 +124,14 @@ public class DAOCPU extends Database {
     public static void main(String[] args) {
         DAOCPU dao = new DAOCPU();
         dao.getAll("select * from cpus");
-//        int n = dao.insertCPU(new CPU(24, 0, 0, "test", "test", "test", "test", 3, 3, 3, 3, 3));
-//        int m = dao.updateCPU(new CPU(20, 0, 0, "tesr", "tesr", "tesr", "tesr", 4, 4, 4, 4, 4));
-//            int v = dao.removeCPU(20);
-//        Vector<CPU> vector = dao.getAll("select * from cpus");
-//        for (CPU cpu : vector) {
-//            System.out.println(cpu);
-//        }
+        // int n = dao.insertCPU(new CPU(24, 0, 0, "test", "test", "test", "test", 3, 3,
+        // 3, 3, 3));
+        // int m = dao.updateCPU(new CPU(20, 0, 0, "tesr", "tesr", "tesr", "tesr", 4, 4,
+        // 4, 4, 4));
+        // int v = dao.removeCPU(20);
+        // Vector<CPU> vector = dao.getAll("select * from cpus");
+        // for (CPU cpu : vector) {
+        // System.out.println(cpu);
+        // }
     }
 }

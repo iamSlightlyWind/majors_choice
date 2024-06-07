@@ -59,7 +59,8 @@ create table cpus
     threads int,
     baseClock int,
     boostClock int,
-    tdp int
+    tdp int,
+    image nvarchar(256)
 );
 
 create table gpus

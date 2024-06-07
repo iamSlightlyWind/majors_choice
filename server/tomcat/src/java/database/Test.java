@@ -1,14 +1,14 @@
 package database;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import main.Email;
 import main.User;
 
 public class Test extends HttpServlet {
@@ -38,8 +38,16 @@ public class Test extends HttpServlet {
         return "Short description";
     }
 
-    public static void main(String[] args) {
-        User user = new User("emilyjohnson", "password456");
-        user.activate("DfjgR");
+    public static void main(String[] args) throws SQLException {
+        Database db = new Database();
+        String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+        Statement statement = db.connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+        int productId = 0;
+        if (resultSet.next()) {
+            productId = resultSet.getInt("max_id") + 1;
+        }
+
+        System.out.println(productId);
     }
 }
