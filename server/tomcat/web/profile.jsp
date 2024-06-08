@@ -87,6 +87,11 @@
             <form action="profile" method="post" style="display:inline;">
                 <button type="submit">Chỉnh Sửa Hồ Sơ</button>
             </form>
+        <c:if test="${sessionScope.table == 'managers'}">
+            <form action="meditprofile" method="post" style="display:inline;">
+                <button type="submit">Manager Account</button>
+            </form>
+        </c:if>
         </div>
     </div>
     

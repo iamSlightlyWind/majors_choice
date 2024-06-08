@@ -55,7 +55,7 @@ public class LoginGoogleServlet extends HttpServlet {
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
 
-            System.out.println("Update: " + user.updateInformation());
+            System.out.println("Update: " + user.updateInformation("users"));
             request.setAttribute("loginStatus", "Logged in successfully");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }

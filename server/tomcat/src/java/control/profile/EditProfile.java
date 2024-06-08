@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import main.User;
@@ -14,6 +15,7 @@ public class EditProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(false);
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -26,7 +28,8 @@ public class EditProfile extends HttpServlet {
         boolean emailFormat = isValidEmail(email);
         User user = new User(username, password, fullname, email, phone, address, dob);
         if (emailFormat) {
-            int result = user.updateInformation();
+            String tableName = (String) session.getAttribute("table");
+            int result = user.updateInformation(tableName);
             request.setAttribute("user", user);
             switch (result) {
                 case 1:

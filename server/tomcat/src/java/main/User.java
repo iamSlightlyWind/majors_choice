@@ -7,12 +7,15 @@ import java.util.Random;
 
 import database.Database;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 public class User {
     public String username, password;
     public String fullName, email, phoneNumber, address;
     public String dateOfBirth;
     public String confirmCode;
+    public int active;
+    public int id;
 
     public String getFullName() {
         return this.fullName;
@@ -172,7 +175,7 @@ public class User {
         return result;
     }
 
-    public int updateInformation() {
+    public int updateInformation(String tableName) {
         int result = 0;
 
         System.out.println("username: " + username);
@@ -184,19 +187,20 @@ public class User {
         System.out.println("dateOfBirth: " + dateOfBirth);
 
         try {
-            String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
-            statement.setString(1, username);
-            statement.setString(2, password);
-            statement.setString(3, fullName);
-            statement.setString(4, email);
-            statement.setString(5, phoneNumber);
-            statement.setString(6, address);
-            statement.setString(7, dateOfBirth);
-            statement.registerOutParameter(8, Types.INTEGER);
+            statement.setString(1, tableName);
+            statement.setString(2, username);
+            statement.setString(3, password);
+            statement.setString(4, fullName);
+            statement.setString(5, email);
+            statement.setString(6, phoneNumber);
+            statement.setString(7, address);
+            statement.setString(8, dateOfBirth);
+            statement.registerOutParameter(9, Types.INTEGER);
 
             statement.execute();
-            result = statement.getInt(8);
+            result = statement.getInt(9);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -204,13 +208,13 @@ public class User {
         return result;
     }
 
-    public User getUserDetailsByUsername(String username) {
+    public User getUserDetailsByUsername(String username, String table) {
         User user = null;
         try {
-            String sql = "{call GetUserDetailsByUsername(?)}";
+            String sql = "{call GetUserDetailsByUsername(?,?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, username);
-
+            statement.setString(2, table);
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
@@ -229,5 +233,45 @@ public class User {
         System.out.println(user);
         return user;
     }
+    
+    public int loginEmployee() {
+        int result = -1;
+        try {
+            String sql = "{call loginEmployee(?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.registerOutParameter(3, Types.INTEGER);
 
+            statement.execute();
+            result = statement.getInt(3);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return result;
+    }
+    
+    public Vector<User> getUserDetails(String tableName) {
+        Vector<User> users = new Vector<>();
+        try {
+            String sql = "{call GetUserDetails(?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, tableName);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                user.id = rs.getInt("id");
+                user.username = rs.getString("username");
+                user.password = rs.getString("password");
+                user.active = rs.getInt("active");
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return users;
+    }
+    
 }

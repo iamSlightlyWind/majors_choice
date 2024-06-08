@@ -18,9 +18,8 @@ public class Profile extends HttpServlet {
         User user = new User();
 
         String username = (String) sesion.getAttribute("username");
-
-        User user1 = user.getUserDetailsByUsername(username);
-        //User user1 = new User("davitscott", "password", "John Doe", "john@example.com", "123456789", "123 Street, City", "2000-01-01");
+        String table = (String) sesion.getAttribute("table");
+        User user1 = user.getUserDetailsByUsername(username, table);
         
         request.setAttribute("user", user1);
     }
