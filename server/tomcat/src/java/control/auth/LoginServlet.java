@@ -20,20 +20,38 @@ public class LoginServlet extends HttpServlet {
         user.password = request.getParameter("pass");
         int result = user.login();
         
-        if (result == 1) {
-            session.setAttribute("username", user.username);
-            session.setAttribute("table", "users");
-            request.setAttribute("loginStatus", "Logged in successfully");
-            //request.getRequestDispatcher("profile").forward(request, response);
-            response.sendRedirect("profile");
-        } else if (result == -1) {
-            session.setAttribute("username", user.username);
-            request.setAttribute("user", user.username);
-            request.getRequestDispatcher("activate.jsp").forward(request, response);
-        } else {
-            String error = "Login failed!";
-            request.setAttribute("loginStatus", error);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        switch(result){
+            case 1:
+                session.setAttribute("username", user.username);
+                session.setAttribute("table", "users");
+                request.setAttribute("loginStatus", "Logged in successfully");
+                //request.getRequestDispatcher("login.jsp").forward(request, response);
+                response.sendRedirect("profile");
+                break;
+            case -1:
+                session.setAttribute("username", user.username);
+                request.setAttribute("user", user.username);
+                request.getRequestDispatcher("activate.jsp").forward(request, response);
+                break;
+            case 0:
+                int result1 = user.loginEmployee();
+                switch(result1){
+                    case 1: //manager role
+                        session.setAttribute("username", user.username);
+                        session.setAttribute("table", "managers");
+                        response.sendRedirect("profile");
+                        break;
+                    case 0: //staff role
+                        session.setAttribute("username", user.username);
+                        session.setAttribute("table", "staffs");
+                        response.sendRedirect("profile");
+                        break;
+                    default:
+                        String error = "Login failed!";
+                        request.setAttribute("loginStatus", error);
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        break;
+                }           
         }
     }
 
