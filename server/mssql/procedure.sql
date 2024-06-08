@@ -269,6 +269,7 @@ create PROCEDURE addProductCPU
     @baseClock int,
     @boostClock int,
     @tdp int,
+    @image nvarchar(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -289,9 +290,9 @@ BEGIN
     SET @id = SCOPE_IDENTITY()
 
     INSERT INTO cpus
-        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp)
+        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image)
     VALUES
-        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp)
+        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @image)
 
     SET @result = 1
 END;
@@ -306,6 +307,7 @@ create PROCEDURE addProductGPU
     @baseClock int,
     @boostClock int,
     @tdp int,
+    @image nvarchar(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -326,9 +328,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO gpus
-        (id, name, generation, vram, baseClock, boostClock, tdp)
+        (id, name, generation, vram, baseClock, boostClock, tdp, image)
     VALUES
-        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp)
+        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @image)
 
     set @result = 1
 END;
@@ -342,6 +344,7 @@ create PROCEDURE addProductRAM
     @capacity int,
     @speed int,
     @latentcy int,
+    @image nvarchar(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -362,9 +365,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO rams
-        (id, name, generation, capacity, speed, latency)
+        (id, name, generation, capacity, speed, latency, image)
     VALUES
-        (@id, @name, @generation, @capacity, @speed, @latentcy)
+        (@id, @name, @generation, @capacity, @speed, @latentcy, @image)
 
     set @result = 1
 END;
@@ -381,6 +384,7 @@ create PROCEDURE addProductMotherboard
     @maxRamSpeed int,
     @ramSlots int,
     @wifi int,
+    @image nvarchar(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -401,9 +405,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO motherboards
-        (id, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi)
+        (id, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image)
     VALUES
-        (@id, @name, @socket, @chipset, @formFactor, @ramType, @maxRamSpeed, @ramSlots, @wifi)
+        (@id, @name, @socket, @chipset, @formFactor, @ramType, @maxRamSpeed, @ramSlots, @wifi, @image)
 
     set @result = 1
 END;
@@ -416,6 +420,7 @@ create PROCEDURE addProductSSD
     @interface nvarchar(20),
     @capacity int,
     @cache int,
+    @image nvarchar(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -436,9 +441,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO ssds
-        (id, name, interface, capacity, cache)
+        (id, name, interface, capacity, cache, image)
     VALUES
-        (@id, @name, @interface, @capacity, @cache)
+        (@id, @name, @interface, @capacity, @cache, @image)
 
     set @result = 1
 END;
@@ -450,6 +455,7 @@ create PROCEDURE addProductPSU
     @name nvarchar(50),
     @wattage int,
     @efficiency nvarchar(10),
+    @image nvarchar(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -470,9 +476,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO psus
-        (id, name, wattage, efficiency)
+        (id, name, wattage, efficiency, image)
     VALUES
-        (@id, @name, @wattage, @efficiency)
+        (@id, @name, @wattage, @efficiency, @image)
 
     set @result = 1
 END;
