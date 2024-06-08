@@ -38,6 +38,7 @@ create table staffDetails
     fullname nvarchar(50),
     email varchar(100),
     phoneNumber varchar(15),
+	address nvarchar(100),
     dateOfBirth date,
     dateJoined date default getdate()
 );
@@ -171,3 +172,4 @@ create table feedback
     feedback nvarchar(max),
     dateSent date default getdate()
 );
+

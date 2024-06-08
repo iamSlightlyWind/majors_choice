@@ -15,7 +15,6 @@ public class UserGoogle extends User {
             statement.registerOutParameter(2, Types.INTEGER);
 
             statement.execute();
-            // statement.getInt(2);
         } catch (SQLException ex) {
             System.out.println(ex);
         }

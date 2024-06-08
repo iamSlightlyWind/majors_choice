@@ -52,7 +52,7 @@ public class LoginGoogleServlet extends HttpServlet {
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
 
-            user.updateInformation();
+            user.updateInformation((String) request.getSession().getAttribute("table"));
             request.getSession().setAttribute("userObject", user);
             request.setAttribute("loginStatus", "Logged in successfully");
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -60,7 +60,6 @@ public class LoginGoogleServlet extends HttpServlet {
     }
 
     public static String getToken(String code) throws ClientProtocolException, IOException {
-        // call api to get token
         String response = Request.Post(Constants.GOOGLE_LINK_GET_TOKEN)
                 .bodyForm(Form.form().add("client_id", Constants.GOOGLE_CLIENT_ID)
                         .add("client_secret", Constants.GOOGLE_CLIENT_SECRET)
@@ -94,10 +93,4 @@ public class LoginGoogleServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
 }

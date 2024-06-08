@@ -2350,3 +2350,15 @@ EXEC addProductSSD
     @image = '',
     @result = @result OUTPUT
 PRINT @result
+
+-- Insert into staffs table with Manager Role
+INSERT INTO staffs (username, password, possition, active) 
+VALUES ('thangnvhe', '123', 1, 1);
+
+-- Get the ID of the inserted staff member
+DECLARE @id INT;
+SET @id = SCOPE_IDENTITY();
+
+-- Insert into staffDetails table using the obtained staff ID
+INSERT INTO staffDetails (id, fullname, email, phoneNumber, address,dateOfBirth) 
+VALUES (@id, 'Nguyen Van Thang', 'thangnvhe171327@fpt.edu.vn', '023432234', 'Viet Nam','1985-05-15');
