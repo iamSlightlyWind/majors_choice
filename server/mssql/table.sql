@@ -28,8 +28,8 @@ create table staffs
     id int identity(1,1) primary key,
     username varchar(25),
     password varchar(100),
-    possition varchar(25),
-    active int default 1
+    possition int default 0,
+    active int default 0
 );
 
 create table staffDetails
@@ -38,6 +38,7 @@ create table staffDetails
     fullname nvarchar(50),
     email varchar(100),
     phoneNumber varchar(15),
+	address nvarchar(100),
     dateOfBirth date,
     dateJoined date default getdate()
 );
@@ -60,7 +61,8 @@ create table cpus
     threads int,
     baseClock int,
     boostClock int,
-    tdp int
+    tdp int,
+    image nvarchar(max)
 );
 
 create table gpus
@@ -71,7 +73,8 @@ create table gpus
     vram int,
     baseClock int,
     boostClock int,
-    tdp int
+    tdp int,
+    image nvarchar(max)
 );
 
 create table motherboards
@@ -84,7 +87,8 @@ create table motherboards
     ramType nvarchar(10),
     maxRamSpeed int,
     ramSlots int,
-    wifi int
+    wifi int,
+    image nvarchar(max)
 );
 
 create table rams
@@ -94,7 +98,8 @@ create table rams
     generation nvarchar(50),
     capacity int,
     speed int,
-    latency int
+    latency int,
+    image nvarchar(max)
 );
 
 create table ssds
@@ -103,7 +108,8 @@ create table ssds
     name nvarchar(50),
     interface nvarchar(20),
     capacity int,
-    cache int
+    cache int,
+    image nvarchar(max)
 );
 
 create table psus
@@ -112,6 +118,7 @@ create table psus
     name nvarchar(50),
     wattage int,
     efficiency nvarchar(50),
+    image nvarchar(max)
 );
 
 create table cases
@@ -120,7 +127,8 @@ create table cases
     name nvarchar(50),
     type nvarchar(50),
     formFactor nvarchar(50),
-    color nvarchar(50)
+    color nvarchar(50),
+    image nvarchar(max)
 );
 
 create table warehouse
@@ -140,11 +148,21 @@ create table ratings
 
 create table carts
 (
-    id int identity(1,1) primary key,
     userId int references users(id),
     productId int references products(id),
-    quantity int,
-    dateAdded date default getdate()
+    sellingPrice decimal(18,2),
+    costPrice decimal(18,2)
+);
+
+create table orders
+(
+    id int,
+    userId int references users(id),
+    productId int references products(id),
+    sellingPrice decimal(18,2),
+    costPrice decimal(18,2),
+    status nvarchar(50),
+    dateOrdered date default getdate()
 );
 
 create table feedback
@@ -155,12 +173,3 @@ create table feedback
     dateSent date default getdate()
 );
 
-create table orders
-(
-    id int identity(1,1) primary key,
-    userId int references users(id),
-    productId int references products(id),
-    pricePer decimal(18,2),
-    quantity int,
-    dateOrdered date default getdate()
-);

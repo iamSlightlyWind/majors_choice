@@ -85,6 +85,7 @@ EXEC addProductCPU
     @baseClock = 3.6,
     @boostClock = 4.2,
     @tdp = 65,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -100,6 +101,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 4.6,
     @tdp = 65,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -115,6 +117,7 @@ EXEC addProductCPU
     @baseClock = 4.5,
     @boostClock = 5.7,
     @tdp = 170,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -130,6 +133,7 @@ EXEC addProductCPU
     @baseClock = 3.7,
     @boostClock = 4.6,
     @tdp = 65,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -145,6 +149,7 @@ EXEC addProductCPU
     @baseClock = 3.8,
     @boostClock = 4.7,
     @tdp = 105,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -160,6 +165,7 @@ EXEC addProductCPU
     @baseClock = 3.7,
     @boostClock = 4.8,
     @tdp = 105,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -175,6 +181,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 4.9,
     @tdp = 105,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -190,6 +197,7 @@ EXEC addProductCPU
     @baseClock = 4.5,
     @boostClock = 5.4,
     @tdp = 105,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -205,6 +213,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 5.4,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -220,6 +229,7 @@ EXEC addProductCPU
     @baseClock = 3,
     @boostClock = 5.8,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -235,6 +245,7 @@ EXEC addProductCPU
     @baseClock = 3.6,
     @boostClock = 5.5,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -250,6 +261,7 @@ EXEC addProductCPU
     @baseClock = 3.5,
     @boostClock = 5.8,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -265,6 +277,7 @@ EXEC addProductCPU
     @baseClock = 3.5,
     @boostClock = 5.1,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -280,6 +293,7 @@ EXEC addProductCPU
     @baseClock = 3.5,
     @boostClock = 5.1,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -295,6 +309,7 @@ EXEC addProductCPU
     @baseClock = 3,
     @boostClock = 5.8,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -310,6 +325,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 5.4,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -325,6 +341,7 @@ EXEC addProductCPU
     @baseClock = 3.2,
     @boostClock = 6,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -340,6 +357,7 @@ EXEC addProductCPU
     @baseClock = 3.2,
     @boostClock = 6,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -355,6 +373,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 5.6,
     @tdp = 125,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -369,6 +388,7 @@ EXEC addProductGPU
     @baseClock = 1825,
     @boostClock = 2250,
     @tdp = 300,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -382,6 +402,7 @@ EXEC addProductGPU
     @baseClock = 1825,
     @boostClock = 2250,
     @tdp = 300,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -395,6 +416,7 @@ EXEC addProductGPU
     @baseClock = 2321,
     @boostClock = 2581,
     @tdp = 230,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -408,6 +430,7 @@ EXEC addProductGPU
     @baseClock = 1968,
     @boostClock = 2589,
     @tdp = 160,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -421,6 +444,7 @@ EXEC addProductGPU
     @baseClock = 1395,
     @boostClock = 1695,
     @tdp = 350,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -434,6 +458,7 @@ EXEC addProductGPU
     @baseClock = 1440,
     @boostClock = 1710,
     @tdp = 320,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -447,6 +472,7 @@ EXEC addProductGPU
     @baseClock = 1500,
     @boostClock = 1725,
     @tdp = 220,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -460,6 +486,7 @@ EXEC addProductGPU
     @baseClock = 1410,
     @boostClock = 1665,
     @tdp = 200,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -473,6 +500,7 @@ EXEC addProductGPU
     @baseClock = 1900,
     @boostClock = 2400,
     @tdp = 355,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -486,6 +514,7 @@ EXEC addProductGPU
     @baseClock = 1500,
     @boostClock = 2200,
     @tdp = 300,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -499,6 +528,7 @@ EXEC addProductGPU
     @baseClock = 1600,
     @boostClock = 2100,
     @tdp = 290,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -512,6 +542,7 @@ EXEC addProductGPU
     @baseClock = 1700,
     @boostClock = 2000,
     @tdp = 250,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -525,6 +556,7 @@ EXEC addProductGPU
     @baseClock = 1800,
     @boostClock = 2100,
     @tdp = 190,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -538,6 +570,7 @@ EXEC addProductGPU
     @baseClock = 2235,
     @boostClock = 2520,
     @tdp = 450,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -551,6 +584,7 @@ EXEC addProductGPU
     @baseClock = 2205,
     @boostClock = 2505,
     @tdp = 320,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -564,6 +598,7 @@ EXEC addProductGPU
     @baseClock = 2310,
     @boostClock = 2610,
     @tdp = 285,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -577,6 +612,7 @@ EXEC addProductGPU
     @baseClock = 2150,
     @boostClock = 2450,
     @tdp = 250,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -590,6 +626,7 @@ EXEC addProductGPU
     @baseClock = 2100,
     @boostClock = 2400,
     @tdp = 220,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -605,6 +642,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2400,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -617,6 +655,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2666,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -629,6 +668,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 3000,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -641,6 +681,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 3200,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -653,6 +694,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 3600,
     @latentcy = 18,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -665,6 +707,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 2400,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -677,6 +720,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 2666,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -689,6 +733,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3000,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -701,6 +746,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3200,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -713,6 +759,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3600,
     @latentcy = 18,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -725,6 +772,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 2400,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -737,6 +785,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 2666,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -749,6 +798,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 3000,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -761,6 +811,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2133,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -773,6 +824,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2400,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -785,6 +837,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2666,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -797,6 +850,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 3000,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -809,6 +863,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 3200,
     @latentcy = 18,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -821,6 +876,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 3466,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -833,6 +889,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 2133,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -845,6 +902,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 2400,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -857,6 +915,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 2666,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -869,6 +928,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3000,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -881,6 +941,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3200,
     @latentcy = 18,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -893,6 +954,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3466,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -905,6 +967,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 3200,
     @latentcy = 18,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -917,6 +980,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2400,
     @latentcy = 15,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -929,6 +993,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2666,
     @latentcy = 15,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -941,6 +1006,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 2800,
     @latentcy = 15,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -953,6 +1019,7 @@ EXEC addProductRAM
     @capacity = 8,
     @speed = 3000,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -965,6 +1032,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 2800,
     @latentcy = 15,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -977,6 +1045,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3000,
     @latentcy = 15,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -989,6 +1058,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3200,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1001,6 +1071,7 @@ EXEC addProductRAM
     @capacity = 16,
     @speed = 3600,
     @latentcy = 19,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1013,6 +1084,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 2666,
     @latentcy = 18,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1025,6 +1097,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 3200,
     @latentcy = 16,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1037,6 +1110,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 5600,
     @latentcy = 28,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1049,6 +1123,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 6000,
     @latentcy = 32,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1061,6 +1136,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 6400,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1073,6 +1149,7 @@ EXEC addProductRAM
     @capacity = 64,
     @speed = 6000,
     @latentcy = 30,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1085,6 +1162,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 5200,
     @latentcy = 40,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1097,6 +1175,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 5600,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1109,6 +1188,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 6000,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1121,6 +1201,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 6200,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1133,6 +1214,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 6400,
     @latentcy = 38,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1145,6 +1227,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 6600,
     @latentcy = 38,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1157,6 +1240,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 6800,
     @latentcy = 40,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1169,6 +1253,7 @@ EXEC addProductRAM
     @capacity = 32,
     @speed = 7000,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1181,6 +1266,7 @@ EXEC addProductRAM
     @capacity = 64,
     @speed = 5200,
     @latentcy = 40,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1193,6 +1279,7 @@ EXEC addProductRAM
     @capacity = 64,
     @speed = 5600,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1205,6 +1292,7 @@ EXEC addProductRAM
     @capacity = 64,
     @speed = 6000,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1217,6 +1305,7 @@ EXEC addProductRAM
     @capacity = 64,
     @speed = 6200,
     @latentcy = 36,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1229,6 +1318,7 @@ EXEC addProductRAM
     @capacity = 64,
     @speed = 6400,
     @latentcy = 38,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1241,6 +1331,7 @@ EXEC addProductRAM
     @capacity = 64,
     @speed = 6400,
     @latentcy = 38,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1257,6 +1348,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 6600,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1272,6 +1364,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 5100,
     @ramSlots = 4,
     @wifi = 0,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1287,6 +1380,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 7200,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1302,6 +1396,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 6400,
     @ramSlots = 4,
     @wifi = 0,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1317,6 +1412,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 6400,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1332,6 +1428,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 7200,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1347,6 +1444,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 4400,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1362,6 +1460,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 4400,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1377,6 +1476,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 6600,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1392,6 +1492,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 6400,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1407,6 +1508,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 7200,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1422,6 +1524,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 7000,
     @ramSlots = 4,
     @wifi = 0,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1437,6 +1540,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 5333,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1452,6 +1556,7 @@ EXEC addProductMotherboard
     @maxRamSpeed = 5333,
     @ramSlots = 4,
     @wifi = 1,
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1463,6 +1568,7 @@ EXEC addProductPSU
     @name = 'Corsair RM850x',
     @wattage = 850,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1473,6 +1579,7 @@ EXEC addProductPSU
     @name = 'EVGA SuperNOVA 750 G6',
     @wattage = 750,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1483,6 +1590,7 @@ EXEC addProductPSU
     @name = 'Seasonic PRIME TX-1000',
     @wattage = 1000,
     @efficiency = '80+ Titanium',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1493,6 +1601,7 @@ EXEC addProductPSU
     @name = 'Cooler Master MWE Gold 650 V2',
     @wattage = 650,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1503,6 +1612,7 @@ EXEC addProductPSU
     @name = 'be quiet! Straight Power 11 850W',
     @wattage = 850,
     @efficiency = '80+ Platinum',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1513,6 +1623,7 @@ EXEC addProductPSU
     @name = 'Thermaltake Toughpower GF1 850W',
     @wattage = 850,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1523,6 +1634,7 @@ EXEC addProductPSU
     @name = 'Corsair AX1600i',
     @wattage = 1600,
     @efficiency = '80+ Titanium',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1533,6 +1645,7 @@ EXEC addProductPSU
     @name = 'NZXT C750',
     @wattage = 750,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1543,6 +1656,7 @@ EXEC addProductPSU
     @name = 'SilverStone Strider Platinum 850W',
     @wattage = 850,
     @efficiency = '80+ Platinum',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1553,6 +1667,7 @@ EXEC addProductPSU
     @name = 'Antec Earthwatts Gold Pro 750W',
     @wattage = 750,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1563,6 +1678,7 @@ EXEC addProductPSU
     @name = 'Gigabyte P750GM',
     @wattage = 750,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1573,6 +1689,7 @@ EXEC addProductPSU
     @name = 'ASUS ROG Thor 850P',
     @wattage = 850,
     @efficiency = '80+ Platinum',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1583,6 +1700,7 @@ EXEC addProductPSU
     @name = 'Fractal Design Ion+ 760P',
     @wattage = 760,
     @efficiency = '80+ Platinum',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1593,6 +1711,7 @@ EXEC addProductPSU
     @name = 'Super Flower Leadex III Gold',
     @wattage = 650,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1603,6 +1722,7 @@ EXEC addProductPSU
     @name = 'XPG Core Reactor 750W',
     @wattage = 750,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1613,6 +1733,7 @@ EXEC addProductPSU
     @name = 'Lian Li SP750',
     @wattage = 750,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1623,6 +1744,7 @@ EXEC addProductPSU
     @name = 'be quiet! Dark Power Pro 11',
     @wattage = 850,
     @efficiency = '80+ Platinum',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1633,6 +1755,7 @@ EXEC addProductPSU
     @name = 'Cooler Master V750 Gold V2',
     @wattage = 750,
     @efficiency = '80+ Gold',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1643,6 +1766,7 @@ EXEC addProductPSU
     @name = 'Thermaltake Toughpower Grand',
     @wattage = 850,
     @efficiency = '80+ Platinum',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1653,6 +1777,7 @@ EXEC addProductPSU
     @name = 'FSP Hydro PTM Pro 850W',
     @wattage = 850,
     @efficiency = '80+ Platinum',
+    @image = '',
     @result = @result OUTPUT
 
 PRINT @result
@@ -1666,6 +1791,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 512,
     @cache = 512,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1676,6 +1802,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1686,6 +1813,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1697,6 +1825,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 512,
     @cache = 512,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1707,6 +1836,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1717,6 +1847,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 2048,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1728,6 +1859,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 512,
     @cache = 512,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1738,6 +1870,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1748,6 +1881,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1759,6 +1893,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 512,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1770,6 +1905,7 @@ EXEC addProductSSD
     @interface = 'PCIe 3.0',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1781,6 +1917,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 512,
     @cache = 512,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1791,6 +1928,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1801,6 +1939,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1812,6 +1951,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 512,
     @cache = 512,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1823,6 +1963,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1834,6 +1975,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1845,6 +1987,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 512,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1856,6 +1999,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1867,6 +2011,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1878,6 +2023,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1889,6 +2035,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1900,6 +2047,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1911,6 +2059,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1922,6 +2071,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1933,6 +2083,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1944,6 +2095,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 512,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1955,6 +2107,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1966,6 +2119,7 @@ EXEC addProductSSD
     @interface = 'PCIe 4.0',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1977,6 +2131,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1988,6 +2143,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -1999,6 +2155,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 4096,
     @cache = 4096,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2010,6 +2167,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2021,6 +2179,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2032,6 +2191,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 4096,
     @cache = 4096,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2043,6 +2203,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2054,6 +2215,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2065,6 +2227,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 4096,
     @cache = 4096,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2076,6 +2239,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2087,6 +2251,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2098,6 +2263,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2109,6 +2275,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2120,6 +2287,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 4096,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2131,6 +2299,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 1024,
     @cache = 1024,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2142,6 +2311,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 2048,
     @cache = 2048,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2153,7 +2323,8 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 4096,
     @cache = 4096,
-    @result = @result
+    @image = '',
+    @result = @result OUTPUT
 PRINT @result
 
 -- Crucial MX300
@@ -2164,6 +2335,7 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 1024,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
 
@@ -2175,5 +2347,18 @@ EXEC addProductSSD
     @interface = 'SATA 2.5',
     @capacity = 2048,
     @cache = 0,
+    @image = '',
     @result = @result OUTPUT
 PRINT @result
+
+-- Insert into staffs table with Manager Role
+INSERT INTO staffs (username, password, possition, active) 
+VALUES ('thangnvhe', '123', 1, 1);
+
+-- Get the ID of the inserted staff member
+DECLARE @id INT;
+SET @id = SCOPE_IDENTITY();
+
+-- Insert into staffDetails table using the obtained staff ID
+INSERT INTO staffDetails (id, fullname, email, phoneNumber, address,dateOfBirth) 
+VALUES (@id, 'Nguyen Van Thang', 'thangnvhe171327@fpt.edu.vn', '023432234', 'Viet Nam','1985-05-15');

@@ -7,9 +7,6 @@ import java.sql.Types;
 import database.Database;
 
 public class UserGoogle extends User {
-
-    public String id;
-
     public void setGoogleAccount() {
         try {
             String sql = "{call setGoogleUser(?, ?)}";
@@ -18,7 +15,6 @@ public class UserGoogle extends User {
             statement.registerOutParameter(2, Types.INTEGER);
 
             statement.execute();
-            // statement.getInt(2);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
