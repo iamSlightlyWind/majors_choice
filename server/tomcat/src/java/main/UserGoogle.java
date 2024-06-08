@@ -7,9 +7,6 @@ import java.sql.Types;
 import database.Database;
 
 public class UserGoogle extends User {
-
-    public String id;
-
     public void setGoogleAccount() {
         try {
             String sql = "{call setGoogleUser(?, ?)}";
@@ -30,7 +27,6 @@ public class UserGoogle extends User {
 
     public int login() {
         setCredentials();
-        System.out.println("username : " + username + " password : " + password);
         try {
             String sql = "{call googleLogin(?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);

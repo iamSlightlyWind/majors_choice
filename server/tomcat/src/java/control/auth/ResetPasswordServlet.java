@@ -12,10 +12,9 @@ public class ResetPasswordServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String email = request.getParameter("email");
 
         User user = new User();
-        user.email = email;
+        user.email = request.getParameter("email");
         int result = user.resetPassword();
 
         switch (result) {

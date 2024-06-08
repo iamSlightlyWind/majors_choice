@@ -5,7 +5,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import main.User;
 
 public class LoginServlet extends HttpServlet {
@@ -13,45 +12,53 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        User user = new User();
+        User user = new User(request.getParameter("user"), request.getParameter("pass"));
 
-        user.username = request.getParameter("user");
-        user.password = request.getParameter("pass");
-        int result = user.login();
-        
-        switch(result){
+        if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
+            request.getSession().invalidate();
+            request.setAttribute("loginStatus", "Logged out");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+
+        switch (user.login()) {
             case 1:
-                session.setAttribute("username", user.username);
-                session.setAttribute("table", "users");
-                request.setAttribute("loginStatus", "Logged in successfully");
-                //request.getRequestDispatcher("login.jsp").forward(request, response);
-                response.sendRedirect("profile");
+                user.retrieveData();
+                request.getSession().setAttribute("userObject", user);
+                request.setAttribute("loginStatus", "Logged in");
+                request.getSession().setAttribute("table", "users");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+
+                // response.sendRedirect("profile");
+                // response.sendRedirect("Test");
                 break;
             case -1:
-                session.setAttribute("username", user.username);
+                request.getSession().setAttribute("userObject", user);
                 request.setAttribute("user", user.username);
                 request.getRequestDispatcher("activate.jsp").forward(request, response);
                 break;
             case 0:
-                int result1 = user.loginEmployee();
-                switch(result1){
-                    case 1: //manager role
-                        session.setAttribute("username", user.username);
-                        session.setAttribute("table", "managers");
-                        response.sendRedirect("profile");
+                switch (user.loginEmployee()) {
+                    case 1: // manager role
+                        user.retrieveData();
+                        request.getSession().setAttribute("userObject", user);
+                        request.getSession().setAttribute("table", "managers");
+                        request.setAttribute("loginStatus", "Logged in as Manager");
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
                         break;
-                    case 0: //staff role
-                        session.setAttribute("username", user.username);
-                        session.setAttribute("table", "staffs");
-                        response.sendRedirect("profile");
+                    case 0: // staff role
+                        user.retrieveData();
+                        request.getSession().setAttribute("userObject", user);
+                        request.getSession().setAttribute("table", "staffs");
+                        request.setAttribute("loginStatus", "Logged in as Staff");
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
                         break;
                     default:
                         String error = "Login failed!";
                         request.setAttribute("loginStatus", error);
                         request.getRequestDispatcher("login.jsp").forward(request, response);
                         break;
-                }           
+                }
         }
     }
 

@@ -1,21 +1,26 @@
 package main;
 
 import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.Random;
-
 import database.Database;
-import java.sql.ResultSet;
+import packages.wrap.*;
 import java.util.Vector;
 
 public class User {
+    public String id;
     public String username, password;
     public String fullName, email, phoneNumber, address;
     public String dateOfBirth;
     public String confirmCode;
     public int active;
-    public int id;
+    public Cart cart;
+    public ArrayList<Order> orders = new ArrayList<Order>();
+    public Database db = new Database();
 
     public String getFullName() {
         return this.fullName;
@@ -40,11 +45,41 @@ public class User {
     public String getUsername() {
         return this.username;
     }
-  
+
     public String getPassword() {
         return password;
     }
-    Database db = new Database();
+
+    public String toString() {
+        return "User: " + username + "\n" + "Password: " + password + "\n" + "Full Name: " + fullName + "\n" + "Email: "
+                + email + "\n" + "Phone Number: " + phoneNumber + "\n" + "Address: " + address + "\n"
+                + "Date of Birth: " + dateOfBirth + "\n" + "Confirm Code: " + confirmCode;
+    }
+
+    public void retrieveData() {
+        try {
+            String sql = "select * from users join userdetails on users.id = userdetails.id WHERE users.username = ?";
+            PreparedStatement statement = db.connection.prepareStatement(sql);
+            statement.setString(1, username);
+
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                id = rs.getString("id");
+                fullName = rs.getString("fullName");
+                email = rs.getString("email");
+                phoneNumber = rs.getString("phoneNumber");
+                address = rs.getString("address");
+                dateOfBirth = rs.getString("dateOfBirth");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void getOrders() {
+        orders = db.getOrders(Integer.parseInt(this.id));
+    }
 
     public User() {
     }
@@ -138,11 +173,6 @@ public class User {
         return result;
     }
 
-    public String toString() {
-        return "User: " + username + " " + password + " " + fullName + " " + email + " " + phoneNumber + " " + address
-                + " " + dateOfBirth;
-    }
-
     public int register(boolean isUserGoogle) {
         int result = 0;
 
@@ -177,14 +207,6 @@ public class User {
 
     public int updateInformation(String tableName) {
         int result = 0;
-
-        System.out.println("username: " + username);
-        System.out.println("password: " + password);
-        System.out.println("fullName: " + fullName);
-        System.out.println("email: " + email);
-        System.out.println("phoneNumber: " + phoneNumber);
-        System.out.println("address: " + address);
-        System.out.println("dateOfBirth: " + dateOfBirth);
 
         try {
             String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -233,7 +255,7 @@ public class User {
         System.out.println(user);
         return user;
     }
-    
+
     public int loginEmployee() {
         int result = -1;
         try {
@@ -251,7 +273,7 @@ public class User {
 
         return result;
     }
-    
+
     public Vector<User> getUserDetails(String tableName) {
         Vector<User> users = new Vector<>();
         try {
@@ -262,7 +284,7 @@ public class User {
 
             while (rs.next()) {
                 User user = new User();
-                user.id = rs.getInt("id");
+                user.id = rs.getInt("id") + "";
                 user.username = rs.getString("username");
                 user.password = rs.getString("password");
                 user.active = rs.getInt("active");
@@ -273,5 +295,5 @@ public class User {
         }
         return users;
     }
-    
+
 }

@@ -2,7 +2,7 @@ package main;
 
 public class Constants {
     
-    public static String GOOGLE_CLIENT_ID = "171238715094-e9f1676d321k53paem4hrbfbo1113nlb.apps.googleusercontent.com";
+    public static String GOOGLE_CLIENT_ID = "960808694899-61oujrd0icfujs3ds3qmqqu0lb8rtuhv.apps.googleusercontent.com";
 
     public static String GOOGLE_CLIENT_SECRET = System.getenv("GOOGLE_CLIENT_SECRET");
 
