@@ -13,7 +13,7 @@ public class Profile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         User user = (User) request.getSession().getAttribute("userObject");
-        user.retrieveData();
+        user.retrieveData((String) request.getSession().getAttribute("table"));
 
         request.setAttribute("user", user);
 

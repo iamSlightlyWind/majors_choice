@@ -56,9 +56,11 @@ public class User {
                 + "Date of Birth: " + dateOfBirth + "\n" + "Confirm Code: " + confirmCode;
     }
 
-    public void retrieveData() {
+    public void retrieveData(String role) {
         try {
-            String sql = "select * from users join userdetails on users.id = userdetails.id WHERE users.username = ?";
+            String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.username = ?";
+            sql = sql.replace("^", role);
+            System.out.println(">>> SQL: " + sql);
             PreparedStatement statement = db.connection.prepareStatement(sql);
             statement.setString(1, username);
 
@@ -207,6 +209,12 @@ public class User {
 
     public int updateInformation(String tableName) {
         int result = 0;
+
+        if (tableName.equals("staff")) {
+            tableName = "staffs";
+        } else if (tableName.equals("user")) {
+            tableName = "users";
+        }
 
         try {
             String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?)}";

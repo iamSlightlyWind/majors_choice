@@ -23,10 +23,10 @@ public class LoginServlet extends HttpServlet {
 
         switch (user.login()) {
             case 1:
-                user.retrieveData();
+                user.retrieveData("user");
                 request.getSession().setAttribute("userObject", user);
                 request.setAttribute("loginStatus", "Logged in");
-                request.getSession().setAttribute("table", "users");
+                request.getSession().setAttribute("table", "user");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
 
                 // response.sendRedirect("profile");
@@ -40,16 +40,16 @@ public class LoginServlet extends HttpServlet {
             case 0:
                 switch (user.loginEmployee()) {
                     case 1: // manager role
-                        user.retrieveData();
+                        user.retrieveData("staff");
                         request.getSession().setAttribute("userObject", user);
-                        request.getSession().setAttribute("table", "managers");
+                        request.getSession().setAttribute("table", "staff");
                         request.setAttribute("loginStatus", "Logged in as Manager");
                         request.getRequestDispatcher("login.jsp").forward(request, response);
                         break;
                     case 0: // staff role
-                        user.retrieveData();
+                        user.retrieveData("staff");
                         request.getSession().setAttribute("userObject", user);
-                        request.getSession().setAttribute("table", "staffs");
+                        request.getSession().setAttribute("table", "staff");
                         request.setAttribute("loginStatus", "Logged in as Staff");
                         request.getRequestDispatcher("login.jsp").forward(request, response);
                         break;
