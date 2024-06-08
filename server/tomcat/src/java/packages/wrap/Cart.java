@@ -2,12 +2,14 @@ package packages.wrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import database.Database;
 import packages.*;
 
-class Cart {
+public class Cart {
+    public String userID;
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
-    public String userName;
+    Database db;
 
     public void updateQuantity() {
         HashMap<Integer, ProductCount> productCountMap = new HashMap<>();
@@ -21,10 +23,14 @@ class Cart {
         }
         quantities.clear();
         quantities.addAll(productCountMap.values());
+        updateCart();
+    }
+
+    public void updateCart() {
+        db.updateCart(Integer.parseInt(userID), products);
     }
 
     public void remove(int id, boolean removeOne) {
-        System.out.println(removeOne);
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).id == id) {
                 products.remove(i);
@@ -34,12 +40,30 @@ class Cart {
                 }
             }
         }
-
         updateQuantity();
     }
 
-    public Cart(String userName) {
-        this.userName = userName;
+    public void placeOrder() {
+        db.placeOrder(Integer.parseInt(userID));
+        products.clear();
+        quantities.clear();
+    }
+
+    public void addOne(int id) {
+        for (Product product : products) {
+            if (product.id == id) {
+                products.add(product);
+                break;
+            }
+        }
+        updateQuantity();
+    }
+
+    public Cart(String userID, Database db) {
+        this.userID = userID;
+        this.db = db;
+        products = db.getCart(Integer.parseInt(userID));
+        updateQuantity();
     }
 
     public void addProduct(String type, int id) {

@@ -5,7 +5,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import main.User;
 
 public class LoginServlet extends HttpServlet {
@@ -13,25 +12,53 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        User user = new User();
+        User user = new User(request.getParameter("user"), request.getParameter("pass"));
 
-        user.username = request.getParameter("user");
-        user.password = request.getParameter("pass");
-        int result = user.login();
-        
-        if (result == 1) {
-            session.setAttribute("username", user.username);
-            request.setAttribute("loginStatus", "Logged in successfully");
+        if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
+            request.getSession().invalidate();
+            request.setAttribute("loginStatus", "Logged out");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else if (result == -1) {
-            session.setAttribute("username", user.username);
-            request.setAttribute("user", user.username);
-            request.getRequestDispatcher("activate.jsp").forward(request, response);
-        } else {
-            String error = "Login failed!";
-            request.setAttribute("loginStatus", error);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+
+        switch (user.login()) {
+            case 1:
+                user.retrieveData("user");
+                request.getSession().setAttribute("userObject", user);
+                request.setAttribute("loginStatus", "Logged in");
+                request.getSession().setAttribute("table", "user");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+
+                // response.sendRedirect("profile");
+                // response.sendRedirect("Test");
+                break;
+            case -1:
+                request.getSession().setAttribute("userObject", user);
+                request.setAttribute("user", user.username);
+                request.getRequestDispatcher("activate.jsp").forward(request, response);
+                break;
+            case 0:
+                switch (user.loginEmployee()) {
+                    case 1: // manager role
+                        user.retrieveData("staff");
+                        request.getSession().setAttribute("userObject", user);
+                        request.getSession().setAttribute("table", "staff");
+                        request.setAttribute("loginStatus", "Logged in as Manager");
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        break;
+                    case 0: // staff role
+                        user.retrieveData("staff");
+                        request.getSession().setAttribute("userObject", user);
+                        request.getSession().setAttribute("table", "staff");
+                        request.setAttribute("loginStatus", "Logged in as Staff");
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        break;
+                    default:
+                        String error = "Login failed!";
+                        request.setAttribute("loginStatus", error);
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        break;
+                }
         }
     }
 
@@ -46,10 +73,4 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
 }

@@ -9,9 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import main.Constants;
-import main.UserGoogle;
+import main.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
@@ -21,15 +19,14 @@ public class LoginGoogleServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Database db = new Database();
+                Database db = new Database();
         int result;
 
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
 
         if (!action.equals("Update Information")) {
             UserGoogle user = getUserInfo(getToken(request.getParameter("code")));
-            session.setAttribute("username", user.email);
+            request.getSession().setAttribute("userObject", user);
             if (!db.userExists(user.email)) {
                 user.register();
                 request.setAttribute("registerStatus", "Please enter the remaining information to continue");
@@ -39,7 +36,7 @@ public class LoginGoogleServlet extends HttpServlet {
             } else {
                 result = user.login();
                 if (result == 1) {
-                    session.setAttribute("username", user.username);
+                    request.getSession().setAttribute("userObject", user);
                     request.setAttribute("loginStatus", "Logged in successfully");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 } else {
@@ -49,20 +46,20 @@ public class LoginGoogleServlet extends HttpServlet {
             }
         } else {
             UserGoogle user = new UserGoogle();
-            user.username = (String) session.getAttribute("username");
+            user.username = request.getParameter("email");
             user.fullName = request.getParameter("fullName");
             user.phoneNumber = request.getParameter("phoneNumber");
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
 
-            user.updateInformation();
+            user.updateInformation((String) request.getSession().getAttribute("table"));
+            request.getSession().setAttribute("userObject", user);
             request.setAttribute("loginStatus", "Logged in successfully");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 
     public static String getToken(String code) throws ClientProtocolException, IOException {
-        // call api to get token
         String response = Request.Post(Constants.GOOGLE_LINK_GET_TOKEN)
                 .bodyForm(Form.form().add("client_id", Constants.GOOGLE_CLIENT_ID)
                         .add("client_secret", Constants.GOOGLE_CLIENT_SECRET)
@@ -96,10 +93,4 @@ public class LoginGoogleServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
 }

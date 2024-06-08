@@ -11,9 +11,20 @@
 
         <body>
 
+            <p>${username}</p>
+
+            <form action="order" method="post">
+                <button type="submit">view orders</button>
+            </form>
+
             <form action="Cart" method="post">
                 <input type="hidden" name="action" value="viewCart" />
                 <button type="submit">view cart</button>
+            </form>
+
+            <form action="login" method="post">
+                <input type="hidden" name="action" value="logout" />
+                <button type="submit">logout</button>
             </form>
 
             <p> cpus </p>
