@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -61,6 +62,9 @@
                                         <label for="dob">Date of Birth:</label>
                                         <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control my-4 py-2"
                                             placeholder="dd/mm/yyyy" required>
+                                        <c:if test="${requestScope.actor!=null}">
+                                            <input type="hidden" name="actor" value="${requestScope.actor}"/>
+                                        </c:if>                                       
                                          <div class="g-recaptcha" data-sitekey="6LdK--8pAAAAABv-L5jPFsFySBjogEmHiFt87qcV"></div>
                                         <div class="error"></div>
                                         <input type="submit" value="Register">

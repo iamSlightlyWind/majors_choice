@@ -28,23 +28,31 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, password, fullName, email, phoneNumber, address, dateOfBirth);
 
         if (error.equals("")) {
-            result = user.register(false);
+            String tableName = request.getParameter("actor");
+            result = user.register(false, tableName);
             switch (result) {
                 case 1:
-                    request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                    if(tableName!=null){
+                        response.sendRedirect("manageraccount");
+                    } else {
+                        request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
+                        request.getRequestDispatcher("/login.jsp").forward(request, response);
+                    }
                     break;
-
+                    
                 case -1:
                     error = "Username already exists.";
                     break;
-
+                    
                 case -2:
                     error = "Email already exists.";
                     break;
 
                 case -3:
                     error = "Phone number already exists.";
+                    break;
+                default:
+                    error = "Register Failed.";
                     break;
             }
             request.setAttribute("registerStatus", error);
@@ -97,7 +105,9 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String actor = request.getParameter("actor");
+        request.setAttribute("actor", actor);
+        request.getRequestDispatcher("register.jsp").forward(request, response);
     }
 
     @Override

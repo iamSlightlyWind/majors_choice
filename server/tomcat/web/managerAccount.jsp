@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h3>User Account:</h3>
+        <h3>User Account: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="register?actor=user" style="font-size:20px">Add User Account</a></h3>
         <table class="user" border="2px">
             <thead>
                 <tr>
@@ -39,7 +39,7 @@
                 </c:forEach>
             </tbody>
         </table>
-        <h3>Staff Account:</h3>
+        <h3>Staff Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="register?actor=staff" style="font-size:20px">Add Staff Account</a></h3>
         <table class="staff" border="2px">
             <thead>
                 <tr>
