@@ -30,34 +30,60 @@ public class RegisterServlet extends HttpServlet {
         if (error.equals("")) {
             String tableName = request.getParameter("actor");
             result = user.register(false, tableName);
-            switch (result) {
-                case 1:
-                    if(tableName!=null){
-                        response.sendRedirect("manageraccount");
-                    } else {
-                        request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
-                        request.getRequestDispatcher("/login.jsp").forward(request, response);
-                    }
-                    break;
-                    
-                case -1:
-                    error = "Username already exists.";
-                    break;
-                    
-                case -2:
-                    error = "Email already exists.";
-                    break;
-
-                case -3:
-                    error = "Phone number already exists.";
-                    break;
-                default:
-                    error = "Register Failed.";
-                    break;
+//            switch (result) {
+//                case 1:
+//                    if(tableName!=null){
+//                        response.sendRedirect("manageraccount");
+//                    } else {
+//                        request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
+//                        request.getRequestDispatcher("/login.jsp").forward(request, response);
+//                    }
+//                    break;
+//                    
+//                case -1:
+//                    error = "Username already exists.";
+//                    break;
+//                    
+//                case -2:
+//                    error = "Email already exists.";
+//                    break;
+//
+//                case -3:
+//                    error = "Phone number already exists.";
+//                    break;
+//                default:
+//                    error = "Register Failed.";
+//                    break;
+//            }
+//            request.setAttribute("registerStatus", error);
+//            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            if (result == 1) {
+                if (tableName != null) {
+                    response.sendRedirect("manageraccount");
+                    return; // Ensure no further processing
+                } else {
+                    request.setAttribute("loginStatus", "Successfully Registered. You can now Login.");
+                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                    return; // Ensure no further processing
+                }
+            } else {
+                switch (result) {
+                    case -1:
+                        error = "Username already exists.";
+                        break;
+                    case -2:
+                        error = "Email already exists.";
+                        break;
+                    case -3:
+                        error = "Phone number already exists.";
+                        break;
+                    default:
+                        error = "Register Failed.";
+                        break;
+                }
+                request.setAttribute("registerStatus", error);
+                request.getRequestDispatcher("/register.jsp").forward(request, response);
             }
-            request.setAttribute("registerStatus", error);
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
-
         } else {
             request.setAttribute("registerStatus", error);
             request.getRequestDispatcher("/register.jsp").forward(request, response);
