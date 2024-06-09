@@ -22,17 +22,34 @@ public class EditProfile extends HttpServlet {
         String phone = request.getParameter("phoneNumber");
         String address = request.getParameter("address");
         String dob = request.getParameter("dateOfBirth");
+        String possition = request.getParameter("possition");
 
         boolean emailFormat = isValidEmail(email);
         User user = new User(username, password, fullname, email, phone, address, dob);
+        
+        if(request.getParameter("active")!=null){
+            user.active = Integer.parseInt(request.getParameter("active"));
+        }
+        
+        user.id = request.getParameter("id");
+        user.dateJoined = request.getParameter("dateJoined");
+
         if (emailFormat) {
             String tableName = (String) request.getSession().getAttribute("table");
+            if(possition!=null){
+                tableName = possition;
+            }
             int result = user.updateInformation(tableName);
             request.setAttribute("user", user);
+            request.setAttribute("possition", possition);
             switch (result) {
                 case 1:
-                    request.setAttribute("status", "Update Successful!");
-                    request.getRequestDispatcher("profile.jsp").forward(request, response);
+                    if (possition == null) {
+                        request.setAttribute("status", "Update Successful!");
+                        request.getRequestDispatcher("profile.jsp").forward(request, response);
+                    } else {
+                        response.sendRedirect("manageraccount");
+                    }
                     break;
                 case -1:
                     request.setAttribute("status", "Update Failed! Email had existed.");
@@ -48,6 +65,7 @@ public class EditProfile extends HttpServlet {
                     break;
             }
         } else {
+            request.setAttribute("possition",possition);
             request.setAttribute("user", user);
             request.setAttribute("status", "Update Failed!Email format wrong!");
             request.getRequestDispatcher("editprofile.jsp").forward(request, response);
@@ -65,7 +83,38 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        User user = new User();
+
+        String id = request.getParameter("id");
+        String action = request.getParameter("action");
+        String actor = request.getParameter("actor");
+
+        switch (actor) {
+            case "users":
+                if (action.equals("delete")) {
+                    user.deleteUser(actor, id);
+                    response.sendRedirect("manageraccount");
+                } else if (action.equals("update")) {
+                    user.id = id;
+                    user.retrieveData2("user");
+                    request.setAttribute("user", user);
+                    request.setAttribute("possition", "user");
+                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+                }
+                break;
+            case "staffs":
+                if (action.equals("delete")) {
+                    user.deleteUser(actor, id);
+                    response.sendRedirect("manageraccount");
+                } else if (action.equals("update")) {
+                    user.id = id;
+                    user.retrieveData2("staff");
+                    request.setAttribute("user", user);
+                    request.setAttribute("possition", "staff");
+                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+                }
+                break;
+        }
     }
 
     @Override

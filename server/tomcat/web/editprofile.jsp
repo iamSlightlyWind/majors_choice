@@ -48,37 +48,59 @@
         <div class="container">
             <h1>Edit Profile</h1>
             <form action="editprofile" method="post" onsubmit="return confirmChange();">
-                <c:set var="user" value="${requestScope.user}"/>  
+                <c:set var="user" value="${requestScope.user}"/> 
+                <c:if test="${requestScope.possition != null}">
+                    <div class="form-item">
+                        <label>ID:</label>
+                        <input type="text" name="id" value="<c:out value="${user.id}"></c:out>" readonly>
+                    </div>
+                </c:if>
                 <div class="form-item">
                     <label>Tên Đăng Nhập:</label>
                     <input type="text" name="username" value="<c:out value="${user.username}"></c:out>" readonly>
                     </div>
                     <div class="form-item">
                         <label>Mật khẩu:</label>
-                        <input type="password" name="password" value="<c:out value="${user.password}"></c:out>" >
+                        <input type="password" name="password" value="<c:out value="${user.password}"></c:out>" required>
                     </div>
+                <c:if test="${requestScope.possition != null}">
                     <div class="form-item">
-                        <label>Họ và Tên:</label>
-                        <input type="text" name="fullname" value="<c:out value="${user.fullName}"></c:out>">
+                        <label>Possition:</label>
+                        <input type="text" name="possition" value="<c:out value="${requestScope.possition}"></c:out>" readonly>
+                        </div>
+                        <div class="form-item">
+                            <label>Active:</label>
+                            <input type="number" name="active" value="<c:out value="${user.active}"></c:out>" min="0" max="1" required>
+                        </div>
+                </c:if>
+                <div class="form-item">
+                    <label>Họ và Tên:</label>
+                    <input type="text" name="fullname" value="<c:out value="${user.fullName}"></c:out>" required>
                     </div>
                     <div class="form-item">
                         <label>Email:</label>
-                        <input type="text" name="email" value="<c:out value="${user.email}"></c:out>">
+                        <input type="text" name="email" value="<c:out value="${user.email}"></c:out>" required>
                     </div>
                     <div class="form-item">
                         <label>Số Điện Thoại:</label>
-                        <input type="text" name="phoneNumber" value="<c:out value="${user.phoneNumber}"></c:out>">
+                        <input type="text" name="phoneNumber" value="<c:out value="${user.phoneNumber}"></c:out>" required>
                     </div>
                     <div class="form-item">
                         <label>Địa Chỉ:</label>
-                        <input type="text" name="address" value="<c:out value="${user.address}"></c:out>">
+                        <input type="text" name="address" value="<c:out value="${user.address}"></c:out>" required>
                     </div>
                     <div class="form-item">
                         <label>Ngày Sinh:</label>
-                        <input type="date" name="dateOfBirth" id="dateID">
+                        <input type="date" name="dateOfBirth" id="dateID" required>
                     </div>
-                    <div class="font-item">
-                        <span style="color: greenyellow; font-size: 30px">${requestScope.status} </span>
+                <c:if test="${requestScope.possition != null}">
+                    <div class="form-item">
+                        <label>DateJoined:</label>
+                        <input type="date" name="dateJoined" value="<c:out value="${user.dateJoined}"></c:out>" readonly>
+                        </div>
+                </c:if>
+                <div class="font-item">
+                    <span style="color: greenyellow; font-size: 25px">${requestScope.status} </span>
                 </div>
                 <div class="buttons">
                     <button type="submit">Save</button>

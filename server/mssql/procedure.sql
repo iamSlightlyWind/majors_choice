@@ -547,7 +547,7 @@ BEGIN
 END;
 
 go
-
+/*
 CREATE PROCEDURE GetUserDetails
     @tablename varchar(25)
 AS
@@ -566,7 +566,7 @@ BEGIN
     EXEC sp_executesql @sql;
 END;
 go
-
+*/
 CREATE PROCEDURE updateUserInformation
     @tablename varchar(25),
     @username varchar(25),
@@ -576,6 +576,7 @@ CREATE PROCEDURE updateUserInformation
     @phoneNumber varchar(15),
     @address nvarchar(100),
     @dateOfBirth date,
+	@active int,
     @result int output
 AS
 BEGIN
@@ -646,6 +647,13 @@ BEGIN
 			WHERE id = @id
 		END
 
+		IF @active IS NOT NULL
+		BEGIN
+			UPDATE users
+			SET active = @active
+			WHERE id = @id
+		END
+
         SET @result = 1; -- Update successful
     END
     ELSE IF @tablename = 'staffs' OR @tablename = 'managers'
@@ -709,6 +717,14 @@ BEGIN
 			SET dateOfBirth = @dateOfBirth
 			WHERE id = @id
 		END
+
+		IF @active IS NOT NULL
+		BEGIN
+			UPDATE staffs
+			SET active = @active
+			WHERE id = @id
+		END
+
         SET @result = 1; -- Update successful
     END
 END;
@@ -981,5 +997,27 @@ BEGIN
         LEFT JOIN cases ON o.productId = cases.id
     WHERE 
         o.userId = @userId;
+END;
+go
+CREATE PROCEDURE GetUserDetails
+    @tablename varchar(25)
+AS
+BEGIN
+    DECLARE @sql NVARCHAR(MAX);
+
+    IF @tablename = 'staffs'
+    BEGIN
+        SET @sql = N'SELECT s.id, s.username, s.password, s.active, sd.dateJoined 
+                    FROM ' + QUOTENAME(@tablename) + ' s 
+                    INNER JOIN staffDetails sd ON s.id = sd.id 
+                    WHERE s.possition = 0';
+    END
+    ELSE IF @tablename = 'users'
+    BEGIN
+        SET @sql = N'SELECT u.id, u.username, u.password, u.active, ud.dateJoined 
+                    FROM ' + QUOTENAME(@tablename) + ' u INNER JOIN userDetails ud ON u.id = ud.id';
+    END
+    
+    EXEC sp_executesql @sql;
 END;
 go

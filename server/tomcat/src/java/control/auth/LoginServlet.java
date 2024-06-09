@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
                     case 1: // manager role
                         user.retrieveData("staff");
                         request.getSession().setAttribute("userObject", user);
-                        request.getSession().setAttribute("table", "staff");
+                        request.getSession().setAttribute("table", "manager");
                         request.setAttribute("loginStatus", "Logged in as Manager");
                         request.getRequestDispatcher("login.jsp").forward(request, response);
                         break;
