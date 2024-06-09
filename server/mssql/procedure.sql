@@ -202,7 +202,7 @@ begin
     end
 end;
 go
-
+/*
 create procedure register
     @username varchar(25),
     @password varchar(100),
@@ -256,7 +256,7 @@ begin
     end
 end;
 Go
-
+*/
 create PROCEDURE addProductCPU
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1021,3 +1021,99 @@ BEGIN
     EXEC sp_executesql @sql;
 END;
 go
+
+CREATE PROCEDURE register
+    @tablename varchar(25),
+    @username varchar(25),
+    @password varchar(100),
+    @fullname nvarchar(50),
+    @email varchar(100),
+    @phoneNumber varchar(15),
+    @address nvarchar(100),
+    @dateOfBirth date,
+    @confirmCode varchar(10),
+    @result int OUTPUT
+AS
+BEGIN
+    -- User registration
+    IF @tablename = 'user' OR @tablename IS NULL
+    BEGIN
+        -- Check if username exists
+        IF EXISTS (SELECT 1 FROM users WHERE username = @username)
+        BEGIN
+            SET @result = -1
+            -- Username already exists
+        END
+        -- Check if email exists
+        ELSE IF EXISTS (SELECT 1 FROM userDetails WHERE email = @email)
+        BEGIN
+            SET @result = -2
+            -- Email already exists
+        END
+        -- Check if phone number exists
+        ELSE IF EXISTS (SELECT 1 FROM userDetails WHERE phoneNumber = @phoneNumber)
+        BEGIN
+            SET @result = -3
+            -- Phone number already exists
+        END
+        ELSE
+        BEGIN
+            -- Insert into users table
+            INSERT INTO users (username, password, confirmCode)
+            VALUES (@username, @password, @confirmCode)
+
+            -- Get the last inserted ID
+            DECLARE @uid INT
+            SET @uid = SCOPE_IDENTITY()
+
+            -- Insert into userDetails table
+            INSERT INTO userDetails (id, fullname, email, phoneNumber, address, dateOfBirth)
+            VALUES (@uid, @fullname, @email, @phoneNumber, @address, @dateOfBirth)
+
+            SET @result = 1
+            -- Registration successful
+        END
+    END
+
+    -- Staff registration
+    IF @tablename = 'staff'
+    BEGIN
+        -- Check if username exists
+        IF EXISTS (SELECT 1 FROM staffs WHERE username = @username)
+        BEGIN
+            SET @result = -1
+            -- Username already exists
+        END
+        -- Check if email exists
+        ELSE IF EXISTS (SELECT 1 FROM staffDetails WHERE email = @email)
+        BEGIN
+            SET @result = -2
+            -- Email already exists
+        END
+        -- Check if phone number exists
+        ELSE IF EXISTS (SELECT 1 FROM staffDetails WHERE phoneNumber = @phoneNumber)
+        BEGIN
+            SET @result = -3
+            -- Phone number already exists
+        END
+        ELSE
+        BEGIN
+            -- Insert into staffs table
+            INSERT INTO staffs (username, password, possition, active)
+            VALUES (@username, @password, 0, 1)
+
+            -- Get the last inserted ID
+            DECLARE @sid INT
+            SET @sid = SCOPE_IDENTITY()
+
+            -- Insert into staffDetails table
+            INSERT INTO staffDetails (id, fullname, email, phoneNumber, address, dateOfBirth)
+            VALUES (@sid, @fullname, @email, @phoneNumber, @address, @dateOfBirth)
+
+            SET @result = 1
+            -- Registration successful
+        END
+    END
+END;
+
+Go
