@@ -212,7 +212,7 @@ public class User {
         return result;
     }
 
-    public int updateInformation(String tableName) {
+    public int updateInformation(String tableName, boolean status) {
         int result = 0;
 
         if (tableName.equals("staff")) {
@@ -226,7 +226,11 @@ public class User {
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, tableName);
             statement.setString(2, username);
-            statement.setString(3, password);
+            if (status) {
+                statement.setString(3, password);
+            } else {
+                statement.setNull(3, Types.VARCHAR);
+            }
             statement.setString(4, fullName);
             statement.setString(5, email);
             statement.setString(6, phoneNumber);

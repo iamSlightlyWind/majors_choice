@@ -39,7 +39,7 @@ public class EditProfile extends HttpServlet {
             if(possition!=null){
                 tableName = possition;
             }
-            int result = user.updateInformation(tableName);
+            int result = user.updateInformation(tableName, true);
             request.setAttribute("user", user);
             request.setAttribute("possition", possition);
             switch (result) {
@@ -48,7 +48,7 @@ public class EditProfile extends HttpServlet {
                         request.setAttribute("status", "Update Successful!");
                         request.getRequestDispatcher("profile.jsp").forward(request, response);
                     } else {
-                        response.sendRedirect("manageraccount");
+                        response.sendRedirect("/manage/profile");
                     }
                     break;
                 case -1:
@@ -93,19 +93,19 @@ public class EditProfile extends HttpServlet {
             case "users":
                 if (action.equals("delete")) {
                     user.deleteUser(actor, id);
-                    response.sendRedirect("manageraccount");
+                    response.sendRedirect("manage/profile");
                 } else if (action.equals("update")) {
                     user.id = id;
                     user.retrieveData2("user");
                     request.setAttribute("user", user);
                     request.setAttribute("possition", "user");
-                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+                    request.getRequestDispatcher("/manage/profile/user.jsp").forward(request, response);
                 }
                 break;
             case "staffs":
                 if (action.equals("delete")) {
                     user.deleteUser(actor, id);
-                    response.sendRedirect("manageraccount");
+                    response.sendRedirect("manage/profile");
                 } else if (action.equals("update")) {
                     user.id = id;
                     user.retrieveData2("staff");

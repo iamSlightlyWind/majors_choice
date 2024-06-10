@@ -52,7 +52,7 @@ public class LoginGoogleServlet extends HttpServlet {
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
 
-            user.updateInformation((String) request.getSession().getAttribute("table"));
+            user.updateInformation((String) request.getSession().getAttribute("table"), true);
             request.getSession().setAttribute("userObject", user);
             request.setAttribute("loginStatus", "Logged in successfully");
             request.getRequestDispatcher("login.jsp").forward(request, response);

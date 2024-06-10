@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h3>User Account: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="register?actor=user" style="font-size:20px">Add User Account</a></h3>
+        <h3>User Account: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/register?actor=user" style="font-size:20px">Add User Account</a></h3>
         <table class="user" border="2px">
             <thead>
                 <tr>
@@ -33,13 +33,13 @@
                         <td>${user.password}</td>
                         <td>${user.active}</td>
                         <td>${user.dateJoined}</td>
-                        <td><a href="editprofile?id=${user.id}&action=update&actor=users">Update</a></td>
-                        <td><a href="editprofile?id=${user.id}&action=delete&actor=users">Delete</a></td>
+                        <td><a href="${pageContext.request.contextPath}/editprofile?id=${user.id}&action=update&actor=users">Update</a></td>
+                        <td><a href="${pageContext.request.contextPath}/editprofile?id=${user.id}&action=delete&actor=users">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-        <h3>Staff Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="register?actor=staff" style="font-size:20px">Add Staff Account</a></h3>
+        <h3>Staff Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="${pageContext.request.contextPath}/register?actor=staff" style="font-size:20px">Add Staff Account</a></h3>
         <table class="staff" border="2px">
             <thead>
                 <tr>
@@ -62,8 +62,8 @@
                         <td>${staff.active}</td>
                         <td>${staff.dateJoined}</td>
                         <td></td>
-                        <td><a href="editprofile?id=${staff.id}&action=update&actor=staffs">Update</a></td>
-                        <td><a href="editprofile?id=${staff.id}&action=delete&actor=staffs">Delete</a></td>
+                        <td><a href="${pageContext.request.contextPath}/editprofile?id=${staff.id}&action=update&actor=staffs">Update</a></td>
+                        <td><a href="${pageContext.request.contextPath}/editprofile?id=${staff.id}&action=delete&actor=staffs">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

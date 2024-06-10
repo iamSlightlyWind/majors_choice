@@ -59,7 +59,7 @@ public class RegisterServlet extends HttpServlet {
 //            request.getRequestDispatcher("/register.jsp").forward(request, response);
             if (result == 1) {
                 if (tableName != null) {
-                    response.sendRedirect("manageraccount");
+                    response.sendRedirect("/manage/profile");
                     return; // Ensure no further processing
                 } else {
                     request.setAttribute("loginStatus", "Successfully Registered. You can now Login.");

@@ -90,10 +90,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManagerAccount</servlet-name>
-        <url-pattern>/manageraccount</url-pattern>
+        <url-pattern>/manage/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateProfile</servlet-name>
-        <url-pattern>/updateprofile</url-pattern>
+        <url-pattern>/manage/profile/user</url-pattern>
     </servlet-mapping>
 </web-app>

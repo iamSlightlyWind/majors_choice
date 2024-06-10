@@ -37,7 +37,7 @@ public class ManagerAccount extends HttpServlet {
         
         request.setAttribute("users", users);
         request.setAttribute("staffs", staffs);
-        request.getRequestDispatcher("managerAccount.jsp").forward(request, response);
+        request.getRequestDispatcher("/managerAccount.jsp").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
