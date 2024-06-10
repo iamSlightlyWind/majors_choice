@@ -20,11 +20,11 @@ public class ResetPasswordServlet extends HttpServlet {
         switch (result) {
             case 0:
                 request.setAttribute("recoveryStatus", "Email is not registered.");
-                request.getRequestDispatcher("recovery.jsp").forward(request, response);
+                request.getRequestDispatcher("/auth/recovery.jsp").forward(request, response);
                 break;
             case 1:
                 request.setAttribute("loginStatus", "A new, unactivated password has been sent to your email address.");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                 break;
         }
     }

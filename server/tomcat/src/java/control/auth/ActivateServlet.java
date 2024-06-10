@@ -20,11 +20,11 @@ public class ActivateServlet extends HttpServlet {
             case 0:
                 request.setAttribute("user", ((User) request.getSession().getAttribute("userObject")).username);
                 request.setAttribute("activateStatus", "Activation code is incorrect.");
-                request.getRequestDispatcher("activate.jsp").forward(request, response);
+                request.getRequestDispatcher("/auth/activate.jsp").forward(request, response);
                 break;
             case 1:
                 request.setAttribute("loginStatus", "Logged in successfully");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                 break;
         }
     }

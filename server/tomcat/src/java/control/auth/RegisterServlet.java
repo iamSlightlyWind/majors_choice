@@ -32,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
             switch (result) {
                 case 1:
                     request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                    request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                     break;
 
                 case -1:
@@ -48,11 +48,11 @@ public class RegisterServlet extends HttpServlet {
                     break;
             }
             request.setAttribute("registerStatus", error);
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/auth/register.jsp").forward(request, response);
 
         } else {
             request.setAttribute("registerStatus", error);
-            request.getRequestDispatcher("/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/auth/register.jsp").forward(request, response);
         }
         response.setContentType("text/html;charset=UTF-8");
     }

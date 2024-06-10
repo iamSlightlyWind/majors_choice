@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
         if (request.getParameter("action") != null && request.getParameter("action").equals("logout")) {
             request.getSession().invalidate();
             request.setAttribute("loginStatus", "Logged out");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
             return;
         }
 
@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("userObject", user);
                 request.setAttribute("loginStatus", "Logged in");
                 request.getSession().setAttribute("table", "user");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
+                request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
 
                 // response.sendRedirect("profile");
                 // response.sendRedirect("Test");
@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             case -1:
                 request.getSession().setAttribute("userObject", user);
                 request.setAttribute("user", user.username);
-                request.getRequestDispatcher("activate.jsp").forward(request, response);
+                request.getRequestDispatcher("/auth/activate.jsp").forward(request, response);
                 break;
             case 0:
                 switch (user.loginEmployee()) {
@@ -44,19 +44,19 @@ public class LoginServlet extends HttpServlet {
                         request.getSession().setAttribute("userObject", user);
                         request.getSession().setAttribute("table", "staff");
                         request.setAttribute("loginStatus", "Logged in as Manager");
-                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                         break;
                     case 0: // staff role
                         user.retrieveData("staff");
                         request.getSession().setAttribute("userObject", user);
                         request.getSession().setAttribute("table", "staff");
                         request.setAttribute("loginStatus", "Logged in as Staff");
-                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                         break;
                     default:
                         String error = "Login failed!";
                         request.setAttribute("loginStatus", error);
-                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                         break;
                 }
         }
