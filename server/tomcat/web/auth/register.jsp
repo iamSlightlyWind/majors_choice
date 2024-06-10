@@ -194,7 +194,7 @@
                       d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                     </path>
                   </svg>
-                  <a href="login.html" class="navbar-account thq-button-filled">
+                  <a href="/auth/login.jsp" class="navbar-account thq-button-filled">
                     <span class="thq-body-small">
                       <span>Account</span>
                       <br />
@@ -364,7 +364,7 @@
                 <span class="register-form-text24">
                   <span>Have already an account?</span>
                 </span>
-                <a href="login.html" class="register-form-navlink">
+                <a href="/auth/login.jsp" class="register-form-navlink">
                   <span>Login here</span>
                 </a>
               </div>
