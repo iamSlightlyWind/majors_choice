@@ -12,7 +12,7 @@ public class ActivateServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-                String code = request.getParameter("code");
+        String code = request.getParameter("code");
         User user = (User) request.getSession().getAttribute("userObject");
         int result = user.activate(code);
 
@@ -23,7 +23,9 @@ public class ActivateServlet extends HttpServlet {
                 request.getRequestDispatcher("/auth/activate.jsp").forward(request, response);
                 break;
             case 1:
-                request.setAttribute("loginStatus", "Logged in successfully");
+                user.retrieveData((String) request.getSession().getAttribute("table"));
+                request.getSession().setAttribute("userObject", user);
+                request.setAttribute("loginStatus", "Logged in");
                 request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                 break;
         }

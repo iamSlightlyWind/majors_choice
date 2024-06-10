@@ -37,11 +37,10 @@ public class LoginGoogleServlet extends HttpServlet {
             } else {
                 result = user.login();
                 if (result == 1) {
-                    user.retrieveData("user");
                     request.getSession().setAttribute("table", "user");
-                    request.getSession().setAttribute("userObject",user);
+                    user.retrieveData((String) request.getSession().getAttribute("table"));
                     request.getSession().setAttribute("userObject", user);
-                    request.setAttribute("loginStatus", "Logged in successfully");
+                    request.setAttribute("loginStatus", "Logged in");
                     request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                 } else {
                     request.setAttribute("loginStatus", "Login failed!");
@@ -56,9 +55,10 @@ public class LoginGoogleServlet extends HttpServlet {
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
 
+            request.getSession().setAttribute("table", "user");
             user.updateInformation((String) request.getSession().getAttribute("table"));
             request.getSession().setAttribute("userObject", user);
-            request.setAttribute("loginStatus", "Logged in successfully");
+            request.setAttribute("loginStatus", "Logged in");
             request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
         }
     }
