@@ -57,6 +57,7 @@ public class User {
     }
 
     public void retrieveData(String role) {
+        System.out.println(this);
         try {
             String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.username = ?";
             sql = sql.replace("^", role);
