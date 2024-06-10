@@ -3,6 +3,7 @@ use major
 DECLARE @resultInt int
 -- User 1
 EXEC register 
+    @tablename = 'user',
     @username = 'davitscott', 
     @password = 'password123', 
     @fullname = 'Davit Scott', 
@@ -17,6 +18,7 @@ PRINT @resultInt
 
 -- User 2
 EXEC register 
+    @tablename = 'user',
     @username = 'emilyjohnson', 
     @password = 'password456', 
     @fullname = 'Emily Johnson', 
@@ -31,6 +33,7 @@ PRINT @resultInt
 
 -- User 3
 EXEC register 
+    @tablename = 'user',
     @username = 'michaelbrown', 
     @password = 'password789', 
     @fullname = 'Michael Brown', 
@@ -45,6 +48,7 @@ PRINT @resultInt
 
 -- User 4
 EXEC register 
+    @tablename = 'user',
     @username = 'sarahmiller', 
     @password = 'password012', 
     @fullname = 'Sarah Miller', 
@@ -59,6 +63,7 @@ PRINT @resultInt
 
 -- User 5
 EXEC register 
+    @tablename = 'user',
     @username = 'jamesdavis', 
     @password = 'password345', 
     @fullname = 'James Davis', 
@@ -2352,13 +2357,17 @@ EXEC addProductSSD
 PRINT @result
 
 -- Insert into staffs table with Manager Role
-INSERT INTO staffs (username, password, possition, active) 
-VALUES ('thangnvhe', '123', 1, 1);
+INSERT INTO staffs
+    (username, password, possition, active)
+VALUES
+    ('thangnvhe', '123', 1, 1);
 
 -- Get the ID of the inserted staff member
 DECLARE @id INT;
 SET @id = SCOPE_IDENTITY();
 
 -- Insert into staffDetails table using the obtained staff ID
-INSERT INTO staffDetails (id, fullname, email, phoneNumber, address,dateOfBirth) 
-VALUES (@id, 'Nguyen Van Thang', 'thangnvhe171327@fpt.edu.vn', '023432234', 'Viet Nam','1985-05-15');
+INSERT INTO staffDetails
+    (id, fullname, email, phoneNumber, address,dateOfBirth)
+VALUES
+    (@id, 'Nguyen Van Thang', 'thangnvhe171327@fpt.edu.vn', '023432234', 'Viet Nam', '1985-05-15');
