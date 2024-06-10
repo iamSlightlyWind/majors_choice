@@ -33,8 +33,32 @@
         <servlet-class>Controller.CaseController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DAOGPU</servlet-name>
-        <servlet-class>DAO.DAOGPU</servlet-class>
+        <servlet-name>CPUServlet</servlet-name>
+        <servlet-class>Controller.CPUServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CaseServlet</servlet-name>
+        <servlet-class>Controller.CaseServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GPUServlet</servlet-name>
+        <servlet-class>Controller.GPUServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MotherboardServlet</servlet-name>
+        <servlet-class>Controller.MotherboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PSUServlet</servlet-name>
+        <servlet-class>Controller.PSUServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RAMServlet</servlet-name>
+        <servlet-class>Controller.RAMServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SSDServlet</servlet-name>
+        <servlet-class>Controller.SSDServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -65,15 +89,35 @@
         <url-pattern>/LoginGoogleServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CPUController</servlet-name>
-        <url-pattern>/cpu</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>manage</servlet-name>
         <url-pattern>/manage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CaseController</servlet-name>
-        <url-pattern>/cases</url-pattern>
+        <servlet-name>CPUServlet</servlet-name>
+        <url-pattern>/cpus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CaseServlet</servlet-name>
+        <url-pattern>/case</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GPUServlet</servlet-name>
+        <url-pattern>/gpus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MotherboardServlet</servlet-name>
+        <url-pattern>/motherboards</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PSUServlet</servlet-name>
+        <url-pattern>/psus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RAMServlet</servlet-name>
+        <url-pattern>/rams</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SSDServlet</servlet-name>
+        <url-pattern>/ssds</url-pattern>
     </servlet-mapping>
 </web-app>

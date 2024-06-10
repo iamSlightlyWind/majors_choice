@@ -10,11 +10,10 @@ public class CPU extends Product {
     public int baseClock;
     public int boostClock;
     public int tdp;
-    public String images;
-    public CPU(int id, double sellingPrice, double costPrice, String description, String name, String generation,
-            String socket, int cores, int threads, int baseClock, int boostClock, int tdp) {
-        super(id, sellingPrice, costPrice, description);
-        this.name = name;
+    public String image;
+
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String name, int id, double sellingPrice, double costPrice, String description) {
+        super(name, id, sellingPrice, costPrice, description);
         this.generation = generation;
         this.socket = socket;
         this.cores = cores;
@@ -22,18 +21,20 @@ public class CPU extends Product {
         this.baseClock = baseClock;
         this.boostClock = boostClock;
         this.tdp = tdp;
-    }   
+        this.image = image;
+    }
+
 
     public CPU() {
         super(0, 0, 0, null);
     }
 
-    public String getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getGeneration() {

@@ -8,7 +8,7 @@
     </head>
     <body>
 
-        <form action="cases" method="get">
+        <form action="case" method="get">
         </form>
         <a href="/tomcat/jsp/insertCase.jsp"><button>Insert Case</button></a>
         <table border=1>
@@ -33,8 +33,8 @@
                 <td><%=cases.getType()%> </td>
                 <td><%=cases.getFormFactor()%> </td>
                 <td><%=cases.getColor()%> </td>
-                <td><a href="cases?service=update&id=<%=cases.getId()%>">Update</a></td>
-                <td><a href="cases?service=delete&id=<%=cases.getId()%>">Delete</a></td>
+                <td><a href="case?service=update&id=<%=case.getId()%>">Update</a></td>
+                <td><a href="case?service=delete&id=<%=case.getId()%>">Delete</a></td>
             </tr>
             <%}%>
         </table>

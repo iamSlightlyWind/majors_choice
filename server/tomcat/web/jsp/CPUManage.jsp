@@ -1,11 +1,5 @@
-<%-- 
-    Document   : CPUManage
-    Created on : Jun 6, 2024, 9:14:05 AM
-    Author     : PC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.Vector,packages.CPU"%>
+<%@page import="java.util.ArrayList,packages.CPU"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +11,7 @@
         <%
             String url = request.getScheme()+ "://"+ request.getServerName()+":"+request.getServerPort()+request.getContextPath();
         %>
-        <form action="cpu" method="get">
+        <form action="cpus" method="get">
         </form>
         <a href="/tomcat/jsp/insertCPU.jsp"><button>Insert CPU</button></a>
         <table border=1>
@@ -25,7 +19,9 @@
             <caption><%=titleTable%></caption>
             <tr>
                 <th>id</th>
-                <th>images</th>
+                <th>sellingPrice</th>
+                <th>costPrice</th>
+                <th>image</th>
                 <th>name</th>
                 <th>generation</th>
                 <th>socket</th>
@@ -38,12 +34,14 @@
                 <th>Delete</th>
             </tr>
             <%
-            Vector<CPU> vector = (Vector<CPU>) request.getAttribute("data");
-            for(CPU cpu : vector){
+                ArrayList<CPU> cpus = (ArrayList<CPU>) request.getAttribute("cpus");
+                for (CPU cpu : cpus) {
             %>
             <tr>
                 <td><%=cpu.getId()%> </td>
-                <td><img href="#" src="/tomcat/assets/images/<%=cpu.getImages()%>" style="width: 100px; height: auto;"/></td>
+                <td><%=cpu.getSellingPrice()%> </td>
+                <td><%=cpu.getCostPrice()%> </td>
+                <td><img href="#" src="/tomcat/assets/images/<%=cpu.getImage()%>" style="width: 100px; height: auto;"/></td>
                 <td><%=cpu.getName()%> </td>
                 <td><%=cpu.getGeneration()%> </td>
                 <td><%=cpu.getSocket()%> </td>
@@ -52,8 +50,8 @@
                 <td><%=cpu.getBaseClock()%> </td>
                 <td><%=cpu.getBoostClock()%> </td>
                 <td><%=cpu.getTdp()%> </td>
-                <td><a href="cpu?service=update&id=<%=cpu.getId()%>">Update</a></td>
-                <td><a href="cpu?service=delete&id=<%=cpu.getId()%>">Delete</a></td>
+                <td><a href="cpus?service=update&id=<%=cpu.getId()%>">Update</a></td>
+                <td><a href="cpus?service=delete&id=<%=cpu.getId()%>">Delete</a></td>
             </tr>
             <%}%>
         </table>

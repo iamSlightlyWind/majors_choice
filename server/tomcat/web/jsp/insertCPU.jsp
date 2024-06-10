@@ -1,27 +1,26 @@
-<%-- 
-    Document   : insertCPU
-    Created on : Jun 6, 2024, 9:44:07 AM
-    Author     : PC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.Vector,packages.CPU"%>
+<%@page import="java.util.ArrayList,packages.CPU"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert Product</title>
     </head>
+<!--    enctype="multipart/form-data"-->
     <body>
-        <form action="/tomcat/cpu?service=insertCPU" method="post" enctype="multipart/form-data" >
+        <form action="/tomcat/cpus?service=insertCPU" method="post" >
             <table>
                 <tr>
-                    <td>ID</td>
-                    <td><input type="number" name="id"></td>
+                    <td>SellingPrice</td>
+                    <td><input type="number" name="sellingPrice" ></td>
                 </tr>
                 <tr>
-                    <td>IMAGE</td>
-                    <td><input type="file" name="file" ></td>
+                    <td>CostPrice</td>
+                    <td><input type="number" name="costPrice" ></td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><input type="file" name="image" ></td>
                 </tr>
                 <tr>
                     <td>Name</td>

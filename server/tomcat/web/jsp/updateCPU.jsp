@@ -1,11 +1,5 @@
-<%-- 
-    Document   : updateCPU
-    Created on : Jun 6, 2024, 9:15:34 AM
-    Author     : PC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.Vector,packages.CPU"%>
+<%@page import="java.util.ArrayList,packages.CPU"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,14 +8,21 @@
     </head>
     <body>
         <%
-Vector<CPU> vector = (Vector<CPU>) request.getAttribute("vector");
-CPU cpu = vector.get(0);
+            CPU cpu = (CPU) request.getAttribute("cpus");
         %>
-        <form action="cpu" method="post" >
+        <form action="cpus" method="post" >
             <table>
                 <tr>
                     <td>ID</td>
                     <td><%=cpu.getId()%></td>
+                </tr>
+                <tr>
+                    <td>sellingPrice</td>
+                    <td><input type="number" name="sellingPrice" value="<%=cpu.getSellingPrice()%>"></td>
+                </tr>
+                <tr>
+                    <td>costPrice</td>
+                    <td><input type="number" name="costPrice" value="<%=cpu.getCostPrice()%>"></td>
                 </tr>
                 <tr>
                     <td>Name</td>
@@ -29,7 +30,7 @@ CPU cpu = vector.get(0);
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="file" name="file" value="<%=cpu.getImages()%>"></td>
+                    <td><input type="file" name="file" value="<%=cpu.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Generation</td>

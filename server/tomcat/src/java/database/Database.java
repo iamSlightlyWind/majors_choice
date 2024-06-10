@@ -1,10 +1,19 @@
 package database;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import packages.CPU;
+import packages.Case;
+import packages.GPU;
+import packages.Motherboard;
+import packages.PSU;
+import packages.RAM;
+import packages.SSD;
 
 public class Database {
+
     public Connection connection;
 
     public Database() {
@@ -40,4 +49,672 @@ public class Database {
         }
         return null;
     }
+
+    public ArrayList<CPU> getCPUs(String sql) {
+        try {
+//            String sql = "{call getCPU()}";
+            PreparedStatement statement = connection.prepareCall(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<CPU> cpus = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                String generation = resultSet.getString("generation");
+                String socket = resultSet.getString("socket");
+                int cores = resultSet.getInt("cores");
+                int threads = resultSet.getInt("threads");
+                int baseClock = resultSet.getInt("baseClock");
+                int boostClock = resultSet.getInt("boostClock");
+                int tdp = resultSet.getInt("tdp");
+                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name, name, id, sellingPrice, costPrice, description));
+            }
+            return cpus;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public ArrayList<Case> getCases() {
+//         try {
+//         String sql = "{call getCase()}";
+//         CallableStatement statement = connection.prepareCall(sql);
+//         ResultSet resultSet = statement.executeQuery();
+//         ArrayList<Case> cases = new ArrayList<>();
+//         while (resultSet.next()) {
+//         int id = resultSet.getInt("id");
+//         double sellingPrice = resultSet.getDouble("sellingPrice");
+//         double costPrice = resultSet.getDouble("costPrice");
+//         String description = resultSet.getString("description");
+//         String name = resultSet.getString("name");
+//         String type = resultSet.getString("type");
+//         String formFactor = resultSet.getString("formFactor");
+//         String color = resultSet.getString("color");
+//         cases.add(new Case(name, type, formFactor, color, id, sellingPrice, costPrice, description));
+//         }
+//         return cases;
+//         } catch (SQLException ex) {
+//         Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+//         }
+        return null;
+    }
+
+    public int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String socket,
+            int cores, int threads, int baseClock, int boostClock, int tdp, String image) {
+        try {
+            Database db = new Database();
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = db.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductCPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
+            CallableStatement callableStatement = db.connection.prepareCall(sql);
+//            callableStatement.setInt(1, productId); // Use the new ID
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setString(4, generation);
+            callableStatement.setString(5, socket);
+            callableStatement.setInt(6, cores);
+            callableStatement.setInt(7, threads);
+            callableStatement.setInt(8, baseClock);
+            callableStatement.setInt(9, boostClock);
+            callableStatement.setInt(10, tdp);
+            callableStatement.setString(11, image);
+            callableStatement.registerOutParameter(12, Types.NVARCHAR);
+
+            callableStatement.execute();
+
+            // Return the newly generated ID
+            return productId;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int updateProductCPU(int id, double sellingPrice, double costPrice, String name, String generation, String socket,
+            int cores, int threads, int baseClock, int boostClock, int tdp, String image) {
+        try {
+            // Prepare and execute the SQL statement to update the CPU product
+            String sql = "{call updateProductCPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setString(5, generation);
+            callableStatement.setString(6, socket);
+            callableStatement.setInt(7, cores);
+            callableStatement.setInt(8, threads);
+            callableStatement.setInt(9, baseClock);
+            callableStatement.setInt(10, boostClock);
+            callableStatement.setInt(11, tdp);
+            callableStatement.setString(12, image);
+            callableStatement.registerOutParameter(13, Types.VARCHAR);
+
+            callableStatement.execute();
+
+            // Get the result from the output parameter
+            String result = callableStatement.getString(13);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                System.out.println("Error: " + result);
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int removeCPU(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[cpus]\n"
+                + "      WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public ArrayList<GPU> getGPUs(String sql) {
+        try {
+//            String sql = "{call getGPU()}";
+            PreparedStatement statement = connection.prepareCall(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<GPU> gpus = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                String generation = resultSet.getString("generation");
+                int vram = resultSet.getInt("vram");
+                int baseClock = resultSet.getInt("baseClock");
+                int boostClock = resultSet.getInt("boostClock");
+                int tdp = resultSet.getInt("tdp");
+                gpus.add(
+                        new GPU(generation, vram, baseClock, boostClock, tdp, name, name, id, sellingPrice, costPrice, description));
+            }
+            return gpus;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public int addProductGPU(double sellingPrice, double costPrice, String name, String generation, int vram,
+            int baseClock, int boostClock, int tdp, String image) {
+        try {
+            Database db = new Database();
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = db.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductGPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
+            CallableStatement callableStatement = db.connection.prepareCall(sql);
+//            callableStatement.setInt(1, productId); // Use the new ID
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setString(4, generation);
+            callableStatement.setInt(5, vram);
+            callableStatement.setInt(6, baseClock);
+            callableStatement.setInt(7, boostClock);
+            callableStatement.setInt(8, tdp);
+            callableStatement.setString(9, image);
+            callableStatement.registerOutParameter(10, Types.NVARCHAR);
+
+            callableStatement.execute();
+            return productId;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int updateProductGPU(int id, double sellingPrice, double costPrice, String name, String generation, int vram,
+            int baseClock, int boostClock, int tdp, String image) {
+        try {
+            // Prepare and execute the SQL statement to update the CPU product
+            String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setString(5, generation);
+            callableStatement.setInt(6, vram);
+            callableStatement.setInt(7, baseClock);
+            callableStatement.setInt(8, boostClock);
+            callableStatement.setInt(9, tdp);
+            callableStatement.setString(10, image);
+            callableStatement.registerOutParameter(11, Types.VARCHAR);
+
+            callableStatement.execute();
+
+            // Get the result from the output parameter
+            String result = callableStatement.getString(11);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                System.out.println("Error: " + result);
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int removeGPU(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[gpus]\n"
+                + "      WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public ArrayList<Motherboard> getMotherboards(String sql) {
+        try {
+//            String sql = "{call getGPU()}";
+            PreparedStatement statement = connection.prepareCall(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Motherboard> motherboards = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                String socket = resultSet.getString("socket");
+                String chipset = resultSet.getString("chipset");
+                String formFactor = resultSet.getString("formFactor");
+                int maxRamSpeed = resultSet.getInt("maxRamSpeed");
+                int ramSlots = resultSet.getInt("ramSlots");
+                int wifi = resultSet.getInt("wifi");
+                motherboards.add(
+                        new Motherboard(socket, chipset, formFactor, name, maxRamSpeed, ramSlots, wifi, name, name, id, sellingPrice, costPrice, description));
+            }
+            return motherboards;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket, String chipset,
+            String formFactor, String ramType, int maxRamSpeed, int ramSlots, int wifi, String image) {
+        try {
+            Database db = new Database();
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = db.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductMotherboard(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
+            CallableStatement callableStatement = db.connection.prepareCall(sql);
+//            callableStatement.setInt(1, productId); // Use the new ID
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setString(4, socket);
+            callableStatement.setString(5, chipset);
+            callableStatement.setString(6, formFactor);
+            callableStatement.setString(7, ramType);
+            callableStatement.setInt(8, maxRamSpeed);
+            callableStatement.setInt(9, ramSlots);
+            callableStatement.setInt(10, wifi);
+            callableStatement.setString(11, image);
+            callableStatement.registerOutParameter(12, Types.NVARCHAR);
+
+            callableStatement.execute();
+            return productId;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int updateProductMotherboard(int id, double sellingPrice, double costPrice, String name, String socket, String chipset, String formFactor, String ramType, int maxRamSpeed,
+            int ramSlots, int wifi, String image) {
+        try {
+            // Prepare and execute the SQL statement to update the CPU product
+            String sql = "{call updateProductMotherboard(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setString(5, socket);
+            callableStatement.setString(6, chipset);
+            callableStatement.setString(7, formFactor);
+            callableStatement.setString(8, ramType);
+            callableStatement.setInt(9, maxRamSpeed);
+            callableStatement.setInt(10, ramSlots);
+            callableStatement.setInt(11, wifi);
+            callableStatement.setString(12, image);
+            callableStatement.registerOutParameter(13, Types.VARCHAR);
+
+            callableStatement.execute();
+
+            // Get the result from the output parameter
+            String result = callableStatement.getString(13);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                System.out.println("Error: " + result);
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int removeMotherboard(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[motherboards]\n"
+                + "      WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public ArrayList<PSU> getPSUs(String sql) {
+        try {
+//            String sql = "{call getGPU()}";
+            PreparedStatement statement = connection.prepareCall(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<PSU> psus = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                int wattage = resultSet.getInt("wattage");
+                String efficiency = resultSet.getString("efficiency");
+                psus.add(
+                        new PSU(wattage, efficiency, name, name, id, sellingPrice, costPrice, description));
+            }
+            return psus;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public int addProductPSU(double sellingPrice, double costPrice, String name, int wattage, String efficiency, String image) {
+        try {
+            Database db = new Database();
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = db.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductPSU(?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = db.connection.prepareCall(sql);
+
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setInt(4, wattage);
+            callableStatement.setString(5, efficiency);
+            callableStatement.setString(6, image);
+            callableStatement.registerOutParameter(7, Types.NVARCHAR);
+
+            callableStatement.execute();
+            return callableStatement.getInt(7);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage, String efficiency, String image) {
+        try {
+            // Prepare and execute the SQL statement to update the CPU product
+            String sql = "{call updateProductPSU(?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setInt(5, wattage);
+            callableStatement.setString(6, efficiency);
+            callableStatement.setString(7, image);
+            callableStatement.registerOutParameter(8, Types.VARCHAR);
+
+            callableStatement.execute();
+
+            // Get the result from the output parameter
+            String result = callableStatement.getString(8);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                System.out.println("Error: " + result);
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int removePSU(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[psus]\n"
+                + "      WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public ArrayList<RAM> getRAMs(String sql) {
+        try {
+            PreparedStatement statement = connection.prepareCall(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<RAM> rams = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                String generation = resultSet.getString("generation");
+                int capacity = resultSet.getInt("capacity");
+                int speed = resultSet.getInt("speed");
+                int latency = resultSet.getInt("latency");
+                rams.add(
+                        new RAM(generation, capacity, speed, latency, name, name, id, sellingPrice, costPrice, description));
+            }
+            return rams;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public int addProductRAM(double sellingPrice, double costPrice, String name, String generation, int capacity, int speed, int latency, String image) {
+        try {
+            Database db = new Database();
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = db.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = db.connection.prepareCall(sql);
+
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setString(4, generation);
+            callableStatement.setInt(5, capacity);
+            callableStatement.setInt(6, speed);
+            callableStatement.setInt(7, latency);
+            callableStatement.setString(8, image);
+            callableStatement.registerOutParameter(9, Types.INTEGER);
+
+            callableStatement.execute();
+            return callableStatement.getInt(9); // Get the product ID from the output parameter
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int updateProductRAM(int id, double sellingPrice, double costPrice, String name, String generation, int capacity, int speed, int latency, String image) {
+        try {
+            String sql = "{call updateProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setString(5, generation);
+            callableStatement.setInt(6, capacity);
+            callableStatement.setInt(7, speed);
+            callableStatement.setInt(8, latency);
+            callableStatement.setString(9, image);
+            callableStatement.registerOutParameter(10, Types.VARCHAR);
+
+            callableStatement.execute();
+
+            String result = callableStatement.getString(10);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                System.out.println("Error: " + result);
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int removeRAM(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[rams] WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public ArrayList<SSD> getSSDs(String sql) {
+        try {
+            PreparedStatement statement = connection.prepareCall(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<SSD> ssds = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                String connectionInterface = resultSet.getString("connectionInterface");
+                int capacity = resultSet.getInt("capacity");
+                int cache = resultSet.getInt("cache");
+                ssds.add(
+                        new SSD(connectionInterface, capacity, cache, name, id, sellingPrice, costPrice, description));
+            }
+            return ssds;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public int addProductSSD(double sellingPrice, double costPrice, String name, String connectionInterface, int capacity, int cache, String image) {
+        try {
+            Database db = new Database();
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = db.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductSSD(?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = db.connection.prepareCall(sql);
+
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setString(4, connectionInterface);
+            callableStatement.setInt(5, capacity);
+            callableStatement.setInt(6, cache);
+            callableStatement.setString(7, image);
+            callableStatement.registerOutParameter(8, Types.NVARCHAR);
+
+            callableStatement.execute();
+            return productId;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int updateProductSSD(int id, double sellingPrice, double costPrice, String name, String connectionInterface, int capacity, int cache, String image) {
+        try {
+            // Prepare and execute the SQL statement to update the SSD product
+            String sql = "{call updateProductSSD(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setString(5, connectionInterface);
+            callableStatement.setInt(6, capacity);
+            callableStatement.setInt(7, cache);
+            callableStatement.setString(8, image);
+            callableStatement.registerOutParameter(9, Types.VARCHAR);
+
+            callableStatement.execute();
+
+            // Get the result from the output parameter
+            String result = callableStatement.getString(9);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                System.out.println("Error: " + result);
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int removeSSD(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[ssds] WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public static void main(String[] args) {
+        Database database = new Database();
+//        int result = database.addProductPSU(2, 2, "test", 2, "test", "test");
+//        int result = database.updateProductPSU(187, 2, 2, "test", 2, "test", "tesst");
+
+//        if (result == 1) {
+//            System.out.println("CPU updated successfully.");
+//        } else {
+//            System.out.println("Failed to update CPU.");
+//        }
+//        int id = database.getCPUs("select * from cpus join products on cpus.id= products.id where cpus.id = 10").get(0).getId();
+//        System.out.println(id);
+//        ArrayList<Motherboard> motherboards = database.getMotherboards("{call getMotherboard()}");;
+    }
+
 }

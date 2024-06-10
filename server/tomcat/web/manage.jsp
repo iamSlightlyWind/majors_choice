@@ -1,9 +1,3 @@
-<%-- 
-    Document   : manage
-    Created on : Jun 6, 2024, 9:48:26 AM
-    Author     : PC
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <p><a href="cpu?service=listAll"> Manage CPU</a>
-        <p><a href="cases?service=listAll"> Manage Case</a>
+        <p><a href="cpus?service=listAll"> Manage CPU</a>
+        <p><a href="case?service=listAll"> Manage Case</a>
         <p><a href="gpus?service=listAll"> Manage GPU</a>
         <p><a href="motherboards?service=listAll"> Manage Motherboard</a>
         <p><a href="psus?service=listAll"> Manage PSU</a>
