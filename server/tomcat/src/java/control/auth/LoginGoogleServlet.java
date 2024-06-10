@@ -37,6 +37,9 @@ public class LoginGoogleServlet extends HttpServlet {
             } else {
                 result = user.login();
                 if (result == 1) {
+                    user.retrieveData("user");
+                    request.getSession().setAttribute("table", "user");
+                    request.getSession().setAttribute("userObject",user);
                     request.getSession().setAttribute("userObject", user);
                     request.setAttribute("loginStatus", "Logged in successfully");
                     request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
