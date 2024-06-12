@@ -28,10 +28,11 @@ public class RegisterServlet extends HttpServlet {
         User user = new User(username, password, fullName, email, phoneNumber, address, dateOfBirth);
 
         if (error.equals("")) {
-            result = user.register(false);
+            result = user.register(false, "user");
             switch (result) {
                 case 1:
                     request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
+                    request.getSession().setAttribute("table", "user");
                     request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
                     break;
 
