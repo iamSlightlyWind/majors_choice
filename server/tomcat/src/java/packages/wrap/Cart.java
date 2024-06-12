@@ -26,6 +26,12 @@ public class Cart {
         updateCart();
     }
 
+    public void clearCart() {
+        products.clear();
+        quantities.clear();
+        updateCart();
+    }
+
     public void updateCart() {
         db.updateCart(Integer.parseInt(userID), products);
     }

@@ -26,6 +26,7 @@
             </form>
 
             <form action="Cart" method="post">
+                <button type="submit" name="action" value="clear">clear cart</button>
                 <button type="submit" name="action" value="placeOrder">place order</button>
             </form>
 
