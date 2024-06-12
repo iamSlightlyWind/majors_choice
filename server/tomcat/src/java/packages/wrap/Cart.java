@@ -16,7 +16,6 @@ public class Cart {
 
     public void updateQuantity() {
         HashMap<Integer, ProductCount> productCountMap = new HashMap<>();
-        double cartPrice = 0;
         for (Product product : products) {
             ProductCount productCount = productCountMap.get(product.id);
             if (productCount == null) {
@@ -24,6 +23,10 @@ public class Cart {
                 productCountMap.put(product.id, productCount);
             }
             productCount.count += 1;
+        }
+
+        double cartPrice = 0;
+        for (ProductCount productCount : productCountMap.values()) {
             cartPrice += productCount.pricePer * productCount.count;
         }
         totalPrice = String.format(Locale.US, "%,.2f", cartPrice);
@@ -35,6 +38,7 @@ public class Cart {
     public void clearCart() {
         products.clear();
         quantities.clear();
+        totalPrice = "0.00";
         updateCart();
     }
 
