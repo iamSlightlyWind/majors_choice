@@ -281,7 +281,7 @@
                 <h1 class="register-by-gg-text">
                   <span>Register an account with Google</span>
                 </h1>
-                <form action="/auth/googleLogin" method="post" class="register-by-gg-form1">
+                <form id="registerForm" action="/auth/googleLogin" method="post"class="register-by-gg-form1">
                   <div class="register-by-gg-full-name">
                     <label for="thq-sign-in-1-password" class="thq-body-large">
                       <span>Full Name</span>
@@ -295,7 +295,7 @@
                       <span>Email</span>
                       <br />
                     </label>
-                    <input type="email" id="thq-sign-in-3-email" readonly value="${gmail}"
+                    <input type="email" id="thq-sign-in-3-email" name="email" readonly value="${gmail}"
                       class="register-by-gg-textinput1 thq-input thq-body-large" />
                   </div>
                   <div class="register-by-gg-phone">
@@ -322,7 +322,7 @@
                     <input type="date" required="true" name="dateOfBirth"
                       class="register-by-gg-textinput4 thq-input thq-body-large" />
                   </div>
-                  <button type="submit" class="register-by-gg-button thq-button-filled">
+                  <button type="submit" name="action" value="Update Information" class="register-by-gg-button thq-button-filled">
                     <span class="register-by-gg-text16 thq-body-small">
                       <span>Update Information</span>
                     </span>
