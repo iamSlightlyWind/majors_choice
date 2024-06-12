@@ -402,3 +402,114 @@ BEGIN
     set @result = 1
 END;
 go
+create procedure getCPU
+as
+begin
+    select
+        cpus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        socket,
+        cores,
+        threads,
+        baseClock,
+        boostClock,
+        tdp
+    from products
+        join cpus on products.id = cpus.id
+end
+go
+
+create procedure getGPU
+as
+begin
+    select
+        gpus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        vram,
+        baseClock,
+        boostClock,
+        tdp
+    from products
+        join gpus on products.id = gpus.id
+end
+go
+
+create procedure getMotherboard
+as
+begin
+    select
+        motherboards.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        socket,
+        chipset,
+        formFactor,
+        ramType,
+        maxRamSpeed,
+        ramSlots,
+        wifi
+    from products
+        join motherboards on products.id = motherboards.id
+end
+go
+
+create procedure getRAM
+as
+begin
+    select
+        rams.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        capacity,
+        speed,
+        latency
+    from products
+        join rams on products.id = rams.id
+end
+go
+
+create procedure getSSD
+as
+begin
+    select
+        ssds.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        interface,
+        capacity,
+        cache
+    from products
+        join ssds on products.id = ssds.id
+end
+go
+
+create procedure getPSU
+as
+begin
+    select
+        psus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        wattage,
+        efficiency
+    from products
+        join psus on products.id = psus.id
+end
+go
