@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -258,14 +259,18 @@
                 <span>Manager WareHouse</span>
               </span>
               <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                Manager Customer
+                  <c:if test="${sessionScope.table == 'manager'}">
+                       <a href="/manage/profile?actor=user">Manager Customer</a>
+                  </c:if>
               </span>
               <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
                 <span>Feedback</span>
                 <br />
               </span>
               <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                Manager Staff
+                  <c:if test="${sessionScope.table == 'manager' }">
+                      <a href="/manage/profile?actor=staff">Manager Staff</a>
+                  </c:if>
               </span>
               <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
                 Financial Reports
@@ -280,7 +285,7 @@
                 <h2 class="sign-in-text thq-heading-2">
                   Sign in to Major's Choice
                 </h2>
-                <form class="sign-in-form1" action="/auth/login" method="post">
+                <form class="sign-in-form1" id="loginForm" action="/auth/login" method="post">
                   <div class="sign-in-email">
                     <label for="thq-sign-in-1-password" class="thq-body-large">
                       Username
@@ -309,6 +314,8 @@
                   <br>
                   <p>${loginStatus}</p>
                   <br>
+                  <div class="g-recaptcha" data-sitekey="6LdK--8pAAAAABv-L5jPFsFySBjogEmHiFt87qcV"></div>
+		  <div class="error"></div>
                   <button type="submit" class="sign-in-button thq-button-filled">
                     <span class="sign-in-text5 thq-body-small">
                       <span>Sign In</span>
@@ -347,6 +354,13 @@
         </div>
       </div>
     </div>
+           <script src="https://www.google.com/recaptcha/api.js" async defer></script>    
+            <script src="js/recaptchar.js"></script>
+            <script>
+                window.onload = function (){
+                handleFormSubmission("loginForm");
+		};
+            </script>
     <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 

@@ -588,7 +588,6 @@ BEGIN
 END;
 
 go
-
 CREATE PROCEDURE GetUserDetails
     @tablename varchar(25)
 AS
@@ -597,11 +596,15 @@ BEGIN
 
     IF @tablename = 'staffs'
     BEGIN
-        SET @sql = N'SELECT id, username, password, active FROM ' + QUOTENAME(@tablename) + ' WHERE position = 0';
+        SET @sql = N'SELECT s.id, s.username, s.password, s.active, sd.dateJoined 
+                    FROM ' + QUOTENAME(@tablename) + ' s 
+                    INNER JOIN staffDetails sd ON s.id = sd.id 
+                    WHERE s.possition = 0';
     END
-    ELSE
+    ELSE IF @tablename = 'users'
     BEGIN
-        SET @sql = N'SELECT id, username, password, active FROM ' + QUOTENAME(@tablename);
+        SET @sql = N'SELECT u.id, u.username, u.password, u.active, ud.dateJoined 
+                    FROM ' + QUOTENAME(@tablename) + ' u INNER JOIN userDetails ud ON u.id = ud.id';
     END
     
     EXEC sp_executesql @sql;

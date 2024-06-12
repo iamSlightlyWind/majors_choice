@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -281,7 +282,7 @@
                 <h2 class="register-form-text thq-heading-2">
                   <span>Create an account</span>
                 </h2>
-                <form class="register-form-form1" action="/auth/register" method="post">
+                <form class="register-form-form1" id="registerForm" action="/auth/register" method="post">
                   <div class="register-form-user-name">
                     <label for="thq-sign-in-1-password" class="thq-body-large">
                       Username
@@ -346,6 +347,11 @@
                       class="register-form-textinput7 thq-input thq-body-large" />
                   </div>
                   <p>${registerStatus}</p>
+                    <c:if test="${requestScope.actor!=null}">
+                        <input type="hidden" name="actor" value="${requestScope.actor}"/>
+                    </c:if> 
+                   <div class="g-recaptcha" data-sitekey="6LdK--8pAAAAABv-L5jPFsFySBjogEmHiFt87qcV"></div>
+                    <div class="error"></div>     
                   <div class="register-form-button-register">
                     <button type="submit" href="home-page.html" class="register-form-button thq-button-filled">
                       <span class="register-form-text23 thq-body-small">
@@ -368,6 +374,11 @@
         </div>
       </div>
     </div>
+             <script>
+                window.onload = function (){
+                handleFormSubmission("registerForm");
+		};
+            </script> 
     <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 
