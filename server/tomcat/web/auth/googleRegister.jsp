@@ -281,7 +281,7 @@
                 <h1 class="register-by-gg-text">
                   <span>Register an account with Google</span>
                 </h1>
-                <form id="registerForm" action="/auth/googleLogin" method="post"class="register-by-gg-form1">
+                <form id="registerForm" action="/auth/googleLogin" method="post" class="register-by-gg-form1">
                   <div class="register-by-gg-full-name">
                     <label for="thq-sign-in-1-password" class="thq-body-large">
                       <span>Full Name</span>
@@ -322,7 +322,9 @@
                     <input type="date" required="true" name="dateOfBirth"
                       class="register-by-gg-textinput4 thq-input thq-body-large" />
                   </div>
-                  <button type="submit" name="action" value="Update Information" class="register-by-gg-button thq-button-filled">
+                  <p>${registerStatus}</p>
+                  <button type="submit" name="action" value="Update Information"
+                    class="register-by-gg-button thq-button-filled">
                     <span class="register-by-gg-text16 thq-body-small">
                       <span>Update Information</span>
                     </span>
