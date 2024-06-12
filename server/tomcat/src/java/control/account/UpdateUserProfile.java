@@ -33,7 +33,6 @@ public class UpdateUserProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
             User user = new User();
             if (request.getParameter("active") != null) {
                 user.active = Integer.parseInt(request.getParameter("active"));
@@ -79,7 +78,6 @@ public class UpdateUserProfile extends HttpServlet {
             }
 
         }
-    }
 
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";

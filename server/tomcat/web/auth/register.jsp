@@ -350,8 +350,8 @@
                     <c:if test="${requestScope.actor!=null}">
                         <input type="hidden" name="actor" value="${requestScope.actor}"/>
                     </c:if> 
-                   <div class="g-recaptcha" data-sitekey="6LdK--8pAAAAABv-L5jPFsFySBjogEmHiFt87qcV"></div>
-                    <div class="error"></div>     
+                  <!-- <div class="g-recaptcha" data-sitekey="6LdK--8pAAAAABv-L5jPFsFySBjogEmHiFt87qcV"></div>
+                    <div class="error"></div> --> 
                   <div class="register-form-button-register">
                     <button type="submit" href="home-page.html" class="register-form-button thq-button-filled">
                       <span class="register-form-text23 thq-body-small">
@@ -374,11 +374,11 @@
         </div>
       </div>
     </div>
-             <script>
+          <!--   <script>
                 window.onload = function (){
                 handleFormSubmission("registerForm");
 		};
-            </script> 
+            </script> -->
     <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 

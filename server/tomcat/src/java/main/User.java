@@ -224,7 +224,7 @@ public class User {
         }
 
         try {
-            String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
             statement.setString(1, tableName);
             statement.setString(2, username);
@@ -238,10 +238,11 @@ public class User {
             statement.setString(6, phoneNumber);
             statement.setString(7, address);
             statement.setString(8, dateOfBirth);
-            statement.registerOutParameter(9, Types.INTEGER);
+            statement.setInt(9, active);
+            statement.registerOutParameter(10, Types.INTEGER);
 
             statement.execute();
-            result = statement.getInt(9);
+            result = statement.getInt(10);
         } catch (SQLException ex) {
             System.out.println(ex);
         }

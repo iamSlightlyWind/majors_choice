@@ -35,11 +35,12 @@ public class ManagerAccount extends HttpServlet {
         String actor = request.getParameter("actor");
         String table = (String) request.getAttribute("table");
         
-        if(actor.equals("user")||table.equals("user")){
+        if((actor != null && actor.equals("user")) || (table != null && table.equals("user"))){
             List users = user.getUserDetails("users");
             request.setAttribute("users", users);
             request.getRequestDispatcher("/manage/info/useraccount.jsp").forward(request, response);
-        }else if (actor.equals("staff")||actor.equals("staff")){
+            
+        }else if ((actor != null && actor.equals("staff")) || (table != null && table.equals("staff"))){
             List staffs = user.getUserDetails("staffs");
             request.setAttribute("staffs", staffs);
             request.getRequestDispatcher("/manage/info/staffaccount.jsp").forward(request, response);

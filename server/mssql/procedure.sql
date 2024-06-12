@@ -586,8 +586,8 @@ BEGIN
     WHERE staffs.id = @userId
 	end
 END;
-
 go
+
 CREATE PROCEDURE GetUserDetails
     @tablename varchar(25)
 AS
@@ -620,6 +620,7 @@ CREATE PROCEDURE updateUserInformation
     @phoneNumber varchar(15),
     @address nvarchar(100),
     @dateOfBirth date,
+	@active int,
     @result int output
 AS
 BEGIN
@@ -690,9 +691,16 @@ BEGIN
 			WHERE id = @id
 		END
 
+		IF @active IS NOT NULL
+		BEGIN
+			UPDATE users
+			SET active = @active
+			WHERE id = @id
+		END
+
         SET @result = 1; -- Update successful
     END
-    ELSE IF @tablename = 'staffs' OR @tablename = 'managers'
+    ELSE IF @tablename = 'staffs' OR @tablename = 'manager'
     BEGIN
         -- Get staff ID
         SELECT @id = id FROM staffs WHERE username = @username;
@@ -753,6 +761,14 @@ BEGIN
 			SET dateOfBirth = @dateOfBirth
 			WHERE id = @id
 		END
+
+		IF @active IS NOT NULL
+		BEGIN
+			UPDATE staffs
+			SET active = @active
+			WHERE id = @id
+		END
+
         SET @result = 1; -- Update successful
     END
 END;
