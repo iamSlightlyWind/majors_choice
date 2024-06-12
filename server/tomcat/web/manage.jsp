@@ -14,5 +14,6 @@
         <p><a href="psus?service=listAll"> Manage PSU</a>
         <p><a href="rams?service=listAll"> Manage RAM</a>
         <p><a href="ssds?service=listAll"> Manage SSD</a>
+        <p><a href=> Manage Cart</a>  
     </body>
 </html>
