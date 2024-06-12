@@ -317,7 +317,9 @@
                         </path>
                       </svg>
                       <span class="resetpass-text7 thq-body-small">
-                        <span>Login with Google</span>
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://choice.themajorones.dev/auth/googleLogin&response_type=code
+         &client_id=960808694899-61oujrd0icfujs3ds3qmqqu0lb8rtuhv.apps.googleusercontent.com&approval_prompt=force"
+                          class="nav-link">Login with Google</a>
                       </span>
                     </button>
                   </div>

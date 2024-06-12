@@ -281,39 +281,39 @@
                   Sign in to Major's Choice
                 </h2>
                 <form class="sign-in-form1" action="/auth/login" method="post">
-                <div class="sign-in-email">
-                  <label for="thq-sign-in-1-password" class="thq-body-large">
-                    Username
-                  </label>
-                  <input type="text" id="thq-sign-in-3-email" required="true" placeholder="Username" name="user"
-                    class="sign-in-textinput thq-input thq-body-large" />
-                </div>
-                <div class="sign-in-password">
-                  <label for="thq-sign-in-3-password" class="thq-body-large">
-                    Password
-                  </label>
-                  <input type="password" name="pass" id="thq-sign-in-3-password" required="true" placeholder="Password"
-                    class="sign-in-textinput1 thq-input thq-body-large" />
-                  <div class="sign-in-container1">
-                    <div class="sign-in-container2">
-                      <input type="checkbox" checked="true" class="sign-in-checkbox" />
-                      <a href="/auth/recovery.jsp" class="sign-in-text3 thq-body-small">
-                        Forgot password
-                      </a>
-                    </div>
-                    <span class="sign-in-text4 thq-body-small">
-                      Remember me
-                    </span>
+                  <div class="sign-in-email">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      Username
+                    </label>
+                    <input type="text" id="thq-sign-in-3-email" required="true" placeholder="Username" name="user"
+                      class="sign-in-textinput thq-input thq-body-large" />
                   </div>
-                </div>
-                <br>
-                <p>${loginStatus}</p>
-                <br>
-                <button type="submit" class="sign-in-button thq-button-filled">
-                  <span class="sign-in-text5 thq-body-small">
-                    <span>Sign In</span>
-                  </span>
-                </button>
+                  <div class="sign-in-password">
+                    <label for="thq-sign-in-3-password" class="thq-body-large">
+                      Password
+                    </label>
+                    <input type="password" name="pass" id="thq-sign-in-3-password" required="true"
+                      placeholder="Password" class="sign-in-textinput1 thq-input thq-body-large" />
+                    <div class="sign-in-container1">
+                      <div class="sign-in-container2">
+                        <input type="checkbox" checked="true" class="sign-in-checkbox" />
+                        <a href="/auth/recovery.jsp" class="sign-in-text3 thq-body-small">
+                          Forgot password
+                        </a>
+                      </div>
+                      <span class="sign-in-text4 thq-body-small">
+                        Remember me
+                      </span>
+                    </div>
+                  </div>
+                  <br>
+                  <p>${loginStatus}</p>
+                  <br>
+                  <button type="submit" class="sign-in-button thq-button-filled">
+                    <span class="sign-in-text5 thq-body-small">
+                      <span>Sign In</span>
+                    </span>
+                  </button>
                 </form>
                 <div class="sign-in-container3">
                   <button type="submit" class="sign-in-button1 thq-button-filled">
@@ -322,8 +322,10 @@
                         d="M522.2 438.8v175.6h290.4c-11.8 75.4-87.8 220.8-290.4 220.8-174.8 0-317.4-144.8-317.4-323.2s142.6-323.2 317.4-323.2c99.4 0 166 42.4 204 79l139-133.8c-89.2-83.6-204.8-134-343-134-283 0-512 229-512 512s229 512 512 512c295.4 0 491.6-207.8 491.6-500.2 0-33.6-3.6-59.2-8-84.8l-483.6-0.2z">
                       </path>
                     </svg>
-                    <span class="sign-in-text6 thq-body-small">
-                      <span>Login by Google</span>
+                    <span class="sign-in-text5 thq-body-small">
+                      <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://choice.themajorones.dev/auth/googleLogin&response_type=code
+     &client_id=960808694899-61oujrd0icfujs3ds3qmqqu0lb8rtuhv.apps.googleusercontent.com&approval_prompt=force"
+                        class="nav-link">Login with Google</a>
                     </span>
                   </button>
                 </div>
