@@ -40,27 +40,27 @@
                                             required>
 
                                         <label for="phone">Phone:</label><br>
-                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control my-4 py-2"
-                                            placeholder="Enter your phone number" required>
+                                        <input type="text" id="phoneNumber" name="phoneNumber"
+                                            class="form-control my-4 py-2" placeholder="Enter your phone number"
+                                            required>
 
                                         <label for="address">Address:</label>
                                         <input type="text" id="address" name="address" class="form-control my-4 py-2"
                                             placeholder="Enter your address" required>
 
                                         <label for="dob">Date of Birth:</label>
-                                        <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control my-4 py-2"
-                                            placeholder="dd/mm/yyyy" required>
+                                        <input type="date" id="dateOfBirth" name="dateOfBirth"
+                                            class="form-control my-4 py-2" placeholder="dd/mm/yyyy" required>
 
                                         <input type="submit" name="action" value="Update Information">
                                         <p>${registerStatus}</p>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
-
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
                 crossorigin="anonymous"></script>
