@@ -14,7 +14,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
 
-@WebServlet(urlPatterns = { "/googelLogin" })
+@WebServlet(urlPatterns = { "/auth/googelLogin" })
 public class LoginGoogleServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
