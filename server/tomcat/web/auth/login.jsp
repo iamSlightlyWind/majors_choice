@@ -252,27 +252,6 @@
               </header>
             </header>
           </div>
-          <div class="menu-function-container menu-function-root-class-name3">
-            <div class="menu-function-manager">
-              <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                <span>Manager WareHouse</span>
-              </span>
-              <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                Manager Customer
-              </span>
-              <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                <span>Feedback</span>
-                <br />
-              </span>
-              <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                Manager Staff
-              </span>
-              <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                Financial Reports
-              </span>
-            </div>
-          </div>
-        </div>
         <div class="login-body">
           <div class="sign-in-container thq-section-padding sign-in-root-class-name1">
             <div class="sign-in-max-width thq-section-max-width">

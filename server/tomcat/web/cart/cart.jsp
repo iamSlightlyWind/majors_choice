@@ -252,256 +252,260 @@
               </header>
             </header>
           </div>
-          <div class="menu-function-container menu-function-root-class-name22">
-            <div class="menu-function-manager">
-              <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                <span>Manager WareHouse</span>
-              </span>
-              <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                Manager Customer
-              </span>
-              <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                <span>Feedback</span>
-                <br />
-              </span>
-              <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                Manager Staff
-              </span>
-              <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                Financial Reports
-              </span>
+          <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role) || "manager"
+            .equals(role)) { %>
+            <div class="menu-function-container menu-function-root-class-name22">
+              <div class="menu-function-manager">
+                <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
+                  <span>Manager WareHouse</span>
+                </span>
+                <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                  Manager Customer
+                </span>
+                <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
+                  <span>Feedback</span>
+                  <br />
+                </span>
+                <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                  Manager Staff
+                </span>
+                <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                  Financial Reports
+                </span>
+              </div>
             </div>
-          </div>
-          <div class="view-cart-component-container view-cart-component-root-class-name">
-            <div class="view-cart-component-heading">
-              <span class="view-cart-component-text">
-                <span>${user}'s Cart</span>
-                <br />
-              </span>
-            </div>
-            <div class="view-cart-component-form-root">
-              <div class="view-cart-component-container01">
-                <div class="view-cart-component-product">
-                  <div class="view-cart-component-container02">
-                    <span class="view-cart-component-name-product">Item</span>
-                  </div>
-                  <div class="view-cart-component-container03">
-                    <span class="view-cart-component-selling-price">Price</span>
-                  </div>
-                  <div class="view-cart-component-container04">
-                    <span class="view-cart-component-text03">
-                      <span>Quantity</span>
-                      <br />
-                    </span>
-                  </div>
-                  <span class="view-cart-component-text06">Total</span>
+            <% } %>
+              <div class="view-cart-component-container view-cart-component-root-class-name">
+                <div class="view-cart-component-heading">
+                  <span class="view-cart-component-text">
+                    <span>${user}'s Cart</span>
+                    <br />
+                  </span>
                 </div>
-                <c:forEach var="ProductCount" items="${ProductCount}">
-                  <form action="Cart" method="post">
-                    <input type="hidden" name="productID" value="${ProductCount.id}" />
-                    <div class="view-cart-component-product2">
-                      <div class="view-cart-component-container08">
-                        <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                          class="view-cart-component-image1" />
-                        <span class="view-cart-component-name-product2">
-                          ${ProductCount.name}
-                        </span>
+                <div class="view-cart-component-form-root">
+                  <div class="view-cart-component-container01">
+                    <div class="view-cart-component-product">
+                      <div class="view-cart-component-container02">
+                        <span class="view-cart-component-name-product">Item</span>
                       </div>
-                      <span class="view-cart-component-selling-price2">
-                        <span>${ProductCount.pricePer} VND</span>
-                      </span>
-                      <div class="view-cart-component-container09">
-                        <button type="submit" name="action" value="removeOne"
-                          class="view-cart-component-button3 button">
-                          <span>
-                            <span>-</span>
-                            <br />
-                          </span>
-                        </button>
-                        <span class="view-cart-component-text18">
-                          <span>${ProductCount.count}</span>
+                      <div class="view-cart-component-container03">
+                        <span class="view-cart-component-selling-price">Price</span>
+                      </div>
+                      <div class="view-cart-component-container04">
+                        <span class="view-cart-component-text03">
+                          <span>Quantity</span>
                           <br />
                         </span>
-                        <button type="submit" name="action" value="addOne" class="view-cart-component-button4 button">
-                          <span>+</span>
+                      </div>
+                      <span class="view-cart-component-text06">Total</span>
+                    </div>
+                    <c:forEach var="ProductCount" items="${ProductCount}">
+                      <form action="Cart" method="post">
+                        <input type="hidden" name="productID" value="${ProductCount.id}" />
+                        <div class="view-cart-component-product2">
+                          <div class="view-cart-component-container08">
+                            <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+                              class="view-cart-component-image1" />
+                            <span class="view-cart-component-name-product2">
+                              ${ProductCount.name}
+                            </span>
+                          </div>
+                          <span class="view-cart-component-selling-price2">
+                            <span>${ProductCount.pricePer} VND</span>
+                          </span>
+                          <div class="view-cart-component-container09">
+                            <button type="submit" name="action" value="removeOne"
+                              class="view-cart-component-button3 button">
+                              <span>
+                                <span>-</span>
+                                <br />
+                              </span>
+                            </button>
+                            <span class="view-cart-component-text18">
+                              <span>${ProductCount.count}</span>
+                              <br />
+                            </span>
+                            <button type="submit" name="action" value="addOne"
+                              class="view-cart-component-button4 button">
+                              <span>+</span>
+                            </button>
+                          </div>
+                          <div class="view-cart-component-container10">
+                            <span class="view-cart-component-text22">${ProductCount.totalPrice} VND</span>
+                            <button type="submit" name="action" value="removeAll"
+                              class="view-cart-component-button5 thq-button-filled button">
+                              X
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </c:forEach>
+                  </div>
+                  <div class="view-cart-component-container11">
+                    <div class="view-cart-component-container12">
+                      <div class="view-cart-component-container13"></div>
+                      <form action="Cart" method="post">
+                        <button type="submit" name="action" value="clear"
+                          class="view-cart-component-button6 button thq-button-outline">
+                          <span>Clear Cart</span>
                         </button>
-                      </div>
-                      <div class="view-cart-component-container10">
-                        <span class="view-cart-component-text22">${ProductCount.totalPrice} VND</span>
-                        <button type="submit" name="action" value="removeAll"
-                          class="view-cart-component-button5 thq-button-filled button">
-                          X
-                        </button>
-                      </div>
+                      </form>
                     </div>
-                  </form>
-                </c:forEach>
-              </div>
-              <div class="view-cart-component-container11">
-                <div class="view-cart-component-container12">
-                  <div class="view-cart-component-container13"></div>
-                  <form action="Cart" method="post">
-                    <button type="submit" name="action" value="clear"
-                      class="view-cart-component-button6 button thq-button-outline">
-                      <span>Clear Cart</span>
-                    </button>
-                  </form>
-                </div>
-                <div class="view-cart-component-container14">
-                  <div class="view-cart-component-container15">
-                    <span class="view-cart-component-text23">
-                      <span>Total:&nbsp;</span>
-                      <br />
-                    </span>
-                    <span class="view-cart-component-text26">
-                      <span>${cartPrice} VND</span>
-                    </span>
-                  </div>
-                  <form action="Cart" method="post">
-                    <button type="submit" name="action" value="placeOrder"
-                      class="view-cart-component-button7 thq-button-filled button">
-                      Place Order
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chats-chats chats-root-class-name9">
-            <div class="chats-container">
-              <svg viewBox="0 0 1152 1024" class="chats-icon thq-button-icon thq-icon-medium">
-                <path
-                  d="M1088 901.166c0 45.5 26.028 84.908 64 104.184v15.938c-10.626 1.454-21.472 2.224-32.5 2.224-68.008 0-129.348-28.528-172.722-74.264-26.222 6.982-54.002 10.752-82.778 10.752-159.058 0-288-114.616-288-256s128.942-256 288-256c159.058 0 288 114.616 288 256 0 55.348-19.764 106.592-53.356 148.466-6.824 14.824-10.644 31.312-10.644 48.7zM512 0c278.458 0 504.992 180.614 511.836 405.52-49.182-21.92-103.586-33.52-159.836-33.52-95.56 0-185.816 33.446-254.138 94.178-70.846 62.972-109.862 147.434-109.862 237.822 0 44.672 9.544 87.888 27.736 127.788-5.228 0.126-10.468 0.212-15.736 0.212-27.156 0-53.81-1.734-79.824-5.044-109.978 109.978-241.25 129.7-368.176 132.596v-26.916c68.536-33.578 128-94.74 128-164.636 0-9.754-0.758-19.33-2.164-28.696-115.796-76.264-189.836-192.754-189.836-323.304 0-229.75 229.23-416 512-416z">
-                </path>
-              </svg>
-              <span class="chats-text">Chats with support</span>
-            </div>
-          </div>
-          <footer class="footer-footer1 thq-section-padding footer-root-class-name18">
-            <div class="footer-max-width thq-section-max-width">
-              <div class="footer-content">
-                <div class="footer-newsletter">
-                  <div class="footer-container">
-                    <h1><span>Major's Choice</span></h1>
-                  </div>
-                  <span class="thq-body-small">
-                    Subscribe to our newsletter for the latest updates on new
-                    features and product releases.
-                  </span>
-                  <div class="footer-actions">
-                    <div class="footer-form">
-                      <div class="footer-container1">
-                        <input type="email" placeholder="Enter your email" class="footer-text-input thq-input" />
-                      </div>
-                      <button class="thq-button-outline footer-button">
-                        <span class="thq-body-small"><span>Subscribe</span></span>
-                      </button>
-                    </div>
-                    <span class="footer-content2 thq-body-small">
-                      <span>
-                        By subscribing you agree to with our Privacy Policy and
-                        provide consent to receive updates from our company.
-                      </span>
-                    </span>
-                  </div>
-                </div>
-                <div class="footer-links">
-                  <div class="footer-column1">
-                    <strong class="thq-body-large footer-column1-title">
-                      <span>Company</span>
-                    </strong>
-                    <div class="footer-footer-links">
-                      <span class="thq-body-small"><span>About Us</span></span>
-                      <span class="thq-body-small"><span>Contact Us</span></span>
-                      <span class="thq-body-small"><span>Careers</span></span>
-                    </div>
-                  </div>
-                  <div class="footer-column2">
-                    <strong class="thq-body-large footer-column2-title">
-                      <span>Support</span>
-                    </strong>
-                    <div class="footer-footer-links1">
-                      <span class="thq-body-small">
-                        <span>Shipping Information</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Returns &amp; Exchanges</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Warranty Policy</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Customer Reviews</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Tech Support</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="footer-column3">
-                    <strong class="thq-body-large footer-social-link1-title">
-                      <span>Connect with Us</span>
-                    </strong>
-                    <div class="footer-social-links">
-                      <div class="footer-link">
-                        <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
-                          <path
-                            d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">Facebook</span>
-                      </div>
-                      <div class="footer-link1">
-                        <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
-                          <path
-                            d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">Instagram</span>
-                      </div>
-                      <div class="footer-link2">
-                        <svg viewBox="0 0 1024 1024" class="footer-icon4">
-                          <path
-                            d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">
-                          Email :&nbsp;info@majorschoice.com
+                    <div class="view-cart-component-container14">
+                      <div class="view-cart-component-container15">
+                        <span class="view-cart-component-text23">
+                          <span>Total:&nbsp;</span>
+                          <br />
+                        </span>
+                        <span class="view-cart-component-text26">
+                          <span>${cartPrice} VND</span>
                         </span>
                       </div>
-                      <div class="footer-link3">
-                        <svg viewBox="0 0 1024 1024" class="footer-icon6">
-                          <path
-                            d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">
-                          Phone ( +84 929199387 )
+                      <form action="Cart" method="post">
+                        <button type="submit" name="action" value="placeOrder"
+                          class="view-cart-component-button7 thq-button-filled button">
+                          Place Order
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="chats-chats chats-root-class-name9">
+                <div class="chats-container">
+                  <svg viewBox="0 0 1152 1024" class="chats-icon thq-button-icon thq-icon-medium">
+                    <path
+                      d="M1088 901.166c0 45.5 26.028 84.908 64 104.184v15.938c-10.626 1.454-21.472 2.224-32.5 2.224-68.008 0-129.348-28.528-172.722-74.264-26.222 6.982-54.002 10.752-82.778 10.752-159.058 0-288-114.616-288-256s128.942-256 288-256c159.058 0 288 114.616 288 256 0 55.348-19.764 106.592-53.356 148.466-6.824 14.824-10.644 31.312-10.644 48.7zM512 0c278.458 0 504.992 180.614 511.836 405.52-49.182-21.92-103.586-33.52-159.836-33.52-95.56 0-185.816 33.446-254.138 94.178-70.846 62.972-109.862 147.434-109.862 237.822 0 44.672 9.544 87.888 27.736 127.788-5.228 0.126-10.468 0.212-15.736 0.212-27.156 0-53.81-1.734-79.824-5.044-109.978 109.978-241.25 129.7-368.176 132.596v-26.916c68.536-33.578 128-94.74 128-164.636 0-9.754-0.758-19.33-2.164-28.696-115.796-76.264-189.836-192.754-189.836-323.304 0-229.75 229.23-416 512-416z">
+                    </path>
+                  </svg>
+                  <span class="chats-text">Chats with support</span>
+                </div>
+              </div>
+              <footer class="footer-footer1 thq-section-padding footer-root-class-name18">
+                <div class="footer-max-width thq-section-max-width">
+                  <div class="footer-content">
+                    <div class="footer-newsletter">
+                      <div class="footer-container">
+                        <h1><span>Major's Choice</span></h1>
+                      </div>
+                      <span class="thq-body-small">
+                        Subscribe to our newsletter for the latest updates on new
+                        features and product releases.
+                      </span>
+                      <div class="footer-actions">
+                        <div class="footer-form">
+                          <div class="footer-container1">
+                            <input type="email" placeholder="Enter your email" class="footer-text-input thq-input" />
+                          </div>
+                          <button class="thq-button-outline footer-button">
+                            <span class="thq-body-small"><span>Subscribe</span></span>
+                          </button>
+                        </div>
+                        <span class="footer-content2 thq-body-small">
+                          <span>
+                            By subscribing you agree to with our Privacy Policy and
+                            provide consent to receive updates from our company.
+                          </span>
                         </span>
                       </div>
                     </div>
+                    <div class="footer-links">
+                      <div class="footer-column1">
+                        <strong class="thq-body-large footer-column1-title">
+                          <span>Company</span>
+                        </strong>
+                        <div class="footer-footer-links">
+                          <span class="thq-body-small"><span>About Us</span></span>
+                          <span class="thq-body-small"><span>Contact Us</span></span>
+                          <span class="thq-body-small"><span>Careers</span></span>
+                        </div>
+                      </div>
+                      <div class="footer-column2">
+                        <strong class="thq-body-large footer-column2-title">
+                          <span>Support</span>
+                        </strong>
+                        <div class="footer-footer-links1">
+                          <span class="thq-body-small">
+                            <span>Shipping Information</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Returns &amp; Exchanges</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Warranty Policy</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Customer Reviews</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Tech Support</span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="footer-column3">
+                        <strong class="thq-body-large footer-social-link1-title">
+                          <span>Connect with Us</span>
+                        </strong>
+                        <div class="footer-social-links">
+                          <div class="footer-link">
+                            <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
+                              <path
+                                d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">Facebook</span>
+                          </div>
+                          <div class="footer-link1">
+                            <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
+                              <path
+                                d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">Instagram</span>
+                          </div>
+                          <div class="footer-link2">
+                            <svg viewBox="0 0 1024 1024" class="footer-icon4">
+                              <path
+                                d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">
+                              Email :&nbsp;info@majorschoice.com
+                            </span>
+                          </div>
+                          <div class="footer-link3">
+                            <svg viewBox="0 0 1024 1024" class="footer-icon6">
+                              <path
+                                d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">
+                              Phone ( +84 929199387 )
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-credits">
+                    <div class="thq-divider-horizontal"></div>
+                    <div class="footer-row">
+                      <span class="thq-body-small"></span>
+                      <div class="footer-footer-links2">
+                        <span class="thq-body-small">
+                          <span>Privacy Policy</span>
+                        </span>
+                        <span class="thq-body-small">
+                          <span>Terms &amp; Conditions</span>
+                        </span>
+                        <span class="thq-body-small">
+                          <span>Cookies Policy</span>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="footer-credits">
-                <div class="thq-divider-horizontal"></div>
-                <div class="footer-row">
-                  <span class="thq-body-small"></span>
-                  <div class="footer-footer-links2">
-                    <span class="thq-body-small">
-                      <span>Privacy Policy</span>
-                    </span>
-                    <span class="thq-body-small">
-                      <span>Terms &amp; Conditions</span>
-                    </span>
-                    <span class="thq-body-small">
-                      <span>Cookies Policy</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
+              </footer>
         </div>
       </div>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
