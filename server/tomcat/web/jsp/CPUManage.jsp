@@ -41,7 +41,7 @@
                 <td><%=cpu.getId()%> </td>
                 <td><%=cpu.getSellingPrice()%> </td>
                 <td><%=cpu.getCostPrice()%> </td>
-                <td><img href="#" src="/tomcat/assets/images/<%=cpu.getImage()%>" style="width: 100px; height: auto;"/></td>
+                <td><img src="<%=cpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=cpu.getName()%> </td>
                 <td><%=cpu.getGeneration()%> </td>
                 <td><%=cpu.getSocket()%> </td>

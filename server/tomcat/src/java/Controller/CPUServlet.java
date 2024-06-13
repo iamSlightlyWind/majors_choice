@@ -1,35 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controller;
 
 import database.Database;
 import jakarta.servlet.RequestDispatcher;
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.file.Paths;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import java.util.ArrayList;
 import packages.CPU;
 
-/**
- *
- * @author PC
- */
+@MultipartConfig
 public class CPUServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String service = request.getParameter("service");
@@ -39,8 +25,10 @@ public class CPUServlet extends HttpServlet {
         Database db = new Database();
 
         if (service.equals("listAll")) {
+            System.out.println(">> List all CPUs");
             ArrayList<CPU> cpus = db.getCPUs("{call getCPU()}");
             request.setAttribute("cpus", cpus);
+            request.setAttribute("path", request.getServletContext().getRealPath(""));
             request.setAttribute("titlePage", "Danh sách CPU");
             request.setAttribute("titleTable", "Danh sách CPU");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/CPUManage.jsp");
@@ -57,9 +45,12 @@ public class CPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = request.getParameter("image");
+                String image = handleFileUpload(request, "image", "0"); // dummy id, replace with product max id + 1
 
-                int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image);
+                System.out.println(">> Image: " + image);
+
+                int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
+                        baseClock, boostClock, tdp, image);
                 if (result != -1) {
                     response.sendRedirect("cpus?service=listAll");
                 } else {
@@ -80,7 +71,8 @@ public class CPUServlet extends HttpServlet {
                 // Lấy id từ request
                 int id = Integer.parseInt(request.getParameter("id"));
                 // Lấy thông tin CPU theo id để update
-                ArrayList<CPU> cpus = db.getCPUs("select * from cpus join products on cpus.id= products.id where cpus.id = " + id);
+                ArrayList<CPU> cpus = db
+                        .getCPUs("select * from cpus join products on cpus.id= products.id where cpus.id = " + id);
                 if (!cpus.isEmpty()) {
                     CPU cpu = cpus.get(0);
                     request.setAttribute("cpus", cpu);
@@ -103,9 +95,12 @@ public class CPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = request.getParameter("image");
+                String image = handleFileUpload(request, "image", Integer.toString(id));
 
-                int result = db.updateProductCPU(id, sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image);
+                System.out.println(">> Image: " + image);
+
+                int result = db.updateProductCPU(id, sellingPrice, costPrice, name, generation, socket, cores, threads,
+                        baseClock, boostClock, tdp, image);
 
                 if (result == 1) {
                     response.sendRedirect("cpus?service=listAll");
@@ -120,108 +115,41 @@ public class CPUServlet extends HttpServlet {
             db.removeCPU(id);
             response.sendRedirect("cpus");
         }
-
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
+        try {
+            Part filePart = request.getPart(inputName);
+            String fileName = productID + ".png";
+
+            String uploadPath = request.getServletContext().getRealPath("");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists())
+                uploadDir.mkdir();
+
+            filePart.write(uploadPath + File.separator + fileName);
+            return uploadPath + File.separator + fileName;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
-//    public void uploadImage(CPU c, HttpServletRequest request) {
-//        int Id = c.getId();
-//        DAOCPU daoUser = new DAOCPU();
-//        try {
-//            String fileName = "";
-//            String folder = getServletContext().getRealPath("assets/images");
-//            folder = folder.replace("build\\web", "web");// folder store images
-//            System.out.println("1233");
-//            System.out.println(folder);
-//            System.out.println(request.getContextPath());
-//            File file; // create file to upload
-//            int maxFileSize = 5000 * 1024;
-//            int maxMemSize = 5000 * 1024;
-//            String contentType = request.getContentType(); // get contentType
-//            System.out.println("contentType: " + contentType.indexOf(contentType));
-//            if (contentType.indexOf(contentType) >= 0) {
-//                DiskFileItemFactory factory = DiskFileItemFactory.builder()
-//                        .setBufferSize(maxMemSize).
-//                        setPath(folder)
-//                        .get();
-//
-//                JakartaServletFileUpload upload = new JakartaServletFileUpload(factory);
-//                upload.setFileSizeMax(maxFileSize);
-//
-//                List<FileItem> files = upload.parseRequest(request);
-//
-//                for (FileItem fileItem : files) {
-//                    System.out.println("fileItem:" + fileItem.getName());
-//                    if (!fileItem.isFormField()) {
-//                        System.out.println(fileItem.getFieldName());
-//                        int indexExtension = fileItem.getName().lastIndexOf(".");
-//                        fileName = Id + fileItem.getName().substring(indexExtension);
-//                        System.out.println(fileName);
-//                        deleteOldFile(Id + "", folder); // delete old image
-//                        String path = folder + "\\" + fileName;
-//                        file = new File(path);
-//                        fileItem.write(file.toPath());
-//                        System.out.println(path);
-//                    }
-//                }
-//                System.out.println("fileName");
-//                c.setImages(fileName);
-//            }
-//        } catch (IOException e) {
-//        }
-//    }
-//
-//    private void deleteOldFile(String name, String directory) {
-//        File f = new File(directory);
-//        if (f.isDirectory()) {
-//            for (File file : f.listFiles()) {
-//                if (file.getName().substring(0, file.getName().lastIndexOf(".")).equals(name)) {
-//                    if (file.delete()) {
-//                        System.out.println("Delete old file successfully");
-//                    } else {
-//                        System.out.println("Can't delete");
-//                    }
-//                    break;
-//                }
-//            }
-//        }
-//    }
+    }
 }

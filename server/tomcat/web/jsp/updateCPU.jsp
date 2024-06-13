@@ -10,7 +10,7 @@
         <%
             CPU cpu = (CPU) request.getAttribute("cpus");
         %>
-        <form action="cpus" method="post" >
+        <form action="cpus" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>ID</td>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="file" name="file" value="<%=cpu.getImage()%>"></td>
+                    <td><input type="file" name="image" accept="image/*" value="<%=cpu.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Generation</td>
