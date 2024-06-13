@@ -21,7 +21,7 @@
                 <br>
             </c:forEach>
 
-            <form action="login" method="post">
+            <form action="/auth/login" method="post">
                 <input type="hidden" name="action" value="logout" />
                 <button type="submit">logout</button>
             </form>

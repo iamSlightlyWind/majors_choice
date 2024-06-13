@@ -17,15 +17,21 @@
                     <button type="submit" name="action" value="removeOne">${ProductCount.id}
                         ${ProductCount.name}</button>
                     <button type="submit" name="action" value="addOne">+1</button>
+                    <br>
+                    <p>Per: ${ProductCount.pricePer}</p>
+                    <p>All: ${ProductCount.totalPrice}</p>
                 </form>
                 <br>
             </c:forEach>
+            <br>
+            <p>Total: ${cartPrice}</p>
 
             <form action="order" method="post">
                 <button type="submit">view orders</button>
             </form>
 
             <form action="Cart" method="post">
+                <button type="submit" name="action" value="clear">clear cart</button>
                 <button type="submit" name="action" value="placeOrder">place order</button>
             </form>
 

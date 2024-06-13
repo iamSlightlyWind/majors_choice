@@ -125,7 +125,6 @@ create table cases
 (
     id int references products(id),
     name nvarchar(50),
-    type nvarchar(50),
     formFactor nvarchar(50),
     color nvarchar(50),
     image nvarchar(max)

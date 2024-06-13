@@ -2,11 +2,14 @@ package packages.wrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
+
 import database.Database;
 import packages.*;
 
 public class Cart {
     public String userID;
+    public String totalPrice;
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
     Database db;
@@ -16,13 +19,26 @@ public class Cart {
         for (Product product : products) {
             ProductCount productCount = productCountMap.get(product.id);
             if (productCount == null) {
-                productCount = new ProductCount(product.id, 0, product.name);
+                productCount = new ProductCount(product.id, 0, product.name, product.sellingPrice);
                 productCountMap.put(product.id, productCount);
             }
             productCount.count += 1;
         }
+
+        double cartPrice = 0;
+        for (ProductCount productCount : productCountMap.values()) {
+            cartPrice += productCount.pricePer * productCount.count;
+        }
+        totalPrice = String.format(Locale.US, "%,.2f", cartPrice);
         quantities.clear();
         quantities.addAll(productCountMap.values());
+        updateCart();
+    }
+
+    public void clearCart() {
+        products.clear();
+        quantities.clear();
+        totalPrice = "0.00";
         updateCart();
     }
 

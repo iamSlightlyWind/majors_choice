@@ -60,7 +60,6 @@ public class User {
         try {
             String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.username = ?";
             sql = sql.replace("^", role);
-            System.out.println(">>> SQL: " + sql);
             PreparedStatement statement = db.connection.prepareStatement(sql);
             statement.setString(1, username);
 
@@ -175,25 +174,26 @@ public class User {
         return result;
     }
 
-    public int register(boolean isUserGoogle) {
+    public int register(boolean isUserGoogle, String tableName) {
         int result = 0;
 
         try {
-            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
-            statement.setString(1, username);
-            statement.setString(2, password);
-            statement.setString(3, fullName);
-            statement.setString(4, email);
-            statement.setString(5, phoneNumber);
-            statement.setString(6, address);
-            statement.setString(7, dateOfBirth);
-            statement.setString(8, confirmCode);
-            statement.registerOutParameter(9, Types.INTEGER);
+            statement.setString(1, tableName);
+            statement.setString(2, username);
+            statement.setString(3, password);
+            statement.setString(4, fullName);
+            statement.setString(5, email);
+            statement.setString(6, phoneNumber);
+            statement.setString(7, address);
+            statement.setString(8, dateOfBirth);
+            statement.setString(9, confirmCode);
+            statement.registerOutParameter(10, Types.INTEGER);
 
             statement.execute();
 
-            result = statement.getInt(9);
+            result = statement.getInt(10);
 
         } catch (SQLException ex) {
             System.out.println(ex);

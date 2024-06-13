@@ -1,14 +1,28 @@
 package packages.wrap;
 
+import java.util.Locale;
+
 public class ProductCount {
     public int count;
     public int id;
     public String name;
+    public double pricePer;
+    public String totalPrice;
 
-    public ProductCount(int id, int count, String name) {
+    public ProductCount(int id, int count, String name, double pricePer) {
         this.id = id;
         this.count = count;
         this.name = name;
+        this.pricePer = pricePer;
+    }
+
+    public String getTotalPrice() {
+        totalPrice = String.format(Locale.US, "%,.2f", pricePer * count);
+        return totalPrice;
+    }
+
+    public String getPricePer() {
+        return String.format(Locale.US, "%,.2f", pricePer);
     }
 
     public String getCount() {
