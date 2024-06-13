@@ -44,7 +44,7 @@ public class UserGoogle extends User {
 
     public int register() {
         setCredentials();
-        int result = super.register(true);
+        int result = super.register(true, "user");
         if (result == 1) {
             Database db = new Database();
             db.forceActivate(username);
