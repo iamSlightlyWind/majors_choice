@@ -178,9 +178,11 @@
                       <span class="navbar-whoweare thq-body-small thq-link">
                         <span>Who we are</span>
                       </span>
-                      <span class="navbar-manager-order thq-body-small thq-link">
-                        Manager Order
-                      </span>
+                      <a href="/order">
+                        <span class="navbar-manager-order thq-body-small thq-link">
+                          Manager Order
+                        </span>
+                      </a>
                     </div>
                   </nav>
                   <div class="navbar-buttons">

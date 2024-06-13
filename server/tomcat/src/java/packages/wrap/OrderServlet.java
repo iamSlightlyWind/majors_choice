@@ -17,6 +17,11 @@ public class OrderServlet extends HttpServlet {
         String action = request.getParameter("action");
         User currentUser = (User) request.getSession().getAttribute("userObject");
 
+        if (currentUser == null) {
+            response.sendRedirect("/auth/login.jsp");
+            return;
+        }
+
         currentUser.getOrders();
 
         if (action == null) {
