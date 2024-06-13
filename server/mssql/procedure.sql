@@ -513,3 +513,238 @@ begin
         join psus on products.id = psus.id
 end
 go
+CREATE PROCEDURE updateProductCPU
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @generation nvarchar(50),
+    @socket nvarchar(10),
+    @cores int,
+    @threads int,
+    @baseClock int,
+    @boostClock int,
+    @tdp int,
+    @image nvarchar(max),
+    @result varchar(50) output
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+                   FROM cpus
+                   WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice
+    WHERE id = @id
+
+    UPDATE cpus
+    SET name = @name,
+        generation = @generation,
+        socket = @socket,
+        cores = @cores,
+        threads = @threads,
+        baseClock = @baseClock,
+        boostClock = @boostClock,
+        tdp = @tdp,
+        image = @image
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END;
+GO
+
+CREATE PROCEDURE updateProductGPU
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @generation nvarchar(50),
+    @vram int,
+    @baseClock int,
+    @boostClock int,
+    @tdp int,
+    @image nvarchar(max),
+    @result varchar(50) output
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+                   FROM gpus
+                   WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice
+    WHERE id = @id
+
+    UPDATE gpus
+    SET name = @name,
+        generation = @generation,
+        vram = @vram,
+        baseClock = @baseClock,
+        boostClock = @boostClock,
+        tdp = @tdp,
+        image = @image
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END;
+GO
+
+CREATE PROCEDURE updateProductMotherboard
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @socket nvarchar(10),
+    @chipset nvarchar(50),
+    @formFactor nvarchar(50),
+    @ramType nvarchar(50),
+    @maxRamSpeed int,
+    @ramSlots int,
+    @wifi bit,
+    @image nvarchar(max),
+    @result varchar(50) output
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+                   FROM motherboards
+                   WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice
+    WHERE id = @id
+
+    UPDATE motherboards
+    SET name = @name,
+        socket = @socket,
+        chipset = @chipset,
+        formFactor = @formFactor,
+        ramType = @ramType,
+        maxRamSpeed = @maxRamSpeed,
+        ramSlots = @ramSlots,
+        wifi = @wifi,
+        image = @image
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END;
+GO
+
+CREATE PROCEDURE updateProductPSU
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @wattage int,
+    @efficiency nvarchar(50),
+    @image nvarchar(max),
+    @result varchar(50) output
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+                   FROM psus
+                   WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice
+    WHERE id = @id
+
+    UPDATE psus
+    SET name = @name,
+        wattage = @wattage,
+        efficiency = @efficiency,
+        image = @image
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END;
+GO
+
+CREATE PROCEDURE updateProductRAM
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @generation nvarchar(50),
+    @capacity int,
+    @speed int,
+    @latency int,
+    @image nvarchar(max),
+    @result varchar(50) OUTPUT
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+                   FROM rams
+                   WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice
+    WHERE id = @id
+
+    UPDATE rams
+    SET name = @name,
+        generation = @generation,
+        capacity = @capacity,
+        speed = @speed,
+        latency = @latency,
+        image = @image
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END;
+GO
+
+CREATE PROCEDURE updateProductSSD
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @interface nvarchar(50),
+    @capacity int,
+    @cache int,
+    @image nvarchar(max),
+    @result varchar(50) OUTPUT
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+                   FROM ssds
+                   WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice
+    WHERE id = @id
+
+    UPDATE ssds
+    SET name = @name,
+        interface = @interface,
+        capacity = @capacity,
+        cache = @cache,
+        image = @image
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END;
+GO
