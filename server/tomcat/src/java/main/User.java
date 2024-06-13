@@ -66,7 +66,6 @@ public class User {
         try {
             String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.username = ?";
             sql = sql.replace("^", role);
-            System.out.println(">>> SQL: " + sql);
             PreparedStatement statement = db.connection.prepareStatement(sql);
             statement.setString(1, username);
 

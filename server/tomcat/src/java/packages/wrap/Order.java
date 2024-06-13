@@ -19,7 +19,7 @@ public class Order {
         for (Product product : products) {
             ProductCount productCount = productCountMap.get(product.id);
             if (productCount == null) {
-                productCount = new ProductCount(product.id, 0, product.name);
+                productCount = new ProductCount(product.id, 0, product.name, product.sellingPrice);
                 productCountMap.put(product.id, productCount);
             }
             productCount.count += 1;

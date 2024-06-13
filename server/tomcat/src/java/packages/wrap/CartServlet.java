@@ -22,8 +22,10 @@ public class CartServlet extends HttpServlet {
         }
 
         if (action == null || action.equals("viewCart")) {
+            request.setAttribute("user", currentUser.fullName);
             request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
-            request.getRequestDispatcher("/test/cart.jsp").forward(request, response);
+            request.setAttribute("cartPrice", currentUser.cart.totalPrice);
+            request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
         } else if (action.equals("addItem")) {
             currentUser.cart.addProduct(request.getParameter("type"),
                     Integer.parseInt(request.getParameter("productID")));
@@ -37,8 +39,10 @@ public class CartServlet extends HttpServlet {
             response.sendRedirect("/Cart");
         } else if (action.equals("placeOrder")) {
             currentUser.cart.placeOrder();
-            response.sendRedirect("/Cart");
-        }else if (action.equals("clear")) {
+            request.setAttribute("cartPrice", 0);
+            request.setAttribute("user", currentUser.fullName);
+            request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
+        } else if (action.equals("clear")) {
             currentUser.cart.clearCart();
             response.sendRedirect("/Cart");
         }

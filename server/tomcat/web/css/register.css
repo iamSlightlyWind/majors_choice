@@ -402,6 +402,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: var(--dl-color-theme-secondary1);
+  padding-bottom: 0;
 }
 
 .register-form-form-root {
@@ -432,7 +433,7 @@
   font-size: 2.5rem;
   align-self: center;
   text-align: center;
-  text-decoration: underline;
+  ;
 }
 
 .register-form-form1 {
