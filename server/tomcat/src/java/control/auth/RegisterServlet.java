@@ -1,5 +1,6 @@
 package control.auth;
 
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ public class RegisterServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("userName");
         String password = request.getParameter("password");
         String repass = request.getParameter("repass");
@@ -26,36 +28,43 @@ public class RegisterServlet extends HttpServlet {
         String error = checkInfo(email, phoneNumber, password, repass);
         int result = 0;
         User user = new User(username, password, fullName, email, phoneNumber, address, dateOfBirth);
+        String tableName = request.getParameter("actor");
 
         if (error.equals("")) {
-            result = user.register(false, "user");
-            switch (result) {
-                case 1:
-                    request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
-                    request.getSession().setAttribute("table", "user");
+            result = user.register(false, tableName);
+            if (result == 1) {
+                if (tableName != null) {
+                    request.setAttribute("table", "user");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile");
+                    dispatcher.forward(request, response);
+                    return; // Ensure no further processing
+                } else {
+                    request.setAttribute("loginStatus", "Successfully Registered. You can now Login.");
                     request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
-                    break;
-
-                case -1:
-                    error = "Username already exists.";
-                    break;
-
-                case -2:
-                    error = "Email already exists.";
-                    break;
-
-                case -3:
-                    error = "Phone number already exists.";
-                    break;
+                    return; // Ensure no further processing
+                }
+            } else {
+                switch (result) {
+                    case -1:
+                        error = "Username already exists.";
+                        break;
+                    case -2:
+                        error = "Email already exists.";
+                        break;
+                    case -3:
+                        error = "Phone number already exists.";
+                        break;
+                    default:
+                        error = "Register Failed.";
+                        break;
+                }
+                request.setAttribute("registerStatus", error);
+                request.getRequestDispatcher("/auth/register.jsp").forward(request, response);
             }
-            request.setAttribute("registerStatus", error);
-            request.getRequestDispatcher("/auth/register.jsp").forward(request, response);
-
         } else {
             request.setAttribute("registerStatus", error);
             request.getRequestDispatcher("/auth/register.jsp").forward(request, response);
         }
-        response.setContentType("text/html;charset=UTF-8");
     }
 
     private boolean isValidEmail(String email) {
@@ -98,7 +107,9 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String actor = request.getParameter("actor");
+        request.setAttribute("actor", actor);
+        request.getRequestDispatcher("/auth/register.jsp").forward(request, response);
     }
 
     @Override
