@@ -17,6 +17,11 @@ public class CartServlet extends HttpServlet {
         String action = request.getParameter("action");
         User currentUser = (User) request.getSession().getAttribute("userObject");
 
+        if(currentUser == null) {
+            response.sendRedirect("/auth/login.jsp");
+            return;
+        }
+
         if (currentUser.cart == null) {
             currentUser.cart = new Cart(currentUser.id, currentUser.db);
         }
