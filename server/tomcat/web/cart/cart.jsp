@@ -169,7 +169,7 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <a href="home-page.html" class="navbar-home thq-body-small thq-link">
+                      <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navbar-contact thq-body-small thq-link">

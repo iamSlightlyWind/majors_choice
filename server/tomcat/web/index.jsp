@@ -146,9 +146,9 @@
   </head>
 
   <body>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <div>
-      <link href="./index.css" rel="stylesheet" />
+      <link href="./css/index.css" rel="stylesheet" />
 
       <div class="home-page-container">
         <header class="home-page-header">
@@ -156,7 +156,7 @@
             <div class="navbar-container1"></div>
             <header class="navbar-container2">
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
-                <img alt="pastedImage" src="public/external/pastedimage-eh8r-200h.png" class="navbar-pasted-image" />
+                <img alt="pastedImage" src="./css/image/logo.png" class="navbar-pasted-image" />
                 <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                   <nav class="navbar-links">
                     <div class="navbar-container3">
@@ -169,7 +169,7 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <a href="home-page.html" class="navbar-home thq-body-small thq-link">
+                      <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navbar-contact thq-body-small thq-link">
@@ -193,7 +193,7 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                       </path>
                     </svg>
-                    <a href="login.html" class="navbar-account thq-button-filled">
+                    <a href="/auth/login.jsp" class="navbar-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -213,8 +213,7 @@
                   <div class="navbar-nav">
                     <div class="navbar-top">
                       <div class="navbar-container5">
-                        <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
-                          class="navbar-pasted-image1" />
+                        <img alt="pastedImage" src="./css/image/logo.png" class="navbar-pasted-image1" />
                       </div>
                       <div data-thq="thq-close-menu" class="navbar-close-menu">
                         <svg viewBox="0 0 1024 1024" class="navbar-icon08">
@@ -2041,11 +2040,11 @@
               <div class="home-page-body1">
                 <div class="home-page-product">
                   <div class="component4-container component4-root-class-name5">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
-                      class="component4-image" />
+                    <img alt="image" src="./css/image/amd800h.webp" class="component4-image" />
                     <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component4-link">
                       <span>
+                        Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng /
+                        5MB / AM4
                       </span>
                     </a>
                     <span class="component4-text">
@@ -2066,9 +2065,7 @@
                     </div>
                   </div>
                   <div class="component4-container component4-root-class-name6">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
-                      class="component4-image" />
+                    <img alt="image" src="./css/image/amd800h.webp" class="component4-image" />
                     <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component4-link">
                       <span>
                         Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng /
@@ -2093,9 +2090,7 @@
                     </div>
                   </div>
                   <div class="component4-container component4-root-class-name7">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
-                      class="component4-image" />
+                    <img alt="image" src="./css/image/amd800h.webp" class="component4-image" />
                     <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component4-link">
                       <span>
                         Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng /
@@ -2120,9 +2115,7 @@
                     </div>
                   </div>
                   <div class="component4-container component4-root-class-name8">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
-                      class="component4-image" />
+                    <img alt="image" src="./css/image/amd800h.webp" class="component4-image" />
                     <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component4-link">
                       <span>
                         Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng /
@@ -2147,9 +2140,7 @@
                     </div>
                   </div>
                   <div class="component4-container component4-root-class-name9">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
-                      class="component4-image" />
+                    <img alt="image" src="./css/image/amd800h.webp" class="component4-image" />
                     <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component4-link">
                       <span>
                         Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng /
@@ -2196,9 +2187,7 @@
                 <div class="component3-container1">
                   <div class="component3-container2">
                     <div class="component1-container component1-root-class-name4">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2222,9 +2211,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name5">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2248,9 +2235,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name6">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2274,9 +2259,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name7">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2300,9 +2283,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name92">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2349,9 +2330,7 @@
                 <div class="component3-container1">
                   <div class="component3-container2">
                     <div class="component1-container component1-root-class-name4">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2375,9 +2354,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name5">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2401,9 +2378,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name6">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2427,9 +2402,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name7">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2453,9 +2426,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name92">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2502,9 +2473,7 @@
                 <div class="component3-container1">
                   <div class="component3-container2">
                     <div class="component1-container component1-root-class-name4">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2528,9 +2497,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name5">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2554,9 +2521,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name6">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2580,9 +2545,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name7">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2606,9 +2569,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name92">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2655,9 +2616,7 @@
                 <div class="component3-container1">
                   <div class="component3-container2">
                     <div class="component1-container component1-root-class-name4">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2681,9 +2640,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name5">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2707,9 +2664,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name6">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2733,9 +2688,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name7">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2759,9 +2712,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name92">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -2819,9 +2770,7 @@
                   <div class="component3-container1">
                     <div class="component3-container2">
                       <div class="component1-container component1-root-class-name4">
-                        <img alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                          loading="eager" class="component1-image" />
+                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                         <h1 class="component1-text thq-link">
                           <span>
                             Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
@@ -2846,9 +2795,7 @@
                         </div>
                       </div>
                       <div class="component1-container component1-root-class-name5">
-                        <img alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                          loading="eager" class="component1-image" />
+                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                         <h1 class="component1-text thq-link">
                           <span>
                             Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
@@ -2873,9 +2820,7 @@
                         </div>
                       </div>
                       <div class="component1-container component1-root-class-name6">
-                        <img alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                          loading="eager" class="component1-image" />
+                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                         <h1 class="component1-text thq-link">
                           <span>
                             Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
@@ -2900,9 +2845,7 @@
                         </div>
                       </div>
                       <div class="component1-container component1-root-class-name7">
-                        <img alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                          loading="eager" class="component1-image" />
+                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                         <h1 class="component1-text thq-link">
                           <span>
                             Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
@@ -2927,9 +2870,7 @@
                         </div>
                       </div>
                       <div class="component1-container component1-root-class-name92">
-                        <img alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                          loading="eager" class="component1-image" />
+                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                         <h1 class="component1-text thq-link">
                           <span>
                             Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
@@ -2978,9 +2919,7 @@
                 <div class="component3-container1">
                   <div class="component3-container2">
                     <div class="component1-container component1-root-class-name4">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3004,9 +2943,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name5">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3030,9 +2967,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name6">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3056,9 +2991,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name7">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3082,9 +3015,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name92">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3131,9 +3062,7 @@
                 <div class="component3-container1">
                   <div class="component3-container2">
                     <div class="component1-container component1-root-class-name4">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3157,9 +3086,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name5">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3183,9 +3110,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name6">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3209,9 +3134,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name7">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
@@ -3235,9 +3158,7 @@
                       </div>
                     </div>
                     <div class="component1-container component1-root-class-name92">
-                      <img alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-300w.webp"
-                        loading="eager" class="component1-image" />
+                      <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                       <h1 class="component1-text thq-link">
                         <span>
                           Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
