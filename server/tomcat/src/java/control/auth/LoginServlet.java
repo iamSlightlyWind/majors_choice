@@ -25,12 +25,8 @@ public class LoginServlet extends HttpServlet {
             case 1:
                 user.retrieveData("user");
                 request.getSession().setAttribute("userObject", user);
-                request.setAttribute("loginStatus", "Logged in");
                 request.getSession().setAttribute("table", "user");
-                request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
-
-                // response.sendRedirect("profile");
-                // response.sendRedirect("Test");
+                response.sendRedirect("/");
                 break;
             case -1:
                 request.getSession().setAttribute("table", "user");

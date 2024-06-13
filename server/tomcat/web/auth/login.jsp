@@ -184,11 +184,14 @@
                     </div>
                   </nav>
                   <div class="navbar-buttons">
-                    <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium">
+                    <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium"
+                      style="visibility: hidden;">
                       <path
                         d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
                       </path>
-                    </svg><svg viewBox="0 0 1024 1024" class="navbar-icon02 thq-button-icon thq-icon-medium">
+                    </svg>
+                    <svg viewBox="0 0 1024 1024" class="navbar-icon02 thq-button-icon thq-icon-medium"
+                      style="visibility: hidden;">
                       <path
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                       </path>
@@ -252,81 +255,81 @@
               </header>
             </header>
           </div>
-        <div class="login-body">
-          <div class="sign-in-container thq-section-padding sign-in-root-class-name1">
-            <div class="sign-in-max-width thq-section-max-width">
-              <div class="sign-in-form">
-                <h2 class="sign-in-text thq-heading-2">
-                  Sign in to Major's Choice
-                </h2>
-                <form class="sign-in-form1" action="/auth/login" method="post">
-                  <div class="sign-in-email">
-                    <label for="thq-sign-in-1-password" class="thq-body-large">
-                      Username
-                    </label>
-                    <input type="text" id="thq-sign-in-3-email" required="true" placeholder="Username" name="user"
-                      class="sign-in-textinput thq-input thq-body-large" />
-                  </div>
-                  <div class="sign-in-password">
-                    <label for="thq-sign-in-3-password" class="thq-body-large">
-                      Password
-                    </label>
-                    <input type="password" name="pass" id="thq-sign-in-3-password" required="true"
-                      placeholder="Password" class="sign-in-textinput1 thq-input thq-body-large" />
-                    <div class="sign-in-container1">
-                      <div class="sign-in-container2">
-                        <input type="checkbox" checked="true" class="sign-in-checkbox" />
-                        <a href="/auth/recovery.jsp" class="sign-in-text3 thq-body-small">
-                          Forgot password
-                        </a>
-                      </div>
-                      <span class="sign-in-text4 thq-body-small">
-                        Remember me
-                      </span>
+          <div class="login-body">
+            <div class="sign-in-container thq-section-padding sign-in-root-class-name1">
+              <div class="sign-in-max-width thq-section-max-width">
+                <div class="sign-in-form">
+                  <h2 class="sign-in-text thq-heading-2">
+                    Sign in to Major's Choice
+                  </h2>
+                  <form class="sign-in-form1" action="/auth/login" method="post">
+                    <div class="sign-in-email">
+                      <label for="thq-sign-in-1-password" class="thq-body-large">
+                        Username
+                      </label>
+                      <input type="text" id="thq-sign-in-3-email" required="true" placeholder="Username" name="user"
+                        class="sign-in-textinput thq-input thq-body-large" />
                     </div>
-                  </div>
-                  <br>
-                  <p>${loginStatus}</p>
-                  <br>
-                  <button type="submit" class="sign-in-button thq-button-filled">
-                    <span class="sign-in-text5 thq-body-small">
-                      <span>Sign In</span>
-                    </span>
-                  </button>
-                </form>
-                <div class="sign-in-container3">
-                  <button type="submit" class="sign-in-button1 thq-button-filled">
-                    <svg viewBox="0 0 1024 1024" class="sign-in-icon">
-                      <path
-                        d="M522.2 438.8v175.6h290.4c-11.8 75.4-87.8 220.8-290.4 220.8-174.8 0-317.4-144.8-317.4-323.2s142.6-323.2 317.4-323.2c99.4 0 166 42.4 204 79l139-133.8c-89.2-83.6-204.8-134-343-134-283 0-512 229-512 512s229 512 512 512c295.4 0 491.6-207.8 491.6-500.2 0-33.6-3.6-59.2-8-84.8l-483.6-0.2z">
-                      </path>
-                    </svg>
-                    <span class="sign-in-text5 thq-body-small">
-                      <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://choice.themajorones.dev/auth/googleLogin&response_type=code
+                    <div class="sign-in-password">
+                      <label for="thq-sign-in-3-password" class="thq-body-large">
+                        Password
+                      </label>
+                      <input type="password" name="pass" id="thq-sign-in-3-password" required="true"
+                        placeholder="Password" class="sign-in-textinput1 thq-input thq-body-large" />
+                      <div class="sign-in-container1">
+                        <div class="sign-in-container2">
+                          <input type="checkbox" checked="true" class="sign-in-checkbox" />
+                          <a href="/auth/recovery.jsp" class="sign-in-text3 thq-body-small">
+                            Forgot password
+                          </a>
+                        </div>
+                        <span class="sign-in-text4 thq-body-small">
+                          Remember me
+                        </span>
+                      </div>
+                    </div>
+                    <br>
+                    <p>${loginStatus}</p>
+                    <br>
+                    <button type="submit" class="sign-in-button thq-button-filled">
+                      <span class="sign-in-text5 thq-body-small">
+                        <span>Sign In</span>
+                      </span>
+                    </button>
+                  </form>
+                  <div class="sign-in-container3">
+                    <button type="submit" class="sign-in-button1 thq-button-filled">
+                      <svg viewBox="0 0 1024 1024" class="sign-in-icon">
+                        <path
+                          d="M522.2 438.8v175.6h290.4c-11.8 75.4-87.8 220.8-290.4 220.8-174.8 0-317.4-144.8-317.4-323.2s142.6-323.2 317.4-323.2c99.4 0 166 42.4 204 79l139-133.8c-89.2-83.6-204.8-134-343-134-283 0-512 229-512 512s229 512 512 512c295.4 0 491.6-207.8 491.6-500.2 0-33.6-3.6-59.2-8-84.8l-483.6-0.2z">
+                        </path>
+                      </svg>
+                      <span class="sign-in-text5 thq-body-small">
+                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://choice.themajorones.dev/auth/googleLogin&response_type=code
      &client_id=960808694899-61oujrd0icfujs3ds3qmqqu0lb8rtuhv.apps.googleusercontent.com&approval_prompt=force"
-                        class="nav-link">Login with Google</a>
-                    </span>
-                  </button>
-                </div>
-                <div class="sign-in-container4">
-                  <div class="sign-in-divider">
-                    <div class="sign-in-divider1"></div>
-                    <p class="thq-body-large"><span>Or</span></p>
-                    <div class="sign-in-divider2"></div>
+                          class="nav-link">Login with Google</a>
+                      </span>
+                    </button>
                   </div>
-                  <a href="/auth/register.jsp" class="sign-in-button2 thq-button-outline">
-                    <span class="sign-in-text8 thq-body-small">
-                      <span>Register</span>
-                    </span>
-                  </a>
+                  <div class="sign-in-container4">
+                    <div class="sign-in-divider">
+                      <div class="sign-in-divider1"></div>
+                      <p class="thq-body-large"><span>Or</span></p>
+                      <div class="sign-in-divider2"></div>
+                    </div>
+                    <a href="/auth/register.jsp" class="sign-in-button2 thq-button-outline">
+                      <span class="sign-in-text8 thq-body-small">
+                        <span>Register</span>
+                      </span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+      <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 
   </html>

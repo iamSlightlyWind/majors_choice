@@ -25,8 +25,7 @@ public class ActivateServlet extends HttpServlet {
             case 1:
                 user.retrieveData((String) request.getSession().getAttribute("table"));
                 request.getSession().setAttribute("userObject", user);
-                request.setAttribute("loginStatus", "Logged in");
-                request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
+                response.sendRedirect("/");
                 break;
         }
     }

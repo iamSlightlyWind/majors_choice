@@ -58,8 +58,6 @@ public class User {
     }
 
     public void retrieveData(String role) {
-        System.out.println(this);
-        
         if(role.equals("manager")){
             role = "staff";
         }
@@ -376,7 +374,6 @@ public class User {
         try {
             String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.id = ?";
             sql = sql.replace("^", role);
-            System.out.println(">>> SQL: " + sql);
             PreparedStatement statement = db.connection.prepareStatement(sql);
             statement.setString(1, id);
 

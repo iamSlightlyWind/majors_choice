@@ -184,16 +184,19 @@
                     </div>
                   </nav>
                   <div class="navbar-buttons">
-                    <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium">
+                    <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium"
+                      style="visibility: hidden;">
                       <path
                         d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
                       </path>
-                    </svg><svg viewBox="0 0 1024 1024" class="navbar-icon02 thq-button-icon thq-icon-medium">
+                    </svg>
+                    <svg viewBox="0 0 1024 1024" class="navbar-icon02 thq-button-icon thq-icon-medium"
+                      style="visibility: hidden;">
                       <path
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                       </path>
                     </svg>
-                    <a href="login.jsp" class="navbar-account thq-button-filled">
+                    <a href="/auth/login.jsp" class="navbar-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -213,8 +216,7 @@
                   <div class="navbar-nav">
                     <div class="navbar-top">
                       <div class="navbar-container5">
-                        <img alt="pastedImage" src="../css/image/logo.png"
-                          class="navbar-pasted-image1" />
+                        <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image1" />
                       </div>
                       <div data-thq="thq-close-menu" class="navbar-close-menu">
                         <svg viewBox="0 0 1024 1024" class="navbar-icon08">
@@ -253,74 +255,74 @@
               </header>
             </header>
           </div>
-        <div class="register-usser-google-body">
-          <div class="register-by-gg-container thq-section-padding register-by-gg-root-class-name">
-            <div class="register-by-gg-form-root">
-              <div class="register-by-gg-form">
-                <h1 class="register-by-gg-text">
-                  <span>Register an account with Google</span>
-                </h1>
-                <form id="registerForm" action="/auth/googleLogin" method="post" class="register-by-gg-form1">
-                  <div class="register-by-gg-full-name">
-                    <label for="thq-sign-in-1-password" class="thq-body-large">
-                      <span>Full Name</span>
-                      <br />
-                    </label>
-                    <input type="text" required="true" placeholder="Full Name" name="fullName"
-                      class="register-by-gg-textinput thq-input thq-body-large" />
-                  </div>
-                  <div class="register-by-gg-email">
-                    <label for="thq-sign-in-1-password" class="thq-body-large">
-                      <span>Email</span>
-                      <br />
-                    </label>
-                    <input type="email" id="thq-sign-in-3-email" name="email" readonly value="${gmail}"
-                      class="register-by-gg-textinput1 thq-input thq-body-large" />
-                  </div>
-                  <div class="register-by-gg-phone">
-                    <label for="thq-sign-in-1-password" class="thq-body-large">
-                      <span>Phone</span>
-                      <br />
-                    </label>
-                    <input type="tel" required="true" placeholder="Phone" name="phoneNumber"
-                      class="register-by-gg-textinput2 thq-input thq-body-large" />
-                  </div>
-                  <div class="register-by-gg-address">
-                    <label for="thq-sign-in-1-password" class="thq-body-large">
-                      <span>Address</span>
-                      <br />
-                    </label>
-                    <input type="text" required="true" placeholder="Address" name="address"
-                      class="register-by-gg-textinput3 thq-input thq-body-large" />
-                  </div>
-                  <div class="register-by-gg-date-of-birth">
-                    <label for="thq-sign-in-1-password" class="thq-body-large">
-                      <span>Date of Birth</span>
-                      <br />
-                    </label>
-                    <input type="date" required="true" name="dateOfBirth"
-                      class="register-by-gg-textinput4 thq-input thq-body-large" />
-                  </div>
-                  <p>${registerStatus}</p>
-                  <button type="submit" name="action" value="Update Information"
-                    class="register-by-gg-button thq-button-filled">
-                    <span class="register-by-gg-text16 thq-body-small">
-                      <span>Update Information</span>
+          <div class="register-usser-google-body">
+            <div class="register-by-gg-container thq-section-padding register-by-gg-root-class-name">
+              <div class="register-by-gg-form-root">
+                <div class="register-by-gg-form">
+                  <h1 class="register-by-gg-text">
+                    <span>Register an account with Google</span>
+                  </h1>
+                  <form id="registerForm" action="/auth/googleLogin" method="post" class="register-by-gg-form1">
+                    <div class="register-by-gg-full-name">
+                      <label for="thq-sign-in-1-password" class="thq-body-large">
+                        <span>Full Name</span>
+                        <br />
+                      </label>
+                      <input type="text" required="true" placeholder="Full Name" name="fullName"
+                        class="register-by-gg-textinput thq-input thq-body-large" />
+                    </div>
+                    <div class="register-by-gg-email">
+                      <label for="thq-sign-in-1-password" class="thq-body-large">
+                        <span>Email</span>
+                        <br />
+                      </label>
+                      <input type="email" id="thq-sign-in-3-email" name="email" readonly value="${gmail}"
+                        class="register-by-gg-textinput1 thq-input thq-body-large" />
+                    </div>
+                    <div class="register-by-gg-phone">
+                      <label for="thq-sign-in-1-password" class="thq-body-large">
+                        <span>Phone</span>
+                        <br />
+                      </label>
+                      <input type="tel" required="true" placeholder="Phone" name="phoneNumber"
+                        class="register-by-gg-textinput2 thq-input thq-body-large" />
+                    </div>
+                    <div class="register-by-gg-address">
+                      <label for="thq-sign-in-1-password" class="thq-body-large">
+                        <span>Address</span>
+                        <br />
+                      </label>
+                      <input type="text" required="true" placeholder="Address" name="address"
+                        class="register-by-gg-textinput3 thq-input thq-body-large" />
+                    </div>
+                    <div class="register-by-gg-date-of-birth">
+                      <label for="thq-sign-in-1-password" class="thq-body-large">
+                        <span>Date of Birth</span>
+                        <br />
+                      </label>
+                      <input type="date" required="true" name="dateOfBirth"
+                        class="register-by-gg-textinput4 thq-input thq-body-large" />
+                    </div>
+                    <p>${registerStatus}</p>
+                    <button type="submit" name="action" value="Update Information"
+                      class="register-by-gg-button thq-button-filled">
+                      <span class="register-by-gg-text16 thq-body-small">
+                        <span>Update Information</span>
+                      </span>
+                    </button>
+                    <span class="register-by-gg-text17">
+                      <span>
+                        Please enter the remaining information to continue
+                      </span>
                     </span>
-                  </button>
-                  <span class="register-by-gg-text17">
-                    <span>
-                      Please enter the remaining information to continue
-                    </span>
-                  </span>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+      <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 
   </html>
