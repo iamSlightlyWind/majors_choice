@@ -470,7 +470,7 @@
                               </path>
                             </svg>
                             <span class="thq-body-small">
-                              Email :&nbsp;info@majorschoice.com
+                              Email :&nbsp;support@themajorones.dev
                             </span>
                           </div>
                           <div class="footer-link3">
