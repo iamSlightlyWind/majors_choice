@@ -565,7 +565,7 @@ public class Database {
 
     public int updateProductRAM(int id, double sellingPrice, double costPrice, String name, String generation, int capacity, int speed, int latency, String image) {
         try {
-            String sql = "{call updateProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
@@ -705,7 +705,7 @@ public class Database {
     public static void main(String[] args) {
         Database database = new Database();
 //        int result = database.addProductPSU(2, 2, "test", 2, "test", "test");
-//        int result = database.updateProductPSU(187, 2, 2, "test", 2, "test", "tesst");
+        int result = database.updateProductRAM(188, 22, 22, "test", "test", 2, 2, 2, "test");
 
 //        if (result == 1) {
 //            System.out.println("CPU updated successfully.");

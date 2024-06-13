@@ -13,7 +13,6 @@
         <p><a href="motherboards?service=listAll"> Manage Motherboard</a>
         <p><a href="psus?service=listAll"> Manage PSU</a>
         <p><a href="rams?service=listAll"> Manage RAM</a>
-        <p><a href="ssds?service=listAll"> Manage SSD</a>
-        <p><a href=> Manage Cart</a>  
+        <p><a href="ssds?service=listAll"> Manage SSD</a> 
     </body>
 </html>
