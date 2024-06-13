@@ -20,7 +20,7 @@ public class UserGoogle extends User {
         }
     }
 
-    public void setCredentials(){
+    public void setCredentials() {
         username = email;
         password = id;
     }

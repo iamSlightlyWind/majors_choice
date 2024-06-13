@@ -153,7 +153,6 @@
 
         <div class="view-cart-container">
           <div class="navbar-container navbar-root-class-name20">
-            <div class="navbar-container1"></div>
             <header class="navbar-container2">
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
