@@ -252,48 +252,51 @@
               </header>
             </header>
           </div>
-          <div class="menu-function-container">
-            <div class="menu-function-manager">
-              <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                <span>Manager WareHouse</span>
-              </span>
-              <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                Manager Customer
-              </span>
-              <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                <span>Feedback</span>
-                <br />
-              </span>
-              <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                Manager Staff
-              </span>
-              <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                Financial Reports
-              </span>
-            </div>
-          </div>
-          <div class="home-page-welcome">
-            <div class="home-page-container01">
-              <div class="home-page-container02">
-                <div class="home-page-container03">
-                  <h1 class="home-page-text thq-heading-1">
-                    Welcome to Major's Choice
-                  </h1>
-                  <span class="home-page-text001">
-                    Your one-stop shop for high-quality computer components
-                  </span>
-                </div>
-                <div class="home-page-container04">
-                  <button type="button" class="home-page-button thq-button-filled button shownow">
-                    Show Now
-                  </button>
-                  <button type="button" class="home-page-button1 button thq-button-outline shownow">
-                    Who we are
-                  </button>
-                </div>
+          <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role) || "manager"
+            .equals(role)) { %>
+            <div class="menu-function-container">
+              <div class="menu-function-manager">
+                <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
+                  <span>Manager WareHouse</span>
+                </span>
+                <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                  Manager Customer
+                </span>
+                <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
+                  <span>Feedback</span>
+                  <br />
+                </span>
+                <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                  Manager Staff
+                </span>
+                <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                  Financial Reports
+                </span>
               </div>
             </div>
-          </div>
+            <% } %>
+              <div class="home-page-welcome">
+                <div class="home-page-container01">
+                  <div class="home-page-container02">
+                    <div class="home-page-container03">
+                      <h1 class="home-page-text thq-heading-1">
+                        Welcome to Major's Choice
+                      </h1>
+                      <span class="home-page-text001">
+                        Your one-stop shop for high-quality computer components
+                      </span>
+                    </div>
+                    <div class="home-page-container04">
+                      <button type="button" class="home-page-button thq-button-filled button shownow">
+                        Show Now
+                      </button>
+                      <button type="button" class="home-page-button1 button thq-button-outline shownow">
+                        Who we are
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </header>
         <div class="home-page-body">
           <div class="home-page-category-and-best-seller">
