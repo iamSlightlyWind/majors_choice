@@ -616,7 +616,7 @@ public class Database {
                 double costPrice = resultSet.getDouble("costPrice");
                 String description = resultSet.getString("description");
                 String name = resultSet.getString("name");
-                String connectionInterface = resultSet.getString("connectionInterface");
+                String connectionInterface = resultSet.getString("interface");
                 int capacity = resultSet.getInt("capacity");
                 int cache = resultSet.getInt("cache");
                 ssds.add(
@@ -705,7 +705,7 @@ public class Database {
     public static void main(String[] args) {
         Database database = new Database();
 //        int result = database.addProductPSU(2, 2, "test", 2, "test", "test");
-        int result = database.updateProductRAM(188, 22, 22, "test", "test", 2, 2, 2, "test");
+//        int result = database.updateProductRAM(188, 22, 22, "test", "test", 2, 2, 2, "test");
 
 //        if (result == 1) {
 //            System.out.println("CPU updated successfully.");
@@ -714,7 +714,7 @@ public class Database {
 //        }
 //        int id = database.getCPUs("select * from cpus join products on cpus.id= products.id where cpus.id = 10").get(0).getId();
 //        System.out.println(id);
-//        ArrayList<Motherboard> motherboards = database.getMotherboards("{call getMotherboard()}");;
+        ArrayList<SSD> ssds = database.getSSDs("{call getSSD()}");;
     }
 
 }

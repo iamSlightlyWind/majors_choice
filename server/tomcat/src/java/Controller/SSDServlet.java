@@ -49,7 +49,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 double sellingPrice = Double.parseDouble(request.getParameter("sellingPrice"));
                 double costPrice = Double.parseDouble(request.getParameter("costPrice"));
                 String name = request.getParameter("name");
-                String connectionInterface = request.getParameter("connectionInterface");
+                String connectionInterface = request.getParameter("interface");
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
                 String image = request.getParameter("image");
@@ -92,7 +92,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 double sellingPrice = Double.parseDouble(request.getParameter("sellingPrice"));
                 double costPrice = Double.parseDouble(request.getParameter("costPrice"));
                 String name = request.getParameter("name");
-                String connectionInterface = request.getParameter("connectionInterface");
+                String connectionInterface = request.getParameter("interface");
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
                 String image = request.getParameter("image");

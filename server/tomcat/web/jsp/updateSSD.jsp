@@ -8,9 +8,9 @@
     </head>
     <body>
         <%
-             SSD ssd = (SSD) request.getAttribute("ssd");
+             SSD ssd = (SSD) request.getAttribute("ssds");
         %>
-        <form action="ssd" method="post" >
+        <form action="ssds" method="post" >
             <table>
                 <tr>
                     <td>ID</td>
@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <td>Interface</td>
-                    <td><input type="text" name="interface" value="<%=ssd.getInterface()%>"></td>
+                    <td><input type="text" name="interface" value="<%=ssd.getConnectionInterface()%>"></td>
                 </tr>
                 <tr>
                     <td>Capacity</td>
