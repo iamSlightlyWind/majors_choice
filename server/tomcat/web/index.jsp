@@ -252,7 +252,7 @@
               </header>
             </header>
           </div>
-          <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role) || "manager"
+          <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
             .equals(role)) { %>
             <div class="menu-function-container">
               <div class="menu-function-manager">
