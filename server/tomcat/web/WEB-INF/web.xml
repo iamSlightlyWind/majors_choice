@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <!--Authentication-->
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>control.auth.LoginServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/auth/login</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ManagerAccount</servlet-name>
         <servlet-class>control.account.ManagerAccount</servlet-class>
@@ -13,10 +21,6 @@
         <servlet-name>UpdateUserProfile</servlet-name>
         <servlet-class>control.account.UpdateUserProfile</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/auth/login</url-pattern>
-    </servlet-mapping>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>control.auth.RegisterServlet</servlet-class>
@@ -49,7 +53,9 @@
         <servlet-name>LoginGoogleServlet</servlet-name>
         <url-pattern>/auth/googleLogin</url-pattern>
     </servlet-mapping>
+
     <!--Profile-->
+
     <servlet>
         <servlet-name>Profile</servlet-name>
         <servlet-class>control.profile.Profile</servlet-class>
@@ -66,7 +72,9 @@
         <servlet-name>EditProfile</servlet-name>
         <servlet-class>control.profile.EditProfile</servlet-class>
     </servlet>
+
     <!--Product-->
+    
     <servlet>
         <servlet-name>OrderServlet</servlet-name>
         <servlet-class>packages.wrap.OrderServlet</servlet-class>

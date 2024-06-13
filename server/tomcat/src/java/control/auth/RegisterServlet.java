@@ -15,6 +15,7 @@ public class RegisterServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("userName");
         String password = request.getParameter("password");
         String repass = request.getParameter("repass");
@@ -27,37 +28,10 @@ public class RegisterServlet extends HttpServlet {
         String error = checkInfo(email, phoneNumber, password, repass);
         int result = 0;
         User user = new User(username, password, fullName, email, phoneNumber, address, dateOfBirth);
+        String tableName = request.getParameter("actor");
 
         if (error.equals("")) {
-            String tableName = request.getParameter("actor");
             result = user.register(false, tableName);
-//            switch (result) {
-//                case 1:
-//                    if(tableName!=null){
-//                        response.sendRedirect("manageraccount");
-//                    } else {
-//                        request.setAttribute("loginStatus", "Succesfully Registered. You can now Login.");
-//                        request.getRequestDispatcher("/login.jsp").forward(request, response);
-//                    }
-//                    break;
-//                    
-//                case -1:
-//                    error = "Username already exists.";
-//                    break;
-//                    
-//                case -2:
-//                    error = "Email already exists.";
-//                    break;
-//
-//                case -3:
-//                    error = "Phone number already exists.";
-//                    break;
-//                default:
-//                    error = "Register Failed.";
-//                    break;
-//            }
-//            request.setAttribute("registerStatus", error);
-//            request.getRequestDispatcher("/register.jsp").forward(request, response);
             if (result == 1) {
                 if (tableName != null) {
                     request.setAttribute("table", "user");
@@ -91,7 +65,6 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("registerStatus", error);
             request.getRequestDispatcher("/auth/register.jsp").forward(request, response);
         }
-        response.setContentType("text/html;charset=UTF-8");
     }
 
     private boolean isValidEmail(String email) {

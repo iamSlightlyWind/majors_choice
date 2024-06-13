@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <!DOCTYPE html>
   <html lang="en">
 
@@ -194,15 +193,13 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                       </path>
                     </svg>
-                    <c:if test="${sessionScope.table !=null}">
-                     <a href="/profile?action=view" class="navbar-account thq-button-filled">
+                    <a href="/auth/login.jsp" class="navbar-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
                         </path>
                       </svg>
                     </a>
-                    </c:if>
                   </div>
                 </div>
                 <div data-thq="thq-burger-menu" class="navbar-burger-menu">
@@ -261,18 +258,14 @@
                 <span>Manager WareHouse</span>
               </span>
               <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                  <c:if test="${sessionScope.table == 'manager'}">
-                       <a href="/manage/profile?actor=user">Manager Customer</a>
-                  </c:if>
+                Manager Customer
               </span>
               <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
                 <span>Feedback</span>
                 <br />
               </span>
               <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                  <c:if test="${sessionScope.table == 'manager' }">
-                      <a href="/manage/profile?actor=staff">Manager Staff</a>
-                  </c:if>
+                Manager Staff
               </span>
               <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
                 Financial Reports
@@ -287,7 +280,7 @@
                 <h2 class="sign-in-text thq-heading-2">
                   Sign in to Major's Choice
                 </h2>
-                <form class="sign-in-form1" id="loginForm" action="/auth/login" method="post">
+                <form class="sign-in-form1" action="/auth/login" method="post">
                   <div class="sign-in-email">
                     <label for="thq-sign-in-1-password" class="thq-body-large">
                       Username
@@ -316,8 +309,6 @@
                   <br>
                   <p>${loginStatus}</p>
                   <br>
-                 <!-- <div class="g-recaptcha" data-sitekey="6LdK--8pAAAAABv-L5jPFsFySBjogEmHiFt87qcV"></div>
-		  <div class="error"></div>   Here is recaptchar but I don't add because it makes over form!-->
                   <button type="submit" class="sign-in-button thq-button-filled">
                     <span class="sign-in-text5 thq-body-small">
                       <span>Sign In</span>
@@ -356,13 +347,6 @@
         </div>
       </div>
     </div>
-          <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script>    
-            <script src="js/recaptchar.js"></script>
-            <script>
-                window.onload = function (){
-                handleFormSubmission("loginForm");
-		};
-            </script> !-->
     <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
 
