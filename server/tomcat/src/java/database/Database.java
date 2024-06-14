@@ -475,7 +475,6 @@ public class Database {
                     user.retrieveData("user");
                     users.add(user);
                 }
-                users.add(user);
             }
         } catch (SQLException ex) {
             System.out.println(ex);
