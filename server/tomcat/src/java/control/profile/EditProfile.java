@@ -83,7 +83,7 @@ public class EditProfile extends HttpServlet {
             user.retrieveData("user");
             request.setAttribute("user", user);
             request.setAttribute("possition", "user");
-            request.getRequestDispatcher("/manage/profile/user.jsp").forward(request, response);
+            request.getRequestDispatcher("/manage/userForm.jsp").forward(request, response);
         }
     }
 
@@ -103,11 +103,11 @@ public class EditProfile extends HttpServlet {
             staff.retrieveData("staff");
             request.setAttribute("staff", staff);
             request.setAttribute("submitAction", "Update");
-            request.getRequestDispatcher("/manage/profile/staff.jsp").forward(request, response);
+            request.getRequestDispatcher("/manage/staffForm.jsp").forward(request, response);
         } else if (action.equals("Add")) {
             request.setAttribute("staff", new User());
             request.setAttribute("submitAction", "Add");
-            request.getRequestDispatcher("/manage/profile/staff.jsp").forward(request, response);
+            request.getRequestDispatcher("/manage/staffForm.jsp").forward(request, response);
         }
     }
 
