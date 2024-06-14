@@ -169,7 +169,7 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <a href="home-page.html" class="navbar-home thq-body-small thq-link">
+                      <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navbar-contact thq-body-small thq-link">
@@ -257,387 +257,391 @@
               </header>
             </header>
           </div>
-          <div class="menu-function-container menu-function-root-class-name7">
-            <div class="menu-function-manager">
-              <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                <span>Manager WareHouse</span>
-              </span>
-              <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                Manager Customer
-              </span>
-              <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                <span>Feedback</span>
-                <br />
-              </span>
-              <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                Manager Staff
-              </span>
-              <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                Financial Reports
-              </span>
-            </div>
-          </div>
-          <div class="edit-profile-component-container edit-profile-component-root-class-name">
-            <div class="edit-profile-component-container01">
-              <div class="edit-profile-component-container02">
-                <div class="edit-profile-component-container03">
-                  <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                    class="edit-profile-component-image" />
-                  <button type="button" class="edit-profile-component-button button">
-                    Save Changes
-                  </button>
-                </div>
+          <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+            .equals(role)) { %>
+            <div class="menu-function-container menu-function-root-class-name7">
+              <div class="menu-function-manager">
+                <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
+                  <span>Manage WareHouse</span>
+                </span>
+                <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                  Manage Customer
+                </span>
+                <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
+                  <span>Feedback</span>
+                  <br />
+                </span>
+                <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                  Manage Staff
+                </span>
+                <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                  Financial Reports
+                </span>
               </div>
-              <div class="edit-profile-component-container04">
-                <div class="edit-profile-component-container05">
-                  <h1 class="edit-profile-component-text">Edit Profile</h1>
-                </div>
-                <div class="edit-profile-component-container06">
-                  <form class="edit-profile-component-form" action="/editprofile" method="post"
-                    onsubmit="return confirmChange();">
-                    <c:set var="user" value="${requestScope.user}" />
+            </div>
+            <% } %>
+              <div class="edit-profile-component-container edit-profile-component-root-class-name">
+                <div class="edit-profile-component-container01">
+                  <div class="edit-profile-component-container02">
+                    <div class="edit-profile-component-container03">
+                      <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+                        class="edit-profile-component-image" />
+                      <button type="button" class="edit-profile-component-button button">
+                        Save Changes
+                      </button>
+                    </div>
+                  </div>
+                  <div class="edit-profile-component-container04">
+                    <div class="edit-profile-component-container05">
+                      <h1 class="edit-profile-component-text">Edit Profile</h1>
+                    </div>
+                    <div class="edit-profile-component-container06">
+                      <form class="edit-profile-component-form" action="/editprofile" method="post"
+                        onsubmit="return confirmChange();">
+                        <c:set var="user" value="${requestScope.user}" />
+                        <c:if test="${requestScope.possition != null}">
+                          <span class="edit-profile-component-text1">ID</span>
+                          <div class="edit-profile-component-container07">
+                            <input type="text" class="edit-profile-component-textinput input" name="id"
+                              value="<c:out value=" ${user.id}"></c:out>" readonly
+                            />
+                          </div>
+                        </c:if>
+                        <span class="edit-profile-component-text1">Usename</span>
+                        <div class="edit-profile-component-container07">
+                          <input type="text" placeholder="Enter Password" class="edit-profile-component-textinput input"
+                            name="username" value="<c:out value=" ${user.username}"></c:out>" readonly
+                          />
+                        </div>
+                    </div>
+                    <div class="edit-profile-component-container08">
+                      <div class="edit-profile-component-container09">
+                        <div class="edit-profile-component-container10">
+                          <div class="edit-profile-component-container11">
+                            <span class="edit-profile-component-text2">Password</span>
+                          </div>
+                          <div class="edit-profile-component-container12">
+                            <input type="password" placeholder="Enter Password"
+                              class="edit-profile-component-textinput1 input" type="password" name="password"
+                              value="<c:out value=" ${user.password}"></c:out>" required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <c:if test="${requestScope.possition != null}">
-                      <span class="edit-profile-component-text1">ID</span>
+                      <span class="edit-profile-component-text1">Possition</span>
                       <div class="edit-profile-component-container07">
-                        <input type="text" class="edit-profile-component-textinput input" name="id"
-                          value="<c:out value=" ${user.id}"></c:out>" readonly
+                        <input type="text" class="edit-profile-component-textinput input" name="possition"
+                          value="<c:out value=" ${requestScope.possition}"></c:out>" readonly
+                        />
+                      </div>
+                      <span class="edit-profile-component-text1">Active</span>
+                      <div class="edit-profile-component-container07">
+                        <input type="number" class="edit-profile-component-textinput input" name="active"
+                          value="<c:out value=" ${user.active}"></c:out>" min="0" max="1" required
                         />
                       </div>
                     </c:if>
-                    <span class="edit-profile-component-text1">Usename</span>
-                    <div class="edit-profile-component-container07">
-                      <input type="text" placeholder="Enter Password" class="edit-profile-component-textinput input"
-                        name="username" value="<c:out value=" ${user.username}"></c:out>" readonly
-                      />
-                    </div>
-                </div>
-                <div class="edit-profile-component-container08">
-                  <div class="edit-profile-component-container09">
-                    <div class="edit-profile-component-container10">
-                      <div class="edit-profile-component-container11">
-                        <span class="edit-profile-component-text2">Password</span>
-                      </div>
-                      <div class="edit-profile-component-container12">
-                        <input type="password" placeholder="Enter Password"
-                          class="edit-profile-component-textinput1 input" type="password" name="password"
-                          value="<c:out value=" ${user.password}"></c:out>" required
-                        />
+                    <div class="edit-profile-component-container13">
+                      <div class="edit-profile-component-container14">
+                        <div class="edit-profile-component-container15">
+                          <span class="edit-profile-component-text3">Full Name</span>
+                        </div>
+                        <div class="edit-profile-component-container16">
+                          <input type="text" placeholder="Enter Full Name"
+                            class="edit-profile-component-textinput2 input" name="fullname" value="<c:out value="
+                            ${user.fullName}"></c:out>" required
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <c:if test="${requestScope.possition != null}">
-                  <span class="edit-profile-component-text1">Possition</span>
-                  <div class="edit-profile-component-container07">
-                    <input type="text" class="edit-profile-component-textinput input" name="possition"
-                      value="<c:out value=" ${requestScope.possition}"></c:out>" readonly
-                    />
-                  </div>
-                  <span class="edit-profile-component-text1">Active</span>
-                  <div class="edit-profile-component-container07">
-                    <input type="number" class="edit-profile-component-textinput input" name="active"
-                      value="<c:out value=" ${user.active}"></c:out>" min="0" max="1" required
-                    />
-                  </div>
-                </c:if>
-                <div class="edit-profile-component-container13">
-                  <div class="edit-profile-component-container14">
-                    <div class="edit-profile-component-container15">
-                      <span class="edit-profile-component-text3">Full Name</span>
-                    </div>
-                    <div class="edit-profile-component-container16">
-                      <input type="text" placeholder="Enter Full Name" class="edit-profile-component-textinput2 input"
-                        name="fullname" value="<c:out value=" ${user.fullName}"></c:out>" required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="edit-profile-component-container13">
-                  <div class="edit-profile-component-container14">
-                    <div class="edit-profile-component-container15">
-                      <span class="edit-profile-component-text3">Phone</span>
-                    </div>
-                    <div class="edit-profile-component-container16">
-                      <input type="text" placeholder="Enter Phone Number"
-                        class="edit-profile-component-textinput2 input" name="phoneNumber" value="<c:out value="
-                        ${user.phoneNumber}"></c:out>" required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="edit-profile-component-container17">
-                  <div class="edit-profile-component-container18">
-                    <div class="edit-profile-component-container19">
-                      <div class="edit-profile-component-container20">
-                        <span class="edit-profile-component-text4">Email</span>
+                    <div class="edit-profile-component-container13">
+                      <div class="edit-profile-component-container14">
+                        <div class="edit-profile-component-container15">
+                          <span class="edit-profile-component-text3">Phone</span>
+                        </div>
+                        <div class="edit-profile-component-container16">
+                          <input type="text" placeholder="Enter Phone Number"
+                            class="edit-profile-component-textinput2 input" name="phoneNumber" value="<c:out value="
+                            ${user.phoneNumber}"></c:out>" required
+                          />
+                        </div>
                       </div>
                     </div>
-                    <div class="edit-profile-component-container21">
-                      <input type="text" placeholder="Enter Email" class="edit-profile-component-textinput3 input"
-                        name="email" value="<c:out value=" ${user.email}"></c:out>" required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="edit-profile-component-container22">
-                  <div class="edit-profile-component-container23">
-                    <div class="edit-profile-component-container24">
-                      <span class="edit-profile-component-text5">Address</span>
-                    </div>
-                    <div class="edit-profile-component-container25">
-                      <input type="text" placeholder="Enter Address" class="edit-profile-component-textinput4 input"
-                        name="address" value="<c:out value=" ${user.address}"></c:out>" required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div class="edit-profile-component-container26">
-                  <div class="edit-profile-component-container27">
-                    <div class="edit-profile-component-container28">
-                      <span class="edit-profile-component-text6">DoB</span>
-                    </div>
-                    <div class="edit-profile-component-container29">
-                      <input type="date" placeholder="Text" class="edit-profile-component-textinput5 input"
-                        name="dateOfBirth" value="${user.dateOfBirth}" required />
-                    </div>
-                  </div>
-                </div>
-                <c:if test="${requestScope.possition != null}">
-                  <div class="edit-profile-component-container26">
-                    <div class="edit-profile-component-container27">
-                      <div class="edit-profile-component-container28">
-                        <span class="edit-profile-component-text6">Date Joined</span>
-                      </div>
-                      <div class="edit-profile-component-container29">
-                        <input type="date" placeholder="Text" class="edit-profile-component-textinput5 input"
-                          name="dateJoined" value="<c:out value=" ${user.dateJoined}"></c:out>" readonly
-                        />
+                    <div class="edit-profile-component-container17">
+                      <div class="edit-profile-component-container18">
+                        <div class="edit-profile-component-container19">
+                          <div class="edit-profile-component-container20">
+                            <span class="edit-profile-component-text4">Email</span>
+                          </div>
+                        </div>
+                        <div class="edit-profile-component-container21">
+                          <input type="text" placeholder="Enter Email" class="edit-profile-component-textinput3 input"
+                            name="email" value="<c:out value=" ${user.email}"></c:out>" required
+                          />
+                        </div>
                       </div>
                     </div>
+                    <div class="edit-profile-component-container22">
+                      <div class="edit-profile-component-container23">
+                        <div class="edit-profile-component-container24">
+                          <span class="edit-profile-component-text5">Address</span>
+                        </div>
+                        <div class="edit-profile-component-container25">
+                          <input type="text" placeholder="Enter Address" class="edit-profile-component-textinput4 input"
+                            name="address" value="<c:out value=" ${user.address}"></c:out>" required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="edit-profile-component-container26">
+                      <div class="edit-profile-component-container27">
+                        <div class="edit-profile-component-container28">
+                          <span class="edit-profile-component-text6">DoB</span>
+                        </div>
+                        <div class="edit-profile-component-container29">
+                          <input type="date" placeholder="Text" class="edit-profile-component-textinput5 input"
+                            name="dateOfBirth" value="${user.dateOfBirth}" required />
+                        </div>
+                      </div>
+                    </div>
+                    <c:if test="${requestScope.possition != null}">
+                      <div class="edit-profile-component-container26">
+                        <div class="edit-profile-component-container27">
+                          <div class="edit-profile-component-container28">
+                            <span class="edit-profile-component-text6">Date Joined</span>
+                          </div>
+                          <div class="edit-profile-component-container29">
+                            <input type="date" placeholder="Text" class="edit-profile-component-textinput5 input"
+                              name="dateJoined" value="<c:out value=" ${user.dateJoined}"></c:out>" readonly
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </c:if>
+                    <div>
+                      <span style="color: greenyellow; font-size: 25px">${requestScope.status} </span>
+                    </div>
+                    <div class="edit-profile-component-container30">
+                      <button class="edit-profile-component-navlink thq-button-filled button thq-button-outline"
+                        type="submit">Save Edit</button>
+                    </div>
                   </div>
-                </c:if>
-                <div>
-                  <span style="color: greenyellow; font-size: 25px">${requestScope.status} </span>
-                </div>
-                <div class="edit-profile-component-container30">
-                  <button class="edit-profile-component-navlink thq-button-filled button thq-button-outline"
-                    type="submit">Save Edit</button>
+                  </form>
                 </div>
               </div>
-              </form>
-            </div>
-          </div>
-          <div class="contact-contact20 thq-section-padding contact-root-class-name9">
-            <div class="contact-max-width thq-section-max-width">
-              <div class="contact-section-title">
-                <span class="thq-body-small">
-                  <span>
-                    Our customer service team is available to help you with any
-                    inquiries.
-                  </span>
-                </span>
-                <div class="contact-content">
-                  <h2 class="thq-heading-2"><span>Contact Us</span></h2>
-                  <p class="contact-text2 thq-body-large">
-                    <span>
-                      Have a question or need assistance? Feel free to reach out
-                      to us.
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div class="contact-row">
-                <div class="contact-content1">
-                  <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                    <path
-                      d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
-                    </path>
-                  </svg>
-                  <div class="contact-contact-info">
-                    <div class="contact-content2">
-                      <h3 class="contact-text3 thq-heading-3">Email</h3>
-                      <p class="contact-text4 thq-body-large">
-                        <span>
-                          For business inquiries or partnerships, please contact
-                          us via email.
-                        </span>
-                      </p>
-                    </div>
-                    <span class="contact-email thq-body-small">
-                      <span>info@majorschoice.com</span>
-                    </span>
-                  </div>
-                </div>
-                <div class="contact-content3">
-                  <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                    <path
-                      d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
-                    </path>
-                  </svg>
-                  <div class="contact-contact-info1">
-                    <div class="contact-content4">
-                      <h3 class="contact-text5 thq-heading-3">Phone</h3>
-                      <p class="contact-text6 thq-body-large">
-                        <span>
-                          Follow us on social media for the latest updates and
-                          promotions.
-                        </span>
-                      </p>
-                    </div>
-                    <span class="contact-phone thq-body-small">
-                      <span>+84 929199387</span>
-                    </span>
-                  </div>
-                </div>
-                <div class="contact-content5">
-                  <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                    <path
-                      d="M512 0c-176.732 0-320 143.268-320 320 0 320 320 704 320 704s320-384 320-704c0-176.732-143.27-320-320-320zM512 512c-106.040 0-192-85.96-192-192s85.96-192 192-192 192 85.96 192 192-85.96 192-192 192z">
-                    </path>
-                  </svg>
-                  <div class="contact-contact-info2">
-                    <div class="contact-content6">
-                      <h3 class="contact-text7 thq-heading-3">Office</h3>
-                      <p class="contact-text8 thq-body-large">
-                        <span>
-                          We value your feedback and strive to provide the best
-                          shopping experience.
-                        </span>
-                      </p>
-                    </div>
-                    <span class="contact-address thq-body-small">
-                      <span>123 Main Street, City, Country</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <footer class="footer-footer1 thq-section-padding footer-root-class-name11">
-            <div class="footer-max-width thq-section-max-width">
-              <div class="footer-content">
-                <div class="footer-newsletter">
-                  <div class="footer-container">
-                    <h1><span>Major's Choice</span></h1>
-                  </div>
-                  <span class="thq-body-small">
-                    Subscribe to our newsletter for the latest updates on new
-                    features and product releases.
-                  </span>
-                  <div class="footer-actions">
-                    <div class="footer-form">
-                      <div class="footer-container1">
-                        <input type="email" placeholder="Enter your email" class="footer-text-input thq-input" />
-                      </div>
-                      <button class="thq-button-outline footer-button">
-                        <span class="thq-body-small"><span>Subscribe</span></span>
-                      </button>
-                    </div>
-                    <span class="footer-content2 thq-body-small">
+              <div class="contact-contact20 thq-section-padding contact-root-class-name9">
+                <div class="contact-max-width thq-section-max-width">
+                  <div class="contact-section-title">
+                    <span class="thq-body-small">
                       <span>
-                        By subscribing you agree to with our Privacy Policy and
-                        provide consent to receive updates from our company.
+                        Our customer service team is available to help you with any
+                        inquiries.
                       </span>
                     </span>
-                  </div>
-                </div>
-                <div class="footer-links">
-                  <div class="footer-column1">
-                    <strong class="thq-body-large footer-column1-title">
-                      <span>Company</span>
-                    </strong>
-                    <div class="footer-footer-links">
-                      <span class="thq-body-small"><span>About Us</span></span>
-                      <span class="thq-body-small"><span>Contact Us</span></span>
-                      <span class="thq-body-small"><span>Careers</span></span>
+                    <div class="contact-content">
+                      <h2 class="thq-heading-2"><span>Contact Us</span></h2>
+                      <p class="contact-text2 thq-body-large">
+                        <span>
+                          Have a question or need assistance? Feel free to reach out
+                          to us.
+                        </span>
+                      </p>
                     </div>
                   </div>
-                  <div class="footer-column2">
-                    <strong class="thq-body-large footer-column2-title">
-                      <span>Support</span>
-                    </strong>
-                    <div class="footer-footer-links1">
-                      <span class="thq-body-small">
-                        <span>Shipping Information</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Returns &amp; Exchanges</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Warranty Policy</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Customer Reviews</span>
-                      </span>
-                      <span class="thq-body-small">
-                        <span>Tech Support</span>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="footer-column3">
-                    <strong class="thq-body-large footer-social-link1-title">
-                      <span>Connect with Us</span>
-                    </strong>
-                    <div class="footer-social-links">
-                      <div class="footer-link">
-                        <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
-                          <path
-                            d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">Facebook</span>
-                      </div>
-                      <div class="footer-link1">
-                        <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
-                          <path
-                            d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">Instagram</span>
-                      </div>
-                      <div class="footer-link2">
-                        <svg viewBox="0 0 1024 1024" class="footer-icon4">
-                          <path
-                            d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">
-                          Email :&nbsp;info@majorschoice.com
+                  <div class="contact-row">
+                    <div class="contact-content1">
+                      <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
+                        <path
+                          d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
+                        </path>
+                      </svg>
+                      <div class="contact-contact-info">
+                        <div class="contact-content2">
+                          <h3 class="contact-text3 thq-heading-3">Email</h3>
+                          <p class="contact-text4 thq-body-large">
+                            <span>
+                              For business inquiries or partnerships, please contact
+                              us via email.
+                            </span>
+                          </p>
+                        </div>
+                        <span class="contact-email thq-body-small">
+                          <span>info@majorschoice.com</span>
                         </span>
                       </div>
-                      <div class="footer-link3">
-                        <svg viewBox="0 0 1024 1024" class="footer-icon6">
-                          <path
-                            d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
-                          </path>
-                        </svg>
-                        <span class="thq-body-small">
-                          Phone ( +84 929199387 )
+                    </div>
+                    <div class="contact-content3">
+                      <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
+                        <path
+                          d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
+                        </path>
+                      </svg>
+                      <div class="contact-contact-info1">
+                        <div class="contact-content4">
+                          <h3 class="contact-text5 thq-heading-3">Phone</h3>
+                          <p class="contact-text6 thq-body-large">
+                            <span>
+                              Follow us on social media for the latest updates and
+                              promotions.
+                            </span>
+                          </p>
+                        </div>
+                        <span class="contact-phone thq-body-small">
+                          <span>+84 929199387</span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="contact-content5">
+                      <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
+                        <path
+                          d="M512 0c-176.732 0-320 143.268-320 320 0 320 320 704 320 704s320-384 320-704c0-176.732-143.27-320-320-320zM512 512c-106.040 0-192-85.96-192-192s85.96-192 192-192 192 85.96 192 192-85.96 192-192 192z">
+                        </path>
+                      </svg>
+                      <div class="contact-contact-info2">
+                        <div class="contact-content6">
+                          <h3 class="contact-text7 thq-heading-3">Office</h3>
+                          <p class="contact-text8 thq-body-large">
+                            <span>
+                              We value your feedback and strive to provide the best
+                              shopping experience.
+                            </span>
+                          </p>
+                        </div>
+                        <span class="contact-address thq-body-small">
+                          <span>123 Main Street, City, Country</span>
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="footer-credits">
-                <div class="thq-divider-horizontal"></div>
-                <div class="footer-row">
-                  <span class="thq-body-small"></span>
-                  <div class="footer-footer-links2">
-                    <span class="thq-body-small">
-                      <span>Privacy Policy</span>
-                    </span>
-                    <span class="thq-body-small">
-                      <span>Terms &amp; Conditions</span>
-                    </span>
-                    <span class="thq-body-small">
-                      <span>Cookies Policy</span>
-                    </span>
+              <footer class="footer-footer1 thq-section-padding footer-root-class-name11">
+                <div class="footer-max-width thq-section-max-width">
+                  <div class="footer-content">
+                    <div class="footer-newsletter">
+                      <div class="footer-container">
+                        <h1><span>Major's Choice</span></h1>
+                      </div>
+                      <span class="thq-body-small">
+                        Subscribe to our newsletter for the latest updates on new
+                        features and product releases.
+                      </span>
+                      <div class="footer-actions">
+                        <div class="footer-form">
+                          <div class="footer-container1">
+                            <input type="email" placeholder="Enter your email" class="footer-text-input thq-input" />
+                          </div>
+                          <button class="thq-button-outline footer-button">
+                            <span class="thq-body-small"><span>Subscribe</span></span>
+                          </button>
+                        </div>
+                        <span class="footer-content2 thq-body-small">
+                          <span>
+                            By subscribing you agree to with our Privacy Policy and
+                            provide consent to receive updates from our company.
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="footer-links">
+                      <div class="footer-column1">
+                        <strong class="thq-body-large footer-column1-title">
+                          <span>Company</span>
+                        </strong>
+                        <div class="footer-footer-links">
+                          <span class="thq-body-small"><span>About Us</span></span>
+                          <span class="thq-body-small"><span>Contact Us</span></span>
+                          <span class="thq-body-small"><span>Careers</span></span>
+                        </div>
+                      </div>
+                      <div class="footer-column2">
+                        <strong class="thq-body-large footer-column2-title">
+                          <span>Support</span>
+                        </strong>
+                        <div class="footer-footer-links1">
+                          <span class="thq-body-small">
+                            <span>Shipping Information</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Returns &amp; Exchanges</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Warranty Policy</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Customer Reviews</span>
+                          </span>
+                          <span class="thq-body-small">
+                            <span>Tech Support</span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="footer-column3">
+                        <strong class="thq-body-large footer-social-link1-title">
+                          <span>Connect with Us</span>
+                        </strong>
+                        <div class="footer-social-links">
+                          <div class="footer-link">
+                            <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
+                              <path
+                                d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">Facebook</span>
+                          </div>
+                          <div class="footer-link1">
+                            <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
+                              <path
+                                d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">Instagram</span>
+                          </div>
+                          <div class="footer-link2">
+                            <svg viewBox="0 0 1024 1024" class="footer-icon4">
+                              <path
+                                d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">
+                              Email :&nbsp;info@majorschoice.com
+                            </span>
+                          </div>
+                          <div class="footer-link3">
+                            <svg viewBox="0 0 1024 1024" class="footer-icon6">
+                              <path
+                                d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
+                              </path>
+                            </svg>
+                            <span class="thq-body-small">
+                              Phone ( +84 929199387 )
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="footer-credits">
+                    <div class="thq-divider-horizontal"></div>
+                    <div class="footer-row">
+                      <span class="thq-body-small"></span>
+                      <div class="footer-footer-links2">
+                        <span class="thq-body-small">
+                          <span>Privacy Policy</span>
+                        </span>
+                        <span class="thq-body-small">
+                          <span>Terms &amp; Conditions</span>
+                        </span>
+                        <span class="thq-body-small">
+                          <span>Cookies Policy</span>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </footer>
+              </footer>
         </div>
       </div>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>

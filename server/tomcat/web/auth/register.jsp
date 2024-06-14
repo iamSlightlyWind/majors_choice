@@ -169,7 +169,7 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <a href="home-page.html" class="navbar-home thq-body-small thq-link">
+                      <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navbar-contact thq-body-small thq-link">
@@ -329,7 +329,7 @@
                   </div>
                   <p>${registerStatus}</p>
                   <div class="register-form-button-register">
-                    <button type="submit" href="home-page.html" class="register-form-button thq-button-filled">
+                    <button type="submit" href="/" class="register-form-button thq-button-filled">
                       <span class="register-form-text23 thq-body-small">
                         <span>Register</span>
                       </span>
