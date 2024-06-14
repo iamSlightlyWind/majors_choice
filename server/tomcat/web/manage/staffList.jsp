@@ -17,6 +17,7 @@
                         <button type="submit" name="action" value="Add">Add Staff</button>
                     </form>
                 </h3>
+                <p>${status}</p>
                 <table class="staff" border="2px">
                     <thead>
                         <tr>

@@ -35,8 +35,17 @@ public class UpdateUserProfile extends HttpServlet {
             staff.password = request.getParameter("password");
             staff.active = Integer.parseInt(request.getParameter("active"));
 
-            staff.updateStaff();
-            response.sendRedirect("/manage/profile?actor=staff");
+            switch (staff.updateStaff()) {
+                case 1:
+                    request.setAttribute("status", "Update Staff Success!");
+                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+                    break;
+                case -1:
+                    request.setAttribute("status", "Update Staff Failed! Username already exist.");
+                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+                    break;
+            }
+
         } else if (action.equals("Add")) {
             Database db = new Database();
             User staff = new User();
@@ -45,9 +54,16 @@ public class UpdateUserProfile extends HttpServlet {
             staff.password = request.getParameter("password");
             staff.active = Integer.parseInt(request.getParameter("active"));
 
-            db.addStaff(staff);
-
-            response.sendRedirect("/manage/profile?actor=staff");
+            switch (db.addStaff(staff)) {
+                case 1:
+                    request.setAttribute("status", "Add Staff Success!");
+                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+                    break;
+                case -1:
+                    request.setAttribute("status", "Add Staff Failed! Username already exist.");
+                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+                    break;
+            }
         }
     }
 
