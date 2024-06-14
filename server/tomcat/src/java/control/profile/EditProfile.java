@@ -60,8 +60,16 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
+        if (((String) request.getParameter("actor")).equals("staffs")) {
+            doStaff(request, response, request.getParameter("action"));
+        } else {
+            doUser(request, response, request.getParameter("action"));
+        }
+    }
 
+    public void doUser(HttpServletRequest request, HttpServletResponse response, String action)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         User user = new User();
 
         if (action.equals("delete")) {
@@ -76,6 +84,26 @@ public class EditProfile extends HttpServlet {
             request.setAttribute("user", user);
             request.setAttribute("possition", "user");
             request.getRequestDispatcher("/manage/profile/user.jsp").forward(request, response);
+        }
+    }
+
+    public void doStaff(HttpServletRequest request, HttpServletResponse response, String action)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        User user = new User();
+
+        if (action.equals("delete")) {
+            user.username = request.getParameter("user");
+            user.retrieveData("staff");
+            user.active = -1;
+            user.updateInformation();
+            response.sendRedirect("/manage/profile?actor=staffs");
+        } else if (action.equals("update")) {
+            user.username = request.getParameter("user");
+            user.retrieveData("staff");
+            request.setAttribute("staff", user);
+            request.setAttribute("submitAction", "Update");
+            request.getRequestDispatcher("/manage/profile/staff.jsp").forward(request, response);
         }
     }
 

@@ -15,6 +15,29 @@ public class UpdateUserProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        if (((String) request.getParameter("actor")).equals("staffs")) {
+            doStaff(request, response, request.getParameter("action"));
+        } else {
+            doUser(request, response, request.getParameter("action"));
+        }
+    }
+
+    private void doStaff(HttpServletRequest request, HttpServletResponse response, String action)
+            throws ServletException, IOException {
+        User staff = new User();
+        staff.id = request.getParameter("id");
+        staff.fullName = request.getParameter("fullname");
+        staff.username = request.getParameter("username");
+        staff.password = request.getParameter("password");
+        staff.active = Integer.parseInt(request.getParameter("active"));
+
+        staff.updateStaff();
+        response.sendRedirect("/manage/profile?actor=staff");
+    }
+
+    private void doUser(HttpServletRequest request, HttpServletResponse response, String action)
+            throws ServletException, IOException {
         User user = new User();
         if (request.getParameter("active") != null) {
             user.active = Integer.parseInt(request.getParameter("active"));
@@ -54,7 +77,6 @@ public class UpdateUserProfile extends HttpServlet {
             request.setAttribute("status", "Update Failed!Error Email Format");
             request.getRequestDispatcher("/manage/profile?actor=user.jsp").forward(request, response);
         }
-
     }
 
     private boolean isValidEmail(String email) {

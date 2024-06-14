@@ -11,25 +11,29 @@ BEGIN
     FROM users
     WHERE username = @username AND googleUser = 1)
     BEGIN
-        SET @result = -2 -- login failed, cannot login google account with normal login
+        SET @result = -2
+    -- login failed, cannot login google account with normal login
     END
     ELSE IF EXISTS (SELECT 1
     FROM users
     WHERE username = @username AND password = @password AND active = 1)
     BEGIN
-        SET @result = 1 -- login successful
+        SET @result = 1
+    -- login successful
     END
     ELSE IF EXISTS (SELECT 1
     FROM users
     WHERE username = @username AND password = @password AND active = -1)
     BEGIN
-        SET @result = -2 -- user account deactivated by manager
+        SET @result = -2
+    -- user account deactivated by manager
     END
     ELSE IF EXISTS (SELECT 1
     FROM users
     WHERE username = @username AND backupPassword = @password AND active = 1)
     BEGIN
-        SET @result = 1 -- login successful with backup password, now replace password with backup password and set backup password to null
+        SET @result = 1
+        -- login successful with backup password, now replace password with backup password and set backup password to null
         UPDATE users
         SET password = backupPassword,
         backupPassword = NULL
@@ -39,11 +43,13 @@ BEGIN
     FROM users
     WHERE username = @username AND active = 0)
     BEGIN
-        SET @result = -1 -- user not active
+        SET @result = -1
+    -- user not active
     END
     ELSE
     BEGIN
-        SET @result = 0 -- login failed
+        SET @result = 0
+    -- login failed
     END
 END;
 GO
@@ -498,7 +504,7 @@ BEGIN
     END
     ELSE IF @tablename = 'users'
     BEGIN
-        SET @sql = "select username from users";
+        SET @sql = 'select username from users';
     END
     EXEC sp_executesql @sql;
 END;
@@ -873,27 +879,55 @@ go
 CREATE PROCEDURE addStaff
     @username VARCHAR(25),
     @password VARCHAR(100),
-    @fullname NVARCHAR(50)
+    @fullname NVARCHAR(50),
+    @result INT OUTPUT
 AS
 BEGIN
-    INSERT INTO staffs (username, password, possition, fullname)
-    VALUES (@username, @password, 0, @fullname);
+    IF EXISTS (SELECT 1
+    FROM staffs
+    WHERE username = @username)
+    BEGIN
+        SET @result = -1
+    -- username already exists
+    END
+    ELSE
+    BEGIN
+        INSERT INTO staffs
+            (username, password, possition, fullname)
+        VALUES
+            (@username, @password, 0, @fullname);
+        SET @result = 1
+    -- staff added successfully
+    END
 END;
 GO
 
 CREATE PROCEDURE updateStaff
     @id INT,
+    @username VARCHAR(25),
     @password VARCHAR(100),
-    @position INT,
     @fullname NVARCHAR(50),
-    @active INT
+    @active INT,
+    @result INT OUTPUT
 AS
 BEGIN
-    UPDATE staffs
-    SET password = ISNULL(@password, password),
-        possition = ISNULL(@position, possition),
-        fullname = ISNULL(@fullname, fullname),
-        active = ISNULL(@active, active)
-    WHERE id = @id;
+    IF EXISTS (SELECT 1
+    FROM staffs
+    WHERE username = @username AND id != @id)
+    BEGIN
+        SET @result = -1
+    -- username already exists
+    END
+    ELSE
+    BEGIN
+        UPDATE staffs
+        SET username = ISNULL(@username, username),
+            password = ISNULL(@password, password),
+            fullname = ISNULL(@fullname, fullname),
+            active = ISNULL(@active, active)
+        WHERE id = @id;
+        SET @result = 1
+    -- staff updated successfully
+    END
 END;
 GO

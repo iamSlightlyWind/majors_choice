@@ -261,7 +261,7 @@
                 <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
                   <span>Manage WareHouse</span>
                 </span>
-                <a href="/manage/user">
+                <a href="/manage/profile/user">
                   <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
                     Manage Customer
                   </span>
@@ -270,7 +270,7 @@
                   <span>Feedback</span>
                   <br />
                 </span>
-                <a href="/manage/staff">
+                <a href="/manage/profile/staff">
                   <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
                     Manage Staff
                   </span>

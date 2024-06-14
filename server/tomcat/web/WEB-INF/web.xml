@@ -107,4 +107,8 @@
         <servlet-name>UpdateUserProfile</servlet-name>
         <url-pattern>/manage/profile/user</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserProfile</servlet-name>
+        <url-pattern>/manage/profile/staff</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -56,29 +56,45 @@ public class User {
     }
 
     public void retrieveData(String table) {
-        if (table.equals("manager")) {
-            table = "staff";
-        }
-        try {
-            String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.username = ?";
-            sql = sql.replace("^", table);
-            PreparedStatement statement = db.connection.prepareStatement(sql);
-            statement.setString(1, username);
+        if (table.equals("staff")) {
+            try {
+                String sql = "select * from staffs where username = ?";
+                PreparedStatement statement = db.connection.prepareStatement(sql);
+                statement.setString(1, username);
 
-            ResultSet rs = statement.executeQuery();
+                ResultSet rs = statement.executeQuery();
 
-            while (rs.next()) {
-                id = rs.getString("id");
-                fullName = rs.getString("fullName");
-                email = rs.getString("email");
-                phoneNumber = rs.getString("phoneNumber");
-                address = rs.getString("address");
-                dateOfBirth = rs.getString("dateOfBirth");
-                active = rs.getInt("active");
+                while (rs.next()) {
+                    id = rs.getString("id");
+                    fullName = rs.getString("fullName");
+                    username = rs.getString("username");
+                    password = rs.getString("password");
+                    active = rs.getInt("active");
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
             }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
+        } else
+            try {
+                String sql = "select * from users join userdetails on users.id = userdetails.id WHERE users.username = ?";
+                PreparedStatement statement = db.connection.prepareStatement(sql);
+                statement.setString(1, username);
+
+                ResultSet rs = statement.executeQuery();
+
+                while (rs.next()) {
+                    id = rs.getString("id");
+                    fullName = rs.getString("fullName");
+                    email = rs.getString("email");
+                    phoneNumber = rs.getString("phoneNumber");
+                    address = rs.getString("address");
+                    dateOfBirth = rs.getString("dateOfBirth");
+                    dateJoined = rs.getString("dateJoined");
+                    active = rs.getInt("active");
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
     }
 
     public void getOrders() {
@@ -207,6 +223,10 @@ public class User {
         }
 
         return result;
+    }
+
+    public int updateStaff() {
+        return db.updateStaff(this);
     }
 
     public int updateInformation() {
