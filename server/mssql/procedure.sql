@@ -52,7 +52,9 @@ begin
     begin
         update users
         set backupPassword = @password
-        where id = (select id from userDetails where email = @email)
+        where id = (select id
+        from userDetails
+        where email = @email)
         set @result = 1
     -- successful
     end
@@ -194,6 +196,7 @@ create PROCEDURE addProductCPU
     @baseClock int,
     @boostClock int,
     @tdp int,
+    @image NVARCHAR(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -214,9 +217,9 @@ BEGIN
     SET @id = SCOPE_IDENTITY()
 
     INSERT INTO cpus
-        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp)
+        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image)
     VALUES
-        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp)
+        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @image)
 
     SET @result = 1
 END;
@@ -231,6 +234,7 @@ create PROCEDURE addProductGPU
     @baseClock int,
     @boostClock int,
     @tdp int,
+    @image NVARCHAR(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -251,9 +255,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO gpus
-        (id, name, generation, vram, baseClock, boostClock, tdp)
+        (id, name, generation, vram, baseClock, boostClock, tdp, image)
     VALUES
-        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp)
+        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @image)
 
     set @result = 1
 END;
@@ -267,6 +271,7 @@ create PROCEDURE addProductRAM
     @capacity int,
     @speed int,
     @latentcy int,
+    @image NVARCHAR(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -287,9 +292,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO rams
-        (id, name, generation, capacity, speed, latency)
+        (id, name, generation, capacity, speed, latency, image)
     VALUES
-        (@id, @name, @generation, @capacity, @speed, @latentcy)
+        (@id, @name, @generation, @capacity, @speed, @latentcy, @image)
 
     set @result = 1
 END;
@@ -306,6 +311,7 @@ create PROCEDURE addProductMotherboard
     @maxRamSpeed int,
     @ramSlots int,
     @wifi int,
+    @image NVARCHAR(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -326,9 +332,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO motherboards
-        (id, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi)
+        (id, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image)
     VALUES
-        (@id, @name, @socket, @chipset, @formFactor, @ramType, @maxRamSpeed, @ramSlots, @wifi)
+        (@id, @name, @socket, @chipset, @formFactor, @ramType, @maxRamSpeed, @ramSlots, @wifi, @image)
 
     set @result = 1
 END;
@@ -341,6 +347,7 @@ create PROCEDURE addProductSSD
     @interface nvarchar(20),
     @capacity int,
     @cache int,
+    @image NVARCHAR(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -361,9 +368,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO ssds
-        (id, name, interface, capacity, cache)
+        (id, name, interface, capacity, cache, image)
     VALUES
-        (@id, @name, @interface, @capacity, @cache)
+        (@id, @name, @interface, @capacity, @cache, @image)
 
     set @result = 1
 END;
@@ -375,6 +382,7 @@ create PROCEDURE addProductPSU
     @name nvarchar(50),
     @wattage int,
     @efficiency nvarchar(10),
+    @image NVARCHAR(max),
     @result varchar(50) output
 AS
 BEGIN
@@ -395,13 +403,14 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO psus
-        (id, name, wattage, efficiency)
+        (id, name, wattage, efficiency, image)
     VALUES
-        (@id, @name, @wattage, @efficiency)
+        (@id, @name, @wattage, @efficiency, @image)
 
     set @result = 1
 END;
 go
+
 create procedure getCPU
 as
 begin
@@ -530,8 +539,8 @@ CREATE PROCEDURE updateProductCPU
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
-                   FROM cpus
-                   WHERE id = @id)
+    FROM cpus
+    WHERE id = @id)
     BEGIN
         SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
         RETURN
@@ -572,8 +581,8 @@ CREATE PROCEDURE updateProductGPU
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
-                   FROM gpus
-                   WHERE id = @id)
+    FROM gpus
+    WHERE id = @id)
     BEGIN
         SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
         RETURN
@@ -614,8 +623,8 @@ CREATE PROCEDURE updateProductMotherboard
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
-                   FROM motherboards
-                   WHERE id = @id)
+    FROM motherboards
+    WHERE id = @id)
     BEGIN
         SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
         RETURN
@@ -653,8 +662,8 @@ CREATE PROCEDURE updateProductPSU
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
-                   FROM psus
-                   WHERE id = @id)
+    FROM psus
+    WHERE id = @id)
     BEGIN
         SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
         RETURN
@@ -689,8 +698,8 @@ CREATE PROCEDURE updateProductRAM
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
-                   FROM rams
-                   WHERE id = @id)
+    FROM rams
+    WHERE id = @id)
     BEGIN
         SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
         RETURN
@@ -726,8 +735,8 @@ CREATE PROCEDURE updateProductSSD
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
-                   FROM ssds
-                   WHERE id = @id)
+    FROM ssds
+    WHERE id = @id)
     BEGIN
         SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
         RETURN

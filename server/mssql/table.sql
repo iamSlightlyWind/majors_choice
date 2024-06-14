@@ -60,7 +60,7 @@ create table cpus
     baseClock int,
     boostClock int,
     tdp int,
-    image nvarchar(256)
+    image nvarchar(max)
 );
 
 create table gpus
@@ -71,7 +71,8 @@ create table gpus
     vram int,
     baseClock int,
     boostClock int,
-    tdp int
+    tdp int,
+    image nvarchar(max)
 );
 
 create table motherboards
@@ -84,7 +85,8 @@ create table motherboards
     ramType nvarchar(10),
     maxRamSpeed int,
     ramSlots int,
-    wifi int
+    wifi int,
+    image nvarchar(max)
 );
 
 create table rams
@@ -94,7 +96,8 @@ create table rams
     generation nvarchar(50),
     capacity int,
     speed int,
-    latency int
+    latency int,
+    image nvarchar(max)
 );
 
 create table ssds
@@ -103,7 +106,8 @@ create table ssds
     name nvarchar(50),
     interface nvarchar(20),
     capacity int,
-    cache int
+    cache int,
+    image nvarchar(max)
 );
 
 create table psus
@@ -112,6 +116,7 @@ create table psus
     name nvarchar(50),
     wattage int,
     efficiency nvarchar(50),
+    image nvarchar(max)
 );
 
 create table cases
@@ -120,7 +125,8 @@ create table cases
     name nvarchar(50),
     type nvarchar(50),
     formFactor nvarchar(50),
-    color nvarchar(50)
+    color nvarchar(50),
+    image nvarchar(max)
 );
 
 create table warehouses
