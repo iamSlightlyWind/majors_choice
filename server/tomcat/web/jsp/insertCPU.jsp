@@ -6,7 +6,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert Product</title>
     </head>
-<!--    enctype="multipart/form-data"-->
     <body>
         <form action="/tomcat/cpus?service=insertCPU" method="post" enctype="multipart/form-data">
             <table>
