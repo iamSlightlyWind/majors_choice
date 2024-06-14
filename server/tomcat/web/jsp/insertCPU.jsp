@@ -8,7 +8,7 @@
     </head>
 <!--    enctype="multipart/form-data"-->
     <body>
-        <form action="/tomcat/cpus?service=insertCPU" method="post" >
+        <form action="/tomcat/cpus?service=insertCPU" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>SellingPrice</td>
