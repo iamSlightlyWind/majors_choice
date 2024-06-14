@@ -271,31 +271,4 @@ public class User {
     public String getDateJoined() {
         return dateJoined;
     }
-
-    public void retrieveData2(String role) {
-        try {
-            String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.id = ?";
-            sql = sql.replace("^", role);
-            PreparedStatement statement = db.connection.prepareStatement(sql);
-            statement.setString(1, id);
-
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                id = rs.getString("id");
-                fullName = rs.getString("fullName");
-                email = rs.getString("email");
-                phoneNumber = rs.getString("phoneNumber");
-                address = rs.getString("address");
-                dateOfBirth = rs.getString("dateOfBirth");
-                username = rs.getString("username");
-                password = rs.getString("password");
-                active = rs.getInt("active");
-                dateJoined = rs.getString("dateJoined");
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-    }
-
 }

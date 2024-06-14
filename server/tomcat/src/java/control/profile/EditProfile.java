@@ -60,7 +60,6 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
         String action = request.getParameter("action");
 
         User user = new User();

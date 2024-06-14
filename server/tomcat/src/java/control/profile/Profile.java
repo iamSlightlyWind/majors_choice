@@ -24,7 +24,6 @@ public class Profile extends HttpServlet {
 
         request.setAttribute("user", user);
 
-        // if action == null
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
 
         switch (action) {
