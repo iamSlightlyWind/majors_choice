@@ -14,8 +14,8 @@
         <url-pattern>/auth/login</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ManagerAccount</servlet-name>
-        <servlet-class>control.account.ManagerAccount</servlet-class>
+        <servlet-name>ManageAccount</servlet-name>
+        <servlet-class>control.account.ManageAccount</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateUserProfile</servlet-name>
@@ -100,7 +100,7 @@
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ManagerAccount</servlet-name>
+        <servlet-name>ManageAccount</servlet-name>
         <url-pattern>/manage/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

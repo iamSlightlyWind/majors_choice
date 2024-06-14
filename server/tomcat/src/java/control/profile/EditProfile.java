@@ -16,42 +16,24 @@ public class EditProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String fullname = request.getParameter("fullname");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phoneNumber");
-        String address = request.getParameter("address");
-        String dob = request.getParameter("dateOfBirth");
-        String possition = request.getParameter("possition");
-        
-        boolean emailFormat = isValidEmail(email);
-        User user = new User(username, password, fullname, email, phone, address, dob);
-        
-        if (request.getParameter("active") != null) {
-            user.active = Integer.parseInt(request.getParameter("active"));
-        }
-        user.id = request.getParameter("id");
-        user.dateJoined = request.getParameter("dateJoined");
-        
+        User user = (User) request.getSession().getAttribute("userObject");
+
+        boolean emailFormat = isValidEmail(request.getParameter("email"));
         if (emailFormat) {
-            String tableName = (String) request.getSession().getAttribute("table");
-            if(possition!=null){
-                tableName = possition;
-            }
-            int result = user.updateInformation(tableName, true);
+
+            user.username = request.getParameter("username");
+            user.password = request.getParameter("password");
+            user.fullName = request.getParameter("fullname");
+            user.email = request.getParameter("email");
+            user.phoneNumber = request.getParameter("phoneNumber");
+            user.address = request.getParameter("address");
+            user.dateOfBirth = request.getParameter("dateOfBirth");
+
+            int result = user.updateInformation();
             request.setAttribute("user", user);
-            request.setAttribute("possition", possition);
             switch (result) {
                 case 1:
-                    if(possition == null){
-                        request.setAttribute("status", "Update Successful!");
-                        request.getRequestDispatcher("profile.jsp").forward(request, response);
-                    } else {
-                        request.setAttribute("table", "staff");
-                        RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile");
-                        dispatcher.forward(request, response);
-                    }
+                    response.sendRedirect("/profile?action=view");
                     break;
                 case -1:
                     request.setAttribute("status", "Update Failed! Email had existed.");
@@ -61,14 +43,9 @@ public class EditProfile extends HttpServlet {
                     request.setAttribute("status", "Update Failed! Phone had existed.");
                     request.getRequestDispatcher("editprofile.jsp").forward(request, response);
                     break;
-                default:
-                    request.setAttribute("status", "Update Failed!");
-                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
-                    break;
             }
         } else {
-            request.setAttribute("possition", possition);
-            request.setAttribute("user", user);
+            request.setAttribute("user", user.fullName);
             request.setAttribute("status", "Update Failed!Email format wrong!");
             request.getRequestDispatcher("editprofile.jsp").forward(request, response);
         }
@@ -85,41 +62,22 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         User user = new User();
+        User user = new User();
 
         String id = request.getParameter("id");
         String action = request.getParameter("action");
-        String actor = request.getParameter("actor");
 
-        switch (actor) {
-            case "users":
-                if (action.equals("delete")) {
-                    user.deleteUser(actor, id);
-                    request.setAttribute("table", "user");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile");
-                    dispatcher.forward(request, response);
-                } else if (action.equals("update")) {
-                    user.id = id;
-                    user.retrieveData2("user");
-                    request.setAttribute("user", user);
-                    request.setAttribute("possition", "user");
-                    request.getRequestDispatcher("/manage/profile/user.jsp").forward(request, response);
-                }
-                break;
-            case "staffs":
-                if (action.equals("delete")) {
-                    user.deleteUser(actor, id);
-                    request.setAttribute("table", "staff");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile");
-                    dispatcher.forward(request, response);
-                } else if (action.equals("update")) {
-                    user.id = id;
-                    user.retrieveData2("staff");
-                    request.setAttribute("user", user);
-                    request.setAttribute("possition", "staff");
-                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
-                }
-                break;
+        if (action.equals("delete")) {
+            user.deleteUser(id);
+            request.setAttribute("table", "user");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile");
+            dispatcher.forward(request, response);
+        } else if (action.equals("update")) {
+            user.id = id;
+            user.retrieveData2("user");
+            request.setAttribute("user", user);
+            request.setAttribute("possition", "user");
+            request.getRequestDispatcher("/manage/profile/user.jsp").forward(request, response);
         }
     }
 

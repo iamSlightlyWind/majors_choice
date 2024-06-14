@@ -303,14 +303,13 @@
                           <span class="edit-profile-component-text1">ID</span>
                           <div class="edit-profile-component-container07">
                             <input type="text" class="edit-profile-component-textinput input" name="id"
-                              value="<c:out value=" ${user.id}"></c:out>" readonly
-                            />
+                              value="${user.id}" readonly />
                           </div>
                         </c:if>
                         <span class="edit-profile-component-text1">Usename</span>
                         <div class="edit-profile-component-container07">
                           <input type="text" placeholder="Enter Password" class="edit-profile-component-textinput input"
-                            name="username" value="<c:out value=" ${user.username}"></c:out>" readonly
+                            name="username" value="${user.username}" readonly
                           />
                         </div>
                     </div>
@@ -323,7 +322,7 @@
                           <div class="edit-profile-component-container12">
                             <input type="password" placeholder="Enter Password"
                               class="edit-profile-component-textinput1 input" type="password" name="password"
-                              value="<c:out value=" ${user.password}"></c:out>" required
+                              value="${user.password}" required
                             />
                           </div>
                         </div>
@@ -333,13 +332,13 @@
                       <span class="edit-profile-component-text1">Possition</span>
                       <div class="edit-profile-component-container07">
                         <input type="text" class="edit-profile-component-textinput input" name="possition"
-                          value="<c:out value=" ${requestScope.possition}"></c:out>" readonly
+                          value="${requestScope.possition}" readonly
                         />
                       </div>
                       <span class="edit-profile-component-text1">Active</span>
                       <div class="edit-profile-component-container07">
                         <input type="number" class="edit-profile-component-textinput input" name="active"
-                          value="<c:out value=" ${user.active}"></c:out>" min="0" max="1" required
+                          value="${user.active}" min="0" max="1" required
                         />
                       </div>
                     </c:if>
@@ -350,9 +349,8 @@
                         </div>
                         <div class="edit-profile-component-container16">
                           <input type="text" placeholder="Enter Full Name"
-                            class="edit-profile-component-textinput2 input" name="fullname" value="<c:out value="
-                            ${user.fullName}"></c:out>" required
-                          />
+                            class="edit-profile-component-textinput2 input" name="fullname" value="${user.fullName}"
+                            required />
                         </div>
                       </div>
                     </div>
@@ -363,9 +361,8 @@
                         </div>
                         <div class="edit-profile-component-container16">
                           <input type="text" placeholder="Enter Phone Number"
-                            class="edit-profile-component-textinput2 input" name="phoneNumber" value="<c:out value="
-                            ${user.phoneNumber}"></c:out>" required
-                          />
+                            class="edit-profile-component-textinput2 input" name="phoneNumber"
+                            value="${user.phoneNumber}" required />
                         </div>
                       </div>
                     </div>
@@ -378,8 +375,7 @@
                         </div>
                         <div class="edit-profile-component-container21">
                           <input type="text" placeholder="Enter Email" class="edit-profile-component-textinput3 input"
-                            name="email" value="<c:out value=" ${user.email}"></c:out>" required
-                          />
+                            name="email" value="${user.email}" required />
                         </div>
                       </div>
                     </div>
@@ -390,8 +386,7 @@
                         </div>
                         <div class="edit-profile-component-container25">
                           <input type="text" placeholder="Enter Address" class="edit-profile-component-textinput4 input"
-                            name="address" value="<c:out value=" ${user.address}"></c:out>" required
-                          />
+                            name="address" value="${user.address}" required />
                         </div>
                       </div>
                     </div>
@@ -414,8 +409,7 @@
                           </div>
                           <div class="edit-profile-component-container29">
                             <input type="date" placeholder="Text" class="edit-profile-component-textinput5 input"
-                              name="dateJoined" value="<c:out value=" ${user.dateJoined}"></c:out>" readonly
-                            />
+                              name="dateJoined" value="${user.dateJoined}" readonly />
                           </div>
                         </div>
                       </div>

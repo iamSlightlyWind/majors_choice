@@ -29,18 +29,8 @@ create table staffs
     username varchar(25),
     password varchar(100),
     possition int default 0,
-    active int default 0
-);
-
-create table staffDetails
-(
-    id int references staffs(id),
     fullname nvarchar(50),
-    email varchar(100),
-    phoneNumber varchar(15),
-	address nvarchar(100),
-    dateOfBirth date,
-    dateJoined date default getdate()
+    active int default 0
 );
 
 create table products

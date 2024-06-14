@@ -8,9 +8,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Random;
 import database.Database;
-import java.util.List;
 import packages.wrap.*;
-import java.util.Vector;
 
 public class User {
     public String id;
@@ -58,7 +56,7 @@ public class User {
     }
 
     public void retrieveData(String role) {
-        if(role.equals("manager")){
+        if (role.equals("manager")) {
             role = "staff";
         }
         try {
@@ -80,6 +78,8 @@ public class User {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+
+        System.out.println(this);
     }
 
     public void getOrders() {
@@ -182,18 +182,17 @@ public class User {
         int result = 0;
 
         try {
-            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
-            statement.setString(1, tableName);
-            statement.setString(2, username);
-            statement.setString(3, password);
-            statement.setString(4, fullName);
-            statement.setString(5, email);
-            statement.setString(6, phoneNumber);
-            statement.setString(7, address);
-            statement.setString(8, dateOfBirth);
-            statement.setString(9, confirmCode);
-            statement.registerOutParameter(10, Types.INTEGER);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setString(3, fullName);
+            statement.setString(4, email);
+            statement.setString(5, phoneNumber);
+            statement.setString(6, address);
+            statement.setString(7, dateOfBirth);
+            statement.setString(8, confirmCode);
+            statement.registerOutParameter(9, Types.INTEGER);
 
             statement.execute();
 
@@ -211,66 +210,29 @@ public class User {
         return result;
     }
 
-    public int updateInformation(String tableName, boolean status) {
+    public int updateInformation() {
         int result = 0;
 
-        if (tableName.equals("staff")) {
-            tableName = "staffs";
-        } else if (tableName.equals("user")) {
-            tableName = "users";
-        }
-
         try {
-            String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = db.connection.prepareCall(sql);
-            statement.setString(1, tableName);
-            statement.setString(2, username);
-            if (status) {
-                statement.setString(3, password);
-            } else {
-                statement.setNull(3, Types.VARCHAR);
-            }
-            statement.setString(4, fullName);
-            statement.setString(5, email);
-            statement.setString(6, phoneNumber);
-            statement.setString(7, address);
-            statement.setString(8, dateOfBirth);
-            statement.setInt(9, active);
-            statement.registerOutParameter(10, Types.INTEGER);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setString(3, fullName);
+            statement.setString(4, email);
+            statement.setString(5, phoneNumber);
+            statement.setString(6, address);
+            statement.setString(7, dateOfBirth);
+            statement.setInt(8, active);
+            statement.registerOutParameter(9, Types.INTEGER);
 
             statement.execute();
-            result = statement.getInt(10);
+            result = statement.getInt(9);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
 
         return result;
-    }
-
-    public User getUserDetailsByUsername(String username, String table) {
-        User user = null;
-        try {
-            String sql = "{call GetUserDetailsByUsername(?,?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
-            statement.setString(1, username);
-            statement.setString(2, table);
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                user = new User();
-                user.username = rs.getString("username");
-                user.password = rs.getString("password");
-                user.fullName = rs.getString("name");
-                user.email = rs.getString("email");
-                user.phoneNumber = rs.getString("phone");
-                user.address = rs.getString("address");
-                user.dateOfBirth = rs.getString("dob");
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        System.out.println(user);
-        return user;
     }
 
     public int loginEmployee() {
@@ -291,28 +253,6 @@ public class User {
         return result;
     }
 
-     public List<User> getUserDetails(String tableName) {
-        List<User> users = new ArrayList<>();
-        try {
-            String sql = "{call GetUserDetails(?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
-            statement.setString(1, tableName);
-            ResultSet rs = statement.executeQuery();
-
-            while (rs.next()) {
-                User user = new User(rs.getString("username"),
-                        rs.getString("password"),
-                        rs.getInt("active"),
-                        rs.getString("id"),
-                        rs.getString("dateJoined"));
-                users.add(user);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        return users;
-    }
-    
     public User(String username, String password, int active, String id, String dateJoined) {
         this.username = username;
         this.password = password;
@@ -332,27 +272,16 @@ public class User {
     public String getDateJoined() {
         return dateJoined;
     }
-    
-    public void deleteUser(String tableName, String id) {
-        String deleteDetailsSQL = "";
-        String deleteUserSQL = "";
 
-        switch (tableName) {
-            case "users":
-                deleteDetailsSQL = "DELETE FROM userDetails WHERE id = ?";
-                deleteUserSQL = "DELETE FROM users WHERE id = ?";
-                break;
-            case "staffs":
-                deleteDetailsSQL = "DELETE FROM staffDetails WHERE id = ?";
-                deleteUserSQL = "DELETE FROM staffs WHERE id = ?";
-                break;
-        }
+    public void deleteUser(String id) {
+        String deleteDetailsSQL = "DELETE FROM userDetails WHERE id = ?";
+        String deleteUserSQL = "DELETE FROM users WHERE id = ?";
 
-        try{
+        try {
             db.connection.setAutoCommit(false); // Start transaction
 
             try (PreparedStatement deleteDetailsStmt = db.connection.prepareStatement(deleteDetailsSQL);
-                 PreparedStatement deleteUserStmt = db.connection.prepareStatement(deleteUserSQL)) {
+                    PreparedStatement deleteUserStmt = db.connection.prepareStatement(deleteUserSQL)) {
 
                 deleteDetailsStmt.setString(1, id);
                 deleteUserStmt.setString(1, id);
@@ -369,7 +298,7 @@ public class User {
             e.printStackTrace();
         }
     }
-    
+
     public void retrieveData2(String role) {
         try {
             String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.id = ?";
@@ -394,6 +323,6 @@ public class User {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-    } 
+    }
 
 }

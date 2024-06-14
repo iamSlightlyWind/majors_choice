@@ -2,8 +2,11 @@ package database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import main.User;
 import packages.*;
 import packages.wrap.*;
 
@@ -451,6 +454,33 @@ public class Database {
             order.updateQuantity();
         }
         return orders;
+    }
+
+    public ArrayList<User> getUserDetails(String tableName) {
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            String sql = "{call GetUserDetails(?)}";
+            CallableStatement statement = this.connection.prepareCall(sql);
+            statement.setString(1, tableName);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                if (tableName.equals("staffs")) {
+                    user.username = rs.getString("username");
+                    user.retrieveData("staff");
+                    users.add(user);
+                } else {
+                    user.username = rs.getString("username");
+                    user.retrieveData("user");
+                    users.add(user);
+                }
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return users;
     }
 
 }
