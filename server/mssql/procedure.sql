@@ -1,50 +1,51 @@
 use major
 go
 
-create procedure login
-    @username varchar(25),
-    @password varchar(100),
-    @result int output
-as
-begin
-    if exists (SELECT 1
+CREATE PROCEDURE login
+    @username VARCHAR(25),
+    @password VARCHAR(100),
+    @result INT OUTPUT
+AS
+BEGIN
+    IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and googleUser = 1)
-    begin
-        set @result = -2
-    -- login failed, cannot login google account with normal login
-    end
-    else if exists (SELECT 1
+    WHERE username = @username AND googleUser = 1)
+    BEGIN
+        SET @result = -2 -- login failed, cannot login google account with normal login
+    END
+    ELSE IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and password = @password and active = 1)
-    begin
-        set @result = 1
-    -- login successful
-    end
-    else if exists (SELECT 1
+    WHERE username = @username AND password = @password AND active = 1)
+    BEGIN
+        SET @result = 1 -- login successful
+    END
+    ELSE IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and backupPassword = @password and active = 1)
-    begin
-        set @result = 1
-        -- login successful with backup password, now replace password with backup password and set backup password to null
-        update users
-        set password = backupPassword,
-        backupPassword = null
-        where username = @username
-    end
-    else if exists (SELECT 1
+    WHERE username = @username AND password = @password AND active = -1)
+    BEGIN
+        SET @result = -2 -- user account deactivated by manager
+    END
+    ELSE IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and password = @password and active = 0)
-    begin
-        set @result = -1
-    -- user not active
-    end
-    else
-    begin
-        set @result = 0
-    -- login failed
-    end
-end;
+    WHERE username = @username AND backupPassword = @password AND active = 1)
+    BEGIN
+        SET @result = 1 -- login successful with backup password, now replace password with backup password and set backup password to null
+        UPDATE users
+        SET password = backupPassword,
+        backupPassword = NULL
+        WHERE username = @username
+    END
+    ELSE IF EXISTS (SELECT 1
+    FROM users
+    WHERE username = @username AND active = 0)
+    BEGIN
+        SET @result = -1 -- user not active
+    END
+    ELSE
+    BEGIN
+        SET @result = 0 -- login failed
+    END
+END;
 GO
 
 create procedure googleLogin
@@ -137,47 +138,6 @@ begin
     end
 end;    
 go
-
-create procedure userStatus
-    -- check the validation status of the user
-    @username varchar(25),
-    @result int output
--- -1: deleted, 0: not activated, 1: active, -2: not found
-as
-begin
-    if exists (SELECT 1
-    FROM users
-    WHERE username = @username)
-    begin
-        if exists (SELECT 1
-        FROM users
-        WHERE username = @username and active = 1)
-        begin
-            set @result = 1
-        -- active
-        end
-        else if exists (SELECT 1
-        FROM users
-        WHERE username = @username and active = 0)
-        begin
-            set @result = 0
-        -- not activated
-        end
-        else if exists (SELECT 1
-        FROM users
-        WHERE username = @username and active = -1)
-        begin
-            set @result = -1
-        -- deleted
-        end
-    end
-    else
-    begin
-        set @result = -2
-    -- not found
-    end
-end;
-GO
 
 create procedure activate
     -- if confirm code var = user confirm code, update active to 1 if active = 0

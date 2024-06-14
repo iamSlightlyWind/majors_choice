@@ -50,9 +50,9 @@ public class User {
     }
 
     public String toString() {
-        return "User: " + username + "\n" + "Password: " + password + "\n" + "Full Name: " + fullName + "\n" + "Email: "
-                + email + "\n" + "Phone Number: " + phoneNumber + "\n" + "Address: " + address + "\n"
-                + "Date of Birth: " + dateOfBirth + "\n" + "Confirm Code: " + confirmCode;
+        return "Username: " + username + "\nPassword: " + password + "\nFull Name: " + fullName + "\nEmail: " + email
+                + "\nPhone Number: " + phoneNumber + "\nAddress: " + address + "\nDate of Birth: " + dateOfBirth
+                + "\nActive: " + active + "\nID: " + id + "\nDate Joined: " + dateJoined;
     }
 
     public void retrieveData(String table) {
@@ -74,12 +74,11 @@ public class User {
                 phoneNumber = rs.getString("phoneNumber");
                 address = rs.getString("address");
                 dateOfBirth = rs.getString("dateOfBirth");
+                active = rs.getInt("active");
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
-        System.out.println(this);
     }
 
     public void getOrders() {
@@ -271,32 +270,6 @@ public class User {
 
     public String getDateJoined() {
         return dateJoined;
-    }
-
-    public void deleteUser(String id) {
-        String deleteDetailsSQL = "DELETE FROM userDetails WHERE id = ?";
-        String deleteUserSQL = "DELETE FROM users WHERE id = ?";
-
-        try {
-            db.connection.setAutoCommit(false); // Start transaction
-
-            try (PreparedStatement deleteDetailsStmt = db.connection.prepareStatement(deleteDetailsSQL);
-                    PreparedStatement deleteUserStmt = db.connection.prepareStatement(deleteUserSQL)) {
-
-                deleteDetailsStmt.setString(1, id);
-                deleteUserStmt.setString(1, id);
-
-                deleteDetailsStmt.executeUpdate();
-                deleteUserStmt.executeUpdate();
-
-                db.connection.commit();
-            } catch (SQLException ex) {
-                db.connection.rollback();
-                throw ex;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void retrieveData2(String role) {

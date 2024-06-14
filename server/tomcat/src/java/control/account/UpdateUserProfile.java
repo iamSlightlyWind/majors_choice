@@ -36,27 +36,23 @@ public class UpdateUserProfile extends HttpServlet {
             switch (result) {
                 case 1:
                     request.setAttribute("table", "user");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/user");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile?actor=user");
                     dispatcher.forward(request, response);
                     break;
                 case -1:
                     request.setAttribute("status", "Update Failed! Email had existed.");
-                    request.getRequestDispatcher("/manage/user.jsp").forward(request, response);
+                    request.getRequestDispatcher("/manage/profile?actor=user.jsp").forward(request, response);
                     break;
                 case -2:
                     request.setAttribute("status", "Update Failed! Phone had existed.");
-                    request.getRequestDispatcher("/manage/user.jsp").forward(request, response);
-                    break;
-                default:
-                    request.setAttribute("status", "Update Failed!");
-                    request.getRequestDispatcher("/manage/user.jsp").forward(request, response);
+                    request.getRequestDispatcher("/manage/profile?actor=user.jsp").forward(request, response);
                     break;
             }
         } else {
             request.setAttribute("user", user);
             request.setAttribute("possition", actor);
             request.setAttribute("status", "Update Failed!Error Email Format");
-            request.getRequestDispatcher("/manage/user.jsp").forward(request, response);
+            request.getRequestDispatcher("/manage/profile?actor=user.jsp").forward(request, response);
         }
 
     }

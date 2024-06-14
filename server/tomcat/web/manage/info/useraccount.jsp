@@ -15,7 +15,7 @@
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Phone Number</th>
-                        <th>Active</th>
+                        <th>Activation</th>
                         <th>DateJoined</th>
                         <th colspan="2">Edit</th>
                     </tr>
@@ -26,10 +26,10 @@
                             <td>${user.id}</td>
                             <td>${user.fullName}</td>
                             <td>${user.phoneNumber}</td>
-                            <td>${user.active}</td>
+                            <td>${user.active == 1 ? 'Activated' : (user.active == 0 ? 'Not Activated' : 'Deactivated')}</td>
                             <td>${user.dateJoined}</td>
-                            <td><a href="/editprofile?id=${user.id}&action=update&actor=users">Update</a></td>
-                            <td><a href="/editprofile?id=${user.id}&action=delete&actor=users">Delete</a></td>
+                            <td><a href="/editprofile?id=${user.id}&action=update&actor=users&user=${user.username}">Update</a></td>
+                            <td><a href="/editprofile?id=${user.id}&action=delete&actor=users&user=${user.username}">Delete</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>

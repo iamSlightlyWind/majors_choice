@@ -1,6 +1,5 @@
 package control.profile;
 
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +19,6 @@ public class EditProfile extends HttpServlet {
 
         boolean emailFormat = isValidEmail(request.getParameter("email"));
         if (emailFormat) {
-
             user.username = request.getParameter("username");
             user.password = request.getParameter("password");
             user.fullName = request.getParameter("fullname");
@@ -62,19 +60,20 @@ public class EditProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User user = new User();
-
         String id = request.getParameter("id");
         String action = request.getParameter("action");
 
+        User user = new User();
+
         if (action.equals("delete")) {
-            user.deleteUser(id);
-            request.setAttribute("table", "user");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile");
-            dispatcher.forward(request, response);
+            user.username = request.getParameter("user");
+            user.retrieveData("user");
+            user.active = -1;
+            user.updateInformation();
+            response.sendRedirect("/manage/profile?actor=user");
         } else if (action.equals("update")) {
-            user.id = id;
-            user.retrieveData2("user");
+            user.username = request.getParameter("user");
+            user.retrieveData("user");
             request.setAttribute("user", user);
             request.setAttribute("possition", "user");
             request.getRequestDispatcher("/manage/profile/user.jsp").forward(request, response);
