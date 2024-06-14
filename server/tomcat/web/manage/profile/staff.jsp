@@ -69,7 +69,7 @@
 
                 <div class="form-item">
                     <label>Password:</label>
-                    <input type="password" name="fullname" value="${staff.password}" required>
+                    <input type="password" name="password" value="${staff.password}" required>
                 </div>
 
                 <p>${status}</p>

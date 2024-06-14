@@ -90,19 +90,23 @@ public class EditProfile extends HttpServlet {
     public void doStaff(HttpServletRequest request, HttpServletResponse response, String action)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        User user = new User();
+        User staff = new User();
 
         if (action.equals("delete")) {
-            user.username = request.getParameter("user");
-            user.retrieveData("staff");
-            user.active = -1;
-            user.updateInformation();
-            response.sendRedirect("/manage/profile?actor=staffs");
+            staff.username = request.getParameter("user");
+            staff.retrieveData("staff");
+            staff.active = -1;
+            staff.updateStaff();
+            response.sendRedirect("/manage/profile?actor=staff");
         } else if (action.equals("update")) {
-            user.username = request.getParameter("user");
-            user.retrieveData("staff");
-            request.setAttribute("staff", user);
+            staff.username = request.getParameter("user");
+            staff.retrieveData("staff");
+            request.setAttribute("staff", staff);
             request.setAttribute("submitAction", "Update");
+            request.getRequestDispatcher("/manage/profile/staff.jsp").forward(request, response);
+        } else if (action.equals("Add")) {
+            request.setAttribute("staff", new User());
+            request.setAttribute("submitAction", "Add");
             request.getRequestDispatcher("/manage/profile/staff.jsp").forward(request, response);
         }
     }

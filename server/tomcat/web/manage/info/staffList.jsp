@@ -12,8 +12,9 @@
 
             <body>
                 <h3>Staff Account:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <form form action="/manage/profile/staff" method="get">
-                        <button type="submit">Add Staff</button>
+                    <form form action="/editprofile" method="get">
+                        <input type="hidden" name="actor" value="staffs">
+                        <button type="submit" name="action" value="Add">Add Staff</button>
                     </form>
                 </h3>
                 <table class="staff" border="2px">

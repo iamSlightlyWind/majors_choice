@@ -46,7 +46,6 @@ public class Test extends HttpServlet {
     }
     
     public static void main(String[] args) {
-        Database db = new Database();
-        System.out.println(db.getUserDetails("users"));
+
     }
 }

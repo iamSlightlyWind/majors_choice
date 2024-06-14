@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import database.Database;
 import main.User;
 
 public class UpdateUserProfile extends HttpServlet {
@@ -25,15 +27,28 @@ public class UpdateUserProfile extends HttpServlet {
 
     private void doStaff(HttpServletRequest request, HttpServletResponse response, String action)
             throws ServletException, IOException {
-        User staff = new User();
-        staff.id = request.getParameter("id");
-        staff.fullName = request.getParameter("fullname");
-        staff.username = request.getParameter("username");
-        staff.password = request.getParameter("password");
-        staff.active = Integer.parseInt(request.getParameter("active"));
+        if (action.equals("Update")) {
+            User staff = new User();
+            staff.id = request.getParameter("id");
+            staff.fullName = request.getParameter("fullname");
+            staff.username = request.getParameter("username");
+            staff.password = request.getParameter("password");
+            staff.active = Integer.parseInt(request.getParameter("active"));
 
-        staff.updateStaff();
-        response.sendRedirect("/manage/profile?actor=staff");
+            staff.updateStaff();
+            response.sendRedirect("/manage/profile?actor=staff");
+        } else if (action.equals("Add")) {
+            Database db = new Database();
+            User staff = new User();
+            staff.fullName = request.getParameter("fullname");
+            staff.username = request.getParameter("username");
+            staff.password = request.getParameter("password");
+            staff.active = Integer.parseInt(request.getParameter("active"));
+
+            db.addStaff(staff);
+
+            response.sendRedirect("/manage/profile?actor=staff");
+        }
     }
 
     private void doUser(HttpServletRequest request, HttpServletResponse response, String action)

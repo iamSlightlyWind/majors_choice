@@ -22,11 +22,11 @@ public class ManageAccount extends HttpServlet {
         if ((actor != null && actor.equals("user")) || (table != null && table.equals("user"))) {
             ArrayList<User> users = db.getUserDetails("users");
             request.setAttribute("users", users);
-            request.getRequestDispatcher("/manage/info/users.jsp").forward(request, response);
+            request.getRequestDispatcher("/manage/info/userList.jsp").forward(request, response);
         } else if ((actor != null && actor.equals("staff")) || (table != null && table.equals("staff"))) {
             ArrayList<User> staffs = db.getUserDetails("staffs");
             request.setAttribute("staffs", staffs);
-            request.getRequestDispatcher("/manage/info/staffs.jsp").forward(request, response);
+            request.getRequestDispatcher("/manage/info/staffList.jsp").forward(request, response);
         }
     }
 

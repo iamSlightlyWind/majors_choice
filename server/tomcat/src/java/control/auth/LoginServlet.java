@@ -34,21 +34,25 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("user", user.username);
                 request.getRequestDispatcher("/auth/activate.jsp").forward(request, response);
                 break;
+            case -2:
+                request.setAttribute("loginStatus", "Account is deactivated");
+                request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
+                break;
             case 0:
                 switch (user.loginEmployee()) {
                     case 1: // manager role
                         user.retrieveData("staff");
                         request.getSession().setAttribute("userObject", user);
-                        request.getSession().setAttribute("table", "manager");
-                        request.setAttribute("loginStatus", "Logged in as Manager");
-                        request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
+                        request.getSession().setAttribute("table", "staff");
+                        request.getSession().setAttribute("role", "manager");
+                        response.sendRedirect("/");
                         break;
                     case 0: // staff role
                         user.retrieveData("staff");
                         request.getSession().setAttribute("userObject", user);
                         request.getSession().setAttribute("table", "staff");
-                        request.setAttribute("loginStatus", "Logged in as Staff");
-                        request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
+                        request.getSession().setAttribute("role", "staff");
+                        response.sendRedirect("/");
                         break;
                     default:
                         String error = "Login failed!";
