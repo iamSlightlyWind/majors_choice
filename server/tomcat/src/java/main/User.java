@@ -55,13 +55,13 @@ public class User {
                 + "Date of Birth: " + dateOfBirth + "\n" + "Confirm Code: " + confirmCode;
     }
 
-    public void retrieveData(String role) {
-        if (role.equals("manager")) {
-            role = "staff";
+    public void retrieveData(String table) {
+        if (table.equals("manager")) {
+            table = "staff";
         }
         try {
             String sql = "select * from ^s join ^details on ^s.id = ^details.id WHERE ^s.username = ?";
-            sql = sql.replace("^", role);
+            sql = sql.replace("^", table);
             PreparedStatement statement = db.connection.prepareStatement(sql);
             statement.setString(1, username);
 
