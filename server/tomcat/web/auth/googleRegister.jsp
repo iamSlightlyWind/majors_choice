@@ -179,7 +179,7 @@
                         <span>Who we are</span>
                       </span>
                       <span class="navbar-manager-order thq-body-small thq-link" style="visibility: hidden;">
-                        Manager Order
+                        Manage Order
                       </span>
                     </div>
                   </nav>
@@ -246,7 +246,7 @@
                         <span>Who we are</span>
                       </span>
                       <span class="thq-body-small thq-link">
-                        <span>Manager Order</span>
+                        <span>Manage Order</span>
                       </span>
                     </nav>
                   </div>

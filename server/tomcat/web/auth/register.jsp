@@ -3,8 +3,8 @@
   <html lang="en">
 
   <head>
-    <title>Reset Password - Major's Choice</title>
-    <meta property="og:title" content="Reset Password - Major's Choice" />
+    <title>Register - Major's Choice</title>
+    <meta property="og:title" content="Register - Major's Choice" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -148,11 +148,11 @@
   <body>
     <link rel="stylesheet" href="../css/style.css" />
     <div>
-      <link href="../css/recovery.css" rel="stylesheet" />
+      <link href="../css/register.css" rel="stylesheet" />
 
-      <div class="reset-password-container">
-        <div class="reset-password-header">
-          <div class="navbar-container navbar-root-class-name3">
+      <div class="register-container">
+        <div class="register-header">
+          <div class="navbar-container navbar-root-class-name2">
             <div class="navbar-container1"></div>
             <header class="navbar-container2">
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
@@ -169,7 +169,7 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <a href="/" class="navbar-home thq-body-small thq-link">
+                      <a href="home-page.html" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navbar-contact thq-body-small thq-link">
@@ -179,7 +179,7 @@
                         <span>Who we are</span>
                       </span>
                       <span class="navbar-manager-order thq-body-small thq-link" style="visibility: hidden;">
-                        Manager Order
+                        Manage Order
                       </span>
                     </div>
                   </nav>
@@ -196,7 +196,7 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                       </path>
                     </svg>
-                    <a href="/auth/login.jsp" class="navbar-account thq-button-filled">
+                    <a href="/auth/login.jsp" class="navbar-account thq-button-filled" style="visibility: hidden;">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -255,57 +255,94 @@
               </header>
             </header>
           </div>
-          <div class="reset-password-container1">
-            <div class="resetpass-container thq-section-padding resetpass-root-class-name">
-              <div class="resetpass-max-width thq-section-padding thq-section-max-width">
-                <div class="resetpass-form">
-                  <h2 class="resetpass-text thq-heading-2">
-                    <span>Reset Password</span>
-                  </h2>
-                  <form class="resetpass-form1" action="/auth/recovery" method="post">
-                    <div class="resetpass-email">
-                      <label for="thq-sign-in-1-password" class="thq-body-large">
-                        <span>Email</span>
-                        <br />
-                      </label>
-                      <input type="email" name="email" id="thq-sign-in-3-email" required="true" placeholder="Email"
-                        class="resetpass-textinput thq-input thq-body-large" />
-                    </div>
-                    <br>
-                    <p>${recoveryStatus}</p>
-                    <br>
-                    <button type="submit" class="resetpass-button thq-button-filled">
-                      <span class="resetpass-text4 thq-body-small">
-                        <span>Reset Password</span>
+        </div>
+        <div class="register-body">
+          <div class="register-form-container thq-section-padding register-form-root-class-name">
+            <div class="register-form-form-root">
+              <div class="register-form-form">
+                <h2 class="register-form-text thq-heading-2">
+                  <span>Create an account</span>
+                </h2>
+                <form class="register-form-form1" action="/auth/register" method="post">
+                  <div class="register-form-user-name">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      Username
+                    </label>
+                    <input type="text" required="true" name="userName" placeholder="Username"
+                      class="register-form-textinput thq-input thq-body-large" />
+                  </div>
+                  <div class="register-form-password">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      <span>Password</span>
+                      <br />
+                    </label>
+                    <input type="password" name="password" required="true" placeholder="Password"
+                      class="register-form-textinput1 thq-input thq-body-large" />
+                  </div>
+                  <div class="register-form-repeat-yor-password">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      <span>Repeat your password</span>
+                      <br />
+                    </label>
+                    <input type="password" id="thq-sign-in-3-email" required="true" name="repass" placeholder="Password"
+                      class="register-form-textinput2 thq-input thq-body-large" />
+                  </div>
+                  <div class="register-form-full-name">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      <span>Full Name</span>
+                      <br />
+                    </label>
+                    <input type="text" required="true" name="fullName" placeholder="Full Name"
+                      class="register-form-textinput3 thq-input thq-body-large" />
+                  </div>
+                  <div class="register-form-email">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      <span>Email</span>
+                      <br />
+                    </label>
+                    <input type="email" id="thq-sign-in-3-email" required="true" name="email" placeholder="Email"
+                      class="register-form-textinput4 thq-input thq-body-large" />
+                  </div>
+                  <div class="register-form-phone">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      <span>Phone</span>
+                      <br />
+                    </label>
+                    <input type="tel" required="true" name="phoneNumber" placeholder="Phone Number"
+                      class="register-form-textinput5 thq-input thq-body-large" />
+                  </div>
+                  <div class="register-form-address">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      <span>Address</span>
+                      <br />
+                    </label>
+                    <input type="text" required="true" name="address" placeholder="Address"
+                      class="register-form-textinput6 thq-input thq-body-large" />
+                  </div>
+                  <div class="register-form-date-of-birth">
+                    <label for="thq-sign-in-1-password" class="thq-body-large">
+                      <span>Date Of Birth</span>
+                      <br />
+                    </label>
+                    <input type="date" required="true" name="dateOfBirth"
+                      class="register-form-textinput7 thq-input thq-body-large" />
+                  </div>
+                  <p>${registerStatus}</p>
+                  <div class="register-form-button-register">
+                    <button type="submit" href="home-page.html" class="register-form-button thq-button-filled">
+                      <span class="register-form-text23 thq-body-small">
+                        <span>Register</span>
                       </span>
                     </button>
-                  </form>
-                  <div class="resetpass-container1">
-                    <div class="resetpass-divider">
-                      <div class="resetpass-divider1"></div>
-                      <p class="thq-body-large"><span>Or</span></p>
-                      <div class="resetpass-divider2"></div>
-                    </div>
-                    <a href="/auth/login.jsp" class="resetpass-button1 thq-button-outline">
-                      <span class="resetpass-text6 thq-body-small">
-                        <span>Login</span>
-                      </span>
-                    </a>
                   </div>
-                  <div class="resetpass-container2">
-                    <button type="submit" class="resetpass-button2 thq-button-filled">
-                      <svg viewBox="0 0 1024 1024" class="resetpass-icon">
-                        <path
-                          d="M522.2 438.8v175.6h290.4c-11.8 75.4-87.8 220.8-290.4 220.8-174.8 0-317.4-144.8-317.4-323.2s142.6-323.2 317.4-323.2c99.4 0 166 42.4 204 79l139-133.8c-89.2-83.6-204.8-134-343-134-283 0-512 229-512 512s229 512 512 512c295.4 0 491.6-207.8 491.6-500.2 0-33.6-3.6-59.2-8-84.8l-483.6-0.2z">
-                        </path>
-                      </svg>
-                      <span class="resetpass-text7 thq-body-small">
-                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://choice.themajorones.dev/auth/googleLogin&response_type=code
-         &client_id=960808694899-61oujrd0icfujs3ds3qmqqu0lb8rtuhv.apps.googleusercontent.com&approval_prompt=force"
-                          class="nav-link">Login with Google</a>
-                      </span>
-                    </button>
-                  </div>
+                </form>
+                <div class="register-form-login-here">
+                  <span class="register-form-text24">
+                    <span>Have already an account?</span>
+                  </span>
+                  <a href="/auth/login.jsp" class="register-form-navlink">
+                    <span>Login here</span>
+                  </a>
                 </div>
               </div>
             </div>
