@@ -43,7 +43,7 @@ public class EditProfile extends HttpServlet {
                     break;
             }
         } else {
-            request.setAttribute("user", user.fullName);
+            request.setAttribute("user", user);
             request.setAttribute("status", "Update Failed!Email format wrong!");
             request.getRequestDispatcher("editprofile.jsp").forward(request, response);
         }

@@ -49,13 +49,15 @@
         <body>
             <form action="/manage/profile/staff" method="post" onsubmit="return confirmChange();">
 
-                <div class="form-item">
-                    <label>Active:</label>
-                    <select name="active" required>
-                        <option value="1" ${staff.active==1 ? 'selected' : '' }>Activated</option>
-                        <option value="-1" ${staff.active==-1 ? 'selected' : '' }>Deactivated</option>
-                    </select>
-                </div>
+                <c:if test="${submitAction=='Update'}">
+                    <div class="form-item">
+                        <label>Active:</label>
+                        <select name="active" required>
+                            <option value="1" ${staff.active==1 ? 'selected' : '' }>Activated</option>
+                            <option value="-1" ${staff.active==-1 ? 'selected' : '' }>Deactivated</option>
+                        </select>
+                    </div>
+                </c:if>
 
                 <div class="form-item">
                     <label>Họ và Tên:</label>

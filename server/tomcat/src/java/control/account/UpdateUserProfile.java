@@ -52,7 +52,7 @@ public class UpdateUserProfile extends HttpServlet {
             staff.fullName = request.getParameter("fullname");
             staff.username = request.getParameter("username");
             staff.password = request.getParameter("password");
-            staff.active = Integer.parseInt(request.getParameter("active"));
+            //staff.active = Integer.parseInt(request.getParameter("active"));
 
             switch (db.addStaff(staff)) {
                 case 1:
@@ -81,41 +81,27 @@ public class UpdateUserProfile extends HttpServlet {
         user.dateOfBirth = request.getParameter("dateOfBirth");
         String actor = request.getParameter("actor");
 
-        boolean emailFormat = isValidEmail(user.email);
-
-        if (emailFormat) {
-            int result = user.updateInformation();
-            request.setAttribute("user", user);
-            request.setAttribute("possition", actor);
-            switch (result) {
-                case 1:
-                    request.setAttribute("table", "user");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile?actor=user");
-                    dispatcher.forward(request, response);
-                    break;
-                case -1:
-                    request.setAttribute("status", "Update Failed! Email had existed.");
-                    request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
-                    break;
-                case -2:
-                    request.setAttribute("status", "Update Failed! Phone had existed.");
-                    request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
-                    break;
-            }
-        } else {
-            request.setAttribute("user", user);
-            request.setAttribute("possition", actor);
-            request.setAttribute("status", "Update Failed!Error Email Format");
-            request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
+        int result = user.updateInformation();
+        request.setAttribute("user", user);
+        request.setAttribute("possition", actor);
+        switch (result) {
+            case 1:
+                request.setAttribute("table", "user");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile?actor=user");
+                dispatcher.forward(request, response);
+                break;
+                
+            case -2:
+                request.setAttribute("status", "Update Failed! Phone had existed.");
+                request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
+                break;
+                
+            default:
+                request.setAttribute("status", "Update Failed!");
+                request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
+                break;
         }
-    }
 
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        Matcher matcher = pattern.matcher(email);
-
-        return matcher.matches();
     }
 
     @Override
