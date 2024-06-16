@@ -44,4 +44,8 @@ public class Test extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+    
+    public static void main(String[] args) {
+
+    }
 }
