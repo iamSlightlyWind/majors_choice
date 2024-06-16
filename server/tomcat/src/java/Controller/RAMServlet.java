@@ -10,9 +10,12 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.ArrayList;
 import packages.RAM;
 
@@ -20,6 +23,7 @@ import packages.RAM;
  *
  * @author PC
  */
+@MultipartConfig
 public class RAMServlet extends HttpServlet {
    
     /** 
@@ -53,11 +57,12 @@ public class RAMServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
-                String image = request.getParameter("image");
-
-                int result = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, image);
+                int result = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, null);
 
                 if (result != -1) {
+                    int productId = db.getMaxProductId();
+                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, image);
                     response.sendRedirect("rams?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm RAM");
@@ -97,7 +102,7 @@ public class RAMServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
-                String image = request.getParameter("image");
+                String image = handleFileUpload(request, "image", Integer.toString(id));
 
                 int result = db.updateProductRAM(id, sellingPrice, costPrice, name, generation, capacity, speed, latency, image);
                 if (result == 1) {
@@ -112,6 +117,25 @@ public class RAMServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             db.removeRAM(id);
             response.sendRedirect("rams");
+        }
+    }
+           private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
+        try {
+            Part filePart = request.getPart(inputName);
+            String fileName = productID + ".png";
+
+            String uploadPath = request.getServletContext().getRealPath("");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+
+            filePart.write(uploadPath + File.separator + fileName);
+            return uploadPath + File.separator + fileName;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

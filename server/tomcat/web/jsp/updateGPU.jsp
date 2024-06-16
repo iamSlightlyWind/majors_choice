@@ -10,7 +10,7 @@
         <%
             GPU gpu = (GPU) request.getAttribute("gpus");
         %>
-        <form action="gpus" method="post" >
+        <form action="gpus" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>ID</td>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="file" name="file" value="<%=gpu.getImage()%>"></td>
+                    <td><input type="file" name="image" accept="image/*" value="<%=gpu.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Generation</td>
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>Vram</td>
-                    <td><input type="number" name="cores" value="<%=gpu.getVram()%>"></td>
+                    <td><input type="number" name="vram" value="<%=gpu.getVram()%>"></td>
                 </tr>
                 <tr>
                     <td>BaseClock</td>

@@ -6,9 +6,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert Product</title>
     </head>
-<!--    enctype="multipart/form-data"-->
     <body>
-        <form action="/tomcat/gpus?service=insertGPU" method="post" >
+        <form action="/tomcat/gpus?service=insertGPU" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <td>SellingPrice</td>
@@ -32,7 +31,7 @@
                 </tr>
                 <tr>
                     <td>Vram</td>
-                    <td><input type="text" name="vram"></td>
+                    <td><input type="number" name="vram"></td>
                 </tr>
                 <tr>
                     <td>BaseClock</td>

@@ -10,7 +10,7 @@
         <%
              PSU psu = (PSU) request.getAttribute("psus");
         %>
-        <form action="psus" method="post" >
+        <form action="psus" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <td>ID</td>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="file" name="file" value="<%=psu.getImage()%>"></td>
+                    <td><input type="file" name="image" accept="image/*" value="<%=psu.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Wattage</td>

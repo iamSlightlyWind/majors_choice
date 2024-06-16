@@ -10,9 +10,12 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.ArrayList;
 import packages.SSD;
 
@@ -20,6 +23,7 @@ import packages.SSD;
  *
  * @author PC
  */
+@MultipartConfig
 public class SSDServlet extends HttpServlet {
    
     /** 
@@ -52,11 +56,12 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 String connectionInterface = request.getParameter("interface");
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
-                String image = request.getParameter("image");
-
-                int result = db.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache, image);
+                int result = db.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache, null);
 
                 if (result != -1) {
+                    int productId = db.getMaxProductId();
+                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = db.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache, image);
                     response.sendRedirect("ssds?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm SSD");
@@ -95,7 +100,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 String connectionInterface = request.getParameter("interface");
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
-                String image = request.getParameter("image");
+                String image = handleFileUpload(request, "image", Integer.toString(id));
 
                 int result = db.updateProductSSD(id, sellingPrice, costPrice, name, connectionInterface, capacity, cache, image);
                 if (result == 1) {
@@ -112,7 +117,25 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             response.sendRedirect("ssds");
         }
     }
+        private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
+        try {
+            Part filePart = request.getPart(inputName);
+            String fileName = productID + ".png";
 
+            String uploadPath = request.getServletContext().getRealPath("");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+
+            filePart.write(uploadPath + File.separator + fileName);
+            return uploadPath + File.separator + fileName;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
      * Handles the HTTP <code>GET</code> method.

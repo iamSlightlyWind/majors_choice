@@ -41,7 +41,7 @@
                 <td><%=motherboard.getId()%> </td>
                 <td><%=motherboard.getSellingPrice()%> </td>
                 <td><%=motherboard.getCostPrice()%> </td>
-                <td><img href="#" src="/tomcat/assets/images/<%=motherboard.getImage()%>" style="width: 100px; height: auto;"/></td>
+                <td><img src="<%=motherboard.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=motherboard.getName()%> </td>
                 <td><%=motherboard.getSocket()%> </td>
                 <td><%=motherboard.getChipset()%> </td>

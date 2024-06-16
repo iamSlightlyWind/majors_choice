@@ -39,7 +39,7 @@
                 <td><%=gpu.getId()%> </td>
                 <td><%=gpu.getSellingPrice()%> </td>
                 <td><%=gpu.getCostPrice()%> </td>
-                <td><img href="#" src="/tomcat/assets/images/<%=gpu.getImage()%>" style="width: 100px; height: auto;"/></td>
+                <td><img src="<%=gpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=gpu.getName()%> </td>
                 <td><%=gpu.getGeneration()%> </td>
                 <td><%=gpu.getVram()%> </td>

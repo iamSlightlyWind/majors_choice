@@ -9,9 +9,12 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.ArrayList;
 import packages.PSU;
 
@@ -19,6 +22,7 @@ import packages.PSU;
  *
  * @author PC
  */
+@MultipartConfig
 public class PSUServlet extends HttpServlet {
 
     /**
@@ -52,11 +56,13 @@ public class PSUServlet extends HttpServlet {
                 String name = request.getParameter("name");
                 int wattage = Integer.parseInt(request.getParameter("wattage"));
                 String efficiency = request.getParameter("efficiency");
-                String image = request.getParameter("image");
 
-                int result = db.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image);
+                int result = db.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, null);
 
                 if (result != -1) {
+                    int productId = db.getMaxProductId();
+                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = db.updateProductPSU(result, sellingPrice, costPrice, name, wattage, efficiency, image);
                     response.sendRedirect("psus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm PSU");
@@ -94,7 +100,7 @@ public class PSUServlet extends HttpServlet {
                 String name = request.getParameter("name");
                 int wattage = Integer.parseInt(request.getParameter("wattage"));
                 String efficiency = request.getParameter("efficiency");
-                String image = request.getParameter("image");
+                String image = handleFileUpload(request, "image", Integer.toString(id));
 
                 int result = db.updateProductPSU(id, sellingPrice, costPrice, name, wattage, efficiency, image);
                 if (result == 1) {
@@ -109,6 +115,25 @@ public class PSUServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             db.removePSU(id);
             response.sendRedirect("psus");
+        }
+    }
+            private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
+        try {
+            Part filePart = request.getPart(inputName);
+            String fileName = productID + ".png";
+
+            String uploadPath = request.getServletContext().getRealPath("");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+
+            filePart.write(uploadPath + File.separator + fileName);
+            return uploadPath + File.separator + fileName;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

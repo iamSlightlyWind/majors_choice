@@ -1,5 +1,8 @@
 package database;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -69,8 +72,8 @@ public class Database {
                 int baseClock = resultSet.getInt("baseClock");
                 int boostClock = resultSet.getInt("boostClock");
                 int tdp = resultSet.getInt("tdp");
-                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name, name, id,
-                        sellingPrice, costPrice, description));
+                String image = resultSet.getString("image");
+                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, image, name, id, sellingPrice, costPrice, description));
             }
             return cpus;
         } catch (SQLException ex) {
@@ -196,14 +199,45 @@ public class Database {
 
     public int removeCPU(int id) {
         int n = 0;
-        String sql = "DELETE FROM [dbo].[cpus]\n"
-                + "      WHERE id = " + id;
+        String sqlDeleteFromCPUs = "DELETE FROM [dbo].[cpus] WHERE id = ?";
+        String sqlDeleteFromProducts = "DELETE FROM [dbo].[products] WHERE id = ?";
+
         try {
-            Statement state = connection.createStatement();
-            n = state.executeUpdate(sql);
+            // Set auto-commit to false
+            connection.setAutoCommit(false);
+
+            // Prepare and execute delete from cpus
+            PreparedStatement psDeleteFromCPUs = connection.prepareStatement(sqlDeleteFromCPUs);
+            psDeleteFromCPUs.setInt(1, id);
+            n += psDeleteFromCPUs.executeUpdate();
+
+            // Prepare and execute delete from products
+            PreparedStatement psDeleteFromProducts = connection.prepareStatement(sqlDeleteFromProducts);
+            psDeleteFromProducts.setInt(1, id);
+            n += psDeleteFromProducts.executeUpdate();
+
+            // Commit transaction
+            connection.commit();
 
         } catch (SQLException ex) {
+            // Rollback transaction if any error occurs
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                }
+            } catch (SQLException e) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, e);
+            }
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                // Set auto-commit back to true
+                if (connection != null) {
+                    connection.setAutoCommit(true);
+                }
+            } catch (SQLException e) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
         return n;
     }
@@ -225,9 +259,9 @@ public class Database {
                 int baseClock = resultSet.getInt("baseClock");
                 int boostClock = resultSet.getInt("boostClock");
                 int tdp = resultSet.getInt("tdp");
+                String image = resultSet.getString("image");
                 gpus.add(
-                        new GPU(generation, vram, baseClock, boostClock, tdp, name, name, id, sellingPrice, costPrice,
-                                description));
+                        new GPU(generation, vram, baseClock, boostClock, tdp, image, name, id, sellingPrice, costPrice, description));
             }
             return gpus;
         } catch (SQLException ex) {
@@ -332,12 +366,13 @@ public class Database {
                 String socket = resultSet.getString("socket");
                 String chipset = resultSet.getString("chipset");
                 String formFactor = resultSet.getString("formFactor");
+                String ramType = resultSet.getString("ramType");
                 int maxRamSpeed = resultSet.getInt("maxRamSpeed");
                 int ramSlots = resultSet.getInt("ramSlots");
                 int wifi = resultSet.getInt("wifi");
+                String image = resultSet.getString("image");
                 motherboards.add(
-                        new Motherboard(socket, chipset, formFactor, name, maxRamSpeed, ramSlots, wifi, name, name, id,
-                                sellingPrice, costPrice, description));
+                        new Motherboard(socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image, name, id, sellingPrice, costPrice, description));
             }
             return motherboards;
         } catch (SQLException ex) {
@@ -446,8 +481,9 @@ public class Database {
                 String name = resultSet.getString("name");
                 int wattage = resultSet.getInt("wattage");
                 String efficiency = resultSet.getString("efficiency");
+                String image = resultSet.getString("image");
                 psus.add(
-                        new PSU(wattage, efficiency, name, name, id, sellingPrice, costPrice, description));
+                        new PSU(wattage, efficiency, image, name, id, sellingPrice, costPrice, description));
             }
             return psus;
         } catch (SQLException ex) {
@@ -546,9 +582,9 @@ public class Database {
                 int capacity = resultSet.getInt("capacity");
                 int speed = resultSet.getInt("speed");
                 int latency = resultSet.getInt("latency");
+                String image = resultSet.getString("image");
                 rams.add(
-                        new RAM(generation, capacity, speed, latency, name, name, id, sellingPrice, costPrice,
-                                description));
+                        new RAM(generation, capacity, speed, latency, image, name, id, sellingPrice, costPrice, description));
             }
             return rams;
         } catch (SQLException ex) {
@@ -646,8 +682,9 @@ public class Database {
                 String connectionInterface = resultSet.getString("interface");
                 int capacity = resultSet.getInt("capacity");
                 int cache = resultSet.getInt("cache");
+                String image = resultSet.getString("image");
                 ssds.add(
-                        new SSD(connectionInterface, capacity, cache, name, id, sellingPrice, costPrice, description));
+                        new SSD(connectionInterface, capacity, cache, image, name, id, sellingPrice, costPrice, description));
             }
             return ssds;
         } catch (SQLException ex) {
@@ -745,7 +782,7 @@ public class Database {
         // int id = database.getCPUs("select * from cpus join products on cpus.id=
         // products.id where cpus.id = 10").get(0).getId();
         // System.out.println(id);
-        ArrayList<SSD> ssds = database.getSSDs("{call getSSD()}");
+        ArrayList<CPU> cpus = database.getCPUs("{call getCPU()}");
         ;
     }
 

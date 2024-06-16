@@ -37,7 +37,7 @@
                 <td><%=ssd.getId()%> </td>
                 <td><%=ssd.getSellingPrice()%> </td>
                 <td><%=ssd.getCostPrice()%> </td>
-                <td><img href="#" src="/tomcat/assets/images/<%=ssd.getImage()%>" style="width: 100px; height: auto;"/></td>
+                <td><img src="<%=ssd.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=ssd.getName()%> </td>
                 <td><%=ssd.getConnectionInterface()%> </td>
                 <td><%=ssd.getCapacity()%> </td>

@@ -8,7 +8,7 @@
     </head>
 <!--    enctype="multipart/form-data"-->
     <body>
-        <form action="/tomcat/psus?service=insertPSU" method="post" >
+        <form action="/tomcat/psus?service=insertPSU" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <td>SellingPrice</td>

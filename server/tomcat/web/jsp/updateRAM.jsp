@@ -10,7 +10,7 @@
         <%
              RAM ram = (RAM) request.getAttribute("rams");
         %>
-        <form action="rams" method="post" >
+        <form action="rams" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <td>ID</td>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="file" name="file" value="<%=ram.getImage()%>"></td>
+                    <td><input type="file" name="image" accept="image/*" value="<%=ram.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Generation</td>

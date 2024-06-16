@@ -10,7 +10,7 @@
         <%
              SSD ssd = (SSD) request.getAttribute("ssds");
         %>
-        <form action="ssds" method="post" >
+        <form action="ssds" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <td>ID</td>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="file" name="file" value="<%=ssd.getImage()%>"></td>
+                    <td><input type="file" name="image" accept="image/*" value="<%=ssd.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Interface</td>

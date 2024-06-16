@@ -9,9 +9,12 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.ArrayList;
 import packages.GPU;
 
@@ -19,6 +22,7 @@ import packages.GPU;
  *
  * @author PC
  */
+@MultipartConfig
 public class GPUServlet extends HttpServlet {
 
     /**
@@ -55,11 +59,16 @@ public class GPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = request.getParameter("image");
 
-                int result = db.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
-
+                // Thêm sản phẩm và lấy productId
+                int result = db.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, null);
                 if (result != -1) {
+                    int productId = db.getMaxProductId();
+                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    System.out.println("<< Image " + image);
+
+                    // Cập nhật sản phẩm với hình ảnh
+                    int result1 = db.updateProductGPU(productId, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
                     response.sendRedirect("gpus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm GPU");
@@ -100,10 +109,11 @@ public class GPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = request.getParameter("image");
+                String image = handleFileUpload(request, "image", Integer.toString(id));
+
+                System.out.println(">> Image: " + image);
 
                 int result = db.updateProductGPU(id, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
-
                 if (result == 1) {
                     response.sendRedirect("gpus?service=listAll");
                 } else {
@@ -120,40 +130,38 @@ public class GPUServlet extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
+        try {
+            Part filePart = request.getPart(inputName);
+            String fileName = productID + ".png";
+
+            String uploadPath = request.getServletContext().getRealPath("");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+
+            filePart.write(uploadPath + File.separator + fileName);
+            return uploadPath + File.separator + fileName;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

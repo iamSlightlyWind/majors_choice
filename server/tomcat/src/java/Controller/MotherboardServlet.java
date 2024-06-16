@@ -9,9 +9,12 @@ import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.ArrayList;
 import packages.Motherboard;
 
@@ -19,6 +22,7 @@ import packages.Motherboard;
  *
  * @author PC
  */
+@MultipartConfig
 public class MotherboardServlet extends HttpServlet {
 
     /**
@@ -57,11 +61,14 @@ public class MotherboardServlet extends HttpServlet {
                 int maxRamSpeed = Integer.parseInt(request.getParameter("maxRamSpeed"));
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
-                String image = request.getParameter("image");
-
-                int result = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
+                int result = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, null);
 
                 if (result != -1) {
+                    int productId = db.getMaxProductId();
+                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    System.out.println("<< Image " + image);
+                    
+                    int result1 = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
                     response.sendRedirect("motherboards?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm Motherboard");
@@ -104,7 +111,8 @@ public class MotherboardServlet extends HttpServlet {
                 int maxRamSpeed = Integer.parseInt(request.getParameter("maxRamSpeed"));
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
-                String image = request.getParameter("image");
+                String image = handleFileUpload(request, "image", Integer.toString(id));
+                System.out.println("<< Image " + image);
 
                 int result = db.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
                 if (result == 1) {
@@ -122,6 +130,26 @@ public class MotherboardServlet extends HttpServlet {
         }
 
     }
+        private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
+        try {
+            Part filePart = request.getPart(inputName);
+            String fileName = productID + ".png";
+
+            String uploadPath = request.getServletContext().getRealPath("");
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdir();
+            }
+
+            filePart.write(uploadPath + File.separator + fileName);
+            return uploadPath + File.separator + fileName;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

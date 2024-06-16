@@ -16,6 +16,7 @@ import packages.CPU;
 
 @MultipartConfig
 public class CPUServlet extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String service = request.getParameter("service");
@@ -45,13 +46,13 @@ public class CPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = handleFileUpload(request, "image", "0"); // dummy id, replace with product max id + 1
-
-                System.out.println(">> Image: " + image);
-
-                int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
-                        baseClock, boostClock, tdp, image);
+                int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, null);
                 if (result != -1) {
+                    int productId = db.getMaxProductId();
+                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    System.out.println("<< Image " + image);
+
+                    int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image);
                     response.sendRedirect("cpus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm CPU");
@@ -124,8 +125,9 @@ public class CPUServlet extends HttpServlet {
 
             String uploadPath = request.getServletContext().getRealPath("");
             File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists())
+            if (!uploadDir.exists()) {
                 uploadDir.mkdir();
+            }
 
             filePart.write(uploadPath + File.separator + fileName);
             return uploadPath + File.separator + fileName;

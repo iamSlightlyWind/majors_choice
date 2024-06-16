@@ -10,7 +10,7 @@
         <%
              Motherboard motherboard = (Motherboard) request.getAttribute("motherboards");
         %>
-        <form action="motherboards" method="post" >
+        <form action="motherboards" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>ID</td>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="file" name="file" value="<%=motherboard.getImage()%>"></td>
+                    <td><input type="file" name="image" accept="image/*" value="<%=motherboard.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Socket</td>
