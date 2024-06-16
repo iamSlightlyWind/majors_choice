@@ -21,7 +21,7 @@ public class SSD extends Product {
     public SSD(int id) {
         super(id);
         Database db = new Database();
-        ArrayList<SSD> ssds = db.getSSDs();
+        ArrayList<SSD> ssds = db.getSSDs("");
 
         for (SSD ssd : ssds) {
             if (ssd.id == id) {
@@ -36,4 +36,13 @@ public class SSD extends Product {
             }
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+    
 }
