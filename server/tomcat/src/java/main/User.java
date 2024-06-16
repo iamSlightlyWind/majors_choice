@@ -56,11 +56,14 @@ public class User {
     }
 
     public void retrieveData(String table) {
+        String parameter = username == null ? "id" : "username";
+        String parameterValue = username == null ? id : username;
+
         if (table.equals("staff")) {
             try {
-                String sql = "select * from staffs where username = ?";
+                String sql = "select * from staffs where " + parameter + " = ?";
                 PreparedStatement statement = db.connection.prepareStatement(sql);
-                statement.setString(1, username);
+                statement.setString(1, parameterValue);
 
                 ResultSet rs = statement.executeQuery();
 
@@ -74,11 +77,12 @@ public class User {
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
-        } else
+        } else if (table.equals("user")) {
             try {
-                String sql = "select * from users join userdetails on users.id = userdetails.id WHERE users.username = ?";
+                String sql = "select * from users join userdetails on users.id = userdetails.id WHERE users."
+                        + parameter + " = ?";
                 PreparedStatement statement = db.connection.prepareStatement(sql);
-                statement.setString(1, username);
+                statement.setString(1, parameterValue);
 
                 ResultSet rs = statement.executeQuery();
 
@@ -95,6 +99,7 @@ public class User {
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
+        }
     }
 
     public void getOrders() {

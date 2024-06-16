@@ -22,12 +22,33 @@
                 </c:forEach>
             </ul>
             <p>Price: ${Order.cartTotal}</p>
-            <c:if test="${Order.status eq 'Pending'}">
+            <c:if test="${Order.status eq 'Pending' and not managing}">
                 <form action="/order" method="get">
                     <input type="hidden" name="id" value="${Order.id}" />
-                    <button type="submit" name="action" value="cancelOrder">Cancel Order</button>
+                    <button type="submit" name="action" value="cancel">Cancel Order</button>
                 </form>
             </c:if>
+            <c:choose>
+                <c:when test="${managing}">
+                    <c:choose>
+                        <c:when
+                            test="${Order.status eq 'Pending' or Order.status eq 'Cancellation Denied, Shipping Pending'}">
+                            <form action="/manage/order" method="get">
+                                <input type="hidden" name="id" value="${Order.id}" />
+                                <button type="submit" name="action" value="cancel">Cancel Order</button>
+                                <button type="submit" name="action" value="ship">Ship Order</button>
+                            </form>
+                        </c:when>
+                        <c:when test="${Order.status eq 'Cancellation Requested'}">
+                            <form action="/manage/order" method="get">
+                                <input type="hidden" name="id" value="${Order.id}" />
+                                <button type="submit" name="action" value="approve">Approve Cancellation</button>
+                                <button type="submit" name="action" value="deny">Deny Cancellation</button>
+                            </form>
+                        </c:when>
+                    </c:choose>
+                </c:when>
+            </c:choose>
             <br>
 
             <form action="/auth/login" method="post">
