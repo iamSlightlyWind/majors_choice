@@ -891,7 +891,9 @@ BEGIN
         LEFT JOIN psus ON o.productId = psus.id
         LEFT JOIN cases ON o.productId = cases.id
     WHERE 
-        o.userId = @userId;
+        (@userId = 0 AND o.status NOT IN ('Shipping', 'Completed', 'Cancelled'))
+        OR (@userId = -1 AND o.status IN ('Shipping', 'Completed', 'Cancelled'))
+        OR (@userId <> 0 AND @userId <> -1 AND o.userId = @userId);
 END;
 go
 
@@ -950,3 +952,64 @@ BEGIN
     END
 END;
 GO
+
+CREATE PROCEDURE RequestOrderCancel
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Cancellation Requested'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE ApproveOrderCancel
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Cancelled'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE DenyOrderCancel
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Calcelation Denied, Shipping Pending'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE ShipOrder
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Shipping'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE CompleteOrder
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Completed'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE getOrderStatus
+    @orderId INT
+AS
+BEGIN
+    SELECT TOP 1
+        status
+    FROM orders
+    WHERE id = @orderId;
+END;
+go

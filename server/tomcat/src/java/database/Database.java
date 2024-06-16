@@ -523,4 +523,134 @@ public class Database {
         return -1;
     }
 
+    public String getOrderStatus(int orderId) {
+        String result = "";
+        try {
+            String sql = "{call getOrderStatus(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderId);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                result = rs.getString("status");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        switch (result) {
+            case "Pending":
+                return "pending";
+            case "Cancellation Requested":
+                return "cancel";
+            case "Cancelled":
+                return "cancelled";
+            case "Calcelation Denied, Shipping Pending":
+                return "denied";
+            case "Shipping":
+                return "shipping";
+            case "Completed":
+                return "completed";
+            default:
+                return null;
+        }
+    }
+
+    public boolean updateOrder(int id, String action) {
+        String current = getOrderStatus(id);
+
+        switch (action) {
+            case "cancel":
+                if (current.equals("pending")) {
+                    RequestOrderCancel(id);
+                    return true;
+                } else
+                    return false;
+            case "approve":
+                if (current.equals("cancel")) {
+                    ApproveOrderCancel(id);
+                    return true;
+                } else
+                    return false;
+            case "deny":
+                if (current.equals("cancel")) {
+                    DenyOrderCancel(id);
+                    return true;
+                } else
+                    return false;
+            case "ship":
+                if (current.equals("pending") || current.equals("denied")) {
+                    ShipOrder(id);
+                    return true;
+                } else
+                    return false;
+            case "complete":
+                if (current.equals("shipping")) {
+                    CompleteOrder(id);
+                    return true;
+                } else
+                    return false;
+        }
+        return false;
+    }
+
+    public void CompleteOrder(int orderId) {
+        try {
+            String sql = "{call CompleteOrder(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderId);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void ShipOrder(int orderId) {
+        try {
+            String sql = "{call ShipOrder(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderId);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void DenyOrderCancel(int orderId) {
+        try {
+            String sql = "{call DenyOrderCancel(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderId);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void ApproveOrderCancel(int orderId) {
+        try {
+            String sql = "{call ApproveOrderCancel(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderId);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void RequestOrderCancel(int orderId) {
+        try {
+            String sql = "{call RequestOrderCancel(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderId);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

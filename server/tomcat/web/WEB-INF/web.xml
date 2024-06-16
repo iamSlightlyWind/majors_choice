@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <!--Authentication-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -144,12 +146,20 @@
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/manage/order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ManageAccount</servlet-name>
         <url-pattern>/manage/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateUserProfile</servlet-name>
         <url-pattern>/manage/profile/user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserProfile</servlet-name>
+        <url-pattern>/manage/profile/staff</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CPUsServlet</servlet-name>
