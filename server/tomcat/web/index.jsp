@@ -270,7 +270,7 @@
                   </span>
                 </a>
                 <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                  <span>Feedback</span>
+                  <span>Manage Order</span>
                   <br />
                 </span>
                 <a href="/manage/profile?actor=staff">

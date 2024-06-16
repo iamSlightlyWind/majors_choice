@@ -10,21 +10,25 @@
         </head>
 
         <body>
-            <c:forEach var="Order" items="${OrderList}">
-                <p>ID: ${Order.id}</p>
-                <p>Status: ${Order.status}</p>
-                <ul>
-                    <c:forEach var="ProductCount" items="${Order.quantities}">
-                        <li>${ProductCount.count} x ${ProductCount.name}</li>
-                    </c:forEach>
-                </ul>
-                <p>Price: ${Order.cartTotal}</p>
+
+            <p>ID: ${Order.id}</p>
+            <p>Status: ${Order.status}</p>
+            <ul>
+                <c:forEach var="ProductCount" items="${Order.quantities}">
+                    <li>
+                        <p>${ProductCount.name}</p>
+                        <p>${ProductCount.count} x ${ProductCount.pricePer} = ${ProductCount.totalPrice}</p>
+                    </li>
+                </c:forEach>
+            </ul>
+            <p>Price: ${Order.cartTotal}</p>
+            <c:if test="${Order.status eq 'Pending'}">
                 <form action="/order" method="get">
                     <input type="hidden" name="id" value="${Order.id}" />
-                    <button type="submit" name="action" value="viewDetails">View Details</button>
+                    <button type="submit" name="action" value="cancelOrder">Cancel Order</button>
                 </form>
-                <br>
-            </c:forEach>
+            </c:if>
+            <br>
 
             <form action="/auth/login" method="post">
                 <input type="hidden" name="action" value="logout" />

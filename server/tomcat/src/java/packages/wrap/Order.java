@@ -2,6 +2,7 @@ package packages.wrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class Order {
     public ArrayList<Product> products = new ArrayList<Product>();
@@ -9,6 +10,10 @@ public class Order {
     public int id;
     public String date;
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
+
+    public String toString() {
+        return "Order ID: " + id + "\nStatus: " + status + "\nDate: " + date;
+    }
 
     public ArrayList<ProductCount> getQuantities() {
         return quantities;
@@ -28,16 +33,20 @@ public class Order {
         quantities.addAll(productCountMap.values());
     }
 
+    public String getCartTotal() {
+        double total = 0;
+        for (ProductCount productCount : quantities) {
+            total += productCount.count * productCount.pricePer;
+        }
+        return String.format(Locale.US, "%,.2f", total);
+    }
+
     public int getId() {
         return id;
     }
 
     public String getStatus() {
         return status;
-    }
-
-    public String toString() {
-        return "Order: " + id + "\n";
     }
 
     public Order(int id, String status) {
