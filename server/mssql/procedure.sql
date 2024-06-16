@@ -775,115 +775,134 @@ END;
 go
 
 create procedure getCPU
+	@inputname varchar(50)
 as
-begin
-    select
-        cpus.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        generation,
-        socket,
-        cores,
-        threads,
-        baseClock,
-        boostClock,
-        tdp
-    from products
-        join cpus on products.id = cpus.id
-end
+Begin
+	select
+		cpus.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		generation,
+		socket,
+		cores,
+		threads,
+		baseClock,
+		boostClock,
+		tdp
+	from products
+		join cpus on products.id = cpus.id
+	where 1=1
+		and (@inputname is null or name like '%'+@inputname+'%') 
+End;
 go
 
 create procedure getGPU
+	@inputname varchar(50)
 as
 begin
-    select
-        gpus.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        generation,
-        vram,
-        baseClock,
-        boostClock,
-        tdp
-    from products
-        join gpus on products.id = gpus.id
-end
+	select
+		gpus.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		generation,
+		vram,
+		baseClock,
+		boostClock,
+		tdp
+	from products
+		join gpus on products.id = gpus.id
+	where 1=1 
+		and (@inputname is null or name like '%'+@inputname+'%' )
+end;
 go
 
 create procedure getMotherboard
+	@inputname varchar(50)
 as
 begin
-    select
-        motherboards.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        socket,
-        chipset,
-        formFactor,
-        ramType,
-        maxRamSpeed,
-        ramSlots,
-        wifi
-    from products
-        join motherboards on products.id = motherboards.id
-end
+	select
+		motherboards.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		socket,
+		chipset,
+		formFactor,
+		ramType,
+		maxRamSpeed,
+		ramSlots,
+		wifi
+	from products
+		join motherboards on products.id = motherboards.id
+	where 1=1 
+		and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure getRAM
+	@inputname varchar(50)
 as
 begin
-    select
-        rams.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        generation,
-        capacity,
-        speed,
-        latency
-    from products
-        join rams on products.id = rams.id
-end
+		select
+			rams.id,
+			sellingPrice,
+			costPrice,
+			description,
+			name,
+			generation,
+			capacity,
+			speed,
+			latency
+		from products
+			join rams on products.id = rams.id
+		where 1=1 
+			and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure getSSD
+	@inputname varchar(50)
 as
 begin
-    select
-        ssds.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        interface,
-        capacity,
-        cache
-    from products
-        join ssds on products.id = ssds.id
-end
+		select
+			ssds.id,
+			sellingPrice,
+			costPrice,
+			description,
+			name,
+			interface,
+			capacity,
+			cache
+		from products
+			join ssds on products.id = ssds.id
+		where 1=1 
+			and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure getPSU
+	@inputname varchar(50)
 as
 begin
-    select
-        psus.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        wattage,
-        efficiency
-    from products
-        join psus on products.id = psus.id
-end
+
+	select
+		psus.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		wattage,
+		efficiency
+	from products
+		join psus on products.id = psus.id
+	where 1=1 
+		and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure deleteCart
@@ -1043,3 +1062,7 @@ BEGIN
         o.userId = @userId;
 END;
 go
+
+
+
+   

@@ -30,7 +30,7 @@ public class Motherboard extends Product {
     public Motherboard(int id) {
         super(id);
         Database db = new Database();
-        ArrayList<Motherboard> motherboards = db.getMotherboards();
+        ArrayList<Motherboard> motherboards = db.getMotherboards("");
 
         for (Motherboard motherboard : motherboards) {
             if (motherboard.id == id) {
@@ -49,4 +49,13 @@ public class Motherboard extends Product {
             }
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+    
 }

@@ -26,7 +26,7 @@ public class GPU extends Product {
     public GPU(int id) {
         super(id);
         Database db = new Database();
-        ArrayList<GPU> gpus = db.getGPUs();
+        ArrayList<GPU> gpus = db.getGPUs("");
 
         for (GPU gpu : gpus) {
             if (gpu.id == id) {
@@ -43,4 +43,13 @@ public class GPU extends Product {
             }
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+    
 }
