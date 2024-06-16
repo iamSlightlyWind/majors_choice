@@ -49,7 +49,7 @@ public class CPUServlet extends HttpServlet {
                 int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, null);
                 if (result != -1) {
                     int productId = db.getMaxProductId();
-                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
                     System.out.println("<< Image " + image);
 
                     int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image);
@@ -96,7 +96,7 @@ public class CPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = handleFileUpload(request, "image", Integer.toString(id));
+                String image = db.handleFileUpload(request, "image", Integer.toString(id));
 
                 System.out.println(">> Image: " + image);
 
@@ -117,27 +117,6 @@ public class CPUServlet extends HttpServlet {
             response.sendRedirect("cpus");
         }
     }
-
-    private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
-        try {
-            Part filePart = request.getPart(inputName);
-            String fileName = productID + ".png";
-
-            String uploadPath = request.getServletContext().getRealPath("");
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            filePart.write(uploadPath + File.separator + fileName);
-            return uploadPath + File.separator + fileName;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

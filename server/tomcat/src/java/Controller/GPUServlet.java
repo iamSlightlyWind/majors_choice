@@ -60,14 +60,12 @@ public class GPUServlet extends HttpServlet {
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
 
-                // Thêm sản phẩm và lấy productId
                 int result = db.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, null);
                 if (result != -1) {
                     int productId = db.getMaxProductId();
-                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
                     System.out.println("<< Image " + image);
 
-                    // Cập nhật sản phẩm với hình ảnh
                     int result1 = db.updateProductGPU(productId, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
                     response.sendRedirect("gpus?service=listAll");
                 } else {
@@ -82,12 +80,9 @@ public class GPUServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         } else if (service.equals("update")) {
-            // Kiểm tra xem có submit form hay chưa
             String submit = request.getParameter("submit");
             if (submit == null) {
-                // Lấy id từ request
                 int id = Integer.parseInt(request.getParameter("id"));
-                // Lấy thông tin CPU theo id để update
                 ArrayList<GPU> gpus = db.getGPUs("select * from gpus join products on gpus.id= products.id where gpus.id = " + id);
                 if (!gpus.isEmpty()) {
                     GPU gpu = gpus.get(0);
@@ -109,7 +104,7 @@ public class GPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = handleFileUpload(request, "image", Integer.toString(id));
+                String image = db.handleFileUpload(request, "image", Integer.toString(id));
 
                 System.out.println(">> Image: " + image);
 
@@ -128,26 +123,6 @@ public class GPUServlet extends HttpServlet {
             response.sendRedirect("gpus");
         }
 
-    }
-
-    private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
-        try {
-            Part filePart = request.getPart(inputName);
-            String fileName = productID + ".png";
-
-            String uploadPath = request.getServletContext().getRealPath("");
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            filePart.write(uploadPath + File.separator + fileName);
-            return uploadPath + File.separator + fileName;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     @Override

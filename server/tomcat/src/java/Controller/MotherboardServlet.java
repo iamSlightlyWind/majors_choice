@@ -65,7 +65,7 @@ public class MotherboardServlet extends HttpServlet {
 
                 if (result != -1) {
                     int productId = db.getMaxProductId();
-                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
                     System.out.println("<< Image " + image);
                     
                     int result1 = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
@@ -82,12 +82,9 @@ public class MotherboardServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         } else if (service.equals("update")) {
-            // Kiểm tra xem có submit form hay chưa
             String submit = request.getParameter("submit");
             if (submit == null) {
-                // Lấy id từ request
                 int id = Integer.parseInt(request.getParameter("id"));
-                // Lấy thông tin CPU theo id để update
                 ArrayList<Motherboard> motherboards = db.getMotherboards("select * from motherboards join products on motherboards.id= products.id where motherboards.id = " + id);
                 if (!motherboards.isEmpty()) {
                     Motherboard motherboard = motherboards.get(0);
@@ -111,7 +108,7 @@ public class MotherboardServlet extends HttpServlet {
                 int maxRamSpeed = Integer.parseInt(request.getParameter("maxRamSpeed"));
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
-                String image = handleFileUpload(request, "image", Integer.toString(id));
+                String image = db.handleFileUpload(request, "image", Integer.toString(id));
                 System.out.println("<< Image " + image);
 
                 int result = db.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
@@ -130,61 +127,18 @@ public class MotherboardServlet extends HttpServlet {
         }
 
     }
-        private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
-        try {
-            Part filePart = request.getPart(inputName);
-            String fileName = productID + ".png";
-
-            String uploadPath = request.getServletContext().getRealPath("");
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            filePart.write(uploadPath + File.separator + fileName);
-            return uploadPath + File.separator + fileName;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

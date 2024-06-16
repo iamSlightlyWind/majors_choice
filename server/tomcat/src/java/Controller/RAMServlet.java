@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package Controller;
 
 import database.Database;
@@ -19,21 +14,19 @@ import java.io.File;
 import java.util.ArrayList;
 import packages.RAM;
 
-/**
- *
- * @author PC
- */
 @MultipartConfig
 public class RAMServlet extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String service = request.getParameter("service");
         if (service == null) {
@@ -61,7 +54,7 @@ public class RAMServlet extends HttpServlet {
 
                 if (result != -1) {
                     int productId = db.getMaxProductId();
-                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, image);
                     response.sendRedirect("rams?service=listAll");
                 } else {
@@ -76,12 +69,9 @@ public class RAMServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         } else if (service.equals("update")) {
-            // Kiểm tra xem có submit form hay chưa
             String submit = request.getParameter("submit");
             if (submit == null) {
-                // Lấy id từ request
                 int id = Integer.parseInt(request.getParameter("id"));
-                // Lấy thông tin RAM theo id để update
                 ArrayList<RAM> rams = db.getRAMs("select * from rams join products on rams.id= products.id where rams.id = " + id);
                 if (!rams.isEmpty()) {
                     RAM ram = rams.get(0);
@@ -102,7 +92,7 @@ public class RAMServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
-                String image = handleFileUpload(request, "image", Integer.toString(id));
+                String image = db.handleFileUpload(request, "image", Integer.toString(id));
 
                 int result = db.updateProductRAM(id, sellingPrice, costPrice, name, generation, capacity, speed, latency, image);
                 if (result == 1) {
@@ -119,61 +109,22 @@ public class RAMServlet extends HttpServlet {
             response.sendRedirect("rams");
         }
     }
-           private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
-        try {
-            Part filePart = request.getPart(inputName);
-            String fileName = productID + ".png";
 
-            String uploadPath = request.getServletContext().getRealPath("");
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            filePart.write(uploadPath + File.separator + fileName);
-            return uploadPath + File.separator + fileName;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
-    } 
-
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

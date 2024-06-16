@@ -60,7 +60,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
 
                 if (result != -1) {
                     int productId = db.getMaxProductId();
-                    String image = handleFileUpload(request, "image", String.valueOf(productId));
+                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = db.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache, image);
                     response.sendRedirect("ssds?service=listAll");
                 } else {
@@ -75,12 +75,9 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 dispatcher.forward(request, response);
             }
         } else if (service.equals("update")) {
-            // Kiểm tra xem có submit form hay chưa
             String submit = request.getParameter("submit");
             if (submit == null) {
-                // Lấy id từ request
                 int id = Integer.parseInt(request.getParameter("id"));
-                // Lấy thông tin SSD theo id để update
                 ArrayList<SSD> ssds = db.getSSDs("select * from ssds join products on ssds.id= products.id where ssds.id = " + id);
                 if (!ssds.isEmpty()) {
                     SSD ssd = ssds.get(0);
@@ -100,7 +97,7 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
                 String connectionInterface = request.getParameter("interface");
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
-                String image = handleFileUpload(request, "image", Integer.toString(id));
+                String image = db.handleFileUpload(request, "image", Integer.toString(id));
 
                 int result = db.updateProductSSD(id, sellingPrice, costPrice, name, connectionInterface, capacity, cache, image);
                 if (result == 1) {
@@ -117,59 +114,19 @@ protected void processRequest(HttpServletRequest request, HttpServletResponse re
             response.sendRedirect("ssds");
         }
     }
-        private String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
-        try {
-            Part filePart = request.getPart(inputName);
-            String fileName = productID + ".png";
-
-            String uploadPath = request.getServletContext().getRealPath("");
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            filePart.write(uploadPath + File.separator + fileName);
-            return uploadPath + File.separator + fileName;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
     } 
-
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /** 
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
