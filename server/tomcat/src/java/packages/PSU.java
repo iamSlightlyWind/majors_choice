@@ -20,7 +20,7 @@ public class PSU extends Product {
     public PSU(int id) {
         super(id);
         Database db = new Database();
-        ArrayList<PSU> psus = db.getPSUs();
+        ArrayList<PSU> psus = db.getPSUs("");
 
         for (PSU psu : psus) {
             if (psu.id == id) {
@@ -34,4 +34,13 @@ public class PSU extends Product {
             }
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+    
 }

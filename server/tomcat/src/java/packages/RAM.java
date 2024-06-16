@@ -24,7 +24,7 @@ public class RAM extends Product {
     public RAM(int id) {
         super(id);
         Database db = new Database();
-        ArrayList<RAM> rams = db.getRAMs();
+        ArrayList<RAM> rams = db.getRAMs("");
 
         for (RAM ram : rams) {
             if (ram.id == id) {
@@ -40,4 +40,13 @@ public class RAM extends Product {
             }
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+    
 }

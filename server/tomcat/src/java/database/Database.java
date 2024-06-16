@@ -76,10 +76,11 @@ public class Database {
         return false;
     }
 
-    public ArrayList<CPU> getCPUs() {
+    public ArrayList<CPU> getCPUs(String inputName) {
         try {
-            String sql = "{call getCPU()}";
+            String sql = "{call getCPU(?)}";
             CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<CPU> cpus = new ArrayList<>();
             while (resultSet.next()) {
@@ -105,10 +106,11 @@ public class Database {
         return null;
     }
 
-    public ArrayList<GPU> getGPUs() {
+    public ArrayList<GPU> getGPUs(String inputName) {
         try {
-            String sql = "{call getGPU()}";
+            String sql = "{call getGPU(?)}";
             CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<GPU> gpus = new ArrayList<>();
             while (resultSet.next()) {
@@ -133,10 +135,11 @@ public class Database {
         return null;
     }
 
-    public ArrayList<RAM> getRAMs() {
+    public ArrayList<RAM> getRAMs(String inputName) {
         try {
-            String sql = "{call getRAM()}";
+            String sql = "{call getRAM(?)}";
             CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<RAM> rams = new ArrayList<>();
             while (resultSet.next()) {
@@ -158,10 +161,11 @@ public class Database {
         return null;
     }
 
-    public ArrayList<Motherboard> getMotherboards() {
+    public ArrayList<Motherboard> getMotherboards(String inputName) {
         try {
-            String sql = "{call getMotherboard()}";
+            String sql = "{call getMotherboard(?)}";
             CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<Motherboard> motherboards = new ArrayList<>();
             while (resultSet.next()) {
@@ -187,10 +191,11 @@ public class Database {
         return null;
     }
 
-    public ArrayList<SSD> getSSDs() {
+    public ArrayList<SSD> getSSDs(String inputName) {
         try {
-            String sql = "{call getSSD()}";
+            String sql = "{call getSSD(?)}";
             CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<SSD> ssds = new ArrayList<>();
             while (resultSet.next()) {
@@ -211,10 +216,11 @@ public class Database {
         return null;
     }
 
-    public ArrayList<PSU> getPSUs() {
+    public ArrayList<PSU> getPSUs(String inputName) {
         try {
-            String sql = "{call getPSU()}";
+            String sql = "{call getPSU(?)}";
             CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PSU> psus = new ArrayList<>();
             while (resultSet.next()) {
@@ -320,12 +326,12 @@ public class Database {
     }
 
     public ArrayList<Product> getCart(int userID) {
-        ArrayList<CPU> cpus = getCPUs();
-        ArrayList<GPU> gpus = getGPUs();
-        ArrayList<Motherboard> motherboards = getMotherboards();
-        ArrayList<RAM> rams = getRAMs();
-        ArrayList<SSD> ssds = getSSDs();
-        ArrayList<PSU> psus = getPSUs();
+        ArrayList<CPU> cpus = getCPUs("");
+        ArrayList<GPU> gpus = getGPUs("");
+        ArrayList<Motherboard> motherboards = getMotherboards("");
+        ArrayList<RAM> rams = getRAMs("");
+        ArrayList<SSD> ssds = getSSDs("");
+        ArrayList<PSU> psus = getPSUs("");
         ArrayList<Case> cases = getCases();
         ArrayList<Product> products = new ArrayList<>();
 
