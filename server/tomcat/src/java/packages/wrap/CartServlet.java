@@ -29,6 +29,7 @@ public class CartServlet extends HttpServlet {
         if (action == null || action.equals("viewCart")) {
             request.setAttribute("user", currentUser.fullName);
             request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
+            currentUser.cart.updateQuantity();
             request.setAttribute("cartPrice", currentUser.cart.totalPrice);
             request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
         } else if (action.equals("addItem")) {

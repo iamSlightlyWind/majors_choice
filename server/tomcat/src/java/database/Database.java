@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import main.User;
 import packages.*;
 import packages.wrap.*;
@@ -439,6 +438,9 @@ public class Database {
                         order.products
                                 .add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
                                         resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
+                        order.user = new User();
+                        order.user.id = resultSet.getInt("userId") + "";
+                        order.user.retrieveData("user");
                         break;
                     }
                 }
@@ -545,7 +547,7 @@ public class Database {
                 return "cancel";
             case "Cancelled":
                 return "cancelled";
-            case "Calcelation Denied, Shipping Pending":
+            case "Cancellation Denied, Shipping Pending":
                 return "denied";
             case "Shipping":
                 return "shipping";
@@ -558,6 +560,7 @@ public class Database {
 
     public boolean updateOrder(int id, String action) {
         String current = getOrderStatus(id);
+        System.out.println(">> Status: " + current);
 
         switch (action) {
             case "cancel":

@@ -11,7 +11,13 @@
 
         <body>
             <c:forEach var="Order" items="${OrderList}">
-                <p>ID: ${Order.id}</p>
+                <p>ID: ${Order.id}
+                    <c:choose>
+                        <c:when test="${managing}">
+                            - ${Order.user.fullName}
+                        </c:when>
+                    </c:choose>
+                </p>
                 <p>Status: ${Order.status}</p>
                 <ul>
                     <c:forEach var="ProductCount" items="${Order.quantities}">

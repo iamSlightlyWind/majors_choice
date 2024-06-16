@@ -2,7 +2,7 @@
 package packages.wrap;
 
 import java.io.IOException;
-
+import java.util.ArrayList;
 import database.Database;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -38,7 +38,10 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
         switch (action) {
             case "viewDetails":
-                viewOrderDetails(request, response);
+                staffViewOrderDetails(request, response);
+                break;
+            case "cancel":
+                staffCancelOrder(request, response);
                 break;
             case "deny":
                 denyRequest(request, response);
@@ -49,57 +52,74 @@ public class OrderServlet extends HttpServlet {
             case "ship":
                 shipOrder(request, response);
                 break;
-            case "viewOnGoing":
-                staffViewCompletedOrders(request, response);
+            case "viewCompleted":
+                staffViewOrders(request, response, -1);
                 break;
             default:
-                staffViewOnGoingOrders(request, response);
+                staffViewOrders(request, response, 0);
                 break;
         }
+    }
+
+    protected void staffViewOrderDetails(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ArrayList<Order> orders = db.getOrders(-2);
+        int orderId = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("managing", true);
+
+        for (Order order : orders) {
+            if (order.id == orderId) {
+                request.setAttribute("Order", order);
+                request.getRequestDispatcher("/test/orderDetails.jsp").forward(request, response);
+                return;
+            }
+        }
+    }
+
+    protected void staffCancelOrder(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String orderID = request.getParameter("id");
+        db.updateOrder(Integer.parseInt(orderID), "cancel");
+        db.updateOrder(Integer.parseInt(orderID), "approve");
+        response.sendRedirect("/manage/order");
+    }
+
+    protected void staffViewOrders(HttpServletRequest request, HttpServletResponse response, int list)
+            throws ServletException, IOException {
+        ArrayList<Order> orders = db.getOrders(list);
+        request.setAttribute("managing", true);
+        request.setAttribute("OrderList", orders);
+        request.getRequestDispatcher("/test/order.jsp").forward(request, response);
     }
 
     protected void shipOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
-        System.out.println(db.updateOrder(Integer.parseInt(orderID), "ship"));
-        
+        db.updateOrder(Integer.parseInt(orderID), "ship");
+        response.sendRedirect("/manage/order");
     }
 
     protected void approveRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
-        System.out.println(db.updateOrder(Integer.parseInt(orderID), "approve"));
+        db.updateOrder(Integer.parseInt(orderID), "approve");
+        response.sendRedirect("/manage/order");
     }
 
     protected void denyRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
-        System.out.println(db.updateOrder(Integer.parseInt(orderID), "deny"));
-    }
-
-    protected void staffViewOnGoingOrders(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        User currentUser = (User) request.getSession().getAttribute("userObject");
-        currentUser.orders = db.getOrders(0);
-        request.setAttribute("OrderList", currentUser.orders);
-        request.getRequestDispatcher("/test/order.jsp").forward(request, response);
-    }
-
-    protected void staffViewCompletedOrders(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        User currentUser = (User) request.getSession().getAttribute("userObject");
-        currentUser.orders = db.getOrders(-1);
-        request.setAttribute("OrderList", currentUser.orders);
-        request.getRequestDispatcher("/test/order.jsp").forward(request, response);
+        db.updateOrder(Integer.parseInt(orderID), "deny");
+        response.sendRedirect("/manage/order");
     }
 
     protected void doUser(HttpServletRequest request, HttpServletResponse response, String action)
             throws ServletException, IOException {
         switch (action) {
             case "viewDetails":
-                viewOrderDetails(request, response);
+                userViewOrderDetails(request, response);
                 break;
-            case "cancelOrder":
+            case "cancel":
                 cancelOrder(request, response);
                 break;
             default:
@@ -108,17 +128,7 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
-    protected void cancelOrder(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        User currentUser = (User) request.getSession().getAttribute("userObject");
-        int orderId = Integer.parseInt(request.getParameter("id"));
-
-        db.updateOrder(orderId, "cancel");
-        currentUser.getOrders();
-        response.sendRedirect("/order");
-    }
-
-    protected void viewOrderDetails(HttpServletRequest request, HttpServletResponse response)
+    protected void userViewOrderDetails(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User currentUser = (User) request.getSession().getAttribute("userObject");
         int orderId = Integer.parseInt(request.getParameter("id"));
@@ -131,6 +141,16 @@ public class OrderServlet extends HttpServlet {
                 return;
             }
         }
+    }
+
+    protected void cancelOrder(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User currentUser = (User) request.getSession().getAttribute("userObject");
+        int orderId = Integer.parseInt(request.getParameter("id"));
+
+        db.updateOrder(orderId, "cancel");
+        currentUser.getOrders();
+        response.sendRedirect("/order");
     }
 
     protected void userViewAllOrders(HttpServletRequest request, HttpServletResponse response)
