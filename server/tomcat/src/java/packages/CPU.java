@@ -30,7 +30,7 @@ public class CPU extends Product {
     public CPU(int id) {
         super(id);
         Database db = new Database();
-        ArrayList<CPU> cpus = db.getCPUs();
+        ArrayList<CPU> cpus = db.getCPUs("");
 
         for (CPU cpu : cpus) {
             if (cpu.id == id) {
@@ -49,4 +49,13 @@ public class CPU extends Product {
             }
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSellingPrice() {
+        return sellingPrice;
+    }
+    
 }

@@ -18,6 +18,11 @@
                         <li>${ProductCount.count} x ${ProductCount.name}</li>
                     </c:forEach>
                 </ul>
+                <p>Price: ${Order.cartTotal}</p>
+                <form action="/order" method="get">
+                    <input type="hidden" name="id" value="${Order.id}" />
+                    <button type="submit" name="action" value="viewDetails">View Details</button>
+                </form>
                 <br>
             </c:forEach>
 

@@ -16,12 +16,12 @@ public class Test extends HttpServlet {
             throws ServletException, IOException {
         Database db = new Database();
 
-        ArrayList<CPU> cpus = db.getCPUs();
-        ArrayList<GPU> gpus = db.getGPUs();
-        ArrayList<RAM> rams = db.getRAMs();
-        ArrayList<Motherboard> motherboards = db.getMotherboards();
-        ArrayList<SSD> ssds = db.getSSDs();
-        ArrayList<PSU> psus = db.getPSUs();
+        ArrayList<CPU> cpus = db.getCPUs("");
+        ArrayList<GPU> gpus = db.getGPUs("");
+        ArrayList<RAM> rams = db.getRAMs("");
+        ArrayList<Motherboard> motherboards = db.getMotherboards("");
+        ArrayList<SSD> ssds = db.getSSDs("");
+        ArrayList<PSU> psus = db.getPSUs("");
 
         request.setAttribute("username", ((User) request.getSession().getAttribute("userObject")).fullName);
         request.setAttribute("cpus", cpus);

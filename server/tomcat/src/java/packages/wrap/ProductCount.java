@@ -9,6 +9,11 @@ public class ProductCount {
     public double pricePer;
     public String totalPrice;
 
+    public String toString() {
+        return "Product ID: " + id + "\nProduct Name: " + name + "\nPrice Per: " + pricePer + "\nCount: " + count
+                + "\nTotal Price: " + totalPrice;
+    }
+
     public ProductCount(int id, int count, String name, double pricePer) {
         this.id = id;
         this.count = count;

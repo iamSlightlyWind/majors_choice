@@ -607,115 +607,134 @@ END;
 go
 
 create procedure getCPU
+	@inputname varchar(50)
 as
-begin
-    select
-        cpus.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        generation,
-        socket,
-        cores,
-        threads,
-        baseClock,
-        boostClock,
-        tdp
-    from products
-        join cpus on products.id = cpus.id
-end
+Begin
+	select
+		cpus.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		generation,
+		socket,
+		cores,
+		threads,
+		baseClock,
+		boostClock,
+		tdp
+	from products
+		join cpus on products.id = cpus.id
+	where 1=1
+		and (@inputname is null or name like '%'+@inputname+'%') 
+End;
 go
 
 create procedure getGPU
+	@inputname varchar(50)
 as
 begin
-    select
-        gpus.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        generation,
-        vram,
-        baseClock,
-        boostClock,
-        tdp
-    from products
-        join gpus on products.id = gpus.id
-end
+	select
+		gpus.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		generation,
+		vram,
+		baseClock,
+		boostClock,
+		tdp
+	from products
+		join gpus on products.id = gpus.id
+	where 1=1 
+		and (@inputname is null or name like '%'+@inputname+'%' )
+end;
 go
 
 create procedure getMotherboard
+	@inputname varchar(50)
 as
 begin
-    select
-        motherboards.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        socket,
-        chipset,
-        formFactor,
-        ramType,
-        maxRamSpeed,
-        ramSlots,
-        wifi
-    from products
-        join motherboards on products.id = motherboards.id
-end
+	select
+		motherboards.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		socket,
+		chipset,
+		formFactor,
+		ramType,
+		maxRamSpeed,
+		ramSlots,
+		wifi
+	from products
+		join motherboards on products.id = motherboards.id
+	where 1=1 
+		and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure getRAM
+	@inputname varchar(50)
 as
 begin
-    select
-        rams.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        generation,
-        capacity,
-        speed,
-        latency
-    from products
-        join rams on products.id = rams.id
-end
+		select
+			rams.id,
+			sellingPrice,
+			costPrice,
+			description,
+			name,
+			generation,
+			capacity,
+			speed,
+			latency
+		from products
+			join rams on products.id = rams.id
+		where 1=1 
+			and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure getSSD
+	@inputname varchar(50)
 as
 begin
-    select
-        ssds.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        interface,
-        capacity,
-        cache
-    from products
-        join ssds on products.id = ssds.id
-end
+		select
+			ssds.id,
+			sellingPrice,
+			costPrice,
+			description,
+			name,
+			interface,
+			capacity,
+			cache
+		from products
+			join ssds on products.id = ssds.id
+		where 1=1 
+			and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure getPSU
+	@inputname varchar(50)
 as
 begin
-    select
-        psus.id,
-        sellingPrice,
-        costPrice,
-        description,
-        name,
-        wattage,
-        efficiency
-    from products
-        join psus on products.id = psus.id
-end
+
+	select
+		psus.id,
+		sellingPrice,
+		costPrice,
+		description,
+		name,
+		wattage,
+		efficiency
+	from products
+		join psus on products.id = psus.id
+	where 1=1 
+		and (@inputname is null or  name like '%'+@inputname+'%')
+end;
 go
 
 create procedure deleteCart
@@ -872,7 +891,9 @@ BEGIN
         LEFT JOIN psus ON o.productId = psus.id
         LEFT JOIN cases ON o.productId = cases.id
     WHERE 
-        o.userId = @userId;
+        (@userId = 0 AND o.status NOT IN ('Shipping', 'Completed', 'Cancelled'))
+        OR (@userId = -1 AND o.status IN ('Shipping', 'Completed', 'Cancelled'))
+        OR (@userId <> 0 AND @userId <> -1 AND o.userId = @userId);
 END;
 go
 
@@ -931,3 +952,64 @@ BEGIN
     END
 END;
 GO
+
+CREATE PROCEDURE RequestOrderCancel
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Cancellation Requested'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE ApproveOrderCancel
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Cancelled'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE DenyOrderCancel
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Calcelation Denied, Shipping Pending'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE ShipOrder
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Shipping'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE CompleteOrder
+    @OrderId INT
+AS
+BEGIN
+    UPDATE orders
+    SET status = 'Completed'
+    WHERE id = @OrderId;
+END;
+go
+
+CREATE PROCEDURE getOrderStatus
+    @orderId INT
+AS
+BEGIN
+    SELECT TOP 1
+        status
+    FROM orders
+    WHERE id = @orderId;
+END;
+go
