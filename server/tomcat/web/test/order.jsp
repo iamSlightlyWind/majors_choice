@@ -9,6 +9,15 @@
 
         </head>
 
+        <c:choose>
+            <c:when test="${managing}">
+                <form action="/manage/order" method="get">
+                    <button type="submit" name="action" value="viewCompleted">Completed Orders</button>
+                    <button type="submit" name="action" value="">Ongoing Orders</button>
+                </form>
+            </c:when>
+        </c:choose>
+
         <body>
             <c:forEach var="Order" items="${OrderList}">
                 <p>ID: ${Order.id}
