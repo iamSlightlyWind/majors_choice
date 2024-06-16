@@ -153,6 +153,7 @@
 
         <div class="view-cart-container">
           <div class="navbar-container navbar-root-class-name20">
+            <div class="navbar-container1"></div>
             <header class="navbar-container2">
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
@@ -179,7 +180,7 @@
                       </span>
                       <a href="/order">
                         <span class="navbar-manager-order thq-body-small thq-link">
-                          Manager Order
+                          Manage Order
                         </span>
                       </a>
                     </div>
@@ -194,7 +195,7 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                       </path>
                     </svg>
-                    <a href="/auth/login.jsp" class="navbar-account thq-button-filled">
+                    <a href="/profile?action=view" class="navbar-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -244,7 +245,7 @@
                         <span>Who we are</span>
                       </span>
                       <span class="thq-body-small thq-link">
-                        <span>Manager Order</span>
+                        <span>Manage Order</span>
                       </span>
                     </nav>
                   </div>
@@ -258,18 +259,22 @@
             <div class="menu-function-container menu-function-root-class-name22">
               <div class="menu-function-manager">
                 <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                  <span>Manager WareHouse</span>
+                  <span>Manage WareHouse</span>
                 </span>
-                <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                  Manager Customer
-                </span>
+                <a href="/manage/profile/user">
+                  <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                    Manage Customer
+                  </span>
+                </a>
                 <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
                   <span>Feedback</span>
                   <br />
                 </span>
-                <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                  Manager Staff
-                </span>
+                <a href="/manage/profile/staff">
+                  <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                    Manage Staff
+                  </span>
+                </a>
                 <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
                   Financial Reports
                 </span>

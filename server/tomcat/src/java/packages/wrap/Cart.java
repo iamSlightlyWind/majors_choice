@@ -78,7 +78,6 @@ public class Cart {
     public Cart(String userID, Database db) {
         this.userID = userID;
         this.db = db;
-        System.out.println("ID: " + userID);
         products = db.getCart(Integer.parseInt(userID));
         updateQuantity();
     }

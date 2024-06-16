@@ -22,8 +22,6 @@ public class LoginGoogleServlet extends HttpServlet {
 
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
 
-        System.out.println("action: " + action);
-
         if (action.equals("Update Information")) {
             UserGoogle user = new UserGoogle();
             user.username = request.getParameter("email");
@@ -33,7 +31,7 @@ public class LoginGoogleServlet extends HttpServlet {
             user.dateOfBirth = request.getParameter("dateOfBirth");
 
             request.getSession().setAttribute("table", "user");
-            user.updateInformation((String) request.getSession().getAttribute("table"), true);
+            //user.updateInformation((String) request.getSession().getAttribute("table"), true);
             request.getSession().setAttribute("userObject", user);
             request.getRequestDispatcher("/").forward(request, response);
         } else {
