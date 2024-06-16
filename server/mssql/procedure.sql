@@ -1,50 +1,57 @@
 use major
 go
 
-create procedure login
-    @username varchar(25),
-    @password varchar(100),
-    @result int output
-as
-begin
-    if exists (SELECT 1
+CREATE PROCEDURE login
+    @username VARCHAR(25),
+    @password VARCHAR(100),
+    @result INT OUTPUT
+AS
+BEGIN
+    IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and googleUser = 1)
-    begin
-        set @result = -2
+    WHERE username = @username AND googleUser = 1)
+    BEGIN
+        SET @result = -2
     -- login failed, cannot login google account with normal login
-    end
-    else if exists (SELECT 1
+    END
+    ELSE IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and password = @password and active = 1)
-    begin
-        set @result = 1
+    WHERE username = @username AND password = @password AND active = 1)
+    BEGIN
+        SET @result = 1
     -- login successful
-    end
-    else if exists (SELECT 1
+    END
+    ELSE IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and backupPassword = @password and active = 1)
-    begin
-        set @result = 1
+    WHERE username = @username AND password = @password AND active = -1)
+    BEGIN
+        SET @result = -2
+    -- user account deactivated by manager
+    END
+    ELSE IF EXISTS (SELECT 1
+    FROM users
+    WHERE username = @username AND backupPassword = @password AND active = 1)
+    BEGIN
+        SET @result = 1
         -- login successful with backup password, now replace password with backup password and set backup password to null
-        update users
-        set password = backupPassword,
-        backupPassword = null
-        where username = @username
-    end
-    else if exists (SELECT 1
+        UPDATE users
+        SET password = backupPassword,
+        backupPassword = NULL
+        WHERE username = @username
+    END
+    ELSE IF EXISTS (SELECT 1
     FROM users
-    WHERE username = @username and password = @password and active = 0)
-    begin
-        set @result = -1
+    WHERE username = @username AND active = 0)
+    BEGIN
+        SET @result = -1
     -- user not active
-    end
-    else
-    begin
-        set @result = 0
+    END
+    ELSE
+    BEGIN
+        SET @result = 0
     -- login failed
-    end
-end;
+    END
+END;
 GO
 
 create procedure googleLogin
@@ -138,47 +145,6 @@ begin
 end;    
 go
 
-create procedure userStatus
-    -- check the validation status of the user
-    @username varchar(25),
-    @result int output
--- -1: deleted, 0: not activated, 1: active, -2: not found
-as
-begin
-    if exists (SELECT 1
-    FROM users
-    WHERE username = @username)
-    begin
-        if exists (SELECT 1
-        FROM users
-        WHERE username = @username and active = 1)
-        begin
-            set @result = 1
-        -- active
-        end
-        else if exists (SELECT 1
-        FROM users
-        WHERE username = @username and active = 0)
-        begin
-            set @result = 0
-        -- not activated
-        end
-        else if exists (SELECT 1
-        FROM users
-        WHERE username = @username and active = -1)
-        begin
-            set @result = -1
-        -- deleted
-        end
-    end
-    else
-    begin
-        set @result = -2
-    -- not found
-    end
-end;
-GO
-
 create procedure activate
     -- if confirm code var = user confirm code, update active to 1 if active = 0
     @username varchar(25),
@@ -204,7 +170,6 @@ end;
 go
 
 CREATE PROCEDURE register
-    @tablename varchar(25),
     @username varchar(25),
     @password varchar(100),
     @fullname nvarchar(50),
@@ -216,83 +181,51 @@ CREATE PROCEDURE register
     @result int OUTPUT
 AS
 BEGIN
-    -- User registration
-    IF @tablename = 'user' OR @tablename IS NULL
     BEGIN
         -- Check if username exists
-        IF EXISTS (SELECT 1 FROM users WHERE username = @username)
+        IF EXISTS (SELECT 1
+        FROM users
+        WHERE username = @username)
         BEGIN
             SET @result = -1
-            -- Username already exists
+        -- Username already exists
         END
         -- Check if email exists
-        ELSE IF EXISTS (SELECT 1 FROM userDetails WHERE email = @email)
+        ELSE IF EXISTS (SELECT 1
+        FROM userDetails
+        WHERE email = @email)
         BEGIN
             SET @result = -2
-            -- Email already exists
+        -- Email already exists
         END
         -- Check if phone number exists
-        ELSE IF EXISTS (SELECT 1 FROM userDetails WHERE phoneNumber = @phoneNumber)
+        ELSE IF EXISTS (SELECT 1
+        FROM userDetails
+        WHERE phoneNumber = @phoneNumber)
         BEGIN
             SET @result = -3
-            -- Phone number already exists
+        -- Phone number already exists
         END
         ELSE
         BEGIN
             -- Insert into users table
-            INSERT INTO users (username, password, confirmCode)
-            VALUES (@username, @password, @confirmCode)
+            INSERT INTO users
+                (username, password, confirmCode)
+            VALUES
+                (@username, @password, @confirmCode)
 
             -- Get the last inserted ID
             DECLARE @uid INT
             SET @uid = SCOPE_IDENTITY()
 
             -- Insert into userDetails table
-            INSERT INTO userDetails (id, fullname, email, phoneNumber, address, dateOfBirth)
-            VALUES (@uid, @fullname, @email, @phoneNumber, @address, @dateOfBirth)
+            INSERT INTO userDetails
+                (id, fullname, email, phoneNumber, address, dateOfBirth)
+            VALUES
+                (@uid, @fullname, @email, @phoneNumber, @address, @dateOfBirth)
 
             SET @result = 1
-            -- Registration successful
-        END
-    END
-
-    -- Staff registration
-    IF @tablename = 'staff'
-    BEGIN
-        -- Check if username exists
-        IF EXISTS (SELECT 1 FROM staffs WHERE username = @username)
-        BEGIN
-            SET @result = -1
-            -- Username already exists
-        END
-        -- Check if email exists
-        ELSE IF EXISTS (SELECT 1 FROM staffDetails WHERE email = @email)
-        BEGIN
-            SET @result = -2
-            -- Email already exists
-        END
-        -- Check if phone number exists
-        ELSE IF EXISTS (SELECT 1 FROM staffDetails WHERE phoneNumber = @phoneNumber)
-        BEGIN
-            SET @result = -3
-            -- Phone number already exists
-        END
-        ELSE
-        BEGIN
-            -- Insert into staffs table
-            INSERT INTO staffs (username, password, possition, active)
-            VALUES (@username, @password, 0, 1)
-
-            -- Get the last inserted ID
-            DECLARE @sid INT
-            SET @sid = SCOPE_IDENTITY()
-
-            -- Insert into staffDetails table
-            INSERT INTO staffDetails (id, fullname, email, phoneNumber, address, dateOfBirth)
-            VALUES (@sid, @fullname, @email, @phoneNumber, @address, @dateOfBirth)
-
-            SET @result = 1
-            -- Registration successful
+        -- Registration successful
         END
     END
 END;
@@ -524,67 +457,38 @@ BEGIN
 END;
 go
 
-create procedure loginEmployee
-	@username varchar(25),
-    @password varchar(25),
-	@result int output
-as
-begin
-    if exists (select 1 from staffs where username = @username and password = @password and possition = 1 and active = 1)
-	begin
-		set @result = 1
-		--login with the Manager role
-	end
-	else if exists (select 1 from staffs where username = @username and password = @password and possition = 0 and active = 1)
-	begin
-		set @result = 0
-		--login with staff role
-	end
-	else 
-	begin
-		set @result = -1
-		--login failed. Staff or Manager has been removed
-	end
-end;
-
-go
-
-CREATE PROCEDURE GetUserDetailsByUsername
-    @inputUsername varchar(25),
-	@tableName varchar(25)
+CREATE PROCEDURE loginEmployee
+    @username VARCHAR(25),
+    @password VARCHAR(25),
+    @result INT OUTPUT
 AS
 BEGIN
-    DECLARE @userId int;
-    if(@tableName='users')
-	begin
-	SELECT @userId = id FROM users WHERE username = @inputUsername
-
-    SELECT users.username,
-        users.password,
-        userDetails.fullname AS name,
-        userDetails.email,
-        userDetails.phoneNumber AS phone,
-        userDetails.address,
-        userDetails.dateOfBirth AS dob
-    FROM users
-        JOIN userDetails ON users.id = userDetails.id
-    WHERE users.id = @userId
-	end
-	else if(@tableName='staffs' or @tableName='managers')
-	begin
-		select @userId = id from staffs where username = @inputUsername
-
-	    SELECT staffs.username,
-        staffs.password,
-        staffDetails.fullname AS name,
-        staffDetails.email,
-        staffDetails.phoneNumber AS phone,
-        staffDetails.address,
-        staffDetails.dateOfBirth AS dob
+    IF EXISTS (SELECT 1
     FROM staffs
-        JOIN staffDetails ON staffs.id = staffDetails.id
-    WHERE staffs.id = @userId
-	end
+    WHERE username = @username AND password = @password AND possition = 1 AND active = 1)
+    BEGIN
+        SET @result = 1
+    -- login with the Manager role
+    END
+    ELSE IF EXISTS (SELECT 1
+    FROM staffs
+    WHERE username = @username AND password = @password AND possition = 0 AND active = 1)
+    BEGIN
+        SET @result = 0
+    -- login with staff role
+    END
+    ELSE IF EXISTS (SELECT 1
+    FROM staffs
+    WHERE username = @username AND password = @password AND active = 0)
+    BEGIN
+        SET @result = -1
+    -- login failed. Staff or Manager has been deactivated
+    END
+    ELSE 
+    BEGIN
+        SET @result = -2
+    -- login failed. Staff or Manager not found
+    END
 END;
 go
 
@@ -596,23 +500,17 @@ BEGIN
 
     IF @tablename = 'staffs'
     BEGIN
-        SET @sql = N'SELECT s.id, s.username, s.password, s.active, sd.dateJoined 
-                    FROM ' + QUOTENAME(@tablename) + ' s 
-                    INNER JOIN staffDetails sd ON s.id = sd.id 
-                    WHERE s.possition = 0';
+        SET @sql = 'select username from staffs where possition = 0';
     END
     ELSE IF @tablename = 'users'
     BEGIN
-        SET @sql = N'SELECT u.id, u.username, u.password, u.active, ud.dateJoined 
-                    FROM ' + QUOTENAME(@tablename) + ' u INNER JOIN userDetails ud ON u.id = ud.id';
+        SET @sql = 'select username from users';
     END
-    
     EXEC sp_executesql @sql;
 END;
 go
 
 CREATE PROCEDURE updateUserInformation
-    @tablename varchar(25),
     @username varchar(25),
     @password varchar(100),
     @fullname nvarchar(50),
@@ -620,7 +518,7 @@ CREATE PROCEDURE updateUserInformation
     @phoneNumber varchar(15),
     @address nvarchar(100),
     @dateOfBirth date,
-	@active int,
+    @active int,
     @result int output
 AS
 BEGIN
@@ -629,148 +527,82 @@ BEGIN
     from users
     where username = @username)
 
-    IF @tablename = 'users'
+    -- Get user ID
+    SELECT @id = id
+    FROM users
+    WHERE username = @username;
+
+    -- Check email existence
+    IF @email IS NOT NULL AND EXISTS (SELECT 1
+        FROM userDetails
+        WHERE email = @email AND id <> @id)
     BEGIN
-        -- Get user ID
-        SELECT @id = id FROM users WHERE username = @username;
-        
-        -- Check email existence
-        IF @email IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE email = @email AND id <> @id)
-        BEGIN
-            SET @result = -1; -- Email already exists
-            RETURN;
-        END
-        
-        -- Check phone number existence
-        IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1 FROM userDetails WHERE phoneNumber = @phoneNumber AND id <> @id)
-        BEGIN
-            SET @result = -2; -- Phone number already exists
-            RETURN;
-        END
-
-        -- Update user information
-        IF @password IS NOT NULL
-        BEGIN
-            UPDATE users
-            SET password = @password
-            WHERE id = @id;
-        END
-        
-		IF @fullname IS NOT NULL
-		BEGIN
-			 UPDATE userDetails
-			SET fullname = @fullname
-			WHERE id = @id
-		END
-
-		IF @email IS NOT NULL
-		BEGIN
-			UPDATE userDetails
-			SET email = @email
-			WHERE id = @id
-		END
-
-		IF @phoneNumber IS NOT NULL
-		BEGIN
-			UPDATE userDetails
-			SET phoneNumber = @phoneNumber
-			WHERE id = @id
-		END
-
-		IF @address IS NOT NULL
-		BEGIN
-			UPDATE userDetails
-			SET address = @address
-			WHERE id = @id
-		END
-
-		IF @dateOfBirth IS NOT NULL
-		BEGIN
-			UPDATE userDetails
-			SET dateOfBirth = @dateOfBirth
-			WHERE id = @id
-		END
-
-		IF @active IS NOT NULL
-		BEGIN
-			UPDATE users
-			SET active = @active
-			WHERE id = @id
-		END
-
-        SET @result = 1; -- Update successful
+        SET @result = -1;
+        -- Email already exists
+        RETURN;
     END
-    ELSE IF @tablename = 'staffs' OR @tablename = 'manager'
+
+    -- Check phone number existence
+    IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1
+        FROM userDetails
+        WHERE phoneNumber = @phoneNumber AND id <> @id)
     BEGIN
-        -- Get staff ID
-        SELECT @id = id FROM staffs WHERE username = @username;
-
-        -- Check email existence
-        IF @email IS NOT NULL AND EXISTS (SELECT 1 FROM staffDetails WHERE email = @email AND id <> @id)
-        BEGIN
-            SET @result = -1; -- Email already exists
-            RETURN;
-        END
-        
-        -- Check phone number existence
-        IF @phoneNumber IS NOT NULL AND EXISTS (SELECT 1 FROM staffDetails WHERE phoneNumber = @phoneNumber AND id <> @id)
-        BEGIN
-            SET @result = -2; -- Phone number already exists
-            RETURN;
-        END
-
-        -- Update staff information
-        IF @password IS NOT NULL
-        BEGIN
-            UPDATE staffs
-            SET password = @password
-            WHERE id = @id;
-        END
-
-		IF @fullname IS NOT NULL
-		BEGIN
-			UPDATE staffDetails
-			SET fullname = @fullname
-			WHERE id = @id
-		END
-
-		IF @email IS NOT NULL
-		BEGIN
-			UPDATE staffDetails
-			SET email = @email
-			WHERE id = @id
-		END
-
-		IF @phoneNumber IS NOT NULL
-		BEGIN
-			UPDATE staffDetails
-			SET phoneNumber = @phoneNumber
-			WHERE id = @id
-		END
-
-		IF @address IS NOT NULL
-		BEGIN
-			UPDATE staffDetails
-			SET address = @address
-			WHERE id = @id
-		END
-
-		IF @dateOfBirth IS NOT NULL
-		BEGIN
-			UPDATE staffDetails
-			SET dateOfBirth = @dateOfBirth
-			WHERE id = @id
-		END
-
-		IF @active IS NOT NULL
-		BEGIN
-			UPDATE staffs
-			SET active = @active
-			WHERE id = @id
-		END
-
-        SET @result = 1; -- Update successful
+        SET @result = -2;
+        -- Phone number already exists
+        RETURN;
     END
+
+    -- Update user information
+    IF @password IS NOT NULL
+    BEGIN
+        UPDATE users
+        SET password = @password
+        WHERE id = @id;
+    END
+
+    IF @fullname IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET fullname = @fullname
+        WHERE id = @id
+    END
+
+    IF @email IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET email = @email
+        WHERE id = @id
+    END
+
+    IF @phoneNumber IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET phoneNumber = @phoneNumber
+        WHERE id = @id
+    END
+
+    IF @address IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET address = @address
+        WHERE id = @id
+    END
+
+    IF @dateOfBirth IS NOT NULL
+    BEGIN
+        UPDATE userDetails
+        SET dateOfBirth = @dateOfBirth
+        WHERE id = @id
+    END
+
+    IF @active IS NOT NULL
+    BEGIN
+        UPDATE users
+        SET active = @active
+        WHERE id = @id
+    END
+
+    SET @result = 1;
 END;
 go
 
@@ -1063,6 +895,58 @@ BEGIN
 END;
 go
 
+CREATE PROCEDURE addStaff
+    @username VARCHAR(25),
+    @password VARCHAR(100),
+    @fullname NVARCHAR(50),
+    @result INT OUTPUT
+AS
+BEGIN
+    IF EXISTS (SELECT 1
+    FROM staffs
+    WHERE username = @username)
+    BEGIN
+        SET @result = -1
+    -- username already exists
+    END
+    ELSE
+    BEGIN
+        INSERT INTO staffs
+            (username, password, possition, fullname)
+        VALUES
+            (@username, @password, 0, @fullname);
+        SET @result = 1
+    -- staff added successfully
+    END
+END;
+GO
 
-
-   
+CREATE PROCEDURE updateStaff
+    @id INT,
+    @username VARCHAR(25),
+    @password VARCHAR(100),
+    @fullname NVARCHAR(50),
+    @active INT,
+    @result INT OUTPUT
+AS
+BEGIN
+    IF EXISTS (SELECT 1
+    FROM staffs
+    WHERE username = @username AND id != @id)
+    BEGIN
+        SET @result = -1
+    -- username already exists
+    END
+    ELSE
+    BEGIN
+        UPDATE staffs
+        SET username = ISNULL(@username, username),
+            password = ISNULL(@password, password),
+            fullname = ISNULL(@fullname, fullname),
+            active = ISNULL(@active, active)
+        WHERE id = @id;
+        SET @result = 1
+    -- staff updated successfully
+    END
+END;
+GO

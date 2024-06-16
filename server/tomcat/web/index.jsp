@@ -1,16 +1,104 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Major's Choice1</title>
-    <meta property="og:title" content="Major's Choice1" />
+    <title>Major's Choice</title>
+    <meta property="og:title" content="Major's Choice" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
 
     <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+      html {
+        line-height: 1.15;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+
+      button {
+        background-color: transparent;
+      }
+
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+
+      button,
+      select {
+        text-transform: none;
+      }
+
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+
+      input {
+        padding: 2px 4px;
+      }
+
+      img {
+        display: block;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
     <style data-tag="default-style-sheet">
       html {
@@ -20,7 +108,7 @@
 
       body {
         font-weight: 400;
-        font-style:normal;
+        font-style: normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
@@ -61,18 +149,19 @@
     />
     <style>
       [data-thq="thq-dropdown"]:hover > [data-thq="thq-dropdown-list"] {
-          display: flex;
-        }
+        display: flex;
+      }
 
-        [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
-          transform: rotate(90deg);
-        }
+      [data-thq="thq-dropdown"]:hover > div [data-thq="thq-dropdown-arrow"] {
+        transform: rotate(90deg);
+      }
     </style>
   </head>
+
   <body>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <div>
-      <link href="./index.css" rel="stylesheet" />
+      <link href="./css/index.css" rel="stylesheet" />
 
       <div class="home-page-container">
         <header class="home-page-header">
@@ -82,7 +171,7 @@
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img
                   alt="pastedImage"
-                  src="public/external/pastedimage-eh8r-200h.png"
+                  src="./css/image/logo.png"
                   class="navbar-pasted-image"
                 />
                 <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
@@ -101,10 +190,7 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <a
-                        href="home-page.html"
-                        class="navbar-home thq-body-small thq-link"
-                      >
+                      <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navbar-contact thq-body-small thq-link">
@@ -113,22 +199,27 @@
                       <span class="navbar-whoweare thq-body-small thq-link">
                         <span>Who we are</span>
                       </span>
-                      <span
-                        class="navbar-manager-order thq-body-small thq-link"
-                      >
-                        Manager Order
-                      </span>
+                      <a href="/order">
+                        <span
+                          class="navbar-manager-order thq-body-small thq-link"
+                        >
+                          Manage Order
+                        </span>
+                      </a>
                     </div>
                   </nav>
                   <div class="navbar-buttons">
+                    <a href="/Cart">
+                      <svg
+                        viewBox="0 0 1024 1024"
+                        class="navbar-icon thq-button-icon thq-icon-medium"
+                      >
+                        <path
+                          d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z"
+                        ></path>
+                      </svg>
+                    </a>
                     <svg
-                      viewBox="0 0 1024 1024"
-                      class="navbar-icon thq-button-icon thq-icon-medium"
-                    >
-                      <path
-                        d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z"
-                      ></path></svg
-                    ><svg
                       viewBox="0 0 1024 1024"
                       class="navbar-icon02 thq-button-icon thq-icon-medium"
                     >
@@ -137,7 +228,7 @@
                       ></path>
                     </svg>
                     <a
-                      href="login.html"
+                      href="/profile?action=view"
                       class="navbar-account thq-button-filled"
                     >
                       <svg
@@ -164,7 +255,7 @@
                       <div class="navbar-container5">
                         <img
                           alt="pastedImage"
-                          src="public/external/pastedimage-bdsl-200h.png"
+                          src="./css/image/logo.png"
                           class="navbar-pasted-image1"
                         />
                       </div>
@@ -202,7 +293,7 @@
                         <span>Who we are</span>
                       </span>
                       <span class="thq-body-small thq-link">
-                        <span>Manager Order</span>
+                        <span>Manage Order</span>
                       </span>
                     </nav>
                   </div>
@@ -211,29 +302,35 @@
               </header>
             </header>
           </div>
+          <% String role=(String) request.getSession().getAttribute("table"); if
+          ("staff".equals(role) || "manager" .equals(role)) { %>
           <div class="menu-function-container">
             <div class="menu-function-manager">
               <span
                 class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small"
               >
-                <span>Manager WareHouse</span>
+                <span>Manage WareHouse</span>
               </span>
-              <span
-                class="menu-function-mgt-customer text1 thq-link1 thq-body-small"
-              >
-                Manager Customer
-              </span>
+              <a href="/manage/profile?actor=user">
+                <span
+                  class="menu-function-mgt-customer text1 thq-link1 thq-body-small"
+                >
+                  Manage Customer
+                </span>
+              </a>
               <span
                 class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small"
               >
-                <span>Feedback</span>
+                <span>Manage Order</span>
                 <br />
               </span>
-              <span
-                class="menu-function-mgt-staff text1 thq-link1 thq-body-small"
-              >
-                Manager Staff
-              </span>
+              <a href="/manage/profile?actor=staff">
+                <span
+                  class="menu-function-mgt-staff text1 thq-link1 thq-body-small"
+                >
+                  Manage Staff
+                </span>
+              </a>
               <span
                 class="menu-function-mgt-report text1 thq-link1 thq-body-small"
               >
@@ -241,6 +338,7 @@
               </span>
             </div>
           </div>
+          <% } %>
           <div class="home-page-welcome">
             <div class="home-page-container01">
               <div class="home-page-container02">
@@ -3637,7 +3735,7 @@
                   <div class="component4-container component4-root-class-name5">
                     <img
                       alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
+                      src="./css/image/amd800h.webp"
                       class="component4-image"
                     />
                     <a
@@ -3676,7 +3774,7 @@
                   <div class="component4-container component4-root-class-name6">
                     <img
                       alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
+                      src="./css/image/amd800h.webp"
                       class="component4-image"
                     />
                     <a
@@ -3715,7 +3813,7 @@
                   <div class="component4-container component4-root-class-name7">
                     <img
                       alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
+                      src="./css/image/amd800h.webp"
                       class="component4-image"
                     />
                     <a
@@ -3754,7 +3852,7 @@
                   <div class="component4-container component4-root-class-name8">
                     <img
                       alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
+                      src="./css/image/amd800h.webp"
                       class="component4-image"
                     />
                     <a
@@ -3793,7 +3891,7 @@
                   <div class="component4-container component4-root-class-name9">
                     <img
                       alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-800h.webp"
+                      src="./css/image/amd800h.webp"
                       class="component4-image"
                     />
                     <a
@@ -3851,170 +3949,7 @@
               </div>
             </div>
             <div class="home-page-body-cpu">
-              <div class="component1-container component1-root-class-name128">
-                <img
-                  alt="image"
-                  src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                  loading="eager"
-                  class="component1-image"
-                />
-                <h1 class="component1-text thq-link">
-                  <span>
-                    Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                    / AM4
-                  </span>
-                </h1>
-                <span class="component1-text1">
-                  <span>1.290.000₫</span>
-                  <br />
-                </span>
-                <div class="component1-container1">
-                  <span class="component1-text4"><span>0.0</span></span>
-                  <svg
-                    viewBox="0 0 950.8571428571428 1024"
-                    class="component1-icon"
-                  >
-                    <path
-                      d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="https://example.com"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="component1-link"
-                  >
-                    <span>(0 Review)</span>
-                  </a>
-                </div>
-              </div>
-              <div class="component1-container component1-root-class-name132">
-                <img
-                  alt="image"
-                  src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                  loading="eager"
-                  class="component1-image"
-                />
-                <h1 class="component1-text thq-link">
-                  <span>
-                    Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                    / AM4
-                  </span>
-                </h1>
-                <span class="component1-text1">
-                  <span>1.290.000₫</span>
-                  <br />
-                </span>
-                <div class="component1-container1">
-                  <span class="component1-text4"><span>0.0</span></span>
-                  <svg
-                    viewBox="0 0 950.8571428571428 1024"
-                    class="component1-icon"
-                  >
-                    <path
-                      d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="https://example.com"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="component1-link"
-                  >
-                    <span>(0 Review)</span>
-                  </a>
-                </div>
-              </div>
-              <div class="component1-container component1-root-class-name131">
-                <img
-                  alt="image"
-                  src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                  loading="eager"
-                  class="component1-image"
-                />
-                <h1 class="component1-text thq-link">
-                  <span>
-                    Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                    / AM4
-                  </span>
-                </h1>
-                <span class="component1-text1">
-                  <span>1.290.000₫</span>
-                  <br />
-                </span>
-                <div class="component1-container1">
-                  <span class="component1-text4"><span>0.0</span></span>
-                  <svg
-                    viewBox="0 0 950.8571428571428 1024"
-                    class="component1-icon"
-                  >
-                    <path
-                      d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="https://example.com"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="component1-link"
-                  >
-                    <span>(0 Review)</span>
-                  </a>
-                </div>
-              </div>
-              <div class="component1-container component1-root-class-name130">
-                <img
-                  alt="image"
-                  src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                  loading="eager"
-                  class="component1-image"
-                />
-                <h1 class="component1-text thq-link">
-                  <span>
-                    Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                    / AM4
-                  </span>
-                </h1>
-                <span class="component1-text1">
-                  <span>1.290.000₫</span>
-                  <br />
-                </span>
-                <div class="component1-container1">
-                  <span class="component1-text4"><span>0.0</span></span>
-                  <svg
-                    viewBox="0 0 950.8571428571428 1024"
-                    class="component1-icon"
-                  >
-                    <path
-                      d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                    ></path>
-                  </svg>
-                  <a
-                    href="https://example.com"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="component1-link"
-                  >
-                    <span>(0 Review)</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="home-page-gpu">
-            <div class="home-page-header-gpu">
-              <div class="home-page-container08">
-                <h1 class="home-page-text465">
-                  <span>GPU</span>
-                  <br />
-                </h1>
-              </div>
-              <div class="home-page-container09">
-                <span class="home-page-text468 thq-link">View all product</span>
-              </div>
-            </div>
-            <div class="home-page-body-gpu">
-              <div class="component3-container component3-root-class-name1">
+              <div class="component3-container component3-root-class-name">
                 <div class="component3-container1">
                   <div class="component3-container2">
                     <div
@@ -4022,7 +3957,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4061,7 +3996,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4100,7 +4035,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4139,7 +4074,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4178,7 +4113,228 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
+                        loading="eager"
+                        class="component1-image"
+                      />
+                      <h1 class="component1-text thq-link">
+                        <span>
+                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
+                          / 5MB / AM4
+                        </span>
+                      </h1>
+                      <span class="component1-text1">
+                        <span>1.290.000₫</span>
+                        <br />
+                      </span>
+                      <div class="component1-container1">
+                        <span class="component1-text4"><span>0.0</span></span>
+                        <svg
+                          viewBox="0 0 950.8571428571428 1024"
+                          class="component1-icon"
+                        >
+                          <path
+                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                          ></path>
+                        </svg>
+                        <a
+                          href="https://example.com"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          class="component1-link"
+                        >
+                          <span>(0 Review)</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="home-page-gpu">
+            <div class="home-page-header-gpu">
+              <div class="home-page-container08">
+                <h1 class="home-page-text465">
+                  <span>GPU</span>
+                  <br />
+                </h1>
+              </div>
+              <div class="home-page-container09">
+                <a
+                  href="view-all-product-gpu.html"
+                  class="home-page-navlink1 thq-link"
+                >
+                  View all product
+                </a>
+              </div>
+            </div>
+            <div class="home-page-body-gpu">
+              <div class="component3-container component3-root-class-name1">
+                <div class="component3-container1">
+                  <div class="component3-container2">
+                    <div
+                      class="component1-container component1-root-class-name4"
+                    >
+                      <img
+                        alt="image"
+                        src="./css/image/amd300w.webp"
+                        loading="eager"
+                        class="component1-image"
+                      />
+                      <h1 class="component1-text thq-link">
+                        <span>
+                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
+                          / 5MB / AM4
+                        </span>
+                      </h1>
+                      <span class="component1-text1">
+                        <span>1.290.000₫</span>
+                        <br />
+                      </span>
+                      <div class="component1-container1">
+                        <span class="component1-text4"><span>0.0</span></span>
+                        <svg
+                          viewBox="0 0 950.8571428571428 1024"
+                          class="component1-icon"
+                        >
+                          <path
+                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                          ></path>
+                        </svg>
+                        <a
+                          href="https://example.com"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          class="component1-link"
+                        >
+                          <span>(0 Review)</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div
+                      class="component1-container component1-root-class-name5"
+                    >
+                      <img
+                        alt="image"
+                        src="./css/image/amd300w.webp"
+                        loading="eager"
+                        class="component1-image"
+                      />
+                      <h1 class="component1-text thq-link">
+                        <span>
+                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
+                          / 5MB / AM4
+                        </span>
+                      </h1>
+                      <span class="component1-text1">
+                        <span>1.290.000₫</span>
+                        <br />
+                      </span>
+                      <div class="component1-container1">
+                        <span class="component1-text4"><span>0.0</span></span>
+                        <svg
+                          viewBox="0 0 950.8571428571428 1024"
+                          class="component1-icon"
+                        >
+                          <path
+                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                          ></path>
+                        </svg>
+                        <a
+                          href="https://example.com"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          class="component1-link"
+                        >
+                          <span>(0 Review)</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div
+                      class="component1-container component1-root-class-name6"
+                    >
+                      <img
+                        alt="image"
+                        src="./css/image/amd300w.webp"
+                        loading="eager"
+                        class="component1-image"
+                      />
+                      <h1 class="component1-text thq-link">
+                        <span>
+                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
+                          / 5MB / AM4
+                        </span>
+                      </h1>
+                      <span class="component1-text1">
+                        <span>1.290.000₫</span>
+                        <br />
+                      </span>
+                      <div class="component1-container1">
+                        <span class="component1-text4"><span>0.0</span></span>
+                        <svg
+                          viewBox="0 0 950.8571428571428 1024"
+                          class="component1-icon"
+                        >
+                          <path
+                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                          ></path>
+                        </svg>
+                        <a
+                          href="https://example.com"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          class="component1-link"
+                        >
+                          <span>(0 Review)</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div
+                      class="component1-container component1-root-class-name7"
+                    >
+                      <img
+                        alt="image"
+                        src="./css/image/amd300w.webp"
+                        loading="eager"
+                        class="component1-image"
+                      />
+                      <h1 class="component1-text thq-link">
+                        <span>
+                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
+                          / 5MB / AM4
+                        </span>
+                      </h1>
+                      <span class="component1-text1">
+                        <span>1.290.000₫</span>
+                        <br />
+                      </span>
+                      <div class="component1-container1">
+                        <span class="component1-text4"><span>0.0</span></span>
+                        <svg
+                          viewBox="0 0 950.8571428571428 1024"
+                          class="component1-icon"
+                        >
+                          <path
+                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                          ></path>
+                        </svg>
+                        <a
+                          href="https://example.com"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          class="component1-link"
+                        >
+                          <span>(0 Review)</span>
+                        </a>
+                      </div>
+                    </div>
+                    <div
+                      class="component1-container component1-root-class-name92"
+                    >
+                      <img
+                        alt="image"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4220,13 +4376,18 @@
           <div class="home-page-mobo">
             <div class="home-page-header-mobo">
               <div class="home-page-container10">
-                <h1 class="home-page-text469">
+                <h1 class="home-page-text468">
                   <span>Mobo</span>
                   <br />
                 </h1>
               </div>
               <div class="home-page-container11">
-                <span class="home-page-text472 thq-link">View all product</span>
+                <a
+                  href="view-all-product-mobo.html"
+                  class="home-page-navlink2 thq-link"
+                >
+                  View all product
+                </a>
               </div>
             </div>
             <div class="home-page-body-mobo">
@@ -4238,7 +4399,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4277,7 +4438,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4316,7 +4477,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4355,7 +4516,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4394,7 +4555,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4436,13 +4597,18 @@
           <div class="home-page-psu">
             <div class="home-page-header-psu">
               <div class="home-page-container12">
-                <h1 class="home-page-text473">
+                <h1 class="home-page-text471">
                   <span>PSU</span>
                   <br />
                 </h1>
               </div>
               <div class="home-page-container13">
-                <span class="home-page-text476 thq-link">View all product</span>
+                <a
+                  href="view-all-product-psu.html"
+                  class="home-page-navlink3 thq-link"
+                >
+                  View all product
+                </a>
               </div>
             </div>
             <div class="home-page-body-psu">
@@ -4454,7 +4620,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4493,7 +4659,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4532,7 +4698,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4571,7 +4737,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4610,7 +4776,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4665,13 +4831,18 @@
           <div class="home-page-ram">
             <div class="home-page-header-ram">
               <div class="home-page-container14">
-                <h1 class="home-page-text477">
+                <h1 class="home-page-text474">
                   <span>RAM</span>
                   <br />
                 </h1>
               </div>
               <div class="home-page-container15">
-                <span class="home-page-text480 thq-link">View all product</span>
+                <a
+                  href="view-all-product-ram.html"
+                  class="home-page-navlink4 thq-link"
+                >
+                  View all product
+                </a>
               </div>
             </div>
             <div class="home-page-body-ram">
@@ -4684,7 +4855,7 @@
                       >
                         <img
                           alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                          src="./css/image/amd300w.webp"
                           loading="eager"
                           class="component1-image"
                         />
@@ -4723,7 +4894,7 @@
                       >
                         <img
                           alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                          src="./css/image/amd300w.webp"
                           loading="eager"
                           class="component1-image"
                         />
@@ -4762,7 +4933,7 @@
                       >
                         <img
                           alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                          src="./css/image/amd300w.webp"
                           loading="eager"
                           class="component1-image"
                         />
@@ -4801,7 +4972,7 @@
                       >
                         <img
                           alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                          src="./css/image/amd300w.webp"
                           loading="eager"
                           class="component1-image"
                         />
@@ -4840,7 +5011,7 @@
                       >
                         <img
                           alt="image"
-                          src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                          src="./css/image/amd300w.webp"
                           loading="eager"
                           class="component1-image"
                         />
@@ -4883,13 +5054,18 @@
           <div class="home-page-ssd">
             <div class="home-page-header-ssd">
               <div class="home-page-container17">
-                <h1 class="home-page-text481">
+                <h1 class="home-page-text477">
                   <span>SSD</span>
                   <br />
                 </h1>
               </div>
               <div class="home-page-container18">
-                <span class="home-page-text484 thq-link">View all product</span>
+                <a
+                  href="view-all-product-ssd.html"
+                  class="home-page-navlink5 thq-link"
+                >
+                  View all product
+                </a>
               </div>
             </div>
             <div class="home-page-body-ssd">
@@ -4901,7 +5077,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4940,7 +5116,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -4979,7 +5155,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5018,7 +5194,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5057,7 +5233,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5099,7 +5275,7 @@
           <div class="home-page-case">
             <div class="home-page-header-case">
               <div class="home-page-container19">
-                <h1 class="home-page-text485">
+                <h1 class="home-page-text480">
                   <span>CASE</span>
                   <br />
                 </h1>
@@ -5107,7 +5283,7 @@
               <div class="home-page-container20">
                 <a
                   href="view-all-product-case.html"
-                  class="home-page-navlink1 thq-link"
+                  class="home-page-navlink6 thq-link"
                 >
                   View all product
                 </a>
@@ -5122,7 +5298,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5161,7 +5337,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5200,7 +5376,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5239,7 +5415,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5278,7 +5454,7 @@
                     >
                       <img
                         alt="image"
-                        src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                        src="./css/image/amd300w.webp"
                         loading="eager"
                         class="component1-image"
                       />
@@ -5319,94 +5495,6 @@
           </div>
         </div>
         <footer class="home-page-footer">
-          <div
-            class="contact-contact20 thq-section-padding contact-root-class-name1"
-          >
-            <div class="contact-max-width thq-section-max-width">
-              <div class="contact-section-title">
-                <span class="thq-body-small">
-                  <span>
-                    Our customer service team is available to help you with any
-                    inquiries.
-                  </span>
-                </span>
-                <div class="contact-content">
-                  <h2 class="thq-heading-2"><span>Contact Us</span></h2>
-                  <p class="contact-text2 thq-body-large">
-                    <span>
-                      Have a question or need assistance? Feel free to reach out
-                      to us.
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <div class="contact-row">
-                <div class="contact-content1">
-                  <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                    <path
-                      d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z"
-                    ></path>
-                  </svg>
-                  <div class="contact-contact-info">
-                    <div class="contact-content2">
-                      <h3 class="contact-text3 thq-heading-3">Email</h3>
-                      <p class="contact-text4 thq-body-large">
-                        <span>
-                          For business inquiries or partnerships, please contact
-                          us via email.
-                        </span>
-                      </p>
-                    </div>
-                    <span class="contact-email thq-body-small">
-                      <span>info@majorschoice.com</span>
-                    </span>
-                  </div>
-                </div>
-                <div class="contact-content3">
-                  <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                    <path
-                      d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z"
-                    ></path>
-                  </svg>
-                  <div class="contact-contact-info1">
-                    <div class="contact-content4">
-                      <h3 class="contact-text5 thq-heading-3">Phone</h3>
-                      <p class="contact-text6 thq-body-large">
-                        <span>
-                          Follow us on social media for the latest updates and
-                          promotions.
-                        </span>
-                      </p>
-                    </div>
-                    <span class="contact-phone thq-body-small">
-                      <span>+84 929199387</span>
-                    </span>
-                  </div>
-                </div>
-                <div class="contact-content5">
-                  <svg viewBox="0 0 1024 1024" class="thq-icon-medium">
-                    <path
-                      d="M512 0c-176.732 0-320 143.268-320 320 0 320 320 704 320 704s320-384 320-704c0-176.732-143.27-320-320-320zM512 512c-106.040 0-192-85.96-192-192s85.96-192 192-192 192 85.96 192 192-85.96 192-192 192z"
-                    ></path>
-                  </svg>
-                  <div class="contact-contact-info2">
-                    <div class="contact-content6">
-                      <h3 class="contact-text7 thq-heading-3">Office</h3>
-                      <p class="contact-text8 thq-body-large">
-                        <span>
-                          We value your feedback and strive to provide the best
-                          shopping experience.
-                        </span>
-                      </p>
-                    </div>
-                    <span class="contact-address thq-body-small">
-                      <span>123 Main Street, City, Country</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <footer
             class="footer-footer1 thq-section-padding footer-root-class-name3"
           >
@@ -5512,7 +5600,7 @@
                           ></path>
                         </svg>
                         <span class="thq-body-small">
-                          Email :&nbsp;info@majorschoice.com
+                          Email :&nbsp;support@themajorones.dev
                         </span>
                       </div>
                       <div class="footer-link3">

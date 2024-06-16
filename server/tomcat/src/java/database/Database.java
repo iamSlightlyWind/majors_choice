@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import main.User;
 import packages.*;
 import packages.wrap.*;
 
@@ -457,6 +459,68 @@ public class Database {
             order.updateQuantity();
         }
         return orders;
+    }
+
+    public ArrayList<User> getUserDetails(String tableName) {
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            String sql = "{call GetUserDetails(?)}";
+            CallableStatement statement = this.connection.prepareCall(sql);
+            statement.setString(1, tableName);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                User user = new User();
+                if (tableName.equals("staffs")) {
+                    user.username = rs.getString("username");
+                    user.retrieveData("staff");
+                    users.add(user);
+                } else {
+                    user.username = rs.getString("username");
+                    user.retrieveData("user");
+                    users.add(user);
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return users;
+    }
+
+    public int addStaff(User staff) {
+        try {
+            String sql = "{call addStaff(?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, staff.username);
+            statement.setString(2, staff.password);
+            statement.setString(3, staff.fullName);
+            statement.registerOutParameter(4, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(4);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    public int updateStaff(User staff) {
+        try {
+            String sql = "{call updateStaff(?, ?, ?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, Integer.parseInt(staff.id));
+            statement.setString(2, staff.username);
+            statement.setString(3, staff.password);
+            statement.setString(4, staff.fullName);
+            statement.setInt(5, staff.active);
+            statement.registerOutParameter(6, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(6);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 
 }
