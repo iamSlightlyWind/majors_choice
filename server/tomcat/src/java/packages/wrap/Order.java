@@ -4,12 +4,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
+import main.User;
+
 public class Order {
     public ArrayList<Product> products = new ArrayList<Product>();
     public String status;
     public int id;
     public String date;
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
+    
+    // For managing orders
+    public User user;
+
+    public User getUser() {
+        return user;
+    }
+    ////////////Do Not Use
 
     public String toString() {
         return "Order ID: " + id + "\nStatus: " + status + "\nDate: " + date;

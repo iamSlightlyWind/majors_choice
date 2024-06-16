@@ -893,7 +893,8 @@ BEGIN
     WHERE 
         (@userId = 0 AND o.status NOT IN ('Shipping', 'Completed', 'Cancelled'))
         OR (@userId = -1 AND o.status IN ('Shipping', 'Completed', 'Cancelled'))
-        OR (@userId <> 0 AND @userId <> -1 AND o.userId = @userId);
+        OR (@userId <> 0 AND @userId <> -1 AND o.userId = @userId)
+        OR (@userId = -2);
 END;
 go
 
@@ -978,7 +979,7 @@ CREATE PROCEDURE DenyOrderCancel
 AS
 BEGIN
     UPDATE orders
-    SET status = 'Calcelation Denied, Shipping Pending'
+    SET status = 'Cancellation Denied, Shipping Pending'
     WHERE id = @OrderId;
 END;
 go
