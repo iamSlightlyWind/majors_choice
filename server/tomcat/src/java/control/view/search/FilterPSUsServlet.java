@@ -93,9 +93,4 @@ public class FilterPSUsServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }

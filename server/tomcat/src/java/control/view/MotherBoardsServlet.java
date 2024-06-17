@@ -39,9 +39,4 @@ public class MotherBoardsServlet extends HttpServlet {
         request.setAttribute("mobos", mobos);
         request.getRequestDispatcher("/view/mobos.jsp").forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }

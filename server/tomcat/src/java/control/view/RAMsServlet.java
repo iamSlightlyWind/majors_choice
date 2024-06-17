@@ -39,9 +39,4 @@ public class RAMsServlet extends HttpServlet {
         request.setAttribute("rams", rams);
         request.getRequestDispatcher("/view/rams.jsp").forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }
