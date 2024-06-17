@@ -12,14 +12,30 @@ public class Order {
     public int id;
     public String date;
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
-    
+
+    public int getCount(){
+        System.out.println(this);
+        int result = 0;
+        for(ProductCount productCount : quantities){
+            result += productCount.count;
+        }
+        return result;
+    }
+
     // For managing orders
     public User user;
 
     public User getUser() {
         return user;
     }
-    ////////////Do Not Use
+    //////////// Do Not Use
+
+
+    // dummy methods
+    public String getPaymentMethod(){
+        return "Cash";
+    }
+    ////////////////
 
     public String toString() {
         return "Order ID: " + id + "\nStatus: " + status + "\nDate: " + date;
@@ -49,6 +65,10 @@ public class Order {
             total += productCount.count * productCount.pricePer;
         }
         return String.format(Locale.US, "%,.2f", total);
+    }
+
+    public String getDate() {
+        return date;
     }
 
     public int getId() {

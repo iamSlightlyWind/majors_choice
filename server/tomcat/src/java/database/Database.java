@@ -438,6 +438,7 @@ public class Database {
                         order.products
                                 .add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
                                         resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
+                        order.date = resultSet.getString("dateOrdered");
                         order.user = new User();
                         order.user.id = resultSet.getInt("userId") + "";
                         order.user.retrieveData("user");

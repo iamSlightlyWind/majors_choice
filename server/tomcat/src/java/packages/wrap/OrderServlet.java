@@ -36,6 +36,7 @@ public class OrderServlet extends HttpServlet {
 
     protected void doStaff(HttpServletRequest request, HttpServletResponse response, String action)
             throws ServletException, IOException {
+
         switch (action) {
             case "viewDetails":
                 staffViewOrderDetails(request, response);
@@ -52,12 +53,29 @@ public class OrderServlet extends HttpServlet {
             case "ship":
                 shipOrder(request, response);
                 break;
-            case "viewCompleted":
+            case "viewPending":
                 staffViewOrders(request, response, -1);
                 break;
+            case "viewRequested":
+                staffViewOrders(request, response, -2);
+                break;
+            case "viewDenied":
+                staffViewOrders(request, response, -3);
+                break;
+            case "viewCancelled":
+                staffViewOrders(request, response, -4);
+                break;
+            case "viewShipping":
+                staffViewOrders(request, response, -5);
+                break;
+            case "viewCompleted":
+                staffViewOrders(request, response, -6);
+                break;
+            case "viewAll":
             default:
                 staffViewOrders(request, response, 0);
                 break;
+
         }
     }
 
@@ -89,7 +107,7 @@ public class OrderServlet extends HttpServlet {
         ArrayList<Order> orders = db.getOrders(list);
         request.setAttribute("managing", true);
         request.setAttribute("OrderList", orders);
-        request.getRequestDispatcher("/test/order.jsp").forward(request, response);
+        request.getRequestDispatcher("/test/staffViewOrders.jsp").forward(request, response);
     }
 
     protected void shipOrder(HttpServletRequest request, HttpServletResponse response)

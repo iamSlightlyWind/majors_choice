@@ -607,133 +607,133 @@ END;
 go
 
 create procedure getCPU
-	@inputname varchar(50)
+    @inputname varchar(50)
 as
 Begin
-	select
-		cpus.id,
-		sellingPrice,
-		costPrice,
-		description,
-		name,
-		generation,
-		socket,
-		cores,
-		threads,
-		baseClock,
-		boostClock,
-		tdp
-	from products
-		join cpus on products.id = cpus.id
-	where 1=1
-		and (@inputname is null or name like '%'+@inputname+'%') 
+    select
+        cpus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        socket,
+        cores,
+        threads,
+        baseClock,
+        boostClock,
+        tdp
+    from products
+        join cpus on products.id = cpus.id
+    where 1=1
+        and (@inputname is null or name like '%'+@inputname+'%')
 End;
 go
 
 create procedure getGPU
-	@inputname varchar(50)
+    @inputname varchar(50)
 as
 begin
-	select
-		gpus.id,
-		sellingPrice,
-		costPrice,
-		description,
-		name,
-		generation,
-		vram,
-		baseClock,
-		boostClock,
-		tdp
-	from products
-		join gpus on products.id = gpus.id
-	where 1=1 
-		and (@inputname is null or name like '%'+@inputname+'%' )
+    select
+        gpus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        vram,
+        baseClock,
+        boostClock,
+        tdp
+    from products
+        join gpus on products.id = gpus.id
+    where 1=1
+        and (@inputname is null or name like '%'+@inputname+'%' )
 end;
 go
 
 create procedure getMotherboard
-	@inputname varchar(50)
+    @inputname varchar(50)
 as
 begin
-	select
-		motherboards.id,
-		sellingPrice,
-		costPrice,
-		description,
-		name,
-		socket,
-		chipset,
-		formFactor,
-		ramType,
-		maxRamSpeed,
-		ramSlots,
-		wifi
-	from products
-		join motherboards on products.id = motherboards.id
-	where 1=1 
-		and (@inputname is null or  name like '%'+@inputname+'%')
+    select
+        motherboards.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        socket,
+        chipset,
+        formFactor,
+        ramType,
+        maxRamSpeed,
+        ramSlots,
+        wifi
+    from products
+        join motherboards on products.id = motherboards.id
+    where 1=1
+        and (@inputname is null or name like '%'+@inputname+'%')
 end;
 go
 
 create procedure getRAM
-	@inputname varchar(50)
+    @inputname varchar(50)
 as
 begin
-		select
-			rams.id,
-			sellingPrice,
-			costPrice,
-			description,
-			name,
-			generation,
-			capacity,
-			speed,
-			latency
-		from products
-			join rams on products.id = rams.id
-		where 1=1 
-			and (@inputname is null or  name like '%'+@inputname+'%')
+    select
+        rams.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        generation,
+        capacity,
+        speed,
+        latency
+    from products
+        join rams on products.id = rams.id
+    where 1=1
+        and (@inputname is null or name like '%'+@inputname+'%')
 end;
 go
 
 create procedure getSSD
-	@inputname varchar(50)
+    @inputname varchar(50)
 as
 begin
-		select
-			ssds.id,
-			sellingPrice,
-			costPrice,
-			description,
-			name,
-			interface,
-			capacity,
-			cache
-		from products
-			join ssds on products.id = ssds.id
-		where 1=1 
-			and (@inputname is null or  name like '%'+@inputname+'%')
+    select
+        ssds.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        interface,
+        capacity,
+        cache
+    from products
+        join ssds on products.id = ssds.id
+    where 1=1
+        and (@inputname is null or name like '%'+@inputname+'%')
 end;
 go
 
 create procedure getPSU
-	@inputname varchar(50)
+    @inputname varchar(50)
 as
 begin
 
-	select
-		psus.id,
-		sellingPrice,
-		costPrice,
-		description,
-		name,
-		wattage,
-		efficiency
-	from products
-		join psus on products.id = psus.id
-	where 1=1 
-		and (@inputname is null or  name like '%'+@inputname+'%')
+    select
+        psus.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        wattage,
+        efficiency
+    from products
+        join psus on products.id = psus.id
+    where 1=1
+        and (@inputname is null or name like '%'+@inputname+'%')
 end;
 go
 
@@ -891,10 +891,21 @@ BEGIN
         LEFT JOIN psus ON o.productId = psus.id
         LEFT JOIN cases ON o.productId = cases.id
     WHERE 
-        (@userId = 0 AND o.status NOT IN ('Shipping', 'Completed', 'Cancelled'))
-        OR (@userId = -1 AND o.status IN ('Shipping', 'Completed', 'Cancelled'))
-        OR (@userId <> 0 AND @userId <> -1 AND o.userId = @userId)
-        OR (@userId = -2);
+        (@userId = 0)
+        OR (@userId > 0 AND o.userId = @userId)
+        OR (@userId = -1 AND o.status IN ('Pending', 'Cancellation Denied, Shipping Pending'))
+        OR (@userId = -2 AND o.status = 'Cancellation Requested')
+        OR (@userId = -3 AND o.status = 'Cancellation Denied, Shipping Pending')
+        OR (@userId = -4 AND o.status = 'Cancelled')
+        OR (@userId = -5 AND o.status = 'Shipping')
+        OR (@userId = -6 AND o.status = 'Completed');
+        -- 0: All orders
+        -- -1: Pending orders
+        -- -2: Cancellation Requested
+        -- -3: Cancellation Denied, Shipping Pending
+        -- -4: Cancelled
+        -- -5: Shipping
+        -- -6: Completed
 END;
 go
 
