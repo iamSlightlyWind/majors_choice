@@ -426,7 +426,8 @@ begin
         threads,
         baseClock,
         boostClock,
-        tdp
+        tdp,
+        image
     from products
         join cpus on products.id = cpus.id
 end
@@ -445,7 +446,8 @@ begin
         vram,
         baseClock,
         boostClock,
-        tdp
+        tdp,
+        image
     from products
         join gpus on products.id = gpus.id
 end
@@ -466,7 +468,8 @@ begin
         ramType,
         maxRamSpeed,
         ramSlots,
-        wifi
+        wifi,
+        image
     from products
         join motherboards on products.id = motherboards.id
 end
@@ -484,7 +487,8 @@ begin
         generation,
         capacity,
         speed,
-        latency
+        latency,
+        image
     from products
         join rams on products.id = rams.id
 end
@@ -501,7 +505,8 @@ begin
         name,
         interface,
         capacity,
-        cache
+        cache,
+        image
     from products
         join ssds on products.id = ssds.id
 end
@@ -517,7 +522,8 @@ begin
         description,
         name,
         wattage,
-        efficiency
+        efficiency,
+        image
     from products
         join psus on products.id = psus.id
 end
