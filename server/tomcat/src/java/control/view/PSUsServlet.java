@@ -39,9 +39,4 @@ public class PSUsServlet extends HttpServlet {
         request.setAttribute("psus", psus);
         request.getRequestDispatcher("/view/psus.jsp").forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }

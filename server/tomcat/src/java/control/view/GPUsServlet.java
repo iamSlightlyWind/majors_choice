@@ -39,9 +39,4 @@ public class GPUsServlet extends HttpServlet {
         request.setAttribute("gpus", gpus);
         request.getRequestDispatcher("/view/gpus.jsp").forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }

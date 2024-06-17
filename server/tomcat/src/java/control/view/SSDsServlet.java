@@ -38,9 +38,4 @@ public class SSDsServlet extends HttpServlet {
         request.setAttribute("ssds", ssds);
         request.getRequestDispatcher("/view/ssds.jsp").forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }

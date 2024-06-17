@@ -39,9 +39,4 @@ public class CPUsServlet extends HttpServlet {
         request.setAttribute("searchName", searchName);        
         request.getRequestDispatcher("/view/cpus.jsp").forward(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
 }
