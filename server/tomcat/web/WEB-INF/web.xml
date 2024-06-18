@@ -189,7 +189,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomePageServlet</servlet-name>
-        <url-pattern>/home</url-pattern>
+        <url-pattern></url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterCPUsServlet</servlet-name>
