@@ -25,6 +25,7 @@ public class ManageAccount extends HttpServlet {
             request.getRequestDispatcher("/manage/userList.jsp").forward(request, response);
         } else if ((actor != null && actor.equals("staff")) || (table != null && table.equals("staff"))) {
             ArrayList<User> staffs = db.getUserDetails("staffs");
+            request.setAttribute("status", request.getParameter("status"));
             request.setAttribute("staffs", staffs);
             request.getRequestDispatcher("/manage/staffList.jsp").forward(request, response);
         }

@@ -38,7 +38,7 @@ public class UpdateUserProfile extends HttpServlet {
 //                    request.setAttribute("status", "Update Staff Success!");
 //                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
 //                    break;
-                    response.sendRedirect("/manage/profile?actor=staff");
+                    response.sendRedirect("/manage/profile?actor=staff&status=success");
                     break;
                 case -1:
 //                    request.setAttribute("status", "Update Staff Failed! Username already exist.");

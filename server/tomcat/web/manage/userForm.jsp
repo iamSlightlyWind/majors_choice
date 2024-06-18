@@ -96,7 +96,7 @@
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img
                   alt="pastedImage"
-                  src="./css/image/logo.png"
+                  src="../css/image/logo.png"
                   class="navbar-pasted-image"
                 />
                 <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">

@@ -157,7 +157,7 @@
               <div class="navbar-container1"></div>
               <header class="navbar-container2">
                 <header data-thq="thq-navbar" class="navbar-navbar-interactive">
-                  <img alt="pastedImage" src="./css/image/logo.png" class="navbar-pasted-image" />
+                  <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                     <nav class="navbar-links">
                       <div class="navbar-container3">
@@ -298,6 +298,7 @@
                 </div>
                 <div class="manage-customer-heading-table">
                   <h1 class="manage-customer-text05">List Of Staff</h1>
+                  <p>${status}</p>
                 </div>
                 <div class="manage-customer-list-detail">
                   <form class="manage-customer-form-tittle">
