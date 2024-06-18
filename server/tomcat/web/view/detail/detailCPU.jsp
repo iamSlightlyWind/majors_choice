@@ -111,7 +111,7 @@
                     </div>
                     <div class="navbar-container4">
                       <span class="navbar-home thq-body-small thq-link">
-                          <span><a href="/home">Home</a></span>
+                          <span><a href="/">Home</a></span>
                       </span>
                       <span class="navbar-contact thq-body-small thq-link">
                         <span>Contact</span>
