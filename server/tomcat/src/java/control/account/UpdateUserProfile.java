@@ -35,12 +35,16 @@ public class UpdateUserProfile extends HttpServlet {
 
             switch (staff.updateStaff()) {
                 case 1:
-                    request.setAttribute("status", "Update Staff Success!");
-                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+//                    request.setAttribute("status", "Update Staff Success!");
+//                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+//                    break;
+                    response.sendRedirect("/manage/profile?actor=staff");
                     break;
                 case -1:
-                    request.setAttribute("status", "Update Staff Failed! Username already exist.");
-                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+//                    request.setAttribute("status", "Update Staff Failed! Username already exist.");
+//                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+//                    break;
+                    response.sendRedirect("/manage/profile?actor=staff");
                     break;
             }
 
@@ -54,13 +58,17 @@ public class UpdateUserProfile extends HttpServlet {
 
             switch (db.addStaff(staff)) {
                 case 1:
-                    request.setAttribute("status", "Add Staff Success!");
-                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
-                    break;
+//                    request.setAttribute("status", "Add Staff Success!");
+//                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+//                    break;
+                      response.sendRedirect("/manage/profile?actor=staff");
+                      break;
                 case -1:
-                    request.setAttribute("status", "Add Staff Failed! Username already exist.");
-                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
-                    break;
+//                    request.setAttribute("status", "Add Staff Failed! Username already exist.");
+//                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
+//                    break;
+                      response.sendRedirect("/manage/profile?actor=staff");
+                      break;
             }
         }
     }
@@ -84,9 +92,7 @@ public class UpdateUserProfile extends HttpServlet {
         request.setAttribute("possition", actor);
         switch (result) {
             case 1:
-                request.setAttribute("table", "user");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/manage/profile?actor=user");
-                dispatcher.forward(request, response);
+                response.sendRedirect("/manage/profile?actor=user");
                 break;
                 
             case -2:

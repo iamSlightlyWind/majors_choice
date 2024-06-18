@@ -281,7 +281,9 @@
                   <br />
                 </h1>
               </div>
+                 <c:set var="name" value="${requestScope.searchName}" scope="page"/>  
               <form class="view-all-product-cpu-form" action="/filtermobo" method="post" onsubmit="return validateForm()">
+                  <input type="hidden" name="nameSearch" value="${name}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Frice</span>
                   <br />
@@ -297,7 +299,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="from"
-                    value=""
+                    value="${requestScope.from}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -311,10 +313,11 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="to"
-                    value=""
+                    value="${requestScope.to}"
                   />
                 </div>
                   <hr>
+                  <c:set var="sockets" value="${requestScope.sockets}" /> 
                   <span class="view-all-product-cpu-text14">
                       <span>Socket</span>
                       <br />
@@ -325,6 +328,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="socket"
                           value="am4"
+                          <c:forEach var="socket" items="${sockets}">
+                              <c:if test="${socket == 'am4'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>AM4</span>
@@ -337,6 +345,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="socket"
                           value="am5"
+                          <c:forEach var="socket" items="${sockets}">
+                              <c:if test="${socket == 'am5'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>AM5</span>
@@ -349,6 +362,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="socket"
                           value="lga 1700"
+                          <c:forEach var="socket" items="${sockets}">
+                              <c:if test="${socket == 'lga 1700'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>LGA 1700</span>
@@ -356,6 +374,7 @@
                       </span>
                   </div> 
                   <hr>  
+                  <c:set var="formFactors" value="${requestScope.formFactors}"/>
                 <span class="view-all-product-cpu-text14">
                   <span>FormFactor</span>
                   <br />
@@ -366,6 +385,11 @@
                     class="view-all-product-cpu-checkbox"
                     name="formFactor"
                     value="atx"
+                    <c:forEach var="formFactor" items="${formFactors}">
+                              <c:if test="${formFactor == 'atx'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text17">
                     <span>ATX</span>
@@ -378,6 +402,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="formFactor"
                     value="matx"
+                    <c:forEach var="formFactor" items="${formFactors}">
+                              <c:if test="${formFactor == 'matx'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>mATX</span>
@@ -390,13 +419,19 @@
                     class="view-all-product-cpu-checkbox2"
                     name="formFactor"
                     value="mITX"
+                    <c:forEach var="formFactor" items="${formFactors}">
+                              <c:if test="${formFactor == 'mITX'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
                     <span>mITX</span>
                     <br />
                   </span>
                 </div>               
-                <hr>                                  
+                <hr>
+                <c:set var="ramType" value="${requestScope.ramTypes}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>RamType</span>
                   <br />
@@ -407,6 +442,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="ramType"
                     value="ddr4"
+                    <c:forEach var="ramType" items="${ramTypes}">
+                              <c:if test="${ramType == 'ddr4'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>DDR4</span>
@@ -419,6 +459,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="ramType"
                     value="ddr5"
+                    <c:forEach var="ramType" items="${ramTypes}">
+                              <c:if test="${ramType == 'ddr5'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>DDR5</span>
@@ -427,6 +472,7 @@
                 </div>
                 
                 <hr><!-- comment -->
+                <c:set var="wifi" value="${requestScope.wifi}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Wifi</span>
                   <br />
@@ -437,6 +483,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="wifi"
                     value="1"
+                    <c:forEach var="wifi" items="${wifi}">
+                        <c:if test="${wifi == '1'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>Yes</span>
@@ -449,6 +500,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="wifi"
                     value="0"
+                    <c:forEach var="wifi" items="${wifi}">
+                        <c:if test="${wifi == '0'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>No</span>
@@ -469,7 +525,7 @@
                             />
                         <h1 class="component1-text thq-link">
                             <span>
-                                ${mobo.name}
+                                <a href="/view/detail/product?category=mobo&id=${mobo.id}">${mobo.name}</a>
                             </span>
                         </h1>
                         <span class="component1-text1">

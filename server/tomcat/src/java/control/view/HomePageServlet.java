@@ -21,12 +21,12 @@ public class HomePageServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Database db = new Database();       
-        List<CPU> cpus = getRandomFive(db.getCPUs(""));
-        List<GPU> gpus = getRandomFive(db.getGPUs(""));
-        List<RAM> rams = getRandomFive(db.getRAMs(""));
-        List<Motherboard> motherboards = getRandomFive(db.getMotherboards(""));
-        List<SSD> ssds = getRandomFive(db.getSSDs(""));
-        List<PSU> psus = getRandomFive(db.getPSUs(""));
+        List<CPU> cpus = db.getCPUs("");
+        List<GPU> gpus = db.getGPUs("");
+        List<RAM> rams = db.getRAMs("");
+        List<Motherboard> motherboards = db.getMotherboards("");
+        List<SSD> ssds = db.getSSDs("");
+        List<PSU> psus = db.getPSUs("");
                             
         request.setAttribute("cpus", cpus);  
         request.setAttribute("gpus", gpus); 
@@ -36,14 +36,7 @@ public class HomePageServlet extends HttpServlet {
         request.setAttribute("psus", psus); 
         request.getRequestDispatcher("index.jsp").forward(request, response);
     } 
-    
-    public <T> List<T> getRandomFive(List<T> inputList) {
-        List<T> copyList = new ArrayList<>(inputList);
 
-        Collections.shuffle(copyList);
-       
-        return copyList.subList(0, 5);
-    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
