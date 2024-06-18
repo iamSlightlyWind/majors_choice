@@ -82,7 +82,7 @@
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img
                   alt="pastedImage"
-                  src="public/external/pastedimage-eh8r-200h.png"
+                  src="../css/image/logo.png"
                   class="navbar-pasted-image"
                 />
                 <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
@@ -538,7 +538,7 @@
                       </p>
                     </div>
                     <span class="contact-email thq-body-small">
-                      <span>info@majorschoice.com</span>
+                      <span>support@themajorones.dev</span>
                     </span>
                   </div>
                 </div>
@@ -692,7 +692,7 @@
                           ></path>
                         </svg>
                         <span class="thq-body-small">
-                          Email :&nbsp;info@majorschoice.com
+                          Email :&nbsp;support@themajorones.dev
                         </span>
                       </div>
                       <div class="footer-link3">
