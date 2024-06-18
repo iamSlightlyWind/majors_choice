@@ -421,7 +421,7 @@
                             />
                         <h1 class="component1-text thq-link">
                             <span>
-                                ${psu.name}
+                                <a href="/view/detail/product?category=psu&id=${psu.id}">${psu.name}</a>
                             </span>
                         </h1>
                         <span class="component1-text1">

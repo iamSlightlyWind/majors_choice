@@ -14,6 +14,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import packages.CPU;
+import packages.GPU;
+import packages.Motherboard;
+import packages.PSU;
+import packages.RAM;
+import packages.SSD;
 
 /**
  *
@@ -40,14 +45,29 @@ public class ProductDetail extends HttpServlet {
                 request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
                 break;
             case "gpu":
+                GPU gpu = new GPU(id);
+                request.setAttribute("product", gpu);
+                request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
                 break;
             case "mobo":
+                Motherboard mobo = new Motherboard(id);
+                request.setAttribute("product", mobo);
+                request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
                 break;
             case "psu":
+                PSU psu = new PSU(id);
+                request.setAttribute("product", psu);
+                request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
                 break;
             case "ram":
+                RAM ram = new RAM(id);
+                request.setAttribute("product", ram);
+                request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
                 break;
             case "ssd":
+                SSD ssd = new SSD(id);
+                request.setAttribute("product", ssd);
+                request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
                 break;
             default:
                 break;

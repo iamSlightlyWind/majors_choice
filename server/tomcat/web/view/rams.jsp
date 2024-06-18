@@ -626,7 +626,7 @@
                             />
                         <h1 class="component1-text thq-link">
                             <span>
-                                ${ram.name}
+                                <a href="/view/detail/product?category=ram&id=${ram.id}">${ram.name}</a>
                             </span>
                         </h1>
                         <span class="component1-text1">

@@ -525,7 +525,7 @@
                             />
                         <h1 class="component1-text thq-link">
                             <span>
-                                ${mobo.name}
+                                <a href="/view/detail/product?category=mobo&id=${mobo.id}">${mobo.name}</a>
                             </span>
                         </h1>
                         <span class="component1-text1">
