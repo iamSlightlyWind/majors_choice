@@ -78,9 +78,9 @@
     </script>
   </head>
   <body>
-    <link rel="stylesheet" href="$./css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <div>
-      <link href="$./css/edit-profile.css" rel="stylesheet" />
+      <link href="./css/edit-profile.css" rel="stylesheet" />
 
       <div class="edit-profile-container">
         <div class="edit-profile-header">
