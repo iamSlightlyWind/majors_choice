@@ -448,357 +448,6 @@
 
 
 
-.edit-profile-component-container {
-  width: auto;
-  height: auto;
-  display: flex;
-  position: relative;
-  margin-top: 5px;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-.edit-profile-component-root-form {
-  width: 80vw;
-  height: auto;
-  display: flex;
-  margin-top: var(--dl-space-space-unit);
-  align-items: center;
-  margin-bottom: var(--dl-space-space-unit);
-  justify-content: center;
-  background-color: #fffdfd;
-}
-.edit-profile-component-image-usser {
-  flex: 0 0 auto;
-  width: 20vw;
-  height: auto;
-  display: flex;
-  align-self: center;
-  align-items: center;
-  border-radius: 50px;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #f9f9f9;
-}
-.edit-profile-component-image {
-  width: 15vw;
-  align-self: center;
-  object-fit: cover;
-  border-radius: 150px;
-}
-.edit-profile-component-button-save {
-  width: 10vw;
-  font-size: 1rem;
-  margin-top: var(--dl-space-space-halfunit);
-}
-.edit-profile-component-form-infor {
-  flex: 0 0 auto;
-  width: 50vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.edit-profile-component-profile {
-  width: 18vw;
-  height: 5vh;
-  display: flex;
-  margin-top: var(--dl-space-space-oneandhalfunits);
-  align-items: center;
-  border-color: var(--dl-color-theme-neutral-dark);
-  border-width: 2px;
-  border-radius: 80px;
-  justify-content: center;
-  background-color: #d64f08;
-}
-.edit-profile-component-text {
-  color: var(--dl-color-theme-secondary1);
-  font-size: 2em;
-  font-family: "Merriweather";
-}
-.edit-profile-component-user-name {
-  width: 45vw;
-  height: 10vh;
-  display: flex;
-  position: relative;
-  align-self: center;
-  margin-top: 0px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-profile-component-text01 {
-  left: 0px;
-  position: absolute;
-  font-size: 1rem;
-  font-style: normal;
-  font-family: "Merriweather";
-  font-weight: 600;
-  margin-left: 0px;
-}
-.edit-profile-component-textinput {
-  width: 30vw;
-  height: auto;
-  align-self: center;
-  margin-top: var(--dl-space-space-unit);
-  border-width: 0px;
-  border-radius: 20px;
-  margin-bottom: var(--dl-space-space-oneandhalfunits);
-  background-color: #f1f1f1;
-}
-.edit-profile-component-full-name {
-  width: 45vw;
-  height: 10vh;
-  display: flex;
-  position: relative;
-  align-self: center;
-  margin-top: 0px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-profile-component-text02 {
-  left: 0px;
-  position: absolute;
-  font-size: 1rem;
-  font-style: normal;
-  font-family: "Merriweather";
-  font-weight: 600;
-  margin-left: 0px;
-}
-.edit-profile-component-textinput1 {
-  width: 30vw;
-  height: auto;
-  align-self: center;
-  margin-top: var(--dl-space-space-unit);
-  border-width: 0px;
-  border-radius: 20px;
-  margin-bottom: var(--dl-space-space-oneandhalfunits);
-  background-color: #f1f1f1;
-}
-.edit-profile-component-password {
-  width: 45vw;
-  height: 10vh;
-  display: flex;
-  position: relative;
-  align-self: center;
-  margin-top: 0px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-profile-component-text03 {
-  left: 0px;
-  position: absolute;
-  font-size: 1rem;
-  font-style: normal;
-  font-family: "Merriweather";
-  font-weight: 600;
-  margin-left: 0px;
-}
-.edit-profile-component-textinput2 {
-  width: 30vw;
-  height: auto;
-  align-self: center;
-  margin-top: var(--dl-space-space-unit);
-  border-width: 0px;
-  border-radius: 20px;
-  margin-bottom: var(--dl-space-space-oneandhalfunits);
-  background-color: #f1f1f1;
-}
-.edit-profile-component-email {
-  width: 45vw;
-  height: 10vh;
-  display: flex;
-  position: relative;
-  align-self: center;
-  margin-top: 0px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-profile-component-text06 {
-  left: 0px;
-  position: absolute;
-  font-size: 1rem;
-  font-style: normal;
-  font-family: "Merriweather";
-  font-weight: 600;
-  margin-left: 0px;
-}
-.edit-profile-component-textinput3 {
-  width: 30vw;
-  height: auto;
-  align-self: center;
-  margin-top: var(--dl-space-space-unit);
-  border-width: 0px;
-  border-radius: 20px;
-  margin-bottom: var(--dl-space-space-oneandhalfunits);
-  background-color: #f1f1f1;
-}
-.edit-profile-component-phone {
-  width: 45vw;
-  height: 10vh;
-  display: flex;
-  position: relative;
-  align-self: center;
-  margin-top: 0px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-profile-component-text09 {
-  left: 0px;
-  position: absolute;
-  font-size: 1rem;
-  font-style: normal;
-  font-family: "Merriweather";
-  font-weight: 600;
-  margin-left: 0px;
-}
-.edit-profile-component-textinput4 {
-  width: 30vw;
-  height: auto;
-  align-self: center;
-  margin-top: var(--dl-space-space-unit);
-  border-width: 0px;
-  border-radius: 20px;
-  margin-bottom: var(--dl-space-space-oneandhalfunits);
-  background-color: #f1f1f1;
-}
-.edit-profile-component-address {
-  width: 45vw;
-  height: 10vh;
-  display: flex;
-  position: relative;
-  align-self: center;
-  margin-top: 0px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-profile-component-text12 {
-  left: 0px;
-  position: absolute;
-  font-size: 1rem;
-  font-style: normal;
-  font-family: "Merriweather";
-  font-weight: 600;
-  margin-left: 0px;
-}
-.edit-profile-component-textinput5 {
-  width: 30vw;
-  height: auto;
-  align-self: center;
-  margin-top: var(--dl-space-space-unit);
-  border-width: 0px;
-  border-radius: 20px;
-  margin-bottom: var(--dl-space-space-oneandhalfunits);
-  background-color: #f1f1f1;
-}
-.edit-profile-component-date-of-birth {
-  width: 45vw;
-  height: 10vh;
-  display: flex;
-  position: relative;
-  align-self: center;
-  margin-top: 0px;
-  align-items: center;
-  justify-content: flex-end;
-}
-.edit-profile-component-text15 {
-  left: 0px;
-  position: absolute;
-  font-size: 1rem;
-  font-style: normal;
-  font-family: "Merriweather";
-  font-weight: 600;
-  margin-left: 0px;
-}
-.edit-profile-component-textinput6 {
-  width: 30vw;
-  height: auto;
-  align-self: center;
-  margin-top: var(--dl-space-space-unit);
-  border-width: 0px;
-  border-radius: 20px;
-  margin-bottom: var(--dl-space-space-oneandhalfunits);
-  background-color: #f1f1f1;
-}
-.edit-profile-component-container1 {
-  flex: 0 0 auto;
-  width: 45vw;
-  height: auto;
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--dl-space-space-twounits);
-  justify-content: flex-end;
-}
-.edit-profile-component-button {
-  width: 10vw;
-}
-.edit-profile-component-button1 {
-  color: var(--dl-color-theme-secondary1);
-  width: 10vw;
-  height: auto;
-  font-size: 1rem;
-  margin-left: var(--dl-space-space-twounits);
-  border-color: var(--dl-color-theme-neutral-dark);
-  border-width: 2px;
-  text-decoration: none;
-}
-.edit-profile-component-root-class-name {
-  width: 100%;
-  margin-top: 0px;
-}
-
-.chats-chats {
-  top: 713px;
-  right: 0px;
-  width: 7vw;
-  height: 9vh;
-  display: flex;
-  position: fixed;
-  align-self: center;
-  align-items: center;
-  padding-right: var(--dl-space-space-halfunit);
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.chats-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-.chats-icon {
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  width: 3vw;
-  height: 5vh;
-  margin: auto;
-  position: absolute;
-}
-.chats-text {
-  color: var(--dl-color-theme-primary2);
-  font-size: 0.9rem;
-  align-self: center;
-  font-style: normal;
-  margin-top: var(--dl-space-space-halfunit);
-  text-align: center;
-  font-weight: 600;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .footer-footer1 {
   width: 80vw;
   height: auto;
@@ -1243,18 +892,279 @@
   }
 }
 
-.edit-profile-container {
+.edit-customer-container {
   width: 100%;
   display: flex;
   min-height: 100vh;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
-.edit-profile-header {
+.edit-customer-header {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+  justify-content: flex-start;
+}
+.edit-customer-body {
+  width: 80vw;
+  height: auto;
+  display: flex;
+  align-self: center;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.edit-customer-link-page {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+.edit-customer-container1 {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
   justify-content: center;
+}
+.edit-customer-text {
+  font-size: 0.9rem;
+  align-self: center;
+  border-width: 0px;
+  background-color: transparent;
+}
+.edit-customer-text01 {
+  font-size: 0.9rem;
+  align-self: center;
+  border-width: 0px;
+  background-color: transparent;
+}
+.edit-customer-text02 {
+  font-size: 0.9rem;
+  align-self: center;
+  border-width: 0px;
+  background-color: transparent;
+}
+.edit-customer-root {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  align-items: flex-start;
+  border-color: var(--dl-color-theme-neutral-dark);
+  border-width: 1px;
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: var(--dl-color-theme-accent2);
+}
+.edit-customer-container2 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  box-shadow: 4px 4px 4px 0px #6d6565;
+  align-items: center;
+  border-color: var(--dl-color-theme-neutral-dark);
+  border-width: 2px;
+  justify-content: center;
+  background-color: #D9D9D9;
+}
+.edit-customer-text03 {
+  font-size: 3rem;
+  font-style: italic;
+  text-align: center;
+  font-family: "Merriweather";
+  font-weight: 700;
+}
+.edit-customer-container3 {
+  display: flex;
+  align-self: center;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  align-items: center;
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.edit-customer-form {
+  width: 60vw;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+}
+.edit-customer-text04 {
+  font-size: 1.2rem;
+  align-self: center;
+  font-style: normal;
+  font-family: "Merriweather";
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.edit-customer-select {
+  width: 30vw;
+  height: auto;
+  align-self: flex-start;
+  padding-top: var(--dl-space-space-halfunit);
+  border-color: var(--dl-color-theme-neutral-dark);
+  border-width: 1px;
+  padding-left: var(--dl-space-space-halfunit);
+  padding-right: var(--dl-space-space-halfunit);
+  padding-bottom: var(--dl-space-space-halfunit);
+}
+.edit-customer-form1 {
+  width: 60vw;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+}
+.edit-customer-text07 {
+  font-size: 1.2rem;
+  align-self: center;
+  font-style: normal;
+  font-family: "Merriweather";
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.edit-customer-textinput {
+  width: 30vw;
+  height: 100%;
+  border-width: 1px;
+  background-color: var(--dl-color-theme-secondary1);
+  border-bottom-width: 1px;
+}
+.edit-customer-form2 {
+  width: 60vw;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+}
+.edit-customer-text08 {
+  font-size: 1.2rem;
+  align-self: center;
+  font-style: normal;
+  font-family: "Merriweather";
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.edit-customer-textinput1 {
+  width: 30vw;
+  height: 100%;
+  border-width: 1px;
+  background-color: var(--dl-color-theme-secondary1);
+  border-bottom-width: 1px;
+}
+.edit-customer-form3 {
+  width: 60vw;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+}
+.edit-customer-text11 {
+  font-size: 1.2rem;
+  align-self: center;
+  font-style: normal;
+  font-family: "Merriweather";
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.edit-customer-textinput2 {
+  width: 30vw;
+  height: 100%;
+  border-width: 1px;
+  background-color: var(--dl-color-theme-secondary1);
+  border-bottom-width: 1px;
+}
+.edit-customer-form4 {
+  width: 60vw;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+}
+.edit-customer-text14 {
+  font-size: 1.2rem;
+  align-self: center;
+  font-style: normal;
+  font-family: "Merriweather";
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.edit-customer-textinput3 {
+  width: 30vw;
+  height: 100%;
+  border-width: 1px;
+  background-color: var(--dl-color-theme-secondary1);
+  border-bottom-width: 1px;
+}
+.edit-customer-form5 {
+  width: 60vw;
+  height: auto;
+  display: flex;
+  align-self: center;
+  margin-top: 0px;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+}
+.edit-customer-text17 {
+  font-size: 1.2rem;
+  align-self: center;
+  font-style: normal;
+  font-family: "Merriweather";
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.edit-customer-textinput4 {
+  width: 30vw;
+  height: 100%;
+  border-width: 1px;
+  background-color: var(--dl-color-theme-secondary1);
+  border-bottom-width: 1px;
+}
+.edit-customer-button {
+  width: 8vw;
+  height: 4vh;
+  align-self: flex-end;
+  margin-top: 0px;
+  border-color: #3a3330;
+  margin-bottom: 0px;
+}
+.edit-customer-text20 {
+  font-size: 1.5rem;
+}
+.edit-customer-footer {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+@media(max-width: 1200px) {
+  .edit-customer-text02 {
+    font-size: 0.9rem;
+    background-color: transparent;
+  }
 }

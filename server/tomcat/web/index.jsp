@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -225,7 +226,7 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z"
                       ></path>
                     </svg>
-                    <a href="/profile?action=view" class="navbar-account thq-button-filled">
+                    <a href="/profile" class="navbar-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z"
@@ -366,7 +367,7 @@
                   class="home-page-dropdown-toggle-cpu"
                 >
                   <span class="home-page-text003">
-                    <span>CPU</span>
+                      <span><a href="/cpusservlet">CPU</a></span>
                     <br />
                   </span>
                   <div
@@ -1630,7 +1631,7 @@
                   class="home-page-dropdown-toggle077"
                 >
                   <span class="home-page-text202">
-                    <span>GPU</span>
+                    <span><a href="/gpusservlet">GPU</a></span>
                     <br />
                   </span>
                   <div
@@ -2847,7 +2848,7 @@
                   class="home-page-dropdown-toggle158"
                 >
                   <span class="home-page-text411">
-                    <span>Mobo</span>
+                    <span><a href="/mobosservlet">Mobo</a></span>
                     <br />
                   </span>
                   <div
@@ -3102,7 +3103,7 @@
                   class="home-page-dropdown-toggle166"
                 >
                   <span class="home-page-text423">
-                    <span>PSU</span>
+                    <span><a href="/psusservlet">PSU</a></span>
                     <br />
                   </span>
                   <div
@@ -3256,7 +3257,7 @@
                   class="home-page-dropdown-toggle176"
                 >
                   <span class="home-page-text434">
-                    <span>RAM</span>
+                    <span><a href="/ramsservlet">RAM</a></span>
                     <br />
                   </span>
                   <div
@@ -3430,7 +3431,7 @@
                   class="home-page-dropdown-toggle184"
                 >
                   <span class="home-page-text439">
-                    <span>SSD</span>
+                    <span><a href="/ssdsservlet">SSD</a></span>
                     <br />
                   </span>
                   <div
@@ -3934,8 +3935,9 @@
             <div class="home-page-body-cpu">
               <div class="component3-container component3-root-class-name">
                 <div class="component3-container1">
-                  <div class="component3-container2">
-                    <div
+                   <div class="component3-container2">
+                       <c:forEach var="cpu" items="${requestScope.cpus}" begin="0" end="4">
+                           <div
                       class="component1-container component1-root-class-name4"
                     >
                       <img
@@ -3946,12 +3948,11 @@
                       />
                       <h1 class="component1-text thq-link">
                         <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
+                          <a href="/view/detail/product?category=cpu&id=${cpu.id}">${cpu.name}</a>
                         </span>
                       </h1>
                       <span class="component1-text1">
-                        <span>1.290.000₫</span>
+                        <span>${cpu.sellingPrice}</span>
                         <br />
                       </span>
                       <div class="component1-container1">
@@ -3974,162 +3975,7 @@
                         </a>
                       </div>
                     </div>
-                    <div
-                      class="component1-container component1-root-class-name5"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name6"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name7"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name92"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
+                       </c:forEach>               
                   </div>
                 </div>
               </div>
@@ -4155,8 +4001,9 @@
             <div class="home-page-body-gpu">
               <div class="component3-container component3-root-class-name1">
                 <div class="component3-container1">
-                  <div class="component3-container2">
-                    <div
+                  <div class="component3-container2">                    
+                   <c:forEach var="gpu" items="${requestScope.gpus}" begin="0" end="4">
+                           <div
                       class="component1-container component1-root-class-name4"
                     >
                       <img
@@ -4167,12 +4014,11 @@
                       />
                       <h1 class="component1-text thq-link">
                         <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
+                          <a href="/view/detail/product?category=gpu&id=${gpu.id}">${gpu.name}</a>
                         </span>
                       </h1>
                       <span class="component1-text1">
-                        <span>1.290.000₫</span>
+                        <span>${gpu.sellingPrice}</span>
                         <br />
                       </span>
                       <div class="component1-container1">
@@ -4195,162 +4041,7 @@
                         </a>
                       </div>
                     </div>
-                    <div
-                      class="component1-container component1-root-class-name5"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name6"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name7"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name92"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
+                       </c:forEach>                  
                   </div>
                 </div>
               </div>
@@ -4377,7 +4068,9 @@
               <div class="component3-container component3-root-class-name2">
                 <div class="component3-container1">
                   <div class="component3-container2">
-                    <div
+                    
+                    <c:forEach var="mobo" items="${requestScope.mobos}" begin="0" end="4">
+                           <div
                       class="component1-container component1-root-class-name4"
                     >
                       <img
@@ -4388,12 +4081,11 @@
                       />
                       <h1 class="component1-text thq-link">
                         <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
+                          <a href="/view/detail/product?category=mobo&id=${mobo.id}">${mobo.name}</a>
                         </span>
                       </h1>
                       <span class="component1-text1">
-                        <span>1.290.000₫</span>
+                        <span>${mobo.sellingPrice}</span>
                         <br />
                       </span>
                       <div class="component1-container1">
@@ -4416,162 +4108,7 @@
                         </a>
                       </div>
                     </div>
-                    <div
-                      class="component1-container component1-root-class-name5"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name6"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name7"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name92"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
+                       </c:forEach> 
                   </div>
                 </div>
               </div>
@@ -4598,7 +4135,9 @@
               <div class="component3-container component3-root-class-name3">
                 <div class="component3-container1">
                   <div class="component3-container2">
-                    <div
+                    
+                   <c:forEach var="psu" items="${requestScope.psus}" begin="0" end="4">
+                           <div
                       class="component1-container component1-root-class-name4"
                     >
                       <img
@@ -4609,12 +4148,11 @@
                       />
                       <h1 class="component1-text thq-link">
                         <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
+                          <a href="/view/detail/product?category=psu&id=${psu.id}">${psu.name}</a>
                         </span>
                       </h1>
                       <span class="component1-text1">
-                        <span>1.290.000₫</span>
+                        <span>${psu.sellingPrice}</span>
                         <br />
                       </span>
                       <div class="component1-container1">
@@ -4637,162 +4175,8 @@
                         </a>
                       </div>
                     </div>
-                    <div
-                      class="component1-container component1-root-class-name5"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name6"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name7"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name92"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
+                       </c:forEach>                   
+                  
                   </div>
                 </div>
               </div>
@@ -4833,201 +4217,48 @@
                 <div class="component3-container component3-root-class-name4">
                   <div class="component3-container1">
                     <div class="component3-container2">
-                      <div
-                        class="component1-container component1-root-class-name4"
-                      >
-                        <img
-                          alt="image"
-                          src="./css/image/amd300w.webp"
-                          loading="eager"
-                          class="component1-image"
-                        />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
-                            luồng / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
+                      
+                      <c:forEach var="ram" items="${requestScope.rams}" begin="0" end="4">
+                           <div
+                      class="component1-container component1-root-class-name4"
+                    >
+                      <img
+                        alt="image"
+                        src="./css/image/amd300w.webp"
+                        loading="eager"
+                        class="component1-image"
+                      />
+                      <h1 class="component1-text thq-link">
+                        <span>
+                            <a href="/view/detail/product?category=ram&id=${ram.id}">${ram.name}</a>
                         </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg
-                            viewBox="0 0 950.8571428571428 1024"
-                            class="component1-icon"
-                          >
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                            ></path>
-                          </svg>
-                          <a
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            class="component1-link"
-                          >
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
+                      </h1>
+                      <span class="component1-text1">
+                        <span>${ram.sellingPrice}</span>
+                        <br />
+                      </span>
+                      <div class="component1-container1">
+                        <span class="component1-text4"><span>0.0</span></span>
+                        <svg
+                          viewBox="0 0 950.8571428571428 1024"
+                          class="component1-icon"
+                        >
+                          <path
+                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                          ></path>
+                        </svg>
+                        <a
+                          href="https://example.com"
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          class="component1-link"
+                        >
+                          <span>(0 Review)</span>
+                        </a>
                       </div>
-                      <div
-                        class="component1-container component1-root-class-name5"
-                      >
-                        <img
-                          alt="image"
-                          src="./css/image/amd300w.webp"
-                          loading="eager"
-                          class="component1-image"
-                        />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
-                            luồng / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg
-                            viewBox="0 0 950.8571428571428 1024"
-                            class="component1-icon"
-                          >
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                            ></path>
-                          </svg>
-                          <a
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            class="component1-link"
-                          >
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div
-                        class="component1-container component1-root-class-name6"
-                      >
-                        <img
-                          alt="image"
-                          src="./css/image/amd300w.webp"
-                          loading="eager"
-                          class="component1-image"
-                        />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
-                            luồng / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg
-                            viewBox="0 0 950.8571428571428 1024"
-                            class="component1-icon"
-                          >
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                            ></path>
-                          </svg>
-                          <a
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            class="component1-link"
-                          >
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div
-                        class="component1-container component1-root-class-name7"
-                      >
-                        <img
-                          alt="image"
-                          src="./css/image/amd300w.webp"
-                          loading="eager"
-                          class="component1-image"
-                        />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
-                            luồng / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg
-                            viewBox="0 0 950.8571428571428 1024"
-                            class="component1-icon"
-                          >
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                            ></path>
-                          </svg>
-                          <a
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            class="component1-link"
-                          >
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div
-                        class="component1-container component1-root-class-name92"
-                      >
-                        <img
-                          alt="image"
-                          src="./css/image/amd300w.webp"
-                          loading="eager"
-                          class="component1-image"
-                        />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4
-                            luồng / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg
-                            viewBox="0 0 950.8571428571428 1024"
-                            class="component1-icon"
-                          >
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                            ></path>
-                          </svg>
-                          <a
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            class="component1-link"
-                          >
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
+                    </div>
+                       </c:forEach> 
+                     
                     </div>
                   </div>
                 </div>
@@ -5055,7 +4286,9 @@
               <div class="component3-container component3-root-class-name5">
                 <div class="component3-container1">
                   <div class="component3-container2">
-                    <div
+                    
+                    <c:forEach var="ssd" items="${requestScope.ssds}" begin="0" end="4">
+                           <div
                       class="component1-container component1-root-class-name4"
                     >
                       <img
@@ -5066,12 +4299,11 @@
                       />
                       <h1 class="component1-text thq-link">
                         <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
+                            <a href="/view/detail/product?category=ssd&id=${ssd.id}">${ssd.name}</a>
                         </span>
                       </h1>
                       <span class="component1-text1">
-                        <span>1.290.000₫</span>
+                        <span>${ssd.sellingPrice}</span>
                         <br />
                       </span>
                       <div class="component1-container1">
@@ -5094,162 +4326,7 @@
                         </a>
                       </div>
                     </div>
-                    <div
-                      class="component1-container component1-root-class-name5"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name6"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name7"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="component1-container component1-root-class-name92"
-                    >
-                      <img
-                        alt="image"
-                        src="./css/image/amd300w.webp"
-                        loading="eager"
-                        class="component1-image"
-                      />
-                      <h1 class="component1-text thq-link">
-                        <span>
-                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                          / 5MB / AM4
-                        </span>
-                      </h1>
-                      <span class="component1-text1">
-                        <span>1.290.000₫</span>
-                        <br />
-                      </span>
-                      <div class="component1-container1">
-                        <span class="component1-text4"><span>0.0</span></span>
-                        <svg
-                          viewBox="0 0 950.8571428571428 1024"
-                          class="component1-icon"
-                        >
-                          <path
-                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
-                          ></path>
-                        </svg>
-                        <a
-                          href="https://example.com"
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          class="component1-link"
-                        >
-                          <span>(0 Review)</span>
-                        </a>
-                      </div>
-                    </div>
+                       </c:forEach> 
                   </div>
                 </div>
               </div>

@@ -57,5 +57,9 @@ public class CPU extends Product {
     public double getSellingPrice() {
         return sellingPrice;
     }
-    
+
+    public int getId() {
+        return id;
+    }
+       
 }

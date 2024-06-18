@@ -186,6 +186,8 @@
                           type="text"
                           placeholder="Search product by name"
                           class="navbar-textinput1 input"
+                          name="searchName"
+                        value="${requestScope.searchName}"
                         />
                         <button
                           class="navbar-search1 thq-button-filled thq-button-animated"
@@ -281,7 +283,9 @@
                   <br />
                 </h1>
               </div>
+                <c:set var="name" value="${requestScope.searchName}" scope="page"/> 
               <form class="view-all-product-cpu-form" action="/filterssd" method="post" onsubmit="return validateForm()">
+                <input type="hidden" name="nameSearch" value="${name}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Frice</span>
                   <br />
@@ -297,7 +301,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="from"
-                    value=""
+                    value="${requestScope.from}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -311,10 +315,11 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="to"
-                    value=""
+                    value="${requestScope.to}"
                   />
                 </div>
                   <hr>
+                  <c:set var="interfaces" value="${requestScope.interfaces}" />  
                   <span class="view-all-product-cpu-text14">
                       <span>Interface</span>
                       <br />
@@ -324,7 +329,12 @@
                           type="checkbox"
                           class="view-all-product-cpu-checkbox"
                           name="interfaces"
-                          value="pcie 3.0"
+                          value="PCIe 3.0"
+                              <c:forEach var="interfacee" items="${interfaces}">
+                                  <c:if test="${interfacee == 'PCIe 3.0'}">
+                                      checked
+                                  </c:if>
+                              </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>PCIe 3.0</span>
@@ -336,7 +346,12 @@
                           type="checkbox"
                           class="view-all-product-cpu-checkbox"
                           name="interfaces"
-                          value="pcie 4.0"
+                          value="PCIe 4.0"
+                              <c:forEach var="interfacee" items="${interfaces}">
+                                  <c:if test="${interfacee == 'PCIe 4.0'}">
+                                      checked
+                                  </c:if>
+                              </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>PCIe 4.0</span>
@@ -348,14 +363,19 @@
                           type="checkbox"
                           class="view-all-product-cpu-checkbox"
                           name="interfaces"
-                          value="sata 2.5"
+                          value="SATA 2.5"
+                              <c:forEach var="interfacee" items="${interfaces}">
+                                  <c:if test="${interfacee == 'SATA 2.5'}">
+                                      checked
+                                  </c:if>
+                              </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>SATA 2.5</span>
                           <br />
                       </span>
                   </div> 
-                  <hr>  
+                  <hr> 
                  <span class="view-all-product-cpu-text05">
                   <span>Capacity</span>
                   <br />
@@ -371,7 +391,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="fromCapacity"
-                    value=""
+                    value="${requestScope.fromCapacity}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -385,10 +405,11 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="toCapacity"
-                    value=""
+                    value="${requestScope.toCapacity}"
                   />
                 </div>                                                        
-                <hr>                                  
+                <hr> 
+                <c:set var="caches" value="${requestScope.caches}" />
                 <span class="view-all-product-cpu-text05">
                   <span>Cache</span>
                   <br />
@@ -399,6 +420,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="cache"
                     value="0"
+                        <c:forEach var="cache" items="${caches}">
+                            <c:if test="${cache == '0'}">
+                                checked
+                            </c:if>
+                        </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>0</span>
@@ -411,6 +437,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="cache"
                     value="1"
+                        <c:forEach var="cache" items="${caches}">
+                            <c:if test="${cache == '1'}">
+                                checked
+                            </c:if>
+                        </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>Other</span>
@@ -431,7 +462,7 @@
                             />
                         <h1 class="component1-text thq-link">
                             <span>
-                                ${ssd.name}
+                                <a href="/view/detail/product?category=ssd&id=${ssd.id}">${ssd.name}</a>
                             </span>
                         </h1>
                         <span class="component1-text1">

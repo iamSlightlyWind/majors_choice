@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import packages.RAM;
@@ -17,82 +18,95 @@ public class FilterRAMsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String name = request.getParameter("nameSearch") == null? "": request.getParameter("nameSearch");
         String from_raw = request.getParameter("from");
         String to_raw = request.getParameter("to");
-        String latency_raw = request.getParameter("latency");
-        String generation = request.getParameter("generation");
-        String socket = request.getParameter("socket");
-        String speed_raw = request.getParameter("speed");
-        String capacity_raw = request.getParameter("capacity");
+        String latency[] = request.getParameterValues("latency");
+        String generation[] = request.getParameterValues("generation");
+        String speed[] = request.getParameterValues("speed");
+        String capacity[] = request.getParameterValues("capacity");
 
         double fromP = (from_raw == null || from_raw.isEmpty()) ? 0 : Double.parseDouble(from_raw);
         double toP = (to_raw == null || to_raw.isEmpty()) ? 0 : Double.parseDouble(to_raw);
-        int latency = (latency_raw == null || latency_raw.isEmpty()) ? 0 : Integer.parseInt(latency_raw);
-        int capacity = (capacity_raw == null || capacity_raw.isEmpty()) ? 0 : Integer.parseInt(capacity_raw);
-        int speed = (speed_raw == null || speed_raw.isEmpty()) ? 0 : Integer.parseInt(speed_raw);
 
-        List<RAM> rams = db.getRAMs("");
-
-        if (generation != null) {
-            getRAMsByGeneration(rams, generation);
-        }
-        if (latency != 0) {
-            getRAMsByLatency(rams, latency);
-        }
-        if (capacity != 0) {
-            getRAMsByCapacity(rams, capacity);
-        }
-        if (speed != 0) {
-            getRAMsBySpeed(rams, speed);
-        }
+        List<RAM> list = db.getRAMs(name);
+        List<RAM> list1 = getRAMsBySpeed(list, speed);
+        List<RAM> list2 = getRAMsByCapacity(list1, capacity);
+        List<RAM> list3 = getRAMsByGeneration(list2, generation);
+        List<RAM> rams = getRAMsByLatency(list3, latency);
+        
         getRAMsByPrice(rams, fromP, toP);
+
+        request.setAttribute("searchName", name);
+        request.setAttribute("from", from_raw);
+        request.setAttribute("to", to_raw);
+        request.setAttribute("latess", latency);
+        request.setAttribute("generss", generation);
+        request.setAttribute("speeds", speed);
+        request.setAttribute("capacitys", capacity);
 
         request.setAttribute("rams", rams);
         request.getRequestDispatcher("/view/rams.jsp").forward(request, response);
     }
 
-    public void getRAMsByGeneration(List<RAM> rams, String generation) {
-        Iterator<RAM> iterator = rams.iterator();
-
-        while (iterator.hasNext()) {
-            RAM ram = iterator.next();
-            if (!ram.generation.toLowerCase().contains(generation)) {
-                iterator.remove();
+    public List<RAM> getRAMsByGeneration(List<RAM> rams, String[] generations) {
+        List<RAM> list = new ArrayList<>();
+        if(generations == null || generations.length == 0){
+            return rams;
+        }
+        for (RAM ram : rams) {
+            for (String generation : generations) {
+                if(ram.generation.toLowerCase().contains(generation.toLowerCase())){
+                    list.add(ram);
+                }
             }
         }
+        return list;
     }
-
-    public void getRAMsBySpeed(List<RAM> rams, int speed) {
-        Iterator<RAM> iterator = rams.iterator();
-
-        while (iterator.hasNext()) {
-            RAM ram = iterator.next();
-            if (ram.speed != speed) {
-                iterator.remove();
+    
+    public List<RAM> getRAMsByLatency(List<RAM> rams, String[] latencys) {
+        List<RAM> list = new ArrayList<>();
+        if(latencys == null || latencys.length == 0){
+            return rams;
+        }
+        for (RAM ram : rams) {
+            for (String latency : latencys) {
+                if(latency.contains(String.valueOf(ram.latency))){
+                    list.add(ram);
+                }
             }
         }
+        return list;
     }
-
-    public void getRAMsByCapacity(List<RAM> rams, int capacity) {
-        Iterator<RAM> iterator = rams.iterator();
-
-        while (iterator.hasNext()) {
-            RAM ram = iterator.next();
-            if (ram.capacity != capacity) {
-                iterator.remove();
+    
+    public List<RAM> getRAMsBySpeed(List<RAM> rams, String[] speeds) {
+        List<RAM> list = new ArrayList<>();
+        if(speeds == null || speeds.length == 0){
+            return rams;
+        }
+        for (RAM ram : rams) {
+            for (String speed : speeds) {
+                if(speed.contains(String.valueOf(ram.speed))){
+                    list.add(ram);
+                }
             }
         }
+        return list;
     }
-
-    public void getRAMsByLatency(List<RAM> rams, int latency) {
-        Iterator<RAM> iterator = rams.iterator();
-
-        while (iterator.hasNext()) {
-            RAM ram = iterator.next();
-            if (ram.latency != latency) {
-                iterator.remove();
+    
+    public List<RAM> getRAMsByCapacity(List<RAM> rams, String[] capacitys) {
+        List<RAM> list = new ArrayList<>();
+        if(capacitys == null || capacitys.length == 0){
+            return rams;
+        }        
+        for (RAM ram : rams) {            
+            for (String caString : capacitys) {
+                if(caString.contains(String.valueOf(ram.capacity))){
+                    list.add(ram);
+                }
             }
         }
+        return list;
     }
 
     public void getRAMsByPrice(List<RAM> rams, double from, double to) {
@@ -119,4 +133,10 @@ public class FilterRAMsServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }

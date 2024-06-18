@@ -281,7 +281,9 @@
                   <br />
                 </h1>
               </div>
+                <c:set var="name" value="${requestScope.searchName}" scope="page"/>  
               <form class="view-all-product-cpu-form" action="/filterram" method="post" onsubmit="return validateForm()">
+                <input type="hidden" name="nameSearch" value="${name}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Frice</span>
                   <br />
@@ -297,7 +299,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="from"
-                    value=""
+                    value="${requestScope.from}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -311,10 +313,11 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="to"
-                    value=""
+                    value="${requestScope.to}"
                   />
                 </div>
                   <hr>
+                  <c:set var="generss" value="${requestScope.generss}"/>
                   <span class="view-all-product-cpu-text14">
                       <span>Generation</span>
                       <br />
@@ -325,6 +328,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="generation"
                           value="ddr4"
+                          <c:forEach var="gener" items="generss">
+                              <c:if test="${gener == 'ddr4'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>DDR4</span>
@@ -337,6 +345,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="generation"
                           value="ddr5"
+                          <c:forEach var="gener" items="generss">
+                              <c:if test="${gener == 'ddr5'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>DDR5</span>
@@ -344,6 +357,7 @@
                       </span>
                   </div>                  
                   <hr>  
+                  <c:set var="speeds" value="${requestScope.speeds}"/>
                 <span class="view-all-product-cpu-text14">
                   <span>Speed</span>
                   <br />
@@ -354,6 +368,11 @@
                     class="view-all-product-cpu-checkbox"
                     name="speed"
                     value="3000"
+                    <c:forEach var="speed" items="${requestScope.speeds}">
+                        <c:if test="${speed == '3000'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text17">
                     <span>3000</span>
@@ -366,6 +385,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="speed"
                     value="3200"
+                    <c:forEach var="speed" items="${requestScope.speeds}">
+                        <c:if test="${speed == '3200'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>3200</span>
@@ -378,6 +402,11 @@
                     class="view-all-product-cpu-checkbox2"
                     name="speed"
                     value="3600"
+                    <c:forEach var="speed" items="${requestScope.speeds}">
+                        <c:if test="${speed == '3600'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
                     <span>3600</span>
@@ -390,6 +419,11 @@
                     class="view-all-product-cpu-checkbox2"
                     name="speed"
                     value="5600"
+                    <c:forEach var="speed" items="${requestScope.speeds}">
+                        <c:if test="${speed == '5600'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
                     <span>5600</span>
@@ -402,6 +436,11 @@
                     class="view-all-product-cpu-checkbox2"
                     name="speed"
                     value="6000"
+                    <c:forEach var="speed" items="${requestScope.speeds}">
+                        <c:if test="${speed == '6000'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
                     <span>6000</span>
@@ -414,13 +453,19 @@
                     class="view-all-product-cpu-checkbox2"
                     name="speed"
                     value="6400"
+                    <c:forEach var="speed" items="${requestScope.speeds}">
+                        <c:if test="${speed == '6400'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
                     <span>6400</span>
                     <br />
                   </span>
                 </div>
-                <hr>                                  
+                <hr>  
+                <c:set var="latess" value="${requestScope.latess}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Latency</span>
                   <br />
@@ -431,6 +476,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="latency"
                     value="15"
+                    <c:forEach var="laten" items="latess">
+                        <c:if test="${laten == '15'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>15</span>
@@ -443,6 +493,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="latency"
                     value="16"
+                    <c:forEach var="laten" items="latess">
+                        <c:if test="${laten == '16'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>16</span>
@@ -455,6 +510,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="latency"
                     value="18"
+                    <c:forEach var="laten" items="latess">
+                        <c:if test="${laten == '18'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>18</span>
@@ -467,6 +527,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="latency"
                     value="36"
+                    <c:forEach var="laten" items="latess">
+                        <c:if test="${laten == '36'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>36</span>
@@ -479,6 +544,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="latency"
                     value="38"
+                    <c:forEach var="laten" items="latess">
+                        <c:if test="${laten == '38'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>38</span>
@@ -486,6 +556,7 @@
                   </span>
                 </div>
                 <hr><!-- comment -->
+                <c:set var="capacitys" value="${requestScope.capacitys}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Capacity</span>
                   <br />
@@ -496,6 +567,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="capacity"
                     value="16"
+                    <c:forEach var="capacityss" items="${capacitys}">
+                        <c:if test="${capacityss == '16'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>16</span>
@@ -508,6 +584,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="capacity"
                     value="32"
+                    <c:forEach var="capacityss" items="${capacitys}">
+                        <c:if test="${capacityss == '32'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>32</span>
@@ -520,6 +601,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="capacity"
                     value="64"
+                    <c:forEach var="capacityss" items="${capacitys}">
+                        <c:if test="${capacityss == '64'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>64</span>
@@ -540,7 +626,7 @@
                             />
                         <h1 class="component1-text thq-link">
                             <span>
-                                ${ram.name}
+                                <a href="/view/detail/product?category=ram&id=${ram.id}">${ram.name}</a>
                             </span>
                         </h1>
                         <span class="component1-text1">
