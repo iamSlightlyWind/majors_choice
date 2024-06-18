@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -225,7 +226,7 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z"
                       ></path>
                     </svg>
-                    <a href="/profile?action=view" class="navbar-account thq-button-filled">
+                    <a href="/profile" class="navbar-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z"
@@ -366,7 +367,7 @@
                   class="home-page-dropdown-toggle-cpu"
                 >
                   <span class="home-page-text003">
-                    <span>CPU</span>
+                      <span><a href="/cpusservlet">CPU</a></span>
                     <br />
                   </span>
                   <div
@@ -1630,7 +1631,7 @@
                   class="home-page-dropdown-toggle077"
                 >
                   <span class="home-page-text202">
-                    <span>GPU</span>
+                    <span><a href="/gpusservlet">GPU</a></span>
                     <br />
                   </span>
                   <div
@@ -2847,7 +2848,7 @@
                   class="home-page-dropdown-toggle158"
                 >
                   <span class="home-page-text411">
-                    <span>Mobo</span>
+                    <span><a href="/mobosservlet">Mobo</a></span>
                     <br />
                   </span>
                   <div
@@ -3102,7 +3103,7 @@
                   class="home-page-dropdown-toggle166"
                 >
                   <span class="home-page-text423">
-                    <span>PSU</span>
+                    <span><a href="/psusservlet">PSU</a></span>
                     <br />
                   </span>
                   <div
@@ -3256,7 +3257,7 @@
                   class="home-page-dropdown-toggle176"
                 >
                   <span class="home-page-text434">
-                    <span>RAM</span>
+                    <span><a href="/ramsservlet">RAM</a></span>
                     <br />
                   </span>
                   <div
@@ -3430,7 +3431,7 @@
                   class="home-page-dropdown-toggle184"
                 >
                   <span class="home-page-text439">
-                    <span>SSD</span>
+                    <span><a href="/ssdsservlet">SSD</a></span>
                     <br />
                   </span>
                   <div
@@ -3934,7 +3935,7 @@
             <div class="home-page-body-cpu">
               <div class="component3-container component3-root-class-name">
                 <div class="component3-container1">
-                  <div class="component3-container2">
+                   <div class="component3-container2">
                     <div
                       class="component1-container component1-root-class-name4"
                     >

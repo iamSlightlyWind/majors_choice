@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -285,7 +284,9 @@
                   <br />
                 </h1>
               </div>
+              <c:set var="name" value="${requestScope.searchName}" scope="page"/>
                 <form class="view-all-product-cpu-form" action="/filtercpu" method="post" onsubmit="return validateForm()">
+                <input type="hidden" name="nameSearch" value="${name}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Frice</span>
                   <br />
@@ -319,6 +320,7 @@
                   />
                 </div>
                   <hr>
+                  <c:set var="brands" value="${requestScope.brands}" />  
                   <span class="view-all-product-cpu-text14">
                       <span>Brand</span>
                       <br />
@@ -329,6 +331,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="brand"
                           value="amd"
+                          <c:forEach var="brand" items="${brands}">
+                              <c:if test="${brand == 'amd'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>AMD</span>
@@ -341,13 +348,19 @@
                           class="view-all-product-cpu-checkbox"
                           name="brand"
                           value="intel"
+                          <c:forEach var="brand" items="${brands}">
+                              <c:if test="${brand == 'intel'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>Intel</span>
                           <br />
                       </span>
                   </div>     
-                  <hr>  
+                  <hr>
+                <c:set var="generations" value="${requestScope.generations}" />  
                 <span class="view-all-product-cpu-text14">
                   <span>Genernation</span>
                   <br />
@@ -357,10 +370,15 @@
                     type="checkbox"
                     class="view-all-product-cpu-checkbox"
                     name="generation"
-                    value="cazame"
+                    value="Cezanne"
+                    <c:forEach var="generation" items="${generations}">
+                              <c:if test="${generation == 'Cezanne'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                   />
                   <span class="view-all-product-cpu-text17">
-                    <span>Cazanne</span>
+                    <span>Cezanne</span>
                     <br />
                   </span>
                 </div>
@@ -369,10 +387,15 @@
                     type="checkbox"
                     class="view-all-product-cpu-checkbox1"
                     name="generation"
-                    value="vermeer"
+                    value="Zen 3"
+                    <c:forEach var="generation" items="${generations}">
+                              <c:if test="${generation == 'Zen 3'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
-                    <span>Vermeer</span>
+                    <span>Zen 3</span>
                     <br />
                   </span>
                 </div>
@@ -381,10 +404,15 @@
                     type="checkbox"
                     class="view-all-product-cpu-checkbox2"
                     name="generation"
-                    value="rapheal"
+                    value="raphael"
+                    <c:forEach var="generation" items="${generations}">
+                              <c:if test="${generation == 'raphael'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
-                    <span>Rapheal</span>
+                    <span>Raphael</span>
                     <br />
                   </span>
                 </div>
@@ -394,6 +422,11 @@
                     class="view-all-product-cpu-checkbox3"
                     name="generation"
                     value="raptor lake"
+                    <c:forEach var="generation" items="${generations}">
+                              <c:if test="${generation == 'raptor lake'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                   />
                   <span class="view-all-product-cpu-text26">Raptor Lake</span>
                 </div>
@@ -402,13 +435,19 @@
                       <span>Socket</span>
                       <br />
                 </span>
-                  <div class="view-all-product-cpu-container05">
+                <c:set var="sockets" value="${requestScope.sockets}" />    
+                    <div class="view-all-product-cpu-container05">
                       <input
                           type="checkbox"
                           class="view-all-product-cpu-checkbox"
                           name="socket"
                           value="am4"
-                          />
+                          <c:forEach var="socket" items="${sockets}">
+                              <c:if test="${socket == 'am4'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
+                      />
                       <span class="view-all-product-cpu-text17">
                           <span>AM4</span>
                           <br />
@@ -420,6 +459,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="socket"
                           value="am5"
+                          <c:forEach var="socket" items="${sockets}">
+                              <c:if test="${socket == 'am5'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>AM5</span>
@@ -432,12 +476,18 @@
                           class="view-all-product-cpu-checkbox"
                           name="socket"
                           value="lga 1700"
+                          <c:forEach var="socket" items="${sockets}">
+                              <c:if test="${socket == 'lga 1700'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>LGA 1700</span>
                           <br />
                       </span>
                   </div> 
+                      
                 <hr>
                 <span class="view-all-product-cpu-text05">
                   <span>Core</span>
@@ -454,7 +504,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="fromCores"
-                    value=""
+                    value="${requestScope.fromCore}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -468,7 +518,7 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="toCores"
-                    value=""
+                    value="${requestScope.toCore}"
                   />
                 </div>
                 <hr><!-- comment -->
@@ -487,7 +537,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="fromTDP"
-                    value=""
+                    value="${requestScope.fromTDP}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -501,7 +551,7 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="toTDP"
-                    value=""
+                    value="${requestScope.toTDP}"
                   />
                 </div>
                 <button type="submit" value="Filter">Filter</button>
@@ -518,7 +568,7 @@
                             />
                         <h1 class="component1-text thq-link">
                             <span>
-                                ${cpu.name}
+                                <a href="/view/detail/product?category=cpu&id=${cpu.id}"> ${cpu.name}</a>
                             </span>
                         </h1>
                         <span class="component1-text1">

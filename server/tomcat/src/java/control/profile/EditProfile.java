@@ -31,7 +31,8 @@ public class EditProfile extends HttpServlet {
             request.setAttribute("user", user);
             switch (result) {
                 case 1:
-                    response.sendRedirect("/profile?action=view");
+                    request.setAttribute("status", "Update Successful!");
+                    request.getRequestDispatcher("/profile").forward(request, response);
                     break;
                 case -1:
                     request.setAttribute("status", "Update Failed! Email had existed.");

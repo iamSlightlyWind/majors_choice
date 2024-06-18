@@ -11,7 +11,6 @@ public class Profile extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("text/html;charset=UTF-8");
         User user = (User) request.getSession().getAttribute("userObject");
 
@@ -19,22 +18,15 @@ public class Profile extends HttpServlet {
             response.sendRedirect("/auth/login.jsp");
             return;
         }
-
         user.retrieveData((String) request.getSession().getAttribute("table"));
-
-        request.setAttribute("user", user);
-
-        String action = request.getParameter("action") == null ? "" : request.getParameter("action");
-
-        switch (action) {
-            case "view":
-                request.getRequestDispatcher("profile.jsp").forward(request, response);
-                break;
-            case "edit":
-                request.getRequestDispatcher("editprofile.jsp").forward(request, response);
-                break;
+        String status = (String) request.getAttribute("status");
+        
+        if(status != null){
+            request.setAttribute("status", status);
         }
 
+        request.setAttribute("user", user);       
+        request.getRequestDispatcher("editprofile.jsp").forward(request, response);
     }
 
     @Override

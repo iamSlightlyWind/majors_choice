@@ -276,12 +276,14 @@
                     d="M846.72 170.667l-281.984 333.397c-6.272 7.381-10.069 17.024-10.069 27.563v295.339l-85.333-42.667v-252.672c0.043-9.685-3.285-19.499-10.069-27.563l-281.984-333.397zM938.667 85.333h-853.333c-23.552 0-42.667 19.115-42.667 42.667 0 10.539 3.797 20.181 10.069 27.563l331.264 391.68v263.424c0 16.597 9.472 31.019 23.595 38.144l170.667 85.333c21.077 10.539 46.72 2.005 57.259-19.072 3.072-6.229 4.523-12.843 4.48-19.072v-348.757l331.264-391.68c15.232-18.005 12.971-44.928-5.035-60.117-8.064-6.827-17.877-10.155-27.563-10.112z"
                   ></path>
                 </svg>
+                <c:set var="name" value="${requestScope.searchName}" scope="page"/> 
                 <h1 class="view-all-product-cpu-text02">
                   <span>Search filter</span>
                   <br />
                 </h1>
               </div>
               <form class="view-all-product-cpu-form" action="/filterpsu" method="post" onsubmit="return validateForm()">
+                <input type="hidden" name="nameSearch" value="${name}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Frice</span>
                   <br />
@@ -297,7 +299,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="from"
-                    value=""
+                    value="${requestScope.from}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -311,7 +313,7 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="to"
-                    value=""
+                    value="${requestScope.to}"
                   />
                 </div>
                   <hr>
@@ -330,7 +332,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="fromWattage"
-                    value=""
+                    value="${requestScope.fromWattages}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -344,10 +346,11 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="toWattage"
-                    value=""
+                    value="${requestScope.toWattages}"
                   />
                 </div>                                   
-                  <hr>  
+                  <hr> 
+                  <c:set var="efficiencys" value="${requestScope.efficiencys}"/>
                 <span class="view-all-product-cpu-text14">
                   <span>Efficiency</span>
                   <br />
@@ -358,6 +361,11 @@
                     class="view-all-product-cpu-checkbox"
                     name="efficiency"
                     value="80+ platin"
+                    <c:forEach var="efficiency" items="${efficiencys}">
+                        <c:if test="${efficiency == '80+ platin'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text17">
                     <span>80+ Platin</span>
@@ -370,6 +378,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="efficiency"
                     value="80+ gold"
+                    <c:forEach var="efficiency" items="${efficiencys}">
+                        <c:if test="${efficiency == '80+ gold'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>80+ Gold</span>
@@ -382,6 +395,11 @@
                     class="view-all-product-cpu-checkbox2"
                     name="efficiency"
                     value="80+ titani"
+                    <c:forEach var="efficiency" items="${efficiencys}">
+                        <c:if test="${efficiency == '80+ titani'}">
+                            checked
+                        </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
                     <span>80+ Titani</span>

@@ -186,6 +186,7 @@
                           type="text"
                           placeholder="Search product by name"
                           class="navbar-textinput1 input"
+                          value="${requestScope.searchName}"
                         />
                         <button
                           class="navbar-search1 thq-button-filled thq-button-animated"
@@ -281,7 +282,9 @@
                   <br />
                 </h1>
               </div>
+              <c:set var="name" value="${requestScope.searchName}" scope="page"/>  
              <form class="view-all-product-cpu-form" action="/filtergpu" method="post" onsubmit="return validateForm()">
+                 <input type="hidden" name="nameSearch" value="${name}"/>
                 <span class="view-all-product-cpu-text05">
                   <span>Frice</span>
                   <br />
@@ -297,7 +300,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="from"
-                    value=""
+                    value="${requestScope.from}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -311,10 +314,11 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="to"
-                    value=""
+                    value="${requestScope.to}"
                   />
                 </div>
                   <hr>
+                  <c:set var="brands" value="${requestScope.brands}" /> 
                   <span class="view-all-product-cpu-text14">
                       <span>Brand</span>
                       <br />
@@ -325,6 +329,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="brand"
                           value="amd"
+                          <c:forEach var="brand" items="${brands}">
+                              <c:if test="${brand == 'amd'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>AMD</span>
@@ -337,6 +346,11 @@
                           class="view-all-product-cpu-checkbox"
                           name="brand"
                           value="nvidia"
+                          <c:forEach var="brand" items="${brands}">
+                              <c:if test="${brand == 'nvidia'}">
+                                  checked
+                              </c:if>
+                          </c:forEach>
                           />
                       <span class="view-all-product-cpu-text17">
                           <span>NVIDIA</span>
@@ -344,6 +358,7 @@
                       </span>
                   </div>     
                   <hr>  
+                  <c:set var="generations" value="${requestScope.generations}"/>
                 <span class="view-all-product-cpu-text14">
                   <span>Genernation</span>
                   <br />
@@ -354,6 +369,11 @@
                     class="view-all-product-cpu-checkbox"
                     name="generation"
                     value="rdna"
+                    <c:forEach var="generation" items="${generations}">
+                              <c:if test="${generation == 'rdna'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text17">
                     <span>RDNA</span>
@@ -366,6 +386,11 @@
                     class="view-all-product-cpu-checkbox1"
                     name="generation"
                     value="ampere"
+                    <c:forEach var="generation" items="${generations}">
+                              <c:if test="${generation == 'ampere'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text20">
                     <span>Ampere</span>
@@ -378,6 +403,11 @@
                     class="view-all-product-cpu-checkbox2"
                     name="generation"
                     value="ada lovelace"
+                    <c:forEach var="generation" items="${generations}">
+                              <c:if test="${generation == 'ada lovelace'}">
+                                  checked
+                              </c:if>
+                    </c:forEach>
                   />
                   <span class="view-all-product-cpu-text23">
                     <span>Ada Lovelace</span>
@@ -400,7 +430,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="fromVRAM"
-                    value=""
+                    value="${requestScope.fromVRAM}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -414,7 +444,7 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="toVRAM"
-                    value=""
+                    value="${requestScope.toVRAM}"
                   />
                 </div>
                 <hr><!-- comment -->
@@ -433,7 +463,7 @@
                     placeholder="min "
                     class="view-all-product-cpu-textinput input"
                     name="fromTDP"
-                    value=""
+                    value="${requestScope.fromTDP}"
                   />
                 </div>
                 <div class="view-all-product-cpu-container04">
@@ -447,7 +477,7 @@
                     placeholder="max"
                     class="view-all-product-cpu-textinput1 input"
                     name="toTDP"
-                    value=""
+                    value="${requestScope.toTDP}"
                   />
                 </div>
                 <button type="submit" value="Filter">Filter</button>
