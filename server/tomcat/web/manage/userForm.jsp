@@ -115,9 +115,9 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <span class="navbar-home thq-body-small thq-link">
+                      <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
-                      </span>
+                      </a>
                       <span class="navbar-contact thq-body-small thq-link">
                         <span>Contact</span>
                       </span>
