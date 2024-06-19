@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-             Motherboard motherboard = (Motherboard) request.getAttribute("motherboards");
+             Motherboard motherboard = (Motherboard) request.getAttribute("motherboard");
         %>
         <form action="motherboards" method="post" enctype="multipart/form-data">
             <table>
@@ -17,11 +17,11 @@
                     <td><%=motherboard.getId()%></td>
                 </tr>
                 <tr>
-                    <td>sellingPrice</td>
+                    <td>SellingPrice</td>
                     <td><input type="number" name="sellingPrice" value="<%=motherboard.getSellingPrice()%>"></td>
                 </tr>
                 <tr>
-                    <td>costPrice</td>
+                    <td>CostPrice</td>
                     <td><input type="number" name="costPrice" value="<%=motherboard.getCostPrice()%>"></td>
                 </tr>
                 <tr>

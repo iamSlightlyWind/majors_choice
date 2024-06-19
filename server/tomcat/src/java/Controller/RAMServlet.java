@@ -23,7 +23,7 @@ public class RAMServlet extends HttpServlet {
         Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<RAM> rams = db.getRAMs("{call getRAM()}");
+            ArrayList<RAM> rams = db.getRAMs("");
             request.setAttribute("rams", rams);
             request.setAttribute("titlePage", "Danh sách RAM");
             request.setAttribute("titleTable", "Danh sách RAM");
@@ -60,10 +60,9 @@ public class RAMServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                ArrayList<RAM> rams = db.getRAMs("select * from rams join products on rams.id= products.id where rams.id = " + id);
-                if (!rams.isEmpty()) {
-                    RAM ram = rams.get(0);
-                    request.setAttribute("rams", ram);
+                 RAM ram = new RAM(id);
+                if (ram != null) {
+                    request.setAttribute("ram", ram);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateRAM.jsp");
                     dispatcher.forward(request, response);
                 } else {

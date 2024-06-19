@@ -23,7 +23,7 @@ public class PSUServlet extends HttpServlet {
         Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<PSU> psus = db.getPSUs("{call getPSU()}");
+            ArrayList<PSU> psus = db.getPSUs("");
             request.setAttribute("psus", psus);
             request.setAttribute("titlePage", "Danh sách PSU");
             request.setAttribute("titleTable", "Danh sách PSU");
@@ -59,14 +59,13 @@ public class PSUServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                ArrayList<PSU> psus = db.getPSUs("select * from psus join products on psus.id= products.id where psus.id = " + id);
-                if (!psus.isEmpty()) {
-                    PSU psu = psus.get(0);
-                    request.setAttribute("psus", psu);
+                PSU psu = new PSU(id);
+                if (psu != null) {
+                    request.setAttribute("psu", psu);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updatePSU.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.setAttribute("errorMessage", "Không tìm thấy PSU");
+                    request.setAttribute("errorMessage", "Không tìm thấy CPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updatePSU.jsp");
                     dispatcher.forward(request, response);
                 }

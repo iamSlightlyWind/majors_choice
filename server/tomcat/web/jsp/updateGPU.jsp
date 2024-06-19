@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-            GPU gpu = (GPU) request.getAttribute("gpus");
+            GPU gpu = (GPU) request.getAttribute("gpu");
         %>
         <form action="gpus" method="post" enctype="multipart/form-data">
             <table>
@@ -17,11 +17,11 @@
                     <td><%=gpu.getId()%></td>
                 </tr>
                 <tr>
-                    <td>sellingPrice</td>
+                    <td>SellingPrice</td>
                     <td><input type="number" name="sellingPrice" value="<%=gpu.getSellingPrice()%>"></td>
                 </tr>
                 <tr>
-                    <td>costPrice</td>
+                    <td>CostPrice</td>
                     <td><input type="number" name="costPrice" value="<%=gpu.getCostPrice()%>"></td>
                 </tr>
                 <tr>

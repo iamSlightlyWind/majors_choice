@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-            CPU cpu = (CPU) request.getAttribute("cpus");
+            CPU cpu = (CPU) request.getAttribute("cpu");
         %>
         <form action="cpus" method="post" enctype="multipart/form-data">
             <table>
@@ -17,11 +17,11 @@
                     <td><%=cpu.getId()%></td>
                 </tr>
                 <tr>
-                    <td>sellingPrice</td>
+                    <td>Selling Price</td>
                     <td><input type="number" name="sellingPrice" value="<%=cpu.getSellingPrice()%>"></td>
                 </tr>
                 <tr>
-                    <td>costPrice</td>
+                    <td>Cost Price</td>
                     <td><input type="number" name="costPrice" value="<%=cpu.getCostPrice()%>"></td>
                 </tr>
                 <tr>
@@ -49,15 +49,15 @@
                     <td><input type="number" name="threads" value="<%=cpu.getThreads()%>"></td>
                 </tr>
                 <tr>
-                    <td>BaseClock</td>
+                    <td>Base Clock</td>
                     <td><input type="number" name="baseClock" value="<%=cpu.getBaseClock()%>"></td>
                 </tr>
                 <tr>
-                    <td>BoostClock</td>
+                    <td>Boost Clock</td>
                     <td><input type="number" name="boostClock" value="<%=cpu.getBoostClock()%>"></td>
                 </tr>
                 <tr>
-                    <td>Tdp</td>
+                    <td>TDP</td>
                     <td><input type="number" name="tdp" value="<%=cpu.getTdp()%>"></td>
                 </tr>
                 <tr>

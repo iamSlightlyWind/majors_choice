@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-             PSU psu = (PSU) request.getAttribute("psus");
+             PSU psu = (PSU) request.getAttribute("psu");
         %>
         <form action="psus" method="post" enctype="multipart/form-data" >
             <table>
@@ -17,11 +17,11 @@
                     <td><%=psu.getId()%></td>
                 </tr>
                 <tr>
-                    <td>sellingPrice</td>
+                    <td>SellingPrice</td>
                     <td><input type="number" name="sellingPrice" value="<%=psu.getSellingPrice()%>"></td>
                 </tr>
                 <tr>
-                    <td>costPrice</td>
+                    <td>CostPrice</td>
                     <td><input type="number" name="costPrice" value="<%=psu.getCostPrice()%>"></td>
                 </tr>
                 <tr>

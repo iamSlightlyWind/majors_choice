@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-             RAM ram = (RAM) request.getAttribute("rams");
+             RAM ram = (RAM) request.getAttribute("ram");
         %>
         <form action="rams" method="post" enctype="multipart/form-data" >
             <table>
@@ -17,11 +17,11 @@
                     <td><%=ram.getId()%></td>
                 </tr>
                 <tr>
-                    <td>sellingPrice</td>
+                    <td>SellingPrice</td>
                     <td><input type="number" name="sellingPrice" value="<%=ram.getSellingPrice()%>"></td>
                 </tr>
                 <tr>
-                    <td>costPrice</td>
+                    <td>CostPrice</td>
                     <td><input type="number" name="costPrice" value="<%=ram.getCostPrice()%>"></td>
                 </tr>
                 <tr>

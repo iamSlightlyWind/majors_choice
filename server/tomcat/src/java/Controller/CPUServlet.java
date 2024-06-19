@@ -68,11 +68,9 @@ public class CPUServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                ArrayList<CPU> cpus = db
-                        .getCPUs("select * from cpus join products on cpus.id= products.id where cpus.id = " + id);
-                if (!cpus.isEmpty()) {
-                    CPU cpu = cpus.get(0);
-                    request.setAttribute("cpus", cpu);
+                CPU cpu = new CPU(id);
+                if (cpu != null) {
+                    request.setAttribute("cpu", cpu);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateCPU.jsp");
                     dispatcher.forward(request, response);
                 } else {
@@ -102,7 +100,7 @@ public class CPUServlet extends HttpServlet {
                 if (result == 1) {
                     response.sendRedirect("cpus?service=listAll");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi cập nhật CPU");
+                    request.setAttribute("errorMessage", "  Lỗi khi cập nhật CPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateCPU.jsp");
                     dispatcher.forward(request, response);
                 }

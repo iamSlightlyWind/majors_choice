@@ -22,7 +22,7 @@ public class SSDServlet extends HttpServlet {
         }
         Database db = new Database();
         if (service.equals("listAll")) {
-            ArrayList<SSD> ssds = db.getSSDs("{call getSSD()}");
+            ArrayList<SSD> ssds = db.getSSDs("");
             request.setAttribute("ssds", ssds);
             request.setAttribute("titlePage", "Danh sách SSD");
             request.setAttribute("titleTable", "Danh sách SSD");
@@ -58,10 +58,9 @@ public class SSDServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                ArrayList<SSD> ssds = db.getSSDs("select * from ssds join products on ssds.id= products.id where ssds.id = " + id);
-                if (!ssds.isEmpty()) {
-                    SSD ssd = ssds.get(0);
-                    request.setAttribute("ssds", ssd);
+                SSD ssd = new SSD(id);
+                if (ssd != null) {
+                    request.setAttribute("ssd", ssd);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateSSD.jsp");
                     dispatcher.forward(request, response);
                 } else {

@@ -23,7 +23,7 @@ public class MotherboardServlet extends HttpServlet {
         Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<Motherboard> motherboards = db.getMotherboards("{call getMotherboard()}");
+            ArrayList<Motherboard> motherboards = db.getMotherboards("");
             request.setAttribute("motherboards", motherboards);
             request.setAttribute("titlePage", "Danh sách Motherboard");
             request.setAttribute("titleTable", "Danh sách Motherboard");
@@ -65,14 +65,13 @@ public class MotherboardServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                ArrayList<Motherboard> motherboards = db.getMotherboards("select * from motherboards join products on motherboards.id= products.id where motherboards.id = " + id);
-                if (!motherboards.isEmpty()) {
-                    Motherboard motherboard = motherboards.get(0);
-                    request.setAttribute("motherboards", motherboard);
+                 Motherboard motherboard = new Motherboard(id);
+                if (motherboard != null) {
+                    request.setAttribute("motherboard", motherboard);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.setAttribute("errorMessage", "Không tìm thấy Motherboard");
+                    request.setAttribute("errorMessage", "Không tìm thấy CPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
                     dispatcher.forward(request, response);
                 }

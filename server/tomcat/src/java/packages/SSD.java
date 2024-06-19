@@ -9,6 +9,7 @@ public class SSD extends Product {
     public String connectionInterface;
     public int capacity;
     public int cache;
+    public String image;
 
     public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
@@ -50,6 +51,14 @@ public class SSD extends Product {
 
     public void setConnectionInterface(String connectionInterface) {
         this.connectionInterface = connectionInterface;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getCapacity() {

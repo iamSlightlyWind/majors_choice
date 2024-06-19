@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-             SSD ssd = (SSD) request.getAttribute("ssds");
+             SSD ssd = (SSD) request.getAttribute("ssd");
         %>
         <form action="ssds" method="post" enctype="multipart/form-data" >
             <table>
@@ -17,11 +17,11 @@
                     <td><%=ssd.getId()%></td>
                 </tr>
                 <tr>
-                    <td>sellingPrice</td>
+                    <td>SellingPrice</td>
                     <td><input type="number" name="sellingPrice" value="<%=ssd.getSellingPrice()%>"></td>
                 </tr>
                 <tr>
-                    <td>costPrice</td>
+                    <td>CostPrice</td>
                     <td><input type="number" name="costPrice" value="<%=ssd.getCostPrice()%>"></td>
                 </tr>
                 <tr>

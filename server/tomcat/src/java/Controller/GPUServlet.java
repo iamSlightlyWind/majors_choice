@@ -23,7 +23,7 @@ public class GPUServlet extends HttpServlet {
         Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<GPU> gpus = db.getGPUs("{call getGPU()}");
+            ArrayList<GPU> gpus = db.getGPUs("");
             request.setAttribute("gpus", gpus);
             request.setAttribute("titlePage", "Danh sách GPU");
             request.setAttribute("titleTable", "Danh sách GPU");
@@ -63,10 +63,9 @@ public class GPUServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                ArrayList<GPU> gpus = db.getGPUs("select * from gpus join products on gpus.id= products.id where gpus.id = " + id);
-                if (!gpus.isEmpty()) {
-                    GPU gpu = gpus.get(0);
-                    request.setAttribute("gpus", gpu);
+                GPU gpu = new GPU(id);
+                if (gpu != null) {
+                    request.setAttribute("gpu", gpu);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateGPU.jsp");
                     dispatcher.forward(request, response);
                 } else {
