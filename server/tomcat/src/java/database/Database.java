@@ -55,7 +55,6 @@ public class Database {
 
     public ArrayList<CPU> getCPUs(String sql) {
         try {
-            // String sql = "{call getCPU()}";
             PreparedStatement statement = connection.prepareCall(sql);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<CPU> cpus = new ArrayList<>();
@@ -120,7 +119,6 @@ public class Database {
             }
             String sql = "{call addProductCPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
-            // callableStatement.setInt(1, productId); // Use the new ID
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
@@ -135,8 +133,6 @@ public class Database {
             callableStatement.registerOutParameter(12, Types.NVARCHAR);
 
             callableStatement.execute();
-
-            // Return the newly generated ID
             return productId;
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -164,7 +160,6 @@ public class Database {
             String socket,
             int cores, int threads, int baseClock, int boostClock, int tdp, String image) {
         try {
-            // Prepare and execute the SQL statement to update the CPU product
             String sql = "{call updateProductCPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
@@ -201,26 +196,16 @@ public class Database {
         int n = 0;
         String sqlDeleteFromCPUs = "DELETE FROM [dbo].[cpus] WHERE id = ?";
         String sqlDeleteFromProducts = "DELETE FROM [dbo].[products] WHERE id = ?";
-
         try {
-            // Set auto-commit to false
             connection.setAutoCommit(false);
-
-            // Prepare and execute delete from cpus
             PreparedStatement psDeleteFromCPUs = connection.prepareStatement(sqlDeleteFromCPUs);
             psDeleteFromCPUs.setInt(1, id);
             n += psDeleteFromCPUs.executeUpdate();
-
-            // Prepare and execute delete from products
             PreparedStatement psDeleteFromProducts = connection.prepareStatement(sqlDeleteFromProducts);
             psDeleteFromProducts.setInt(1, id);
             n += psDeleteFromProducts.executeUpdate();
-
-            // Commit transaction
             connection.commit();
-
         } catch (SQLException ex) {
-            // Rollback transaction if any error occurs
             try {
                 if (connection != null) {
                     connection.rollback();
@@ -231,7 +216,6 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                // Set auto-commit back to true
                 if (connection != null) {
                     connection.setAutoCommit(true);
                 }
@@ -244,7 +228,6 @@ public class Database {
 
     public ArrayList<GPU> getGPUs(String sql) {
         try {
-            // String sql = "{call getGPU()}";
             PreparedStatement statement = connection.prepareCall(sql);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<GPU> gpus = new ArrayList<>();
@@ -283,7 +266,6 @@ public class Database {
             }
             String sql = "{call addProductGPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
-            // callableStatement.setInt(1, productId); // Use the new ID
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
@@ -306,7 +288,6 @@ public class Database {
     public int updateProductGPU(int id, double sellingPrice, double costPrice, String name, String generation, int vram,
             int baseClock, int boostClock, int tdp, String image) {
         try {
-            // Prepare and execute the SQL statement to update the CPU product
             String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
@@ -322,8 +303,6 @@ public class Database {
             callableStatement.registerOutParameter(11, Types.VARCHAR);
 
             callableStatement.execute();
-
-            // Get the result from the output parameter
             String result = callableStatement.getString(11);
             if ("Update successful".equals(result)) {
                 return 1;
@@ -353,7 +332,6 @@ public class Database {
 
     public ArrayList<Motherboard> getMotherboards(String sql) {
         try {
-            // String sql = "{call getGPU()}";
             PreparedStatement statement = connection.prepareCall(sql);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<Motherboard> motherboards = new ArrayList<>();
@@ -394,7 +372,6 @@ public class Database {
             }
             String sql = "{call addProductMotherboard(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
-            // callableStatement.setInt(1, productId); // Use the new ID
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
@@ -469,7 +446,6 @@ public class Database {
 
     public ArrayList<PSU> getPSUs(String sql) {
         try {
-            // String sql = "{call getGPU()}";
             PreparedStatement statement = connection.prepareCall(sql);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PSU> psus = new ArrayList<>();
@@ -525,7 +501,6 @@ public class Database {
     public int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage,
             String efficiency, String image) {
         try {
-            // Prepare and execute the SQL statement to update the CPU product
             String sql = "{call updateProductPSU(?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
@@ -538,7 +513,6 @@ public class Database {
             callableStatement.registerOutParameter(8, Types.VARCHAR);
 
             callableStatement.execute();
-
             // Get the result from the output parameter
             String result = callableStatement.getString(8);
             if ("Update successful".equals(result)) {
@@ -741,7 +715,6 @@ public class Database {
             callableStatement.registerOutParameter(9, Types.VARCHAR);
 
             callableStatement.execute();
-
             // Get the result from the output parameter
             String result = callableStatement.getString(9);
             if ("Update successful".equals(result)) {
@@ -787,23 +760,4 @@ public class Database {
             return null;
         }
     }
-
-    public static void main(String[] args) {
-        Database database = new Database();
-        // int result = database.addProductPSU(2, 2, "test", 2, "test", "test");
-        // int result = database.updateProductRAM(188, 22, 22, "test", "test", 2, 2, 2,
-        // "test");
-
-        // if (result == 1) {
-        // System.out.println("CPU updated successfully.");
-        // } else {
-        // System.out.println("Failed to update CPU.");
-        // }
-        // int id = database.getCPUs("select * from cpus join products on cpus.id=
-        // products.id where cpus.id = 10").get(0).getId();
-        // System.out.println(id);
-        ArrayList<CPU> cpus = database.getCPUs("{call getCPU()}");
-        ;
-    }
-
 }

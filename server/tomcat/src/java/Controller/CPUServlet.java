@@ -2,15 +2,12 @@ package Controller;
 
 import database.Database;
 import jakarta.servlet.RequestDispatcher;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 import java.util.ArrayList;
 import packages.CPU;
 
@@ -66,12 +63,9 @@ public class CPUServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
         } else if (service.equals("update")) {
-            // Kiểm tra xem có submit form hay chưa
             String submit = request.getParameter("submit");
             if (submit == null) {
-                // Lấy id từ request
                 int id = Integer.parseInt(request.getParameter("id"));
-                // Lấy thông tin CPU theo id để update
                 ArrayList<CPU> cpus = db
                         .getCPUs("select * from cpus join products on cpus.id= products.id where cpus.id = " + id);
                 if (!cpus.isEmpty()) {
