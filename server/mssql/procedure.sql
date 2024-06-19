@@ -150,7 +150,7 @@ create procedure activate
     @username varchar(25),
     @confirmCode varchar(10),
     @result int output
--- 1: successful, 0: failed
+-- 1 successful, 0 failed
 as
 begin
     if exists (SELECT 1
@@ -250,7 +250,7 @@ BEGIN
     FROM cpus
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = 'Already exists' + @name
         RETURN
     END
 
@@ -288,7 +288,7 @@ BEGIN
     FROM gpus
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = 'Already exists' + @name
         RETURN
     END
 
@@ -325,7 +325,7 @@ BEGIN
     FROM rams
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = 'Already exists' + @name
         RETURN
     END
 
@@ -365,7 +365,7 @@ BEGIN
     FROM motherboards
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = 'Already exists' + @name
         RETURN
     END
 
@@ -401,7 +401,7 @@ BEGIN
     FROM ssds
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = 'Already exists' + @name
         RETURN
     END
 
@@ -436,7 +436,7 @@ BEGIN
     FROM psus
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = 'Already exists' + @name
         RETURN
     END
 
@@ -509,6 +509,7 @@ BEGIN
     EXEC sp_executesql @sql;
 END;
 go
+
 CREATE PROCEDURE updateUserInformation
     @username varchar(25),
     @password varchar(100),
@@ -903,13 +904,13 @@ BEGIN
         OR (@userId = -4 AND o.status = 'Cancelled')
         OR (@userId = -5 AND o.status = 'Shipping')
         OR (@userId = -6 AND o.status = 'Completed');
-        -- 0: All orders
-        -- -1: Pending orders
-        -- -2: Cancellation Requested
-        -- -3: Cancellation Denied, Shipping Pending
-        -- -4: Cancelled
-        -- -5: Shipping
-        -- -6: Completed
+        -- 0 All orders
+        -- -1 Pending orders
+        -- -2 Cancellation Requested
+        -- -3 Cancellation Denied, Shipping Pending
+        -- -4 Cancelled
+        -- -5 Shipping
+        -- -6 Completed
 END;
 go
 
@@ -1050,7 +1051,7 @@ BEGIN
     FROM cpus
     WHERE id = @id)
     BEGIN
-        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
         RETURN
     END
     UPDATE products
@@ -1092,7 +1093,7 @@ BEGIN
     FROM gpus
     WHERE id = @id)
     BEGIN
-        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
         RETURN
     END
     UPDATE products
@@ -1134,7 +1135,7 @@ BEGIN
     FROM motherboards
     WHERE id = @id)
     BEGIN
-        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
         RETURN
     END
     UPDATE products
@@ -1173,7 +1174,7 @@ BEGIN
     FROM psus
     WHERE id = @id)
     BEGIN
-        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
         RETURN
     END
     UPDATE products
@@ -1209,7 +1210,7 @@ BEGIN
     FROM rams
     WHERE id = @id)
     BEGIN
-        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
         RETURN
     END
     UPDATE products
@@ -1246,7 +1247,7 @@ BEGIN
     FROM ssds
     WHERE id = @id)
     BEGIN
-        SET @result = 'Product not found with ID: ' + CAST(@id AS nvarchar)
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
         RETURN
     END
     UPDATE products
