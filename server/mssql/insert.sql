@@ -14,8 +14,6 @@ EXEC register
     @confirmCode = 'BfklE',
     @result = @resultInt OUTPUT
 
-PRINT @resultInt
-
 -- User 2
 EXEC register
     @tablename = 'user',
@@ -28,8 +26,6 @@ EXEC register
     @dateOfBirth = '1985-02-02', 
     @confirmCode = 'DfjgR',
     @result = @resultInt OUTPUT
-
-PRINT @resultInt
 
 -- User 3
 EXEC register 
@@ -44,8 +40,6 @@ EXEC register
     @confirmCode = 'GhjKl',
     @result = @resultInt OUTPUT
 
-PRINT @resultInt
-
 -- User 4
 EXEC register 
     @tablename = 'user',
@@ -58,8 +52,6 @@ EXEC register
     @dateOfBirth = '1995-04-04', 
     @confirmCode = 'JkLmN',
     @result = @resultInt OUTPUT
-
-PRINT @resultInt
 
 -- User 5
 EXEC register 
@@ -74,7 +66,15 @@ EXEC register
     @confirmCode = 'LmNoP',
     @result = @resultInt OUTPUT
 
-PRINT @resultInt
+INSERT INTO staffs
+    (username, password, possition, fullname, active)
+VALUES
+    ('manager', 'password', 1, 'Manager', 1);
+
+EXEC addStaff @username = 'staff1', @password = 'password2', @fullname = 'Staff One', @result = @resultInt OUTPUT;
+EXEC addStaff @username = 'staff2', @password = 'password3', @fullname = 'Staff Two', @result = @resultInt OUTPUT;
+EXEC addStaff @username = 'staff3', @password = 'password4', @fullname = 'Staff Three', @result = @resultInt OUTPUT;
+EXEC addStaff @username = 'staff4', @password = 'password5', @fullname = 'Staff Four', @result = @resultInt OUTPUT;
 
 -- >> Add CPUs
 DECLARE @result varchar(50)
@@ -93,8 +93,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 7500000,
     @costPrice = 6500000,
@@ -108,8 +106,6 @@ EXEC addProductCPU
     @tdp = 65,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 13000000,
@@ -125,8 +121,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 5000000,
     @costPrice = 5800000,
@@ -140,8 +134,6 @@ EXEC addProductCPU
     @tdp = 65,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 7800000,
@@ -157,8 +149,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 10500000,
     @costPrice = 9000000,
@@ -172,8 +162,6 @@ EXEC addProductCPU
     @tdp = 105,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 12000000,
@@ -189,8 +177,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 9500000,
     @costPrice = 8000000,
@@ -204,8 +190,6 @@ EXEC addProductCPU
     @tdp = 105,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 7500000,
@@ -221,8 +205,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 11000000,
     @costPrice = 9500000,
@@ -236,8 +218,6 @@ EXEC addProductCPU
     @tdp = 125,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 09700000,
@@ -253,8 +233,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 011500000,
     @costPrice = 010000000,
@@ -268,8 +246,6 @@ EXEC addProductCPU
     @tdp = 125,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 07000000,
@@ -285,8 +261,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 06500000,
     @costPrice = 05500000,
@@ -300,8 +274,6 @@ EXEC addProductCPU
     @tdp = 125,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 010500000,
@@ -317,8 +289,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 08000000,
     @costPrice = 07000000,
@@ -332,8 +302,6 @@ EXEC addProductCPU
     @tdp = 125,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 012000000,
@@ -349,8 +317,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductCPU
     @sellingPrice = 011500000,
     @costPrice = 010000000,
@@ -364,8 +330,6 @@ EXEC addProductCPU
     @tdp = 125,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductCPU
     @sellingPrice = 010200000,
@@ -381,8 +345,6 @@ EXEC addProductCPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 -- >> Add GPUs
 EXEC addProductGPU
     @sellingPrice = 14000000,
@@ -396,8 +358,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 11500000,
     @costPrice = 8500000,
@@ -409,8 +369,6 @@ EXEC addProductGPU
     @tdp = 300,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 10500000,
@@ -424,8 +382,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 8500000,
     @costPrice = 6000000,
@@ -437,8 +393,6 @@ EXEC addProductGPU
     @tdp = 160,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 27000000,
@@ -452,8 +406,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 23000000,
     @costPrice = 18000000,
@@ -465,8 +417,6 @@ EXEC addProductGPU
     @tdp = 320,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 20000000,
@@ -480,8 +430,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 14000000,
     @costPrice = 11000000,
@@ -493,8 +441,6 @@ EXEC addProductGPU
     @tdp = 200,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 20000000,
@@ -508,8 +454,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 18000000,
     @costPrice = 14000000,
@@ -521,8 +465,6 @@ EXEC addProductGPU
     @tdp = 300,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 14000000,
@@ -536,8 +478,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 12000000,
     @costPrice = 9000000,
@@ -549,8 +489,6 @@ EXEC addProductGPU
     @tdp = 250,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 9000000,
@@ -564,8 +502,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 35000000,
     @costPrice = 30000000,
@@ -577,8 +513,6 @@ EXEC addProductGPU
     @tdp = 450,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 30000000,
@@ -592,8 +526,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 27000000,
     @costPrice = 22000000,
@@ -605,8 +537,6 @@ EXEC addProductGPU
     @tdp = 285,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductGPU
     @sellingPrice = 23000000,
@@ -620,8 +550,6 @@ EXEC addProductGPU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductGPU
     @sellingPrice = 20000000,
     @costPrice = 15000000,
@@ -633,8 +561,6 @@ EXEC addProductGPU
     @tdp = 220,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 
 -- >> Add RAMs
@@ -650,8 +576,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 650000,
     @costPrice = 550000,
@@ -662,8 +586,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 700000,
@@ -676,8 +598,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 750000,
     @costPrice = 650000,
@@ -688,8 +608,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 800000,
@@ -702,8 +620,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1200000,
     @costPrice = 1000000,
@@ -714,8 +630,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 1300000,
@@ -728,8 +642,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1400000,
     @costPrice = 1200000,
@@ -740,8 +652,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 1500000,
@@ -754,8 +664,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1600000,
     @costPrice = 1400000,
@@ -766,8 +674,6 @@ EXEC addProductRAM
     @latentcy = 18,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 2400000,
@@ -780,8 +686,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 2600000,
     @costPrice = 2200000,
@@ -792,8 +696,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 2800000,
@@ -806,8 +708,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 600000,
     @costPrice = 500000,
@@ -818,8 +718,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 650000,
@@ -832,8 +730,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 700000,
     @costPrice = 600000,
@@ -844,8 +740,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 750000,
@@ -858,8 +752,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 800000,
     @costPrice = 700000,
@@ -870,8 +762,6 @@ EXEC addProductRAM
     @latentcy = 18,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 850000,
@@ -884,8 +774,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 800000,
     @costPrice = 650000,
@@ -896,8 +784,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 850000,
@@ -910,8 +796,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 900000,
     @costPrice = 750000,
@@ -922,8 +806,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 950000,
@@ -936,8 +818,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1000000,
     @costPrice = 850000,
@@ -948,8 +828,6 @@ EXEC addProductRAM
     @latentcy = 18,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 1050000,
@@ -962,8 +840,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1400000,
     @costPrice = 1200000,
@@ -974,8 +850,6 @@ EXEC addProductRAM
     @latentcy = 18,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 550000,
@@ -988,8 +862,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 600000,
     @costPrice = 500000,
@@ -1000,8 +872,6 @@ EXEC addProductRAM
     @latentcy = 15,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 650000,
@@ -1014,8 +884,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 700000,
     @costPrice = 600000,
@@ -1026,8 +894,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 950000,
@@ -1040,8 +906,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1000000,
     @costPrice = 850000,
@@ -1052,8 +916,6 @@ EXEC addProductRAM
     @latentcy = 15,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 1050000,
@@ -1066,8 +928,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1150000,
     @costPrice = 1000000,
@@ -1078,8 +938,6 @@ EXEC addProductRAM
     @latentcy = 19,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 1700000,
@@ -1092,8 +950,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 1800000,
     @costPrice = 1600000,
@@ -1104,8 +960,6 @@ EXEC addProductRAM
     @latentcy = 16,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 3200000,
@@ -1118,8 +972,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 3600000,
     @costPrice = 3200000,
@@ -1130,8 +982,6 @@ EXEC addProductRAM
     @latentcy = 32,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 4000000,
@@ -1144,8 +994,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 4800000,
     @costPrice = 4200000,
@@ -1156,8 +1004,6 @@ EXEC addProductRAM
     @latentcy = 30,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 5000000,
@@ -1170,8 +1016,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 5300000,
     @costPrice = 4800000,
@@ -1182,8 +1026,6 @@ EXEC addProductRAM
     @latentcy = 36,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 5500000,
@@ -1196,8 +1038,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 5700000,
     @costPrice = 5200000,
@@ -1208,8 +1048,6 @@ EXEC addProductRAM
     @latentcy = 36,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 5900000,
@@ -1222,8 +1060,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 6100000,
     @costPrice = 5600000,
@@ -1234,8 +1070,6 @@ EXEC addProductRAM
     @latentcy = 38,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 6300000,
@@ -1248,8 +1082,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 6500000,
     @costPrice = 6000000,
@@ -1260,8 +1092,6 @@ EXEC addProductRAM
     @latentcy = 36,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 6300000,
@@ -1274,8 +1104,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 6000000,
     @costPrice = 5500000,
@@ -1286,8 +1114,6 @@ EXEC addProductRAM
     @latentcy = 40,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 6300000,
@@ -1300,8 +1126,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 6500000,
     @costPrice = 6000000,
@@ -1312,8 +1136,6 @@ EXEC addProductRAM
     @latentcy = 36,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductRAM
     @sellingPrice = 6700000,
@@ -1326,8 +1148,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 6900000,
     @costPrice = 6400000,
@@ -1339,8 +1159,6 @@ EXEC addProductRAM
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductRAM
     @sellingPrice = 7100000,
     @costPrice = 6600000,
@@ -1351,8 +1169,6 @@ EXEC addProductRAM
     @latentcy = 38,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 -- >> Add Motherboards
 EXEC addProductMotherboard
@@ -1369,8 +1185,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductMotherboard
     @sellingPrice = 9500000,
     @costPrice = 8500000,
@@ -1384,8 +1198,6 @@ EXEC addProductMotherboard
     @wifi = 0,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductMotherboard
     @sellingPrice = 13500000,
@@ -1401,8 +1213,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductMotherboard
     @sellingPrice = 8000000,
     @costPrice = 7000000,
@@ -1416,8 +1226,6 @@ EXEC addProductMotherboard
     @wifi = 0,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductMotherboard
     @sellingPrice = 11500000,
@@ -1433,8 +1241,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductMotherboard
     @sellingPrice = 7500000,
     @costPrice = 6500000,
@@ -1448,8 +1254,6 @@ EXEC addProductMotherboard
     @wifi = 1,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductMotherboard
     @sellingPrice = 12000000,
@@ -1465,8 +1269,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductMotherboard
     @sellingPrice = 6500000,
     @costPrice = 5500000,
@@ -1480,8 +1282,6 @@ EXEC addProductMotherboard
     @wifi = 1,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductMotherboard
     @sellingPrice = 8500000,
@@ -1497,8 +1297,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductMotherboard
     @sellingPrice = 6000000,
     @costPrice = 5000000,
@@ -1512,8 +1310,6 @@ EXEC addProductMotherboard
     @wifi = 1,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductMotherboard
     @sellingPrice = 10000000,
@@ -1529,8 +1325,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductMotherboard
     @sellingPrice = 11500000,
     @costPrice = 10000000,
@@ -1544,8 +1338,6 @@ EXEC addProductMotherboard
     @wifi = 0,
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductMotherboard
     @sellingPrice = 8000000,
@@ -1561,8 +1353,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductMotherboard
     @sellingPrice = 9000000,
     @costPrice = 8000000,
@@ -1577,8 +1367,6 @@ EXEC addProductMotherboard
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 -- >> Add PSUs
 EXEC addProductPSU
     @sellingPrice = 3600000,
@@ -1589,8 +1377,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 3000000,
     @costPrice = 2500000,
@@ -1599,8 +1385,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 4700000,
@@ -1611,8 +1395,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 2700000,
     @costPrice = 2200000,
@@ -1621,8 +1403,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 4200000,
@@ -1633,8 +1413,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 3900000,
     @costPrice = 3300000,
@@ -1643,8 +1421,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 8500000,
@@ -1655,8 +1431,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 3300000,
     @costPrice = 2800000,
@@ -1665,8 +1439,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 4400000,
@@ -1677,8 +1449,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 3200000,
     @costPrice = 2700000,
@@ -1687,8 +1457,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 3500000,
@@ -1699,8 +1467,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 5800000,
     @costPrice = 5000000,
@@ -1709,8 +1475,6 @@ EXEC addProductPSU
     @efficiency = '80+ Platinum',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 3200000,
@@ -1721,8 +1485,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 3500000,
     @costPrice = 3000000,
@@ -1731,8 +1493,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 3800000,
@@ -1743,8 +1503,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 4200000,
     @costPrice = 3500000,
@@ -1753,8 +1511,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 5200000,
@@ -1765,8 +1521,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 3900000,
     @costPrice = 3400000,
@@ -1775,8 +1529,6 @@ EXEC addProductPSU
     @efficiency = '80+ Gold',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 EXEC addProductPSU
     @sellingPrice = 4500000,
@@ -1787,8 +1539,6 @@ EXEC addProductPSU
     @image = '',
     @result = @result OUTPUT
 
-PRINT @result
-
 EXEC addProductPSU
     @sellingPrice = 5000000,
     @costPrice = 4300000,
@@ -1797,8 +1547,6 @@ EXEC addProductPSU
     @efficiency = '80+ Platinum',
     @image = '',
     @result = @result OUTPUT
-
-PRINT @result
 
 -- >> Add SSDs
 EXEC addProductSSD
@@ -1810,8 +1558,6 @@ EXEC addProductSSD
     @cache = 512,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1800000,
     @costPrice = 1500000,
@@ -1821,8 +1567,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2700000,
     @costPrice = 2200000,
@@ -1832,8 +1576,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3000000,
     @costPrice = 2500000,
@@ -1843,8 +1585,6 @@ EXEC addProductSSD
     @cache = 512,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3300000,
     @costPrice = 2800000,
@@ -1854,8 +1594,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3200000,
     @costPrice = 2700000,
@@ -1865,8 +1603,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3500000,
     @costPrice = 3000000,
@@ -1876,8 +1612,6 @@ EXEC addProductSSD
     @cache = 512,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1300000,
     @costPrice = 1000000,
@@ -1887,8 +1621,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1600000,
     @costPrice = 1300000,
@@ -1898,8 +1630,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1800000,
     @costPrice = 1500000,
@@ -1909,8 +1639,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1100000,
     @costPrice = 800000,
@@ -1920,8 +1648,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 5000000,
     @costPrice = 4200000,
@@ -1931,8 +1657,6 @@ EXEC addProductSSD
     @cache = 512,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 6000000,
     @costPrice = 5000000,
@@ -1942,8 +1666,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 5500000,
     @costPrice = 4500000,
@@ -1953,8 +1675,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 5800000,
     @costPrice = 4800000,
@@ -1964,8 +1684,6 @@ EXEC addProductSSD
     @cache = 512,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2100000,
     @costPrice = 1800000,
@@ -1975,8 +1693,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2400000,
     @costPrice = 2000000,
@@ -1986,8 +1702,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2600000,
     @costPrice = 2200000,
@@ -1997,8 +1711,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1500000,
     @costPrice = 1200000,
@@ -2008,8 +1720,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2500000,
     @costPrice = 2000000,
@@ -2019,8 +1729,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1300000,
     @costPrice = 1000000,
@@ -2030,8 +1738,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1500000,
     @costPrice = 1200000,
@@ -2041,8 +1747,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1600000,
     @costPrice = 1300000,
@@ -2052,8 +1756,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2100000,
     @costPrice = 1800000,
@@ -2063,8 +1765,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1800000,
     @costPrice = 1500000,
@@ -2074,8 +1774,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2700000,
     @costPrice = 2200000,
@@ -2085,8 +1783,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2100000,
     @costPrice = 1800000,
@@ -2096,8 +1792,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2400000,
     @costPrice = 2000000,
@@ -2107,8 +1801,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2600000,
     @costPrice = 2200000,
@@ -2118,8 +1810,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3000000,
     @costPrice = 2500000,
@@ -2129,8 +1819,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3300000,
     @costPrice = 2800000,
@@ -2140,8 +1828,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3200000,
     @costPrice = 2700000,
@@ -2151,8 +1837,6 @@ EXEC addProductSSD
     @cache = 4096,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1800000,
     @costPrice = 1500000,
@@ -2162,8 +1846,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 1600000,
     @costPrice = 1300000,
@@ -2173,8 +1855,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2100000,
     @costPrice = 1800000,
@@ -2184,8 +1864,6 @@ EXEC addProductSSD
     @cache = 4096,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3700000,
     @costPrice = 3200000,
@@ -2195,8 +1873,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3300000,
     @costPrice = 2800000,
@@ -2206,8 +1882,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3500000,
     @costPrice = 3000000,
@@ -2217,8 +1891,6 @@ EXEC addProductSSD
     @cache = 4096,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 5000000,
     @costPrice = 4200000,
@@ -2228,8 +1900,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 5500000,
     @costPrice = 4500000,
@@ -2239,8 +1909,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 5800000,
     @costPrice = 4800000,
@@ -2250,8 +1918,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2700000,
     @costPrice = 2200000,
@@ -2261,8 +1927,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 2100000,
     @costPrice = 1800000,
@@ -2272,8 +1936,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3000000,
     @costPrice = 2500000,
@@ -2283,8 +1945,6 @@ EXEC addProductSSD
     @cache = 1024,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3500000,
     @costPrice = 3000000,
@@ -2294,8 +1954,6 @@ EXEC addProductSSD
     @cache = 2048,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3300000,
     @costPrice = 2800000,
@@ -2305,8 +1963,6 @@ EXEC addProductSSD
     @cache = 4096,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3000000,
     @costPrice = 2500000,
@@ -2316,8 +1972,6 @@ EXEC addProductSSD
     @cache = 0,
     @image = '',
     @result = @result OUTPUT
-PRINT @result
-
 EXEC addProductSSD
     @sellingPrice = 3700000,
     @costPrice = 3200000,
