@@ -4,8 +4,9 @@ go
 create table users
 (
     id int identity(1,1) primary key,
+    googleUser int default 0,
     username varchar(25),
-    password varchar(25),
+    password varchar(100),
     backupPassword varchar(25),
     confirmCode varchar(10),
     active int default 0
@@ -26,19 +27,10 @@ create table staffs
 (
     id int identity(1,1) primary key,
     username varchar(25),
-    password varchar(25),
-    possition varchar(25),
-    active int default 1
-);
-
-create table staffDetails
-(
-    id int references staffs(id),
+    password varchar(100),
+    possition int default 0,
     fullname nvarchar(50),
-    email varchar(100),
-    phoneNumber varchar(15),
-    dateOfBirth date,
-    dateJoined date default getdate()
+    active int default 0
 );
 
 create table products
@@ -149,11 +141,21 @@ create table ratings
 
 create table carts
 (
-    id int identity(1,1) primary key,
     userId int references users(id),
     productId int references products(id),
-    quantity int,
-    dateAdded date default getdate()
+    sellingPrice decimal(18,2),
+    costPrice decimal(18,2)
+);
+
+create table orders
+(
+    id int,
+    userId int references users(id),
+    productId int references products(id),
+    sellingPrice decimal(18,2),
+    costPrice decimal(18,2),
+    status nvarchar(50),
+    dateOrdered date default getdate()
 );
 
 create table feedback
