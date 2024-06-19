@@ -3,7 +3,6 @@ use major
 DECLARE @resultInt int
 -- User 1
 EXEC register
-    @tablename = 'user',
     @username = 'davitscott', 
     @password = 'password123', 
     @fullname = 'Davit Scott', 
@@ -16,7 +15,6 @@ EXEC register
 
 -- User 2
 EXEC register
-    @tablename = 'user',
     @username = 'emilyjohnson', 
     @password = 'password456', 
     @fullname = 'Emily Johnson', 
@@ -29,7 +27,6 @@ EXEC register
 
 -- User 3
 EXEC register 
-    @tablename = 'user',
     @username = 'michaelbrown', 
     @password = 'password789', 
     @fullname = 'Michael Brown', 
@@ -42,7 +39,6 @@ EXEC register
 
 -- User 4
 EXEC register 
-    @tablename = 'user',
     @username = 'sarahmiller', 
     @password = 'password012', 
     @fullname = 'Sarah Miller', 
@@ -55,7 +51,6 @@ EXEC register
 
 -- User 5
 EXEC register 
-    @tablename = 'user',
     @username = 'jamesdavis', 
     @password = 'password345', 
     @fullname = 'James Davis', 
