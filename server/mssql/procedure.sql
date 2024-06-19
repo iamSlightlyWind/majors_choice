@@ -797,6 +797,7 @@ begin
     where userID = @userID
 end;
 go
+
 CREATE PROCEDURE placeOrder
     @userID int,
     @result int OUTPUT

@@ -1,21 +1,48 @@
 package packages;
 
+import java.util.ArrayList;
+import database.Database;
+import packages.wrap.Product;
+
 public class SSD extends Product {
 
     public String connectionInterface;
     public int capacity;
     public int cache;
-    public String image;
 
     public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.connectionInterface = connectionInterface;
         this.capacity = capacity;
         this.cache = cache;
-        this.image = image;
     }
 
+    public SSD(int id, double sellingPrice, double costPrice, String description, String name, String connectionInterface, int capacity, int cache) {
+        super(id, sellingPrice, costPrice, description);
+        this.name = name;
+        this.connectionInterface = connectionInterface;
+        this.capacity = capacity;
+        this.cache = cache;
+    }
 
+    public SSD(int id) {
+        super(id);
+        Database db = new Database();
+        ArrayList<SSD> ssds = db.getSSDs("");
+
+        for (SSD ssd : ssds) {
+            if (ssd.id == id) {
+                this.sellingPrice = ssd.sellingPrice;
+                this.costPrice = ssd.costPrice;
+                this.description = ssd.description;
+                this.name = ssd.name;
+                this.connectionInterface = ssd.connectionInterface;
+                this.capacity = ssd.capacity;
+                this.cache = ssd.cache;
+                return;
+            }
+        }
+    }
 
     public String getConnectionInterface() {
         return connectionInterface;
@@ -39,14 +66,6 @@ public class SSD extends Product {
 
     public void setCache(int cache) {
         this.cache = cache;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getName() {
@@ -88,6 +107,5 @@ public class SSD extends Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
 
 }

@@ -1,5 +1,8 @@
 package packages;
 
+import java.util.ArrayList;
+import database.Database;
+import packages.wrap.Product;
 
 public class CPU extends Product {
 
@@ -24,9 +27,40 @@ public class CPU extends Product {
         this.image = image;
     }
 
+    public CPU(int id, double sellingPrice, double costPrice, String description, String name, String generation,
+            String socket, int cores, int threads, int baseClock, int boostClock, int tdp) {
+        super(id, sellingPrice, costPrice, description);
+        this.name = name;
+        this.generation = generation;
+        this.socket = socket;
+        this.cores = cores;
+        this.threads = threads;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+        this.tdp = tdp;
+    }
 
-    public CPU() {
-        super(0, 0, 0, null);
+    public CPU(int id) {
+        super(id);
+        Database db = new Database();
+        ArrayList<CPU> cpus = db.getCPUs("");
+
+        for (CPU cpu : cpus) {
+            if (cpu.id == id) {
+                this.sellingPrice = cpu.sellingPrice;
+                this.costPrice = cpu.costPrice;
+                this.description = cpu.description;
+                this.name = cpu.name;
+                this.generation = cpu.generation;
+                this.socket = cpu.socket;
+                this.cores = cpu.cores;
+                this.threads = cpu.threads;
+                this.baseClock = cpu.baseClock;
+                this.boostClock = cpu.boostClock;
+                this.tdp = cpu.tdp;
+                return;
+            }
+        }
     }
 
     public String getImage() {
@@ -97,41 +131,11 @@ public class CPU extends Product {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public double getSellingPrice() {
+        return sellingPrice;
     }
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getSellingPrice() {
-        return sellingPrice;
-    }
-
-    public void setSellingPrice(double sellingPrice) {
-        this.sellingPrice = sellingPrice;
-    }
-
-    public double getCostPrice() {
-        return costPrice;
-    }
-
-    public void setCostPrice(double costPrice) {
-        this.costPrice = costPrice;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-
 }

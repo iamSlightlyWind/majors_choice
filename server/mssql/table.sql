@@ -10,7 +10,7 @@ create table users
     backupPassword varchar(25),
     confirmCode varchar(10),
     active int default 0
-);
+)
 
 create table userDetails
 (
@@ -21,7 +21,7 @@ create table userDetails
     address nvarchar(100),
     dateOfBirth date,
     dateJoined date default getdate()
-);
+)
 
 create table staffs
 (
@@ -31,7 +31,7 @@ create table staffs
     possition int default 0,
     fullname nvarchar(50),
     active int default 0
-);
+)
 
 create table products
 (
@@ -39,7 +39,7 @@ create table products
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
     description nvarchar(max)
-);
+)
 
 create table cpus
 (
@@ -53,7 +53,7 @@ create table cpus
     boostClock int,
     tdp int,
     image nvarchar(max)
-);
+)
 
 create table gpus
 (
@@ -65,7 +65,7 @@ create table gpus
     boostClock int,
     tdp int,
     image nvarchar(max)
-);
+)
 
 create table motherboards
 (
@@ -79,7 +79,7 @@ create table motherboards
     ramSlots int,
     wifi int,
     image nvarchar(max)
-);
+)
 
 create table rams
 (
@@ -90,7 +90,7 @@ create table rams
     speed int,
     latency int,
     image nvarchar(max)
-);
+)
 
 create table ssds
 (
@@ -100,7 +100,7 @@ create table ssds
     capacity int,
     cache int,
     image nvarchar(max)
-);
+)
 
 create table psus
 (
@@ -109,7 +109,7 @@ create table psus
     wattage int,
     efficiency nvarchar(50),
     image nvarchar(max)
-);
+)
 
 create table cases
 (
@@ -119,7 +119,7 @@ create table cases
     formFactor nvarchar(50),
     color nvarchar(50),
     image nvarchar(max)
-);
+)
 
 create table warehouses
 (
@@ -128,7 +128,7 @@ create table warehouses
     location nvarchar(100),
     productid int references products(id),
     quantity int
-);
+)
 
 create table ratings
 (
@@ -137,7 +137,7 @@ create table ratings
     productId int references products(id),
     rating int,
     dateRated date default getdate()
-);
+)
 
 create table carts
 (
@@ -145,7 +145,7 @@ create table carts
     productId int references products(id),
     sellingPrice decimal(18,2),
     costPrice decimal(18,2)
-);
+)
 
 create table orders
 (
@@ -156,7 +156,7 @@ create table orders
     costPrice decimal(18,2),
     status nvarchar(50),
     dateOrdered date default getdate()
-);
+)
 
 create table feedback
 (
@@ -164,4 +164,4 @@ create table feedback
     userId int references users(id),
     feedback nvarchar(max),
     dateSent date default getdate()
-);
+)

@@ -1,64 +1,56 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package main;
 
-/**
- *
- * @author PC
- */
-public class UserGoogle {
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+import java.sql.Types;
 
-    private String id;
-    private String email;
-    private boolean verified_email;
-    private String picture;
+import database.Database;
 
-    public UserGoogle() {
+public class UserGoogle extends User {
+    public void setGoogleAccount() {
+        try {
+            String sql = "{call setGoogleUser(?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
-    public UserGoogle(String id, String email, boolean verified_email, String picture) {
-        this.id = id;
-        this.email = email;
-        this.verified_email = verified_email;
-        this.picture = picture;
+    public void setCredentials() {
+        username = email;
+        password = id;
     }
 
-    public String getId() {
-        return id;
+    public int login() {
+        setCredentials();
+        try {
+            String sql = "{call googleLogin(?, ?, ?)}";
+            CallableStatement statement = db.connection.prepareCall(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.registerOutParameter(3, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(3);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return 0;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    public int register() {
+        setCredentials();
+        int result = super.register(true, "user");
+        if (result == 1) {
+            Database db = new Database();
+            db.forceActivate(username);
+            setGoogleAccount();
+        }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean isVerified_email() {
-        return verified_email;
-    }
-
-    public void setVerified_email(boolean verified_email) {
-        this.verified_email = verified_email;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    @Override
-    public String toString() {
-        return "UserGoogle{" + "id=" + id + ", email=" + email + ", verified_email=" + verified_email + ", picture=" + picture + '}';
+        return result;
     }
 }

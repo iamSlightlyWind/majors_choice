@@ -24,7 +24,7 @@ public class CPUServlet extends HttpServlet {
 
         if (service.equals("listAll")) {
             System.out.println(">> List all CPUs");
-            ArrayList<CPU> cpus = db.getCPUs("{call getCPU()}");
+            ArrayList<CPU> cpus = db.getCPUs("");
             request.setAttribute("cpus", cpus);
             request.setAttribute("path", request.getServletContext().getRealPath(""));
             request.setAttribute("titlePage", "Danh sách CPU");
@@ -43,13 +43,15 @@ public class CPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, null);
+                int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
+                        baseClock, boostClock, tdp, null);
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
                     System.out.println("<< Image " + image);
 
-                    int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image);
+                    int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
+                            baseClock, boostClock, tdp, image);
                     response.sendRedirect("cpus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm CPU");
@@ -111,6 +113,7 @@ public class CPUServlet extends HttpServlet {
             response.sendRedirect("cpus");
         }
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

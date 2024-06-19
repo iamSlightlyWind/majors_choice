@@ -1,20 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <!--Authentication-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>control.LoginServlet</servlet-class>
+        <servlet-class>control.auth.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CPUsServlet</servlet-name>
+        <servlet-class>control.view.CPUsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GPUsServlet</servlet-name>
+        <servlet-class>control.view.GPUsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RAMsServlet</servlet-name>
+        <servlet-class>control.view.RAMsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PSUsServlet</servlet-name>
+        <servlet-class>control.view.PSUsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MotherBoardsServlet</servlet-name>
+        <servlet-class>control.view.MotherBoardsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SSDsServlet</servlet-name>
+        <servlet-class>control.view.SSDsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomePageServlet</servlet-name>
+        <servlet-class>control.view.HomePageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterCPUsServlet</servlet-name>
+        <servlet-class>control.view.search.FilterCPUsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterGPUsServlet</servlet-name>
+        <servlet-class>control.view.search.FilterGPUsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterMotherBoard</servlet-name>
+        <servlet-class>control.view.search.FilterMotherBoard</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterPSUsServlet</servlet-name>
+        <servlet-class>control.view.search.FilterPSUsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterRAMsServlet</servlet-name>
+        <servlet-class>control.view.search.FilterRAMsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterSSDsServlet</servlet-name>
+        <servlet-class>control.view.search.FilterSSDsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductDetail</servlet-name>
+        <servlet-class>control.view.detail.ProductDetail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/auth/login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ManageAccount</servlet-name>
+        <servlet-class>control.account.ManageAccount</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserProfile</servlet-name>
+        <servlet-class>control.account.UpdateUserProfile</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>control.RegisterServlet</servlet-class>
+        <servlet-class>control.auth.RegisterServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/auth/register</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ActivateServlet</servlet-name>
-        <servlet-class>control.ActivateServlet</servlet-class>
+        <servlet-class>control.auth.ActivateServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ActivateServlet</servlet-name>
+        <url-pattern>/auth/activate</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ResetPasswordServlet</servlet-name>
-        <servlet-class>control.ResetPasswordServlet</servlet-class>
+        <servlet-class>control.auth.ResetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginGoogleServlet</servlet-name>
+        <servlet-class>control.auth.LoginGoogleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginGoogleServlet</servlet-name>
@@ -61,28 +142,126 @@
         <servlet-class>Controller.SSDServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <url-pattern>/auth/recovery</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <servlet-name>LoginGoogleServlet</servlet-name>
+        <url-pattern>/auth/googleLogin</url-pattern>
     </servlet-mapping>
+    <!--Profile-->
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>control.profile.Profile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfile</servlet-name>
+        <url-pattern>/editprofile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditProfile</servlet-name>
+        <servlet-class>control.profile.EditProfile</servlet-class>
+    </servlet>
+    <!--Product-->
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>packages.wrap.OrderServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>Test</servlet-name>
         <servlet-class>database.Test</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>packages.wrap.CartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ActivateServlet</servlet-name>
-        <url-pattern>/activate</url-pattern>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/Cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ResetPasswordServlet</servlet-name>
-        <url-pattern>/recovery</url-pattern>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/manage/order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageAccount</servlet-name>
+        <url-pattern>/manage/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserProfile</servlet-name>
+        <url-pattern>/manage/profile/user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserProfile</servlet-name>
+        <url-pattern>/manage/profile/staff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CPUsServlet</servlet-name>
+        <url-pattern>/cpusservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GPUsServlet</servlet-name>
+        <url-pattern>/gpusservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RAMsServlet</servlet-name>
+        <url-pattern>/ramsservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PSUsServlet</servlet-name>
+        <url-pattern>/psusservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MotherBoardsServlet</servlet-name>
+        <url-pattern>/mobosservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SSDsServlet</servlet-name>
+        <url-pattern>/ssdsservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomePageServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterCPUsServlet</servlet-name>
+        <url-pattern>/filtercpu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterGPUsServlet</servlet-name>
+        <url-pattern>/filtergpu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterMotherBoard</servlet-name>
+        <url-pattern>/filtermobo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterPSUsServlet</servlet-name>
+        <url-pattern>/filterpsu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterRAMsServlet</servlet-name>
+        <url-pattern>/filterram</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterSSDsServlet</servlet-name>
+        <url-pattern>/filterssd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductDetail</servlet-name>
+        <url-pattern>/view/detail/product</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginGoogleServlet</servlet-name>
