@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -322,8 +323,10 @@
                     See reviews
                   </a>
                 </div>
+                <fmt:formatNumber value="${product.sellingPrice}" var="productSelling" />
                 <span class="view-detail-product-text07">
-                  <span class="view-detail-product-text08">${product.sellingPrice}</span>
+                  <span class="view-detail-product-text08">
+                              ${productSelling}</span>
                   <br />
                 </span>
                 <div class="view-detail-product-container2 thq-button-filled button">

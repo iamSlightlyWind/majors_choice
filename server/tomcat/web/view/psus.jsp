@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -416,7 +417,8 @@
                       </span>
                     </h1>
                     <span class="component1-text1">
-                      <span>${psu.sellingPrice}</span>
+                      <fmt:formatNumber value="${psu.sellingPrice}" var="psuSelling" />
+                        <span>${psuSelling}</span>
                       <br />
                     </span>
                     <div class="component1-container1">

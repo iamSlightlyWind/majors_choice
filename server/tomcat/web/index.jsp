@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -2214,8 +2215,9 @@
                             </span>
                           </h1>
                           <span class="component1-text1">
-                            <span>${cpu.sellingPrice}</span>
-                            <br />
+                              <fmt:formatNumber value="${cpu.sellingPrice}" var="cpuSelling" />
+                              <span>${cpuSelling}</span>
+                              <br />
                           </span>
                           <div class="component1-container1">
                             <span class="component1-text4"><span>0.0</span></span>
@@ -2263,7 +2265,8 @@
                             </span>
                           </h1>
                           <span class="component1-text1">
-                            <span>${gpu.sellingPrice}</span>
+                              <fmt:formatNumber value="${gpu.sellingPrice}" var="gpuSelling" />
+                              <span>${gpuSelling}</span>
                             <br />
                           </span>
                           <div class="component1-container1">
@@ -2313,7 +2316,8 @@
                             </span>
                           </h1>
                           <span class="component1-text1">
-                            <span>${mobo.sellingPrice}</span>
+                              <fmt:formatNumber value="${mobo.sellingPrice}" var="moboSelling" />
+                              <span>${moboSelling}</span>
                             <br />
                           </span>
                           <div class="component1-container1">
@@ -2363,7 +2367,8 @@
                             </span>
                           </h1>
                           <span class="component1-text1">
-                            <span>${psu.sellingPrice}</span>
+                              <fmt:formatNumber value="${psu.sellingPrice}" var="psuSelling" />
+                              <span>${psuSelling}</span>
                             <br />
                           </span>
                           <div class="component1-container1">
@@ -2425,7 +2430,8 @@
                               </span>
                             </h1>
                             <span class="component1-text1">
-                              <span>${ram.sellingPrice}</span>
+                              <fmt:formatNumber value="${ram.sellingPrice}" var="ramSelling" />
+                              <span>${ramSelling}</span>
                               <br />
                             </span>
                             <div class="component1-container1">
@@ -2477,7 +2483,8 @@
                             </span>
                           </h1>
                           <span class="component1-text1">
-                            <span>${ssd.sellingPrice}</span>
+                            <fmt:formatNumber value="${ssd.sellingPrice}" var="ssdSelling" />
+                              <span>${ssdSelling}</span>
                             <br />
                           </span>
                           <div class="component1-container1">
@@ -2780,8 +2787,8 @@
             </footer>
           </footer>
       </div>
-      </div>
-      <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    </div>
+    <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 
     </html>
