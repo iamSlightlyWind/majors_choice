@@ -7,7 +7,7 @@
         <title>Insert Product</title>
     </head>
     <body>
-        <form action="/tomcat/cpus?service=insertCPU" method="post" enctype="multipart/form-data">
+        <form action="/cpus?service=insertCPU" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>SellingPrice</td>

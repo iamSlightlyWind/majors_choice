@@ -7,7 +7,7 @@
         <title>Insert Product</title>
     </head>
     <body>
-        <form action="/tomcat/gpus?service=insertGPU" method="post" enctype="multipart/form-data" >
+        <form action="/gpus?service=insertGPU" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <td>SellingPrice</td>

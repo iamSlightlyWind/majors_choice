@@ -13,7 +13,7 @@
         %>
         <form action="motherboards" method="get">
         </form>
-        <a href="/tomcat/jsp/insertMotherboard.jsp"><button>Insert Motherboard</button></a>
+        <a href="/jsp/insertMotherboard.jsp"><button>Insert Motherboard</button></a>
         <table border=1>
             <% String titleTable= (String)request.getAttribute("titleTable"); %>
             <caption><%=titleTable%></caption>

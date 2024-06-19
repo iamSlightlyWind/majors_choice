@@ -10,7 +10,7 @@
 
         <form action="case" method="get">
         </form>
-        <a href="/tomcat/jsp/insertCase.jsp"><button>Insert Case</button></a>
+        <a href="/jsp/insertCase.jsp"><button>Insert Case</button></a>
         <table border=1>
             <% String titleTable= (String)request.getAttribute("titleTable"); %>
             <caption><%=titleTable%></caption>

@@ -13,7 +13,7 @@
         %>
         <form action="gpus" method="get">
         </form>
-        <a href="/tomcat/jsp/insertGPU.jsp"><button>Insert GPU</button></a>
+        <a href="/jsp/insertGPU.jsp"><button>Insert GPU</button></a>
         <table border=1>
             <% String titleTable= (String)request.getAttribute("titleTable"); %>
             <caption><%=titleTable%></caption>

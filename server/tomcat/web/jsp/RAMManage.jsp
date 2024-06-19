@@ -13,7 +13,7 @@
         %>
         <form action="rams" method="get">
         </form>
-        <a href="/tomcat/jsp/insertRAM.jsp"><button>Insert RAM</button></a>
+        <a href="/jsp/insertRAM.jsp"><button>Insert RAM</button></a>
         <table border=1>
             <% String titleTable= (String)request.getAttribute("titleTable"); %>
             <caption><%=titleTable%></caption>

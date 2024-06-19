@@ -13,7 +13,7 @@
         %>
         <form action="psus" method="get">
         </form>
-        <a href="/tomcat/jsp/insertPSU.jsp"><button>Insert PSU</button></a>
+        <a href="/jsp/insertPSU.jsp"><button>Insert PSU</button></a>
         <table border=1>
             <% String titleTable= (String)request.getAttribute("titleTable"); %>
             <caption><%=titleTable%></caption>

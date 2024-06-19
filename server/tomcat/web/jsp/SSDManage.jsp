@@ -13,7 +13,7 @@
         %>
         <form action="ssds" method="get">
         </form>
-        <a href="/tomcat/jsp/insertSSD.jsp"><button>Insert SSD</button></a>
+        <a href="/jsp/insertSSD.jsp"><button>Insert SSD</button></a>
         <table border=1>
             <% String titleTable= (String)request.getAttribute("titleTable"); %>
             <caption><%=titleTable%></caption>

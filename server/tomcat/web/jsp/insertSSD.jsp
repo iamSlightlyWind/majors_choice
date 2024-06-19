@@ -8,7 +8,7 @@
     </head>
     <!--    enctype="multipart/form-data"-->
     <body>
-        <form action="/tomcat/ssds?service=insertSSD" method="post" enctype="multipart/form-data" >
+        <form action="/ssds?service=insertSSD" method="post" enctype="multipart/form-data" >
             <table>
                 <tr>
                     <td>SellingPrice</td>

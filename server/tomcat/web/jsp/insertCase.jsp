@@ -7,7 +7,7 @@
         <title>Insert Product</title>
     </head>
     <body>
-        <form action="/tomcat/cases" method="post" >
+        <form action="/cases" method="post" >
             <table>
                 <tr>
                     <td>ID</td>
