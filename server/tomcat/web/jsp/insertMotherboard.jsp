@@ -8,7 +8,7 @@
     </head>
     <!--    enctype="multipart/form-data"-->
     <body>
-        <form action="/tomcat/motherboards?service=insertMotherboard" method="post" enctype="multipart/form-data">
+        <form action="/motherboards?service=insertMotherboard" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>SellingPrice</td>

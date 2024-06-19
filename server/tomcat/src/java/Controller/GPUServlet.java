@@ -11,10 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import packages.GPU;
 
-/**
- *
- * @author PC
- */
 @MultipartConfig
 public class GPUServlet extends HttpServlet {
 
@@ -120,10 +116,4 @@ public class GPUServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
 }
