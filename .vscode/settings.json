@@ -1,6 +1,8 @@
 {
     "java.project.referencedLibraries": [
         "server/tomcat/libraries/*.jar",
-        "/usr/share/tomcat10/lib/*.jar"
+        "/usr/share/tomcat10/lib/*.jar",
+        "..\\Libraries\\*.jar",
+        "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\lib\\*.jar"
     ]
 }

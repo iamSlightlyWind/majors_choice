@@ -1,0 +1,52 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList,packages.SSD"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <% String titlePage= (String)request.getAttribute("titlePage"); %>
+        <title><%=titlePage%></title>
+    </head>
+    <body>
+        <%
+            String url = request.getScheme()+ "://"+ request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+        %>
+        <form action="ssds" method="get">
+        </form>
+        <a href="/jsp/insertSSD.jsp"><button>Insert SSD</button></a>
+        <table border=1>
+            <% String titleTable= (String)request.getAttribute("titleTable"); %>
+            <caption><%=titleTable%></caption>
+            <tr>
+                <th>id</th>
+                <th>sellingPrice</th>
+                <th>costPrice</th>
+                <th>image</th>
+                <th>name</th>
+                <th>interface</th>
+                <th>capacity</th>
+                <th>cache</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            <%
+                ArrayList<SSD> ssds = (ArrayList<SSD>) request.getAttribute("ssds");
+                for (SSD ssd : ssds) {
+            %>
+            <tr>
+                <td><%=ssd.getId()%> </td>
+                <td><%=ssd.getSellingPrice()%> </td>
+                <td><%=ssd.getCostPrice()%> </td>
+                <td><img src="<%=ssd.getId()%>.png" style="width: 100px; height: auto;"/></td>
+                <td><%=ssd.getName()%> </td>
+                <td><%=ssd.getConnectionInterface()%> </td>
+                <td><%=ssd.getCapacity()%> </td>
+                <td><%=ssd.getCache()%> </td>
+                <td><a href="ssds?service=update&id=<%=ssd.getId()%>">Update</a></td>
+                <td><a href="ssds?service=delete&id=<%=ssd.getId()%>">Delete</a></td>
+            </tr>
+            <%}%>
+        </table>
+    </body>
+</html>
+
