@@ -216,9 +216,10 @@ public class User {
 
             statement.execute();
 
-            result = statement.getInt(10);
+            result = statement.getInt(9);
 
         } catch (SQLException ex) {
+            
             System.out.println(ex);
         }
 
