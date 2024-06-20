@@ -9,7 +9,7 @@ import packages.*;
 
 public class Cart {
     public String userID;
-    public String totalPrice;
+    public double total;
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
     Database db;
@@ -25,11 +25,10 @@ public class Cart {
             productCount.count += 1;
         }
 
-        double cartPrice = 0;
+        total = 0;
         for (ProductCount productCount : productCountMap.values()) {
-            cartPrice += productCount.pricePer * productCount.count;
+            total += productCount.pricePer * productCount.count;
         }
-        totalPrice = String.format(Locale.US, "%,.2f", cartPrice);
         quantities.clear();
         quantities.addAll(productCountMap.values());
         updateCart();
@@ -38,7 +37,7 @@ public class Cart {
     public void clearCart() {
         products.clear();
         quantities.clear();
-        totalPrice = "0.00";
+        total = 0;
         updateCart();
     }
 

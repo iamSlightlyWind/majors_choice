@@ -2,6 +2,8 @@ package packages.wrap;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,7 +19,7 @@ public class CartServlet extends HttpServlet {
         String action = request.getParameter("action");
         User currentUser = (User) request.getSession().getAttribute("userObject");
 
-        if(currentUser == null) {
+        if (currentUser == null) {
             response.sendRedirect("/auth/login.jsp");
             return;
         }
@@ -30,7 +32,7 @@ public class CartServlet extends HttpServlet {
             request.setAttribute("user", currentUser.fullName);
             request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
             currentUser.cart.updateQuantity();
-            request.setAttribute("cartPrice", currentUser.cart.totalPrice);
+            request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", currentUser.cart.total));
             request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
         } else if (action.equals("addItem")) {
             currentUser.cart.addProduct(request.getParameter("type"),

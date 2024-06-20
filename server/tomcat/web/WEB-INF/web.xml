@@ -97,6 +97,50 @@
         <servlet-name>LoginGoogleServlet</servlet-name>
         <servlet-class>control.auth.LoginGoogleServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginGoogleServlet</servlet-name>
+        <servlet-class>control.LoginGoogleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CPUController</servlet-name>
+        <servlet-class>Controller.CPUController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>manage</servlet-name>
+        <servlet-class>control.manage.products.manage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CaseController</servlet-name>
+        <servlet-class>Controller.CaseController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CPUServlet</servlet-name>
+        <servlet-class>control.manage.products.CPUServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CaseServlet</servlet-name>
+        <servlet-class>control.manage.products.CaseServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GPUServlet</servlet-name>
+        <servlet-class>control.manage.products.GPUServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MotherboardServlet</servlet-name>
+        <servlet-class>control.manage.products.MotherboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PSUServlet</servlet-name>
+        <servlet-class>control.manage.products.PSUServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RAMServlet</servlet-name>
+        <servlet-class>control.manage.products.RAMServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SSDServlet</servlet-name>
+        <servlet-class>control.manage.products.SSDServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ResetPasswordServlet</servlet-name>
         <url-pattern>/auth/recovery</url-pattern>
@@ -189,7 +233,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomePageServlet</servlet-name>
-        <url-pattern></url-pattern>
+        <url-pattern/>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterCPUsServlet</servlet-name>
@@ -218,5 +262,41 @@
     <servlet-mapping>
         <servlet-name>ProductDetail</servlet-name>
         <url-pattern>/view/detail/product</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginGoogleServlet</servlet-name>
+        <url-pattern>/LoginGoogleServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>manage</servlet-name>
+        <url-pattern>/manage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CPUServlet</servlet-name>
+        <url-pattern>/cpus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CaseServlet</servlet-name>
+        <url-pattern>/case</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GPUServlet</servlet-name>
+        <url-pattern>/gpus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MotherboardServlet</servlet-name>
+        <url-pattern>/motherboards</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PSUServlet</servlet-name>
+        <url-pattern>/psus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RAMServlet</servlet-name>
+        <url-pattern>/rams</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SSDServlet</servlet-name>
+        <url-pattern>/ssds</url-pattern>
     </servlet-mapping>
 </web-app>

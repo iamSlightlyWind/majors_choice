@@ -13,6 +13,19 @@ public class CPU extends Product {
     public int baseClock;
     public int boostClock;
     public int tdp;
+    public String image;
+
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String name, int id, double sellingPrice, double costPrice, String description) {
+        super(name, id, sellingPrice, costPrice, description);
+        this.generation = generation;
+        this.socket = socket;
+        this.cores = cores;
+        this.threads = threads;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+        this.tdp = tdp;
+        this.image = image;
+    }
 
     public CPU(int id, double sellingPrice, double costPrice, String description, String name, String generation,
             String socket, int cores, int threads, int baseClock, int boostClock, int tdp) {
@@ -50,6 +63,70 @@ public class CPU extends Product {
         }
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getGeneration() {
+        return generation;
+    }
+
+    public void setGeneration(String generation) {
+        this.generation = generation;
+    }
+
+    public String getSocket() {
+        return socket;
+    }
+
+    public void setSocket(String socket) {
+        this.socket = socket;
+    }
+
+    public int getCores() {
+        return cores;
+    }
+
+    public void setCores(int cores) {
+        this.cores = cores;
+    }
+
+    public int getThreads() {
+        return threads;
+    }
+
+    public void setThreads(int threads) {
+        this.threads = threads;
+    }
+
+    public int getBaseClock() {
+        return baseClock;
+    }
+
+    public void setBaseClock(int baseClock) {
+        this.baseClock = baseClock;
+    }
+
+    public int getBoostClock() {
+        return boostClock;
+    }
+
+    public void setBoostClock(int boostClock) {
+        this.boostClock = boostClock;
+    }
+
+    public int getTdp() {
+        return tdp;
+    }
+
+    public void setTdp(int tdp) {
+        this.tdp = tdp;
+    }
+
     public String getName() {
         return name;
     }
@@ -61,5 +138,4 @@ public class CPU extends Product {
     public int getId() {
         return id;
     }
-       
 }

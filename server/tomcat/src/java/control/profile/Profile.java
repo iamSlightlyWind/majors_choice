@@ -19,10 +19,10 @@ public class Profile extends HttpServlet {
             return;
         }
         user.retrieveData((String) request.getSession().getAttribute("table"));
-        String status = (String) request.getAttribute("status");
+        String status = request.getParameter("status");
         
         if(status != null){
-            request.setAttribute("status", status);
+            request.setAttribute("status", "Update Successful.");
         }
 
         request.setAttribute("user", user);       

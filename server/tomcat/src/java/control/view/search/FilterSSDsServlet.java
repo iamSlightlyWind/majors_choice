@@ -121,10 +121,4 @@ public class FilterSSDsServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

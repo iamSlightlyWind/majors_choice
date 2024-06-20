@@ -81,7 +81,7 @@ public class OrderServlet extends HttpServlet {
 
     protected void staffViewOrderDetails(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Order> orders = db.getOrders(-2);
+        ArrayList<Order> orders = db.getOrders(0);
         int orderId = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("managing", true);
 
