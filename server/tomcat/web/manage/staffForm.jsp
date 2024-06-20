@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>EditCustomer - Major's Choice1</title>
-    <meta property="og:title" content="EditCustomer - Major's Choice1" />
+    <title>EditCustomer - Major's Choice</title>
+    <meta property="og:title" content="EditCustomer - Major's Choice" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -82,7 +82,7 @@
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img
                   alt="pastedImage"
-                  src="public/external/pastedimage-eh8r-200h.png"
+                  src="../css/image/logo.png"
                   class="navbar-pasted-image"
                 />
                 <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
@@ -101,9 +101,9 @@
                       </button>
                     </div>
                     <div class="navbar-container4">
-                      <span class="navbar-home thq-body-small thq-link">
+                      <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
-                      </span>
+                      </a>
                       <span class="navbar-contact thq-body-small thq-link">
                         <span>Contact</span>
                       </span>
@@ -439,7 +439,7 @@
                           ></path>
                         </svg>
                         <span class="thq-body-small">
-                          Email :&nbsp;info@majorschoice.com
+                          Email :&nbsp;support@themajorones.dev
                         </span>
                       </div>
                       <div class="footer-link3">
