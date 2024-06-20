@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <!--Authentication-->
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -233,7 +235,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomePageServlet</servlet-name>
-        <url-pattern/>
+        <url-pattern />
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterCPUsServlet</servlet-name>
@@ -298,5 +300,27 @@
     <servlet-mapping>
         <servlet-name>SSDServlet</servlet-name>
         <url-pattern>/ssds</url-pattern>
+    </servlet-mapping>
+    <!-- Payment -->
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>payment.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>paymentQuery</servlet-name>
+        <servlet-class>payment.Query</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/payment/vnpayajax/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>paymentQuery</servlet-name>
+        <url-pattern>/payment/paymentQuery/*</url-pattern>
     </servlet-mapping>
 </web-app>
