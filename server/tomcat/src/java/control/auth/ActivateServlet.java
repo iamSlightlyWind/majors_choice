@@ -5,6 +5,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.Email;
 import main.User;
 
 public class ActivateServlet extends HttpServlet {
@@ -23,7 +24,9 @@ public class ActivateServlet extends HttpServlet {
                 request.getRequestDispatcher("/auth/activate.jsp").forward(request, response);
                 break;
             case 1:
+                Email mail = new Email();
                 user.retrieveData((String) request.getSession().getAttribute("table"));
+                mail.sendGreet(user.email, user.username);
                 request.getSession().setAttribute("userObject", user);
                 response.sendRedirect("/");
                 break;
