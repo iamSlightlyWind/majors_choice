@@ -100,10 +100,6 @@
         <servlet-class>control.auth.LoginGoogleServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginGoogleServlet</servlet-name>
-        <servlet-class>control.LoginGoogleServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CPUController</servlet-name>
         <servlet-class>Controller.CPUController</servlet-class>
     </servlet>
