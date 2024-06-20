@@ -44,8 +44,6 @@ public class GPUServlet extends HttpServlet {
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    System.out.println("<< Image " + image);
-
                     int result1 = db.updateProductGPU(productId, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
                     response.sendRedirect("gpus?service=listAll");
                 } else {
@@ -84,9 +82,6 @@ public class GPUServlet extends HttpServlet {
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
-
-                System.out.println(">> Image: " + image);
-
                 int result = db.updateProductGPU(id, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
                 if (result == 1) {
                     response.sendRedirect("gpus?service=listAll");

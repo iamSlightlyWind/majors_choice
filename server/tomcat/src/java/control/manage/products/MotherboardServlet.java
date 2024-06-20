@@ -46,7 +46,6 @@ public class MotherboardServlet extends HttpServlet {
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    System.out.println("<< Image " + image);
 
                     int result1 = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
                     response.sendRedirect("motherboards?service=listAll");
@@ -88,7 +87,6 @@ public class MotherboardServlet extends HttpServlet {
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
-                System.out.println("<< Image " + image);
 
                 int result = db.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
                 if (result == 1) {

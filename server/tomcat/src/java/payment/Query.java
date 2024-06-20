@@ -68,9 +68,6 @@ public class Query extends HttpServlet {
         wr.flush();
         wr.close();
         int responseCode = con.getResponseCode();
-        System.out.println("nSending 'POST' request to URL : " + url);
-        System.out.println("Post Data : " + vnp_Params);
-        System.out.println("Response Code : " + responseCode);
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String output;

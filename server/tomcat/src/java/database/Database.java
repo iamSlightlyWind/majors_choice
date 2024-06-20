@@ -323,7 +323,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -420,7 +419,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -505,7 +503,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -596,7 +593,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -670,7 +666,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -732,7 +727,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -1068,7 +1062,6 @@ public class Database {
 
     public boolean updateOrder(int id, String action) {
         String current = getOrderStatus(id);
-        System.out.println(">> Status: " + current);
 
         switch (action) {
             case "cancel":

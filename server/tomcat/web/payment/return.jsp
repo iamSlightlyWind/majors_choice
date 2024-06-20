@@ -43,12 +43,14 @@
             String signValue = Config.hashAllFields(fields);
         %>
         <div>
-            <div>
-                <p>OrderInfo: <%=request.getParameter("vnp_OrderInfo")%></p>
-                <p>Amount: <%=request.getParameter("vnp_Amount")%></p>
-                <p>Time: <%=request.getParameter("vnp_PayDate")%></p>
-                <p>Status: <%=request.getParameter("vnp_TransactionStatus")%></p>
-            </div>
+            <form action="/payment/paymentQuery" id="frmQerydr" method="Post">
+                <label for="order_id">Mã giao dịch cần truy vấn (Giá trị của vnp_TxnRef)</label>
+                <input id="order_id" name="order_id" type="text" value="<%=request.getParameter("vnp_TxnRef")%>" />
+                <br>
+                <label for="trans_date">Thời gian khởi tạo giao dịch (Giá trị của vnp_CreateDate yêu cầu thanh toán)</label>
+                <input id="trans_date" name="trans_date" type="text" placeholder="yyyyMMddHHmmss" value="<%=request.getParameter("vnp_PayDate")%>" />
+                <button type="submit">QueryDr</button>
+            </form>
         </div>  
     </body>
 </html>

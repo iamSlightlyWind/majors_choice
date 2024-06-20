@@ -23,7 +23,6 @@ public class CPUServlet extends HttpServlet {
         Database db = new Database();
 
         if (service.equals("listAll")) {
-            System.out.println(">> List all CPUs");
             ArrayList<CPU> cpus = db.getCPUs("");
             request.setAttribute("cpus", cpus);
             request.setAttribute("path", request.getServletContext().getRealPath(""));
@@ -48,7 +47,6 @@ public class CPUServlet extends HttpServlet {
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    System.out.println("<< Image " + image);
 
                     int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
                             baseClock, boostClock, tdp, image);
@@ -91,8 +89,6 @@ public class CPUServlet extends HttpServlet {
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
-
-                System.out.println(">> Image: " + image);
 
                 int result = db.updateProductCPU(id, sellingPrice, costPrice, name, generation, socket, cores, threads,
                         baseClock, boostClock, tdp, image);
