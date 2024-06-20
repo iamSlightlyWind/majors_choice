@@ -1,4 +1,4 @@
-package Controller;
+package control.manage.products;
 
 import database.Database;
 import jakarta.servlet.RequestDispatcher;

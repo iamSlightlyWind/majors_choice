@@ -1,4 +1,4 @@
-package Controller;
+package control.manage.products;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;

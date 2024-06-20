@@ -107,7 +107,7 @@
     </servlet>
     <servlet>
         <servlet-name>manage</servlet-name>
-        <servlet-class>Controller.manage</servlet-class>
+        <servlet-class>control.manage.products.manage</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CaseController</servlet-name>
@@ -115,31 +115,31 @@
     </servlet>
     <servlet>
         <servlet-name>CPUServlet</servlet-name>
-        <servlet-class>Controller.CPUServlet</servlet-class>
+        <servlet-class>control.manage.products.CPUServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CaseServlet</servlet-name>
-        <servlet-class>Controller.CaseServlet</servlet-class>
+        <servlet-class>control.manage.products.CaseServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>GPUServlet</servlet-name>
-        <servlet-class>Controller.GPUServlet</servlet-class>
+        <servlet-class>control.manage.products.GPUServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MotherboardServlet</servlet-name>
-        <servlet-class>Controller.MotherboardServlet</servlet-class>
+        <servlet-class>control.manage.products.MotherboardServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PSUServlet</servlet-name>
-        <servlet-class>Controller.PSUServlet</servlet-class>
+        <servlet-class>control.manage.products.PSUServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>RAMServlet</servlet-name>
-        <servlet-class>Controller.RAMServlet</servlet-class>
+        <servlet-class>control.manage.products.RAMServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SSDServlet</servlet-name>
-        <servlet-class>Controller.SSDServlet</servlet-class>
+        <servlet-class>control.manage.products.SSDServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ResetPasswordServlet</servlet-name>
@@ -233,7 +233,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomePageServlet</servlet-name>
-        <url-pattern></url-pattern>
+        <url-pattern/>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterCPUsServlet</servlet-name>
