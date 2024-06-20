@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,packages.Motherboard"%>
+<%@page import="java.util.ArrayList,packages.Motherboard,java.util.Locale"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,11 +36,13 @@
             <%
                 ArrayList<Motherboard> motherboards = (ArrayList<Motherboard>) request.getAttribute("motherboards");
                 for (Motherboard motherboard : motherboards) {
+                String  costPrice = String.format(Locale.US, "%,.0f", motherboard.getCostPrice());
+                String sellingPrice = String.format(Locale.US, "%,.0f", motherboard.getSellingPrice());
             %>
             <tr>
                 <td><%=motherboard.getId()%> </td>
-                <td><%=motherboard.getSellingPrice()%> </td>
-                <td><%=motherboard.getCostPrice()%> </td>
+                <td><%=sellingPrice%> </td>
+                <td><%=costPrice%> </td>
                 <td><img src="<%=motherboard.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=motherboard.getName()%> </td>
                 <td><%=motherboard.getSocket()%> </td>

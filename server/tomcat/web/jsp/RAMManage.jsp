@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,packages.RAM"%>
+<%@page import="java.util.ArrayList,packages.RAM,java.util.Locale"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,11 +33,13 @@
             <%
                 ArrayList<RAM> rams = (ArrayList<RAM>) request.getAttribute("rams");
                 for (RAM ram : rams) {
+                String  costPrice = String.format(Locale.US, "%,.0f", ram.getCostPrice());
+                String sellingPrice = String.format(Locale.US, "%,.0f", ram.getSellingPrice());
             %>
             <tr>
                 <td><%=ram.getId()%> </td>
-                <td><%=ram.getSellingPrice()%> </td>
-                <td><%=ram.getCostPrice()%> </td>
+                <td><%=sellingPrice%> </td>
+                <td><%=costPrice%> </td>
                 <td><img src="<%=ram.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=ram.getName()%> </td>
                 <td><%=ram.getGeneration()%> </td>

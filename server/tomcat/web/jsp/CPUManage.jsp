@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,packages.CPU"%>
+<%@page import="java.util.ArrayList,packages.CPU, java.util.Locale"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,11 +36,13 @@
             <%
                 ArrayList<CPU> cpus = (ArrayList<CPU>) request.getAttribute("cpus");
                 for (CPU cpu : cpus) {
+                String  costPrice = String.format(Locale.US, "%,.0f", cpu.getCostPrice());
+                String sellingPrice = String.format(Locale.US, "%,.0f", cpu.getSellingPrice());
             %>
             <tr>
                 <td><%=cpu.getId()%> </td>
-                <td><%=cpu.getSellingPrice()%> </td>
-                <td><%=cpu.getCostPrice()%> </td>
+                <td><%=sellingPrice%> </td>
+                <td><%=costPrice%> </td>
                 <td><img src="<%=cpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=cpu.getName()%> </td>
                 <td><%=cpu.getGeneration()%> </td>

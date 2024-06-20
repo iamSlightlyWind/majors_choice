@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,packages.PSU"%>
+<%@page import="java.util.ArrayList,packages.PSU,java.util.Locale"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,11 +31,13 @@
             <%
                 ArrayList<PSU> psus = (ArrayList<PSU>) request.getAttribute("psus");
                 for (PSU psu : psus) {
+                String  costPrice = String.format(Locale.US, "%,.0f", psu.getCostPrice());
+                String sellingPrice = String.format(Locale.US, "%,.0f", psu.getSellingPrice());
             %>
             <tr>
                 <td><%=psu.getId()%> </td>
-                <td><%=psu.getSellingPrice()%> </td>
-                <td><%=psu.getCostPrice()%> </td>
+                <td><%=sellingPrice%> </td>
+                <td><%=costPrice%> </td>
                 <td><img src="<%=psu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=psu.getName()%> </td>
                 <td><%=psu.getWattage()%> </td>

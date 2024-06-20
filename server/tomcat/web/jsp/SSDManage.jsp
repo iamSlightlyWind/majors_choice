@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,packages.SSD"%>
+<%@page import="java.util.ArrayList,packages.SSD,java.util.Locale"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,11 +32,13 @@
             <%
                 ArrayList<SSD> ssds = (ArrayList<SSD>) request.getAttribute("ssds");
                 for (SSD ssd : ssds) {
+                String  costPrice = String.format(Locale.US, "%,.0f", ssd.getCostPrice());
+                String sellingPrice = String.format(Locale.US, "%,.0f", ssd.getSellingPrice());
             %>
             <tr>
                 <td><%=ssd.getId()%> </td>
-                <td><%=ssd.getSellingPrice()%> </td>
-                <td><%=ssd.getCostPrice()%> </td>
+                <td><%=sellingPrice%> </td>
+                <td><%=costPrice%> </td>
                 <td><img src="<%=ssd.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=ssd.getName()%> </td>
                 <td><%=ssd.getConnectionInterface()%> </td>

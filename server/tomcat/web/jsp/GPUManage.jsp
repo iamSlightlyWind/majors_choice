@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,packages.GPU"%>
+<%@page import="java.util.ArrayList,packages.GPU,java.util.Locale"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,11 +34,13 @@
             <%
                 ArrayList<GPU> gpus = (ArrayList<GPU>) request.getAttribute("gpus");
                 for (GPU gpu : gpus) {
+                String  costPrice = String.format(Locale.US, "%,.0f", gpu.getCostPrice());
+                String sellingPrice = String.format(Locale.US, "%,.0f", gpu.getSellingPrice());
             %>
             <tr>
                 <td><%=gpu.getId()%> </td>
-                <td><%=gpu.getSellingPrice()%> </td>
-                <td><%=gpu.getCostPrice()%> </td>
+                <td><%=sellingPrice%> </td>
+                <td><%=costPrice%> </td>
                 <td><img src="<%=gpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=gpu.getName()%> </td>
                 <td><%=gpu.getGeneration()%> </td>
