@@ -2,8 +2,6 @@ package packages.wrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
-
 import database.Database;
 import packages.*;
 
