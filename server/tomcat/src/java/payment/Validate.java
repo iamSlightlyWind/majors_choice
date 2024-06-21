@@ -9,18 +9,37 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.User;
+import packages.wrap.Cart;
 
 public class Validate extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        System.out.println("Validation: " + validate(getParams(request)));
+        User currentUser = (User) request.getSession().getAttribute("userObject");
+        currentUser.cart = (Cart) request.getSession().getAttribute("cartObject");
+        currentUser.cart.updateQuantity();
+        currentUser.cart.updateCart();
+
+        if (validate(getParams(request))) {
+            String status = request.getParameter("vnp_TransactionStatus");
+            if (status.equals("00")) {
+                currentUser.cart.placeOrder();
+                System.out.println("Payment success");
+                response.sendRedirect("/Cart");
+            } else {
+                System.out.println("Payment failed");
+                response.sendRedirect("/Cart");
+            }
+        } else {
+            System.out.println("Payment Validation failed");
+            response.sendRedirect("/Cart");
+        }
     }
 
     public Map<String, String> getParams(HttpServletRequest request) {

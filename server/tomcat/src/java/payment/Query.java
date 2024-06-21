@@ -21,6 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class Query extends HttpServlet {
 
+    @SuppressWarnings("unused")
     @Override
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

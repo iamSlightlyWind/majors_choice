@@ -14,6 +14,7 @@ import packages.CPU;
 @MultipartConfig
 public class CPUServlet extends HttpServlet {
 
+    @SuppressWarnings("unused")
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String service = request.getParameter("service");
@@ -47,7 +48,6 @@ public class CPUServlet extends HttpServlet {
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-
                     int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
                             baseClock, boostClock, tdp, image);
                     response.sendRedirect("cpus?service=listAll");

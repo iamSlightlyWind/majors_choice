@@ -118,8 +118,9 @@
           line-height: 1.15;
           color: var(--dl-color-theme-neutral-dark);
           background-color: var(--dl-color-theme-neutral-light);
-
           fill: var(--dl-color-theme-neutral-dark);
+          -webkit-appearance: none;
+          appearance: none;
         }
       </style>
       <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
@@ -154,7 +155,6 @@
 
         <div class="view-cart-container">
           <div class="navbar-container navbar-root-class-name20">
-            <div class="navbar-container1"></div>
             <header class="navbar-container2">
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
@@ -304,6 +304,7 @@
                           <br />
                         </span>
                       </div>
+                      <p>${status}</p>
                       <span class="view-cart-component-text06">Total</span>
                     </div>
                     <c:forEach var="ProductCount" items="${ProductCount}">

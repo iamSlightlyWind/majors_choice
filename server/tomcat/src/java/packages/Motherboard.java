@@ -15,6 +15,19 @@ public class Motherboard extends Product {
     public int wifi;
     public String image;
 
+    public Motherboard(Motherboard m) {
+        super(m.id, m.sellingPrice, m.costPrice, m.description);
+        this.name = m.name;
+        this.socket = m.socket;
+        this.chipset = m.chipset;
+        this.formFactor = m.formFactor;
+        this.ramType = m.ramType;
+        this.maxRamSpeed = m.maxRamSpeed;
+        this.ramSlots = m.ramSlots;
+        this.wifi = m.wifi;
+        this.image = m.image;
+    }
+
     public Motherboard(String socket, String chipset, String formFactor, String ramType, int maxRamSpeed, int ramSlots,
             int wifi, String image, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);

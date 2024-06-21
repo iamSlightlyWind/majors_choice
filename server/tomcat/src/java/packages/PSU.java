@@ -10,6 +10,14 @@ public class PSU extends Product {
     public String efficiency;
     public String image;
 
+    public PSU(PSU p) {
+        super(p.id, p.sellingPrice, p.costPrice, p.description);
+        this.name = p.name;
+        this.wattage = p.wattage;
+        this.efficiency = p.efficiency;
+        this.image = p.image;
+    }
+
     public PSU(int wattage, String efficiency, String image, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.wattage = wattage;

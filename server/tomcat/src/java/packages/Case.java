@@ -7,6 +7,14 @@ public class Case extends Product {
     public String formFactor;
     public String color;
 
+    public Case(Case c) {
+        super(c.id, c.sellingPrice, c.costPrice, c.description);
+        this.name = c.name;
+        this.type = c.type;
+        this.formFactor = c.formFactor;
+        this.color = c.color;
+    }
+
     public Case(int id, double sellingPrice, double costPrice, String description, String name, String type,
             String formFactor, String color) {
         super(id, sellingPrice, costPrice, description);

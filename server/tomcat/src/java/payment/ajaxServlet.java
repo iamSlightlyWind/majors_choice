@@ -18,20 +18,35 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.User;
+import packages.wrap.Cart;
 
 public class ajaxServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User currentUser = (User) request.getSession().getAttribute("userObject");
+        currentUser.cart.updateQuantity();
+        Cart tempCart = new Cart(currentUser.cart);
+        currentUser.cart.clearCart();
 
+        request.getSession().setAttribute("cartObject", tempCart);
+
+        makePayment(request, response, (long) tempCart.total);
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    protected void makePayment(HttpServletRequest request, HttpServletResponse response, long amount)
+            throws ServletException, IOException {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";
-        long amount = Integer.parseInt(req.getParameter("amount")) * 100;
-        String bankCode = req.getParameter("bankCode");
+        amount *= 100;
+        String bankCode = request.getParameter("bankCode");
 
         String vnp_TxnRef = Config.getRandomNumber(8);
-        String vnp_IpAddr = Config.getIpAddress(req);
+        String vnp_IpAddr = Config.getIpAddress(request);
 
         String vnp_TmnCode = Config.vnp_TmnCode;
 
@@ -49,7 +64,7 @@ public class ajaxServlet extends HttpServlet {
         vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", orderType);
 
-        String locate = req.getParameter("language");
+        String locate = request.getParameter("language");
         if (locate != null && !locate.isEmpty()) {
             vnp_Params.put("vnp_Locale", locate);
         } else {
@@ -99,9 +114,6 @@ public class ajaxServlet extends HttpServlet {
         job.addProperty("message", "success");
         job.addProperty("data", paymentUrl);
         Gson gson = new Gson();
-        resp.getWriter().write(gson.toJson(job));
-
-        System.out.println(">>>>> hashData:" + hashData.toString());
-        System.out.println(">>>>> secureHash:" + vnp_SecureHash);
+        response.getWriter().write(gson.toJson(job));
     }
 }
