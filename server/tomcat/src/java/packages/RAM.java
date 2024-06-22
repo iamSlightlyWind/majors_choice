@@ -12,6 +12,16 @@ public class RAM extends Product {
     public int latency;
     public String image;
 
+    public RAM(RAM r) {
+        super(r.id, r.sellingPrice, r.costPrice, r.description);
+        this.name = r.name;
+        this.generation = r.generation;
+        this.capacity = r.capacity;
+        this.speed = r.speed;
+        this.latency = r.latency;
+        this.image = r.image;
+    }
+
     public RAM(int id, double sellingPrice, double costPrice, String description, String name, String generation, int capacity, int speed, int latency) {
         super(id, sellingPrice, costPrice, description);
         this.name = name;

@@ -1,6 +1,7 @@
 package packages.wrap;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -29,6 +30,7 @@ public class CartServlet extends HttpServlet {
         }
 
         if (action == null || action.equals("viewCart")) {
+            request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
             request.setAttribute("user", currentUser.fullName);
             request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
             currentUser.cart.updateQuantity();

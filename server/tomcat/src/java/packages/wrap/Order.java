@@ -14,7 +14,6 @@ public class Order {
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
 
     public int getCount(){
-        System.out.println(this);
         int result = 0;
         for(ProductCount productCount : quantities){
             result += productCount.count;

@@ -323,7 +323,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -420,7 +419,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -505,7 +503,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -549,6 +546,7 @@ public class Database {
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
             Statement statement = db.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            @SuppressWarnings("unused")
             int productId = 0;
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
@@ -596,7 +594,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -670,7 +667,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -732,7 +728,6 @@ public class Database {
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
-                System.out.println("Error: " + result);
                 return -1;
             }
         } catch (SQLException ex) {
@@ -741,6 +736,7 @@ public class Database {
         }
     }
 
+    @SuppressWarnings("unused")
     public int addProductPSU(double sellingPrice, double costPrice, String name, int wattage, String efficiency,
             String image) {
         try {
@@ -1068,7 +1064,6 @@ public class Database {
 
     public boolean updateOrder(int id, String action) {
         String current = getOrderStatus(id);
-        System.out.println(">> Status: " + current);
 
         switch (action) {
             case "cancel":

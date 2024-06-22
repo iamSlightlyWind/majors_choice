@@ -5,6 +5,7 @@
 
     <head>
       <title>Cart - Major's Choice</title>
+      <script src="/payment/assets/jquery-1.11.3.min.js"></script>
       <meta property="og:title" content="Cart - Major's Choice" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
@@ -117,8 +118,9 @@
           line-height: 1.15;
           color: var(--dl-color-theme-neutral-dark);
           background-color: var(--dl-color-theme-neutral-light);
-
           fill: var(--dl-color-theme-neutral-dark);
+          -webkit-appearance: none;
+          appearance: none;
         }
       </style>
       <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
@@ -153,7 +155,6 @@
 
         <div class="view-cart-container">
           <div class="navbar-container navbar-root-class-name20">
-            <div class="navbar-container1"></div>
             <header class="navbar-container2">
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                 <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
@@ -303,6 +304,7 @@
                           <br />
                         </span>
                       </div>
+                      <p>${status}</p>
                       <span class="view-cart-component-text06">Total</span>
                     </div>
                     <c:forEach var="ProductCount" items="${ProductCount}">
@@ -367,7 +369,10 @@
                           <span>${cartPrice} VND</span>
                         </span>
                       </div>
-                      <form action="Cart" method="post">
+                      <form action="/payment/vnpayajax" id="frmCreateOrder" method="post">
+                        <input type="hidden" name="amount" value="${cartPriceDouble}" />
+                        <input type="hidden" name="language" value="vn" />
+                        <input type="hidden" name="bankCode" value="" />
                         <button type="submit" name="action" value="placeOrder"
                           class="view-cart-component-button7 thq-button-filled button">
                           Place Order
@@ -515,6 +520,32 @@
         </div>
       </div>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+      <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
+      <script type="text/javascript">
+        $("#frmCreateOrder").submit(function () {
+          var postData = $("#frmCreateOrder").serialize();
+          var submitUrl = $("#frmCreateOrder").attr("action");
+          $.ajax({
+            type: "POST",
+            url: submitUrl,
+            data: postData,
+            dataType: 'JSON',
+            success: function (x) {
+              if (x.code === '00') {
+                if (window.vnpay) {
+                  vnpay.open({ width: 768, height: 600, url: x.data });
+                } else {
+                  location.href = x.data;
+                }
+                return false;
+              } else {
+                alert(x.Message);
+              }
+            }
+          });
+          return false;
+        });
+      </script>
     </body>
 
     </html>

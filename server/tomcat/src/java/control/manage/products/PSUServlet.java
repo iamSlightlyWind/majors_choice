@@ -14,6 +14,7 @@ import packages.PSU;
 @MultipartConfig
 public class PSUServlet extends HttpServlet {
 
+    @SuppressWarnings("unused")
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String service = request.getParameter("service");
