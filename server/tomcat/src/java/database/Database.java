@@ -707,7 +707,6 @@ public class Database {
         }
     }
 
-
     public int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage,
             String efficiency, String image) {
         try {
@@ -825,6 +824,20 @@ public class Database {
 
         deleteCart(userID);
         return 1;
+    }
+
+    public void addOrderInformation(String fullname, String phoneNumber, String address) {
+        try {
+            String sql = "{call addOrderInformation(?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, fullname);
+            statement.setString(2, phoneNumber);
+            statement.setString(3, address);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public ArrayList<Product> getCart(int userID) {
