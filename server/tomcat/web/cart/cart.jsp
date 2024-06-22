@@ -304,7 +304,6 @@
                           <br />
                         </span>
                       </div>
-                      <p>${status}</p>
                       <span class="view-cart-component-text06">Total</span>
                     </div>
                     <c:forEach var="ProductCount" items="${ProductCount}">
@@ -361,12 +360,12 @@
                     </div>
                     <div class="view-cart-component-container14">
                       <div class="view-cart-component-container15">
+                        <br>
                         <span class="view-cart-component-text23">
                           <span>Total:&nbsp;</span>
-                          <br />
                         </span>
-                        <span class="view-cart-component-text26">
-                          <span>${cartPrice} VND</span>
+                        <span >
+                          <span class="view-cart-component-text26">${cartPrice} VND</span>
                         </span>
                       </div>
                       <form action="/payment/vnpayajax" id="frmCreateOrder" method="post">
@@ -377,6 +376,7 @@
                           class="view-cart-component-button7 thq-button-filled button">
                           Place Order
                         </button>
+                        <p>${status}</p>
                       </form>
                     </div>
                   </div>
