@@ -21,6 +21,9 @@
                     </li>
                 </c:forEach>
             </ul>
+            <p>${Order.orderInfo.fullName}</p>
+            <p>${Order.orderInfo.phoneNumber}</p>
+            <p>${Order.orderInfo.address}</p>
             <p>Price: ${Order.cartTotal}</p>
             <c:if test="${Order.status eq 'Pending' and not managing}">
                 <form action="/order" method="get">

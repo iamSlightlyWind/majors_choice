@@ -973,7 +973,6 @@ public class Database {
                                 .add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
                                         resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
                         order.date = resultSet.getString("dateOrdered");
-                        order.orderInfo = getOrderInfo(order.id);
                         order.user = new User();
                         order.user.id = resultSet.getInt("userId") + "";
                         order.user.retrieveData("user");
@@ -995,6 +994,7 @@ public class Database {
 
         for (Order order : orders) {
             order.updateQuantity();
+            order.orderInfo = getOrderInfo(order.id);
         }
         return orders;
     }
