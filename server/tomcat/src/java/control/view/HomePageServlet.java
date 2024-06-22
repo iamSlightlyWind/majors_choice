@@ -16,34 +16,34 @@ import packages.SSD;
 
 public class HomePageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Database db = new Database();       
+        Database db = new Database();
         List<CPU> cpus = db.getCPUs("");
         List<GPU> gpus = db.getGPUs("");
         List<RAM> rams = db.getRAMs("");
         List<Motherboard> motherboards = db.getMotherboards("");
         List<SSD> ssds = db.getSSDs("");
         List<PSU> psus = db.getPSUs("");
-                            
-        request.setAttribute("cpus", cpus);  
-        request.setAttribute("gpus", gpus); 
-        request.setAttribute("rams", rams); 
-        request.setAttribute("mobos", motherboards); 
-        request.setAttribute("ssds", ssds); 
-        request.setAttribute("psus", psus); 
+
+        request.setAttribute("cpus", cpus);
+        request.setAttribute("gpus", gpus);
+        request.setAttribute("rams", rams);
+        request.setAttribute("mobos", motherboards);
+        request.setAttribute("ssds", ssds);
+        request.setAttribute("psus", psus);
         request.getRequestDispatcher("index.jsp").forward(request, response);
-    } 
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 }
