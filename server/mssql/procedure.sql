@@ -935,6 +935,21 @@ BEGIN
 END
 go
 
+CREATE PROCEDURE getOrderInformation
+    @orderId int
+AS
+BEGIN
+    SELECT
+        fullname,
+        phoneNumber,
+        address
+    FROM
+        orderInformation
+    WHERE
+        id = @orderId
+END
+go
+
 CREATE PROCEDURE addStaff
     @username VARCHAR(25),
     @password VARCHAR(100),

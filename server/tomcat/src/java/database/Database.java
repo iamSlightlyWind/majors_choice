@@ -939,6 +939,24 @@ public class Database {
         return products;
     }
 
+    public OrderInfo getOrderInfo(int orderID) {
+        OrderInfo orderInfo = new OrderInfo();
+        try {
+            String sql = "{call getOrderInformation(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderID);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                orderInfo.fullName = resultSet.getString("fullname");
+                orderInfo.phoneNumber = resultSet.getString("phoneNumber");
+                orderInfo.address = resultSet.getString("address");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orderInfo;
+    }
+
     public ArrayList<Order> getOrders(int userID) {
         ArrayList<Order> orders = new ArrayList<>();
         try {
@@ -955,6 +973,7 @@ public class Database {
                                 .add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
                                         resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
                         order.date = resultSet.getString("dateOrdered");
+                        order.orderInfo = getOrderInfo(order.id);
                         order.user = new User();
                         order.user.id = resultSet.getInt("userId") + "";
                         order.user.retrieveData("user");

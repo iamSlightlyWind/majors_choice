@@ -12,6 +12,7 @@ public class Order {
     public int id;
     public String date;
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
+    public OrderInfo orderInfo;
 
     public int getCount(){
         int result = 0;
