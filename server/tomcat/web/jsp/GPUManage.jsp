@@ -41,7 +41,7 @@
                 <td><%=gpu.getId()%> </td>
                 <td><%=sellingPrice%> </td>
                 <td><%=costPrice%> </td>
-                <td><img src="<%=gpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
+                <td><img src="images/<%=gpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=gpu.getName()%> </td>
                 <td><%=gpu.getGeneration()%> </td>
                 <td><%=gpu.getVram()%> </td>

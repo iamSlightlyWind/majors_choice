@@ -43,7 +43,7 @@
                 <td><%=cpu.getId()%> </td>
                 <td><%=sellingPrice%> </td>
                 <td><%=costPrice%> </td>
-                <td><img src="<%=cpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
+                <td><img src="images/<%=cpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=cpu.getName()%> </td>
                 <td><%=cpu.getGeneration()%> </td>
                 <td><%=cpu.getSocket()%> </td>

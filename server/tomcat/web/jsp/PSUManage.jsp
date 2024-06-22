@@ -38,7 +38,7 @@
                 <td><%=psu.getId()%> </td>
                 <td><%=sellingPrice%> </td>
                 <td><%=costPrice%> </td>
-                <td><img src="<%=psu.getId()%>.png" style="width: 100px; height: auto;"/></td>
+                <td><img src="images/<%=psu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=psu.getName()%> </td>
                 <td><%=psu.getWattage()%> </td>
                 <td><%=psu.getEfficiency()%> </td>
