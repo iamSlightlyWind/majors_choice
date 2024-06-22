@@ -707,7 +707,6 @@ public class Database {
         }
     }
 
-
     public int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage,
             String efficiency, String image) {
         try {
@@ -827,6 +826,20 @@ public class Database {
         return 1;
     }
 
+    public void addOrderInformation(String fullname, String phoneNumber, String address) {
+        try {
+            String sql = "{call addOrderInformation(?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, fullname);
+            statement.setString(2, phoneNumber);
+            statement.setString(3, address);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public ArrayList<Product> getCart(int userID) {
         ArrayList<CPU> cpus = getCPUs("");
         ArrayList<GPU> gpus = getGPUs("");
@@ -926,6 +939,24 @@ public class Database {
         return products;
     }
 
+    public OrderInfo getOrderInfo(int orderID) {
+        OrderInfo orderInfo = new OrderInfo();
+        try {
+            String sql = "{call getOrderInformation(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderID);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                orderInfo.fullName = resultSet.getString("fullname");
+                orderInfo.phoneNumber = resultSet.getString("phoneNumber");
+                orderInfo.address = resultSet.getString("address");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orderInfo;
+    }
+
     public ArrayList<Order> getOrders(int userID) {
         ArrayList<Order> orders = new ArrayList<>();
         try {
@@ -954,6 +985,10 @@ public class Database {
                     orders.add(order);
                     order.products.add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
                             resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
+                    order.date = resultSet.getString("dateOrdered");
+                    order.user = new User();
+                    order.user.id = resultSet.getInt("userId") + "";
+                    order.user.retrieveData("user");
                 }
 
             }

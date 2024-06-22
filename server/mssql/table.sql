@@ -160,6 +160,14 @@ create table orders
     dateOrdered date default getdate()
 )
 
+create table orderInformation
+(
+    id int primary key,
+    fullname nvarchar(50),
+    phoneNumber varchar(15),
+    address nvarchar(100)
+)
+
 create table feedback
 (
     id int identity(1,1) primary key,
