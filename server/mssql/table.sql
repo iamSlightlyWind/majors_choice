@@ -52,6 +52,7 @@ create table cpus
     baseClock int,
     boostClock int,
     tdp int,
+    igpu nvarchar(50), -- igpu name
     image nvarchar(max)
 )
 
@@ -73,9 +74,11 @@ create table motherboards
     name nvarchar(50),
     socket nvarchar(10),
     chipset nvarchar(10),
+    igpu int, -- 0 for no, 1 for yes
     formFactor nvarchar(50),
     ramType nvarchar(10),
     maxRamSpeed int,
+    maxRamCapacity int, -- in GB
     ramSlots int,
     wifi int,
     image nvarchar(max)
@@ -115,7 +118,6 @@ create table cases
 (
     id int references products(id),
     name nvarchar(50),
-    type nvarchar(50),
     formFactor nvarchar(50),
     color nvarchar(50),
     image nvarchar(max)

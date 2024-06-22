@@ -64,12 +64,12 @@ EXEC register
 INSERT INTO staffs
     (username, password, possition, fullname, active)
 VALUES
-    ('manager', 'password', 1, 'Manager', 1);
+    ('manager', 'password', 1, 'Manager', 1)
 
-EXEC addStaff @username = 'staff1', @password = 'password2', @fullname = 'Staff One', @result = @resultInt OUTPUT;
-EXEC addStaff @username = 'staff2', @password = 'password3', @fullname = 'Staff Two', @result = @resultInt OUTPUT;
-EXEC addStaff @username = 'staff3', @password = 'password4', @fullname = 'Staff Three', @result = @resultInt OUTPUT;
-EXEC addStaff @username = 'staff4', @password = 'password5', @fullname = 'Staff Four', @result = @resultInt OUTPUT;
+EXEC addStaff @username = 'staff1', @password = 'password2', @fullname = 'Staff One', @result = @resultInt OUTPUT
+EXEC addStaff @username = 'staff2', @password = 'password3', @fullname = 'Staff Two', @result = @resultInt OUTPUT
+EXEC addStaff @username = 'staff3', @password = 'password4', @fullname = 'Staff Three', @result = @resultInt OUTPUT
+EXEC addStaff @username = 'staff4', @password = 'password5', @fullname = 'Staff Four', @result = @resultInt OUTPUT
 
 -- >> Add CPUs
 DECLARE @result varchar(50)
@@ -85,6 +85,7 @@ EXEC addProductCPU
     @baseClock = 3.6,
     @boostClock = 4.2,
     @tdp = 65,
+    @igpu = 'Radeon Vega 7',
     @image = '',
     @result = @result OUTPUT
 
@@ -99,6 +100,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 4.6,
     @tdp = 65,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -113,6 +115,67 @@ EXEC addProductCPU
     @baseClock = 4.5,
     @boostClock = 5.7,
     @tdp = 170,
+    @igpu = '',
+    @image = '',
+    @result = @result OUTPUT
+
+EXEC addProductCPU
+    @sellingPrice = 3500000,
+    @costPrice = 3000000,
+    @name = 'AMD Ryzen 3 5300G',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 4,
+    @threads = 8,
+    @baseClock = 3.8,
+    @boostClock = 4.2,
+    @tdp = 65,
+    @igpu = 'Radeon Vega 6',
+    @image = '',
+    @result = @result OUTPUT
+
+EXEC addProductCPU
+    @sellingPrice = 4500000,
+    @costPrice = 4000000,
+    @name = 'AMD Ryzen 3 5600G',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 6,
+    @threads = 12,
+    @baseClock = 3.9,
+    @boostClock = 4.6,
+    @tdp = 65,
+    @igpu = 'Radeon Vega 7',
+    @image = '',
+    @result = @result OUTPUT
+
+EXEc addProductCPU
+    @sellingPrice = 4700000,
+    @costPrice = 4200000,
+    @name = 'AMD Ryzen 5 5600GE',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 6,
+    @threads = 12,
+    @baseClock = 3.9,
+    @boostClock = 4.4,
+    @tdp = 46,
+    @igpu = 'Radeon Vega 7',
+    @image = '',
+    @result = @result OUTPUT
+
+EXEC addProductCPU
+    @sellingPrice = 5000000,
+    @costPrice = 4500000,
+    @name = 'AMD Ryzen 5 5500G',
+    @generation = 'Zen 3',
+    @socket = 'AM4',
+    @cores = 6,
+    @threads = 12,
+    @baseClock = 3.8,
+    @boostClock = 4.2,
+    @tdp = 65,
+    @igpu = 'Radeon Vega 7',
     @image = '',
     @result = @result OUTPUT
 
@@ -127,6 +190,7 @@ EXEC addProductCPU
     @baseClock = 3.7,
     @boostClock = 4.6,
     @tdp = 65,
+    @igpu = 'Radeon Vega 7',
     @image = '',
     @result = @result OUTPUT
 
@@ -141,6 +205,7 @@ EXEC addProductCPU
     @baseClock = 3.8,
     @boostClock = 4.7,
     @tdp = 105,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -155,6 +220,7 @@ EXEC addProductCPU
     @baseClock = 3.7,
     @boostClock = 4.8,
     @tdp = 105,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -169,6 +235,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 4.9,
     @tdp = 105,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -183,6 +250,52 @@ EXEC addProductCPU
     @baseClock = 4.5,
     @boostClock = 5.4,
     @tdp = 105,
+    @igpu = '',
+    @image = '',
+    @result = @result OUTPUT
+
+EXEC addProductCPU
+    @sellingPrice = 5500000,
+    @costPrice = 5000000,
+    @name = 'AMD Ryzen 5 7600X',
+    @generation = 'Zen 4',
+    @socket = 'AM5',
+    @cores = 6,
+    @threads = 12,
+    @baseClock = 4.7,
+    @boostClock = 5.3,
+    @tdp = 105,
+    @igpu = '',
+    @image = '',
+    @result = @result OUTPUT
+
+EXEC addProductCPU
+    @sellingPrice = 11000000,
+    @costPrice = 10000000,
+    @name = 'AMD Ryzen 7 7800X',
+    @generation = 'Zen 4',
+    @socket = 'AM5',
+    @cores = 8,
+    @threads = 16,
+    @baseClock = 4.3,
+    @boostClock = 5.7,
+    @tdp = 170,
+    @igpu = '',
+    @image = '',
+    @result = @result OUTPUT
+
+EXEC addProductCPU
+    @sellingPrice = 13000000,
+    @costPrice = 11500000,
+    @name = 'AMD Ryzen 9 7900X',
+    @generation = 'Zen 4',
+    @socket = 'AM5',
+    @cores = 12,
+    @threads = 24,
+    @baseClock = 4.7,
+    @boostClock = 5.6,
+    @tdp = 170,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -197,6 +310,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 5.4,
     @tdp = 125,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -212,6 +326,7 @@ EXEC addProductCPU
     @baseClock = 3,
     @boostClock = 5.8,
     @tdp = 125,
+    @igpu = 'Intel UHD Graphics 770',
     @image = '',
     @result = @result OUTPUT
 
@@ -227,6 +342,7 @@ EXEC addProductCPU
     @baseClock = 3.6,
     @boostClock = 5.5,
     @tdp = 125,
+    @igpu = 'Intel UHD Graphics 770',
     @image = '',
     @result = @result OUTPUT
 
@@ -242,6 +358,7 @@ EXEC addProductCPU
     @baseClock = 3.5,
     @boostClock = 5.8,
     @tdp = 125,
+    @igpu = 'Intel UHD Graphics 770',
     @image = '',
     @result = @result OUTPUT
 
@@ -257,6 +374,7 @@ EXEC addProductCPU
     @baseClock = 3.5,
     @boostClock = 5.1,
     @tdp = 125,
+    @igpu = 'Intel UHD Graphics 770',
     @image = '',
     @result = @result OUTPUT
 
@@ -272,6 +390,7 @@ EXEC addProductCPU
     @baseClock = 3.5,
     @boostClock = 5.1,
     @tdp = 125,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -287,6 +406,7 @@ EXEC addProductCPU
     @baseClock = 3,
     @boostClock = 5.8,
     @tdp = 125,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -302,6 +422,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 5.4,
     @tdp = 125,
+    @igpu = 'Intel UHD Graphics 770',
     @image = '',
     @result = @result OUTPUT
 
@@ -317,6 +438,7 @@ EXEC addProductCPU
     @baseClock = 3.2,
     @boostClock = 6,
     @tdp = 125,
+    @igpu = 'Intel UHD Graphics 770',
     @image = '',
     @result = @result OUTPUT
 
@@ -332,6 +454,7 @@ EXEC addProductCPU
     @baseClock = 3.2,
     @boostClock = 6,
     @tdp = 125,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -347,6 +470,7 @@ EXEC addProductCPU
     @baseClock = 3.4,
     @boostClock = 5.6,
     @tdp = 125,
+    @igpu = '',
     @image = '',
     @result = @result OUTPUT
 
@@ -1256,9 +1380,11 @@ EXEC addProductMotherboard
     @name = 'ASUS ROG Strix X670E-E',
     @socket = 'AM5',
     @chipset = 'X670E',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 6600,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1271,9 +1397,11 @@ EXEC addProductMotherboard
     @name = 'MSI MAG B550 TOMAHAWK',
     @socket = 'AM4',
     @chipset = 'B550',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR4',
     @maxRamSpeed = 5100,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 0,
     @image = '',
@@ -1286,9 +1414,11 @@ EXEC addProductMotherboard
     @name = 'ASUS ROG Maximus Z790 Hero',
     @socket = 'LGA 1700',
     @chipset = 'Z790',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 7200,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1301,9 +1431,11 @@ EXEC addProductMotherboard
     @name = 'MSI PRO Z690-A',
     @socket = 'LGA 1700',
     @chipset = 'Z690',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 6400,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 0,
     @image = '',
@@ -1316,9 +1448,11 @@ EXEC addProductMotherboard
     @name = 'Gigabyte B650 AORUS Elite',
     @socket = 'AM5',
     @chipset = 'B650',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 6400,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1331,9 +1465,11 @@ EXEC addProductMotherboard
     @name = 'MSI MPG Z790 Carbon WiFi',
     @socket = 'LGA 1700',
     @chipset = 'Z790',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 7200,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1346,9 +1482,11 @@ EXEC addProductMotherboard
     @name = 'ASUS TUF Gaming X570-Plus',
     @socket = 'AM4',
     @chipset = 'X570',
+    @igpu = 0,
     @formFactor = 'ATX',
     @ramType = 'DDR4',
     @maxRamSpeed = 4400,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1361,9 +1499,11 @@ EXEC addProductMotherboard
     @name = 'Gigabyte AORUS Master X570',
     @socket = 'AM4',
     @chipset = 'X570',
+    @igpu = 0,
     @formFactor = 'ATX',
     @ramType = 'DDR4',
     @maxRamSpeed = 4400,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1376,9 +1516,11 @@ EXEC addProductMotherboard
     @name = 'Gigabyte B650E Aorus Master',
     @socket = 'AM5',
     @chipset = 'B650E',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 6600,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1391,9 +1533,11 @@ EXEC addProductMotherboard
     @name = 'ASUS ROG Strix B760-F Gaming',
     @socket = 'LGA 1700',
     @chipset = 'B760',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 6400,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1406,9 +1550,11 @@ EXEC addProductMotherboard
     @name = 'MSI MAG Z790 TOMAHAWK',
     @socket = 'LGA 1700',
     @chipset = 'Z790',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 7200,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1421,9 +1567,11 @@ EXEC addProductMotherboard
     @name = 'ASRock Z790 Pro RS',
     @socket = 'LGA 1700',
     @chipset = 'Z790',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR5',
     @maxRamSpeed = 7000,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 0,
     @image = '',
@@ -1436,9 +1584,11 @@ EXEC addProductMotherboard
     @name = 'ASUS Prime Z790-P WIFI D4',
     @socket = 'LGA 1700',
     @chipset = 'Z790',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR4',
     @maxRamSpeed = 5333,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
@@ -1451,9 +1601,11 @@ EXEC addProductMotherboard
     @name = 'MSI PRO Z790-P WIFI DDR4',
     @socket = 'LGA 1700',
     @chipset = 'Z790',
+    @igpu = 1,
     @formFactor = 'ATX',
     @ramType = 'DDR4',
     @maxRamSpeed = 5333,
+    @maxRamCapacity = 128,
     @ramSlots = 4,
     @wifi = 1,
     @image = '',

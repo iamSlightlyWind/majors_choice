@@ -51,7 +51,7 @@ BEGIN
         SET @result = 0
     -- login failed
     END
-END;
+END
 GO
 
 create procedure googleLogin
@@ -72,7 +72,7 @@ begin
         set @result = 0
     -- login failed
     end
-end;
+end
 go
 
 create procedure setGoogleUser
@@ -84,7 +84,7 @@ begin
     set googleUser = 1
     where username = @username
     set @result = 1
-end;
+end
 go
 
 create procedure userExists
@@ -104,7 +104,7 @@ begin
         set @result = 0
     -- not exists
     end
-end;
+end
 go
 
 create procedure forceActivate
@@ -116,7 +116,7 @@ begin
     set active = 1
     where username = @username
     set @result = 1
-end;
+end
 go
 
 create procedure resetPassword
@@ -142,7 +142,7 @@ begin
         set @result = 0
     -- failed
     end
-end;    
+end    
 go
 
 create procedure activate
@@ -150,7 +150,7 @@ create procedure activate
     @username varchar(25),
     @confirmCode varchar(10),
     @result int output
--- 1 successful, 0 failed
+-- 1: successful, 0: failed
 as
 begin
     if exists (SELECT 1
@@ -166,7 +166,7 @@ begin
         set @result = 0
     -- failed
     end
-end;
+end
 go
 
 CREATE PROCEDURE register
@@ -228,7 +228,7 @@ BEGIN
         -- Registration successful
         END
     END
-END;
+END
 go
 
 create PROCEDURE addProductCPU
@@ -242,6 +242,7 @@ create PROCEDURE addProductCPU
     @baseClock int,
     @boostClock int,
     @tdp int,
+    @igpu nvarchar(50),
     @image nvarchar(max),
     @result varchar(50) output
 AS
@@ -250,7 +251,7 @@ BEGIN
     FROM cpus
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists' + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -263,12 +264,12 @@ BEGIN
     SET @id = SCOPE_IDENTITY()
 
     INSERT INTO cpus
-        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, image)
+        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, igpu, image)
     VALUES
-        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @image)
+        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @igpu, @image)
 
     SET @result = 1
-END;
+END
 go
 
 create PROCEDURE addProductGPU
@@ -288,7 +289,7 @@ BEGIN
     FROM gpus
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists' + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -306,7 +307,7 @@ BEGIN
         (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @image)
 
     set @result = 1
-END;
+END
 go
 
 create PROCEDURE addProductRAM
@@ -325,7 +326,7 @@ BEGIN
     FROM rams
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists' + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -343,7 +344,7 @@ BEGIN
         (@id, @name, @generation, @capacity, @speed, @latentcy, @image)
 
     set @result = 1
-END;
+END
 go
 
 create PROCEDURE addProductMotherboard
@@ -352,9 +353,11 @@ create PROCEDURE addProductMotherboard
     @name nvarchar(50),
     @socket nvarchar(10),
     @chipset nvarchar(10),
+    @igpu int,
     @formFactor nvarchar(50),
     @ramType nvarchar(10),
     @maxRamSpeed int,
+    @maxRamCapacity int,
     @ramSlots int,
     @wifi int,
     @image nvarchar(max),
@@ -365,7 +368,7 @@ BEGIN
     FROM motherboards
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists' + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -378,12 +381,12 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO motherboards
-        (id, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image)
+        (id, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image)
     VALUES
-        (@id, @name, @socket, @chipset, @formFactor, @ramType, @maxRamSpeed, @ramSlots, @wifi, @image)
+        (@id, @name, @socket, @chipset, @igpu, @formFactor, @ramType, @maxRamSpeed, @maxRamCapacity, @ramSlots, @wifi, @image)
 
     set @result = 1
-END;
+END
 go
 
 create PROCEDURE addProductSSD
@@ -401,7 +404,7 @@ BEGIN
     FROM ssds
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists' + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -419,7 +422,7 @@ BEGIN
         (@id, @name, @interface, @capacity, @cache, @image)
 
     set @result = 1
-END;
+END
 go
 
 create PROCEDURE addProductPSU
@@ -436,7 +439,7 @@ BEGIN
     FROM psus
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists' + @name
+        SET @result = 'Already exists:' + @name
         RETURN
     END
 
@@ -454,7 +457,7 @@ BEGIN
         (@id, @name, @wattage, @efficiency, @image)
 
     set @result = 1
-END;
+END
 go
 
 CREATE PROCEDURE loginEmployee
@@ -489,25 +492,25 @@ BEGIN
         SET @result = -2
     -- login failed. Staff or Manager not found
     END
-END;
+END
 go
 
 CREATE PROCEDURE GetUserDetails
     @tablename varchar(25)
 AS
 BEGIN
-    DECLARE @sql NVARCHAR(MAX);
+    DECLARE @sql NVARCHAR(MAX)
 
     IF @tablename = 'staffs'
     BEGIN
-        SET @sql = 'select username from staffs where possition = 0';
+        SET @sql = 'select username from staffs where possition = 0'
     END
     ELSE IF @tablename = 'users'
     BEGIN
-        SET @sql = 'select username from users';
+        SET @sql = 'select username from users'
     END
-    EXEC sp_executesql @sql;
-END;
+    EXEC sp_executesql @sql
+END
 go
 
 CREATE PROCEDURE updateUserInformation
@@ -530,16 +533,16 @@ BEGIN
     -- Get user ID
     SELECT @id = id
     FROM users
-    WHERE username = @username;
+    WHERE username = @username
 
     -- Check email existence
     IF @email IS NOT NULL AND EXISTS (SELECT 1
         FROM userDetails
         WHERE email = @email AND id <> @id)
     BEGIN
-        SET @result = -1;
+        SET @result = -1
         -- Email already exists
-        RETURN;
+        RETURN
     END
 
     -- Check phone number existence
@@ -547,9 +550,9 @@ BEGIN
         FROM userDetails
         WHERE phoneNumber = @phoneNumber AND id <> @id)
     BEGIN
-        SET @result = -2;
+        SET @result = -2
         -- Phone number already exists
-        RETURN;
+        RETURN
     END
 
     -- Update user information
@@ -557,7 +560,7 @@ BEGIN
     BEGIN
         UPDATE users
         SET password = @password
-        WHERE id = @id;
+        WHERE id = @id
     END
 
     IF @fullname IS NOT NULL
@@ -602,8 +605,8 @@ BEGIN
         WHERE id = @id
     END
 
-    SET @result = 1;
-END;
+    SET @result = 1
+END
 go
 
 create procedure getCPU
@@ -623,6 +626,7 @@ Begin
         baseClock,
         boostClock,
         tdp,
+        igpu,
         image
     from products
         join cpus on products.id = cpus.id
@@ -651,7 +655,7 @@ begin
         join gpus on products.id = gpus.id
     where 1=1
         and (@inputname is null or name like '%'+@inputname+'%' )
-end;
+end
 go
 
 create procedure getMotherboard
@@ -760,7 +764,7 @@ begin
     begin
         set @result = 0
     end
-end;
+end
 go
 
 create procedure addToCart
@@ -785,7 +789,7 @@ begin
     begin
         set @result = 0
     end
-end;
+end
 go
 
 create procedure getCart
@@ -795,7 +799,7 @@ begin
     select *
     from carts
     where userID = @userID
-end;
+end
 go
 
 CREATE PROCEDURE placeOrder
@@ -818,18 +822,18 @@ BEGIN
             costPrice,
             'Pending'
         FROM carts
-        WHERE userID = @userID;
+        WHERE userID = @userID
 
         DELETE FROM carts
-        WHERE userID = @userID;
+        WHERE userID = @userID
 
-        SET @result = 1;
+        SET @result = 1
     END
     ELSE
     BEGIN
-        SET @result = 0;
+        SET @result = 0
     END
-END;
+END
 GO
 
 CREATE PROCEDURE getCartItems
@@ -860,7 +864,7 @@ BEGIN
         LEFT JOIN psus ON c.productId = psus.id
         LEFT JOIN cases ON c.productId = cases.id
     WHERE 
-        c.userId = @userId;
+        c.userId = @userId
 END
 go
 
@@ -904,15 +908,15 @@ BEGIN
         OR (@userId = -3 AND o.status = 'Cancellation Denied, Shipping Pending')
         OR (@userId = -4 AND o.status = 'Cancelled')
         OR (@userId = -5 AND o.status = 'Shipping')
-        OR (@userId = -6 AND o.status = 'Completed');
-        -- 0 All orders
-        -- -1 Pending orders
-        -- -2 Cancellation Requested
-        -- -3 Cancellation Denied, Shipping Pending
-        -- -4 Cancelled
-        -- -5 Shipping
-        -- -6 Completed
-END;
+        OR (@userId = -6 AND o.status = 'Completed')
+-- 0: All orders
+-- -1: Pending orders
+-- -2: Cancellation Requested
+-- -3: Cancellation Denied, Shipping Pending
+-- -4: Cancelled
+-- -5: Shipping
+-- -6: Completed
+END
 go
 
 CREATE PROCEDURE addStaff
@@ -934,11 +938,11 @@ BEGIN
         INSERT INTO staffs
             (username, password, possition, fullname)
         VALUES
-            (@username, @password, 0, @fullname);
+            (@username, @password, 0, @fullname)
         SET @result = 1
     -- staff added successfully
     END
-END;
+END
 GO
 
 CREATE PROCEDURE updateStaff
@@ -964,11 +968,11 @@ BEGIN
             password = ISNULL(@password, password),
             fullname = ISNULL(@fullname, fullname),
             active = ISNULL(@active, active)
-        WHERE id = @id;
+        WHERE id = @id
         SET @result = 1
     -- staff updated successfully
     END
-END;
+END
 GO
 
 CREATE PROCEDURE RequestOrderCancel
@@ -977,8 +981,8 @@ AS
 BEGIN
     UPDATE orders
     SET status = 'Cancellation Requested'
-    WHERE id = @OrderId;
-END;
+    WHERE id = @OrderId
+END
 go
 
 CREATE PROCEDURE ApproveOrderCancel
@@ -987,8 +991,8 @@ AS
 BEGIN
     UPDATE orders
     SET status = 'Cancelled'
-    WHERE id = @OrderId;
-END;
+    WHERE id = @OrderId
+END
 go
 
 CREATE PROCEDURE DenyOrderCancel
@@ -997,8 +1001,8 @@ AS
 BEGIN
     UPDATE orders
     SET status = 'Cancellation Denied, Shipping Pending'
-    WHERE id = @OrderId;
-END;
+    WHERE id = @OrderId
+END
 go
 
 CREATE PROCEDURE ShipOrder
@@ -1007,8 +1011,8 @@ AS
 BEGIN
     UPDATE orders
     SET status = 'Shipping'
-    WHERE id = @OrderId;
-END;
+    WHERE id = @OrderId
+END
 go
 
 CREATE PROCEDURE CompleteOrder
@@ -1017,8 +1021,8 @@ AS
 BEGIN
     UPDATE orders
     SET status = 'Completed'
-    WHERE id = @OrderId;
-END;
+    WHERE id = @OrderId
+END
 go
 
 CREATE PROCEDURE getOrderStatus
@@ -1028,8 +1032,8 @@ BEGIN
     SELECT TOP 1
         status
     FROM orders
-    WHERE id = @orderId;
-END;
+    WHERE id = @orderId
+END
 go
 
 CREATE PROCEDURE updateProductCPU
@@ -1073,7 +1077,7 @@ BEGIN
     WHERE id = @id
 
     SET @result = 'Update successful'
-END;
+END
 GO
 
 CREATE PROCEDURE updateProductGPU
@@ -1113,7 +1117,7 @@ BEGIN
     WHERE id = @id
 
     SET @result = 'Update successful'
-END;
+END
 GO
 
 CREATE PROCEDURE updateProductMotherboard
@@ -1157,7 +1161,7 @@ BEGIN
     WHERE id = @id
 
     SET @result = 'Update successful'
-END;
+END
 GO
 
 CREATE PROCEDURE updateProductPSU
@@ -1191,7 +1195,7 @@ BEGIN
     WHERE id = @id
 
     SET @result = 'Update successful'
-END;
+END
 GO
 
 CREATE PROCEDURE updateProductRAM
@@ -1229,7 +1233,7 @@ BEGIN
     WHERE id = @id
 
     SET @result = 'Update successful'
-END;
+END
 GO
 
 CREATE PROCEDURE updateProductSSD
@@ -1265,5 +1269,5 @@ BEGIN
     WHERE id = @id
 
     SET @result = 'Update successful'
-END;
+END
 GO
