@@ -16,3 +16,29 @@ While the backend of things seems simple enough, having the server run on the op
 - [X] Proof of concept for running a MSSQL server (merged).
 - [X] Proof of concept for deploying to Tomcat server (merged).
 - [X] Proof of concept for deploying to the open Web (merged).
+
+## Hardware Validation
+
+This feature ensures the compatibility of the selected components. Here are the checks performed:
+
+| Situation                  | Case                           | Suggestion                                                       |
+| -------------------------- | ------------------------------ | ---------------------------------------------------------------- |
+| CPU & Motherboard Socket   | Sockets match                  |                                                                  |
+|                            | Sockets mismatch               | Change CPU or motherboard.                                       |
+| Integrated GPU             | GPU selected                   |                                                                  |
+|                            | iGPU supported by both, no GPU | Consider discrete GPU for better performance.                    |
+|                            | iGPU supported by one, no GPU  | Replace the non-supporting component or consider a discrete GPU. |
+|                            | iGPU unsupported, no GPU       | Add discrete GPU or choose iGPU supporting CPU/motherboard.      |
+| RAM Type                   | Supported by motherboard       |                                                                  |
+|                            | Unsupported by motherboard     | Choose compatible RAM type.                                      |
+| RAM Speed with Motherboard | Supported, equal to max        |                                                                  |
+|                            | Supported, less than max       | Upgrade to faster RAM.                                           |
+|                            | Unsupported                    | Choose supported RAM speed.                                      |
+| RAM Speed Matching         | Speeds match                   |                                                                  |
+|                            | Speeds mismatch                | Use matching speed RAM sticks.                                   |
+| RAM Capacity               | Supported by motherboard       |                                                                  |
+|                            | Unsupported by motherboard     | Reduce RAM capacity to supported max.                            |
+| RAM Slots                  | Enough slots                   |                                                                  |
+|                            | Insufficient slots             | Reduce RAM sticks or choose another motherboard.                 |
+| PSU TDP                    | TDP > CPU + GPU TDPs + 30%     |                                                                  |
+|                            | TDP <= CPU + GPU TDPs + 30%    | Choose higher TDP PSU.                                           |
