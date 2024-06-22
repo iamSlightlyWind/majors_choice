@@ -985,6 +985,10 @@ public class Database {
                     orders.add(order);
                     order.products.add(new Product(resultSet.getInt("productId"), resultSet.getString("productName"),
                             resultSet.getDouble("sellingPrice"), resultSet.getDouble("costPrice")));
+                    order.date = resultSet.getString("dateOrdered");
+                    order.user = new User();
+                    order.user.id = resultSet.getInt("userId") + "";
+                    order.user.retrieveData("user");
                 }
 
             }
@@ -994,7 +998,6 @@ public class Database {
 
         for (Order order : orders) {
             order.updateQuantity();
-            order.orderInfo = getOrderInfo(order.id);
         }
         return orders;
     }

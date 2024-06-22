@@ -153,7 +153,6 @@ public class OrderServlet extends HttpServlet {
 
         for (Order order : currentUser.orders) {
             if (order.id == orderId) {
-                System.out.println(order.orderInfo.fullName);
                 request.setAttribute("Order", order);
                 request.getRequestDispatcher("/test/orderDetails.jsp").forward(request, response);
                 return;
