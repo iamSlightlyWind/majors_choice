@@ -21,6 +21,10 @@ public class User {
     public ArrayList<Order> orders = new ArrayList<Order>();
     public Database db = new Database();
 
+    public void addOrderInformation(){
+        db.addOrderInformation(fullName, phoneNumber, address);
+    }
+
     public String getFullName() {
         return this.fullName;
     }

@@ -33,6 +33,7 @@ public class Validate extends HttpServlet {
             String status = request.getParameter("vnp_TransactionStatus");
             if (status.equals("00")) {
                 currentUser.cart.placeOrder();
+                currentUser.addOrderInformation();
                 response.sendRedirect("/Cart");
             } else {
                 request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
