@@ -15,6 +15,19 @@ public class CPU extends Product {
     public int tdp;
     public String image;
 
+    public CPU(CPU c) {
+        super(c.id, c.sellingPrice, c.costPrice, c.description);
+        this.name = c.name;
+        this.generation = c.generation;
+        this.socket = c.socket;
+        this.cores = c.cores;
+        this.threads = c.threads;
+        this.baseClock = c.baseClock;
+        this.boostClock = c.boostClock;
+        this.tdp = c.tdp;
+        this.image = c.image;
+    }
+
     public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.generation = generation;

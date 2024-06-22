@@ -75,7 +75,6 @@ public class OrderServlet extends HttpServlet {
             default:
                 staffViewOrders(request, response, 0);
                 break;
-
         }
     }
 

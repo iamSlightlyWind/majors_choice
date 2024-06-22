@@ -2,8 +2,6 @@ package packages.wrap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
-
 import database.Database;
 import packages.*;
 
@@ -13,6 +11,14 @@ public class Cart {
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
     Database db;
+
+    public Cart(Cart cart) {
+        this.userID = cart.userID;
+        this.total = cart.total;
+        this.products = new ArrayList<Product>(cart.products);
+        this.quantities = new ArrayList<ProductCount>(cart.quantities);
+        this.db = cart.db;
+    }
 
     public void updateQuantity() {
         HashMap<Integer, ProductCount> productCountMap = new HashMap<>();
@@ -60,8 +66,7 @@ public class Cart {
 
     public void placeOrder() {
         db.placeOrder(Integer.parseInt(userID));
-        products.clear();
-        quantities.clear();
+        clearCart();
     }
 
     public void addOne(int id) {

@@ -13,6 +13,17 @@ public class GPU extends Product {
     public int tdp;
     public String image;
 
+    public GPU(GPU g) {
+        super(g.id, g.sellingPrice, g.costPrice, g.description);
+        this.name = g.name;
+        this.generation = g.generation;
+        this.vram = g.vram;
+        this.baseClock = g.baseClock;
+        this.boostClock = g.boostClock;
+        this.tdp = g.tdp;
+        this.image = g.image;
+    }
+
     public GPU(String generation, int vram, int baseClock, int boostClock, int tdp, String image, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.generation = generation;
