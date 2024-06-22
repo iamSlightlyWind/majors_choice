@@ -298,6 +298,7 @@
                 </div>
                 <div class="manage-customer-heading-table">
                   <h1 class="manage-customer-text05">List Of Customer</h1>
+                  <span>${status}</span>
                 </div>
                 <div class="manage-customer-list-detail">
                   <form class="manage-customer-form-tittle">

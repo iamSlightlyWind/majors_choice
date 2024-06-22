@@ -21,11 +21,55 @@ public class ManageAccount extends HttpServlet {
 
         if ((actor != null && actor.equals("user")) || (table != null && table.equals("user"))) {
             ArrayList<User> users = db.getUserDetails("users");
+            String status = request.getParameter("status") == null ? "" : request.getParameter("status");
+            switch(status){
+                case "7":
+                    status = "Delete Success!";
+                    break;
+                case "1":
+                    status = "Update Success!";
+                    break;
+                case "11":
+                    status = "Update Failed! Phone had existed.";
+                    break;
+                case "12":
+                    status = "Update Failed!";
+                    break;
+                default:
+                    status = "";
+                    break;
+             }
+            if(status!=null && !status.isEmpty()){
+                request.setAttribute("status", status);
+            }
             request.setAttribute("users", users);
             request.getRequestDispatcher("/manage/userList.jsp").forward(request, response);
         } else if ((actor != null && actor.equals("staff")) || (table != null && table.equals("staff"))) {
             ArrayList<User> staffs = db.getUserDetails("staffs");
-            request.setAttribute("status", request.getParameter("status"));
+            String status = request.getParameter("status") == null ? "" : request.getParameter("status");
+            switch (status) {
+                case "1":
+                    status = "Update Staff Success!";
+                    break;
+                case "0":
+                    status = "Update Staff Failed! Username already exist.";
+                    break;
+                case "11":
+                    status = "Add Staff Success!";
+                    break;
+                case "10":
+                    status = "Add Staff Failed! Username already exist.";
+                    break;
+                case "7":
+                    status = "Delete success!";
+                    break;
+                default:
+                    status = "";
+                    break;
+            }
+            if (status != null && !status.isEmpty()) {
+                request.setAttribute("status", status);
+            }
             request.setAttribute("staffs", staffs);
             request.getRequestDispatcher("/manage/staffList.jsp").forward(request, response);
         }

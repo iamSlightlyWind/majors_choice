@@ -80,7 +80,7 @@ public class EditProfile extends HttpServlet {
             user.retrieveData("user");
             user.active = -1;
             user.updateInformation();
-            response.sendRedirect("/manage/profile?actor=user");
+            response.sendRedirect("/manage/profile?actor=user&status=7");
         } else if (action.equals("update")) {
             user.username = request.getParameter("user");
             user.retrieveData("user");
@@ -100,7 +100,7 @@ public class EditProfile extends HttpServlet {
             staff.retrieveData("staff");
             staff.active = -1;
             staff.updateStaff();
-            response.sendRedirect("/manage/profile?actor=staff");
+            response.sendRedirect("/manage/profile?actor=staff&status=7");
         } else if (action.equals("update")) {
             staff.username = request.getParameter("user");
             staff.retrieveData("staff");

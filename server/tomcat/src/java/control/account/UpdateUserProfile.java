@@ -37,13 +37,13 @@ public class UpdateUserProfile extends HttpServlet {
 //                    request.setAttribute("status", "Update Staff Success!");
 //                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
 //                    break;
-                    response.sendRedirect("/manage/profile?actor=staff&status=success");
+                    response.sendRedirect("/manage/profile?actor=staff&status=1");
                     break;
                 case -1:
 //                    request.setAttribute("status", "Update Staff Failed! Username already exist.");
 //                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
 //                    break;
-                    response.sendRedirect("/manage/profile?actor=staff");
+                    response.sendRedirect("/manage/profile?actor=staff&status=0");
                     break;
             }
 
@@ -60,13 +60,13 @@ public class UpdateUserProfile extends HttpServlet {
 //                    request.setAttribute("status", "Add Staff Success!");
 //                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
 //                    break;
-                      response.sendRedirect("/manage/profile?actor=staff");
+                      response.sendRedirect("/manage/profile?actor=staff&status=11");
                       break;
                 case -1:
 //                    request.setAttribute("status", "Add Staff Failed! Username already exist.");
 //                    request.getRequestDispatcher("/manage/profile?actor=staff").forward(request, response);
 //                    break;
-                      response.sendRedirect("/manage/profile?actor=staff");
+                      response.sendRedirect("/manage/profile?actor=staff&status=10");
                       break;
             }
         }
@@ -91,17 +91,19 @@ public class UpdateUserProfile extends HttpServlet {
         request.setAttribute("possition", actor);
         switch (result) {
             case 1:
-                response.sendRedirect("/manage/profile?actor=user");
+                response.sendRedirect("/manage/profile?actor=user&status=1");
                 break;
                 
             case -2:
-                request.setAttribute("status", "Update Failed! Phone had existed.");
-                request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
+//                request.setAttribute("status", "Update Failed! Phone had existed.");
+//                request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
+                response.sendRedirect("/manage/profile?actor=user&status=11");
                 break;
                 
             default:
-                request.setAttribute("status", "Update Failed!");
-                request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
+//                request.setAttribute("status", "Update Failed!");
+//                request.getRequestDispatcher("/manage/profile?actor=user").forward(request, response);
+                response.sendRedirect("/manage/profile?actor=user&status=12");
                 break;
         }
 
