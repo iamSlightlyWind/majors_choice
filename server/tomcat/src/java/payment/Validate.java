@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -15,6 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import main.User;
 import packages.wrap.Cart;
+import packages.wrap.ProductCount;
 
 public class Validate extends HttpServlet {
 
@@ -30,15 +33,24 @@ public class Validate extends HttpServlet {
             String status = request.getParameter("vnp_TransactionStatus");
             if (status.equals("00")) {
                 currentUser.cart.placeOrder();
-                System.out.println("Payment success");
                 response.sendRedirect("/Cart");
             } else {
-                System.out.println("Payment failed");
-                response.sendRedirect("/Cart");
+                request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
+                request.setAttribute("user", currentUser.fullName);
+                request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
+                currentUser.cart.updateQuantity();
+                request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", currentUser.cart.total));
+                request.setAttribute("status", "Payment not completed, please try again.");
+                request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
             }
         } else {
-            System.out.println("Payment Validation failed");
-            response.sendRedirect("/Cart");
+            request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
+            request.setAttribute("user", currentUser.fullName);
+            request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
+            currentUser.cart.updateQuantity();
+            request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", currentUser.cart.total));
+            request.setAttribute("status", "Payment failed to validate. Please try again or reach out to support.");
+            request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
         }
     }
 
