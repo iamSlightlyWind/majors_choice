@@ -285,7 +285,7 @@
               <div class="view-cart-component-container view-cart-component-root-class-name">
                 <div class="view-cart-component-heading">
                   <span class="view-cart-component-text">
-                    <span>${user}'s Cart</span>
+                    <span>${user.fullName}'s Cart</span>
                     <br />
                   </span>
                 </div>
@@ -364,7 +364,7 @@
                         <span class="view-cart-component-text23">
                           <span>Total:&nbsp;</span>
                         </span>
-                        <span >
+                        <span>
                           <span class="view-cart-component-text26">${cartPrice} VND</span>
                         </span>
                       </div>
@@ -377,6 +377,14 @@
                           Place Order
                         </button>
                         <p>${status}</p>
+                        <div id="shippingInfo" style="display: none;">
+                          <span>Confirm your shipping information: </span>
+                          <ul class="view-cart-component-ul list" style="width: fit-content;">
+                            <li class="list-item"><span>Full Name: ${user.fullName}</span></li>
+                            <li class="list-item"><span>Address: ${user.address}</span></li>
+                            <li class="list-item"><span>Phone Number: ${user.phoneNumber}</span></li>
+                          </ul>
+                        </div>
                       </form>
                     </div>
                   </div>
@@ -522,28 +530,39 @@
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
       <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
       <script type="text/javascript">
-        $("#frmCreateOrder").submit(function () {
-          var postData = $("#frmCreateOrder").serialize();
-          var submitUrl = $("#frmCreateOrder").attr("action");
-          $.ajax({
-            type: "POST",
-            url: submitUrl,
-            data: postData,
-            dataType: 'JSON',
-            success: function (x) {
-              if (x.code === '00') {
-                if (window.vnpay) {
-                  vnpay.open({ width: 768, height: 600, url: x.data });
-                } else {
-                  location.href = x.data;
+        $(document).ready(function () {
+          var submitCount = 0;
+
+          $("#frmCreateOrder").submit(function (event) {
+            event.preventDefault();
+
+            if (submitCount === 0) {
+              $("#shippingInfo").show();
+              submitCount++;
+            } else {
+              var postData = $(this).serialize();
+              var submitUrl = $(this).attr("action");
+
+              $.ajax({
+                type: "POST",
+                url: submitUrl,
+                data: postData,
+                dataType: 'JSON',
+                success: function (x) {
+                  if (x.code === '00') {
+                    if (window.vnpay) {
+                      vnpay.open({ width: 768, height: 600, url: x.data });
+                    } else {
+                      location.href = x.data;
+                    }
+                  } else {
+                    alert(x.Message);
+                  }
                 }
-                return false;
-              } else {
-                alert(x.Message);
-              }
+              });
             }
+            return false;
           });
-          return false;
         });
       </script>
     </body>
