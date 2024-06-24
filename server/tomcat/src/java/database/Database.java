@@ -12,6 +12,7 @@ import packages.*;
 import packages.wrap.*;
 
 public class Database {
+
     public Connection connection;
 
     public Database() {
@@ -707,7 +708,6 @@ public class Database {
         }
     }
 
-
     public int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage,
             String efficiency, String image) {
         try {
@@ -800,8 +800,9 @@ public class Database {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
                 return -1;
             }
-        } else
+        } else {
             return -1;
+        }
         return 1;
     }
 
@@ -1070,32 +1071,37 @@ public class Database {
                 if (current.equals("pending")) {
                     RequestOrderCancel(id);
                     return true;
-                } else
+                } else {
                     return false;
+                }
             case "approve":
                 if (current.equals("cancel")) {
                     ApproveOrderCancel(id);
                     return true;
-                } else
+                } else {
                     return false;
+                }
             case "deny":
                 if (current.equals("cancel")) {
                     DenyOrderCancel(id);
                     return true;
-                } else
+                } else {
                     return false;
+                }
             case "ship":
                 if (current.equals("pending") || current.equals("denied")) {
                     ShipOrder(id);
                     return true;
-                } else
+                } else {
                     return false;
+                }
             case "complete":
                 if (current.equals("shipping")) {
                     CompleteOrder(id);
                     return true;
-                } else
+                } else {
                     return false;
+                }
         }
         return false;
     }
@@ -1153,6 +1159,19 @@ public class Database {
             String sql = "{call RequestOrderCancel(?)}";
             CallableStatement statement = connection.prepareCall(sql);
             statement.setInt(1, orderId);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void productAdjust(int productId, int count) {
+        try {
+            String sql = "{call ProductAdjust(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, productId);
+            statement.setInt(2, count);
 
             statement.execute();
         } catch (SQLException ex) {

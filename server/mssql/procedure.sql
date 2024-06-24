@@ -1271,3 +1271,37 @@ BEGIN
     SET @result = 'Update successful'
 END
 GO
+CREATE PROCEDURE ProductAdjust
+    @productId INT,
+    @count INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @currentQuantity INT;
+    
+    SELECT @currentQuantity = quantity
+    FROM warehouses
+    WHERE productid = @productId;
+    
+    IF @currentQuantity IS NOT NULL
+    BEGIN
+        DECLARE @newQuantity INT;
+        SET @newQuantity = @currentQuantity + @count;
+        
+        IF @newQuantity >= 0
+        BEGIN
+            UPDATE warehouses
+            SET quantity = @newQuantity
+            WHERE productid = @productId;
+        END
+        ELSE
+        BEGIN
+            RAISERROR ('Insufficient product quantity in the warehouse.', 16, 1);
+        END
+    END
+    ELSE
+    BEGIN
+        RAISERROR ('Product does not exist in the warehouse.', 16, 1);
+    END
+END
