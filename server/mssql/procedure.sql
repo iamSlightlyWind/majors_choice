@@ -244,6 +244,7 @@ create PROCEDURE addProductCPU
     @tdp int,
     @igpu nvarchar(50),
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -256,9 +257,9 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice)
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     SET @id = SCOPE_IDENTITY()
@@ -282,6 +283,7 @@ create PROCEDURE addProductGPU
     @boostClock int,
     @tdp int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -294,9 +296,9 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice)
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
@@ -319,6 +321,7 @@ create PROCEDURE addProductRAM
     @speed int,
     @latentcy int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -331,9 +334,9 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice)
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
@@ -361,6 +364,7 @@ create PROCEDURE addProductMotherboard
     @ramSlots int,
     @wifi int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -373,9 +377,9 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice)
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
@@ -397,6 +401,7 @@ create PROCEDURE addProductSSD
     @capacity int,
     @cache int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -409,9 +414,9 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice)
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
@@ -432,6 +437,7 @@ create PROCEDURE addProductPSU
     @wattage int,
     @efficiency nvarchar(10),
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -444,9 +450,9 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice)
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
@@ -1112,7 +1118,7 @@ BEGIN
     END
     UPDATE products
     SET sellingPrice = @sellingPrice,
-        costPrice = @costPrice
+        costPrice = @costPrice,
         quantity = @quantity
     WHERE id = @id
 
@@ -1323,3 +1329,14 @@ BEGIN
         RAISERROR ('Product does not exist in the warehouse.', 16, 1);
     END
 END
+go
+
+create procedure ProductQuantity
+    @productId int
+as
+BEGIN
+    select quantity
+    from products
+    where id = @productId
+END
+go

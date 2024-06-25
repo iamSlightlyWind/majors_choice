@@ -36,6 +36,7 @@ public class ProductCount {
     }
 
     public String getError() {
+        check();
         return error;
     }
 
