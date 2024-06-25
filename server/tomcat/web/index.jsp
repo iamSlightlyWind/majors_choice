@@ -160,16 +160,18 @@
                 <header data-thq="thq-navbar" class="navbar-navbar-interactive">
                   <img alt="pastedImage" src="./css/image/logo.png" class="navbar-pasted-image" />
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
-                    <nav class="navbar-links">
-                      <div class="navbar-container3">
-                        <input type="text" placeholder="Search product by name" class="navbar-textinput input" />
-                        <button class="navbar-search thq-button-filled">
-                          <span class="navbar-text thq-body-small">
-                            <span>Search</span>
-                            <br />
-                          </span>
-                        </button>
+                    <nav class="navbar-links"> 
+                    <form action="/" method="post">
+                      <div class="navbar-container3">                        
+                              <input type="text" placeholder="Search product by name" name="searchName" class="navbar-textinput input"/>
+                              <button class="navbar-search thq-button-filled" type="su">
+                                  <span class="navbar-text thq-body-small">
+                                      <span>Search</span>
+                                      <br />
+                                  </span>
+                              </button>                         
                       </div>
+                     </form>
                       <div class="navbar-container4">
                         <a href="/" class="navbar-home thq-body-small thq-link">
                           <span>Home</span>
@@ -328,300 +330,10 @@
                     </svg>
                   </div>
                   <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list">
-                    <li data-thq="thq-dropdown" class="home-page-dropdown list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle">
-                        <span class="home-page-text006 list-item">
-                          <span>Processor</span>
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow01">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon02">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list01">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown001 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle001">
-                            <span class="home-page-text009">ADM Ryzen 5</span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow02">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon04">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list02">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown002 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle002">
-                                <span class="home-page-text010">
-                                  <span>5500</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown003 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle003">
-                                <span class="home-page-text013">
-                                  <span>5600</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown004 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle004">
-                            <span class="home-page-text016">
-                              ADM Ryzen 7&nbsp;
-                            </span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow03">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon06">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list03">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown005 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle005">
-                                <span class="home-page-text017">
-                                  <span>5700X</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown006 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle006">
-                                <span class="home-page-text020">
-                                  <span>5800X</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown007 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle007">
-                                <span class="home-page-text023">
-                                  <span>7700X</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown008 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle008">
-                            <span class="home-page-text026">ADM Ryzen 9</span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow04">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon08">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list04">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown009 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle009">
-                                <span class="home-page-text027">
-                                  <span>5900X</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown010 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle010">
-                                <span class="home-page-text030">
-                                  <span>5950X</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown011 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle011">
-                                <span class="home-page-text033">
-                                  <span>7950X</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown012 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle012">
-                            <span class="home-page-text036">Intel Core i5</span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow05">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon10">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list05">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown013 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle013">
-                                <span class="home-page-text037">
-                                  <span>13600K</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown014 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle014">
-                                <span class="home-page-text040">
-                                  <span>13600KF</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown015 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle015">
-                            <span class="home-page-text043">Intel Core i7</span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow06">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon12">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list06">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown016 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle016">
-                                <span class="home-page-text044">
-                                  <span>13700K</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown017 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle017">
-                                <span class="home-page-text047">
-                                  <span>13700KF</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown018 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle018">
-                                <span class="home-page-text050">
-                                  <span>14700F</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown019 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle019">
-                                <span class="home-page-text053">
-                                  <span>14700K</span>
-                                  <br />
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown020 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle020">
-                            <span class="home-page-text057">Intel Core i9</span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow07">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon14">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list07">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown021 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle021">
-                                <span class="home-page-text058">
-                                  <span>13900K</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown022 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle022">
-                                <span class="home-page-text061">
-                                  <span>13900KF</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown023 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle023">
-                                <span class="home-page-text064">
-                                  <span>14900F</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown024 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle024">
-                                <span class="home-page-text067">
-                                  <span>14900K</span>
-                                  <br />
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown025 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle025">
-                                <span class="home-page-text071">
-                                  <span>14900KF</span>
-                                  <br />
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown026 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle026">
-                        <span class="home-page-text075">
-                          <span>Generation</span>
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow08">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon16">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list08">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown027 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle027">
-                            <span class="home-page-text078">
-                              <span>Cezanne</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown028 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle028">
-                            <span class="home-page-text081">
-                              <span>Vermeer</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown029 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle029">
-                            <span class="home-page-text084">
-                              <span>Raphael</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown030 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle030">
-                            <span class="home-page-text088">Raptor Lake</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown031 list-item"></li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown032 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle031">
+                    <li data-thq="thq-dropdown" class="home-page-dropdown079 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle031">
                         <span class="home-page-text089">
-                          <span>Socket</span>
+                          <span style="color:red">Brand</span>
                           <br />
                           <br />
                         </span>
@@ -635,7 +347,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                              <span>AM4</span>
+                                <a href="/filtercpu?brand=amd"><span>AMD</span></a>
                               <br />
                             </span>
                           </div>
@@ -643,1015 +355,176 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                              <span>AM5</span>
+                                <a href="/filtercpu?brand=intel"><span>Intel</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>                      
+                      </ul>
+                    </li>   
+                   <li data-thq="thq-dropdown" class="home-page-dropdown026 list-item">
+                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle026">
+                        <span class="home-page-text075">
+                          <span style="color:red">Generation</span>
+                          <br />
+                        </span>
+                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow08">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon16">
+                            <path d="M426 726v-428l214 214z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list08">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown027 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle027">
+                            <span class="home-page-text078">
+                                <a href="/filtercpu?generation=Cezanne"><span>Cezanne</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown028 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle028">
+                            <span class="home-page-text081">
+                                <a href="/filtercpu?generation=Zen 3"><span>Zen 3</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown029 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle029">
+                            <span class="home-page-text084">
+                                <a href="/filtercpu?generation=raphael"><span>Raphael</span></a>
+                              <br />
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown030 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle030">
+                              <a href="/filtercpu?generation=raptorlake"><span class="home-page-text088">Raptor Lake</span></a>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown031 list-item"></li>
+                      </ul>
+                    </li>
+                    <li data-thq="thq-dropdown" class="home-page-dropdown032 list-item">
+                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle031">
+                        <span class="home-page-text089">
+                          <span style="color:red">Socket</span>
+                          <br />
+                          <br />
+                        </span>
+                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow09">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon18">
+                            <path d="M426 726v-428l214 214z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filtercpu?socket=am4"><span>AM4</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtercpu?socket=am5"><span>AM5</span></a>
                               <br />
                             </span>
                           </div>
                         </li>
                         <li data-thq="thq-dropdown" class="home-page-dropdown035 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle034">
-                            <span class="home-page-text099">LGA 1700</span>
+                              <a href="/filtercpu?socket=lga1700" class="home-page-text099"><span>LGA 1700</span></a>
                           </div>
                         </li>
                       </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown036 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle035">
-                        <span class="home-page-text100">
-                          <span>Cores</span>
-                          <br />
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow10">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon20">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list10">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown037 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle036">
-                            <span class="home-page-text104">
-                              <span>6</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown038 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle037">
-                            <span class="home-page-text107">
-                              <span>8</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown039 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle038">
-                            <span class="home-page-text110">
-                              <span>12</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown040 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle039">
-                            <span class="home-page-text113">
-                              <span>14</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown041 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle040">
-                            <span class="home-page-text117">
-                              <span>16</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown042 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle041">
-                            <span class="home-page-text120">
-                              <span>20</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown043 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle042">
-                            <span class="home-page-text123">
-                              <span>24</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown044 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle043">
-                        <span class="home-page-text127">
-                          <span>Threads</span>
-                          <br />
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow11">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon22">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list11">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown045 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle044">
-                            <span class="home-page-text131">
-                              <span>12</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown046 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle045">
-                            <span class="home-page-text134">
-                              <span>16</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown047 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle046">
-                            <span class="home-page-text137">
-                              <span>20</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown048 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle047">
-                            <span class="home-page-text140">
-                              <span>24</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown049 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle048">
-                            <span class="home-page-text143">
-                              <span>28</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown050 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle049">
-                            <span class="home-page-text146">
-                              <span>32</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown051 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle050">
-                        <span class="home-page-text149">
-                          <span>Base Clock</span>
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow12">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon24">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list12">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown052 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle051">
-                            <span class="home-page-text152">
-                              <span>3</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown053 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle052">
-                            <span class="home-page-text155">3.2</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown054 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle053">
-                            <span class="home-page-text156">3.4</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown055 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle054">
-                            <span class="home-page-text157">
-                              <span>3.5</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown056 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle055">
-                            <span class="home-page-text160">3.6</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown057 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle056">
-                            <span class="home-page-text161">3.7</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown058 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle057">
-                            <span class="home-page-text162">3.8</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown059 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle058">
-                            <span class="home-page-text163">4.5</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown060 list-item"></li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown061 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle059">
-                        <span class="home-page-text164">
-                          <span>Boost Clock</span>
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow13">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon26">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list13">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown062 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle060">
-                            <span class="home-page-text167">4.2</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown063 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle061">
-                            <span class="home-page-text168">4.6</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown064 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle062">
-                            <span class="home-page-text169">4.7</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown065 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle063">
-                            <span class="home-page-text170">4.8</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown066 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle064">
-                            <span class="home-page-text171">4.9</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown067 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle065">
-                            <span class="home-page-text172">5.1</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown068 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle066">
-                            <span class="home-page-text173">5.4</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown069 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle067">
-                            <span class="home-page-text174">
-                              <span>5.5</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown070 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle068">
-                            <span class="home-page-text177">
-                              <span>5.6</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown071 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle069">
-                            <span class="home-page-text180">5.7</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown072 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle070">
-                            <span class="home-page-text181">5.8</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown073 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle071">
-                            <span class="home-page-text182">
-                              <span>6</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown074 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle072">
-                        <span class="home-page-text185">
-                          <span>TDP</span>
-                          <br />
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow14">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon28">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list14">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown075 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle073">
-                            <span class="home-page-text189">
-                              <span>65</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown076 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle074">
-                            <span class="home-page-text192">
-                              <span>105</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown077 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle075">
-                            <span class="home-page-text195">
-                              <span>125</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown078 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle076">
-                            <span class="home-page-text198">
-                              <span>170</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown079 list-item"></li>
+                    </li>                                          
                     <li data-thq="thq-dropdown" class="home-page-dropdown080 list-item"></li>
                   </ul>
                 </div>
-                <div data-thq="thq-dropdown" class="home-page-dropdown-gpu list-item">
-                  <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle077">
-                    <span class="home-page-text202">
-                      <span><a href="/gpusservlet">GPU</a></span>
+                <div data-thq="thq-dropdown" class="home-page-dropdown-psu list-item">
+                  <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle166">
+                    <span class="home-page-text423">
+                      <span><a href="/psusservlet">GPU</a></span>
                       <br />
                     </span>
-                    <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow15"></div>
-                    <svg viewBox="0 0 1024 1024" class="home-page-icon30">
+                    <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow30"></div>
+                    <svg viewBox="0 0 1024 1024" class="home-page-icon60">
                       <path d="M426 726v-428l214 214z"></path>
                     </svg>
                   </div>
-                  <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list15">
-                    <li data-thq="thq-dropdown" class="home-page-dropdown081 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle078">
-                        <span class="home-page-text205 list-item">
-                          Graphics Card
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow16">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon32">
+                  <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list30">                   
+                    <li data-thq="thq-dropdown" class="home-page-dropdown195 list-item">
+                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle171">
+                          <span class="home-page-text430" style="color:red">Brand</span>
+                           <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow09">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon18">
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list16">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown082 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle079">
-                            <span class="home-page-text206">AMD Radeon RX</span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow17">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon34">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list17">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown083 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle080">
-                                <span class="home-page-text207">6600 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown084 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle081">
-                                <span class="home-page-text208">6700 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown085 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle082">
-                                <span class="home-page-text209">6800 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown086 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle083">
-                                <span class="home-page-text210">6900 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown087 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle084">
-                                <span class="home-page-text211">7600 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown088 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle085">
-                                <span class="home-page-text212">7700 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown089 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle086">
-                                <span class="home-page-text213">7800 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown090 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle087">
-                                <span class="home-page-text214">7900 XT</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown091 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle088">
-                                <span class="home-page-text215">7900 XTX</span>
-                              </div>
-                            </li>
-                          </ul>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown092 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle089">
-                            <span class="home-page-text216">
-                              NVIDIA GeForce RTX
+                     <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filtergpu?brand=amd"><span>AMD</span></a>
+                              <br />
                             </span>
-                            <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow18">
-                              <svg viewBox="0 0 1024 1024" class="home-page-icon36">
-                                <path d="M426 726v-428l214 214z"></path>
-                              </svg>
-                            </div>
                           </div>
-                          <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list18">
-                            <li data-thq="thq-dropdown" class="home-page-dropdown093 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle090">
-                                <span class="home-page-text217">
-                                  <span>3060</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown094 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle091">
-                                <span class="home-page-text220">
-                                  <span>3070</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown095 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle092">
-                                <span class="home-page-text223">
-                                  <span>3080</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown096 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle093">
-                                <span class="home-page-text226">
-                                  <span>3090</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown097 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle094">
-                                <span class="home-page-text229">4060 Ti</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown098 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle095">
-                                <span class="home-page-text230">
-                                  <span>4070</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown099 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle096">
-                                <span class="home-page-text233">4070 Ti</span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown100 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle097">
-                                <span class="home-page-text234">
-                                  <span>4080</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                            <li data-thq="thq-dropdown" class="home-page-dropdown101 list-item">
-                              <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle098">
-                                <span class="home-page-text237">
-                                  <span>4090</span>
-                                  <br />
-                                </span>
-                              </div>
-                            </li>
-                          </ul>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown102 list-item"></li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown103 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle099">
-                        <span class="home-page-text240">
-                          <span>Generation</span>
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow19">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon38">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtergpu?brand=nvidia"><span>NVIDIA</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul>  
+                    </li>                  
+                    <li data-thq="thq-dropdown" class="home-page-dropdown201 list-item">
+                        <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle171">
+                            <span class="home-page-text430" style="color:red">Generation</span>
+                             <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow09">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon18">
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list19">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown104 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle100">
-                            <span class="home-page-text243">RDNA 2</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown105 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle101">
-                            <span class="home-page-text244">RDNA 3</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown106 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle102">
-                            <span class="home-page-text245">
-                              <span>Ampere</span>
+                      </div>                      
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filtergpu?generation=rdna"><span>RDNA</span></a>
                               <br />
                             </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown107 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle103">
-                            <span class="home-page-text248">Ada Lovelace</span>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtergpu?generation=ampere"><span>Ampere</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                      </ul>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtergpu?generation=adalovelace"><span>Ada LoveLace</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul>  
                     </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown108 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle104">
-                        <span class="home-page-text249">
-                          <span>VRAM</span>
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow20">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon40">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list20">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown109 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle105">
-                            <span class="home-page-text252">
-                              <span>8</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown110 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle106">
-                            <span class="home-page-text255">
-                              <span>10</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown111 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle107">
-                            <span class="home-page-text258">
-                              <span>12</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown112 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle108">
-                            <span class="home-page-text261">
-                              <span>16</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown113 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle109">
-                            <span class="home-page-text264">
-                              <span>20</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown114 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle110">
-                            <span class="home-page-text267">
-                              <span>24</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown115 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle111">
-                        <span class="home-page-text270">Base Clock</span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow21">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon42">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list21">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown116 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle112">
-                            <span class="home-page-text271">
-                              <span>1395</span>
-                              <br />
-                            </span>
-                          </div>
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle113">
-                            <span class="home-page-text274">
-                              <span>1410</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown117 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle114">
-                            <span class="home-page-text277">
-                              <span>1440</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown118 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle115">
-                            <span class="home-page-text280">
-                              <span>1500</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown119 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle116">
-                            <span class="home-page-text283">
-                              <span>1600</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown120 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle117">
-                            <span class="home-page-text286">
-                              <span>1700</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown121 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle118">
-                            <span class="home-page-text289">
-                              <span>1800</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown122 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle119">
-                            <span class="home-page-text292">
-                              <span>1825</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown123 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle120">
-                            <span class="home-page-text295">
-                              <span>1900</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown124 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle121">
-                            <span class="home-page-text299">
-                              <span>1968</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown125 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown126 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle122">
-                            <span class="home-page-text302">
-                              <span>2100</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown127 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle123">
-                            <span class="home-page-text306">
-                              <span>2150</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown128 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle124">
-                            <span class="home-page-text309">
-                              <span>2205</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown129 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle125">
-                            <span class="home-page-text313">
-                              <span>2235</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown130 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle126">
-                            <span class="home-page-text317">
-                              <span>2310</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown131 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle127">
-                            <span class="home-page-text321">
-                              <span>2321</span>
-                              <br />
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown132 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle128">
-                        <span class="home-page-text325">Boost Clock</span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow22">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon44">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list22">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown133 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle129">
-                            <span class="home-page-text326">
-                              <span>1665</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown134 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle130">
-                            <span class="home-page-text329">
-                              <span>1695</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown135 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle131">
-                            <span class="home-page-text332">
-                              <span>1710</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown136 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle132">
-                            <span class="home-page-text335">
-                              <span>1725</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown137 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle133">
-                            <span class="home-page-text338">
-                              <span>2000</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown138 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle134">
-                            <span class="home-page-text341">
-                              <span>2100</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown139 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle135">
-                            <span class="home-page-text344">
-                              <span>2200</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown140 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle136">
-                            <span class="home-page-text347">
-                              <span>2250</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown141 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle137">
-                            <span class="home-page-text350">
-                              <span>2400</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown142 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle138">
-                            <span class="home-page-text353">
-                              <span>2450</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown143 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle139">
-                            <span class="home-page-text356">
-                              <span>2505</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown144 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle140">
-                            <span class="home-page-text359">
-                              <span>2520</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown145 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle141">
-                            <span class="home-page-text362">
-                              <span>2581</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown146 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle142">
-                            <span class="home-page-text365">
-                              <span>2589</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown147 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle143">
-                            <span class="home-page-text368">
-                              <span>2610</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown148 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle144">
-                        <span class="home-page-text371">
-                          <span>TDP</span>
-                          <br />
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow23">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon46">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list23">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown149 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle145">
-                            <span class="home-page-text374">
-                              <span>160</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown150 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle146">
-                            <span class="home-page-text377">
-                              <span>190</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown151 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle147">
-                            <span class="home-page-text380">
-                              <span>200</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown152 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle148">
-                            <span class="home-page-text383">
-                              <span>220</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown153 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle149">
-                            <span class="home-page-text386">
-                              <span>230</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown154 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle150">
-                            <span class="home-page-text389">
-                              <span>250</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown155 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle151">
-                            <span class="home-page-text392">
-                              <span>285</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown156 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle152">
-                            <span class="home-page-text395">
-                              <span>290</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown157 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle153">
-                            <span class="home-page-text398">
-                              <span>300</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown158 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle154">
-                            <span class="home-page-text401">
-                              <span>320</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown159 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle155">
-                            <span class="home-page-text404">
-                              <span>350</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown160 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle156">
-                            <span class="home-page-text407">
-                              <span>355</span>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown161 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle157">
-                            <span class="home-page-text410">Sub-menu Item</span>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown162 list-item"></li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown163 list-item"></li>
+                    <li data-thq="thq-dropdown" class="home-page-dropdown202 list-item"></li>
                   </ul>
                 </div>
                 <div data-thq="thq-dropdown" class="home-page-dropdown-mobo list-item">
@@ -1669,7 +542,7 @@
                     <li data-thq="thq-dropdown" class="home-page-dropdown164 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle159">
                         <span class="home-page-text414 list-item">
-                          <span>Socket</span>
+                            <span style="color:red">Socket</span>
                           <br />
                         </span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow25">
@@ -1677,31 +550,38 @@
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list25">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown165 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown166 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown167 list-item"></li>
+                      </div>                   
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filtermobo?socket=am4"><span>AM4</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtermobo?socket=am5"><span>AM5</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtermobo?socket=lga1700"><span>LGA 1700</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
                       </ul>
                     </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown168 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle160">
-                        <span class="home-page-text417 list-item">Chipset</span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow26">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon52">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list26">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown169 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown170 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown171 list-item"></li>
-                      </ul>
-                    </li>
+                    
                     <li data-thq="thq-dropdown" class="home-page-dropdown172 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle161">
-                        <span class="home-page-text418 list-item">
+                          <span class="home-page-text418 list-item" style="color:red">
                           Form Factor
                         </span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow27">
@@ -1709,32 +589,66 @@
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list27">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown173 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown174 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown175 list-item"></li>
-                      </ul>
+                      </div>                  
+                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filtermobo?formFactor=atx"><span>ATX</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtermobo?formFactor=matx"><span>mATX</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtermobo?formFactor=mITX"><span>mITX</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul> 
                     </li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown176 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle162">
-                        <span class="home-page-text419 list-item">Ram Type</span>
+                          <span class="home-page-text419 list-item" style="color:red">Ram Type</span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow28">
                           <svg viewBox="0 0 1024 1024" class="home-page-icon56">
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
-                      </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list28">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown177 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown178 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown179 list-item"></li>
-                      </ul>
+                      </div>                   
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filtermobo?ramType=ddr4"><span>DDR4</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtermobo?ramType=ddr5"><span>DDR5</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul> 
                     </li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown180 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle163">
-                        <span class="home-page-text420 list-item">
-                          Highest RAM Speed
+                          <span class="home-page-text420 list-item" style="color:red">
+                          Wifi
                         </span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow29">
                           <svg viewBox="0 0 1024 1024" class="home-page-icon58">
@@ -1742,22 +656,26 @@
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list29">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown181 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown182 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown183 list-item"></li>
-                      </ul>
+                         <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filtermobo?wifi=1"><span>Yes</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filtermobo?wifi=0"><span>No</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul> 
                     </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown184 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle164">
-                        <span class="home-page-text421">RAM Slots</span>
-                      </div>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown185 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle165">
-                        <span class="home-page-text422">WIFI</span>
-                      </div>
-                    </li>
+                  
                     <li data-thq="thq-dropdown" class="home-page-dropdown186 list-item"></li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown187 list-item"></li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown188 list-item"></li>
@@ -1776,61 +694,44 @@
                       <path d="M426 726v-428l214 214z"></path>
                     </svg>
                   </div>
-                  <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list30">
-                    <li data-thq="thq-dropdown" class="home-page-dropdown191 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle167">
-                        <span class="home-page-text426 list-item">Wattage</span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow31">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon62">
+                  <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list30">                   
+                    <li data-thq="thq-dropdown" class="home-page-dropdown195 list-item">
+                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle171">
+                          <span class="home-page-text430" style="color:red">Efficiency</span>
+                           <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow09">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon18">
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list31">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown192 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle168">
-                            <span class="home-page-text427">Sub-menu Item</span>
+                      
+                         <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filterpsu?efficiency=80platin"><span>80+ platin</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown193 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle169">
-                            <span class="home-page-text428">Sub-menu Item</span>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterpsu?efficiency=80gold"><span>80+ gold</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown194 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle170">
-                            <span class="home-page-text429">Sub-menu Item</span>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                               <a href="/filterpsu?efficiency=80titani"><span>80+ titani</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                      </ul>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown195 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle171">
-                        <span class="home-page-text430">Efficiency</span>
-                      </div>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown196 list-item">
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list32">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown197 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle172">
-                            <span class="home-page-text431">Sub-menu Item</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown198 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle173">
-                            <span class="home-page-text432">Sub-menu Item</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown199 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle174">
-                            <span class="home-page-text433">Sub-menu Item</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown200 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle175"></div>
-                        </li>
-                      </ul>
-                    </li>
+                      </ul> 
+                    </li>                  
                     <li data-thq="thq-dropdown" class="home-page-dropdown201 list-item"></li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown202 list-item"></li>
                   </ul>
@@ -1849,24 +750,35 @@
                   <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list33">
                     <li data-thq="thq-dropdown" class="home-page-dropdown203 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle177">
-                        <span class="home-page-name list-item">Generation</span>
+                          <span class="home-page-name list-item" style="color:red">Generation</span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow33">
                           <svg viewBox="0 0 1024 1024" class="home-page-icon66">
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list34">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown204 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle178"></div>
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filterram?generation=ddr4"><span>DDR4</span></a>
+                              <br />
+                            </span>
+                          </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown205 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown206 list-item"></li>
-                      </ul>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?generation=ddr5"><span>DDR5</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul> 
                     </li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown207 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle179">
-                        <span class="home-page-generation list-item">
+                          <span class="home-page-generation list-item" style="color:red">
                           Capacity
                         </span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow34">
@@ -1875,37 +787,188 @@
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list35">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown208 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle180"></div>
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filterram?capacity=16"><span>16</span></a>
+                              <br />
+                            </span>
+                          </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown209 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown210 list-item"></li>
-                      </ul>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?capacity=32"><span>32</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?capacity=64"><span>64</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul> 
                     </li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown211 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle181">
-                        <span class="home-page-text437 list-item">Spped</span>
+                          <span class="home-page-text437 list-item" style="color:red">Spped</span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow35">
                           <svg viewBox="0 0 1024 1024" class="home-page-icon70">
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list36">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown212 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle182"></div>
+                                          
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                
+                                <a href="/filterram?speed=3000"><span>3000</span></a>
+                              <br />
+                            </span>
+                          </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown213 list-item"></li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown214 list-item"></li>
-                      </ul>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?speed=3200"><span>3200</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?speed=3600"><span>3600</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                               <a href="/filterram?speed=5600"><span>5600</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?speed=6000"><span>6000</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?speed=6400"><span>6400</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul> 
                     </li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown215 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle183">
-                        <span class="home-page-text438">Latency</span>
+                          <span class="home-page-text438" style="color:red">Latency</span>
+                           <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow09">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon18">
+                            <path d="M426 726v-428l214 214z"></path>
+                          </svg>
+                        </div>
                       </div>
+                       
+                         <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                
+                                <a href="/filterram?latency=15"><span>15</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?latency=16"><span>16</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?latency=18"><span>18</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                               <a href="/filterram?latency=36"><span>36</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?latency=38"><span>38</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                      </ul> 
                     </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown216 list-item"></li>
+                    <li data-thq="thq-dropdown" class="home-page-dropdown216 list-item">
+                        <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle183">
+                          <span class="home-page-text438" style="color:red">Capacity</span>
+                           <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow09">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon18">
+                            <path d="M426 726v-428l214 214z"></path>
+                          </svg>
+                        </div>
+                      </div>
+                       
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                
+                                <a href="/filterram?capacity=16"><span>16</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?capacity=32"><span>32</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterram?capacity=64"><span>64</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        
+                      </ul>
+                    </li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown217 list-item"></li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown218 list-item"></li>
                   </ul>
@@ -1924,43 +987,69 @@
                   <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list37">
                     <li data-thq="thq-dropdown" class="home-page-dropdown219 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle185">
-                        <span class="home-page-text442 list-item">Inteface</span>
+                          <span class="home-page-text442 list-item" style="color:red">Inteface</span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow37">
                           <svg viewBox="0 0 1024 1024" class="home-page-icon74">
                             <path d="M426 726v-428l214 214z"></path>
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list38">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown220 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle186">
-                            <span class="home-page-text443">Sub-menu Item</span>
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filterssd?interfaces=PCIe3"><span class="home-page-text443">PCIe 3.0</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown221 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle187">
-                            <span class="home-page-text444">Sub-menu Item</span>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterssd?interfaces=PCIe4"><span class="home-page-text443">PCIe 4.0</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown222 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle188">
-                            <span class="home-page-text445">Sub-menu Item</span>
+                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterssd?interfaces=SATA25"><span class="home-page-text443">SATA 2.5</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li data-thq="thq-dropdown" class="home-page-dropdown219 list-item">
+                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle185">
+                          <span class="home-page-text442 list-item" style="color:red">Cache</span>
+                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow37">
+                          <svg viewBox="0 0 1024 1024" class="home-page-icon74">
+                            <path d="M426 726v-428l214 214z"></path>
+                          </svg>
+                        </div>
+                      </div>                     
+                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/filterssd?cache=0"><span class="home-page-text443">0</span></a>
+                              <br />
+                            </span>
+                          </div>
+                        </li>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/filterssd?cache=1"><span class="home-page-text443">1</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
                       </ul>
                     </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown223 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle189">
-                        <span class="home-page-text446">Capacity</span>
-                      </div>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown224 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle190">
-                        <span class="home-page-text447">Cache</span>
-                      </div>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown225 list-item"></li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown226 list-item"></li>
                   </ul>
                 </div>
                 <div data-thq="thq-dropdown" class="home-page-dropdown-case list-item">
