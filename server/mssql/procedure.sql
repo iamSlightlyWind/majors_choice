@@ -1284,7 +1284,7 @@ BEGIN
     SELECT @currentQuantity = quantity
     FROM products
     WHERE id = @productId;
-
+    
     IF @currentQuantity IS NOT NULL
     BEGIN
         DECLARE @newQuantity INT;
@@ -1293,7 +1293,9 @@ BEGIN
         IF @newQuantity >= 0
         BEGIN
             UPDATE products
+            UPDATE products
             SET quantity = @newQuantity
+            WHERE id = @productId;
             WHERE id = @productId;
         END
         ELSE

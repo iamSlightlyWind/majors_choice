@@ -102,6 +102,9 @@ public class Database {
                 String igpu = resultSet.getString("igpu");
                 cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name,
                         igpu, name, id, sellingPrice, costPrice, description));
+                String igpu = resultSet.getString("igpu");
+                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name,
+                        igpu, name, id, sellingPrice, costPrice, description));
             }
             return cpus;
         } catch (SQLException ex) {

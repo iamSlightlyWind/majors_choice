@@ -15,6 +15,7 @@ public class CPU extends Product {
     public int tdp;
     public String image;
     public String igpu;
+    public String igpu;
 
     public CPU(CPU c) {
         super(c.id, c.sellingPrice, c.costPrice, c.description);
