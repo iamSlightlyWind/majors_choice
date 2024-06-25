@@ -8,9 +8,11 @@ public class Motherboard extends Product {
 
     public String socket;
     public String chipset;
+    public int igpu;
     public String formFactor;
     public String ramType;
     public int maxRamSpeed;
+    public int maxRamCapacity;
     public int ramSlots;
     public int wifi;
     public String image;
@@ -66,6 +68,20 @@ public class Motherboard extends Product {
         this.wifi = wifi;
     }
 
+    public Motherboard(String socket, String chipset, int igpu, String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.socket = socket;
+        this.chipset = chipset;
+        this.igpu = igpu;
+        this.formFactor = formFactor;
+        this.ramType = ramType;
+        this.maxRamSpeed = maxRamSpeed;
+        this.maxRamCapacity = maxRamCapacity;
+        this.ramSlots = ramSlots;
+        this.wifi = wifi;
+        this.image = image;
+    }
+    
     public Motherboard(int id) {
         super(id);
         Database db = new Database();
@@ -79,9 +95,11 @@ public class Motherboard extends Product {
                 this.name = motherboard.name;
                 this.socket = motherboard.socket;
                 this.chipset = motherboard.chipset;
+                this.igpu = motherboard.igpu;
                 this.formFactor = motherboard.formFactor;
                 this.ramType = motherboard.ramType;
                 this.maxRamSpeed = motherboard.maxRamSpeed;
+                this.maxRamCapacity = motherboard.maxRamCapacity;
                 this.ramSlots = motherboard.ramSlots;
                 this.wifi = motherboard.wifi;
                 this.quantity = motherboard.quantity;
@@ -104,6 +122,14 @@ public class Motherboard extends Product {
 
     public void setRamType(String ramType) {
         this.ramType = ramType;
+    }
+
+    public int getIgpu() {
+        return igpu;
+    }
+
+    public int getMaxRamCapacity() {
+        return maxRamCapacity;
     }
 
     public void setMaxRamSpeed(int maxRamSpeed) {

@@ -187,13 +187,17 @@ public class Database {
                 String name = resultSet.getString("name");
                 String socket = resultSet.getString("socket");
                 String chipset = resultSet.getString("chipset");
+                int igpu = resultSet.getInt("igpu");
                 String formFactor = resultSet.getString("formFactor");
                 String ramType = resultSet.getString("ramType");
                 int maxRamSpeed = resultSet.getInt("maxRamSpeed");
+                int maxRamCapacity = resultSet.getInt("maxRamCapacity");
                 int ramSlots = resultSet.getInt("ramSlots");
                 int wifi = resultSet.getInt("wifi");
-                motherboards.add(new Motherboard(id, sellingPrice, costPrice, description, name, socket, chipset,
-                        formFactor, ramType, maxRamSpeed, ramSlots, wifi));
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                motherboards.add(new Motherboard(socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, 
+                        ramSlots, wifi, image, name, id, sellingPrice, costPrice, description, quantity));
             }
             return motherboards;
         } catch (SQLException ex) {
@@ -461,8 +465,8 @@ public class Database {
         return n;
     }
 
-    public int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket, String chipset,
-            String formFactor, String ramType, int maxRamSpeed, int ramSlots, int wifi, String image) {
+    public int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket, String chipset, int igpu,
+            String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi, String image, int quantity) {
         try {
             Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
@@ -472,20 +476,23 @@ public class Database {
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
-            String sql = "{call addProductMotherboard(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
+            String sql = "{call addProductMotherboard(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
             callableStatement.setString(4, socket);
             callableStatement.setString(5, chipset);
-            callableStatement.setString(6, formFactor);
-            callableStatement.setString(7, ramType);
-            callableStatement.setInt(8, maxRamSpeed);
-            callableStatement.setInt(9, ramSlots);
-            callableStatement.setInt(10, wifi);
-            callableStatement.setString(11, image);
-            callableStatement.registerOutParameter(12, Types.NVARCHAR);
+            callableStatement.setInt(6, igpu);
+            callableStatement.setString(7, formFactor);
+            callableStatement.setString(8, ramType);
+            callableStatement.setInt(9, maxRamSpeed);
+            callableStatement.setInt(10, maxRamCapacity);
+            callableStatement.setInt(11, ramSlots);
+            callableStatement.setInt(12, wifi);
+            callableStatement.setString(13, image);
+            callableStatement.setInt(14, quantity);
+            callableStatement.registerOutParameter(15, Types.NVARCHAR);
 
             callableStatement.execute();
             return productId;
@@ -496,11 +503,11 @@ public class Database {
     }
 
     public int updateProductMotherboard(int id, double sellingPrice, double costPrice, String name, String socket,
-            String chipset, String formFactor, String ramType, int maxRamSpeed,
-            int ramSlots, int wifi, String image) {
+            String chipset, int igpu, String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity,
+            int ramSlots, int wifi, String image, int quantity) {
         try {
             // Prepare and execute the SQL statement to update the CPU product
-            String sql = "{call updateProductMotherboard(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductMotherboard(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
@@ -508,13 +515,16 @@ public class Database {
             callableStatement.setString(4, name);
             callableStatement.setString(5, socket);
             callableStatement.setString(6, chipset);
-            callableStatement.setString(7, formFactor);
-            callableStatement.setString(8, ramType);
-            callableStatement.setInt(9, maxRamSpeed);
-            callableStatement.setInt(10, ramSlots);
-            callableStatement.setInt(11, wifi);
-            callableStatement.setString(12, image);
-            callableStatement.registerOutParameter(13, Types.VARCHAR);
+            callableStatement.setInt(7, igpu);
+            callableStatement.setString(8, formFactor);
+            callableStatement.setString(9, ramType);
+            callableStatement.setInt(10, maxRamSpeed);
+            callableStatement.setInt(11, maxRamCapacity);
+            callableStatement.setInt(12, ramSlots);
+            callableStatement.setInt(13, wifi);
+            callableStatement.setString(14, image);
+            callableStatement.setInt(15, quantity);
+            callableStatement.registerOutParameter(16, Types.VARCHAR);
 
             callableStatement.execute();
 

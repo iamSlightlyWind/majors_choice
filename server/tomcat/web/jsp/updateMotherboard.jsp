@@ -41,6 +41,10 @@
                     <td><input type="text" name="chipset" value="<%=motherboard.getChipset()%>"></td>
                 </tr>
                 <tr>
+                    <td>igpu</td>
+                    <td><input type="number" name="igpu" value="<%=motherboard.getIgpu()%>"></td>
+                </tr>
+                <tr>
                     <td>FormFactor</td>
                     <td><input type="text" name="formFactor" value="<%=motherboard.getFormFactor()%>"></td>
                 </tr>
@@ -51,6 +55,10 @@
                 <tr>
                     <td>maxRamSpeed</td>
                     <td><input type="number" name="maxRamSpeed" value="<%=motherboard.getMaxRamSpeed()%>"></td>
+                </tr>
+                <tr>
+                    <td>maxRamSpeed</td>
+                    <td><input type="number" name="maxRamCapacity" value="<%=motherboard.getMaxRamCapacity()%>"></td>
                 </tr>
                 <tr>
                     <td>RamSlots</td>

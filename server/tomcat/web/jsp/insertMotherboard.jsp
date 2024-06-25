@@ -35,6 +35,10 @@
                     <td><input type="text" name="chipset"></td>
                 </tr>
                 <tr>
+                    <td>igpu</td>
+                    <td><input type="number" name="igpu"></td>
+                </tr>
+                <tr>
                     <td>FormFactor</td>
                     <td><input type="text" name="formFactor"></td>
                 </tr>
@@ -47,12 +51,20 @@
                     <td><input type="number" name="maxRamSpeed"></td>
                 </tr>
                 <tr>
+                    <td>MaxRamCapacity</td>
+                    <td><input type="number" name="maxRamCapacity"></td>
+                </tr>
+                <tr>
                     <td>ramSlots</td>
                     <td><input type="number" name="ramSlots"></td>
                 </tr>
                 <tr>
                     <td>wifi</td>
                     <td><input type="number" name="wifi"></td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Add Motherboard"></td>

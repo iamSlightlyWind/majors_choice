@@ -25,11 +25,14 @@
                 <th>name</th>
                 <th>socket</th>
                 <th>chipset</th>
+                <th>igpu</th>
                 <th>formFactor</th>
                 <th>ramType</th>
                 <th>maxRamSpeed</th>
+                <th>maxRamCapacity</th>
                 <th>ramSlots</th>
                 <th>wifi</th>
+                <th>quantity</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -47,11 +50,14 @@
                 <td><%=motherboard.getName()%> </td>
                 <td><%=motherboard.getSocket()%> </td>
                 <td><%=motherboard.getChipset()%> </td>
+                <td><%=motherboard.getIgpu()%> </td>
                 <td><%=motherboard.getFormFactor()%> </td>
                 <td><%=motherboard.getRamType()%> </td>
                 <td><%=motherboard.getMaxRamSpeed()%> </td>
+                <td><%=motherboard.getMaxRamCapacity()%> </td>
                 <td><%=motherboard.getRamSlots()%> </td>
                 <td><%=motherboard.getWifi()%> </td>
+                <td><%=motherboard.getQuantity()%> </td>
                 <td><a href="motherboards?service=update&id=<%=motherboard.getId()%>">Update</a></td>
                 <td><a href="motherboards?service=delete&id=<%=motherboard.getId()%>">Delete</a></td>
             </tr>
