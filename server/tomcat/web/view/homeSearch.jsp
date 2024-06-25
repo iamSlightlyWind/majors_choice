@@ -307,20 +307,20 @@
               </div>
             </div>
               <div class="view-all-product-cpu-container09" style="margin-left: 17%;">
-                 <c:forEach var="cpu" items="${requestScope.cpus}">
-                    <a href="/view/detail/product?category=cpu&id=${cpu.id}">
-                        <div class="component1-container component1-root-class-name">
+                 <c:forEach var="product" items="${requestScope.products}">
+                    <a href="/view/detail/product?category=cpu&id=${product.id}">
+                    <div class="component1-container component1-root-class-name">
                     <img alt="image"
                       src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
                       loading="eager" class="component1-image" />
                     <h1 class="component1-text thq-link">
                       <span>
-                        ${cpu.name}
+                        ${product.name}
                       </span>
                     </h1>
                     <span class="component1-text1">
                       <fmt:setLocale value="vi_VN"/>
-                      <fmt:formatNumber value="${cpu.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
+                      <fmt:formatNumber value="${product.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
                       <span id="sellingPrice">${formattedSellingPrice}</span>
                       <br />
                     </span>
@@ -336,163 +336,9 @@
                       </a>
                     </div>
                   </div>
-                    </a>
+                  </a>
                 </c:forEach>
-                  <c:forEach var="gpu" items="${requestScope.gpus}">
-                    <a href="/view/detail/product?category=gpu&id=${gpu.id}">
-                         <div class="component1-container component1-root-class-name">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                      loading="eager" class="component1-image" />
-                    <h1 class="component1-text thq-link">
-                      <span>
-                        ${gpu.name}
-                      </span>
-                    </h1>
-                    <span class="component1-text1">
-                      <fmt:setLocale value="vi_VN"/>
-                      <fmt:formatNumber value="${gpu.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                      <span id="sellingPrice">${formattedSellingPrice}</span>
-                      <br />
-                    </span>
-                    <div class="component1-container1">
-                      <span class="component1-text4"><span>0.0</span></span>
-                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                        <path
-                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                        </path>
-                      </svg>
-                      <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component1-link">
-                        <span>(0 Review)</span>
-                      </a>
-                    </div>
-                  </div>
-                    </a>
-                </c:forEach>
-                  <c:forEach var="mobo" items="${requestScope.mobos}">
-                    <a href="/view/detail/product?category=mobo&id=${mobo.id}">
-                        <div class="component1-container component1-root-class-name">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                      loading="eager" class="component1-image" />
-                    <h1 class="component1-text thq-link">
-                      <span>
-                       ${mobo.name}
-                      </span>
-                    </h1>
-                    <span class="component1-text1">
-                      <fmt:setLocale value="vi_VN"/>
-                      <fmt:formatNumber value="${mobo.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                      <span id="sellingPrice">${formattedSellingPrice}</span>
-                      <br />
-                    </span>
-                    <div class="component1-container1">
-                      <span class="component1-text4"><span>0.0</span></span>
-                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                        <path
-                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                        </path>
-                      </svg>
-                      <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component1-link">
-                        <span>(0 Review)</span>
-                      </a>
-                    </div>
-                  </div>
-                    </a>
-                </c:forEach>
-                  <c:forEach var="psu" items="${requestScope.psus}">
-                    <a href="/view/detail/product?category=psu&id=${psu.id}">
-                        <div class="component1-container component1-root-class-name">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                      loading="eager" class="component1-image" />
-                    <h1 class="component1-text thq-link">
-                      <span>
-                        ${psu.name}
-                      </span>
-                    </h1>
-                    <span class="component1-text1">
-                      <fmt:setLocale value="vi_VN"/>
-                      <fmt:formatNumber value="${psu.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                      <span id="sellingPrice">${formattedSellingPrice}</span>
-                      <br />
-                    </span>
-                    <div class="component1-container1">
-                      <span class="component1-text4"><span>0.0</span></span>
-                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                        <path
-                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                        </path>
-                      </svg>
-                      <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component1-link">
-                        <span>(0 Review)</span>
-                      </a>
-                    </div>
-                  </div>
-                    </a>
-                </c:forEach>
-                  <c:forEach var="ram" items="${requestScope.rams}">
-                    <a href="/view/detail/product?category=ram&id=${ram.id}">
-                        <div class="component1-container component1-root-class-name">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                      loading="eager" class="component1-image" />
-                    <h1 class="component1-text thq-link">
-                      <span>
-                       ${ram.name}
-                      </span>
-                    </h1>
-                    <span class="component1-text1">
-                      <fmt:setLocale value="vi_VN"/>
-                      <fmt:formatNumber value="${ram.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                      <span id="sellingPrice">${formattedSellingPrice}</span>
-                      <br />
-                    </span>
-                    <div class="component1-container1">
-                      <span class="component1-text4"><span>0.0</span></span>
-                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                        <path
-                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                        </path>
-                      </svg>
-                      <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component1-link">
-                        <span>(0 Review)</span>
-                      </a>
-                    </div>
-                  </div>
-                    </a>
-                </c:forEach>
-                  <c:forEach var="ssd" items="${requestScope.ssds}">
-                    <a href="/view/detail/product?category=ssd&id=${ssd.id}">
-                        <div class="component1-container component1-root-class-name">
-                            <img alt="image"
-                                 src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                                 loading="eager" class="component1-image" />
-                            <h1 class="component1-text thq-link">
-                                <span>
-                                    ${ssd.name}
-                                </span>
-                            </h1>
-                            <span class="component1-text1">
-                                <fmt:setLocale value="vi_VN"/>
-                                <fmt:formatNumber value="${ssd.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                                <span id="sellingPrice">${formattedSellingPrice}</span>
-                                <br />
-                            </span>
-                            <div class="component1-container1">
-                                <span class="component1-text4"><span>0.0</span></span>
-                                <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                                <path
-                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                                </path>
-                                </svg>
-                                <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component1-link">
-                                    <span>(0 Review)</span>
-                                </a>
-                            </div>
-                        </div>
-                    </a>
-                </c:forEach>
+              
               </div>
             </div>          
           </div>
