@@ -124,15 +124,6 @@ create table cases
     image nvarchar(max)
 )
 
-create table warehouses
-(
-    id int identity(1,1) primary key,
-    name nvarchar(50),
-    location nvarchar(100),
-    productid int references products(id),
-    quantity int
-)
-
 create table ratings
 (
     id int identity(1,1) primary key,

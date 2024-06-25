@@ -7,6 +7,7 @@ public class Product {
     public double costPrice;
     public String description;
     public int quantity;
+    public int quantity;
 
     public Product(int id, double sellingPrice, double costPrice, String description) {
         this.id = id;
@@ -38,7 +39,6 @@ public class Product {
         this.description = description;
         this.quantity = quantity;
     }
-    
 
     public Product(int id) {
         this.id = id;
@@ -102,5 +102,4 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
 }

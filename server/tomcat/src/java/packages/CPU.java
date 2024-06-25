@@ -15,6 +15,7 @@ public class CPU extends Product {
     public int tdp;
     public String image;
     public String igpu;
+    public String igpu;
 
     public CPU(CPU c) {
         super(c.id, c.sellingPrice, c.costPrice, c.description);
@@ -29,7 +30,8 @@ public class CPU extends Product {
         this.image = c.image;
     }
 
-    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String name, int id, double sellingPrice, double costPrice, String description) {
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp,
+            String image, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.generation = generation;
         this.socket = socket;
@@ -41,7 +43,8 @@ public class CPU extends Product {
         this.image = image;
     }
 
-    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String igpu, String name, int id, double sellingPrice, double costPrice, String description) {
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp,
+            String image, String igpu, String name, int id, double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.generation = generation;
         this.socket = socket;

@@ -101,6 +101,7 @@ public class Database {
                 int tdp = resultSet.getInt("tdp");
                 String igpu = resultSet.getString("igpu");
                 int quantity = resultSet.getInt("quantity");
+                igpu = resultSet.getString("igpu");
                 cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name, igpu, 
                         name, id, sellingPrice, costPrice, description, quantity));
             }
@@ -1180,9 +1181,20 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public static void main(String[] args) {
-        Database db = new Database();
-        db.productAdjust(1, -30);        
+
+    public int productStock(int productId) {
+        try {
+            String sql = "{call productQuantity(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, productId);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("quantity");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
-           
 }
