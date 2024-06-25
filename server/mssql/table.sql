@@ -38,7 +38,8 @@ create table products
     id int identity(1,1) primary key,
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
-    description nvarchar(max)
+    description nvarchar(max),
+    quantity int
 )
 
 create table cpus

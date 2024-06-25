@@ -1281,8 +1281,8 @@ BEGIN
     DECLARE @currentQuantity INT;
     
     SELECT @currentQuantity = quantity
-    FROM warehouses
-    WHERE productid = @productId;
+    FROM products
+    WHERE id = @productId;
     
     IF @currentQuantity IS NOT NULL
     BEGIN
@@ -1291,9 +1291,9 @@ BEGIN
         
         IF @newQuantity >= 0
         BEGIN
-            UPDATE warehouses
+            UPDATE products
             SET quantity = @newQuantity
-            WHERE productid = @productId;
+            WHERE id = @productId;
         END
         ELSE
         BEGIN

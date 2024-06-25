@@ -14,6 +14,7 @@ public class CPU extends Product {
     public int boostClock;
     public int tdp;
     public String image;
+    public String igpu;
 
     public CPU(CPU c) {
         super(c.id, c.sellingPrice, c.costPrice, c.description);
@@ -38,6 +39,19 @@ public class CPU extends Product {
         this.boostClock = boostClock;
         this.tdp = tdp;
         this.image = image;
+    }
+
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String igpu, String name, int id, double sellingPrice, double costPrice, String description) {
+        super(name, id, sellingPrice, costPrice, description);
+        this.generation = generation;
+        this.socket = socket;
+        this.cores = cores;
+        this.threads = threads;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+        this.tdp = tdp;
+        this.image = image;
+        this.igpu = igpu;
     }
 
     public CPU(int id, double sellingPrice, double costPrice, String description, String name, String generation,
@@ -150,5 +164,13 @@ public class CPU extends Product {
 
     public int getId() {
         return id;
+    }
+
+    public String getIgpu() {
+        return igpu;
+    }
+
+    public void setIgpu(String igpu) {
+        this.igpu = igpu;
     }
 }

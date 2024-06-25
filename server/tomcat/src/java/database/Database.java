@@ -99,8 +99,9 @@ public class Database {
                 int baseClock = resultSet.getInt("baseClock");
                 int boostClock = resultSet.getInt("boostClock");
                 int tdp = resultSet.getInt("tdp");
-                cpus.add(new CPU(id, sellingPrice, costPrice, description, name, generation, socket, cores, threads,
-                        baseClock, boostClock, tdp));
+                String igpu = resultSet.getString("igpu");
+                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name,
+                        igpu, name, id, sellingPrice, costPrice, description));
             }
             return cpus;
         } catch (SQLException ex) {
@@ -1178,4 +1179,9 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public static void main(String[] args) {
+        Database db = new Database();
+        db.productAdjust(1, 5);        
+    }
+           
 }
