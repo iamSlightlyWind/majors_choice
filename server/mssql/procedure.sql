@@ -256,18 +256,18 @@ BEGIN
         RETURN
     END
 
-    INSERT INTO products
-        (sellingPrice, costPrice)
+        INSERT INTO products
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     SET @id = SCOPE_IDENTITY()
 
     INSERT INTO cpus
-        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, igpu, quantity, image)
+        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, igpu, image)
     VALUES
-        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @igpu, @quantity, @image)
+        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @igpu, @image)
 
     SET @result = 1
 END
@@ -296,17 +296,17 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice)
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO gpus
-        (id, name, generation, vram, baseClock, boostClock, tdp, quantity, image)
+        (id, name, generation, vram, baseClock, boostClock, tdp, image)
     VALUES
-        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @quantity, @image)
+        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @image)
 
     set @result = 1
 END
@@ -333,18 +333,18 @@ BEGIN
         RETURN
     END
 
-    INSERT INTO products
-        (sellingPrice, costPrice)
+        INSERT INTO products
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO rams
-        (id, name, generation, capacity, speed, latency, quantity, image)
+        (id, name, generation, capacity, speed, latency, image)
     VALUES
-        (@id, @name, @generation, @capacity, @speed, @latentcy, @quantity, @image)
+        (@id, @name, @generation, @capacity, @speed, @latentcy, @image)
 
     set @result = 1
 END
@@ -376,18 +376,18 @@ BEGIN
         RETURN
     END
 
-    INSERT INTO products
-        (sellingPrice, costPrice)
+        INSERT INTO products
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO motherboards
-        (id, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, quantity, image)
+        (id, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image)
     VALUES
-        (@id, @name, @socket, @chipset, @igpu, @formFactor, @ramType, @maxRamSpeed, @maxRamCapacity, @ramSlots, @wifi, @quantity, @image)
+        (@id, @name, @socket, @chipset, @igpu, @formFactor, @ramType, @maxRamSpeed, @maxRamCapacity, @ramSlots, @wifi, @image)
 
     set @result = 1
 END
@@ -413,18 +413,18 @@ BEGIN
         RETURN
     END
 
-    INSERT INTO products
-        (sellingPrice, costPrice)
+        INSERT INTO products
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO ssds
-        (id, name, interface, capacity, cache, quantity, image)
+        (id, name, interface, capacity, cache, image)
     VALUES
-        (@id, @name, @interface, @capacity, @cache, @quantity, @image)
+        (@id, @name, @interface, @capacity, @cache, @image)
 
     set @result = 1
 END
@@ -449,18 +449,18 @@ BEGIN
         RETURN
     END
 
-    INSERT INTO products
-        (sellingPrice, costPrice)
+        INSERT INTO products
+        (sellingPrice, costPrice, quantity)
     VALUES
-        (@sellingPrice, @costPrice)
+        (@sellingPrice, @costPrice, @quantity)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO psus
-        (id, name, wattage, efficiency, quantity, image)
+        (id, name, wattage, efficiency, image)
     VALUES
-        (@id, @name, @wattage, @efficiency, @quantity, @image)
+        (@id, @name, @wattage, @efficiency, @image)
 
     set @result = 1
 END
@@ -1068,7 +1068,8 @@ BEGIN
     END
     UPDATE products
     SET sellingPrice = @sellingPrice,
-        costPrice = @costPrice
+        costPrice = @costPrice,
+        quantity = @quantity
     WHERE id = @id
 
     UPDATE cpus
@@ -1080,7 +1081,6 @@ BEGIN
         baseClock = @baseClock,
         boostClock = @boostClock,
         tdp = @tdp,
-        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1112,7 +1112,8 @@ BEGIN
     END
     UPDATE products
     SET sellingPrice = @sellingPrice,
-        costPrice = @costPrice
+        costPrice = @costPrice,
+        quantity = @quantity
     WHERE id = @id
 
     UPDATE gpus
@@ -1122,7 +1123,6 @@ BEGIN
         baseClock = @baseClock,
         boostClock = @boostClock,
         tdp = @tdp,
-        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1156,7 +1156,8 @@ BEGIN
     END
     UPDATE products
     SET sellingPrice = @sellingPrice,
-        costPrice = @costPrice
+        costPrice = @costPrice,
+        quantity = @quantity
     WHERE id = @id
 
     UPDATE motherboards
@@ -1168,7 +1169,6 @@ BEGIN
         maxRamSpeed = @maxRamSpeed,
         ramSlots = @ramSlots,
         wifi = @wifi,
-        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1197,14 +1197,14 @@ BEGIN
     END
     UPDATE products
     SET sellingPrice = @sellingPrice,
-        costPrice = @costPrice
+        costPrice = @costPrice,
+        quantity = @quantity
     WHERE id = @id
 
     UPDATE psus
     SET name = @name,
         wattage = @wattage,
         efficiency = @efficiency,
-        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1235,7 +1235,8 @@ BEGIN
     END
     UPDATE products
     SET sellingPrice = @sellingPrice,
-        costPrice = @costPrice
+        costPrice = @costPrice,
+        quantity = @quantity
     WHERE id = @id
 
     UPDATE rams
@@ -1244,7 +1245,6 @@ BEGIN
         capacity = @capacity,
         speed = @speed,
         latency = @latency,
-        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1274,7 +1274,8 @@ BEGIN
     END
     UPDATE products
     SET sellingPrice = @sellingPrice,
-        costPrice = @costPrice
+        costPrice = @costPrice,
+        quantity = @quantity
     WHERE id = @id
 
     UPDATE ssds
@@ -1282,7 +1283,6 @@ BEGIN
         interface = @interface,
         capacity = @capacity,
         cache = @cache,
-        quantity = @quantity,
         image = @image
     WHERE id = @id
 
