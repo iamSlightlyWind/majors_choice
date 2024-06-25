@@ -35,6 +35,14 @@ public class SSD extends Product {
         this.cache = cache;
     }
 
+    public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.connectionInterface = connectionInterface;
+        this.capacity = capacity;
+        this.cache = cache;
+        this.image = image;
+    }
+
     public SSD(int id) {
         super(id);
         Database db = new Database();
@@ -49,6 +57,7 @@ public class SSD extends Product {
                 this.connectionInterface = ssd.connectionInterface;
                 this.capacity = ssd.capacity;
                 this.cache = ssd.cache;
+                this.quantity = ssd.quantity;
                 return;
             }
         }

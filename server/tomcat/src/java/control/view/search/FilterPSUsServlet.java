@@ -54,6 +54,15 @@ public class FilterPSUsServlet extends HttpServlet {
         }
         for (PSU psu : psus) {
             for (String efficiency : efficiencys) {
+                if(efficiency.equals("80platin")){
+                    efficiency = "80+ platin";
+                }
+                if(efficiency.equals("80gold")){
+                    efficiency = "80+ gold";
+                }
+                if(efficiency.equals("80titani")){
+                    efficiency = "80+ titani";
+                }
                 if(psu.efficiency.toLowerCase().contains(efficiency.toLowerCase())){
                     list.add(psu);
                 }

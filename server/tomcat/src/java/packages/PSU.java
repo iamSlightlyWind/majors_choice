@@ -32,6 +32,13 @@ public class PSU extends Product {
         this.efficiency = efficiency;
     }
 
+    public PSU(int wattage, String efficiency, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.wattage = wattage;
+        this.efficiency = efficiency;
+        this.image = image;
+    }
+    
     public PSU(int id) {
         super(id);
         Database db = new Database();
@@ -45,6 +52,7 @@ public class PSU extends Product {
                 this.name = psu.name;
                 this.wattage = psu.wattage;
                 this.efficiency = psu.efficiency;
+                this.quantity = psu.quantity;
                 return;
             }
         }

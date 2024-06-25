@@ -6,6 +6,7 @@ public class Product {
     public double sellingPrice;
     public double costPrice;
     public String description;
+    public int quantity;
 
     public Product(int id, double sellingPrice, double costPrice, String description) {
         this.id = id;
@@ -27,6 +28,15 @@ public class Product {
         this.sellingPrice = sellingPrice;
         this.costPrice = costPrice;
         this.description = description;
+    }
+
+    public Product(String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        this.name = name;
+        this.id = id;
+        this.sellingPrice = sellingPrice;
+        this.costPrice = costPrice;
+        this.description = description;
+        this.quantity = quantity;
     }
 
     public Product(int id) {
@@ -82,5 +92,13 @@ public class Product {
             return id + "";
         }
         return id + " " + name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

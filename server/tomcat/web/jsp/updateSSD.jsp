@@ -45,6 +45,10 @@
                     <td><input type="number" name="cache" value="<%=ssd.getCache()%>"></td>
                 </tr>
                 <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" value="<%=ssd.getQuantity()%>"></td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="submit" value="Update Cache"></td>
                     <td><input type="reset" value="Reset"></td>
                 </tr>       

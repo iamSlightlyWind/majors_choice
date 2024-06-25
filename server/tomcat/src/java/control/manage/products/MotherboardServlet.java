@@ -37,18 +37,21 @@ public class MotherboardServlet extends HttpServlet {
                 String name = request.getParameter("name");
                 String socket = request.getParameter("socket");
                 String chipset = request.getParameter("chipset");
+                int igpu = Integer.parseInt(request.getParameter("igpu"));
                 String formFactor = request.getParameter("formFactor");
                 String ramType = request.getParameter("ramType");
                 int maxRamSpeed = Integer.parseInt(request.getParameter("maxRamSpeed"));
+                int maxRamCapacity= Integer.parseInt(request.getParameter("maxRamCapacity"));
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
-                int result = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, null);
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int result = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, null, quantity);
 
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
 
-                    int result1 = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
+                    int result1 = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
                     response.sendRedirect("motherboards?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm Motherboard");
@@ -82,14 +85,17 @@ public class MotherboardServlet extends HttpServlet {
                 String name = request.getParameter("name");
                 String socket = request.getParameter("socket");
                 String chipset = request.getParameter("chipset");
+                int igpu = Integer.parseInt(request.getParameter("igpu"));
                 String formFactor = request.getParameter("formFactor");
                 String ramType = request.getParameter("ramType");
                 int maxRamSpeed = Integer.parseInt(request.getParameter("maxRamSpeed"));
+                int maxRamCapacity = Integer.parseInt(request.getParameter("maxRamCapacity"));
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
 
-                int result = db.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, formFactor, ramType, maxRamSpeed, ramSlots, wifi, image);
+                int result = db.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("motherboards?service=listAll");
                 } else {

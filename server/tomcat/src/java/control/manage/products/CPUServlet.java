@@ -37,19 +37,21 @@ public class CPUServlet extends HttpServlet {
                 double costPrice = Double.parseDouble(request.getParameter("costPrice"));
                 String name = request.getParameter("name");
                 String generation = request.getParameter("generation");
+                String ipgu = request.getParameter("igpu");
                 String socket = request.getParameter("socket");
                 int cores = Integer.parseInt(request.getParameter("cores"));
                 int threads = Integer.parseInt(request.getParameter("threads"));
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                int result = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
-                        baseClock, boostClock, tdp, null);
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int result = db.addProductCPU(sellingPrice, costPrice, name, generation,
+                        ipgu, socket, cores, threads, baseClock, boostClock, tdp, null, quantity);
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation, socket, cores, threads,
-                            baseClock, boostClock, tdp, image);
+                    int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation,
+                            ipgu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
                     response.sendRedirect("cpus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm CPU");
@@ -82,6 +84,7 @@ public class CPUServlet extends HttpServlet {
                 double costPrice = Double.parseDouble(request.getParameter("costPrice"));
                 String name = request.getParameter("name");
                 String generation = request.getParameter("generation");
+                String igpu = request.getParameter("igpu");
                 String socket = request.getParameter("socket");
                 int cores = Integer.parseInt(request.getParameter("cores"));
                 int threads = Integer.parseInt(request.getParameter("threads"));
@@ -89,9 +92,10 @@ public class CPUServlet extends HttpServlet {
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.updateProductCPU(id, sellingPrice, costPrice, name, generation, socket, cores, threads,
-                        baseClock, boostClock, tdp, image);
+                int result = db.updateProductCPU(id, sellingPrice, costPrice, name, generation,
+                        igpu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
 
                 if (result == 1) {
                     response.sendRedirect("cpus?service=listAll");

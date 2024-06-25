@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert Product</title>
     </head>
-<!--    enctype="multipart/form-data"-->
+    <!--    enctype="multipart/form-data"-->
     <body>
         <form action="/psus?service=insertPSU" method="post" enctype="multipart/form-data" >
             <table>
@@ -33,6 +33,10 @@
                 <tr>
                     <td>Efficiency</td>
                     <td><input type="text" name="efficiency"></td>
+                </tr>
+                <tr>
+                    <td>quantity</td>
+                    <td><input type="number" name="quantity"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Add PSU"></td>

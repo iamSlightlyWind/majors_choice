@@ -41,6 +41,10 @@
                     <td><input type="text" name="efficiency" value="<%=psu.getEfficiency()%>"></td>
                 </tr>
                 <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" value="<%=psu.getQuantity()%>"></td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="submit" value="Update PSU"></td>
                     <td><input type="reset" value="Reset"></td>
                 </tr>       

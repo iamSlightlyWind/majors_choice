@@ -63,6 +63,9 @@ public class FilterGPUsServlet extends HttpServlet {
         }
         for (GPU gpu : gpus) {
             for (String generation : generations) {
+                if(generation.equals("adalovelace")){
+                    generation = "ada lovelace";
+                }
                 if(gpu.generation.toLowerCase().contains(generation.toLowerCase())){
                     list.add(gpu);
                 }

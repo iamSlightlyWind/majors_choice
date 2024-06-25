@@ -26,6 +26,7 @@
                 <th>interface</th>
                 <th>capacity</th>
                 <th>cache</th>
+                <th>quantity</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -44,6 +45,7 @@
                 <td><%=ssd.getConnectionInterface()%> </td>
                 <td><%=ssd.getCapacity()%> </td>
                 <td><%=ssd.getCache()%> </td>
+                <td><%=ssd.getQuantity()%> </td>
                 <td><a href="ssds?service=update&id=<%=ssd.getId()%>">Update</a></td>
                 <td><a href="ssds?service=delete&id=<%=ssd.getId()%>">Delete</a></td>
             </tr>

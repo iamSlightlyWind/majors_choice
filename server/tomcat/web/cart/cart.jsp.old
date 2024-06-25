@@ -158,12 +158,9 @@
 
         <div class="view-cart-container">
           <div class="navbar-container navbar-root-class-name20">
-            <div class="navbar-container1"></div>
             <header class="navbar-container2">
               <header data-thq="thq-navbar" class="navbar-navbar-interactive">
-                <a href="/" class="navbar-link">
-                  <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
-                </a>
+                <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
                 <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                   <nav class="navbar-links">
                     <div class="navbar-container3">
@@ -203,8 +200,7 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                       </path>
                     </svg>
-                    <a href="/profile?action=view" target="_blank" rel="noreferrer noopener"
-                      class="navbar-account thq-button-filled">
+                    <a href="/profile?action=view" class="navbar-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -270,15 +266,19 @@
                 <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
                   <span>Manage WareHouse</span>
                 </span>
-                <a href="/manage/profile/user" class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                  Manage Customer
+                <a href="/manage/profile/user">
+                  <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                    Manage Customer
+                  </span>
                 </a>
                 <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
                   <span>Feedback</span>
                   <br />
                 </span>
-                <a href="/manage/profile/staff" class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                  Manage Staff
+                <a href="/manage/profile/staff">
+                  <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                    Manage Staff
+                  </span>
                 </a>
                 <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
                   Financial Reports
@@ -311,90 +311,80 @@
                       <span class="view-cart-component-text06">Total</span>
                     </div>
                     <c:forEach var="ProductCount" items="${ProductCount}">
-                      <div class="view-cart-component-product1">
-                        <form action="Cart" method="post">
-                          <input type="hidden" name="productID" value="${ProductCount.id}" />
-                          <div class="view-cart-component-container05">
+                      <form action="Cart" method="post">
+                        <input type="hidden" name="productID" value="${ProductCount.id}" />
+                        <div class="view-cart-component-product2">
+                          <div class="view-cart-component-container08">
                             <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                              class="view-cart-component-image" />
+                              class="view-cart-component-image1" />
                             <div class="view-cart-component-container06">
                               <span class="view-cart-component-name-product1">
-                                ${ProductCount.name}
+                                &lt;ProductName&gt;
                               </span>
                               <span class="view-cart-component-name-product2">
-                                ${ProductCount.error}
+                                &lt;ProductName&gt;
                               </span>
                             </div>
                           </div>
-                          <span class="view-cart-component-selling-price1">
+                          <span class="view-cart-component-selling-price2">
                             <span>${ProductCount.pricePer} VND</span>
                           </span>
-                          <div class="view-cart-component-container07">
+                          <div class="view-cart-component-container09">
                             <button type="submit" name="action" value="removeOne"
-                              class="view-cart-component-button button">
+                              class="view-cart-component-button3 button">
                               <span>
                                 <span>-</span>
                                 <br />
                               </span>
                             </button>
-                            <span class="view-cart-component-text10">
+                            <span class="view-cart-component-text18">
                               <span>${ProductCount.count}</span>
                               <br />
                             </span>
-                            <button button type="submit" name="action" value="addOne"
-                              class="view-cart-component-button1 button">
+                            <button type="submit" name="action" value="addOne"
+                              class="view-cart-component-button4 button">
                               <span>+</span>
                             </button>
                           </div>
-                          <div class="view-cart-component-container08">
-                            <span class="view-cart-component-text14">${ProductCount.totalPrice} VND</span>
-                            <button button type="submit" name="action" value="removeAll"
-                              class="view-cart-component-button2 thq-button-filled button">
+                          <div class="view-cart-component-container10">
+                            <span class="view-cart-component-text22">${ProductCount.totalPrice} VND</span>
+                            <button type="submit" name="action" value="removeAll"
+                              class="view-cart-component-button5 thq-button-filled button">
                               X
                             </button>
                           </div>
-                        </form>
-                      </div>
+                        </div>
+                      </form>
                     </c:forEach>
                   </div>
-                  <div class="view-cart-component-container09">
-                    <div class="view-cart-component-container10">
-                      <div class="view-cart-component-container11"></div>
+                  <div class="view-cart-component-container11">
+                    <div class="view-cart-component-container12">
+                      <div class="view-cart-component-container13"></div>
                       <form action="Cart" method="post">
                         <button type="submit" name="action" value="clear"
-                          class="view-cart-component-button3 button thq-button-outline">
+                          class="view-cart-component-button6 button thq-button-outline">
                           <span>Clear Cart</span>
                         </button>
                       </form>
                     </div>
-                    <div class="view-cart-component-container12">
-                      <div class="view-cart-component-container13">
-                        <span class="view-cart-component-text15">
+                    <div class="view-cart-component-container14">
+                      <div class="view-cart-component-container15">
+                        <br>
+                        <span class="view-cart-component-text23">
                           <span>Total:&nbsp;</span>
-                          <br />
                         </span>
-                        <span class="view-cart-component-text18">
-                          <span>${cartPrice} VND</span>
+                        <span>
+                          <span class="view-cart-component-text26">${cartPrice} VND</span>
                         </span>
                       </div>
-                      <p>${buyable}</p>
                       <form action="/payment/vnpayajax" id="frmCreateOrder" method="post">
                         <input type="hidden" name="amount" value="${cartPriceDouble}" />
                         <input type="hidden" name="language" value="vn" />
                         <input type="hidden" name="bankCode" value="" />
-                        <c:choose>
-                          <c:when test="${buyable == true}">
-                            <button type="submit" name="action" value="placeOrder"
-                              class="view-cart-component-button7 thq-button-filled button">
-                              Place Order
-                            </button>
-                          </c:when>
-                          <c:otherwise>
-                            <button type="button" disabled class="view-cart-component-button7 thq-button-filled button">
-                              Place Order
-                            </button>
-                          </c:otherwise>
-                        </c:choose>
+                        <button type="submit" name="action" value="placeOrder"
+                          class="view-cart-component-button7 thq-button-filled button">
+                          Place Order
+                        </button>
                         <p>${status}</p>
                       </form>
                     </div>
@@ -499,10 +489,9 @@
                                 d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
                               </path>
                             </svg>
-                            <a href="mailto:support@themajorones.dev?subject=Support"
-                              class="footer-social-link5 thq-body-small">
-                              Email : support@themajorones.dev
-                            </a>
+                            <span class="thq-body-small">
+                              Email :&nbsp;support@themajorones.dev
+                            </span>
                           </div>
                           <div class="footer-link3">
                             <svg viewBox="0 0 1024 1024" class="footer-icon6">

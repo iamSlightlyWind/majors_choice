@@ -161,10 +161,10 @@
                   <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                     <nav class="navbar-links">
-                      <form action="/gpusservlet" method="post">
+                      <form action="/" method="post">
                         <div class="navbar-container3">
                           <input type="text" placeholder="Search product by name" class="navbar-textinput input"
-                            name="searchName" value="${requestScope.searchName}" />
+                            name="searchName" value="${searchName}" />
                           <button type="submit" value="Search" class="navbar-search thq-button-filled">
                             <span class="navbar-text thq-body-small">
                               <span>Search</span>
@@ -183,11 +183,9 @@
                         <span class="navbar-whoweare thq-body-small thq-link">
                           <span>Who we are</span>
                         </span>
-                        <a href="/order">
-                          <span class="navbar-manager-order thq-body-small thq-link">
-                            Manage Order
-                          </span>
-                        </a>
+                        <span class="navbar-manager-order thq-body-small thq-link">
+                          Manager Order
+                        </span>
                       </div>
                     </nav>
                     <div class="navbar-buttons">
@@ -200,7 +198,7 @@
                           d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                         </path>
                       </svg>
-                      <a href="/profile" class="navbar-account thq-button-filled">
+                      <a href="login.html" class="navbar-account thq-button-filled">
                         <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                           <path
                             d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -234,8 +232,8 @@
                       <nav class="navbar-links1">
                         <div class="navbar-container6">
                           <input type="text" placeholder="Search product by name" class="navbar-textinput1 input"
-                            value="${requestScope.searchName}" />
-                          <button class="navbar-search1 thq-button-filled thq-button-animated">
+                            name="searchName" value="${requestScope.searchName}" />
+                          <button class="navbar-search1 thq-button-filled thq-button-animated" value="Search">
                             <span class="navbar-text3 thq-body-small">
                               <span>Search</span>
                               <br />
@@ -261,7 +259,7 @@
                 </header>
               </header>
             </div>
-             <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+           <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
               .equals(role)) { %>
               <div class="menu-function-container menu-function-root-class-name">
                 <div class="menu-function-manager">
@@ -295,7 +293,7 @@
                 Home&nbsp;
               </span>
               <span class="view-all-product-cpu-text01">
-                / CPU -&nbsp;Computer processor
+                / Search
               </span>
             </div>
             <div class="chats-chats chats-root-class-name">
@@ -308,180 +306,21 @@
                 <span class="chats-text">Chats with support</span>
               </div>
             </div>
-            <div class="view-all-product-cpu-product">
-              <div class="view-all-product-cpu-container01">
-                <div class="view-all-product-cpu-container02">
-                  <svg viewBox="0 0 1024 1024" class="view-all-product-cpu-icon">
-                    <path
-                      d="M846.72 170.667l-281.984 333.397c-6.272 7.381-10.069 17.024-10.069 27.563v295.339l-85.333-42.667v-252.672c0.043-9.685-3.285-19.499-10.069-27.563l-281.984-333.397zM938.667 85.333h-853.333c-23.552 0-42.667 19.115-42.667 42.667 0 10.539 3.797 20.181 10.069 27.563l331.264 391.68v263.424c0 16.597 9.472 31.019 23.595 38.144l170.667 85.333c21.077 10.539 46.72 2.005 57.259-19.072 3.072-6.229 4.523-12.843 4.48-19.072v-348.757l331.264-391.68c15.232-18.005 12.971-44.928-5.035-60.117-8.064-6.827-17.877-10.155-27.563-10.112z">
-                    </path>
-                  </svg>
-                  <h1 class="view-all-product-cpu-text02">
-                    <span>Search filter</span>
-                    <br />
-                  </h1>
-                </div>
-                <c:set var="name" value="${requestScope.searchName}" scope="page" />
-                <form class="view-all-product-cpu-form" action="/filtergpu" method="post"
-                  onsubmit="return validateForm()">
-                  <input type="hidden" name="nameSearch" value="${name}" />
-                  <span class="view-all-product-cpu-text05">
-                    <span>Frice</span>
-                    <br />
-                  </span>
-                  <div class="view-all-product-cpu-container03">
-                    <span class="view-all-product-cpu-text08">
-                      <span>From</span>
-                      <br />
-                    </span>
-                    <input type="number" id="from" placeholder="min " class="view-all-product-cpu-textinput input"
-                      name="from" value="${requestScope.from}" />
-                  </div>
-                  <div class="view-all-product-cpu-container04">
-                    <span class="view-all-product-cpu-text11">
-                      <span>To</span>
-                      <br />
-                    </span>
-                    <input type="number" id="to" placeholder="max" class="view-all-product-cpu-textinput1 input"
-                      name="to" value="${requestScope.to}" />
-                  </div>
-                  <hr>
-                  <c:set var="brands" value="${requestScope.brands}" />
-                  <span class="view-all-product-cpu-text14">
-                    <span>Brand</span>
-                    <br />
-                  </span>
-                  <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="brand" value="amd" <c:forEach
-                      var="brand" items="${brands}">
-                    <c:if test="${brand == 'amd'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text17">
-                      <span>AMD</span>
-                      <br />
-                    </span>
-                  </div>
-                  <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="brand" value="nvidia" <c:forEach
-                      var="brand" items="${brands}">
-                    <c:if test="${brand == 'nvidia'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text17">
-                      <span>NVIDIA</span>
-                      <br />
-                    </span>
-                  </div>
-                  <hr>
-                  <c:set var="generations" value="${requestScope.generations}" />
-                  <span class="view-all-product-cpu-text14">
-                    <span>Genernation</span>
-                    <br />
-                  </span>
-                  <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="generation" value="rdna"
-                      <c:forEach var="generation" items="${generations}">
-                    <c:if test="${generation == 'rdna'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text17">
-                      <span>RDNA</span>
-                      <br />
-                    </span>
-                  </div>
-                  <div class="view-all-product-cpu-container06">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="generation" value="ampere"
-                      <c:forEach var="generation" items="${generations}">
-                    <c:if test="${generation == 'ampere'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text20">
-                      <span>Ampere</span>
-                      <br />
-                    </span>
-                  </div>
-                  <div class="view-all-product-cpu-container07">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox2" name="generation" value="ada lovelace"
-                      <c:forEach var="generation" items="${generations}">
-                    <c:if test="${generation == 'ada lovelace' || generation == 'adalovelace'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text23">
-                      <span>Ada Lovelace</span>
-                      <br />
-                    </span>
-                  </div>
-                  <hr>
-                  <span class="view-all-product-cpu-text05">
-                    <span>Vram</span>
-                    <br />
-                  </span>
-                  <div class="view-all-product-cpu-container03">
-                    <span class="view-all-product-cpu-text08">
-                      <span>From</span>
-                      <br />
-                    </span>
-                    <input type="number" id="from" placeholder="min " class="view-all-product-cpu-textinput input"
-                      name="fromVRAM" value="${requestScope.fromVRAM}" />
-                  </div>
-                  <div class="view-all-product-cpu-container04">
-                    <span class="view-all-product-cpu-text11">
-                      <span>To</span>
-                      <br />
-                    </span>
-                    <input type="number" id="to" placeholder="max" class="view-all-product-cpu-textinput1 input"
-                      name="toVRAM" value="${requestScope.toVRAM}" />
-                  </div>
-                  <hr><!-- comment -->
-                  <span class="view-all-product-cpu-text05">
-                    <span>TDP</span>
-                    <br />
-                  </span>
-                  <div class="view-all-product-cpu-container03">
-                    <span class="view-all-product-cpu-text08">
-                      <span>From</span>
-                      <br />
-                    </span>
-                    <input type="number" id="from" placeholder="min " class="view-all-product-cpu-textinput input"
-                      name="fromTDP" value="${requestScope.fromTDP}" />
-                  </div>
-                  <div class="view-all-product-cpu-container04">
-                    <span class="view-all-product-cpu-text11">
-                      <span>To</span>
-                      <br />
-                    </span>
-                    <input type="number" id="to" placeholder="max" class="view-all-product-cpu-textinput1 input"
-                      name="toTDP" value="${requestScope.toTDP}" />
-                  </div>
-                  <button type="submit" value="Filter">Filter</button>
-                </form>
-              </div>
-              <div class="view-all-product-cpu-container09">
-                <c:forEach var="gpu" items="${requestScope.gpus}">
-                    <a href="/view/detail/product?category=gpu&id=${gpu.id}">
-                         <div class="component1-container component1-root-class-name">
+              <div class="view-all-product-cpu-container09" style="margin-left: 17%;">
+                 <c:forEach var="product" items="${requestScope.products}">
+                    <a href="/view/detail/product?category=cpu&id=${product.id}">
+                    <div class="component1-container component1-root-class-name">
                     <img alt="image"
                       src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
                       loading="eager" class="component1-image" />
                     <h1 class="component1-text thq-link">
                       <span>
-                        ${gpu.name}
+                        ${product.name}
                       </span>
                     </h1>
                     <span class="component1-text1">
                       <fmt:setLocale value="vi_VN"/>
-                      <fmt:formatNumber value="${gpu.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
+                      <fmt:formatNumber value="${product.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
                       <span id="sellingPrice">${formattedSellingPrice}</span>
                       <br />
                     </span>
@@ -497,15 +336,11 @@
                       </a>
                     </div>
                   </div>
-                    </a>
+                  </a>
                 </c:forEach>
+              
               </div>
-            </div>
-            <svg viewBox="0 0 1024 1024" class="view-all-product-cpu-icon2">
-              <path
-                d="M846.72 170.667l-281.984 333.397c-6.272 7.381-10.069 17.024-10.069 27.563v295.339l-85.333-42.667v-252.672c0.043-9.685-3.285-19.499-10.069-27.563l-281.984-333.397zM938.667 85.333h-853.333c-23.552 0-42.667 19.115-42.667 42.667 0 10.539 3.797 20.181 10.069 27.563l331.264 391.68v263.424c0 16.597 9.472 31.019 23.595 38.144l170.667 85.333c21.077 10.539 46.72 2.005 57.259-19.072 3.072-6.229 4.523-12.843 4.48-19.072v-348.757l331.264-391.68c15.232-18.005 12.971-44.928-5.035-60.117-8.064-6.827-17.877-10.155-27.563-10.112z">
-              </path>
-            </svg>
+            </div>          
           </div>
           <div class="view-all-product-cpu-footer">
             <div class="contact-contact20 thq-section-padding contact-root-class-name2">
@@ -744,6 +579,7 @@
           return true; // Allow form submission
         }
       </script>
+
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 
