@@ -46,6 +46,10 @@
                     <td><input type="number" name="tdp"></td>
                 </tr>
                 <tr>
+                    <td>quantity</td>
+                    <td><input type="number" name="quantity"></td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="submit" value="Add GPU"></td>
                     <td><input type="reset" value="Reset"></td>
                 </tr>       

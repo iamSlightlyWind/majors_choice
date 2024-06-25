@@ -100,10 +100,10 @@ public class Database {
                 int boostClock = resultSet.getInt("boostClock");
                 int tdp = resultSet.getInt("tdp");
                 String igpu = resultSet.getString("igpu");
+                String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
-                igpu = resultSet.getString("igpu");
-                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name, igpu, 
-                        name, id, sellingPrice, costPrice, description, quantity));
+                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, image, igpu, name, 
+                        id, sellingPrice, costPrice, description, quantity));
             }
             return cpus;
         } catch (SQLException ex) {
@@ -130,9 +130,11 @@ public class Database {
                 int baseClock = resultSet.getInt("baseClock");
                 int boostClock = resultSet.getInt("boostClock");
                 int tdp = resultSet.getInt("tdp");
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
                 gpus.add(
-                        new GPU(id, sellingPrice, costPrice, description, name, generation, vram, baseClock, boostClock,
-                                tdp));
+                        new GPU(generation, vram, baseClock, boostClock, tdp, image, name, 
+                                id, sellingPrice, costPrice, description, quantity));
             }
             return gpus;
         } catch (SQLException ex) {
@@ -158,7 +160,10 @@ public class Database {
                 int capacity = resultSet.getInt("capacity");
                 int speed = resultSet.getInt("speed");
                 int latency = resultSet.getInt("latency");
-                rams.add(new RAM(id, sellingPrice, costPrice, description, name, generation, capacity, speed, latency));
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                rams.add(new RAM(generation, capacity, speed, latency, image, name, id, 
+                        sellingPrice, costPrice, description, quantity));
             }
             return rams;
         } catch (SQLException ex) {
@@ -213,7 +218,10 @@ public class Database {
                 String interfaceType = resultSet.getString("interface");
                 int capacity = resultSet.getInt("capacity");
                 int cache = resultSet.getInt("cache");
-                ssds.add(new SSD(id, sellingPrice, costPrice, description, name, interfaceType, capacity, cache));
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                ssds.add(new SSD(interfaceType, capacity, cache, image, name, id, 
+                        sellingPrice, costPrice, description, quantity));
             }
             return ssds;
         } catch (SQLException ex) {
@@ -237,7 +245,10 @@ public class Database {
                 String name = resultSet.getString("name");
                 int wattage = resultSet.getInt("wattage");
                 String efficiency = resultSet.getString("efficiency");
-                psus.add(new PSU(id, sellingPrice, costPrice, description, name, wattage, efficiency));
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                psus.add(new PSU(wattage, efficiency, image, name, id, 
+                        sellingPrice, costPrice, description, quantity));
             }
             return psus;
         } catch (SQLException ex) {
@@ -250,8 +261,8 @@ public class Database {
         return null;
     }
 
-    public int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String socket,
-            int cores, int threads, int baseClock, int boostClock, int tdp, String image) {
+    public int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String igpu, String socket,
+            int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
             Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
@@ -261,20 +272,22 @@ public class Database {
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
-            String sql = "{call addProductCPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
+            String sql = "{call addProductCPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
             callableStatement.setString(4, generation);
-            callableStatement.setString(5, socket);
-            callableStatement.setInt(6, cores);
-            callableStatement.setInt(7, threads);
-            callableStatement.setInt(8, baseClock);
-            callableStatement.setInt(9, boostClock);
-            callableStatement.setInt(10, tdp);
-            callableStatement.setString(11, image);
-            callableStatement.registerOutParameter(12, Types.NVARCHAR);
+            callableStatement.setString(5, igpu);
+            callableStatement.setString(6, socket);
+            callableStatement.setInt(7, cores);
+            callableStatement.setInt(8, threads);
+            callableStatement.setInt(9, baseClock);
+            callableStatement.setInt(10, boostClock);
+            callableStatement.setInt(11, tdp);
+            callableStatement.setString(12, image);
+            callableStatement.setInt(13, quantity);
+            callableStatement.registerOutParameter(14, Types.NVARCHAR);
 
             callableStatement.execute();
             return productId;
@@ -300,30 +313,31 @@ public class Database {
         return maxId;
     }
 
-    public int updateProductCPU(int id, double sellingPrice, double costPrice, String name, String generation,
-            String socket,
-            int cores, int threads, int baseClock, int boostClock, int tdp, String image) {
+    public int updateProductCPU(int id, double sellingPrice, double costPrice, String name, String generation, String igpu,
+            String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
-            String sql = "{call updateProductCPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductCPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
             callableStatement.setDouble(3, costPrice);
             callableStatement.setString(4, name);
             callableStatement.setString(5, generation);
-            callableStatement.setString(6, socket);
-            callableStatement.setInt(7, cores);
-            callableStatement.setInt(8, threads);
-            callableStatement.setInt(9, baseClock);
-            callableStatement.setInt(10, boostClock);
-            callableStatement.setInt(11, tdp);
-            callableStatement.setString(12, image);
-            callableStatement.registerOutParameter(13, Types.VARCHAR);
+            callableStatement.setString(6, igpu);
+            callableStatement.setString(7, socket);
+            callableStatement.setInt(8, cores);
+            callableStatement.setInt(9, threads);
+            callableStatement.setInt(10, baseClock);
+            callableStatement.setInt(11, boostClock);
+            callableStatement.setInt(12, tdp);
+            callableStatement.setString(13, image);
+            callableStatement.setInt(14, quantity);
+            callableStatement.registerOutParameter(15, Types.VARCHAR);
 
             callableStatement.execute();
 
             // Get the result from the output parameter
-            String result = callableStatement.getString(13);
+            String result = callableStatement.getString(15);
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
@@ -370,7 +384,7 @@ public class Database {
     }
 
     public int addProductGPU(double sellingPrice, double costPrice, String name, String generation, int vram,
-            int baseClock, int boostClock, int tdp, String image) {
+            int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
             Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
@@ -380,7 +394,7 @@ public class Database {
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
-            String sql = "{call addProductGPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
+            String sql = "{call addProductGPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
@@ -391,7 +405,8 @@ public class Database {
             callableStatement.setInt(7, boostClock);
             callableStatement.setInt(8, tdp);
             callableStatement.setString(9, image);
-            callableStatement.registerOutParameter(10, Types.NVARCHAR);
+            callableStatement.setInt(10, quantity);
+            callableStatement.registerOutParameter(11, Types.NVARCHAR);
 
             callableStatement.execute();
             return productId;
@@ -402,7 +417,7 @@ public class Database {
     }
 
     public int updateProductGPU(int id, double sellingPrice, double costPrice, String name, String generation, int vram,
-            int baseClock, int boostClock, int tdp, String image) {
+            int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
             String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
@@ -416,10 +431,11 @@ public class Database {
             callableStatement.setInt(8, boostClock);
             callableStatement.setInt(9, tdp);
             callableStatement.setString(10, image);
-            callableStatement.registerOutParameter(11, Types.VARCHAR);
+            callableStatement.setInt(11, quantity);
+            callableStatement.registerOutParameter(12, Types.VARCHAR);
 
             callableStatement.execute();
-            String result = callableStatement.getString(11);
+            String result = callableStatement.getString(12);
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
@@ -544,7 +560,7 @@ public class Database {
     }
 
     public int addProductRAM(double sellingPrice, double costPrice, String name, String generation, int capacity,
-            int speed, int latency, String image) {
+            int speed, int latency, String image, int quantity) {
         try {
             Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
@@ -555,7 +571,7 @@ public class Database {
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
-            String sql = "{call addProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call addProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
 
             callableStatement.setDouble(1, sellingPrice);
@@ -566,10 +582,11 @@ public class Database {
             callableStatement.setInt(6, speed);
             callableStatement.setInt(7, latency);
             callableStatement.setString(8, image);
-            callableStatement.registerOutParameter(9, Types.INTEGER);
+            callableStatement.setInt(9, quantity);
+            callableStatement.registerOutParameter(10, Types.INTEGER);
 
             callableStatement.execute();
-            return callableStatement.getInt(9); // Get the product ID from the output parameter
+            return callableStatement.getInt(10); // Get the product ID from the output parameter
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
@@ -577,9 +594,9 @@ public class Database {
     }
 
     public int updateProductRAM(int id, double sellingPrice, double costPrice, String name, String generation,
-            int capacity, int speed, int latency, String image) {
+            int capacity, int speed, int latency, String image, int quantity) {
         try {
-            String sql = "{call updateProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
@@ -590,11 +607,12 @@ public class Database {
             callableStatement.setInt(7, speed);
             callableStatement.setInt(8, latency);
             callableStatement.setString(9, image);
-            callableStatement.registerOutParameter(10, Types.VARCHAR);
+            callableStatement.setInt(10, quantity);
+            callableStatement.registerOutParameter(11, Types.VARCHAR);
 
             callableStatement.execute();
 
-            String result = callableStatement.getString(10);
+            String result = callableStatement.getString(11);
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
@@ -619,7 +637,7 @@ public class Database {
     }
 
     public int addProductSSD(double sellingPrice, double costPrice, String name, String connectionInterface,
-            int capacity, int cache, String image) {
+            int capacity, int cache, String image, int quantity) {
         try {
             Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
@@ -629,7 +647,7 @@ public class Database {
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
-            String sql = "{call addProductSSD(?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call addProductSSD(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
 
             callableStatement.setDouble(1, sellingPrice);
@@ -639,7 +657,8 @@ public class Database {
             callableStatement.setInt(5, capacity);
             callableStatement.setInt(6, cache);
             callableStatement.setString(7, image);
-            callableStatement.registerOutParameter(8, Types.NVARCHAR);
+            callableStatement.setInt(8,quantity);
+            callableStatement.registerOutParameter(9, Types.NVARCHAR);
 
             callableStatement.execute();
             return productId;
@@ -650,10 +669,10 @@ public class Database {
     }
 
     public int updateProductSSD(int id, double sellingPrice, double costPrice, String name, String connectionInterface,
-            int capacity, int cache, String image) {
+            int capacity, int cache, String image, int quantity) {
         try {
             // Prepare and execute the SQL statement to update the SSD product
-            String sql = "{call updateProductSSD(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductSSD(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
@@ -663,11 +682,12 @@ public class Database {
             callableStatement.setInt(6, capacity);
             callableStatement.setInt(7, cache);
             callableStatement.setString(8, image);
-            callableStatement.registerOutParameter(9, Types.VARCHAR);
+            callableStatement.setInt(9, quantity);
+            callableStatement.registerOutParameter(10, Types.VARCHAR);
 
             callableStatement.execute();
             // Get the result from the output parameter
-            String result = callableStatement.getString(9);
+            String result = callableStatement.getString(10);
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
@@ -712,9 +732,9 @@ public class Database {
     }
 
     public int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage,
-            String efficiency, String image) {
+            String efficiency, String image, int quantity) {
         try {
-            String sql = "{call updateProductPSU(?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductPSU(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
@@ -723,11 +743,12 @@ public class Database {
             callableStatement.setInt(5, wattage);
             callableStatement.setString(6, efficiency);
             callableStatement.setString(7, image);
-            callableStatement.registerOutParameter(8, Types.VARCHAR);
+            callableStatement.setInt(8, quantity);
+            callableStatement.registerOutParameter(9, Types.VARCHAR);
 
             callableStatement.execute();
             // Get the result from the output parameter
-            String result = callableStatement.getString(8);
+            String result = callableStatement.getString(9);
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
@@ -741,7 +762,7 @@ public class Database {
 
     @SuppressWarnings("unused")
     public int addProductPSU(double sellingPrice, double costPrice, String name, int wattage, String efficiency,
-            String image) {
+            String image, int quantity) {
         try {
             Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
@@ -751,7 +772,7 @@ public class Database {
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
-            String sql = "{call addProductPSU(?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call addProductPSU(?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = db.connection.prepareCall(sql);
 
             callableStatement.setDouble(1, sellingPrice);
@@ -760,10 +781,11 @@ public class Database {
             callableStatement.setInt(4, wattage);
             callableStatement.setString(5, efficiency);
             callableStatement.setString(6, image);
-            callableStatement.registerOutParameter(7, Types.NVARCHAR);
+            callableStatement.setInt(7, quantity);
+            callableStatement.registerOutParameter(8, Types.NVARCHAR);
 
             callableStatement.execute();
-            return callableStatement.getInt(7);
+            return callableStatement.getInt(8);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;

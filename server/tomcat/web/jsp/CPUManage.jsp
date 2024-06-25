@@ -48,7 +48,7 @@
                 <td><img src="<%=cpu.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=cpu.getName()%> </td>
                 <td><%=cpu.getGeneration()%> </td>
-                <td><%=cpu.getIGpu()%> </td>
+                <td><%=cpu.getIgpu()%> </td>
                 <td><%=cpu.getSocket()%> </td>
                 <td><%=cpu.getCores()%> </td>
                 <td><%=cpu.getThreads()%> </td>

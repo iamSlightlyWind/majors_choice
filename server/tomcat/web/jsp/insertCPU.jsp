@@ -30,6 +30,10 @@
                     <td><input type="text" name="generation"></td>
                 </tr>
                 <tr>
+                    <td>igpu</td>
+                    <td><input type="text" name="igpu" ></td>
+                </tr>
+                <tr>
                     <td>socket</td>
                     <td><input type="text" name="socket"></td>
                 </tr>
@@ -52,6 +56,10 @@
                 <tr>
                     <td>Tdp</td>
                     <td><input type="number" name="tdp"></td>
+                </tr>
+                <tr>
+                    <td>quantity</td>
+                    <td><input type="number" name="quantity"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Add CPU"></td>

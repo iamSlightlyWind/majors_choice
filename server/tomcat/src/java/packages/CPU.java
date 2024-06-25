@@ -69,7 +69,8 @@ public class CPU extends Product {
         this.tdp = tdp;
     }
 
-    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String igpu, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, 
+            String igpu, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.generation = generation;
         this.socket = socket;
@@ -95,12 +96,14 @@ public class CPU extends Product {
                 this.description = cpu.description;
                 this.name = cpu.name;
                 this.generation = cpu.generation;
+                this.igpu = cpu.igpu;
                 this.socket = cpu.socket;
                 this.cores = cpu.cores;
                 this.threads = cpu.threads;
                 this.baseClock = cpu.baseClock;
                 this.boostClock = cpu.boostClock;
                 this.tdp = cpu.tdp;
+                this.quantity = cpu.quantity;
                 return;
             }
         }

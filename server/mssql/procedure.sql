@@ -681,8 +681,10 @@ begin
         formFactor,
         ramType,
         maxRamSpeed,
+        maxRamCapacity,
         ramSlots,
         wifi,
+        igpu,
         image,
         quantity
     from products
@@ -1054,6 +1056,7 @@ CREATE PROCEDURE updateProductCPU
     @costPrice decimal(18,2),
     @name nvarchar(50),
     @generation nvarchar(50),
+    @igpu nvarchar(50),
     @socket nvarchar(10),
     @cores int,
     @threads int,
@@ -1081,6 +1084,7 @@ BEGIN
     UPDATE cpus
     SET name = @name,
         generation = @generation,
+		igpu = @igpu,
         socket = @socket,
         cores = @cores,
         threads = @threads,
@@ -1143,6 +1147,7 @@ CREATE PROCEDURE updateProductMotherboard
     @name nvarchar(50),
     @socket nvarchar(10),
     @chipset nvarchar(50),
+    @igpu int,
     @formFactor nvarchar(50),
     @ramType nvarchar(50),
     @maxRamSpeed int,
@@ -1170,6 +1175,7 @@ BEGIN
     SET name = @name,
         socket = @socket,
         chipset = @chipset,
+        igpu = @igpu,
         formFactor = @formFactor,
         ramType = @ramType,
         maxRamSpeed = @maxRamSpeed,

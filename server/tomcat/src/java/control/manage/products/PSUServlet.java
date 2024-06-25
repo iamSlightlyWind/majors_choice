@@ -37,13 +37,14 @@ public class PSUServlet extends HttpServlet {
                 String name = request.getParameter("name");
                 int wattage = Integer.parseInt(request.getParameter("wattage"));
                 String efficiency = request.getParameter("efficiency");
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, null);
+                int result = db.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, null, quantity);
 
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.updateProductPSU(result, sellingPrice, costPrice, name, wattage, efficiency, image);
+                    int result1 = db.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image, quantity);
                     response.sendRedirect("psus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm PSU");
@@ -78,8 +79,9 @@ public class PSUServlet extends HttpServlet {
                 int wattage = Integer.parseInt(request.getParameter("wattage"));
                 String efficiency = request.getParameter("efficiency");
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.updateProductPSU(id, sellingPrice, costPrice, name, wattage, efficiency, image);
+                int result = db.updateProductPSU(id, sellingPrice, costPrice, name, wattage, efficiency, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("psus?service=listAll");
                 } else {

@@ -41,6 +41,18 @@ public class Motherboard extends Product {
         this.image = image;
     }
 
+    public Motherboard(String socket, String chipset, String formFactor, String ramType, int maxRamSpeed, int ramSlots, int wifi, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.socket = socket;
+        this.chipset = chipset;
+        this.formFactor = formFactor;
+        this.ramType = ramType;
+        this.maxRamSpeed = maxRamSpeed;
+        this.ramSlots = ramSlots;
+        this.wifi = wifi;
+        this.image = image;
+    }
+    
     public Motherboard(int id, double sellingPrice, double costPrice, String description, String name, String socket,
             String chipset, String formFactor, String ramType, int maxRamSpeed, int ramSlots, int wifi) {
         super(id, sellingPrice, costPrice, description);
@@ -72,6 +84,7 @@ public class Motherboard extends Product {
                 this.maxRamSpeed = motherboard.maxRamSpeed;
                 this.ramSlots = motherboard.ramSlots;
                 this.wifi = motherboard.wifi;
+                this.quantity = motherboard.quantity;
                 return;
             }
         }

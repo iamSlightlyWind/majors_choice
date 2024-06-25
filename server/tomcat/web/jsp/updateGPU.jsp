@@ -53,6 +53,10 @@
                     <td><input type="number" name="tdp" value="<%=gpu.getTdp()%>"></td>
                 </tr>
                 <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" value="<%=gpu.getQuantity()%>"></td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="submit" value="Update GPU"></td>
                     <td><input type="reset" value="Reset"></td>
                 </tr>       

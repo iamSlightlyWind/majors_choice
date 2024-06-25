@@ -28,6 +28,7 @@
                 <th>baseClock</th>
                 <th>boostClock</th>
                 <th>tdp</th>
+                <th>quantity</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -48,6 +49,7 @@
                 <td><%=gpu.getBaseClock()%> </td>
                 <td><%=gpu.getBoostClock()%> </td>
                 <td><%=gpu.getTdp()%> </td>
+                <td><%=gpu.getQuantity()%> </td>
                 <td><a href="gpus?service=update&id=<%=gpu.getId()%>">Update</a></td>
                 <td><a href="gpus?service=delete&id=<%=gpu.getId()%>">Delete</a></td>
             </tr>

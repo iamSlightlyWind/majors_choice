@@ -40,12 +40,14 @@ public class GPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, null);
+                int result = db.addProductGPU(sellingPrice, costPrice, name, 
+                        generation, vram, baseClock, boostClock, tdp, null, quantity);
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.updateProductGPU(productId, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
+                    int result1 = db.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image, quantity);
                     response.sendRedirect("gpus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm GPU");
@@ -82,8 +84,9 @@ public class GPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
-                int result = db.updateProductGPU(id, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image);
+                int result = db.updateProductGPU(id, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("gpus?service=listAll");
                 } else {

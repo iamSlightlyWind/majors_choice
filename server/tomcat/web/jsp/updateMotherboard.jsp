@@ -61,6 +61,10 @@
                     <td><input type="number" name="wifi" value="<%=motherboard.getWifi()%>"></td>
                 </tr>
                 <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" value="<%=motherboard.getQuantity()%>"></td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="submit" value="Update Motherboard"></td>
                     <td><input type="reset" value="Reset"></td>
                 </tr>       
