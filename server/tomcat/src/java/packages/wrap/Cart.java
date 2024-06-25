@@ -11,6 +11,7 @@ public class Cart {
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
     Database db;
+    public boolean buyable = true;
 
     public Cart(Cart cart) {
         this.userID = cart.userID;
@@ -21,6 +22,8 @@ public class Cart {
     }
 
     public void updateQuantity() {
+        buyable = true;
+
         HashMap<Integer, ProductCount> productCountMap = new HashMap<>();
         for (Product product : products) {
             ProductCount productCount = productCountMap.get(product.id);
@@ -29,6 +32,11 @@ public class Cart {
                 productCountMap.put(product.id, productCount);
             }
             productCount.count += 1;
+            productCount.check();
+
+            if (!productCount.error.equals("")) {
+                buyable = false;
+            }
         }
 
         total = 0;

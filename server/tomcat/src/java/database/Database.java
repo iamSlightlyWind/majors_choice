@@ -99,8 +99,9 @@ public class Database {
                 int baseClock = resultSet.getInt("baseClock");
                 int boostClock = resultSet.getInt("boostClock");
                 int tdp = resultSet.getInt("tdp");
-                cpus.add(new CPU(id, sellingPrice, costPrice, description, name, generation, socket, cores, threads,
-                        baseClock, boostClock, tdp));
+                String igpu = resultSet.getString("igpu");
+                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, name,
+                        igpu, name, id, sellingPrice, costPrice, description));
             }
             return cpus;
         } catch (SQLException ex) {
@@ -1177,5 +1178,21 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public int productStock(int productId) {
+        try {
+            String sql = "{call productQuantity(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, productId);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("quantity");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 }
