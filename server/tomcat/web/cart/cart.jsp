@@ -377,14 +377,24 @@
                           <span>${cartPrice} VND</span>
                         </span>
                       </div>
+                      <p>${buyable}</p>
                       <form action="/payment/vnpayajax" id="frmCreateOrder" method="post">
                         <input type="hidden" name="amount" value="${cartPriceDouble}" />
                         <input type="hidden" name="language" value="vn" />
                         <input type="hidden" name="bankCode" value="" />
-                        <button type="submit" name="action" value="placeOrder"
-                          class="view-cart-component-button7 thq-button-filled button">
-                          Place Order
-                        </button>
+                        <c:choose>
+                          <c:when test="${buyable == true}">
+                            <button type="submit" name="action" value="placeOrder"
+                              class="view-cart-component-button7 thq-button-filled button">
+                              Place Order
+                            </button>
+                          </c:when>
+                          <c:otherwise>
+                            <button type="button" disabled class="view-cart-component-button7 thq-button-filled button">
+                              Place Order
+                            </button>
+                          </c:otherwise>
+                        </c:choose>
                         <p>${status}</p>
                       </form>
                     </div>

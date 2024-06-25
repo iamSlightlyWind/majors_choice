@@ -32,7 +32,6 @@ public class Cart {
                 productCountMap.put(product.id, productCount);
             }
             productCount.count += 1;
-            productCount.check();
 
             if (!productCount.error.equals("")) {
                 buyable = false;
@@ -53,6 +52,16 @@ public class Cart {
         quantities.clear();
         total = 0;
         updateCart();
+    }
+
+    public boolean buyable() {
+        for (ProductCount productCount : quantities) {
+            productCount.check();
+            if (!productCount.error.equals("")) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void updateCart() {
