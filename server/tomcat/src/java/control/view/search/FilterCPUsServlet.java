@@ -66,6 +66,9 @@ public class FilterCPUsServlet extends HttpServlet {
         }       
         for (CPU cpu : cpus) {
                 for (String geString : generations) {
+                    if(geString.equals("raptorlake")){
+                        geString = "raptor lake";
+                    }
                     if(cpu.generation.toLowerCase().contains(geString.toLowerCase())){
                         list.add(cpu);
                     }
@@ -81,6 +84,10 @@ public class FilterCPUsServlet extends HttpServlet {
         }
         for (CPU cpu : cpus) {
             for (String socket : sockets) {
+                
+                if(socket.equals("lga1700")){
+                    socket = "lga 1700";
+                }
                 if(cpu.socket.toLowerCase().contains(socket.toLowerCase())){
                     list.add(cpu);
                 }

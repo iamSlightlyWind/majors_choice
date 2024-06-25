@@ -56,7 +56,16 @@ public class FilterSSDsServlet extends HttpServlet {
             return ssds;
         }
         for (SSD ssd : ssds) {
-            for (String aInterface : interfaces) {                
+            for (String aInterface : interfaces) {   
+                if(aInterface.equals("PCIe3")){
+                    aInterface = "PCIe 3.0";
+                }
+                if(aInterface.equals("PCIe4")){
+                    aInterface = "PCIe 4.0";
+                }
+                if(aInterface.equals("SATA25")){
+                    aInterface = "SATA 2.5";
+                }
                 if(ssd.connectionInterface.toLowerCase().contains(aInterface.toLowerCase())){
                     list.add(ssd);
                 }

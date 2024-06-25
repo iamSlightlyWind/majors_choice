@@ -46,7 +46,7 @@
                 <td><%=motherboard.getId()%> </td>
                 <td><%=sellingPrice%> </td>
                 <td><%=costPrice%> </td>
-                <td><img src="<%=motherboard.getId()%>.png" style="width: 100px; height: auto;"/></td>
+                <td><img src="images/<%=motherboard.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=motherboard.getName()%> </td>
                 <td><%=motherboard.getSocket()%> </td>
                 <td><%=motherboard.getChipset()%> </td>

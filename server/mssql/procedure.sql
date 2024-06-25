@@ -850,6 +850,22 @@ BEGIN
 END
 GO
 
+create procedure addOrderInformation
+    @fullname nvarchar(50),
+    @phoneNumber varchar(15),
+    @address nvarchar(100)
+as
+begin
+    declare @orderId int
+    select @orderId = max(id) from orders
+
+    insert into orderInformation
+        (id, fullname, phoneNumber, address)
+    values
+        (@orderId, @fullname, @phoneNumber, @address)
+end
+go
+
 CREATE PROCEDURE getCartItems
     @userId int
 AS
@@ -930,6 +946,21 @@ BEGIN
 -- -4: Cancelled
 -- -5: Shipping
 -- -6: Completed
+END
+go
+
+CREATE PROCEDURE getOrderInformation
+    @orderId int
+AS
+BEGIN
+    SELECT
+        fullname,
+        phoneNumber,
+        address
+    FROM
+        orderInformation
+    WHERE
+        id = @orderId
 END
 go
 

@@ -40,7 +40,7 @@
                 <td><%=ssd.getId()%> </td>
                 <td><%=sellingPrice%> </td>
                 <td><%=costPrice%> </td>
-                <td><img src="<%=ssd.getId()%>.png" style="width: 100px; height: auto;"/></td>
+                <td><img src="images/<%=ssd.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=ssd.getName()%> </td>
                 <td><%=ssd.getConnectionInterface()%> </td>
                 <td><%=ssd.getCapacity()%> </td>

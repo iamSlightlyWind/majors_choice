@@ -41,7 +41,7 @@ public class FilterRAMsServlet extends HttpServlet {
         request.setAttribute("from", from_raw);
         request.setAttribute("to", to_raw);
         request.setAttribute("latess", latency);
-        request.setAttribute("generss", generation);
+        request.setAttribute("generations", generation);
         request.setAttribute("speeds", speed);
         request.setAttribute("capacitys", capacity);
 

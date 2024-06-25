@@ -41,7 +41,7 @@
                 <td><%=ram.getId()%> </td>
                 <td><%=sellingPrice%> </td>
                 <td><%=costPrice%> </td>
-                <td><img src="<%=ram.getId()%>.png" style="width: 100px; height: auto;"/></td>
+                <td><img src="images/<%=ram.getId()%>.png" style="width: 100px; height: auto;"/></td>
                 <td><%=ram.getName()%> </td>
                 <td><%=ram.getGeneration()%> </td>
                 <td><%=ram.getCapacity()%> </td>

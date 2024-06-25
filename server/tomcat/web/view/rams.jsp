@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
-  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -183,9 +183,11 @@
                         <span class="navbar-whoweare thq-body-small thq-link">
                           <span>Who we are</span>
                         </span>
-                        <span class="navbar-manager-order thq-body-small thq-link">
-                          Manager Order
-                        </span>
+                        <a href="/order">
+                          <span class="navbar-manager-order thq-body-small thq-link">
+                            Manage Order
+                          </span>
+                        </a>
                       </div>
                     </nav>
                     <div class="navbar-buttons">
@@ -198,7 +200,7 @@
                           d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                         </path>
                       </svg>
-                      <a href="login.html" class="navbar-account thq-button-filled">
+                      <a href="/profile" class="navbar-account thq-button-filled">
                         <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                           <path
                             d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -258,26 +260,33 @@
                 </header>
               </header>
             </div>
-            <div class="menu-function-container menu-function-root-class-name">
-              <div class="menu-function-manager">
-                <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                  <span>Manager WareHouse</span>
-                </span>
-                <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                  Manager Customer
-                </span>
-                <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                  <span>Feedback</span>
-                  <br />
-                </span>
-                <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                  Manager Staff
-                </span>
-                <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                  Financial Reports
-                </span>
+               <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+              .equals(role)) { %>
+              <div class="menu-function-container menu-function-root-class-name">
+                <div class="menu-function-manager">
+                  <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
+                    <span>Manage WareHouse</span>
+                  </span>
+                  <a href="/manage/profile?actor=user">
+                    <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                      Manage Customer
+                    </span>
+                  </a>
+                  <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
+                    <span>Manage Order</span>
+                    <br />
+                  </span>
+                  <a href="/manage/profile?actor=staff">
+                    <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                      Manage Staff
+                    </span>
+                  </a>
+                  <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                    Financial Reports
+                  </span>
+                </div>
               </div>
-            </div>
+        <% } %>
           </div>
           <div class="view-all-product-cpu-body">
             <div class="view-all-product-cpu-link-page">
@@ -343,7 +352,7 @@
                   </span>
                   <div class="view-all-product-cpu-container05">
                     <input type="checkbox" class="view-all-product-cpu-checkbox" name="generation" value="ddr4"
-                      <c:forEach var="gener" items="generss">
+                    <c:forEach var="gener" items="generations">
                     <c:if test="${gener == 'ddr4'}">
                       checked
                     </c:if>
@@ -356,7 +365,7 @@
                   </div>
                   <div class="view-all-product-cpu-container05">
                     <input type="checkbox" class="view-all-product-cpu-checkbox" name="generation" value="ddr5"
-                      <c:forEach var="gener" items="generss">
+                      <c:forEach var="gener" items="generations">
                     <c:if test="${gener == 'ddr5'}">
                       checked
                     </c:if>
@@ -572,18 +581,20 @@
               </div>
               <div class="view-all-product-cpu-container09">
                 <c:forEach var="ram" items="${requestScope.rams}">
-                  <div class="component1-container component1-root-class-name">
+                    <a href="/view/detail/product?category=ram&id=${ram.id}">
+                        <div class="component1-container component1-root-class-name">
                     <img alt="image"
                       src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
                       loading="eager" class="component1-image" />
                     <h1 class="component1-text thq-link">
                       <span>
-                        <a href="/view/detail/product?category=ram&id=${ram.id}">${ram.name}</a>
+                       ${ram.name}
                       </span>
                     </h1>
                     <span class="component1-text1">
-                     <fmt:formatNumber value="${ram.sellingPrice}" var="ramSelling" />
-                      <span>${ramSelling}</span>
+                      <fmt:setLocale value="vi_VN"/>
+                      <fmt:formatNumber value="${ram.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
+                      <span id="sellingPrice">${formattedSellingPrice}</span>
                       <br />
                     </span>
                     <div class="component1-container1">
@@ -598,6 +609,7 @@
                       </a>
                     </div>
                   </div>
+                    </a>
                 </c:forEach>
               </div>
             </div>
