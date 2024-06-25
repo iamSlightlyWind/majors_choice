@@ -87,7 +87,6 @@ EXEC addProductCPU
     @tdp = 65,
     @igpu = 'Radeon Vega 7',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -103,7 +102,6 @@ EXEC addProductCPU
     @tdp = 65,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -119,7 +117,6 @@ EXEC addProductCPU
     @tdp = 170,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -135,7 +132,6 @@ EXEC addProductCPU
     @tdp = 65,
     @igpu = 'Radeon Vega 6',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -151,7 +147,6 @@ EXEC addProductCPU
     @tdp = 65,
     @igpu = 'Radeon Vega 7',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEc addProductCPU
@@ -167,7 +162,6 @@ EXEc addProductCPU
     @tdp = 46,
     @igpu = 'Radeon Vega 7',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -183,7 +177,6 @@ EXEC addProductCPU
     @tdp = 65,
     @igpu = 'Radeon Vega 7',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -199,7 +192,6 @@ EXEC addProductCPU
     @tdp = 65,
     @igpu = 'Radeon Vega 7',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -215,7 +207,6 @@ EXEC addProductCPU
     @tdp = 105,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -231,7 +222,6 @@ EXEC addProductCPU
     @tdp = 105,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -247,7 +237,6 @@ EXEC addProductCPU
     @tdp = 105,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -263,7 +252,6 @@ EXEC addProductCPU
     @tdp = 105,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -279,7 +267,6 @@ EXEC addProductCPU
     @tdp = 105,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -295,7 +282,6 @@ EXEC addProductCPU
     @tdp = 170,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -311,7 +297,6 @@ EXEC addProductCPU
     @tdp = 170,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductCPU
@@ -327,7 +312,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -344,7 +328,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = 'Intel UHD Graphics 770',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -361,7 +344,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = 'Intel UHD Graphics 770',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -378,7 +360,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = 'Intel UHD Graphics 770',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -395,7 +376,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = 'Intel UHD Graphics 770',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -412,7 +392,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -429,7 +408,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -446,7 +424,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = 'Intel UHD Graphics 770',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -463,7 +440,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = 'Intel UHD Graphics 770',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -480,7 +456,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -497,7 +472,6 @@ EXEC addProductCPU
     @tdp = 125,
     @igpu = '',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -512,7 +486,6 @@ EXEC addProductGPU
     @boostClock = 2250,
     @tdp = 300,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -526,7 +499,6 @@ EXEC addProductGPU
     @boostClock = 2250,
     @tdp = 300,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -540,7 +512,6 @@ EXEC addProductGPU
     @boostClock = 2581,
     @tdp = 230,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -554,7 +525,6 @@ EXEC addProductGPU
     @boostClock = 2589,
     @tdp = 160,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -568,7 +538,6 @@ EXEC addProductGPU
     @boostClock = 1695,
     @tdp = 350,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -582,7 +551,6 @@ EXEC addProductGPU
     @boostClock = 1710,
     @tdp = 320,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -596,7 +564,6 @@ EXEC addProductGPU
     @boostClock = 1725,
     @tdp = 220,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -610,7 +577,6 @@ EXEC addProductGPU
     @boostClock = 1665,
     @tdp = 200,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -624,7 +590,6 @@ EXEC addProductGPU
     @boostClock = 2400,
     @tdp = 355,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -638,7 +603,6 @@ EXEC addProductGPU
     @boostClock = 2200,
     @tdp = 300,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -652,7 +616,6 @@ EXEC addProductGPU
     @boostClock = 2100,
     @tdp = 290,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -666,7 +629,6 @@ EXEC addProductGPU
     @boostClock = 2000,
     @tdp = 250,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -680,7 +642,6 @@ EXEC addProductGPU
     @boostClock = 2100,
     @tdp = 190,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -694,7 +655,6 @@ EXEC addProductGPU
     @boostClock = 2520,
     @tdp = 450,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -708,7 +668,6 @@ EXEC addProductGPU
     @boostClock = 2505,
     @tdp = 320,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -722,7 +681,6 @@ EXEC addProductGPU
     @boostClock = 2610,
     @tdp = 285,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -736,7 +694,6 @@ EXEC addProductGPU
     @boostClock = 2450,
     @tdp = 250,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -750,7 +707,6 @@ EXEC addProductGPU
     @boostClock = 2400,
     @tdp = 220,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -766,7 +722,6 @@ EXEC addProductRAM
     @speed = 2400,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -779,7 +734,6 @@ EXEC addProductRAM
     @speed = 2666,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -792,7 +746,6 @@ EXEC addProductRAM
     @speed = 3000,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -805,7 +758,6 @@ EXEC addProductRAM
     @speed = 3200,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -818,7 +770,6 @@ EXEC addProductRAM
     @speed = 3600,
     @latentcy = 18,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -831,7 +782,6 @@ EXEC addProductRAM
     @speed = 2400,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -844,7 +794,6 @@ EXEC addProductRAM
     @speed = 2666,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -857,7 +806,6 @@ EXEC addProductRAM
     @speed = 3000,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -870,7 +818,6 @@ EXEC addProductRAM
     @speed = 3200,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -883,7 +830,6 @@ EXEC addProductRAM
     @speed = 3600,
     @latentcy = 18,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -896,7 +842,6 @@ EXEC addProductRAM
     @speed = 2400,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -909,7 +854,6 @@ EXEC addProductRAM
     @speed = 2666,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -922,7 +866,6 @@ EXEC addProductRAM
     @speed = 3000,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -935,7 +878,6 @@ EXEC addProductRAM
     @speed = 2133,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -948,7 +890,6 @@ EXEC addProductRAM
     @speed = 2400,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -961,7 +902,6 @@ EXEC addProductRAM
     @speed = 2666,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -974,7 +914,6 @@ EXEC addProductRAM
     @speed = 3000,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -987,7 +926,6 @@ EXEC addProductRAM
     @speed = 3200,
     @latentcy = 18,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1000,7 +938,6 @@ EXEC addProductRAM
     @speed = 3466,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1013,7 +950,6 @@ EXEC addProductRAM
     @speed = 2133,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1026,7 +962,6 @@ EXEC addProductRAM
     @speed = 2400,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1039,7 +974,6 @@ EXEC addProductRAM
     @speed = 2666,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1052,7 +986,6 @@ EXEC addProductRAM
     @speed = 3000,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1065,7 +998,6 @@ EXEC addProductRAM
     @speed = 3200,
     @latentcy = 18,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1078,7 +1010,6 @@ EXEC addProductRAM
     @speed = 3466,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1091,7 +1022,6 @@ EXEC addProductRAM
     @speed = 3200,
     @latentcy = 18,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1104,7 +1034,6 @@ EXEC addProductRAM
     @speed = 2400,
     @latentcy = 15,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1117,7 +1046,6 @@ EXEC addProductRAM
     @speed = 2666,
     @latentcy = 15,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1130,7 +1058,6 @@ EXEC addProductRAM
     @speed = 2800,
     @latentcy = 15,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1143,7 +1070,6 @@ EXEC addProductRAM
     @speed = 3000,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1156,7 +1082,6 @@ EXEC addProductRAM
     @speed = 2800,
     @latentcy = 15,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1169,7 +1094,6 @@ EXEC addProductRAM
     @speed = 3000,
     @latentcy = 15,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1182,7 +1106,6 @@ EXEC addProductRAM
     @speed = 3200,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1195,7 +1118,6 @@ EXEC addProductRAM
     @speed = 3600,
     @latentcy = 19,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1208,7 +1130,6 @@ EXEC addProductRAM
     @speed = 2666,
     @latentcy = 18,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1221,7 +1142,6 @@ EXEC addProductRAM
     @speed = 3200,
     @latentcy = 16,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1234,7 +1154,6 @@ EXEC addProductRAM
     @speed = 5600,
     @latentcy = 28,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1247,7 +1166,6 @@ EXEC addProductRAM
     @speed = 6000,
     @latentcy = 32,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1260,7 +1178,6 @@ EXEC addProductRAM
     @speed = 6400,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1273,7 +1190,6 @@ EXEC addProductRAM
     @speed = 6000,
     @latentcy = 30,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1286,7 +1202,6 @@ EXEC addProductRAM
     @speed = 5200,
     @latentcy = 40,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1299,7 +1214,6 @@ EXEC addProductRAM
     @speed = 5600,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1312,7 +1226,6 @@ EXEC addProductRAM
     @speed = 6000,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1325,7 +1238,6 @@ EXEC addProductRAM
     @speed = 6200,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1338,7 +1250,6 @@ EXEC addProductRAM
     @speed = 6400,
     @latentcy = 38,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1351,7 +1262,6 @@ EXEC addProductRAM
     @speed = 6600,
     @latentcy = 38,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1364,7 +1274,6 @@ EXEC addProductRAM
     @speed = 6800,
     @latentcy = 40,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1377,7 +1286,6 @@ EXEC addProductRAM
     @speed = 7000,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1390,7 +1298,6 @@ EXEC addProductRAM
     @speed = 7000,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1403,7 +1310,6 @@ EXEC addProductRAM
     @speed = 5200,
     @latentcy = 40,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1416,7 +1322,6 @@ EXEC addProductRAM
     @speed = 5600,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1429,7 +1334,6 @@ EXEC addProductRAM
     @speed = 6000,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1442,7 +1346,6 @@ EXEC addProductRAM
     @speed = 6200,
     @latentcy = 36,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1455,7 +1358,6 @@ EXEC addProductRAM
     @speed = 6400,
     @latentcy = 38,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1468,7 +1370,6 @@ EXEC addProductRAM
     @speed = 6400,
     @latentcy = 38,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1487,7 +1388,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1505,7 +1405,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1523,7 +1422,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1541,7 +1439,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1559,7 +1456,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1577,7 +1473,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1595,7 +1490,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1613,7 +1507,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1631,7 +1524,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1649,7 +1541,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1667,7 +1558,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1685,7 +1575,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1703,7 +1592,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1721,7 +1609,6 @@ EXEC addProductMotherboard
     @ramSlots = 4,
     @wifi = 1,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1733,7 +1620,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1744,7 +1630,6 @@ EXEC addProductPSU
     @wattage = 750,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1755,7 +1640,6 @@ EXEC addProductPSU
     @wattage = 1000,
     @efficiency = '80+ Titanium',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1766,7 +1650,6 @@ EXEC addProductPSU
     @wattage = 650,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1777,7 +1660,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Platinum',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1788,7 +1670,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1799,7 +1680,6 @@ EXEC addProductPSU
     @wattage = 1600,
     @efficiency = '80+ Titanium',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1810,7 +1690,6 @@ EXEC addProductPSU
     @wattage = 750,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1821,7 +1700,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Platinum',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1832,7 +1710,6 @@ EXEC addProductPSU
     @wattage = 750,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1843,7 +1720,6 @@ EXEC addProductPSU
     @wattage = 750,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1854,7 +1730,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Platinum',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1865,7 +1740,6 @@ EXEC addProductPSU
     @wattage = 760,
     @efficiency = '80+ Platinum',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1876,7 +1750,6 @@ EXEC addProductPSU
     @wattage = 650,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1887,7 +1760,6 @@ EXEC addProductPSU
     @wattage = 750,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1898,7 +1770,6 @@ EXEC addProductPSU
     @wattage = 750,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1909,7 +1780,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Platinum',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1920,7 +1790,6 @@ EXEC addProductPSU
     @wattage = 750,
     @efficiency = '80+ Gold',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1931,7 +1800,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Platinum',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1942,7 +1810,6 @@ EXEC addProductPSU
     @wattage = 850,
     @efficiency = '80+ Platinum',
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 
@@ -1955,7 +1822,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 512,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -1966,7 +1832,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -1977,7 +1842,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -1988,7 +1852,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 512,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -1999,7 +1862,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2010,7 +1872,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2021,7 +1882,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 512,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2032,7 +1892,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2043,7 +1902,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2054,7 +1912,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2065,7 +1922,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2076,7 +1932,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 512,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2087,7 +1942,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2098,7 +1952,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2109,7 +1962,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 512,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2120,7 +1972,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2131,7 +1982,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2142,7 +1992,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2153,7 +2002,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2164,7 +2012,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2175,7 +2022,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2186,7 +2032,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2197,7 +2042,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2208,7 +2052,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2219,7 +2062,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2230,7 +2072,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2241,7 +2082,6 @@ EXEC addProductSSD
     @capacity = 512,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2252,7 +2092,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2263,7 +2102,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2274,7 +2112,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2285,7 +2122,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2296,7 +2132,6 @@ EXEC addProductSSD
     @capacity = 4096,
     @cache = 4096,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2307,7 +2142,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2318,7 +2152,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2329,7 +2162,6 @@ EXEC addProductSSD
     @capacity = 4096,
     @cache = 4096,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2340,7 +2172,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2351,7 +2182,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2362,7 +2192,6 @@ EXEC addProductSSD
     @capacity = 4096,
     @cache = 4096,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2373,7 +2202,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2384,7 +2212,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2395,7 +2222,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2406,7 +2232,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2417,7 +2242,6 @@ EXEC addProductSSD
     @capacity = 4096,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2428,7 +2252,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 1024,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2439,7 +2262,6 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 2048,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2450,7 +2272,6 @@ EXEC addProductSSD
     @capacity = 4096,
     @cache = 4096,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2461,7 +2282,6 @@ EXEC addProductSSD
     @capacity = 1024,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
 
 EXEC addProductSSD
@@ -2472,5 +2292,4 @@ EXEC addProductSSD
     @capacity = 2048,
     @cache = 0,
     @image = '',
-    @quantity = 10,
     @result = @result OUTPUT
