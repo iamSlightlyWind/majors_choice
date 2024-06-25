@@ -67,6 +67,20 @@ public class CPU extends Product {
         this.tdp = tdp;
     }
 
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, String igpu, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.generation = generation;
+        this.socket = socket;
+        this.cores = cores;
+        this.threads = threads;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+        this.tdp = tdp;
+        this.image = image;
+        this.igpu = igpu;
+    }
+    
+
     public CPU(int id) {
         super(id);
         Database db = new Database();
@@ -172,5 +186,13 @@ public class CPU extends Product {
 
     public void setIgpu(String igpu) {
         this.igpu = igpu;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getCostPrice() {
+        return costPrice;
     }
 }
