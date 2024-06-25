@@ -27,6 +27,7 @@
                 <th>capacity</th>
                 <th>speed</th>
                 <th>latency</th>
+                <th>quantity</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -46,6 +47,7 @@
                 <td><%=ram.getCapacity()%> </td>
                 <td><%=ram.getSpeed()%> </td>
                 <td><%=ram.getLatency()%> </td>
+                <td><%=ram.getQuantity()%> </td>
                 <td><a href="rams?service=update&id=<%=ram.getId()%>">Update</a></td>
                 <td><a href="rams?service=delete&id=<%=ram.getId()%>">Delete</a></td>
             </tr>

@@ -37,6 +37,10 @@
                     <td><input type="text" name="generation" value="<%=cpu.getGeneration()%>"></td>
                 </tr>
                 <tr>
+                    <td>igpu</td>
+                    <td><input type="text" name="igpu" value="<%=cpu.getIgpu()%>"></td>
+                </tr>
+                <tr>
                     <td>Socket</td>
                     <td><input type="text" name="socket" value="<%=cpu.getSocket()%>"></td>
                 </tr>
@@ -59,6 +63,10 @@
                 <tr>
                     <td>TDP</td>
                     <td><input type="number" name="tdp" value="<%=cpu.getTdp()%>"></td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" value="<%=cpu.getQuantity()%>"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Update CPU"></td>

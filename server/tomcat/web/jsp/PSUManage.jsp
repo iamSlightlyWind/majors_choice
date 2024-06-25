@@ -25,6 +25,7 @@
                 <th>name</th>
                 <th>wattage</th>
                 <th>effciency</th>
+                <th>quantity</th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
@@ -42,6 +43,7 @@
                 <td><%=psu.getName()%> </td>
                 <td><%=psu.getWattage()%> </td>
                 <td><%=psu.getEfficiency()%> </td>
+                <td><%=psu.getQuantity()%> </td>
                 <td><a href="psus?service=update&id=<%=psu.getId()%>">Update</a></td>
                 <td><a href="psus?service=delete&id=<%=psu.getId()%>">Delete</a></td>
             </tr>

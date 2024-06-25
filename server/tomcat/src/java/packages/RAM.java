@@ -40,6 +40,15 @@ public class RAM extends Product {
         this.image = image;
     }
 
+    public RAM(String generation, int capacity, int speed, int latency, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.generation = generation;
+        this.capacity = capacity;
+        this.speed = speed;
+        this.latency = latency;
+        this.image = image;
+    }
+
     public RAM(int id) {
         super(id);
         Database db = new Database();
@@ -55,6 +64,7 @@ public class RAM extends Product {
                 this.capacity = ram.capacity;
                 this.speed = ram.speed;
                 this.latency = ram.latency;
+                this.quantity = ram.quantity;
                 return;
             }
         }

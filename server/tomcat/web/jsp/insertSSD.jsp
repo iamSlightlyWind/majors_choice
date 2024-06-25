@@ -39,6 +39,10 @@
                     <td><input type="number" name="cache"></td>
                 </tr>
                 <tr>
+                    <td>quantity</td>
+                    <td><input type="number" name="quantity"></td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="submit" value="Add SSD"></td>
                     <td><input type="reset" value="Reset"></td>
                 </tr>       

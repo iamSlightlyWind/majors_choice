@@ -45,6 +45,18 @@ public class GPU extends Product {
         this.tdp = tdp;
     }
 
+    public GPU(String generation, int vram, int baseClock, int boostClock, int tdp, String image, 
+            String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.generation = generation;
+        this.vram = vram;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+        this.tdp = tdp;
+        this.image = image;
+    }
+    
+
     public GPU(int id) {
         super(id);
         Database db = new Database();
@@ -61,6 +73,7 @@ public class GPU extends Product {
                 this.baseClock = gpu.baseClock;
                 this.boostClock = gpu.boostClock;
                 this.tdp = gpu.tdp;
+                this.quantity = gpu.quantity;
                 return;
             }
         }
