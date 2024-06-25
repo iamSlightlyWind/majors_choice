@@ -244,6 +244,7 @@ create PROCEDURE addProductCPU
     @tdp int,
     @igpu nvarchar(50),
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -264,9 +265,9 @@ BEGIN
     SET @id = SCOPE_IDENTITY()
 
     INSERT INTO cpus
-        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, igpu, image)
+        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, igpu, quantity, image)
     VALUES
-        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @igpu, @image)
+        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @igpu, @quantity, @image)
 
     SET @result = 1
 END
@@ -282,6 +283,7 @@ create PROCEDURE addProductGPU
     @boostClock int,
     @tdp int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -302,9 +304,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO gpus
-        (id, name, generation, vram, baseClock, boostClock, tdp, image)
+        (id, name, generation, vram, baseClock, boostClock, tdp, quantity, image)
     VALUES
-        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @image)
+        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @quantity, @image)
 
     set @result = 1
 END
@@ -319,6 +321,7 @@ create PROCEDURE addProductRAM
     @speed int,
     @latentcy int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -339,9 +342,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO rams
-        (id, name, generation, capacity, speed, latency, image)
+        (id, name, generation, capacity, speed, latency, quantity, image)
     VALUES
-        (@id, @name, @generation, @capacity, @speed, @latentcy, @image)
+        (@id, @name, @generation, @capacity, @speed, @latentcy, @quantity, @image)
 
     set @result = 1
 END
@@ -361,6 +364,7 @@ create PROCEDURE addProductMotherboard
     @ramSlots int,
     @wifi int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -381,9 +385,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO motherboards
-        (id, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image)
+        (id, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, quantity, image)
     VALUES
-        (@id, @name, @socket, @chipset, @igpu, @formFactor, @ramType, @maxRamSpeed, @maxRamCapacity, @ramSlots, @wifi, @image)
+        (@id, @name, @socket, @chipset, @igpu, @formFactor, @ramType, @maxRamSpeed, @maxRamCapacity, @ramSlots, @wifi, @quantity, @image)
 
     set @result = 1
 END
@@ -397,6 +401,7 @@ create PROCEDURE addProductSSD
     @capacity int,
     @cache int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -417,9 +422,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO ssds
-        (id, name, interface, capacity, cache, image)
+        (id, name, interface, capacity, cache, quantity, image)
     VALUES
-        (@id, @name, @interface, @capacity, @cache, @image)
+        (@id, @name, @interface, @capacity, @cache, @quantity, @image)
 
     set @result = 1
 END
@@ -432,6 +437,7 @@ create PROCEDURE addProductPSU
     @wattage int,
     @efficiency nvarchar(10),
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -452,9 +458,9 @@ BEGIN
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO psus
-        (id, name, wattage, efficiency, image)
+        (id, name, wattage, efficiency, quantity, image)
     VALUES
-        (@id, @name, @wattage, @efficiency, @image)
+        (@id, @name, @wattage, @efficiency, @quantity, @image)
 
     set @result = 1
 END
@@ -1049,6 +1055,7 @@ CREATE PROCEDURE updateProductCPU
     @boostClock int,
     @tdp int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -1073,6 +1080,7 @@ BEGIN
         baseClock = @baseClock,
         boostClock = @boostClock,
         tdp = @tdp,
+        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1091,6 +1099,7 @@ CREATE PROCEDURE updateProductGPU
     @boostClock int,
     @tdp int,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -1113,6 +1122,7 @@ BEGIN
         baseClock = @baseClock,
         boostClock = @boostClock,
         tdp = @tdp,
+        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1133,6 +1143,7 @@ CREATE PROCEDURE updateProductMotherboard
     @ramSlots int,
     @wifi bit,
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -1157,6 +1168,7 @@ BEGIN
         maxRamSpeed = @maxRamSpeed,
         ramSlots = @ramSlots,
         wifi = @wifi,
+        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1172,6 +1184,7 @@ CREATE PROCEDURE updateProductPSU
     @wattage int,
     @efficiency nvarchar(50),
     @image nvarchar(max),
+    @quantity int,
     @result varchar(50) output
 AS
 BEGIN
@@ -1191,6 +1204,7 @@ BEGIN
     SET name = @name,
         wattage = @wattage,
         efficiency = @efficiency,
+        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1208,7 +1222,8 @@ CREATE PROCEDURE updateProductRAM
     @speed int,
     @latency int,
     @image nvarchar(max),
-    @result varchar(50) OUTPUT
+    @quantity int,
+    @result varchar(50) output
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
@@ -1229,6 +1244,7 @@ BEGIN
         capacity = @capacity,
         speed = @speed,
         latency = @latency,
+        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1245,7 +1261,8 @@ CREATE PROCEDURE updateProductSSD
     @capacity int,
     @cache int,
     @image nvarchar(max),
-    @result varchar(50) OUTPUT
+    @quantity int,
+    @result varchar(50) output
 AS
 BEGIN
     IF NOT EXISTS (SELECT 1
@@ -1265,6 +1282,7 @@ BEGIN
         interface = @interface,
         capacity = @capacity,
         cache = @cache,
+        quantity = @quantity,
         image = @image
     WHERE id = @id
 
@@ -1293,9 +1311,7 @@ BEGIN
         IF @newQuantity >= 0
         BEGIN
             UPDATE products
-            UPDATE products
             SET quantity = @newQuantity
-            WHERE id = @productId;
             WHERE id = @productId;
         END
         ELSE
@@ -1316,6 +1332,6 @@ as
 begin
     select quantity
     from products
-    where productid = @productId
+    where id = @productId
 end
 go
