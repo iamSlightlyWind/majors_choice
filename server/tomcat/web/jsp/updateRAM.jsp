@@ -49,6 +49,10 @@
                     <td><input type="number" name="latency" value="<%=ram.getLatency()%>"></td>
                 </tr>
                 <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" value="<%=ram.getQuantity()%>"></td>
+                </tr>
+                <tr>
                     <td><input type="submit" name="submit" value="Update RAM"></td>
                     <td><input type="reset" value="Reset"></td>
                 </tr>       

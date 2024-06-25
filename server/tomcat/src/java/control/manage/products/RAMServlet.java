@@ -39,12 +39,13 @@ public class RAMServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
-                int result = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, null);
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int result = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, null, quantity);
 
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, image);
+                    int result1 = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, image, quantity);
                     response.sendRedirect("rams?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm RAM");
@@ -81,8 +82,9 @@ public class RAMServlet extends HttpServlet {
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
+                int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.updateProductRAM(id, sellingPrice, costPrice, name, generation, capacity, speed, latency, image);
+                int result = db.updateProductRAM(id, sellingPrice, costPrice, name, generation, capacity, speed, latency, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("rams?service=listAll");
                 } else {

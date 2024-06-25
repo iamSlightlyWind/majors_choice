@@ -30,10 +30,11 @@ public class CartServlet extends HttpServlet {
         }
 
         if (action == null || action.equals("viewCart")) {
-            request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
-            request.setAttribute("user", currentUser.fullName);
-            request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
             currentUser.cart.updateQuantity();
+            request.setAttribute("buyable", currentUser.cart.buyable());
+            request.setAttribute("user", currentUser.fullName);
+            request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
+            request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
             request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", currentUser.cart.total));
             request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
         } else if (action.equals("addItem")) {

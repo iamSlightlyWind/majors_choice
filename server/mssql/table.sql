@@ -38,7 +38,8 @@ create table products
     id int identity(1,1) primary key,
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
-    description nvarchar(max)
+    description nvarchar(max),
+    quantity int
 )
 
 create table cpus
@@ -121,15 +122,6 @@ create table cases
     formFactor nvarchar(50),
     color nvarchar(50),
     image nvarchar(max)
-)
-
-create table warehouses
-(
-    id int identity(1,1) primary key,
-    name nvarchar(50),
-    location nvarchar(100),
-    productid int references products(id),
-    quantity int
 )
 
 create table ratings

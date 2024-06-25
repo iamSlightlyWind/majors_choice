@@ -55,6 +55,9 @@ public class FilterMotherBoard extends HttpServlet {
         }
         for (Motherboard mobo : mobos) {
             for (String socket : sockets) {
+                if(socket.equals("lga1700")){
+                    socket = "lga 1700";
+                }
                 if(mobo.socket.toLowerCase().contains(socket.toLowerCase())){
                     list.add(mobo);
                 }
