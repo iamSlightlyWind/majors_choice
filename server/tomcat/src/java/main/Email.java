@@ -2,6 +2,8 @@ package main;
 
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
+import packages.wrap.Order;
+import packages.wrap.ProductCount;
 import java.util.Properties;
 
 public class Email {
@@ -110,7 +112,25 @@ public class Email {
         sendEmail(email, "Your order has been updated!", htmlContent);
     }
 
-    public void sendOrderConfirmation(String email, String orderID) {
+    public void sendOrderConfirmation(String email, Order order) {
+        String products = "";
+
+        /*
+         * <tr>\n" + //
+         * "                <td>Product 1</td>\n" + //
+         * "                <td>1</td>\n" + //
+         * "                <td>$50.00</td>\n" + //
+         * "            </tr>\n" + //
+         */
+
+        for (ProductCount productCount : order.quantities) {
+            products += "            <tr>\n" + //
+                    "                <td>" + productCount.name + "</td>\n" + //
+                    "                <td>" + productCount.count + "</td>\n" + //
+                    "                <td>" + productCount.getTotalPrice() + " VND</td>\n" + //
+                    "            </tr>\n";
+        }
+
         String htmlContent = head()
                 + "\n<body>\n" + //
                 "    <div class=\"container\">\n" + //
@@ -124,21 +144,21 @@ public class Email {
                 "            </tr>\n" + //
                 "            <tr>\n" + //
                 "                <td>Order ID:</td>\n" + //
-                "                <td class=\"summary-item\">0123</td>\n" + //
+                "                <td class=\"summary-item\">" + order.id + "</td>\n" + //
                 "                <td>Full Name:</td>\n" + //
-                "                <td>John Doe</td>\n" + //
+                "                <td>" + order.orderInfo.fullName + "</td>\n" + //
                 "            </tr>\n" + //
                 "            <tr>\n" + //
                 "                <td>Order Date:</td>\n" + //
-                "                <td class=\"summary-item\">28/06/2024</td>\n" + //
+                "                <td class=\"summary-item\">" + order.date + "</td>\n" + //
                 "                <td>Phone Number:</td>\n" + //
-                "                <td>123-456-7890</td>\n" + //
+                "                <td>" + order.orderInfo.phoneNumber + "</td>\n" + //
                 "            </tr>\n" + //
                 "            <tr>\n" + //
                 "                <td>Order Total:</td>\n" + //
-                "                <td class=\"summary-item\">$100.00</td>\n" + //
+                "                <td class=\"summary-item\">" + order.getCartTotal() + " VND</td>\n" + //
                 "                <td>Address:</td>\n" + //
-                "                <td>1234 Street, City, Country</td>\n" + //
+                "                <td>" + order.orderInfo.address + "</td>\n" + //
                 "            </tr>\n" + //
                 "        </table>\n" + //
                 "\n" + //
@@ -151,25 +171,11 @@ public class Email {
                 "                <td class=\"section-header\">Quantity</td>\n" + //
                 "                <td class=\"section-header\">Subtotal</td>\n" + //
                 "            </tr>\n" + //
-                "            <tr>\n" + //
-                "                <td>Product 1</td>\n" + //
-                "                <td>1</td>\n" + //
-                "                <td>$50.00</td>\n" + //
-                "            </tr>\n" + //
-                "            <tr>\n" + //
-                "                <td>Product 2</td>\n" + //
-                "                <td>1</td>\n" + //
-                "                <td>$50.00</td>\n" + //
-                "            </tr>\n" + //
-                "            <tf>\n" + //
-                "                <td>Product 3</td>\n" + //
-                "                <td>1</td>\n" + //
-                "                <td>$50.00</td>\n" + //
-                "            </tf>\n" + //
+                products + //
                 "        </table>\n" + //
                 "\n" + //
                 "        <p>You can check the status of your order by clicking <a class=\"link\"\n" + //
-                "                href=\"https://choice.themajorones.dev/order?id=" + orderID
+                "                href=\"https://choice.themajorones.dev/order?id=" + order.id
                 + "&action=viewDetails\">here</a>.</p>\n" + //
                 "\n" + //
                 "        <br>\n" + //
@@ -203,115 +209,115 @@ public class Email {
     }
 
     protected String style = "body {\n" + //
-                "    font-family: Arial, sans-serif;\n" + //
-                "    background-color: #f4f4f4;\n" + //
-                "    margin: 0;\n" + //
-                "    padding: 0;\n" + //
-                "    display: flex;\n" + //
-                "    justify-content: center;\n" + //
-                "    align-items: center;\n" + //
-                "    height: 100vh;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".container {\n" + //
-                "    background-color: #ffffff;\n" + //
-                "    border-radius: 8px;\n" + //
-                "    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n" + //
-                "    padding: 20px;\n" + //
-                "    max-width: 800px;\n" + //
-                "    width: 100%;\n" + //
-                "    text-align: center;\n" + //
-                "}\n" + //
-                "\n" + //
-                "p {\n" + //
-                "    color: #666;\n" + //
-                "    line-height: 1.6;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".code {\n" + //
-                "    font-size: 1.2em;\n" + //
-                "    font-weight: bold;\n" + //
-                "    color: #2c3e50;\n" + //
-                "    background-color: #ecf0f1;\n" + //
-                "    padding: 10px;\n" + //
-                "    border-radius: 5px;\n" + //
-                "    display: inline-block;\n" + //
-                "    margin: 20px 0;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".link {\n" + //
-                "    color: #2980b9;\n" + //
-                "    text-decoration: none;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".link:hover {\n" + //
-                "    text-decoration: underline;\n" + //
-                "}\n" + //
-                "\n" + //
-                "body {\n" + //
-                "    font-family: Arial, sans-serif;\n" + //
-                "    background-color: #f4f4f4;\n" + //
-                "    margin: 0;\n" + //
-                "    padding: 0;\n" + //
-                "    display: flex;\n" + //
-                "    justify-content: center;\n" + //
-                "    align-items: center;\n" + //
-                "    height: 100vh;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".container {\n" + //
-                "    background-color: #ffffff;\n" + //
-                "    border-radius: 8px;\n" + //
-                "    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n" + //
-                "    padding: 20px;\n" + //
-                "    max-width: 800px;\n" + //
-                "    width: 100%;\n" + //
-                "    text-align: center;\n" + //
-                "}\n" + //
-                "\n" + //
-                "h1 {\n" + //
-                "    color: #333;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".link {\n" + //
-                "    color: #2980b9;\n" + //
-                "    text-decoration: none;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".link:hover {\n" + //
-                "    text-decoration: underline;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".footer {\n" + //
-                "    color: #999;\n" + //
-                "    font-size: 0.8em;\n" + //
-                "    margin-top: 20px;\n" + //
-                "    clear: both;\n" + //
-                "}\n" + //
-                "\n" + //
-                "table {\n" + //
-                "    border-collapse: collapse;\n" + //
-                "    max-width: 75%;\n" + //
-                "    min-width: 50%;\n" + //
-                "    margin: auto;\n" + //
-                "    background-color: #ecf0f1;\n" + //
-                "}\n" + //
-                "\n" + //
-                "td,\n" + //
-                "th {\n" + //
-                "    padding: 8px;\n" + //
-                "    text-align: left;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".section-header {\n" + //
-                "    color: white;\n" + //
-                "    font-weight: bold;\n" + //
-                "    background-color: #E65103;\n" + //
-                "}\n" + //
-                "\n" + //
-                ".summary-item {\n" + //
-                "    border-right: 2px solid white;\n" + //
-                "}";
+            "    font-family: Arial, sans-serif;\n" + //
+            "    background-color: #f4f4f4;\n" + //
+            "    margin: 0;\n" + //
+            "    padding: 0;\n" + //
+            "    display: flex;\n" + //
+            "    justify-content: center;\n" + //
+            "    align-items: center;\n" + //
+            "    height: 100vh;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".container {\n" + //
+            "    background-color: #ffffff;\n" + //
+            "    border-radius: 8px;\n" + //
+            "    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n" + //
+            "    padding: 20px;\n" + //
+            "    max-width: 800px;\n" + //
+            "    width: 100%;\n" + //
+            "    text-align: center;\n" + //
+            "}\n" + //
+            "\n" + //
+            "p {\n" + //
+            "    color: #666;\n" + //
+            "    line-height: 1.6;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".code {\n" + //
+            "    font-size: 1.2em;\n" + //
+            "    font-weight: bold;\n" + //
+            "    color: #2c3e50;\n" + //
+            "    background-color: #ecf0f1;\n" + //
+            "    padding: 10px;\n" + //
+            "    border-radius: 5px;\n" + //
+            "    display: inline-block;\n" + //
+            "    margin: 20px 0;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".link {\n" + //
+            "    color: #2980b9;\n" + //
+            "    text-decoration: none;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".link:hover {\n" + //
+            "    text-decoration: underline;\n" + //
+            "}\n" + //
+            "\n" + //
+            "body {\n" + //
+            "    font-family: Arial, sans-serif;\n" + //
+            "    background-color: #f4f4f4;\n" + //
+            "    margin: 0;\n" + //
+            "    padding: 0;\n" + //
+            "    display: flex;\n" + //
+            "    justify-content: center;\n" + //
+            "    align-items: center;\n" + //
+            "    height: 100vh;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".container {\n" + //
+            "    background-color: #ffffff;\n" + //
+            "    border-radius: 8px;\n" + //
+            "    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n" + //
+            "    padding: 20px;\n" + //
+            "    max-width: 800px;\n" + //
+            "    width: 100%;\n" + //
+            "    text-align: center;\n" + //
+            "}\n" + //
+            "\n" + //
+            "h1 {\n" + //
+            "    color: #333;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".link {\n" + //
+            "    color: #2980b9;\n" + //
+            "    text-decoration: none;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".link:hover {\n" + //
+            "    text-decoration: underline;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".footer {\n" + //
+            "    color: #999;\n" + //
+            "    font-size: 0.8em;\n" + //
+            "    margin-top: 20px;\n" + //
+            "    clear: both;\n" + //
+            "}\n" + //
+            "\n" + //
+            "table {\n" + //
+            "    border-collapse: collapse;\n" + //
+            "    max-width: 75%;\n" + //
+            "    min-width: 50%;\n" + //
+            "    margin: auto;\n" + //
+            "    background-color: #ecf0f1;\n" + //
+            "}\n" + //
+            "\n" + //
+            "td,\n" + //
+            "th {\n" + //
+            "    padding: 8px;\n" + //
+            "    text-align: left;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".section-header {\n" + //
+            "    color: white;\n" + //
+            "    font-weight: bold;\n" + //
+            "    background-color: #E65103;\n" + //
+            "}\n" + //
+            "\n" + //
+            ".summary-item {\n" + //
+            "    border-right: 2px solid white;\n" + //
+            "}";
 
     public void sendEmail(String address, String subject, String content) {
         Properties props = new Properties();

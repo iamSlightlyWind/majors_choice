@@ -17,8 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import main.Email;
 import main.User;
-import packages.wrap.Cart;
-import packages.wrap.ProductCount;
+import packages.wrap.*;
 
 public class Validate extends HttpServlet {
 
@@ -37,9 +36,14 @@ public class Validate extends HttpServlet {
                 currentUser.addOrderInformation();
 
                 currentUser.getOrders();
+                Order currentOrder = currentUser.orders.get(currentUser.orders.size() - 1);
+                currentOrder.updateQuantity();
+
                 Email email = new Email();
-                email.sendOrderConfirmation(currentUser.email,
-                        currentUser.orders.get(currentUser.orders.size() - 1).id + "");
+                email.sendOrderConfirmation(
+                        currentUser.email,
+                        currentOrder
+                        );
 
                 response.sendRedirect("/Cart");
             } else {
