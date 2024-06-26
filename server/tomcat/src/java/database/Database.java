@@ -1040,6 +1040,7 @@ public class Database {
         }
 
         for (Order order : orders) {
+            order.orderInfo = getOrderInfo(order.id);
             order.updateQuantity();
         }
         return orders;
