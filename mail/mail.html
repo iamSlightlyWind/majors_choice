@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Placed at Major's Choice!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .code {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .link {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            color: #999;
+            font-size: 0.8em;
+            margin-top: 20px;
+            clear: both;
+        }
+
+        table {
+            border-collapse: collapse;
+            max-width: 75%;
+            min-width: 50%;
+            margin: auto;
+            background-color: #ecf0f1;
+        }
+
+        td,
+        th {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .section-header {
+            color: white;
+            font-weight: bold;
+            background-color: #E65103;
+        }
+
+        .summary-item {
+            border-right: 2px solid white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Your order has been placed at Major's Choice!</h1>
+        <p>We have received your order and we'll ship it out as soon as possible.</p>
+
+        <table>
+            <tr>
+                <td colspan="2" class="section-header summary-item">Summary</td>
+                <td colspan="2" class="section-header">Shipping Address</td>
+            </tr>
+            <tr>
+                <td>Order ID:</td>
+                <td class="summary-item">0123</td>
+                <td>Full Name:</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td>Order Date:</td>
+                <td class="summary-item">28/06/2024</td>
+                <td>Phone Number:</td>
+                <td>123-456-7890</td>
+            </tr>
+            <tr>
+                <td>Order Total:</td>
+                <td class="summary-item">$100.00</td>
+                <td>Address:</td>
+                <td>1234 Street, City, Country</td>
+            </tr>
+        </table>
+
+        <p class="footer">Thank you for shopping with us!</p>
+        <p class="footer">The Major's Choice Team</p>
+        <p class="footer"><a class="link" href="https://choice.themajorones.dev">https://choice.themajorones.dev</a></p>
+    </div>
+</body>
+
+</html>

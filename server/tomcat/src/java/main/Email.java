@@ -9,58 +9,7 @@ public class Email {
     private final String password = System.getenv("EMAIL_PASSWORD");
 
     public void sendConfirmCode(String email, String code) {
-        String htmlContent = "<!DOCTYPE html>\n"
-                + "<html lang=\"en\">\n"
-                + "<head>\n"
-                + "    <meta charset=\"UTF-8\">\n"
-                + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "    <title>Welcome to Major's Choice!</title>\n"
-                + "    <style>\n"
-                + "        body {\n"
-                + "            font-family: Arial, sans-serif;\n"
-                + "            background-color: #f4f4f4;\n"
-                + "            margin: 0;\n"
-                + "            padding: 0;\n"
-                + "            display: flex;\n"
-                + "            justify-content: center;\n"
-                + "            align-items: center;\n"
-                + "            height: 100vh;\n"
-                + "        }\n"
-                + "        .container {\n"
-                + "            background-color: #ffffff;\n"
-                + "            border-radius: 8px;\n"
-                + "            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n"
-                + "            padding: 20px;\n"
-                + "            max-width: 600px;\n"
-                + "            width: 100%;\n"
-                + "            text-align: center;\n"
-                + "        }\n"
-                + "        h1 {\n"
-                + "            color: #333;\n"
-                + "        }\n"
-                + "        p {\n"
-                + "            color: #666;\n"
-                + "            line-height: 1.6;\n"
-                + "        }\n"
-                + "        .code {\n"
-                + "            font-size: 1.2em;\n"
-                + "            font-weight: bold;\n"
-                + "            color: #2c3e50;\n"
-                + "            background-color: #ecf0f1;\n"
-                + "            padding: 10px;\n"
-                + "            border-radius: 5px;\n"
-                + "            display: inline-block;\n"
-                + "            margin: 20px 0;\n"
-                + "        }\n"
-                + "        .link {\n"
-                + "            color: #2980b9;\n"
-                + "            text-decoration: none;\n"
-                + "        }\n"
-                + "        .link:hover {\n"
-                + "            text-decoration: underline;\n"
-                + "        }\n"
-                + "    </style>\n"
-                + "</head>\n"
+        String htmlContent = head
                 + "<body>\n"
                 + "    <div class=\"container\">\n"
                 + "        <h1>Welcome to Major's Choice!</h1>\n"
@@ -79,58 +28,7 @@ public class Email {
     }
 
     public void sendRecoveryPassword(String email, String password) {
-        String htmlContent = "<!DOCTYPE html>\n"
-                + "<html lang=\"en\">\n"
-                + "<head>\n"
-                + "    <meta charset=\"UTF-8\">\n"
-                + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "    <title>Welcome to Major's Choice!</title>\n"
-                + "    <style>\n"
-                + "        body {\n"
-                + "            font-family: Arial, sans-serif;\n"
-                + "            background-color: #f4f4f4;\n"
-                + "            margin: 0;\n"
-                + "            padding: 0;\n"
-                + "            display: flex;\n"
-                + "            justify-content: center;\n"
-                + "            align-items: center;\n"
-                + "            height: 100vh;\n"
-                + "        }\n"
-                + "        .container {\n"
-                + "            background-color: #ffffff;\n"
-                + "            border-radius: 8px;\n"
-                + "            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n"
-                + "            padding: 20px;\n"
-                + "            max-width: 800px;\n"
-                + "            width: 100%;\n"
-                + "            text-align: center;\n"
-                + "        }\n"
-                + "        h1 {\n"
-                + "            color: #333;\n"
-                + "        }\n"
-                + "        p {\n"
-                + "            color: #666;\n"
-                + "            line-height: 1.6;\n"
-                + "        }\n"
-                + "        .code {\n"
-                + "            font-size: 1.2em;\n"
-                + "            font-weight: bold;\n"
-                + "            color: #2c3e50;\n"
-                + "            background-color: #ecf0f1;\n"
-                + "            padding: 10px;\n"
-                + "            border-radius: 5px;\n"
-                + "            display: inline-block;\n"
-                + "            margin: 20px 0;\n"
-                + "        }\n"
-                + "        .link {\n"
-                + "            color: #2980b9;\n"
-                + "            text-decoration: none;\n"
-                + "        }\n"
-                + "        .link:hover {\n"
-                + "            text-decoration: underline;\n"
-                + "        }\n"
-                + "    </style>\n"
-                + "</head>\n"
+        String htmlContent = head
                 + "<body>\n"
                 + "    <div class=\"container\">\n"
                 + "        <h1>Recover your account at Major's Choice!</h1>\n"
@@ -149,58 +47,7 @@ public class Email {
     }
 
     public void sendGreet(String email, String username) {
-        String htmlContent = "<!DOCTYPE html>\n"
-                + "<html lang=\"en\">\n"
-                + "<head>\n"
-                + "    <meta charset=\"UTF-8\">\n"
-                + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "    <title>Welcome to Major's Choice!</title>\n"
-                + "    <style>\n"
-                + "        body {\n"
-                + "            font-family: Arial, sans-serif;\n"
-                + "            background-color: #f4f4f4;\n"
-                + "            margin: 0;\n"
-                + "            padding: 0;\n"
-                + "            display: flex;\n"
-                + "            justify-content: center;\n"
-                + "            align-items: center;\n"
-                + "            height: 100vh;\n"
-                + "        }\n"
-                + "        .container {\n"
-                + "            background-color: #ffffff;\n"
-                + "            border-radius: 8px;\n"
-                + "            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n"
-                + "            padding: 20px;\n"
-                + "            max-width: 800px;\n"
-                + "            width: 100%;\n"
-                + "            text-align: center;\n"
-                + "        }\n"
-                + "        h1 {\n"
-                + "            color: #333;\n"
-                + "        }\n"
-                + "        p {\n"
-                + "            color: #666;\n"
-                + "            line-height: 1.6;\n"
-                + "        }\n"
-                + "        .code {\n"
-                + "            font-size: 1.2em;\n"
-                + "            font-weight: bold;\n"
-                + "            color: #2c3e50;\n"
-                + "            background-color: #ecf0f1;\n"
-                + "            padding: 10px;\n"
-                + "            border-radius: 5px;\n"
-                + "            display: inline-block;\n"
-                + "            margin: 20px 0;\n"
-                + "        }\n"
-                + "        .link {\n"
-                + "            color: #2980b9;\n"
-                + "            text-decoration: none;\n"
-                + "        }\n"
-                + "        .link:hover {\n"
-                + "            text-decoration: underline;\n"
-                + "        }\n"
-                + "    </style>\n"
-                + "</head>\n"
+        String htmlContent = head
                 + "<body>\n"
                 + "    <div class=\"container\">\n"
                 + "        <h1>Welcome to Major's Choice!</h1>\n"
@@ -218,6 +65,66 @@ public class Email {
 
         sendEmail(email, "Welcome to Major's Choice!", htmlContent);
     }
+
+    protected String head = "<!DOCTYPE html>\n" + //
+            "<html lang=\"en\">\n" + //
+            "\n" + //
+            "<head>\n" + //
+            "    <meta charset=\"UTF-8\">\n" + //
+            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" + //
+            "    <style>\n" + //
+            "        body {\n" + //
+            "            font-family: Arial, sans-serif;\n" + //
+            "            background-color: #f4f4f4;\n" + //
+            "            margin: 0;\n" + //
+            "            padding: 0;\n" + //
+            "            display: flex;\n" + //
+            "            justify-content: center;\n" + //
+            "            align-items: center;\n" + //
+            "            height: 100vh;\n" + //
+            "        }\n" + //
+            "\n" + //
+            "        .container {\n" + //
+            "            background-color: #ffffff;\n" + //
+            "            border-radius: 8px;\n" + //
+            "            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n" + //
+            "            padding: 20px;\n" + //
+            "            max-width: 800px;\n" + //
+            "            width: 100%;\n" + //
+            "            text-align: center;\n" + //
+            "        }\n" + //
+            "\n" + //
+            "        h1 {\n" + //
+            "            color: #333;\n" + //
+            "        }\n" + //
+            "\n" + //
+            "        p {\n" + //
+            "            color: #666;\n" + //
+            "            line-height: 1.6;\n" + //
+            "        }\n" + //
+            "\n" + //
+            "        .code {\n" + //
+            "            font-size: 1.2em;\n" + //
+            "            font-weight: bold;\n" + //
+            "            color: #2c3e50;\n" + //
+            "            background-color: #ecf0f1;\n" + //
+            "            padding: 10px;\n" + //
+            "            border-radius: 5px;\n" + //
+            "            display: inline-block;\n" + //
+            "            margin: 20px 0;\n" + //
+            "        }\n" + //
+            "\n" + //
+            "        .link {\n" + //
+            "            color: #2980b9;\n" + //
+            "            text-decoration: none;\n" + //
+            "        }\n" + //
+            "\n" + //
+            "        .link:hover {\n" + //
+            "            text-decoration: underline;\n" + //
+            "        }\n" + //
+            "    </style>\n" + //
+            "</head>\n" + //
+            "";
 
     public void sendEmail(String address, String subject, String content) {
         Properties props = new Properties();
