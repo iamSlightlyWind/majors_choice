@@ -3,14 +3,14 @@ use major
 DECLARE @resultInt int
 -- User 1
 EXEC register
-    @username = 'davitscott', 
-    @password = 'password123', 
-    @fullname = 'Davit Scott', 
-    @email = 'davitscott@example.com', 
+    @username = 'phong', 
+    @password = 'phong', 
+    @fullname = 'Pham Thanh Phong', 
+    @email = 'alternative@themajorones.dev', 
     @phoneNumber = '123-456-7890', 
     @address = '123 Main St, Anytown, USA', 
     @dateOfBirth = '1980-01-01',
-    @confirmCode = 'BfklE',
+    @confirmCode = 'phong',
     @result = @resultInt OUTPUT
 
 -- User 2
