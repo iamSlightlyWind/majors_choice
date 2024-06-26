@@ -726,7 +726,7 @@ public class Database {
             Part filePart = request.getPart(inputName);
             String fileName = productID + ".png";
 
-            String uploadPath = request.getServletContext().getRealPath("");
+            String uploadPath = request.getServletContext().getRealPath("/images");
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
