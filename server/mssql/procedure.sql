@@ -296,9 +296,9 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice, quantity)
+        (sellingPrice, costPrice, quantity, name)
     VALUES
-        (@sellingPrice, @costPrice, @quantity)
+        (@sellingPrice, @costPrice, @quantity, @name)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
