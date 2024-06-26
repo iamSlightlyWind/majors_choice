@@ -3,6 +3,7 @@ package packages.wrap;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import packages.wrap.Order;
 import database.Database;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -96,8 +97,7 @@ public class OrderServlet extends HttpServlet {
     protected void staffCancelOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
-        db.updateOrder(Integer.parseInt(orderID), "cancel");
-        db.updateOrder(Integer.parseInt(orderID), "approve");
+        db.updateOrder(Integer.parseInt(orderID), "forceCancel");
         response.sendRedirect("/manage/order");
     }
 

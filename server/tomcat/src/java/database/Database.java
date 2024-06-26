@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import packages.wrap.Order;
 import main.Email;
 import main.User;
 import packages.*;
@@ -1144,7 +1145,11 @@ public class Database {
     public void updateOrder(int id, String action) {
         String current = getOrderStatus(id);
 
-        switch (action) {
+         switch (action) {
+            case "forceCancel":
+                RequestOrderCancel(id);
+                ApproveOrderCancel(id);
+                break;
             case "cancel":
                 if (current.equals("pending"))
                     RequestOrderCancel(id);
