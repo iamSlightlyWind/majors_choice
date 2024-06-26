@@ -7,8 +7,8 @@ import packages.wrap.ProductCount;
 import java.util.Properties;
 
 public class Email {
-    private final String username = "phongpthe182589@fpt.edu.vn";
-    private final String password = "vbnr ziks qpxr prgr";
+    private final String username = System.getenv("EMAIL_ADDRESS");
+    private final String password = System.getenv("EMAIL_PASSWORD");
 
     public void sendConfirmCode(String email, String code) {
         String htmlContent = head()
