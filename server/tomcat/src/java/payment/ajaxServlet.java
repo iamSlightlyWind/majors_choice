@@ -61,7 +61,7 @@ public class ajaxServlet extends HttpServlet {
             vnp_Params.put("vnp_BankCode", bankCode);
         }
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Thanh toan don hang:" + vnp_TxnRef);
+        vnp_Params.put("vnp_OrderInfo", "Major's Choice Order #" + vnp_TxnRef);
         vnp_Params.put("vnp_OrderType", orderType);
 
         String locate = request.getParameter("language");
