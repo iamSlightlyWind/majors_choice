@@ -27,6 +27,7 @@ public class ProductDetail extends HttpServlet {
         if(id_raw!=null){
             id = Integer.parseInt(id_raw);
         }
+        request.setAttribute("category", category);
         switch(category){
             case "cpu":
                 CPU cpu = new CPU(id);
