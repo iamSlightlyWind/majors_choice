@@ -15,9 +15,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.Email;
 import main.User;
-import packages.wrap.Cart;
-import packages.wrap.ProductCount;
+import packages.wrap.*;
 
 public class Validate extends HttpServlet {
 
@@ -34,6 +34,17 @@ public class Validate extends HttpServlet {
             if (status.equals("00")) {
                 currentUser.cart.placeOrder();
                 currentUser.addOrderInformation();
+
+                currentUser.getOrders();
+                Order currentOrder = currentUser.orders.get(currentUser.orders.size() - 1);
+                currentOrder.updateQuantity();
+
+                Email email = new Email();
+                email.sendOrderConfirmation(
+                        currentUser.email,
+                        currentOrder
+                        );
+
                 response.sendRedirect("/Cart");
             } else {
                 request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));

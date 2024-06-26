@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.Email;
 import main.User;
 import packages.*;
 import packages.wrap.*;
@@ -102,7 +103,7 @@ public class Database {
                 String igpu = resultSet.getString("igpu");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
-                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, image, igpu, name, 
+                cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, image, igpu, name,
                         id, sellingPrice, costPrice, description, quantity));
             }
             return cpus;
@@ -133,7 +134,7 @@ public class Database {
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
                 gpus.add(
-                        new GPU(generation, vram, baseClock, boostClock, tdp, image, name, 
+                        new GPU(generation, vram, baseClock, boostClock, tdp, image, name,
                                 id, sellingPrice, costPrice, description, quantity));
             }
             return gpus;
@@ -162,7 +163,7 @@ public class Database {
                 int latency = resultSet.getInt("latency");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
-                rams.add(new RAM(generation, capacity, speed, latency, image, name, id, 
+                rams.add(new RAM(generation, capacity, speed, latency, image, name, id,
                         sellingPrice, costPrice, description, quantity));
             }
             return rams;
@@ -196,8 +197,9 @@ public class Database {
                 int wifi = resultSet.getInt("wifi");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
-                motherboards.add(new Motherboard(socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, 
-                        ramSlots, wifi, image, name, id, sellingPrice, costPrice, description, quantity));
+                motherboards
+                        .add(new Motherboard(socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity,
+                                ramSlots, wifi, image, name, id, sellingPrice, costPrice, description, quantity));
             }
             return motherboards;
         } catch (SQLException ex) {
@@ -224,7 +226,7 @@ public class Database {
                 int cache = resultSet.getInt("cache");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
-                ssds.add(new SSD(interfaceType, capacity, cache, image, name, id, 
+                ssds.add(new SSD(interfaceType, capacity, cache, image, name, id,
                         sellingPrice, costPrice, description, quantity));
             }
             return ssds;
@@ -251,7 +253,7 @@ public class Database {
                 String efficiency = resultSet.getString("efficiency");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
-                psus.add(new PSU(wattage, efficiency, image, name, id, 
+                psus.add(new PSU(wattage, efficiency, image, name, id,
                         sellingPrice, costPrice, description, quantity));
             }
             return psus;
@@ -265,7 +267,8 @@ public class Database {
         return null;
     }
 
-    public int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String igpu, String socket,
+    public int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String igpu,
+            String socket,
             int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
             Database db = new Database();
@@ -317,7 +320,8 @@ public class Database {
         return maxId;
     }
 
-    public int updateProductCPU(int id, double sellingPrice, double costPrice, String name, String generation, String igpu,
+    public int updateProductCPU(int id, double sellingPrice, double costPrice, String name, String generation,
+            String igpu,
             String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
             String sql = "{call updateProductCPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -465,8 +469,10 @@ public class Database {
         return n;
     }
 
-    public int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket, String chipset, int igpu,
-            String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi, String image, int quantity) {
+    public int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket, String chipset,
+            int igpu,
+            String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi,
+            String image, int quantity) {
         try {
             Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
@@ -667,7 +673,7 @@ public class Database {
             callableStatement.setInt(5, capacity);
             callableStatement.setInt(6, cache);
             callableStatement.setString(7, image);
-            callableStatement.setInt(8,quantity);
+            callableStatement.setInt(8, quantity);
             callableStatement.registerOutParameter(9, Types.NVARCHAR);
 
             callableStatement.execute();
@@ -1034,6 +1040,7 @@ public class Database {
         }
 
         for (Order order : orders) {
+            order.orderInfo = getOrderInfo(order.id);
             order.updateQuantity();
         }
         return orders;
@@ -1134,47 +1141,58 @@ public class Database {
         }
     }
 
-    public boolean updateOrder(int id, String action) {
+    public void updateOrder(int id, String action) {
         String current = getOrderStatus(id);
 
         switch (action) {
             case "cancel":
-                if (current.equals("pending")) {
+                if (current.equals("pending"))
                     RequestOrderCancel(id);
-                    return true;
-                } else {
-                    return false;
-                }
+                break;
             case "approve":
-                if (current.equals("cancel")) {
+                if (current.equals("cancel"))
                     ApproveOrderCancel(id);
-                    return true;
-                } else {
-                    return false;
-                }
+                break;
             case "deny":
-                if (current.equals("cancel")) {
+                if (current.equals("cancel"))
                     DenyOrderCancel(id);
-                    return true;
-                } else {
-                    return false;
-                }
+                break;
             case "ship":
-                if (current.equals("pending") || current.equals("denied")) {
+                if (current.equals("pending") || current.equals("denied"))
                     ShipOrder(id);
-                    return true;
-                } else {
-                    return false;
-                }
+                break;
             case "complete":
-                if (current.equals("shipping")) {
+                if (current.equals("shipping"))
                     CompleteOrder(id);
-                    return true;
-                } else {
-                    return false;
-                }
+                break;
         }
-        return false;
+
+        String address = getEmailFromOrderId(id);
+        String status = "";
+
+        switch (getOrderStatus(id)) {
+            case "pending":
+                status = "Order is pending";
+                break;
+            case "cancel":
+                status = "Cancellation request is pending";
+                break;
+            case "cancelled":
+                status = "Order has been cancelled";
+                break;
+            case "denied":
+                status = "Cancellation request denied, order is pending shipping";
+                break;
+            case "shipping":
+                status = "Order is being shipped";
+                break;
+            case "completed":
+                status = "Order has been completed";
+                break;
+        }
+
+        Email email = new Email();
+        email.sendOrderStatus(address, id + "", status);
     }
 
     public void CompleteOrder(int orderId) {
@@ -1264,5 +1282,21 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
+    }
+
+    public String getEmailFromOrderId(int orderId) {
+        try {
+            String sql = "{call GetEmailFromOrderId(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderId);
+
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                return rs.getString("email");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

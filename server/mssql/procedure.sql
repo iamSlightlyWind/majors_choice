@@ -120,7 +120,7 @@ end
 go
 
 create procedure resetPassword
-    @email varchar(25),
+    @email varchar(100),
     @password varchar(100),
     @result int output
 as
@@ -1353,4 +1353,15 @@ BEGIN
     from products
     where id = @productId
 END
+go
+
+CREATE PROCEDURE GetEmailFromOrderId
+    @OrderId INT
+AS
+BEGIN
+    SELECT ud.email
+    FROM userDetails ud
+    JOIN orders o ON ud.id = o.userId
+    WHERE o.id = @OrderId;
+END;
 go
