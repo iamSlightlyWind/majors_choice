@@ -39,13 +39,14 @@ create table products
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
     description nvarchar(max),
-    quantity int
+    quantity int,
+    name nvarchar(50),
+    image nvarchar(max)
 )
 
 create table cpus
 (
     id int references products(id),
-    name nvarchar(50),
     generation nvarchar(50),
     socket nvarchar(10),
     cores int,
@@ -53,26 +54,22 @@ create table cpus
     baseClock int,
     boostClock int,
     tdp int,
-    igpu nvarchar(50), -- igpu name
-    image nvarchar(max)
+    igpu nvarchar(50)
 )
 
 create table gpus
 (
     id int references products(id),
-    name nvarchar(50),
     generation nvarchar(50),
     vram int,
     baseClock int,
     boostClock int,
-    tdp int,
-    image nvarchar(max)
+    tdp int
 )
 
 create table motherboards
 (
     id int references products(id),
-    name nvarchar(50),
     socket nvarchar(10),
     chipset nvarchar(10),
     igpu int, -- 0 for no, 1 for yes
@@ -81,47 +78,38 @@ create table motherboards
     maxRamSpeed int,
     maxRamCapacity int, -- in GB
     ramSlots int,
-    wifi int,
-    image nvarchar(max)
+    wifi int
 )
 
 create table rams
 (
     id int references products(id),
-    name nvarchar(50),
     generation nvarchar(50),
     capacity int,
     speed int,
-    latency int,
-    image nvarchar(max)
+    latency int
 )
 
 create table ssds
 (
     id int references products(id),
-    name nvarchar(50),
     interface nvarchar(20),
     capacity int,
-    cache int,
-    image nvarchar(max)
+    cache int
 )
 
 create table psus
 (
     id int references products(id),
-    name nvarchar(50),
     wattage int,
-    efficiency nvarchar(50),
-    image nvarchar(max)
+    efficiency nvarchar(50)
 )
 
 create table cases
 (
     id int references products(id),
-    name nvarchar(50),
     formFactor nvarchar(50),
-    color nvarchar(50),
-    image nvarchar(max)
+    color nvarchar(50)
 )
 
 create table ratings
