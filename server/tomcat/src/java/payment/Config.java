@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class Config {
 
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8080/payment/validate";
+    public static String vnp_ReturnUrl = "https://choice.themajorones.dev/payment/validate";
     public static String vnp_TmnCode = System.getenv("PAYMENT_CODE");
     public static String secretKey = System.getenv("PAYMENT_SECRET");
     public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
