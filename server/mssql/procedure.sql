@@ -249,7 +249,7 @@ create PROCEDURE addProductCPU
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM cpus
+    FROM products
     WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
@@ -257,17 +257,17 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice, quantity)
+        (sellingPrice, costPrice, quantity, image, name)
     VALUES
-        (@sellingPrice, @costPrice, @quantity)
+        (@sellingPrice, @costPrice, @quantity, @image, @name)
 
     DECLARE @id int
     SET @id = SCOPE_IDENTITY()
 
     INSERT INTO cpus
-        (id, name, generation, socket, cores, threads, baseClock, boostClock, tdp, igpu, image)
+        (id, generation, socket, cores, threads, baseClock, boostClock, tdp, igpu)
     VALUES
-        (@id, @name, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @igpu, @image)
+        (@id, @generation, @socket, @cores, @threads, @baseClock, @boostClock, @tdp, @igpu)
 
     SET @result = 1
 END
@@ -288,7 +288,7 @@ create PROCEDURE addProductGPU
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM gpus
+    FROM products
     WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
@@ -296,17 +296,17 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice, quantity)
+        (sellingPrice, costPrice, quantity, name)
     VALUES
-        (@sellingPrice, @costPrice, @quantity)
+        (@sellingPrice, @costPrice, @quantity, @name)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO gpus
-        (id, name, generation, vram, baseClock, boostClock, tdp, image)
+        (id, generation, vram, baseClock, boostClock, tdp)
     VALUES
-        (@id, @name, @generation, @vram, @baseClock, @boostClock, @tdp, @image)
+        (@id, @generation, @vram, @baseClock, @boostClock, @tdp)
 
     set @result = 1
 END
@@ -326,7 +326,7 @@ create PROCEDURE addProductRAM
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM rams
+    FROM products
     WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
@@ -334,17 +334,17 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice, quantity)
+        (sellingPrice, costPrice, quantity, image, name)
     VALUES
-        (@sellingPrice, @costPrice, @quantity)
+        (@sellingPrice, @costPrice, @quantity, @image, @name)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO rams
-        (id, name, generation, capacity, speed, latency, image)
+        (id, generation, capacity, speed, latency)
     VALUES
-        (@id, @name, @generation, @capacity, @speed, @latentcy, @image)
+        (@id, @generation, @capacity, @speed, @latentcy)
 
     set @result = 1
 END
@@ -369,7 +369,7 @@ create PROCEDURE addProductMotherboard
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM motherboards
+    FROM products
     WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
@@ -377,17 +377,17 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice, quantity)
+        (sellingPrice, costPrice, quantity, image, name)
     VALUES
-        (@sellingPrice, @costPrice, @quantity)
+        (@sellingPrice, @costPrice, @quantity, @image, @name)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO motherboards
-        (id, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image)
+        (id, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi)
     VALUES
-        (@id, @name, @socket, @chipset, @igpu, @formFactor, @ramType, @maxRamSpeed, @maxRamCapacity, @ramSlots, @wifi, @image)
+        (@id, @socket, @chipset, @igpu, @formFactor, @ramType, @maxRamSpeed, @maxRamCapacity, @ramSlots, @wifi)
 
     set @result = 1
 END
@@ -406,7 +406,7 @@ create PROCEDURE addProductSSD
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM ssds
+    FROM products
     WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
@@ -414,17 +414,17 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice, quantity)
+        (sellingPrice, costPrice, quantity, image, name)
     VALUES
-        (@sellingPrice, @costPrice, @quantity)
+        (@sellingPrice, @costPrice, @quantity, @image, @name)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO ssds
-        (id, name, interface, capacity, cache, image)
+        (id, interface, capacity, cache)
     VALUES
-        (@id, @name, @interface, @capacity, @cache, @image)
+        (@id, @interface, @capacity, @cache)
 
     set @result = 1
 END
@@ -442,7 +442,7 @@ create PROCEDURE addProductPSU
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM psus
+    FROM products
     WHERE name = @name)
     BEGIN
         SET @result = 'Already exists:' + @name
@@ -450,17 +450,17 @@ BEGIN
     END
 
     INSERT INTO products
-        (sellingPrice, costPrice, quantity)
+        (sellingPrice, costPrice, quantity, image, name)
     VALUES
-        (@sellingPrice, @costPrice, @quantity)
+        (@sellingPrice, @costPrice, @quantity, @image, @name)
 
     DECLARE @id int
     set @id = SCOPE_IDENTITY()
 
     INSERT INTO psus
-        (id, name, wattage, efficiency, image)
+        (id, wattage, efficiency)
     VALUES
-        (@id, @name, @wattage, @efficiency, @image)
+        (@id, @wattage, @efficiency)
 
     set @result = 1
 END
@@ -910,26 +910,10 @@ BEGIN
         o.costPrice,
         o.status,
         o.dateOrdered,
-        CASE 
-            WHEN cpus.id IS NOT NULL THEN cpus.name
-            WHEN gpus.id IS NOT NULL THEN gpus.name
-            WHEN motherboards.id IS NOT NULL THEN motherboards.name
-            WHEN rams.id IS NOT NULL THEN rams.name
-            WHEN ssds.id IS NOT NULL THEN ssds.name
-            WHEN psus.id IS NOT NULL THEN psus.name
-            WHEN cases.id IS NOT NULL THEN cases.name
-            ELSE 'Unknown'
-        END AS productName
+        p.name AS productName
     FROM
         orders o
         INNER JOIN products p ON o.productId = p.id
-        LEFT JOIN cpus ON o.productId = cpus.id
-        LEFT JOIN gpus ON o.productId = gpus.id
-        LEFT JOIN motherboards ON o.productId = motherboards.id
-        LEFT JOIN rams ON o.productId = rams.id
-        LEFT JOIN ssds ON o.productId = ssds.id
-        LEFT JOIN psus ON o.productId = psus.id
-        LEFT JOIN cases ON o.productId = cases.id
     WHERE 
         (@userId = 0)
         OR (@userId > 0 AND o.userId = @userId)
@@ -939,13 +923,6 @@ BEGIN
         OR (@userId = -4 AND o.status = 'Cancelled')
         OR (@userId = -5 AND o.status = 'Shipping')
         OR (@userId = -6 AND o.status = 'Completed')
--- 0: All orders
--- -1: Pending orders
--- -2: Cancellation Requested
--- -3: Cancellation Denied, Shipping Pending
--- -4: Cancelled
--- -5: Shipping
--- -6: Completed
 END
 go
 
@@ -1109,20 +1086,20 @@ BEGIN
     UPDATE products
     SET sellingPrice = @sellingPrice,
         costPrice = @costPrice,
-        quantity = @quantity
+        quantity = @quantity,
+        image = @image,
+        name = @name
     WHERE id = @id
 
     UPDATE cpus
-    SET name = @name,
-        generation = @generation,
+    SET generation = @generation,
 		igpu = @igpu,
         socket = @socket,
         cores = @cores,
         threads = @threads,
         baseClock = @baseClock,
         boostClock = @boostClock,
-        tdp = @tdp,
-        image = @image
+        tdp = @tdp
     WHERE id = @id
 
     SET @result = 'Update successful'
@@ -1154,17 +1131,17 @@ BEGIN
     UPDATE products
     SET sellingPrice = @sellingPrice,
         costPrice = @costPrice,
-        quantity = @quantity
+        quantity = @quantity,
+        image = @image,
+        name = @name
     WHERE id = @id
 
     UPDATE gpus
-    SET name = @name,
-        generation = @generation,
+    SET generation = @generation,
         vram = @vram,
         baseClock = @baseClock,
         boostClock = @boostClock,
-        tdp = @tdp,
-        image = @image
+        tdp = @tdp
     WHERE id = @id
 
     SET @result = 'Update successful'
@@ -1199,20 +1176,20 @@ BEGIN
     UPDATE products
     SET sellingPrice = @sellingPrice,
         costPrice = @costPrice,
-        quantity = @quantity
+        quantity = @quantity,
+        image = @image,
+        name = @name
     WHERE id = @id
 
     UPDATE motherboards
-    SET name = @name,
-        socket = @socket,
+    SET socket = @socket,
         chipset = @chipset,
         igpu = @igpu,
         formFactor = @formFactor,
         ramType = @ramType,
         maxRamSpeed = @maxRamSpeed,
         ramSlots = @ramSlots,
-        wifi = @wifi,
-        image = @image
+        wifi = @wifi
     WHERE id = @id
 
     SET @result = 'Update successful'
@@ -1241,14 +1218,14 @@ BEGIN
     UPDATE products
     SET sellingPrice = @sellingPrice,
         costPrice = @costPrice,
-        quantity = @quantity
+        quantity = @quantity,
+        image = @image,
+        name = @name
     WHERE id = @id
 
     UPDATE psus
-    SET name = @name,
-        wattage = @wattage,
-        efficiency = @efficiency,
-        image = @image
+    SET wattage = @wattage,
+        efficiency = @efficiency
     WHERE id = @id
 
     SET @result = 'Update successful'
@@ -1279,16 +1256,16 @@ BEGIN
     UPDATE products
     SET sellingPrice = @sellingPrice,
         costPrice = @costPrice,
-        quantity = @quantity
+        quantity = @quantity,
+        image = @image,
+        name = @name
     WHERE id = @id
 
     UPDATE rams
-    SET name = @name,
-        generation = @generation,
+    SET generation = @generation,
         capacity = @capacity,
         speed = @speed,
-        latency = @latency,
-        image = @image
+        latency = @latency
     WHERE id = @id
 
     SET @result = 'Update successful'
@@ -1318,15 +1295,15 @@ BEGIN
     UPDATE products
     SET sellingPrice = @sellingPrice,
         costPrice = @costPrice,
-        quantity = @quantity
+        quantity = @quantity,
+        image = @image,
+        name = @name
     WHERE id = @id
 
     UPDATE ssds
-    SET name = @name,
-        interface = @interface,
+    SET interface = @interface,
         capacity = @capacity,
-        cache = @cache,
-        image = @image
+        cache = @cache
     WHERE id = @id
 
     SET @result = 'Update successful'
