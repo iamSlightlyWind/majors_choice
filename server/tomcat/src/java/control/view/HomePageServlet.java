@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import packages.CPU;
 import packages.GPU;
@@ -15,6 +16,7 @@ import packages.PSU;
 import packages.RAM;
 import packages.SSD;
 import packages.wrap.Product;
+
 
 public class HomePageServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +30,14 @@ public class HomePageServlet extends HttpServlet {
         List<Motherboard> motherboards = db.getMotherboards("");
         List<SSD> ssds = db.getSSDs("");
         List<PSU> psus = db.getPSUs("");
-               
+        
+        Collections.shuffle(cpus);
+        Collections.shuffle(gpus);
+        Collections.shuffle(rams);
+        Collections.shuffle(motherboards);
+        Collections.shuffle(ssds);
+        Collections.shuffle(psus);
+        
         request.setAttribute("cpus", cpus);
         request.setAttribute("gpus", gpus);
         request.setAttribute("rams", rams);

@@ -321,7 +321,7 @@
                     <span class="component1-text1">
                       <fmt:setLocale value="vi_VN"/>
                       <fmt:formatNumber value="${product.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                      <span id="sellingPrice">${formattedSellingPrice}</span>
+                      <span id="sellingPrice">${formattedSellingPrice}<u>đ</u></span>
                       <br />
                     </span>
                     <div class="component1-container1">
