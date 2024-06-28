@@ -27,7 +27,6 @@ public class Validate extends HttpServlet {
         User currentUser = (User) request.getSession().getAttribute("userObject");
         currentUser.cart = (Cart) request.getSession().getAttribute("cartObject");
         currentUser.cart.updateQuantity();
-        currentUser.cart.updateCart();
 
         if (validate(getParams(request))) {
             String status = request.getParameter("vnp_TransactionStatus");

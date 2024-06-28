@@ -21,7 +21,11 @@ public class User {
     public ArrayList<Order> orders = new ArrayList<Order>();
     public Database db = new Database();
 
-    public void addOrderInformation(){
+    public void getCart() {
+        cart = new Cart(id, db);
+    }
+
+    public void addOrderInformation() {
         db.addOrderInformation(fullName, phoneNumber, address);
     }
 
@@ -104,6 +108,7 @@ public class User {
                 System.out.println(ex);
             }
         }
+        getCart();
     }
 
     public void getOrders() {
@@ -223,7 +228,7 @@ public class User {
             result = statement.getInt(9);
 
         } catch (SQLException ex) {
-            
+
             System.out.println(ex);
         }
 
