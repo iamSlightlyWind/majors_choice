@@ -19,6 +19,10 @@ public class Cart {
         this.quantities = new ArrayList<ProductCount>(cart.quantities);
     }
 
+    public void validate(){
+        Validation.validate(this);
+    }
+
     public void updateQuantity() {
         buyable = true;
 
