@@ -13,12 +13,10 @@ import packages.GPU;
 
 public class FilterGPUsServlet extends HttpServlet {
 
-    Database db = new Database();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name = (request.getParameter("nameSearch") == null) ? "":request.getParameter("nameSearch");
+        String name = (request.getParameter("nameSearch") == null) ? "" : request.getParameter("nameSearch");
         String from_raw = request.getParameter("from");
         String to_raw = request.getParameter("to");
         String brand[] = request.getParameterValues("brand");
@@ -35,14 +33,14 @@ public class FilterGPUsServlet extends HttpServlet {
         int fromTDP = (fromTDP_raw == null || fromTDP_raw.isEmpty()) ? 0 : Integer.parseInt(fromTDP_raw);
         int toCTDP = (toTDP_raw == null || toTDP_raw.isEmpty()) ? 0 : Integer.parseInt(toTDP_raw);
 
-        List<GPU> list = db.getGPUs(name);
+        List<GPU> list = Database.getGPUs(name);
         List<GPU> list1 = getGPUsByBrand(list, brand);
         List<GPU> gpus = getGPUsByGeneration(list1, generation);
-        
+
         getGPUsByPrice(gpus, fromP, toP);
         getGPUsByVRAM(gpus, fromVRAM, toVRAM);
         getGPUsByTDP(gpus, fromTDP, toCTDP);
-        
+
         request.setAttribute("searchName", name);
         request.setAttribute("from", from_raw);
         request.setAttribute("to", to_raw);
@@ -58,30 +56,30 @@ public class FilterGPUsServlet extends HttpServlet {
 
     public List<GPU> getGPUsByGeneration(List<GPU> gpus, String[] generations) {
         List<GPU> list = new ArrayList<>();
-        if(generations == null || generations.length ==0){
+        if (generations == null || generations.length == 0) {
             return gpus;
         }
         for (GPU gpu : gpus) {
             for (String generation : generations) {
-                if(generation.equals("adalovelace")){
+                if (generation.equals("adalovelace")) {
                     generation = "ada lovelace";
                 }
-                if(gpu.generation.toLowerCase().contains(generation.toLowerCase())){
+                if (gpu.generation.toLowerCase().contains(generation.toLowerCase())) {
                     list.add(gpu);
                 }
             }
         }
         return list;
     }
-    
+
     public List<GPU> getGPUsByBrand(List<GPU> gpus, String[] brands) {
         List<GPU> list = new ArrayList<>();
-        if(brands == null || brands.length ==0){
+        if (brands == null || brands.length == 0) {
             return gpus;
         }
         for (GPU gpu : gpus) {
             for (String brand : brands) {
-                if(gpu.name.toLowerCase().contains(brand.toLowerCase())){
+                if (gpu.name.toLowerCase().contains(brand.toLowerCase())) {
                     list.add(gpu);
                 }
             }

@@ -1,6 +1,5 @@
 package control.view.detail;
 
-import database.Database;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -14,21 +13,19 @@ import packages.RAM;
 import packages.SSD;
 
 public class ProductDetail extends HttpServlet {
-   
-    Database db = new Database();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String category = request.getParameter("category");
         String id_raw = request.getParameter("id");
         int id = 0;
-        
-        if(id_raw!=null){
+
+        if (id_raw != null) {
             id = Integer.parseInt(id_raw);
         }
         request.setAttribute("category", category);
-        switch(category){
+        switch (category) {
             case "cpu":
                 CPU cpu = new CPU(id);
                 request.setAttribute("product", cpu);
@@ -62,18 +59,18 @@ public class ProductDetail extends HttpServlet {
             default:
                 break;
         }
-        
-    } 
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 }

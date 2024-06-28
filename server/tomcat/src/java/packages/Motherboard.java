@@ -43,7 +43,9 @@ public class Motherboard extends Product {
         this.image = image;
     }
 
-    public Motherboard(String socket, String chipset, String formFactor, String ramType, int maxRamSpeed, int ramSlots, int wifi, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+    public Motherboard(String socket, String chipset, String formFactor, String ramType, int maxRamSpeed, int ramSlots,
+            int wifi, String image, String name, int id, double sellingPrice, double costPrice, String description,
+            int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.socket = socket;
         this.chipset = chipset;
@@ -54,7 +56,7 @@ public class Motherboard extends Product {
         this.wifi = wifi;
         this.image = image;
     }
-    
+
     public Motherboard(int id, double sellingPrice, double costPrice, String description, String name, String socket,
             String chipset, String formFactor, String ramType, int maxRamSpeed, int ramSlots, int wifi) {
         super(id, sellingPrice, costPrice, description);
@@ -68,7 +70,9 @@ public class Motherboard extends Product {
         this.wifi = wifi;
     }
 
-    public Motherboard(String socket, String chipset, int igpu, String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+    public Motherboard(String socket, String chipset, int igpu, String formFactor, String ramType, int maxRamSpeed,
+            int maxRamCapacity, int ramSlots, int wifi, String image, String name, int id, double sellingPrice,
+            double costPrice, String description, int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.socket = socket;
         this.chipset = chipset;
@@ -81,11 +85,10 @@ public class Motherboard extends Product {
         this.wifi = wifi;
         this.image = image;
     }
-    
+
     public Motherboard(int id) {
         super(id);
-        Database db = new Database();
-        ArrayList<Motherboard> motherboards = db.getMotherboards("");
+        ArrayList<Motherboard> motherboards = Database.getMotherboards("");
 
         for (Motherboard motherboard : motherboards) {
             if (motherboard.id == id) {

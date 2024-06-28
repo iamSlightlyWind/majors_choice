@@ -13,8 +13,6 @@ import packages.CPU;
 
 public class FilterCPUsServlet extends HttpServlet {
 
-    Database db = new Database();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,8 +33,8 @@ public class FilterCPUsServlet extends HttpServlet {
         int toCore = (toCore_raw == null || toCore_raw.isEmpty()) ? 0 : Integer.parseInt(toCore_raw);
         int fromTDP = (fromTDP_raw == null || fromTDP_raw.isEmpty()) ? 0 : Integer.parseInt(fromTDP_raw);
         int toCTDP = (toTDP_raw == null || toTDP_raw.isEmpty()) ? 0 : Integer.parseInt(toTDP_raw);
-                
-        List<CPU> list = db.getCPUs(name);
+
+        List<CPU> list = Database.getCPUs(name);
         List<CPU> list1 = getCPUsByGeneration(list, generations);
         List<CPU> list2 = getCPUsBySocket(list1, sockets);
         List<CPU> cpus = getCPUsByBrand(list2, brands);
@@ -63,47 +61,47 @@ public class FilterCPUsServlet extends HttpServlet {
         List<CPU> list = new ArrayList<>();
         if (generations == null || generations.length == 0) {
             return cpus;
-        }       
-        for (CPU cpu : cpus) {
-                for (String geString : generations) {
-                    if(geString.equals("raptorlake")){
-                        geString = "raptor lake";
-                    }
-                    if(cpu.generation.toLowerCase().contains(geString.toLowerCase())){
-                        list.add(cpu);
-                    }
-                }           
-        }
-        return list;
-    }
-
-    public List<CPU> getCPUsBySocket(List<CPU> cpus, String[] sockets) {
-        List<CPU> list = new ArrayList<>();
-        if(sockets == null || sockets.length == 0){
-            return cpus;
         }
         for (CPU cpu : cpus) {
-            for (String socket : sockets) {
-                
-                if(socket.equals("lga1700")){
-                    socket = "lga 1700";
+            for (String geString : generations) {
+                if (geString.equals("raptorlake")) {
+                    geString = "raptor lake";
                 }
-                if(cpu.socket.toLowerCase().contains(socket.toLowerCase())){
+                if (cpu.generation.toLowerCase().contains(geString.toLowerCase())) {
                     list.add(cpu);
                 }
             }
         }
         return list;
     }
-    
+
+    public List<CPU> getCPUsBySocket(List<CPU> cpus, String[] sockets) {
+        List<CPU> list = new ArrayList<>();
+        if (sockets == null || sockets.length == 0) {
+            return cpus;
+        }
+        for (CPU cpu : cpus) {
+            for (String socket : sockets) {
+
+                if (socket.equals("lga1700")) {
+                    socket = "lga 1700";
+                }
+                if (cpu.socket.toLowerCase().contains(socket.toLowerCase())) {
+                    list.add(cpu);
+                }
+            }
+        }
+        return list;
+    }
+
     public List<CPU> getCPUsByBrand(List<CPU> cpus, String[] brands) {
         List<CPU> list = new ArrayList<>();
-        if(brands == null || brands.length == 0){
+        if (brands == null || brands.length == 0) {
             return cpus;
         }
         for (CPU cpu : cpus) {
             for (String brand : brands) {
-                if(cpu.name.toLowerCase().contains(brand.toLowerCase())){
+                if (cpu.name.toLowerCase().contains(brand.toLowerCase())) {
                     list.add(cpu);
                 }
             }

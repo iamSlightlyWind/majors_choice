@@ -18,31 +18,33 @@ public class PSU extends Product {
         this.image = p.image;
     }
 
-    public PSU(int wattage, String efficiency, String image, String name, int id, double sellingPrice, double costPrice, String description) {
+    public PSU(int wattage, String efficiency, String image, String name, int id, double sellingPrice, double costPrice,
+            String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.wattage = wattage;
         this.efficiency = efficiency;
         this.image = image;
     }
 
-    public PSU(int id, double sellingPrice, double costPrice, String description, String name, int wattage, String efficiency) {
+    public PSU(int id, double sellingPrice, double costPrice, String description, String name, int wattage,
+            String efficiency) {
         super(id, sellingPrice, costPrice, description);
         this.name = name;
         this.wattage = wattage;
         this.efficiency = efficiency;
     }
 
-    public PSU(int wattage, String efficiency, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+    public PSU(int wattage, String efficiency, String image, String name, int id, double sellingPrice, double costPrice,
+            String description, int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.wattage = wattage;
         this.efficiency = efficiency;
         this.image = image;
     }
-    
+
     public PSU(int id) {
         super(id);
-        Database db = new Database();
-        ArrayList<PSU> psus = db.getPSUs("");
+        ArrayList<PSU> psus = Database.getPSUs("");
 
         for (PSU psu : psus) {
             if (psu.id == id) {

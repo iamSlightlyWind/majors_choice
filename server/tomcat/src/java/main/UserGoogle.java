@@ -10,7 +10,7 @@ public class UserGoogle extends User {
     public void setGoogleAccount() {
         try {
             String sql = "{call setGoogleUser(?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.registerOutParameter(2, Types.INTEGER);
 
@@ -29,7 +29,7 @@ public class UserGoogle extends User {
         setCredentials();
         try {
             String sql = "{call googleLogin(?, ?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
             statement.registerOutParameter(3, Types.INTEGER);
@@ -46,8 +46,7 @@ public class UserGoogle extends User {
         setCredentials();
         int result = super.register(true, "user");
         if (result == 1) {
-            Database db = new Database();
-            db.forceActivate(username);
+            Database.forceActivate(username);
             setGoogleAccount();
         }
 

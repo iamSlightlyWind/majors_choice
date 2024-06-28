@@ -12,31 +12,29 @@ import packages.CPU;
 public class CPUsServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Database db = new Database();
-        
-        List<CPU> cpus = db.getCPUs("");
-        
+
+        List<CPU> cpus = Database.getCPUs("");
+
         request.setAttribute("cpus", cpus);
         request.getRequestDispatcher("/view/cpus.jsp").forward(request, response);
-    } 
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        Database db = new Database();       
+            throws ServletException, IOException {
         String searchName = request.getParameter("searchName");
 
-        List<CPU> cpus = db.getCPUs(searchName);
+        List<CPU> cpus = Database.getCPUs(searchName);
         request.setAttribute("cpus", cpus);
-        request.setAttribute("searchName", searchName);        
+        request.setAttribute("searchName", searchName);
         request.getRequestDispatcher("/view/cpus.jsp").forward(request, response);
     }
 }

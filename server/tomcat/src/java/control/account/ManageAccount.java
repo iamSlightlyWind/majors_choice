@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+
 import database.Database;
 import main.User;
 
@@ -14,15 +15,14 @@ public class ManageAccount extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Database db = new Database();
 
         String actor = request.getParameter("actor");
         String table = (String) request.getAttribute("table");
 
         if ((actor != null && actor.equals("user")) || (table != null && table.equals("user"))) {
-            ArrayList<User> users = db.getUserDetails("users");
+            ArrayList<User> users = Database.getUserDetails("users");
             String status = request.getParameter("status") == null ? "" : request.getParameter("status");
-            switch(status){
+            switch (status) {
                 case "7":
                     status = "Delete Success!";
                     break;
@@ -38,14 +38,14 @@ public class ManageAccount extends HttpServlet {
                 default:
                     status = "";
                     break;
-             }
-            if(status!=null && !status.isEmpty()){
+            }
+            if (status != null && !status.isEmpty()) {
                 request.setAttribute("status", status);
             }
             request.setAttribute("users", users);
             request.getRequestDispatcher("/manage/userList.jsp").forward(request, response);
         } else if ((actor != null && actor.equals("staff")) || (table != null && table.equals("staff"))) {
-            ArrayList<User> staffs = db.getUserDetails("staffs");
+            ArrayList<User> staffs = Database.getUserDetails("staffs");
             String status = request.getParameter("status") == null ? "" : request.getParameter("status");
             switch (status) {
                 case "1":

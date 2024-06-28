@@ -11,30 +11,28 @@ import packages.PSU;
 
 public class PSUsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Database db = new Database();
-        
-        List<PSU> psus = db.getPSUs("");
-        
+
+        List<PSU> psus = Database.getPSUs("");
+
         request.setAttribute("psus", psus);
         request.getRequestDispatcher("/view/psus.jsp").forward(request, response);
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        Database db = new Database();
+            throws ServletException, IOException {
         String searchName = request.getParameter("searchName");
-        
-        List<PSU> psus = db.getPSUs(searchName);
-        
+
+        List<PSU> psus = Database.getPSUs(searchName);
+
         request.setAttribute("searchName", searchName);
         request.setAttribute("psus", psus);
         request.getRequestDispatcher("/view/psus.jsp").forward(request, response);

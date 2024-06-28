@@ -17,7 +17,6 @@ public class LoginGoogleServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Database db = new Database();
         int result;
 
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
@@ -37,7 +36,7 @@ public class LoginGoogleServlet extends HttpServlet {
         } else {
             UserGoogle user = getUserInfo(getToken(request.getParameter("code")));
 
-            if (!db.userExists(user.email)) {
+            if (!Database.userExists(user.email)) {
                 user.register();
                 request.setAttribute("registerStatus", "Please enter the remaining information to continue");
                 request.setAttribute("registerButton", "Update Information");

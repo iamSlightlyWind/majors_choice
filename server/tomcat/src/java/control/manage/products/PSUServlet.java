@@ -21,10 +21,9 @@ public class PSUServlet extends HttpServlet {
         if (service == null) {
             service = "listAll";
         }
-        Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<PSU> psus = db.getPSUs("");
+            ArrayList<PSU> psus = Database.getPSUs("");
             request.setAttribute("psus", psus);
             request.setAttribute("titlePage", "Danh sách PSU");
             request.setAttribute("titleTable", "Danh sách PSU");
@@ -39,12 +38,13 @@ public class PSUServlet extends HttpServlet {
                 String efficiency = request.getParameter("efficiency");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, null, quantity);
+                int result = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, null, quantity);
 
                 if (result != -1) {
-                    int productId = db.getMaxProductId();
-                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image, quantity);
+                    int productId = Database.getMaxProductId();
+                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image,
+                            quantity);
                     response.sendRedirect("psus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm PSU");
@@ -78,10 +78,11 @@ public class PSUServlet extends HttpServlet {
                 String name = request.getParameter("name");
                 int wattage = Integer.parseInt(request.getParameter("wattage"));
                 String efficiency = request.getParameter("efficiency");
-                String image = db.handleFileUpload(request, "image", Integer.toString(id));
+                String image = Database.handleFileUpload(request, "image", Integer.toString(id));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.updateProductPSU(id, sellingPrice, costPrice, name, wattage, efficiency, image, quantity);
+                int result = Database.updateProductPSU(id, sellingPrice, costPrice, name, wattage, efficiency, image,
+                        quantity);
                 if (result == 1) {
                     response.sendRedirect("psus?service=listAll");
                 } else {
@@ -92,7 +93,7 @@ public class PSUServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.removePSU(id);
+            Database.removePSU(id);
             response.sendRedirect("psus");
         }
     }

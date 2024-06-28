@@ -11,30 +11,28 @@ import packages.GPU;
 
 public class GPUsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Database db = new Database();
-        
-        List<GPU> gpus = db.getGPUs("");
-        
+
+        List<GPU> gpus = Database.getGPUs("");
+
         request.setAttribute("gpus", gpus);
         request.getRequestDispatcher("/view/gpus.jsp").forward(request, response);
-    } 
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        Database db = new Database();
+            throws ServletException, IOException {
         String searchName = request.getParameter("searchName");
-        
-        List<GPU> gpus = db.getGPUs(searchName);
-        
+
+        List<GPU> gpus = Database.getGPUs(searchName);
+
         request.setAttribute("searchName", searchName);
         request.setAttribute("gpus", gpus);
         request.getRequestDispatcher("/view/gpus.jsp").forward(request, response);

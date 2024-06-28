@@ -24,7 +24,8 @@ public class GPU extends Product {
         this.image = g.image;
     }
 
-    public GPU(String generation, int vram, int baseClock, int boostClock, int tdp, String image, String name, int id, double sellingPrice, double costPrice, String description) {
+    public GPU(String generation, int vram, int baseClock, int boostClock, int tdp, String image, String name, int id,
+            double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.generation = generation;
         this.vram = vram;
@@ -45,7 +46,7 @@ public class GPU extends Product {
         this.tdp = tdp;
     }
 
-    public GPU(String generation, int vram, int baseClock, int boostClock, int tdp, String image, 
+    public GPU(String generation, int vram, int baseClock, int boostClock, int tdp, String image,
             String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.generation = generation;
@@ -55,12 +56,10 @@ public class GPU extends Product {
         this.tdp = tdp;
         this.image = image;
     }
-    
 
     public GPU(int id) {
         super(id);
-        Database db = new Database();
-        ArrayList<GPU> gpus = db.getGPUs("");
+        ArrayList<GPU> gpus = Database.getGPUs("");
 
         for (GPU gpu : gpus) {
             if (gpu.id == id) {
