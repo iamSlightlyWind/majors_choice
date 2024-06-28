@@ -340,14 +340,30 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           <div class="view-detail-product-link-page">
             <div class="view-detail-product-container1">
               <span class="view-detail-product-text thq-body-small thq-link">
-                Home&nbsp;
+                  <a href="/">Home&nbsp;</a>
               </span>
-              <span class="view-detail-product-text01 thq-body-small thq-link">
-                / CPU -&nbsp;Computer processor
+              <span class="view-detail-product-text01 thq-body-small thq-link">                
+                <c:if test="${category == 'cpu'}">
+                   / <a href="/CPU">CPU -&nbsp;Computer processor</a>
+                </c:if>
+                   <c:if test="${category == 'gpu'}">
+                   / <a href="/GPU">GPU -&nbsp;Graphics processing unit</a>
+                </c:if>
+                   <c:if test="${category == 'mobo'}">
+                   / <a href="/MotherBoard">MotherBoard -&nbsp;Main circuit board</a>
+                </c:if>
+                   <c:if test="${category == 'psu'}">
+                   / <a href="/PSU">PSU -&nbsp;Power Supply Unit</a>
+                </c:if>
+                   <c:if test="${category == 'ram'}">
+                   / <a href="/RAM">RAM -&nbsp;Random-access memory</a>
+                </c:if>
+                   <c:if test="${category == 'ssd'}">
+                   / <a href="/SSD">SSD -&nbsp;Solid-state drive</a>
+                </c:if>
               </span>
               <span class="view-detail-product-text02 thq-body-small">
-                &nbsp;/ Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng /
-                5MB / AM4&nbsp;
+                  &nbsp;/ ${product.name}&nbsp;
               </span>
             </div>
           </div>
@@ -442,7 +458,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>IGPU</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.igpu}</span>
+                      <span class="view-detail-product-text-value1">
+                          <c:if test="${product.igpu == '1'}">
+                              Yes
+                          </c:if>
+                          <c:if test="${product.igpu == '0'}">
+                              Yes
+                          </c:if>
+                      </span>
                   </div>
               </c:if>
               <c:if test="${category == 'mobo'}">
@@ -469,7 +492,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>MaxRamSpeed</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.maxRamSpeed}</span>
+                      <span class="view-detail-product-text-value1">${product.maxRamSpeed}MHz</span>
                   </div>
               </c:if>
               <c:if test="${category == 'mobo'}">
@@ -478,7 +501,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>MaxRamCapacity</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.maxRamCapacity}</span>
+                      <span class="view-detail-product-text-value1">${product.maxRamCapacity}GB</span>
                   </div>
               </c:if>
               <c:if test="${category == 'mobo'}">
@@ -496,7 +519,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>Wifi</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.wifi}</span>
+                      <span class="view-detail-product-text-value1">
+                          <c:if test="${product.wifi == '1'}">
+                              Yes
+                          </c:if>
+                          <c:if test="${product.wifi == '0'}">
+                              Yes
+                          </c:if>
+                      </span>
                   </div>
               </c:if>
               <c:if test="${category == 'cpu'}">
@@ -523,7 +553,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>BaseClock</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.baseClock}</span>
+                      <span class="view-detail-product-text-value1">${product.baseClock}MHz</span>
                   </div>
               </c:if>
               <c:if test="${category == 'cpu' || category == 'gpu'}">
@@ -532,7 +562,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>BoostClock</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.boostClock}</span>
+                      <span class="view-detail-product-text-value1">${product.boostClock}MHz</span>
                   </div>
               </c:if>
               <c:if test="${category == 'cpu' || category == 'gpu'}">
@@ -541,7 +571,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>TDP</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.tdp}</span>
+                      <span class="view-detail-product-text-value1">${product.tdp}Watt</span>
                   </div>
               </c:if>
               <c:if test="${category == 'psu'}">
@@ -550,7 +580,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>Wattage</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.wattage}</span>
+                      <span class="view-detail-product-text-value1">${product.wattage}Watt</span>
                   </div>
               </c:if>
               <c:if test="${category == 'psu'}">
@@ -577,7 +607,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>Capacity</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.capacity}</span>
+                      <span class="view-detail-product-text-value1">${product.capacity}GB</span>
                   </div>
               </c:if>
               <c:if test="${category == 'ssd'}">
@@ -586,7 +616,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>Cache</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.cache}</span>
+                      <span class="view-detail-product-text-value1">${product.cache}MB/GB</span>
                   </div>
               </c:if>
               <c:if test="${category == 'ram'}">
@@ -595,7 +625,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>Speed</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.speed}</span>
+                      <span class="view-detail-product-text-value1">${product.speed}MHz</span>
                   </div>
               </c:if>
               <c:if test="${category == 'ram'}">
@@ -604,7 +634,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           <span>Latency</span>
                           <br />
                       </span>
-                      <span class="view-detail-product-text-value1">${product.latency}</span>
+                      <span class="view-detail-product-text-value1">${product.latency}CL-X</span>
                   </div>
               </c:if>
             </div>

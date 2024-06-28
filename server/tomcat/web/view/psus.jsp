@@ -161,7 +161,7 @@
                   <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                     <nav class="navbar-links">
-                      <form action="/psusservlet" method="post">
+                      <form action="/PSU" method="post">
                         <div class="navbar-container3">
                           <input type="text" placeholder="Search product by name" class="navbar-textinput input"
                             name="searchName" value="${requestScope.searchName}" />
@@ -291,10 +291,10 @@
           <div class="view-all-product-cpu-body">
             <div class="view-all-product-cpu-link-page">
               <span class="view-all-product-cpu-text thq-body-small thq-link">
-                Home&nbsp;
+                  <a href="/">Home&nbsp;</a>
               </span>
               <span class="view-all-product-cpu-text01">
-                / CPU -&nbsp;Computer processor
+                  <a href="/PSU"> / PSU -&nbsp;Power Supply Unit </a>
               </span>
             </div>
             <div class="chats-chats chats-root-class-name">
@@ -321,7 +321,7 @@
                     <br />
                   </h1>
                 </div>
-                <form class="view-all-product-cpu-form" action="/filterpsu" method="post"
+                <form class="view-all-product-cpu-form" action="/FilterPSU" method="post"
                   onsubmit="return validateForm()">
                   <input type="hidden" name="nameSearch" value="${name}" />
                   <span class="view-all-product-cpu-text05">

@@ -209,27 +209,27 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CPUsServlet</servlet-name>
-        <url-pattern>/cpusservlet</url-pattern>
+        <url-pattern>/CPU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GPUsServlet</servlet-name>
-        <url-pattern>/gpusservlet</url-pattern>
+        <url-pattern>/GPU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RAMsServlet</servlet-name>
-        <url-pattern>/ramsservlet</url-pattern>
+        <url-pattern>/RAM</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>PSUsServlet</servlet-name>
-        <url-pattern>/psusservlet</url-pattern>
+        <url-pattern>/PSU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MotherBoardsServlet</servlet-name>
-        <url-pattern>/mobosservlet</url-pattern>
+        <url-pattern>/MotherBoard</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SSDsServlet</servlet-name>
-        <url-pattern>/ssdsservlet</url-pattern>
+        <url-pattern>/SSD</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomePageServlet</servlet-name>
@@ -237,27 +237,27 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterCPUsServlet</servlet-name>
-        <url-pattern>/filtercpu</url-pattern>
+        <url-pattern>/FilterCPU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterGPUsServlet</servlet-name>
-        <url-pattern>/filtergpu</url-pattern>
+        <url-pattern>/FilterGPU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterMotherBoard</servlet-name>
-        <url-pattern>/filtermobo</url-pattern>
+        <url-pattern>/FilterMotherBoard</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterPSUsServlet</servlet-name>
-        <url-pattern>/filterpsu</url-pattern>
+        <url-pattern>/FilterPSU</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterRAMsServlet</servlet-name>
-        <url-pattern>/filterram</url-pattern>
+        <url-pattern>/FilterRAM</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FilterSSDsServlet</servlet-name>
-        <url-pattern>/filterssd</url-pattern>
+        <url-pattern>/FilterSSD</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ProductDetail</servlet-name>
