@@ -14,14 +14,12 @@ public class Test extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Database db = new Database();
-
-        ArrayList<CPU> cpus = db.getCPUs("");
-        ArrayList<GPU> gpus = db.getGPUs("");
-        ArrayList<RAM> rams = db.getRAMs("");
-        ArrayList<Motherboard> motherboards = db.getMotherboards("");
-        ArrayList<SSD> ssds = db.getSSDs("");
-        ArrayList<PSU> psus = db.getPSUs("");
+        ArrayList<CPU> cpus = Database.getCPUs("");
+        ArrayList<GPU> gpus = Database.getGPUs("");
+        ArrayList<RAM> rams = Database.getRAMs("");
+        ArrayList<Motherboard> motherboards = Database.getMotherboards("");
+        ArrayList<SSD> ssds = Database.getSSDs("");
+        ArrayList<PSU> psus = Database.getPSUs("");
 
         request.setAttribute("username", ((User) request.getSession().getAttribute("userObject")).fullName);
         request.setAttribute("cpus", cpus);

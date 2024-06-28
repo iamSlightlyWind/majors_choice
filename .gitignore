@@ -26,6 +26,7 @@ replay_pid*
 # NetBeans specific #
 server/tomcat/nbproject/private/
 server/tomcat/nbproject/genfiles.properties
+server/tomcat/nbproject/build-impl.xml~
 server/tomcat/build/
 server/tomcat/nbbuild/
 server/tomcat/nbdist/
