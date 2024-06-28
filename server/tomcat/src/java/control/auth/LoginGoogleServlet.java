@@ -17,9 +17,6 @@ public class LoginGoogleServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Database db = new Database();
-        int result;
-
         String action = request.getParameter("action") == null ? "" : request.getParameter("action");
 
         if (action.equals("Update Information")) {
@@ -29,24 +26,24 @@ public class LoginGoogleServlet extends HttpServlet {
             user.phoneNumber = request.getParameter("phoneNumber");
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
+            user.active = 1;
+            user.updateInformation();
 
             request.getSession().setAttribute("table", "user");
-            //user.updateInformation((String) request.getSession().getAttribute("table"), true);
             request.getSession().setAttribute("userObject", user);
             request.getRequestDispatcher("/").forward(request, response);
         } else {
             UserGoogle user = getUserInfo(getToken(request.getParameter("code")));
 
-            if (!db.userExists(user.email)) {
+            if (!Database.userExists(user.email)) {
                 user.register();
                 request.setAttribute("registerStatus", "Please enter the remaining information to continue");
                 request.setAttribute("registerButton", "Update Information");
                 request.setAttribute("gmail", user.email);
                 request.getRequestDispatcher("/auth/googleRegister.jsp").forward(request, response);
             } else {
-                
-                result = user.login();
-                if (result == 1) {
+                if (user.login() == 1) {
+                    user.retrieveData("user");
                     request.getSession().setAttribute("table", "user");
                     user.retrieveData((String) request.getSession().getAttribute("table"));
                     response.sendRedirect("/");

@@ -19,10 +19,13 @@ public class User {
     public int active;
     public Cart cart;
     public ArrayList<Order> orders = new ArrayList<Order>();
-    public Database db = new Database();
 
-    public void addOrderInformation(){
-        db.addOrderInformation(fullName, phoneNumber, address);
+    public void getCart() {
+        cart = new Cart(id);
+    }
+
+    public void addOrderInformation() {
+        Database.addOrderInformation(fullName, phoneNumber, address);
     }
 
     public String getFullName() {
@@ -66,7 +69,7 @@ public class User {
         if (table.equals("staff")) {
             try {
                 String sql = "select * from staffs where " + parameter + " = ?";
-                PreparedStatement statement = db.connection.prepareStatement(sql);
+                PreparedStatement statement = Database.connection.prepareStatement(sql);
                 statement.setString(1, parameterValue);
 
                 ResultSet rs = statement.executeQuery();
@@ -85,7 +88,7 @@ public class User {
             try {
                 String sql = "select * from users join userdetails on users.id = userdetails.id WHERE users."
                         + parameter + " = ?";
-                PreparedStatement statement = db.connection.prepareStatement(sql);
+                PreparedStatement statement = Database.connection.prepareStatement(sql);
                 statement.setString(1, parameterValue);
 
                 ResultSet rs = statement.executeQuery();
@@ -104,10 +107,11 @@ public class User {
                 System.out.println(ex);
             }
         }
+        getCart();
     }
 
     public void getOrders() {
-        orders = db.getOrders(Integer.parseInt(this.id));
+        orders = Database.getOrders(Integer.parseInt(this.id));
     }
 
     public User() {
@@ -148,7 +152,7 @@ public class User {
 
         try {
             String sql = "{call resetPassword(?, ?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, email);
             statement.setString(2, newPassword);
             statement.registerOutParameter(3, Types.INTEGER);
@@ -170,7 +174,7 @@ public class User {
     public int activate(String confirmCode) {
         try {
             String sql = "{call activate(?, ?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, confirmCode);
             statement.registerOutParameter(3, Types.INTEGER);
@@ -188,7 +192,7 @@ public class User {
 
         try {
             String sql = "{call login(?, ?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
             statement.registerOutParameter(3, Types.INTEGER);
@@ -207,7 +211,7 @@ public class User {
 
         try {
             String sql = "{call register(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
             statement.setString(3, fullName);
@@ -223,7 +227,7 @@ public class User {
             result = statement.getInt(9);
 
         } catch (SQLException ex) {
-            
+
             System.out.println(ex);
         }
 
@@ -236,7 +240,7 @@ public class User {
     }
 
     public int updateStaff() {
-        return db.updateStaff(this);
+        return Database.updateStaff(this);
     }
 
     public int updateInformation() {
@@ -244,7 +248,7 @@ public class User {
 
         try {
             String sql = "{call updateUserInformation(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
             statement.setString(3, fullName);
@@ -268,7 +272,7 @@ public class User {
         int result = -1;
         try {
             String sql = "{call loginEmployee(?, ?, ?)}";
-            CallableStatement statement = db.connection.prepareCall(sql);
+            CallableStatement statement = Database.connection.prepareCall(sql);
             statement.setString(1, username);
             statement.setString(2, password);
             statement.registerOutParameter(3, Types.INTEGER);

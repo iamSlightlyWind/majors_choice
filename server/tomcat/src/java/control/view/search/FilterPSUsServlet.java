@@ -14,11 +14,9 @@ import packages.PSU;
 
 public class FilterPSUsServlet extends HttpServlet {
 
-    Database db = new Database();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("searchName") == null ? "" : request.getParameter("searchName") ;
+        String name = request.getParameter("searchName") == null ? "" : request.getParameter("searchName");
         String from_raw = request.getParameter("from");
         String to_raw = request.getParameter("to");
         String efficiency[] = request.getParameterValues("efficiency");
@@ -27,16 +25,17 @@ public class FilterPSUsServlet extends HttpServlet {
 
         double fromP = (from_raw == null || from_raw.isEmpty()) ? 0 : Double.parseDouble(from_raw);
         double toP = (to_raw == null || to_raw.isEmpty()) ? 0 : Double.parseDouble(to_raw);
-        int fromWattage = (fromWattage_raw == null || fromWattage_raw.isEmpty()) ? 0 : Integer.parseInt(fromWattage_raw);
+        int fromWattage = (fromWattage_raw == null || fromWattage_raw.isEmpty()) ? 0
+                : Integer.parseInt(fromWattage_raw);
         int toWattage = (toWattage_raw == null || toWattage_raw.isEmpty()) ? 0 : Integer.parseInt(toWattage_raw);
 
-        List<PSU> list = db.getPSUs(name);
+        List<PSU> list = Database.getPSUs(name);
 
-        List<PSU> psus = getPSUsByEfficiency(list, efficiency) ;
+        List<PSU> psus = getPSUsByEfficiency(list, efficiency);
         getPSUsByPrice(psus, fromP, toP);
 
         getPSUsByWattage(psus, fromWattage, toWattage);
-        
+
         request.setAttribute("searchName", name);
         request.setAttribute("from", from_raw);
         request.setAttribute("to", to_raw);
@@ -49,21 +48,21 @@ public class FilterPSUsServlet extends HttpServlet {
 
     public List<PSU> getPSUsByEfficiency(List<PSU> psus, String[] efficiencys) {
         List<PSU> list = new ArrayList<>();
-        if(efficiencys == null || efficiencys.length == 0){
+        if (efficiencys == null || efficiencys.length == 0) {
             return psus;
         }
         for (PSU psu : psus) {
             for (String efficiency : efficiencys) {
-                if(efficiency.equals("80platin")){
+                if (efficiency.equals("80platin")) {
                     efficiency = "80+ platin";
                 }
-                if(efficiency.equals("80gold")){
+                if (efficiency.equals("80gold")) {
                     efficiency = "80+ gold";
                 }
-                if(efficiency.equals("80titani")){
+                if (efficiency.equals("80titani")) {
                     efficiency = "80+ titani";
                 }
-                if(psu.efficiency.toLowerCase().contains(efficiency.toLowerCase())){
+                if (psu.efficiency.toLowerCase().contains(efficiency.toLowerCase())) {
                     list.add(psu);
                 }
             }
@@ -102,7 +101,6 @@ public class FilterPSUsServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

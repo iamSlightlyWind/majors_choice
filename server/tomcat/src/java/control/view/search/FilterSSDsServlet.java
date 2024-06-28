@@ -13,8 +13,6 @@ import packages.SSD;
 
 public class FilterSSDsServlet extends HttpServlet {
 
-    Database db = new Database();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -28,13 +26,14 @@ public class FilterSSDsServlet extends HttpServlet {
 
         double fromP = (from_raw == null || from_raw.isEmpty()) ? 0 : Double.parseDouble(from_raw);
         double toP = (to_raw == null || to_raw.isEmpty()) ? 0 : Double.parseDouble(to_raw);
-        int fromCapacity = (fromCapacity_raw == null || fromCapacity_raw.isEmpty()) ? 0 : Integer.parseInt(fromCapacity_raw);
+        int fromCapacity = (fromCapacity_raw == null || fromCapacity_raw.isEmpty()) ? 0
+                : Integer.parseInt(fromCapacity_raw);
         int toCapacity = (toCapacity_raw == null || toCapacity_raw.isEmpty()) ? 0 : Integer.parseInt(toCapacity_raw);
 
-        List<SSD> list = db.getSSDs(name);
+        List<SSD> list = Database.getSSDs(name);
         List<SSD> list1 = getSSDByCache(list, cache);
         List<SSD> ssds = getSSDByInterface(list1, interfaces);
-        
+
         getSSDsByPrice(ssds, fromP, toP);
         getSSDsByCapacity(ssds, fromCapacity, toCapacity);
 
@@ -52,38 +51,38 @@ public class FilterSSDsServlet extends HttpServlet {
 
     public List<SSD> getSSDByInterface(List<SSD> ssds, String[] interfaces) {
         List<SSD> list = new ArrayList<>();
-        if(interfaces == null || interfaces.length ==0){
+        if (interfaces == null || interfaces.length == 0) {
             return ssds;
         }
         for (SSD ssd : ssds) {
-            for (String aInterface : interfaces) {   
-                if(aInterface.equals("PCIe3")){
+            for (String aInterface : interfaces) {
+                if (aInterface.equals("PCIe3")) {
                     aInterface = "PCIe 3.0";
                 }
-                if(aInterface.equals("PCIe4")){
+                if (aInterface.equals("PCIe4")) {
                     aInterface = "PCIe 4.0";
                 }
-                if(aInterface.equals("SATA25")){
+                if (aInterface.equals("SATA25")) {
                     aInterface = "SATA 2.5";
                 }
-                if(ssd.connectionInterface.toLowerCase().contains(aInterface.toLowerCase())){
+                if (ssd.connectionInterface.toLowerCase().contains(aInterface.toLowerCase())) {
                     list.add(ssd);
                 }
             }
         }
         return list;
     }
-    
+
     public List<SSD> getSSDByCache(List<SSD> ssds, String[] cache) {
         List<SSD> list = new ArrayList<>();
-        if(cache == null || cache.length ==0){
+        if (cache == null || cache.length == 0) {
             return ssds;
         }
         for (SSD ssd : ssds) {
             for (String ca : cache) {
-                if(ca.equals("0") && ssd.cache == 0){
+                if (ca.equals("0") && ssd.cache == 0) {
                     list.add(ssd);
-                }else if( ca.equals("1") && ssd.cache !=0){
+                } else if (ca.equals("1") && ssd.cache != 0) {
                     list.add(ssd);
                 }
             }
@@ -123,7 +122,6 @@ public class FilterSSDsServlet extends HttpServlet {
         processRequest(request, response);
     }
 
-  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

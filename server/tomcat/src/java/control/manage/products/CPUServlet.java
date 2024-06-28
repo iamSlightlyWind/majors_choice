@@ -21,10 +21,9 @@ public class CPUServlet extends HttpServlet {
         if (service == null) {
             service = "listAll";
         }
-        Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<CPU> cpus = db.getCPUs("");
+            ArrayList<CPU> cpus = Database.getCPUs("");
             request.setAttribute("cpus", cpus);
             request.setAttribute("path", request.getServletContext().getRealPath(""));
             request.setAttribute("titlePage", "Danh sách CPU");
@@ -45,12 +44,12 @@ public class CPUServlet extends HttpServlet {
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int result = db.addProductCPU(sellingPrice, costPrice, name, generation,
+                int result = Database.addProductCPU(sellingPrice, costPrice, name, generation,
                         ipgu, socket, cores, threads, baseClock, boostClock, tdp, null, quantity);
                 if (result != -1) {
-                    int productId = db.getMaxProductId();
-                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.addProductCPU(sellingPrice, costPrice, name, generation,
+                    int productId = Database.getMaxProductId();
+                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = Database.addProductCPU(sellingPrice, costPrice, name, generation,
                             ipgu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
                     response.sendRedirect("cpus?service=listAll");
                 } else {
@@ -91,10 +90,10 @@ public class CPUServlet extends HttpServlet {
                 int baseClock = Integer.parseInt(request.getParameter("baseClock"));
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
-                String image = db.handleFileUpload(request, "image", Integer.toString(id));
+                String image = Database.handleFileUpload(request, "image", Integer.toString(id));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.updateProductCPU(id, sellingPrice, costPrice, name, generation,
+                int result = Database.updateProductCPU(id, sellingPrice, costPrice, name, generation,
                         igpu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
 
                 if (result == 1) {
@@ -107,7 +106,7 @@ public class CPUServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.removeCPU(id);
+            Database.removeCPU(id);
             response.sendRedirect("cpus");
         }
     }

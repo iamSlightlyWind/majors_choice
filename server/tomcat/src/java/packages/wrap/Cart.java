@@ -10,7 +10,6 @@ public class Cart {
     public double total;
     public ArrayList<Product> products = new ArrayList<Product>();
     public ArrayList<ProductCount> quantities = new ArrayList<ProductCount>();
-    Database db;
     public boolean buyable = true;
 
     public Cart(Cart cart) {
@@ -18,7 +17,6 @@ public class Cart {
         this.total = cart.total;
         this.products = new ArrayList<Product>(cart.products);
         this.quantities = new ArrayList<ProductCount>(cart.quantities);
-        this.db = cart.db;
     }
 
     public void updateQuantity() {
@@ -65,7 +63,7 @@ public class Cart {
     }
 
     public void updateCart() {
-        db.updateCart(Integer.parseInt(userID), products);
+        Database.updateCart(Integer.parseInt(userID), products);
     }
 
     public void remove(int id, boolean removeOne) {
@@ -82,7 +80,7 @@ public class Cart {
     }
 
     public void placeOrder() {
-        db.placeOrder(Integer.parseInt(userID));
+        Database.placeOrder(Integer.parseInt(userID));
         clearCart();
     }
 
@@ -96,10 +94,9 @@ public class Cart {
         updateQuantity();
     }
 
-    public Cart(String userID, Database db) {
+    public Cart(String userID) {
         this.userID = userID;
-        this.db = db;
-        products = db.getCart(Integer.parseInt(userID));
+        products = Database.getCart(Integer.parseInt(userID));
         updateQuantity();
     }
 
