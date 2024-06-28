@@ -21,10 +21,9 @@ public class GPUServlet extends HttpServlet {
         if (service == null) {
             service = "listAll";
         }
-        Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<GPU> gpus = db.getGPUs("");
+            ArrayList<GPU> gpus = Database.getGPUs("");
             request.setAttribute("gpus", gpus);
             request.setAttribute("titlePage", "Danh sách GPU");
             request.setAttribute("titleTable", "Danh sách GPU");
@@ -42,12 +41,13 @@ public class GPUServlet extends HttpServlet {
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.addProductGPU(sellingPrice, costPrice, name, 
+                int result = Database.addProductGPU(sellingPrice, costPrice, name,
                         generation, vram, baseClock, boostClock, tdp, null, quantity);
                 if (result != -1) {
-                    int productId = db.getMaxProductId();
-                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image, quantity);
+                    int productId = Database.getMaxProductId();
+                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = Database.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock,
+                            boostClock, tdp, image, quantity);
                     response.sendRedirect("gpus?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm GPU");
@@ -85,8 +85,9 @@ public class GPUServlet extends HttpServlet {
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                String image = db.handleFileUpload(request, "image", Integer.toString(id));
-                int result = db.updateProductGPU(id, sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, image, quantity);
+                String image = Database.handleFileUpload(request, "image", Integer.toString(id));
+                int result = Database.updateProductGPU(id, sellingPrice, costPrice, name, generation, vram, baseClock,
+                        boostClock, tdp, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("gpus?service=listAll");
                 } else {
@@ -97,7 +98,7 @@ public class GPUServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.removeGPU(id);
+            Database.removeGPU(id);
             response.sendRedirect("gpus");
         }
 

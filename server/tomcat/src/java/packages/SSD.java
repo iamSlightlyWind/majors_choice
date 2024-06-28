@@ -20,14 +20,16 @@ public class SSD extends Product {
         this.image = s.image;
     }
 
-    public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id, double sellingPrice, double costPrice, String description) {
+    public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id,
+            double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.connectionInterface = connectionInterface;
         this.capacity = capacity;
         this.cache = cache;
     }
 
-    public SSD(int id, double sellingPrice, double costPrice, String description, String name, String connectionInterface, int capacity, int cache) {
+    public SSD(int id, double sellingPrice, double costPrice, String description, String name,
+            String connectionInterface, int capacity, int cache) {
         super(id, sellingPrice, costPrice, description);
         this.name = name;
         this.connectionInterface = connectionInterface;
@@ -35,7 +37,8 @@ public class SSD extends Product {
         this.cache = cache;
     }
 
-    public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+    public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id,
+            double sellingPrice, double costPrice, String description, int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.connectionInterface = connectionInterface;
         this.capacity = capacity;
@@ -45,8 +48,7 @@ public class SSD extends Product {
 
     public SSD(int id) {
         super(id);
-        Database db = new Database();
-        ArrayList<SSD> ssds = db.getSSDs("");
+        ArrayList<SSD> ssds = Database.getSSDs("");
 
         for (SSD ssd : ssds) {
             if (ssd.id == id) {

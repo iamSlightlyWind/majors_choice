@@ -2,7 +2,7 @@ use major
 go
 
 CREATE PROCEDURE login
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(100),
     @result INT OUTPUT
 AS
@@ -55,7 +55,7 @@ END
 GO
 
 create procedure googleLogin
-    @username varchar(25),
+    @username varchar(50),
     @password varchar(100),
     @result int output
 as
@@ -76,7 +76,7 @@ end
 go
 
 create procedure setGoogleUser
-    @username varchar(25),
+    @username varchar(50),
     @result int output
 as
 begin
@@ -108,7 +108,7 @@ end
 go
 
 create procedure forceActivate
-    @username varchar(25),
+    @username varchar(50),
     @result int output
 as
 begin
@@ -147,7 +147,7 @@ go
 
 create procedure activate
     -- if confirm code var = user confirm code, update active to 1 if active = 0
-    @username varchar(25),
+    @username varchar(50),
     @confirmCode varchar(10),
     @result int output
 -- 1: successful, 0: failed
@@ -170,7 +170,7 @@ end
 go
 
 CREATE PROCEDURE register
-    @username varchar(25),
+    @username varchar(50),
     @password varchar(100),
     @fullname nvarchar(50),
     @email varchar(100),
@@ -467,7 +467,7 @@ END
 go
 
 CREATE PROCEDURE loginEmployee
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(25),
     @result INT OUTPUT
 AS
@@ -520,7 +520,7 @@ END
 go
 
 CREATE PROCEDURE updateUserInformation
-    @username varchar(25),
+    @username varchar(50),
     @password varchar(100),
     @fullname nvarchar(50),
     @email varchar(100),
@@ -942,7 +942,7 @@ END
 go
 
 CREATE PROCEDURE addStaff
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(100),
     @fullname NVARCHAR(50),
     @result INT OUTPUT
@@ -969,7 +969,7 @@ GO
 
 CREATE PROCEDURE updateStaff
     @id INT,
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(100),
     @fullname NVARCHAR(50),
     @active INT,

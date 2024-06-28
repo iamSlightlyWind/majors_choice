@@ -11,30 +11,28 @@ import packages.Motherboard;
 
 public class MotherBoardsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Database db = new Database();
-        
-        List<Motherboard> mobos = db.getMotherboards("");
-        
+
+        List<Motherboard> mobos = Database.getMotherboards("");
+
         request.setAttribute("mobos", mobos);
         request.getRequestDispatcher("/view/mobos.jsp").forward(request, response);
-    } 
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        Database db = new Database();
+            throws ServletException, IOException {
         String searchName = request.getParameter("searchName");
-        
-        List<Motherboard> mobos = db.getMotherboards(searchName);
-        
+
+        List<Motherboard> mobos = Database.getMotherboards(searchName);
+
         request.setAttribute("searchName", searchName);
         request.setAttribute("mobos", mobos);
         request.getRequestDispatcher("/view/mobos.jsp").forward(request, response);
