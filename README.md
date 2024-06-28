@@ -24,21 +24,20 @@ This feature ensures the compatibility of the selected components. Here are the 
 | Situation                  | Case                           | Suggestion                                                       |
 | -------------------------- | ------------------------------ | ---------------------------------------------------------------- |
 | CPU & Motherboard Socket   | Sockets match                  |                                                                  |
-|                            | Sockets mismatch               | Change CPU or motherboard.                                       |
+|                            | Sockets mismatch               | Change CPU or Motherboard.                                       |
 | Integrated GPU             | GPU selected                   |                                                                  |
 |                            | iGPU supported by both, no GPU | Consider discrete GPU for better performance.                    |
 |                            | iGPU supported by one, no GPU  | Replace the non-supporting component or consider a discrete GPU. |
-|                            | iGPU unsupported, no GPU       | Add discrete GPU or choose iGPU supporting CPU/motherboard.      |
-| RAM Type                   | Supported by motherboard       |                                                                  |
-|                            | Unsupported by motherboard     | Choose compatible RAM type.                                      |
-| RAM Speed with Motherboard | Supported, equal to max        |                                                                  |
-|                            | Supported, less than max       | Upgrade to faster RAM.                                           |
-|                            | Unsupported                    | Choose supported RAM speed.                                      |
+|                            | iGPU unsupported, no GPU       | Add discrete GPU or choose iGPU supporting CPU/Motherboard.      |
+| RAM Type                   | Supported by Motherboard       |                                                                  |
+|                            | Unsupported by Motherboard     | Choose compatible RAM type.                                      |
+| RAM Speed with Motherboard | Supported                      |                                                                  |
+|                            | Faster than max                | Ram will be underclocked. Consider different RAM or Motherboard  |
 | RAM Speed Matching         | Speeds match                   |                                                                  |
 |                            | Speeds mismatch                | Use matching speed RAM sticks.                                   |
-| RAM Capacity               | Supported by motherboard       |                                                                  |
-|                            | Unsupported by motherboard     | Reduce RAM capacity to supported max.                            |
+| RAM Capacity               | Supported by Motherboard       |                                                                  |
+|                            | Unsupported by Motherboard     | Reduce RAM capacity to supported max.                            |
 | RAM Slots                  | Enough slots                   |                                                                  |
-|                            | Insufficient slots             | Reduce RAM sticks or choose another motherboard.                 |
+|                            | Insufficient slots             | Reduce RAM sticks or choose another Motherboard.                 |
 | PSU TDP                    | TDP > CPU + GPU TDPs + 30%     |                                                                  |
 |                            | TDP <= CPU + GPU TDPs + 30%    | Choose higher TDP PSU.                                           |

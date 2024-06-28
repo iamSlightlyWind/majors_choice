@@ -22,6 +22,11 @@ public class RAM extends Product {
         this.image = r.image;
     }
 
+    public boolean compare(RAM r) {
+        return this.name.equals(r.name) && this.generation.equals(r.generation) && this.capacity == r.capacity
+                && this.speed == r.speed && this.latency == r.latency;
+    }
+
     public RAM(int id, double sellingPrice, double costPrice, String description, String name, String generation,
             int capacity, int speed, int latency) {
         super(id, sellingPrice, costPrice, description);
