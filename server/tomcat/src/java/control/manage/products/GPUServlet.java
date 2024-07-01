@@ -97,7 +97,7 @@ public class GPUServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.removeGPU(id);
+            db.setQuantity(id);
             response.sendRedirect("gpus");
         }
 

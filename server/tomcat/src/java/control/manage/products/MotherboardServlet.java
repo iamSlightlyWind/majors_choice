@@ -46,7 +46,7 @@ public class MotherboardServlet extends HttpServlet {
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
                 int result = db.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, null, quantity);
-
+                
                 if (result != -1) {
                     int productId = db.getMaxProductId();
                     String image = db.handleFileUpload(request, "image", String.valueOf(productId));
@@ -68,13 +68,13 @@ public class MotherboardServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                 Motherboard motherboard = new Motherboard(id);
+                Motherboard motherboard = new Motherboard(id);
                 if (motherboard != null) {
                     request.setAttribute("motherboard", motherboard);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.setAttribute("errorMessage", "Không tìm thấy CPU");
+                    request.setAttribute("errorMessage", "Không tìm thấy Motherboard");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
                     dispatcher.forward(request, response);
                 }
@@ -95,7 +95,8 @@ public class MotherboardServlet extends HttpServlet {
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
                 String image = db.handleFileUpload(request, "image", Integer.toString(id));
 
-                int result = db.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
+                int result = db.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, igpu,
+                        formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("motherboards?service=listAll");
                 } else {
@@ -106,7 +107,7 @@ public class MotherboardServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.removeMotherboard(id);
+            db.setQuantity(id);
             response.sendRedirect("motherboards");
         }
 

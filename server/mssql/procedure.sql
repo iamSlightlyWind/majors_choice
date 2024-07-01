@@ -1159,6 +1159,7 @@ CREATE PROCEDURE updateProductMotherboard
     @formFactor nvarchar(50),
     @ramType nvarchar(50),
     @maxRamSpeed int,
+	@maxRamCapacity int,
     @ramSlots int,
     @wifi bit,
     @image nvarchar(max),
@@ -1188,6 +1189,7 @@ BEGIN
         formFactor = @formFactor,
         ramType = @ramType,
         maxRamSpeed = @maxRamSpeed,
+		maxRamCapacity =@maxRamCapacity,
         ramSlots = @ramSlots,
         wifi = @wifi
     WHERE id = @id
@@ -1365,3 +1367,25 @@ BEGIN
     WHERE o.id = @OrderId;
 END;
 go
+CREATE PROCEDURE setQuantity
+    @id int
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM products WHERE id = @id)
+    BEGIN
+        RETURN
+    END
+
+    BEGIN TRANSACTION
+    BEGIN TRY
+        UPDATE products
+        SET quantity = -1
+        WHERE id = @id
+
+        COMMIT TRANSACTION
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION
+    END CATCH
+END
+GO

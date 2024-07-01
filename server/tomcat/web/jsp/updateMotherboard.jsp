@@ -57,7 +57,7 @@
                     <td><input type="number" name="maxRamSpeed" value="<%=motherboard.getMaxRamSpeed()%>"></td>
                 </tr>
                 <tr>
-                    <td>maxRamSpeed</td>
+                    <td>maxRamCapacity</td>
                     <td><input type="number" name="maxRamCapacity" value="<%=motherboard.getMaxRamCapacity()%>"></td>
                 </tr>
                 <tr>

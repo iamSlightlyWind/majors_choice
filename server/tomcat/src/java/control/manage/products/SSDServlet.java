@@ -92,7 +92,7 @@ public class SSDServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.removeSSD(id);
+            db.setQuantity(id);
             response.sendRedirect("ssds");
         }
     }

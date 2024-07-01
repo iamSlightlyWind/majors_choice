@@ -358,40 +358,6 @@ public class Database {
         }
     }
 
-    public int removeCPU(int id) {
-        int n = 0;
-        String sqlDeleteFromCPUs = "DELETE FROM [dbo].[cpus] WHERE id = ?";
-        String sqlDeleteFromProducts = "DELETE FROM [dbo].[products] WHERE id = ?";
-        try {
-            connection.setAutoCommit(false);
-            PreparedStatement psDeleteFromCPUs = connection.prepareStatement(sqlDeleteFromCPUs);
-            psDeleteFromCPUs.setInt(1, id);
-            n += psDeleteFromCPUs.executeUpdate();
-            PreparedStatement psDeleteFromProducts = connection.prepareStatement(sqlDeleteFromProducts);
-            psDeleteFromProducts.setInt(1, id);
-            n += psDeleteFromProducts.executeUpdate();
-            connection.commit();
-        } catch (SQLException ex) {
-            try {
-                if (connection != null) {
-                    connection.rollback();
-                }
-            } catch (SQLException e) {
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, e);
-            }
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (connection != null) {
-                    connection.setAutoCommit(true);
-                }
-            } catch (SQLException e) {
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, e);
-            }
-        }
-        return n;
-    }
-
     public int addProductGPU(double sellingPrice, double costPrice, String name, String generation, int vram,
             int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
@@ -428,7 +394,7 @@ public class Database {
     public int updateProductGPU(int id, double sellingPrice, double costPrice, String name, String generation, int vram,
             int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
-            String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
@@ -456,23 +422,8 @@ public class Database {
         }
     }
 
-    public int removeGPU(int id) {
-        int n = 0;
-        String sql = "DELETE FROM [dbo].[gpus]\n"
-                + "      WHERE id = " + id;
-        try {
-            Statement state = connection.createStatement();
-            n = state.executeUpdate(sql);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n;
-    }
-
     public int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket, String chipset,
-            int igpu,
-            String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi,
+            int igpu, String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi,
             String image, int quantity) {
         try {
             Database db = new Database();
@@ -536,7 +487,7 @@ public class Database {
             callableStatement.execute();
 
             // Get the result from the output parameter
-            String result = callableStatement.getString(13);
+            String result = callableStatement.getString(16);
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
@@ -546,34 +497,6 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
         }
-    }
-
-    public int removeMotherboard(int id) {
-        int n = 0;
-        String sql = "DELETE FROM [dbo].[motherboards]\n"
-                + "      WHERE id = " + id;
-        try {
-            Statement state = connection.createStatement();
-            n = state.executeUpdate(sql);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n;
-    }
-
-    public int removePSU(int id) {
-        int n = 0;
-        String sql = "DELETE FROM [dbo].[psus]\n"
-                + "      WHERE id = " + id;
-        try {
-            Statement state = connection.createStatement();
-            n = state.executeUpdate(sql);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n;
     }
 
     public int addProductRAM(double sellingPrice, double costPrice, String name, String generation, int capacity,
@@ -641,18 +564,6 @@ public class Database {
         }
     }
 
-    public int removeRAM(int id) {
-        int n = 0;
-        String sql = "DELETE FROM [dbo].[rams] WHERE id = " + id;
-        try {
-            Statement state = connection.createStatement();
-            n = state.executeUpdate(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n;
-    }
-
     public int addProductSSD(double sellingPrice, double costPrice, String name, String connectionInterface,
             int capacity, int cache, String image, int quantity) {
         try {
@@ -714,18 +625,6 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
         }
-    }
-
-    public int removeSSD(int id) {
-        int n = 0;
-        String sql = "DELETE FROM [dbo].[ssds] WHERE id = " + id;
-        try {
-            Statement state = connection.createStatement();
-            n = state.executeUpdate(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return n;
     }
 
     public String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
@@ -1145,30 +1044,35 @@ public class Database {
     public void updateOrder(int id, String action) {
         String current = getOrderStatus(id);
 
-         switch (action) {
+        switch (action) {
             case "forceCancel":
                 RequestOrderCancel(id);
                 ApproveOrderCancel(id);
                 break;
             case "cancel":
-                if (current.equals("pending"))
+                if (current.equals("pending")) {
                     RequestOrderCancel(id);
+                }
                 break;
             case "approve":
-                if (current.equals("cancel"))
+                if (current.equals("cancel")) {
                     ApproveOrderCancel(id);
+                }
                 break;
             case "deny":
-                if (current.equals("cancel"))
+                if (current.equals("cancel")) {
                     DenyOrderCancel(id);
+                }
                 break;
             case "ship":
-                if (current.equals("pending") || current.equals("denied"))
+                if (current.equals("pending") || current.equals("denied")) {
                     ShipOrder(id);
+                }
                 break;
             case "complete":
-                if (current.equals("shipping"))
+                if (current.equals("shipping")) {
                     CompleteOrder(id);
+                }
                 break;
         }
 
@@ -1303,5 +1207,22 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void setQuantity(int id) {
+        try {
+            String sql = "{call setQuantity(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, id);
+
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void main(String[] args) {
+        Database db = new Database();
+        db.setQuantity(1);
     }
 }
