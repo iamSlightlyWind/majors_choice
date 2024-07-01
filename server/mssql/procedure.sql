@@ -466,6 +466,42 @@ BEGIN
 END
 go
 
+CREATE PROCEDURE addProductCase
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @formFactor nvarchar(50),
+    @color nvarchar(50),
+    @image nvarchar(max),
+    @quantity int,
+    @result nvarchar(50) OUTPUT
+AS
+BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists: ' + @name
+        RETURN
+    END
+
+    INSERT INTO products
+        (sellingPrice, costPrice, quantity, image, name)
+    VALUES
+        (@sellingPrice, @costPrice, @quantity, @image, @name)
+
+    DECLARE @id int
+    SET @id = SCOPE_IDENTITY()
+
+    INSERT INTO cases
+        (id, formFactor, color)
+    VALUES
+        (@id, @formFactor, @color)
+
+    SET @result = 'Add successful'
+END
+GO
+
 CREATE PROCEDURE loginEmployee
     @username VARCHAR(50),
     @password VARCHAR(25),
@@ -761,6 +797,27 @@ begin
 end
 go
 
+CREATE PROCEDURE getCase
+    @inputname varchar(50)
+AS
+BEGIN
+    SELECT
+        cases.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        formFactor,
+        color,
+        image,
+        quantity
+    FROM products
+        JOIN cases ON products.id = cases.id
+    WHERE 1=1
+        AND (@inputname IS NULL OR name LIKE '%' + @inputname + '%')
+END
+GO
+
 create procedure deleteCart
     @userID int,
     @result int output
@@ -857,7 +914,8 @@ create procedure addOrderInformation
 as
 begin
     declare @orderId int
-    select @orderId = max(id) from orders
+    select @orderId = max(id)
+    from orders
 
     insert into orderInformation
         (id, fullname, phoneNumber, address)
@@ -1159,6 +1217,7 @@ CREATE PROCEDURE updateProductMotherboard
     @formFactor nvarchar(50),
     @ramType nvarchar(50),
     @maxRamSpeed int,
+    @maxRamCapacity int,
     @ramSlots int,
     @wifi bit,
     @image nvarchar(max),
@@ -1188,6 +1247,7 @@ BEGIN
         formFactor = @formFactor,
         ramType = @ramType,
         maxRamSpeed = @maxRamSpeed,
+		maxRamCapacity =@maxRamCapacity,
         ramSlots = @ramSlots,
         wifi = @wifi
     WHERE id = @id
@@ -1309,24 +1369,62 @@ BEGIN
     SET @result = 'Update successful'
 END
 GO
+
+CREATE PROCEDURE updateProductCase
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @formFactor nvarchar(50),
+    @color nvarchar(50),
+    @image nvarchar(max),
+    @quantity int,
+    @result nvarchar(50) OUTPUT
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+    FROM cases
+    WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice,
+        quantity = @quantity,
+        image = @image,
+        name = @name
+    WHERE id = @id
+
+    UPDATE cases
+    SET formFactor = @formFactor,
+        color = @color
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END
+GO
+
 CREATE PROCEDURE ProductAdjust
     @productId INT,
     @count INT
 AS
 BEGIN
     SET NOCOUNT ON;
-    
+
     DECLARE @currentQuantity INT;
-    
+
     SELECT @currentQuantity = quantity
     FROM products
     WHERE id = @productId;
-    
+
     IF @currentQuantity IS NOT NULL
     BEGIN
         DECLARE @newQuantity INT;
         SET @newQuantity = @currentQuantity + @count;
-        
+
         IF @newQuantity >= 0
         BEGIN
             UPDATE products
@@ -1361,83 +1459,113 @@ AS
 BEGIN
     SELECT ud.email
     FROM userDetails ud
-    JOIN orders o ON ud.id = o.userId
+        JOIN orders o ON ud.id = o.userId
     WHERE o.id = @OrderId;
 END;
 go
 
+CREATE PROCEDURE setQuantity
+    @id int
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1
+    FROM products
+    WHERE id = @id)
+    BEGIN
+        RETURN
+    END
+
+    BEGIN TRANSACTION
+    BEGIN TRY
+        UPDATE products
+        SET quantity = -1
+        WHERE id = @id
+
+        COMMIT TRANSACTION
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION
+    END CATCH
+END
+GO
+
 create procedure addRating
-	@orderID int,
-	@ratingStar int,
-	@ratingText nvarchar(max),
-	@result int output
+    @orderID int,
+    @ratingStar int,
+    @ratingText nvarchar(max),
+    @result int output
 as
 begin
     insert into ratings
-	(orderId, rating_star, rating_text)
-	values
-	(@orderID, @ratingStar, @ratingText)
+        (orderId, rating_star, rating_text)
+    values
+        (@orderID, @ratingStar, @ratingText)
 
-	set @result = 1
+    set @result = 1
 end;
 go
 
 create procedure updateRatings
-	@id int,
-	@ratingStar int,
-	@ratingText nvarchar(max),
-	@result int output
+    @id int,
+    @ratingStar int,
+    @ratingText nvarchar(max),
+    @result int output
 as
 begin
-	IF NOT EXISTS (SELECT 1
+    IF NOT EXISTS (SELECT 1
     FROM ratings
     WHERE id = @id)
     BEGIN
-        SET @result = 0 --rating donesn't exist
+        SET @result = 0
+        --rating donesn't exist
         RETURN
     END
 
-	update ratings
+    update ratings
 	set rating_star = @ratingStar,
 		rating_text = @ratingText
 	where id = @id;
 
-	set @result = 1;
+    set @result = 1;
 end;
 go
 
 create procedure getRatingsByProduct
-	@productID int
+    @productID int
 as
 begin
-	select ratings.id as id,
-		   ratings.orderId as orderID,
-		   orders.userId as userID,
-		   orders.productId as productID,
-		   rating_star,
-		   rating_text,
-		   dateRated
-	from orders 
-	join ratings on orders.id = ratings.orderId
-	where orders.productId = @productID
+    select ratings.id as id,
+        ratings.orderId as orderID,
+        orders.userId as userID,
+        orders.productId as productID,
+        rating_star,
+        rating_text,
+        dateRated
+    from orders
+        join ratings on orders.id = ratings.orderId
+    where orders.productId = @productID
 end;
 go
 
 create procedure checkUserOrderRate
-	@orderID int,
-	@result int output
+    @orderID int,
+    @result int output
 as
 begin
-	IF EXISTS (SELECT 1 FROM orders WHERE id = @orderID and status = 'Completed' and rateStatus = 0)
+    IF EXISTS (SELECT 1
+    FROM orders
+    WHERE id = @orderID and status = 'Completed' and rateStatus = 0)
 	begin
-		set @result = 0
-		return
-	end
-	IF EXISTS (SELECT 1 FROM orders WHERE id = @orderID and status = 'Completed' and rateStatus = 1)
+        set @result = 0
+        return
+    end
+    IF EXISTS (SELECT 1
+    FROM orders
+    WHERE id = @orderID and status = 'Completed' and rateStatus = 1)
 	begin
-		set @result = 1
-		return
-	end
+        set @result = 1
+        return
+    end
 end;
 go
 

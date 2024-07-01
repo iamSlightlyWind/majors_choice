@@ -425,7 +425,7 @@ public class Database {
             int vram,
             int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
-            String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setInt(1, id);
             callableStatement.setDouble(2, sellingPrice);
@@ -534,7 +534,7 @@ public class Database {
             callableStatement.execute();
 
             // Get the result from the output parameter
-            String result = callableStatement.getString(13);
+            String result = callableStatement.getString(16);
             if ("Update successful".equals(result)) {
                 return 1;
             } else {
@@ -805,6 +805,93 @@ public class Database {
         }
     }
 
+    public static ArrayList<Case> getCases(String inputName) {
+        try {
+            String sql = "{call getCase(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Case> cases = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                String formFactor = resultSet.getString("formFactor");
+                String color = resultSet.getString("color");
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                cases.add(new Case(name, formFactor, color, image, name, id, sellingPrice,
+                        costPrice, description, quantity));
+            }
+            return cases;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @SuppressWarnings("unused")
+    public static int addProductCase(double sellingPrice, double costPrice, String name, String formFactor,
+            String color, String image, int quantity) {
+        try {
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = Database.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductCase(?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = Database.connection.prepareCall(sql);
+
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setString(4, formFactor);
+            callableStatement.setString(5, color);
+            callableStatement.setString(6, image);
+            callableStatement.setInt(7, quantity);
+            callableStatement.registerOutParameter(8, Types.NVARCHAR);
+
+            callableStatement.execute();
+            return callableStatement.getInt(8);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public static int updateProductCase(int id, double sellingPrice, double costPrice, String name, String formFactor,
+            String color, String image, int quantity) {
+        try {
+            String sql = "{call updateProductCase(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setString(5, formFactor);
+            callableStatement.setString(6, color);
+            callableStatement.setString(7, image);
+            callableStatement.setInt(8, quantity);
+            callableStatement.registerOutParameter(9, Types.VARCHAR);
+
+            callableStatement.execute();
+            // Get the result from the output parameter
+            String result = callableStatement.getString(9);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
     public static int deleteCart(int userID) {
         try {
             String sql = "{call deleteCart(?, ?)}";
@@ -887,7 +974,7 @@ public class Database {
         ArrayList<RAM> rams = getRAMs("");
         ArrayList<SSD> ssds = getSSDs("");
         ArrayList<PSU> psus = getPSUs("");
-        ArrayList<Case> cases = getCases();
+        ArrayList<Case> cases = getCases("");
         ArrayList<Product> products = new ArrayList<>();
 
         try {
@@ -1147,24 +1234,29 @@ public class Database {
                 ApproveOrderCancel(id);
                 break;
             case "cancel":
-                if (current.equals("pending"))
+                if (current.equals("pending")) {
                     RequestOrderCancel(id);
+                }
                 break;
             case "approve":
-                if (current.equals("cancel"))
+                if (current.equals("cancel")) {
                     ApproveOrderCancel(id);
+                }
                 break;
             case "deny":
-                if (current.equals("cancel"))
+                if (current.equals("cancel")) {
                     DenyOrderCancel(id);
+                }
                 break;
             case "ship":
-                if (current.equals("pending") || current.equals("denied"))
+                if (current.equals("pending") || current.equals("denied")) {
                     ShipOrder(id);
+                }
                 break;
             case "complete":
-                if (current.equals("shipping"))
+                if (current.equals("shipping")) {
                     CompleteOrder(id);
+                }
                 break;
         }
 
@@ -1300,9 +1392,9 @@ public class Database {
         }
         return null;
     }
-    
-    public static int addRating(int orderID, int ratingStar, String ratingText){
-        try{
+
+    public static int addRating(int orderID, int ratingStar, String ratingText) {
+        try {
             String sql = "{call addRating(?, ?, ?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
             statement.setInt(1, orderID);
@@ -1312,30 +1404,30 @@ public class Database {
 
             statement.execute();
             return statement.getInt(4);
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
     }
-    
-    public static int updateRating(int id, int ratingStar, String ratingText){
-        try{
+
+    public static int updateRating(int id, int ratingStar, String ratingText) {
+        try {
             String sql = "{call updateRatings(?, ?, ?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
             statement.setInt(1, id);
             statement.setInt(2, ratingStar);
             statement.setString(3, ratingText);
             statement.registerOutParameter(4, Types.INTEGER);
-            
+
             statement.execute();
             return statement.getInt(4);
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
-    
-    public static ArrayList<Rating> getRating(int productID){
+
+    public static ArrayList<Rating> getRating(int productID) {
         try {
             String sql = "{call getRatingsByProduct(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1359,31 +1451,43 @@ public class Database {
         }
         return null;
     }
-    
-    public static int checkOrderRate(int orderID){
-        try{
+
+    public static int checkOrderRate(int orderID) {
+        try {
             String sql = "{call checkUserOrderRate(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
             statement.setInt(1, orderID);
             statement.registerOutParameter(2, Types.INTEGER);
-            
+
             statement.execute();
             return statement.getInt(2);
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
     }
-    
-    public static void updateRateInOrder(int orderID){
-        try{
+
+    public static void updateRateInOrder(int orderID) {
+        try {
             String sql = "UPDATE orders\n"
                     + "SET rateStatus = 1\n"
                     + "WHERE id = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, orderID);
             statement.executeUpdate();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void setQuantity(int id) {
+        try {
+            String sql = "{call setQuantity(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, id);
+
+            statement.execute();
+        } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

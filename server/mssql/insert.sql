@@ -2474,3 +2474,344 @@ EXEC addProductSSD
     @image = '',
     @quantity = 10,
     @result = @result OUTPUT
+
+	--> Add Cases
+EXEC addProductCase
+    @sellingPrice = 3350000,
+    @costPrice = 2560000,
+    @name = 'Thermaltake Tower 300',
+    @formFactor = 'Micro Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 1990000,
+    @costPrice = 1500000,
+    @name = 'Corsair 3000D Airflow',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 2990000,
+    @costPrice = 2500000,
+    @name = 'Corsair 5000D Core Airflow',
+    @formFactor = 'Mid Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3650000,
+    @costPrice = 3350000,
+    @name = 'Corsair 2500D Airflow',
+    @formFactor = 'Mid Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 4190000,
+    @costPrice = 3500000,
+    @name = 'Cooler Master Mastercase H500P',
+    @formFactor = 'Mid Tower',
+    @color = 'Grey',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 11290000,
+    @costPrice = 9500000,
+    @name = 'Lian Li V3000',
+    @formFactor = 'FullTower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 5790000,
+    @costPrice = 4500000,
+    @name = 'Lian Li O11D',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 10990000,
+    @costPrice = 8500000,
+    @name = 'ASUS ROG Hyperion GR701',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 1330000,
+    @costPrice = 1000000,
+    @name = 'MIK LV12 M',
+    @formFactor = 'FullTower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 2190000,
+    @costPrice = 1650000,
+    @name = 'Cooler Master MasterBox NR200P',
+    @formFactor = 'Mini ITX',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3990000,
+    @costPrice = 2500000,
+    @name = 'INWIN N515 Nebula',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3590000,
+    @costPrice = 2400000,
+    @name = 'Lian Li Lancool 3 RGB',
+    @formFactor = 'FullTower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 1490000,
+    @costPrice = 1300000,
+    @name = 'MSI MAG Vampiric 010M',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3290000,
+    @costPrice = 2650000,
+    @name = 'InWin N127 Nebula',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 2750000,
+    @costPrice = 2430000,
+    @name = 'InWin B1 Pure',
+    @formFactor = 'Mid Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 4390000,
+    @costPrice = 4200000,
+    @name = 'NZXT H7 Elite',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 12490000,
+    @costPrice = 11000000,
+    @name = 'Cougar Cratus',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+    	--> Add Cases
+EXEC addProductCase
+    @sellingPrice = 3350000,
+    @costPrice = 2560000,
+    @name = 'Thermaltake Tower 300',
+    @formFactor = 'Micro Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 1990000,
+    @costPrice = 1500000,
+    @name = 'Corsair 3000D Airflow',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 2990000,
+    @costPrice = 2500000,
+    @name = 'Corsair 5000D Core Airflow',
+    @formFactor = 'Mid Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3650000,
+    @costPrice = 3350000,
+    @name = 'Corsair 2500D Airflow',
+    @formFactor = 'Mid Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 4190000,
+    @costPrice = 3500000,
+    @name = 'Cooler Master Mastercase H500P',
+    @formFactor = 'Mid Tower',
+    @color = 'Grey',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 11290000,
+    @costPrice = 9500000,
+    @name = 'Lian Li V3000',
+    @formFactor = 'FullTower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 5790000,
+    @costPrice = 4500000,
+    @name = 'Lian Li O11D',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 10990000,
+    @costPrice = 8500000,
+    @name = 'ASUS ROG Hyperion GR701',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 1330000,
+    @costPrice = 1000000,
+    @name = 'MIK LV12 M',
+    @formFactor = 'FullTower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 2190000,
+    @costPrice = 1650000,
+    @name = 'Cooler Master MasterBox NR200P',
+    @formFactor = 'Mini ITX',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3990000,
+    @costPrice = 2500000,
+    @name = 'INWIN N515 Nebula',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3590000,
+    @costPrice = 2400000,
+    @name = 'Lian Li Lancool 3 RGB',
+    @formFactor = 'FullTower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 1490000,
+    @costPrice = 1300000,
+    @name = 'MSI MAG Vampiric 010M',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 3290000,
+    @costPrice = 2650000,
+    @name = 'InWin N127 Nebula',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 2750000,
+    @costPrice = 2430000,
+    @name = 'InWin B1 Pure',
+    @formFactor = 'Mid Tower',
+    @color = 'White',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 4390000,
+    @costPrice = 4200000,
+    @name = 'NZXT H7 Elite',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT
+
+EXEC addProductCase
+    @sellingPrice = 12490000,
+    @costPrice = 11000000,
+    @name = 'Cougar Cratus',
+    @formFactor = 'Mid Tower',
+    @color = 'Black',
+    @image = '',
+    @quantity = 10,
+    @result = @result OUTPUT

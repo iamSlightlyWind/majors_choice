@@ -4,14 +4,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Insert Product</title>
+        <title>Insert Case</title>
     </head>
     <body>
-        <form action="/cases" method="post" >
+        <form action="cases?service=insertCase" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
-                    <td>ID</td>
-                    <td><input type="number" name="id"></td>
+                    <td>SellingPrice</td>
+                    <td><input type="number" name="sellingPrice" ></td>
+                </tr>
+                <tr>
+                    <td>CostPrice</td>
+                    <td><input type="number" name="costPrice" ></td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><input type="file" name="image" ></td>
                 </tr>
                 <tr>
                     <td>Name</td>
@@ -22,12 +30,16 @@
                     <td><input type="text" name="type"></td>
                 </tr>
                 <tr>
-                    <td>FormFactor</td>
+                    <td>Form Factor</td>
                     <td><input type="text" name="formFactor"></td>
                 </tr>
                 <tr>
                     <td>Color</td>
                     <td><input type="text" name="color"></td>
+                </tr>
+                <tr>
+                    <td>quantity</td>
+                    <td><input type="number" name="quantity"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Add Case"></td>
@@ -38,4 +50,3 @@
         </form>
     </body>
 </html>
-

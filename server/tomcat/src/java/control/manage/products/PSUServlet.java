@@ -93,7 +93,7 @@ public class PSUServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            Database.removePSU(id);
+            Database.setQuantity(id);
             response.sendRedirect("psus");
         }
     }

@@ -215,6 +215,14 @@ public class Motherboard extends Product {
         return sellingPrice;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public double getCostPrice() {
         return costPrice;
     }
