@@ -17,6 +17,7 @@ public class Cart {
         this.total = cart.total;
         this.products = new ArrayList<Product>(cart.products);
         this.quantities = new ArrayList<ProductCount>(cart.quantities);
+        this.total = cart.total;
     }
 
     public void validate(){

@@ -18,22 +18,26 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import main.User;
 import packages.wrap.Cart;
+import packages.wrap.OrderInfo;
 
 public class ajaxServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User currentUser = (User) request.getSession().getAttribute("userObject");
-        currentUser.retrieveData("user");
-        Cart tempCart = new Cart(currentUser.cart);
-        currentUser.cart.clearCart();
+        Cart cart = (Cart) request.getSession().getAttribute("tempCart");
+        request.getSession().setAttribute("cartObject", cart);
 
-        request.getSession().setAttribute("cartObject", tempCart);
+        String fullName = request.getParameter("fullName");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
 
-        makePayment(request, response, (long) tempCart.total);
+        OrderInfo orderInfo = new OrderInfo(fullName, phone, address);
+
+        request.getSession().setAttribute("orderInfo", orderInfo);
+
+        makePayment(request, response, (long) cart.total);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
