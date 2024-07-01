@@ -24,6 +24,10 @@ public class User {
         cart = new Cart(id);
     }
 
+    public void addOrderInformation(OrderInfo info) {
+        Database.addOrderInformation(info.fullName, info.phoneNumber, info.address);
+    }
+
     public void addOrderInformation() {
         Database.addOrderInformation(fullName, phoneNumber, address);
     }

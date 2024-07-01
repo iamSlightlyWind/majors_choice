@@ -378,20 +378,20 @@
                         </span>
                       </div>
                       <p>${buyable}</p>
-                      <form action="/payment/vnpayajax" id="frmCreateOrder" method="post">
+                      <form action="/Cart" method="post">
                         <input type="hidden" name="amount" value="${cartPriceDouble}" />
                         <input type="hidden" name="language" value="vn" />
                         <input type="hidden" name="bankCode" value="" />
                         <c:choose>
                           <c:when test="${buyable == true}">
-                            <button type="submit" name="action" value="placeOrder"
+                            <button type="submit" name="action" value="checkout"
                               class="view-cart-component-button7 thq-button-filled button">
-                              Place Order
+                              Checkout
                             </button>
                           </c:when>
                           <c:otherwise>
                             <button type="button" disabled class="view-cart-component-button7 thq-button-filled button">
-                              Place Order
+                              Checkout
                             </button>
                           </c:otherwise>
                         </c:choose>

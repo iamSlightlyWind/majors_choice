@@ -23,37 +23,59 @@ public class CartServlet extends HttpServlet {
         if (currentUser == null) {
             response.sendRedirect("/auth/login.jsp");
             return;
+        } else
+            currentUser.retrieveData("user");
+
+        if (action == null) {
+            action = "viewCart";
         }
 
-        currentUser.retrieveData("user");
+        switch (action) {
+            case "viewCart":
+                currentUser.retrieveData("user");
+                request.setAttribute("buyable", currentUser.cart.buyable());
+                request.setAttribute("user", currentUser.fullName);
+                request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
+                request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
+                request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", currentUser.cart.total));
+                request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
+                break;
+            case "addItem":
+                currentUser.cart.addProduct(request.getParameter("type"),
+                        Integer.parseInt(request.getParameter("productID")));
+                response.sendRedirect("/Test");
+                break;
+            case "removeOne":
+            case "removeAll":
+                currentUser.cart.remove(Integer.parseInt(request.getParameter("productID")),
+                        ((String) request.getParameter("action")).equals("removeOne"));
+                response.sendRedirect("/Cart");
+                break;
+            case "addOne":
+                currentUser.cart.addOne(Integer.parseInt(request.getParameter("productID")));
+                response.sendRedirect("/Cart");
+                break;
+            case "placeOrder":
+                currentUser.cart.placeOrder();
+                request.setAttribute("cartPrice", 0);
+                request.setAttribute("user", currentUser.fullName);
+                request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
+                break;
+            case "clear":
+                currentUser.cart.clearCart();
+                response.sendRedirect("/Cart");
+                break;
+            case "checkout":
+                Cart tempCart = new Cart(currentUser.cart);
+                request.getSession().setAttribute("tempCart", tempCart);
+                currentUser.cart.clearCart();
 
-        if (action == null || action.equals("viewCart")) {
-            currentUser.retrieveData("user");
-            request.setAttribute("buyable", currentUser.cart.buyable());
-            request.setAttribute("user", currentUser.fullName);
-            request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
-            request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
-            request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", currentUser.cart.total));
-            request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
-        } else if (action.equals("addItem")) {
-            currentUser.cart.addProduct(request.getParameter("type"),
-                    Integer.parseInt(request.getParameter("productID")));
-            response.sendRedirect("/Test");
-        } else if (action.equals("removeOne") || action.equals("removeAll")) {
-            currentUser.cart.remove(Integer.parseInt(request.getParameter("productID")),
-                    ((String) request.getParameter("action")).equals("removeOne"));
-            response.sendRedirect("/Cart");
-        } else if (action.equals("addOne")) {
-            currentUser.cart.addOne(Integer.parseInt(request.getParameter("productID")));
-            response.sendRedirect("/Cart");
-        } else if (action.equals("placeOrder")) {
-            currentUser.cart.placeOrder();
-            request.setAttribute("cartPrice", 0);
-            request.setAttribute("user", currentUser.fullName);
-            request.getRequestDispatcher("/cart/cart.jsp").forward(request, response);
-        } else if (action.equals("clear")) {
-            currentUser.cart.clearCart();
-            response.sendRedirect("/Cart");
+                request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(tempCart.total));
+                request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", tempCart.total));
+                request.setAttribute("ProductCount", (ArrayList<ProductCount>) tempCart.quantities);
+                request.setAttribute("user", currentUser);
+
+                request.getRequestDispatcher("/cart/checkout.jsp").forward(request, response);
         }
 
         request.getSession().setAttribute("userObject", currentUser);
