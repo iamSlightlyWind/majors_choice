@@ -466,6 +466,36 @@ BEGIN
 END
 go
 
+CREATE PROCEDURE addProductCase
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @formFactor nvarchar(50),
+    @color nvarchar(50),
+    @image nvarchar(max),
+    @quantity int,
+    @result nvarchar(50) OUTPUT
+AS
+BEGIN
+    IF EXISTS (SELECT 1 FROM products WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists: ' + @name
+        RETURN
+    END
+
+    INSERT INTO products (sellingPrice, costPrice, quantity, image, name)
+    VALUES (@sellingPrice, @costPrice, @quantity, @image, @name)
+
+    DECLARE @id int
+    SET @id = SCOPE_IDENTITY()
+
+    INSERT INTO cases (id, formFactor, color)
+    VALUES (@id, @formFactor, @color)
+
+    SET @result = 'Add successful'
+END
+GO
+
 CREATE PROCEDURE loginEmployee
     @username VARCHAR(25),
     @password VARCHAR(25),
@@ -760,6 +790,27 @@ begin
         and (@inputname is null or name like '%'+@inputname+'%')
 end
 go
+
+CREATE PROCEDURE getCase
+    @inputname varchar(50)
+AS
+BEGIN
+    SELECT
+        cases.id,
+        sellingPrice,
+        costPrice,
+        description,
+        name,
+        formFactor,
+        color,
+        image,
+        quantity
+    FROM products
+        JOIN cases ON products.id = cases.id
+    WHERE 1=1
+        AND (@inputname IS NULL OR name LIKE '%' + @inputname + '%')
+END
+GO
 
 create procedure deleteCart
     @userID int,
@@ -1311,6 +1362,42 @@ BEGIN
     SET @result = 'Update successful'
 END
 GO
+
+CREATE PROCEDURE updateProductCase
+    @id int,
+    @sellingPrice decimal(18,2),
+    @costPrice decimal(18,2),
+    @name nvarchar(50),
+    @formFactor nvarchar(50),
+    @color nvarchar(50),
+    @image nvarchar(max),
+    @quantity int,
+    @result nvarchar(50) OUTPUT
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM cases WHERE id = @id)
+    BEGIN
+        SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
+        RETURN
+    END
+
+    UPDATE products
+    SET sellingPrice = @sellingPrice,
+        costPrice = @costPrice,
+        quantity = @quantity,
+        image = @image,
+        name = @name
+    WHERE id = @id
+
+    UPDATE cases
+    SET formFactor = @formFactor,
+        color = @color
+    WHERE id = @id
+
+    SET @result = 'Update successful'
+END
+GO
+
 CREATE PROCEDURE ProductAdjust
     @productId INT,
     @count INT
