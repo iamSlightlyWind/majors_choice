@@ -1365,3 +1365,80 @@ BEGIN
     WHERE o.id = @OrderId;
 END;
 go
+
+create procedure addRating
+	@orderID int,
+	@ratingStar int,
+	@ratingText nvarchar(max),
+	@result int output
+as
+begin
+    insert into ratings
+	(orderId, rating_star, rating_text)
+	values
+	(@orderID, @ratingStar, @ratingText)
+
+	set @result = 1
+end;
+go
+
+create procedure updateRatings
+	@id int,
+	@ratingStar int,
+	@ratingText nvarchar(max),
+	@result int output
+as
+begin
+	IF NOT EXISTS (SELECT 1
+    FROM ratings
+    WHERE id = @id)
+    BEGIN
+        SET @result = 0 --rating donesn't exist
+        RETURN
+    END
+
+	update ratings
+	set rating_star = @ratingStar,
+		rating_text = @ratingText
+	where id = @id;
+
+	set @result = 1;
+end;
+go
+
+create procedure getRatingsByProduct
+	@productID int
+as
+begin
+	select ratings.id as id,
+		   ratings.orderId as orderID,
+		   orders.userId as userID,
+		   orders.productId as productID,
+		   rating_star,
+		   rating_text,
+		   dateRated
+	from orders 
+	join ratings on orders.id = ratings.orderId
+	where orders.productId = @productID
+end;
+go
+
+create procedure checkUserOrderRate
+	@orderID int,
+	@result int output
+as
+begin
+	IF EXISTS (SELECT 1 FROM orders WHERE id = @orderID and status = 'Completed' and rateStatus = 0)
+	begin
+		set @result = 0
+		return
+	end
+	IF EXISTS (SELECT 1 FROM orders WHERE id = @orderID and status = 'Completed' and rateStatus = 1)
+	begin
+		set @result = 1
+		return
+	end
+end;
+go
+
+
