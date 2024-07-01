@@ -65,6 +65,10 @@
         <servlet-name>Validate</servlet-name>
         <servlet-class>payment.Validate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RateProductServlet</servlet-name>
+        <servlet-class>control.view.detail.RateProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/auth/login</url-pattern>
@@ -303,6 +307,10 @@
     <servlet-mapping>
         <servlet-name>Validate</servlet-name>
         <url-pattern>/payment/validate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RateProductServlet</servlet-name>
+        <url-pattern>/product/rate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
