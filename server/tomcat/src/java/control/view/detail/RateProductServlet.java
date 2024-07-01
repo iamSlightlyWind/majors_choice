@@ -3,7 +3,6 @@ package control.view.detail;
 
 import database.Database;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,6 +29,7 @@ public class RateProductServlet extends HttpServlet {
         }       
     } 
 
+    @SuppressWarnings("unused")
     protected void addRating(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         User user = (User) request.getSession().getAttribute("userObject");

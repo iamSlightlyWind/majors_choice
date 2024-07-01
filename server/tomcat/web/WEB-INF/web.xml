@@ -281,7 +281,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CaseServlet</servlet-name>
-        <url-pattern>/case</url-pattern>
+        <url-pattern>/cases</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GPUServlet</servlet-name>

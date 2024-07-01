@@ -14,6 +14,11 @@
         <form action="cpus" method="get">
         </form>
         <a href="/jsp/insertCPU.jsp"><button>Insert CPU</button></a>
+        <form action="cpus?service=importExcel" method="post" enctype="multipart/form-data">
+            <label for="excel">Chọn file Excel:</label>
+            <input type="file" name="excel" id="excel" accept=".xlsx">
+            <button type="submit">Import</button>
+        </form>
         <table border=1>
             <% String titleTable= (String)request.getAttribute("titleTable"); %>
             <caption><%=titleTable%></caption>

@@ -75,7 +75,7 @@ public class MotherboardServlet extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.setAttribute("errorMessage", "Không tìm thấy CPU");
+                    request.setAttribute("errorMessage", "Không tìm thấy Motherboard");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
                     dispatcher.forward(request, response);
                 }
@@ -108,7 +108,7 @@ public class MotherboardServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            Database.removeMotherboard(id);
+            Database.setQuantity(id);
             response.sendRedirect("motherboards");
         }
 
