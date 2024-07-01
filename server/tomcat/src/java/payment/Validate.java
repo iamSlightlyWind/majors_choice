@@ -32,7 +32,7 @@ public class Validate extends HttpServlet {
             String status = request.getParameter("vnp_TransactionStatus");
             if (status.equals("00")) {
                 currentUser.cart.placeOrder();
-                currentUser.addOrderInformation();
+                currentUser.addOrderInformation((OrderInfo) request.getSession().getAttribute("orderInfo"));
 
                 currentUser.getOrders();
                 Order currentOrder = currentUser.orders.get(currentUser.orders.size() - 1);
