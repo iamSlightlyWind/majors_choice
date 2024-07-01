@@ -69,7 +69,8 @@ public class CPU extends Product {
         this.tdp = tdp;
     }
 
-    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, 
+    public CPU(String generation, String socket, int cores, int threads, int baseClock, int boostClock, int tdp,
+            String image,
             String igpu, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.generation = generation;
@@ -82,12 +83,10 @@ public class CPU extends Product {
         this.image = image;
         this.igpu = igpu;
     }
-    
 
     public CPU(int id) {
         super(id);
-        Database db = new Database();
-        ArrayList<CPU> cpus = db.getCPUs("");
+        ArrayList<CPU> cpus = Database.getCPUs("");
 
         for (CPU cpu : cpus) {
             if (cpu.id == id) {

@@ -13,8 +13,6 @@ import packages.Motherboard;
 
 public class FilterMotherBoard extends HttpServlet {
 
-    Database db = new Database();
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -28,14 +26,14 @@ public class FilterMotherBoard extends HttpServlet {
 
         double fromP = (from_raw == null || from_raw.isEmpty()) ? 0 : Double.parseDouble(from_raw);
         double toP = (to_raw == null || to_raw.isEmpty()) ? 0 : Double.parseDouble(to_raw);
-        
-        List<Motherboard> list = db.getMotherboards(name);
+
+        List<Motherboard> list = Database.getMotherboards(name);
         List<Motherboard> list1 = getMotherBoardBySocket(list, socket);
         List<Motherboard> list2 = getMotherboardsByFormFactors(list1, formFactor);
         List<Motherboard> list3 = getMotherboardsByRamTypes(list2, ramType);
         List<Motherboard> mobos = getMotherboardsByWifi(list3, wifi);
         getMotherBoardsByPrice(mobos, fromP, toP);
-        
+
         request.setAttribute("searchName", name);
         request.setAttribute("from", from_raw);
         request.setAttribute("to", to_raw);
@@ -50,68 +48,68 @@ public class FilterMotherBoard extends HttpServlet {
 
     public List<Motherboard> getMotherBoardBySocket(List<Motherboard> mobos, String[] sockets) {
         List<Motherboard> list = new ArrayList<>();
-        if(sockets == null || sockets.length ==0){
+        if (sockets == null || sockets.length == 0) {
             return mobos;
         }
         for (Motherboard mobo : mobos) {
             for (String socket : sockets) {
-                if(socket.equals("lga1700")){
+                if (socket.equals("lga1700")) {
                     socket = "lga 1700";
                 }
-                if(mobo.socket.toLowerCase().contains(socket.toLowerCase())){
+                if (mobo.socket.toLowerCase().contains(socket.toLowerCase())) {
                     list.add(mobo);
                 }
             }
         }
-        
+
         return list;
     }
-    
+
     public List<Motherboard> getMotherboardsByRamTypes(List<Motherboard> mobos, String[] ramTypes) {
         List<Motherboard> list = new ArrayList<>();
-        if(ramTypes == null || ramTypes.length ==0){
+        if (ramTypes == null || ramTypes.length == 0) {
             return mobos;
         }
         for (Motherboard mobo : mobos) {
             for (String ramType : ramTypes) {
-                if(mobo.ramType.toLowerCase().contains(ramType.toLowerCase())){
+                if (mobo.ramType.toLowerCase().contains(ramType.toLowerCase())) {
                     list.add(mobo);
                 }
             }
         }
         return list;
     }
-    
+
     public List<Motherboard> getMotherboardsByFormFactors(List<Motherboard> mobos, String[] formFactors) {
         List<Motherboard> list = new ArrayList<>();
-        if(formFactors == null || formFactors.length ==0){
+        if (formFactors == null || formFactors.length == 0) {
             return mobos;
         }
         for (Motherboard mobo : mobos) {
             for (String formFactor : formFactors) {
-                if(mobo.formFactor.toLowerCase().contains(formFactor.toLowerCase())){
+                if (mobo.formFactor.toLowerCase().contains(formFactor.toLowerCase())) {
                     list.add(mobo);
                 }
             }
         }
         return list;
     }
-    
+
     public List<Motherboard> getMotherboardsByWifi(List<Motherboard> mobos, String[] wifis) {
         List<Motherboard> list = new ArrayList<>();
-        if(wifis == null || wifis.length ==0){
+        if (wifis == null || wifis.length == 0) {
             return mobos;
         }
         for (Motherboard mobo : mobos) {
             for (String wifi : wifis) {
-                if(wifi.contains(String.valueOf(mobo.wifi))){
+                if (wifi.contains(String.valueOf(mobo.wifi))) {
                     list.add(mobo);
                 }
             }
         }
         return list;
     }
-    
+
     public void getMotherBoardsByPrice(List<Motherboard> mobos, double from, double to) {
         if (from == 0 && to == 0) {
             return;

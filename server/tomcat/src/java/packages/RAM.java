@@ -22,7 +22,13 @@ public class RAM extends Product {
         this.image = r.image;
     }
 
-    public RAM(int id, double sellingPrice, double costPrice, String description, String name, String generation, int capacity, int speed, int latency) {
+    public boolean compare(RAM r) {
+        return this.name.equals(r.name) && this.generation.equals(r.generation) && this.capacity == r.capacity
+                && this.speed == r.speed && this.latency == r.latency;
+    }
+
+    public RAM(int id, double sellingPrice, double costPrice, String description, String name, String generation,
+            int capacity, int speed, int latency) {
         super(id, sellingPrice, costPrice, description);
         this.name = name;
         this.generation = generation;
@@ -31,7 +37,8 @@ public class RAM extends Product {
         this.latency = latency;
     }
 
-    public RAM(String generation, int capacity, int speed, int latency, String image, String name, int id, double sellingPrice, double costPrice, String description) {
+    public RAM(String generation, int capacity, int speed, int latency, String image, String name, int id,
+            double sellingPrice, double costPrice, String description) {
         super(name, id, sellingPrice, costPrice, description);
         this.generation = generation;
         this.capacity = capacity;
@@ -40,7 +47,8 @@ public class RAM extends Product {
         this.image = image;
     }
 
-    public RAM(String generation, int capacity, int speed, int latency, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity) {
+    public RAM(String generation, int capacity, int speed, int latency, String image, String name, int id,
+            double sellingPrice, double costPrice, String description, int quantity) {
         super(name, id, sellingPrice, costPrice, description, quantity);
         this.generation = generation;
         this.capacity = capacity;
@@ -51,8 +59,7 @@ public class RAM extends Product {
 
     public RAM(int id) {
         super(id);
-        Database db = new Database();
-        ArrayList<RAM> rams = db.getRAMs("");
+        ArrayList<RAM> rams = Database.getRAMs("");
 
         for (RAM ram : rams) {
             if (ram.id == id) {

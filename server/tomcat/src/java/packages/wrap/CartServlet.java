@@ -25,12 +25,10 @@ public class CartServlet extends HttpServlet {
             return;
         }
 
-        if (currentUser.cart == null) {
-            currentUser.cart = new Cart(currentUser.id, currentUser.db);
-        }
+        currentUser.retrieveData("user");
 
         if (action == null || action.equals("viewCart")) {
-            currentUser.cart.updateQuantity();
+            currentUser.retrieveData("user");
             request.setAttribute("buyable", currentUser.cart.buyable());
             request.setAttribute("user", currentUser.fullName);
             request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));

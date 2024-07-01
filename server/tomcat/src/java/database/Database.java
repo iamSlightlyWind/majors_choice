@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import packages.wrap.Order;
 import main.Email;
 import main.User;
 import packages.*;
@@ -15,9 +14,9 @@ import packages.wrap.*;
 
 public class Database {
 
-    public Connection connection;
+    public static Connection connection;
 
-    public Database() {
+    static {
         try {
             String username = "sa";
             String password = System.getenv("SQLPASSWORD") != null ? System.getenv("SQLPASSWORD") : "123";
@@ -31,7 +30,7 @@ public class Database {
         }
     }
 
-    public String selectAll(String table) {
+    public static String selectAll(String table) {
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from " + table);
@@ -51,7 +50,7 @@ public class Database {
         return null;
     }
 
-    public boolean forceActivate(String username) {
+    public static boolean forceActivate(String username) {
         try {
             String sql = "{call forceActivate(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -66,7 +65,7 @@ public class Database {
         return false;
     }
 
-    public boolean userExists(String email) {
+    public static boolean userExists(String email) {
         try {
             String sql = "{call userExists(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -81,7 +80,7 @@ public class Database {
         return false;
     }
 
-    public ArrayList<CPU> getCPUs(String inputName) {
+    public static ArrayList<CPU> getCPUs(String inputName) {
         try {
             String sql = "{call getCPU(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -114,7 +113,7 @@ public class Database {
         return null;
     }
 
-    public ArrayList<GPU> getGPUs(String inputName) {
+    public static ArrayList<GPU> getGPUs(String inputName) {
         try {
             String sql = "{call getGPU(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -145,7 +144,7 @@ public class Database {
         return null;
     }
 
-    public ArrayList<RAM> getRAMs(String inputName) {
+    public static ArrayList<RAM> getRAMs(String inputName) {
         try {
             String sql = "{call getRAM(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -174,7 +173,7 @@ public class Database {
         return null;
     }
 
-    public ArrayList<Motherboard> getMotherboards(String inputName) {
+    public static ArrayList<Motherboard> getMotherboards(String inputName) {
         try {
             String sql = "{call getMotherboard(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -209,7 +208,7 @@ public class Database {
         return null;
     }
 
-    public ArrayList<SSD> getSSDs(String inputName) {
+    public static ArrayList<SSD> getSSDs(String inputName) {
         try {
             String sql = "{call getSSD(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -237,7 +236,7 @@ public class Database {
         return null;
     }
 
-    public ArrayList<PSU> getPSUs(String inputName) {
+    public static ArrayList<PSU> getPSUs(String inputName) {
         try {
             String sql = "{call getPSU(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -264,20 +263,23 @@ public class Database {
         return null;
     }
 
-    public int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String igpu,
+    public static ArrayList<Case> getCases() {
+        return null;
+    }
+
+    public static int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String igpu,
             String socket,
             int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             int productId = 0;
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
             String sql = "{call addProductCPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
-            CallableStatement callableStatement = db.connection.prepareCall(sql);
+            CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
@@ -301,12 +303,11 @@ public class Database {
         }
     }
 
-    public int getMaxProductId() {
+    public static int getMaxProductId() {
         int maxId = 0;
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             if (resultSet.next()) {
                 maxId = resultSet.getInt("max_id");
@@ -317,7 +318,7 @@ public class Database {
         return maxId;
     }
 
-    public int updateProductCPU(int id, double sellingPrice, double costPrice, String name, String generation,
+    public static int updateProductCPU(int id, double sellingPrice, double costPrice, String name, String generation,
             String igpu,
             String socket, int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
@@ -354,19 +355,52 @@ public class Database {
         }
     }
 
-    public int addProductGPU(double sellingPrice, double costPrice, String name, String generation, int vram,
+    public static int removeCPU(int id) {
+        int n = 0;
+        String sqlDeleteFromCPUs = "DELETE FROM [dbo].[cpus] WHERE id = ?";
+        String sqlDeleteFromProducts = "DELETE FROM [dbo].[products] WHERE id = ?";
+        try {
+            connection.setAutoCommit(false);
+            PreparedStatement psDeleteFromCPUs = connection.prepareStatement(sqlDeleteFromCPUs);
+            psDeleteFromCPUs.setInt(1, id);
+            n += psDeleteFromCPUs.executeUpdate();
+            PreparedStatement psDeleteFromProducts = connection.prepareStatement(sqlDeleteFromProducts);
+            psDeleteFromProducts.setInt(1, id);
+            n += psDeleteFromProducts.executeUpdate();
+            connection.commit();
+        } catch (SQLException ex) {
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                }
+            } catch (SQLException e) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, e);
+            }
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.setAutoCommit(true);
+                }
+            } catch (SQLException e) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return n;
+    }
+
+    public static int addProductGPU(double sellingPrice, double costPrice, String name, String generation, int vram,
             int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             int productId = 0;
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
             String sql = "{call addProductGPU(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
-            CallableStatement callableStatement = db.connection.prepareCall(sql);
+            CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
@@ -387,7 +421,8 @@ public class Database {
         }
     }
 
-    public int updateProductGPU(int id, double sellingPrice, double costPrice, String name, String generation, int vram,
+    public static int updateProductGPU(int id, double sellingPrice, double costPrice, String name, String generation,
+            int vram,
             int baseClock, int boostClock, int tdp, String image, int quantity) {
         try {
             String sql = "{call updateProductGPU(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -418,20 +453,35 @@ public class Database {
         }
     }
 
-    public int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket, String chipset,
-            int igpu, String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi,
+    public static int removeGPU(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[gpus]\n"
+                + "      WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public static int addProductMotherboard(double sellingPrice, double costPrice, String name, String socket,
+            String chipset,
+            int igpu,
+            String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi,
             String image, int quantity) {
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             int productId = 0;
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
             String sql = "{call addProductMotherboard(? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,? ,?)}";
-            CallableStatement callableStatement = db.connection.prepareCall(sql);
+            CallableStatement callableStatement = connection.prepareCall(sql);
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
@@ -456,7 +506,8 @@ public class Database {
         }
     }
 
-    public int updateProductMotherboard(int id, double sellingPrice, double costPrice, String name, String socket,
+    public static int updateProductMotherboard(int id, double sellingPrice, double costPrice, String name,
+            String socket,
             String chipset, int igpu, String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity,
             int ramSlots, int wifi, String image, int quantity) {
         try {
@@ -495,12 +546,39 @@ public class Database {
         }
     }
 
-    public int addProductRAM(double sellingPrice, double costPrice, String name, String generation, int capacity,
+    public static int removeMotherboard(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[motherboards]\n"
+                + "      WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public static int removePSU(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[psus]\n"
+                + "      WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public static int addProductRAM(double sellingPrice, double costPrice, String name, String generation, int capacity,
             int speed, int latency, String image, int quantity) {
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             @SuppressWarnings("unused")
             int productId = 0;
@@ -508,7 +586,7 @@ public class Database {
                 productId = resultSet.getInt("max_id") + 1;
             }
             String sql = "{call addProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-            CallableStatement callableStatement = db.connection.prepareCall(sql);
+            CallableStatement callableStatement = connection.prepareCall(sql);
 
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
@@ -529,7 +607,7 @@ public class Database {
         }
     }
 
-    public int updateProductRAM(int id, double sellingPrice, double costPrice, String name, String generation,
+    public static int updateProductRAM(int id, double sellingPrice, double costPrice, String name, String generation,
             int capacity, int speed, int latency, String image, int quantity) {
         try {
             String sql = "{call updateProductRAM(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -560,19 +638,30 @@ public class Database {
         }
     }
 
-    public int addProductSSD(double sellingPrice, double costPrice, String name, String connectionInterface,
+    public static int removeRAM(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[rams] WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public static int addProductSSD(double sellingPrice, double costPrice, String name, String connectionInterface,
             int capacity, int cache, String image, int quantity) {
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             int productId = 0;
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
             String sql = "{call addProductSSD(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-            CallableStatement callableStatement = db.connection.prepareCall(sql);
+            CallableStatement callableStatement = connection.prepareCall(sql);
 
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
@@ -592,7 +681,8 @@ public class Database {
         }
     }
 
-    public int updateProductSSD(int id, double sellingPrice, double costPrice, String name, String connectionInterface,
+    public static int updateProductSSD(int id, double sellingPrice, double costPrice, String name,
+            String connectionInterface,
             int capacity, int cache, String image, int quantity) {
         try {
             // Prepare and execute the SQL statement to update the SSD product
@@ -623,7 +713,19 @@ public class Database {
         }
     }
 
-    public String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
+    public static int removeSSD(int id) {
+        int n = 0;
+        String sql = "DELETE FROM [dbo].[ssds] WHERE id = " + id;
+        try {
+            Statement state = connection.createStatement();
+            n = state.executeUpdate(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return n;
+    }
+
+    public static String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
         try {
             Part filePart = request.getPart(inputName);
             String fileName = productID + ".png";
@@ -643,7 +745,7 @@ public class Database {
         }
     }
 
-    public int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage,
+    public static int updateProductPSU(int id, double sellingPrice, double costPrice, String name, int wattage,
             String efficiency, String image, int quantity) {
         try {
             String sql = "{call updateProductPSU(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -673,19 +775,18 @@ public class Database {
     }
 
     @SuppressWarnings("unused")
-    public int addProductPSU(double sellingPrice, double costPrice, String name, int wattage, String efficiency,
+    public static int addProductPSU(double sellingPrice, double costPrice, String name, int wattage, String efficiency,
             String image, int quantity) {
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             int productId = 0;
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
             String sql = "{call addProductPSU(?, ?, ?, ?, ?, ?, ?, ?)}";
-            CallableStatement callableStatement = db.connection.prepareCall(sql);
+            CallableStatement callableStatement = connection.prepareCall(sql);
 
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
@@ -704,7 +805,7 @@ public class Database {
         }
     }
 
-    public ArrayList<Case> getCases(String inputName) {
+    public static ArrayList<Case> getCases(String inputName) {
         try {
             String sql = "{call getCase(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -730,23 +831,20 @@ public class Database {
         }
         return null;
     }
-    public static void main(String[] args) {
-        Database db = new Database();
-        ArrayList<Case> cases = db.getCases("");
-    }
 
-    public int addProductCase(double sellingPrice, double costPrice, String name, String formFactor, String color, String image, int quantity) {
+    @SuppressWarnings("unused")
+    public static int addProductCase(double sellingPrice, double costPrice, String name, String formFactor,
+            String color, String image, int quantity) {
         try {
-            Database db = new Database();
             String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
-            Statement statement = db.connection.createStatement();
+            Statement statement = Database.connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
             int productId = 0;
             if (resultSet.next()) {
                 productId = resultSet.getInt("max_id") + 1;
             }
             String sql = "{call addProductCase(?, ?, ?, ?, ?, ?, ?, ?)}";
-            CallableStatement callableStatement = db.connection.prepareCall(sql);
+            CallableStatement callableStatement = Database.connection.prepareCall(sql);
 
             callableStatement.setDouble(1, sellingPrice);
             callableStatement.setDouble(2, costPrice);
@@ -765,7 +863,8 @@ public class Database {
         }
     }
 
-    public int updateProductCase(int id, double sellingPrice, double costPrice, String name, String formFactor, String color, String image, int quantity) {
+    public static int updateProductCase(int id, double sellingPrice, double costPrice, String name, String formFactor,
+            String color, String image, int quantity) {
         try {
             String sql = "{call updateProductCase(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement callableStatement = connection.prepareCall(sql);
@@ -793,7 +892,7 @@ public class Database {
         }
     }
 
-    public int deleteCart(int userID) {
+    public static int deleteCart(int userID) {
         try {
             String sql = "{call deleteCart(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -808,7 +907,7 @@ public class Database {
         return -1;
     }
 
-    public int updateCart(int userID, ArrayList<Product> products) {
+    public static int updateCart(int userID, ArrayList<Product> products) {
         if (deleteCart(userID) == 1) {
             try {
                 String sql = "{call addToCart(?, ?, ?, ?, ?)}";
@@ -832,7 +931,7 @@ public class Database {
         return 1;
     }
 
-    public int placeOrder(int userID) {
+    public static int placeOrder(int userID) {
         try {
             String sql = "{call placeOrder(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -854,7 +953,7 @@ public class Database {
         return 1;
     }
 
-    public void addOrderInformation(String fullname, String phoneNumber, String address) {
+    public static void addOrderInformation(String fullname, String phoneNumber, String address) {
         try {
             String sql = "{call addOrderInformation(?, ?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -868,7 +967,7 @@ public class Database {
         }
     }
 
-    public ArrayList<Product> getCart(int userID) {
+    public static ArrayList<Product> getCart(int userID) {
         ArrayList<CPU> cpus = getCPUs("");
         ArrayList<GPU> gpus = getGPUs("");
         ArrayList<Motherboard> motherboards = getMotherboards("");
@@ -967,7 +1066,7 @@ public class Database {
         return products;
     }
 
-    public OrderInfo getOrderInfo(int orderID) {
+    public static OrderInfo getOrderInfo(int orderID) {
         OrderInfo orderInfo = new OrderInfo();
         try {
             String sql = "{call getOrderInformation(?)}";
@@ -985,7 +1084,7 @@ public class Database {
         return orderInfo;
     }
 
-    public ArrayList<Order> getOrders(int userID) {
+    public static ArrayList<Order> getOrders(int userID) {
         ArrayList<Order> orders = new ArrayList<>();
         try {
             String sql = "{call getOrders(?)}";
@@ -1031,11 +1130,11 @@ public class Database {
         return orders;
     }
 
-    public ArrayList<User> getUserDetails(String tableName) {
+    public static ArrayList<User> getUserDetails(String tableName) {
         ArrayList<User> users = new ArrayList<>();
         try {
             String sql = "{call GetUserDetails(?)}";
-            CallableStatement statement = this.connection.prepareCall(sql);
+            CallableStatement statement = connection.prepareCall(sql);
             statement.setString(1, tableName);
             ResultSet rs = statement.executeQuery();
 
@@ -1057,7 +1156,7 @@ public class Database {
         return users;
     }
 
-    public int addStaff(User staff) {
+    public static int addStaff(User staff) {
         try {
             String sql = "{call addStaff(?, ?, ?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1074,7 +1173,7 @@ public class Database {
         return -1;
     }
 
-    public int updateStaff(User staff) {
+    public static int updateStaff(User staff) {
         try {
             String sql = "{call updateStaff(?, ?, ?, ?, ?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1093,7 +1192,7 @@ public class Database {
         return -1;
     }
 
-    public String getOrderStatus(int orderId) {
+    public static String getOrderStatus(int orderId) {
         String result = "";
         try {
             String sql = "{call getOrderStatus(?)}";
@@ -1126,7 +1225,7 @@ public class Database {
         }
     }
 
-    public void updateOrder(int id, String action) {
+    public static void updateOrder(int id, String action) {
         String current = getOrderStatus(id);
 
         switch (action) {
@@ -1189,7 +1288,7 @@ public class Database {
         email.sendOrderStatus(address, id + "", status);
     }
 
-    public void CompleteOrder(int orderId) {
+    public static void CompleteOrder(int orderId) {
         try {
             String sql = "{call CompleteOrder(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1201,7 +1300,7 @@ public class Database {
         }
     }
 
-    public void ShipOrder(int orderId) {
+    public static void ShipOrder(int orderId) {
         try {
             String sql = "{call ShipOrder(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1213,7 +1312,7 @@ public class Database {
         }
     }
 
-    public void DenyOrderCancel(int orderId) {
+    public static void DenyOrderCancel(int orderId) {
         try {
             String sql = "{call DenyOrderCancel(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1225,7 +1324,7 @@ public class Database {
         }
     }
 
-    public void ApproveOrderCancel(int orderId) {
+    public static void ApproveOrderCancel(int orderId) {
         try {
             String sql = "{call ApproveOrderCancel(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1237,7 +1336,7 @@ public class Database {
         }
     }
 
-    public void RequestOrderCancel(int orderId) {
+    public static void RequestOrderCancel(int orderId) {
         try {
             String sql = "{call RequestOrderCancel(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1249,7 +1348,7 @@ public class Database {
         }
     }
 
-    public void productAdjust(int productId, int count) {
+    public static void productAdjust(int productId, int count) {
         try {
             String sql = "{call ProductAdjust(?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1262,7 +1361,7 @@ public class Database {
         }
     }
 
-    public int productStock(int productId) {
+    public static int productStock(int productId) {
         try {
             String sql = "{call productQuantity(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1278,7 +1377,7 @@ public class Database {
         return -1;
     }
 
-    public String getEmailFromOrderId(int orderId) {
+    public static String getEmailFromOrderId(int orderId) {
         try {
             String sql = "{call GetEmailFromOrderId(?)}";
             CallableStatement statement = connection.prepareCall(sql);
@@ -1294,7 +1393,94 @@ public class Database {
         return null;
     }
 
-    public void setQuantity(int id) {
+    public static int addRating(int orderID, int ratingStar, String ratingText) {
+        try {
+            String sql = "{call addRating(?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderID);
+            statement.setInt(2, ratingStar);
+            statement.setString(3, ratingText);
+            statement.registerOutParameter(4, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(4);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    public static int updateRating(int id, int ratingStar, String ratingText) {
+        try {
+            String sql = "{call updateRatings(?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, id);
+            statement.setInt(2, ratingStar);
+            statement.setString(3, ratingText);
+            statement.registerOutParameter(4, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(4);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public static ArrayList<Rating> getRating(int productID) {
+        try {
+            String sql = "{call getRatingsByProduct(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, productID);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Rating> list = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int orderId = resultSet.getInt("orderID");
+                int userId = resultSet.getInt("userID");
+                int productId = resultSet.getInt("productID");
+                int rating_star = resultSet.getInt("rating_star");
+                String rating_text = resultSet.getString("rating_text");
+                String dateRated = resultSet.getString("dateRated");
+                Rating rating = new Rating(id, userId, productId, rating_star, rating_text, dateRated, orderId);
+                list.add(rating);
+            }
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public static int checkOrderRate(int orderID) {
+        try {
+            String sql = "{call checkUserOrderRate(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, orderID);
+            statement.registerOutParameter(2, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(2);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
+    public static void updateRateInOrder(int orderID) {
+        try {
+            String sql = "UPDATE orders\n"
+                    + "SET rateStatus = 1\n"
+                    + "WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, orderID);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void setQuantity(int id) {
         try {
             String sql = "{call setQuantity(?)}";
             CallableStatement statement = connection.prepareCall(sql);

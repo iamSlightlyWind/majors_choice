@@ -161,7 +161,7 @@
                   <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                     <nav class="navbar-links">
-                      <form action="/ramsservlet" method="post">
+                      <form action="/RAM" method="post">
                         <div class="navbar-container3">
                           <input type="text" placeholder="Search product by name" class="navbar-textinput input"
                             name="searchName" value="${requestScope.searchName}" />
@@ -291,10 +291,10 @@
           <div class="view-all-product-cpu-body">
             <div class="view-all-product-cpu-link-page">
               <span class="view-all-product-cpu-text thq-body-small thq-link">
-                Home&nbsp;
+                  <a href="/"> Home&nbsp;</a>
               </span>
               <span class="view-all-product-cpu-text01">
-                / CPU -&nbsp;Computer processor
+                  <a href="/RAM">/ RAM -&nbsp;Random-access memory</a>
               </span>
             </div>
             <div class="chats-chats chats-root-class-name">
@@ -321,7 +321,7 @@
                   </h1>
                 </div>
                 <c:set var="name" value="${requestScope.searchName}" scope="page" />
-                <form class="view-all-product-cpu-form" action="/filterram" method="post"
+                <form class="view-all-product-cpu-form" action="/FilterRAM" method="post"
                   onsubmit="return validateForm()">
                   <input type="hidden" name="nameSearch" value="${name}" />
                   <span class="view-all-product-cpu-text05">
@@ -594,7 +594,7 @@
                     <span class="component1-text1">
                       <fmt:setLocale value="vi_VN"/>
                       <fmt:formatNumber value="${ram.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                      <span id="sellingPrice">${formattedSellingPrice}</span>
+                      <span id="sellingPrice">${formattedSellingPrice}<u>đ</u></span>
                       <br />
                     </span>
                     <div class="component1-container1">

@@ -10,7 +10,6 @@ public class ProductCount {
     public double pricePer;
     public String totalPrice;
     public String error = "";
-    public Database db = new Database();
 
     public String toString() {
         return "Product ID: " + id + "\nProduct Name: " + name + "\nPrice Per: " + pricePer + "\nCount: " + count
@@ -20,8 +19,8 @@ public class ProductCount {
     public void check() {
         int stock = 0;
 
-        try{
-            stock = db.productStock(id);
+        try {
+            stock = Database.productStock(id);
         } catch (Exception e) {
             error = "Product not found";
             return;
@@ -30,7 +29,7 @@ public class ProductCount {
         if (stock == -1) {
             error = "Product no longer for sale";
             return;
-        } else if (count > db.productStock(id)) {
+        } else if (count > Database.productStock(id)) {
             error = "Not enough stock";
         }
     }

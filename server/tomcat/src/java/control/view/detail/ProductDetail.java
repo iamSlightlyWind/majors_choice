@@ -1,33 +1,39 @@
 package control.view.detail;
 
-import database.Database;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import packages.CPU;
 import packages.GPU;
 import packages.Motherboard;
 import packages.PSU;
 import packages.RAM;
+import packages.Rating;
 import packages.SSD;
+import database.Database;
+import main.User;
+import packages.wrap.Order;
+import packages.wrap.Product;
 
 public class ProductDetail extends HttpServlet {
-   
-    Database db = new Database();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String category = request.getParameter("category");
-        String id_raw = request.getParameter("id");
-        int id = 0;
-        
-        if(id_raw!=null){
-            id = Integer.parseInt(id_raw);
+        userViewAllOrders(request, response);
+        String category = request.getParameter("category");        
+        int id = (request.getParameter("id") == null)||(request.getParameter("id").isEmpty()) ? 0 : Integer.parseInt(request.getParameter("id"));         
+           
+        ArrayList<Rating> ratings = Database.getRating(id);
+      
+        if(ratings != null && !ratings.isEmpty()){
+            request.setAttribute("ratings", ratings);
         }
-        switch(category){
+        request.setAttribute("category", category);
+        switch (category) {
             case "cpu":
                 CPU cpu = new CPU(id);
                 request.setAttribute("product", cpu);
@@ -61,18 +67,56 @@ public class ProductDetail extends HttpServlet {
             default:
                 break;
         }
-        
-    } 
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
+    
+    protected void userViewAllOrders(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        User currentUser = (User) request.getSession().getAttribute("userObject");
+        if(currentUser == null){
+            return;
+        }
+        int productId = (request.getParameter("id") == null)||(request.getParameter("id").isEmpty()) ? 0 : Integer.parseInt(request.getParameter("id"));   
+       
+        ArrayList<Order> list = new ArrayList<>();
+        ArrayList<Order> orders = Database.getOrders(-6);        
+        for (Order order : orders) {
+            if (order.user.id.equals(currentUser.id)) {
+                for (Product product : order.products) {
+                    if(product.id == productId){
+                        list.add(order);
+                    }
+                }
+            }
+        }
+        for (Order order : list) {   
+            
+            if(Database.checkOrderRate(order.id) == 0){
+                request.setAttribute("rateStatus", 0);
+                request.setAttribute("order", order);
+                return;
+            }
+            
+            if( (order.id == list.get(list.size() - 1).id) && Database.checkOrderRate(order.id) == 1){
+                Rating rate = new Rating(order.id, productId);
+                request.setAttribute("rateStatus", 1);               
+                request.setAttribute("rate", rate);   
+                return;
+            }
+        }   
+        
+    }
+
 }

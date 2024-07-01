@@ -48,8 +48,7 @@ public class Case extends Product {
 
     public Case(int id) {
         super(id);
-        Database db = new Database();
-        ArrayList<Case> cases = db.getCases("");
+        ArrayList<Case> cases = Database.getCases("");
 
         for (Case caseItem : cases) {
             if (caseItem.getId() == id) {

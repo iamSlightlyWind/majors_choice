@@ -2,7 +2,7 @@ use major
 go
 
 CREATE PROCEDURE login
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(100),
     @result INT OUTPUT
 AS
@@ -55,7 +55,7 @@ END
 GO
 
 create procedure googleLogin
-    @username varchar(25),
+    @username varchar(50),
     @password varchar(100),
     @result int output
 as
@@ -76,7 +76,7 @@ end
 go
 
 create procedure setGoogleUser
-    @username varchar(25),
+    @username varchar(50),
     @result int output
 as
 begin
@@ -108,7 +108,7 @@ end
 go
 
 create procedure forceActivate
-    @username varchar(25),
+    @username varchar(50),
     @result int output
 as
 begin
@@ -147,7 +147,7 @@ go
 
 create procedure activate
     -- if confirm code var = user confirm code, update active to 1 if active = 0
-    @username varchar(25),
+    @username varchar(50),
     @confirmCode varchar(10),
     @result int output
 -- 1: successful, 0: failed
@@ -170,7 +170,7 @@ end
 go
 
 CREATE PROCEDURE register
-    @username varchar(25),
+    @username varchar(50),
     @password varchar(100),
     @fullname nvarchar(50),
     @email varchar(100),
@@ -477,27 +477,33 @@ CREATE PROCEDURE addProductCase
     @result nvarchar(50) OUTPUT
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM products WHERE name = @name)
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
     BEGIN
         SET @result = 'Already exists: ' + @name
         RETURN
     END
 
-    INSERT INTO products (sellingPrice, costPrice, quantity, image, name)
-    VALUES (@sellingPrice, @costPrice, @quantity, @image, @name)
+    INSERT INTO products
+        (sellingPrice, costPrice, quantity, image, name)
+    VALUES
+        (@sellingPrice, @costPrice, @quantity, @image, @name)
 
     DECLARE @id int
     SET @id = SCOPE_IDENTITY()
 
-    INSERT INTO cases (id, formFactor, color)
-    VALUES (@id, @formFactor, @color)
+    INSERT INTO cases
+        (id, formFactor, color)
+    VALUES
+        (@id, @formFactor, @color)
 
     SET @result = 'Add successful'
 END
 GO
 
 CREATE PROCEDURE loginEmployee
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(25),
     @result INT OUTPUT
 AS
@@ -550,7 +556,7 @@ END
 go
 
 CREATE PROCEDURE updateUserInformation
-    @username varchar(25),
+    @username varchar(50),
     @password varchar(100),
     @fullname nvarchar(50),
     @email varchar(100),
@@ -908,7 +914,8 @@ create procedure addOrderInformation
 as
 begin
     declare @orderId int
-    select @orderId = max(id) from orders
+    select @orderId = max(id)
+    from orders
 
     insert into orderInformation
         (id, fullname, phoneNumber, address)
@@ -993,7 +1000,7 @@ END
 go
 
 CREATE PROCEDURE addStaff
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(100),
     @fullname NVARCHAR(50),
     @result INT OUTPUT
@@ -1020,7 +1027,7 @@ GO
 
 CREATE PROCEDURE updateStaff
     @id INT,
-    @username VARCHAR(25),
+    @username VARCHAR(50),
     @password VARCHAR(100),
     @fullname NVARCHAR(50),
     @active INT,
@@ -1210,7 +1217,7 @@ CREATE PROCEDURE updateProductMotherboard
     @formFactor nvarchar(50),
     @ramType nvarchar(50),
     @maxRamSpeed int,
-	@maxRamCapacity int,
+    @maxRamCapacity int,
     @ramSlots int,
     @wifi bit,
     @image nvarchar(max),
@@ -1375,7 +1382,9 @@ CREATE PROCEDURE updateProductCase
     @result nvarchar(50) OUTPUT
 AS
 BEGIN
-    IF NOT EXISTS (SELECT 1 FROM cases WHERE id = @id)
+    IF NOT EXISTS (SELECT 1
+    FROM cases
+    WHERE id = @id)
     BEGIN
         SET @result = 'Product not found with ID ' + CAST(@id AS nvarchar)
         RETURN
@@ -1404,18 +1413,18 @@ CREATE PROCEDURE ProductAdjust
 AS
 BEGIN
     SET NOCOUNT ON;
-    
+
     DECLARE @currentQuantity INT;
-    
+
     SELECT @currentQuantity = quantity
     FROM products
     WHERE id = @productId;
-    
+
     IF @currentQuantity IS NOT NULL
     BEGIN
         DECLARE @newQuantity INT;
         SET @newQuantity = @currentQuantity + @count;
-        
+
         IF @newQuantity >= 0
         BEGIN
             UPDATE products
@@ -1450,15 +1459,18 @@ AS
 BEGIN
     SELECT ud.email
     FROM userDetails ud
-    JOIN orders o ON ud.id = o.userId
+        JOIN orders o ON ud.id = o.userId
     WHERE o.id = @OrderId;
 END;
 go
+
 CREATE PROCEDURE setQuantity
     @id int
 AS
 BEGIN
-    IF NOT EXISTS (SELECT 1 FROM products WHERE id = @id)
+    IF NOT EXISTS (SELECT 1
+    FROM products
+    WHERE id = @id)
     BEGIN
         RETURN
     END
@@ -1476,3 +1488,85 @@ BEGIN
     END CATCH
 END
 GO
+
+create procedure addRating
+    @orderID int,
+    @ratingStar int,
+    @ratingText nvarchar(max),
+    @result int output
+as
+begin
+    insert into ratings
+        (orderId, rating_star, rating_text)
+    values
+        (@orderID, @ratingStar, @ratingText)
+
+    set @result = 1
+end;
+go
+
+create procedure updateRatings
+    @id int,
+    @ratingStar int,
+    @ratingText nvarchar(max),
+    @result int output
+as
+begin
+    IF NOT EXISTS (SELECT 1
+    FROM ratings
+    WHERE id = @id)
+    BEGIN
+        SET @result = 0
+        --rating donesn't exist
+        RETURN
+    END
+
+    update ratings
+	set rating_star = @ratingStar,
+		rating_text = @ratingText
+	where id = @id;
+
+    set @result = 1;
+end;
+go
+
+create procedure getRatingsByProduct
+    @productID int
+as
+begin
+    select ratings.id as id,
+        ratings.orderId as orderID,
+        orders.userId as userID,
+        orders.productId as productID,
+        rating_star,
+        rating_text,
+        dateRated
+    from orders
+        join ratings on orders.id = ratings.orderId
+    where orders.productId = @productID
+end;
+go
+
+create procedure checkUserOrderRate
+    @orderID int,
+    @result int output
+as
+begin
+    IF EXISTS (SELECT 1
+    FROM orders
+    WHERE id = @orderID and status = 'Completed' and rateStatus = 0)
+	begin
+        set @result = 0
+        return
+    end
+    IF EXISTS (SELECT 1
+    FROM orders
+    WHERE id = @orderID and status = 'Completed' and rateStatus = 1)
+	begin
+        set @result = 1
+        return
+    end
+end;
+go
+
+

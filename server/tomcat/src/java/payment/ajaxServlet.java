@@ -27,7 +27,7 @@ public class ajaxServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User currentUser = (User) request.getSession().getAttribute("userObject");
-        currentUser.cart.updateQuantity();
+        currentUser.retrieveData("user");
         Cart tempCart = new Cart(currentUser.cart);
         currentUser.cart.clearCart();
 

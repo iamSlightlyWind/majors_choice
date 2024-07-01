@@ -321,7 +321,7 @@
                 <div data-thq="thq-dropdown" class="home-page-thq-dropdown list-item">
                   <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle-cpu">
                     <span class="home-page-text003">
-                      <span><a href="/cpusservlet">CPU</a></span>
+                      <span><a href="/CPU">CPU</a></span>
                       <br />
                     </span>
                     <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow"></div>
@@ -347,7 +347,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtercpu?brand=amd"><span>AMD</span></a>
+                                <a href="/FilterCPU?brand=amd"><span>AMD</span></a>
                               <br />
                             </span>
                           </div>
@@ -355,7 +355,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtercpu?brand=intel"><span>Intel</span></a>
+                                <a href="/FilterCPU?brand=intel"><span>Intel</span></a>
                               <br />
                             </span>
                           </div>
@@ -378,7 +378,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown027 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle027">
                             <span class="home-page-text078">
-                                <a href="/filtercpu?generation=Cezanne"><span>Cezanne</span></a>
+                                <a href="/FilterCPU?generation=Cezanne"><span>Cezanne</span></a>
                               <br />
                             </span>
                           </div>
@@ -386,7 +386,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown028 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle028">
                             <span class="home-page-text081">
-                                <a href="/filtercpu?generation=Zen 3"><span>Zen 3</span></a>
+                                <a href="/FilterCPU?generation=Zen 3"><span>Zen 3</span></a>
                               <br />
                             </span>
                           </div>
@@ -394,7 +394,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown029 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle029">
                             <span class="home-page-text084">
-                                <a href="/filtercpu?generation=raphael"><span>Raphael</span></a>
+                                <a href="/FilterCPU?generation=raphael"><span>Raphael</span></a>
                               <br />
                               <br />
                             </span>
@@ -402,7 +402,7 @@
                         </li>
                         <li data-thq="thq-dropdown" class="home-page-dropdown030 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle030">
-                              <a href="/filtercpu?generation=raptorlake"><span class="home-page-text088">Raptor Lake</span></a>
+                              <a href="/FilterCPU?generation=raptorlake"><span class="home-page-text088">Raptor Lake</span></a>
                           </div>
                         </li>
                         <li data-thq="thq-dropdown" class="home-page-dropdown031 list-item"></li>
@@ -425,7 +425,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtercpu?socket=am4"><span>AM4</span></a>
+                                <a href="/FilterCPU?socket=am4"><span>AM4</span></a>
                               <br />
                             </span>
                           </div>
@@ -433,14 +433,14 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtercpu?socket=am5"><span>AM5</span></a>
+                                <a href="/FilterCPU?socket=am5"><span>AM5</span></a>
                               <br />
                             </span>
                           </div>
                         </li>
                         <li data-thq="thq-dropdown" class="home-page-dropdown035 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle034">
-                              <a href="/filtercpu?socket=lga1700" class="home-page-text099"><span>LGA 1700</span></a>
+                              <a href="/FilterCPU?socket=lga1700" class="home-page-text099"><span>LGA 1700</span></a>
                           </div>
                         </li>
                       </ul>
@@ -451,7 +451,7 @@
                 <div data-thq="thq-dropdown" class="home-page-dropdown-psu list-item">
                   <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle166">
                     <span class="home-page-text423">
-                      <span><a href="/psusservlet">GPU</a></span>
+                      <span><a href="/GPU">GPU</a></span>
                       <br />
                     </span>
                     <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow30"></div>
@@ -473,7 +473,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtergpu?brand=amd"><span>AMD</span></a>
+                                <a href="/FilterGPU?brand=amd"><span>AMD</span></a>
                               <br />
                             </span>
                           </div>
@@ -481,7 +481,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtergpu?brand=nvidia"><span>NVIDIA</span></a>
+                                <a href="/FilterGPU?brand=nvidia"><span>NVIDIA</span></a>
                               <br />
                             </span>
                           </div>
@@ -501,7 +501,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtergpu?generation=rdna"><span>RDNA</span></a>
+                                <a href="/FilterGPU?generation=rdna"><span>RDNA</span></a>
                               <br />
                             </span>
                           </div>
@@ -509,7 +509,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtergpu?generation=ampere"><span>Ampere</span></a>
+                                <a href="/FilterGPU?generation=ampere"><span>Ampere</span></a>
                               <br />
                             </span>
                           </div>
@@ -517,7 +517,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtergpu?generation=adalovelace"><span>Ada LoveLace</span></a>
+                                <a href="/FilterGPU?generation=adalovelace"><span>Ada LoveLace</span></a>
                               <br />
                             </span>
                           </div>
@@ -530,7 +530,7 @@
                 <div data-thq="thq-dropdown" class="home-page-dropdown-mobo list-item">
                   <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle158">
                     <span class="home-page-text411">
-                      <span><a href="/mobosservlet">Mobo</a></span>
+                      <span><a href="/MotherBoard">Mobo</a></span>
                       <br />
                     </span>
                     <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow24"></div>
@@ -555,7 +555,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtermobo?socket=am4"><span>AM4</span></a>
+                                <a href="/FilterMotherBoard?socket=am4"><span>AM4</span></a>
                               <br />
                             </span>
                           </div>
@@ -563,7 +563,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtermobo?socket=am5"><span>AM5</span></a>
+                                <a href="/FilterMotherBoard?socket=am5"><span>AM5</span></a>
                               <br />
                             </span>
                           </div>
@@ -571,7 +571,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtermobo?socket=lga1700"><span>LGA 1700</span></a>
+                                <a href="/FilterMotherBoard?socket=lga1700"><span>LGA 1700</span></a>
                               <br />
                             </span>
                           </div>
@@ -594,7 +594,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtermobo?formFactor=atx"><span>ATX</span></a>
+                                <a href="/FilterMotherBoard?formFactor=atx"><span>ATX</span></a>
                               <br />
                             </span>
                           </div>
@@ -602,7 +602,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtermobo?formFactor=matx"><span>mATX</span></a>
+                                <a href="/FilterMotherBoard?formFactor=matx"><span>mATX</span></a>
                               <br />
                             </span>
                           </div>
@@ -610,7 +610,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtermobo?formFactor=mITX"><span>mITX</span></a>
+                                <a href="/FilterMotherBoard?formFactor=mITX"><span>mITX</span></a>
                               <br />
                             </span>
                           </div>
@@ -630,7 +630,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtermobo?ramType=ddr4"><span>DDR4</span></a>
+                                <a href="/FilterMotherBoard?ramType=ddr4"><span>DDR4</span></a>
                               <br />
                             </span>
                           </div>
@@ -638,7 +638,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtermobo?ramType=ddr5"><span>DDR5</span></a>
+                                <a href="/FilterMotherBoard?ramType=ddr5"><span>DDR5</span></a>
                               <br />
                             </span>
                           </div>
@@ -660,7 +660,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filtermobo?wifi=1"><span>Yes</span></a>
+                                <a href="/FilterMotherBoard?wifi=1"><span>Yes</span></a>
                               <br />
                             </span>
                           </div>
@@ -668,7 +668,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filtermobo?wifi=0"><span>No</span></a>
+                                <a href="/FilterMotherBoard?wifi=0"><span>No</span></a>
                               <br />
                             </span>
                           </div>
@@ -686,7 +686,7 @@
                 <div data-thq="thq-dropdown" class="home-page-dropdown-psu list-item">
                   <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle166">
                     <span class="home-page-text423">
-                      <span><a href="/psusservlet">PSU</a></span>
+                      <span><a href="/PSU">PSU</a></span>
                       <br />
                     </span>
                     <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow30"></div>
@@ -709,7 +709,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filterpsu?efficiency=80platin"><span>80+ platin</span></a>
+                                <a href="/FilterPSU?efficiency=80platin"><span>80+ platin</span></a>
                               <br />
                             </span>
                           </div>
@@ -717,7 +717,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterpsu?efficiency=80gold"><span>80+ gold</span></a>
+                                <a href="/FilterPSU?efficiency=80gold"><span>80+ gold</span></a>
                               <br />
                             </span>
                           </div>
@@ -725,7 +725,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                               <a href="/filterpsu?efficiency=80titani"><span>80+ titani</span></a>
+                               <a href="/FilterPSU?efficiency=80titani"><span>80+ titani</span></a>
                               <br />
                             </span>
                           </div>
@@ -739,7 +739,7 @@
                 <div data-thq="thq-dropdown" class="home-page-dropdown-ram list-item">
                   <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle176">
                     <span class="home-page-text434">
-                      <span><a href="/ramsservlet">RAM</a></span>
+                      <span><a href="/RAM">RAM</a></span>
                       <br />
                     </span>
                     <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow32"></div>
@@ -761,7 +761,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filterram?generation=ddr4"><span>DDR4</span></a>
+                                <a href="/FilterRAM?generation=ddr4"><span>DDR4</span></a>
                               <br />
                             </span>
                           </div>
@@ -769,7 +769,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?generation=ddr5"><span>DDR5</span></a>
+                                <a href="/FilterRAM?generation=ddr5"><span>DDR5</span></a>
                               <br />
                             </span>
                           </div>
@@ -791,7 +791,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filterram?capacity=16"><span>16</span></a>
+                                <a href="/FilterRAM?capacity=16"><span>16</span></a>
                               <br />
                             </span>
                           </div>
@@ -799,7 +799,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?capacity=32"><span>32</span></a>
+                                <a href="/FilterRAM?capacity=32"><span>32</span></a>
                               <br />
                             </span>
                           </div>
@@ -807,7 +807,7 @@
                          <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?capacity=64"><span>64</span></a>
+                                <a href="/FilterRAM?capacity=64"><span>64</span></a>
                               <br />
                             </span>
                           </div>
@@ -829,7 +829,7 @@
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
                                 
-                                <a href="/filterram?speed=3000"><span>3000</span></a>
+                                <a href="/FilterRAM?speed=3000"><span>3000</span></a>
                               <br />
                             </span>
                           </div>
@@ -837,7 +837,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?speed=3200"><span>3200</span></a>
+                                <a href="/FilterRAM?speed=3200"><span>3200</span></a>
                               <br />
                             </span>
                           </div>
@@ -845,7 +845,7 @@
                          <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?speed=3600"><span>3600</span></a>
+                                <a href="/FilterRAM?speed=3600"><span>3600</span></a>
                               <br />
                             </span>
                           </div>
@@ -853,7 +853,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                               <a href="/filterram?speed=5600"><span>5600</span></a>
+                               <a href="/FilterRAM?speed=5600"><span>5600</span></a>
                               <br />
                             </span>
                           </div>
@@ -861,7 +861,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?speed=6000"><span>6000</span></a>
+                                <a href="/FilterRAM?speed=6000"><span>6000</span></a>
                               <br />
                             </span>
                           </div>
@@ -869,7 +869,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?speed=6400"><span>6400</span></a>
+                                <a href="/FilterRAM?speed=6400"><span>6400</span></a>
                               <br />
                             </span>
                           </div>
@@ -891,7 +891,7 @@
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
                                 
-                                <a href="/filterram?latency=15"><span>15</span></a>
+                                <a href="/FilterRAM?latency=15"><span>15</span></a>
                               <br />
                             </span>
                           </div>
@@ -899,7 +899,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?latency=16"><span>16</span></a>
+                                <a href="/FilterRAM?latency=16"><span>16</span></a>
                               <br />
                             </span>
                           </div>
@@ -907,7 +907,7 @@
                          <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?latency=18"><span>18</span></a>
+                                <a href="/FilterRAM?latency=18"><span>18</span></a>
                               <br />
                             </span>
                           </div>
@@ -915,7 +915,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                               <a href="/filterram?latency=36"><span>36</span></a>
+                               <a href="/FilterRAM?latency=36"><span>36</span></a>
                               <br />
                             </span>
                           </div>
@@ -923,7 +923,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?latency=38"><span>38</span></a>
+                                <a href="/FilterRAM?latency=38"><span>38</span></a>
                               <br />
                             </span>
                           </div>
@@ -945,7 +945,7 @@
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
                                 
-                                <a href="/filterram?capacity=16"><span>16</span></a>
+                                <a href="/FilterRAM?capacity=16"><span>16</span></a>
                               <br />
                             </span>
                           </div>
@@ -953,7 +953,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?capacity=32"><span>32</span></a>
+                                <a href="/FilterRAM?capacity=32"><span>32</span></a>
                               <br />
                             </span>
                           </div>
@@ -961,7 +961,7 @@
                          <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterram?capacity=64"><span>64</span></a>
+                                <a href="/FilterRAM?capacity=64"><span>64</span></a>
                               <br />
                             </span>
                           </div>
@@ -976,7 +976,7 @@
                 <div data-thq="thq-dropdown" class="home-page-dropdown-ssd list-item">
                   <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle184">
                     <span class="home-page-text439">
-                      <span><a href="/ssdsservlet">SSD</a></span>
+                      <span><a href="/SSD">SSD</a></span>
                       <br />
                     </span>
                     <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow36"></div>
@@ -998,7 +998,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filterssd?interfaces=PCIe3"><span class="home-page-text443">PCIe 3.0</span></a>
+                                <a href="/FilterSSD?interfaces=PCIe3"><span class="home-page-text443">PCIe 3.0</span></a>
                               <br />
                             </span>
                           </div>
@@ -1006,7 +1006,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterssd?interfaces=PCIe4"><span class="home-page-text443">PCIe 4.0</span></a>
+                                <a href="/FilterSSD?interfaces=PCIe4"><span class="home-page-text443">PCIe 4.0</span></a>
                               <br />
                             </span>
                           </div>
@@ -1014,7 +1014,7 @@
                          <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterssd?interfaces=SATA25"><span class="home-page-text443">SATA 2.5</span></a>
+                                <a href="/FilterSSD?interfaces=SATA25"><span class="home-page-text443">SATA 2.5</span></a>
                               <br />
                             </span>
                           </div>
@@ -1035,7 +1035,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/filterssd?cache=0"><span class="home-page-text443">0</span></a>
+                                <a href="/FilterSSD?cache=0"><span class="home-page-text443">0</span></a>
                               <br />
                             </span>
                           </div>
@@ -1043,7 +1043,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/filterssd?cache=1"><span class="home-page-text443">1</span></a>
+                                <a href="/FilterSSD?cache=1"><span class="home-page-text443">1</span></a>
                               <br />
                             </span>
                           </div>
@@ -1296,31 +1296,34 @@
                   <div class="component3-container1">
                     <div class="component3-container2">
                       <c:forEach var="cpu" items="${requestScope.cpus}" begin="0" end="4">
-                        <div class="component1-container component1-root-class-name4">
-                          <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                          <h1 class="component1-text thq-link">
-                            <span>
-                              <a href="/view/detail/product?category=cpu&id=${cpu.id}">${cpu.name}</a>
-                            </span>
-                          </h1>
-                          <span class="component1-text1">
-                              <fmt:formatNumber value="${cpu.sellingPrice}" var="cpuSelling" />
-                              <span>${cpuSelling}</span>
-                              <br />
-                          </span>
-                          <div class="component1-container1">
-                            <span class="component1-text4"><span>0.0</span></span>
-                            <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                              <path
-                                d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                              </path>
-                            </svg>
-                            <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                              class="component1-link">
-                              <span>(0 Review)</span>
-                            </a>
-                          </div>
-                        </div>
+                          <a href="/view/detail/product?category=cpu&id=${cpu.id}">
+                              <div class="component1-container component1-root-class-name4">
+                                  <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
+                                  <h1 class="component1-text thq-link">
+                                      <span>
+                                          ${cpu.name}
+                                      </span>
+                                  </h1>
+                                  <span class="component1-text1">
+                                      <fmt:setLocale value="vi_VN" />
+                                      <fmt:formatNumber value="${cpu.sellingPrice}" pattern="###,###,###" var="cpuSelling" />
+                                      <span>${cpuSelling}<u>đ</u></span>
+                                      <br />
+                                  </span>
+                                  <div class="component1-container1">
+                                      <span class="component1-text4"><span>0.0</span></span>
+                                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                      <path
+                                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                      </path>
+                                      </svg>
+                                      <a href="https://example.com" target="_blank" rel="noreferrer noopener"
+                                         class="component1-link">
+                                          <span>(0 Review)</span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </a>
                       </c:forEach>
                     </div>
                   </div>
@@ -1346,31 +1349,34 @@
                   <div class="component3-container1">
                     <div class="component3-container2">
                       <c:forEach var="gpu" items="${requestScope.gpus}" begin="0" end="4">
-                        <div class="component1-container component1-root-class-name4">
-                          <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                          <h1 class="component1-text thq-link">
-                            <span>
-                              <a href="/view/detail/product?category=gpu&id=${gpu.id}">${gpu.name}</a>
-                            </span>
-                          </h1>
-                          <span class="component1-text1">
-                              <fmt:formatNumber value="${gpu.sellingPrice}" var="gpuSelling" />
-                              <span>${gpuSelling}</span>
-                            <br />
-                          </span>
-                          <div class="component1-container1">
-                            <span class="component1-text4"><span>0.0</span></span>
-                            <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                              <path
-                                d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                              </path>
-                            </svg>
-                            <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                              class="component1-link">
-                              <span>(0 Review)</span>
-                            </a>
-                          </div>
-                        </div>
+                          <a href="/view/detail/product?category=gpu&id=${gpu.id}">
+                              <div class="component1-container component1-root-class-name4">
+                                  <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
+                                  <h1 class="component1-text thq-link">
+                                      <span>
+                                          ${gpu.name}
+                                      </span>
+                                  </h1>
+                                  <span class="component1-text1">
+                                      <fmt:setLocale value="vi_VN" />
+                                      <fmt:formatNumber value="${gpu.sellingPrice}" pattern="###,###,###" var="gpuSelling" />
+                                      <span>${gpuSelling}<u>đ</u></span>
+                                      <br />
+                                  </span>
+                                  <div class="component1-container1">
+                                      <span class="component1-text4"><span>0.0</span></span>
+                                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                      <path
+                                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                      </path>
+                                      </svg>
+                                      <a href="https://example.com" target="_blank" rel="noreferrer noopener"
+                                         class="component1-link">
+                                          <span>(0 Review)</span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </a>
                       </c:forEach>
                     </div>
                   </div>
@@ -1397,31 +1403,34 @@
                     <div class="component3-container2">
 
                       <c:forEach var="mobo" items="${requestScope.mobos}" begin="0" end="4">
-                        <div class="component1-container component1-root-class-name4">
-                          <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                          <h1 class="component1-text thq-link">
-                            <span>
-                              <a href="/view/detail/product?category=mobo&id=${mobo.id}">${mobo.name}</a>
-                            </span>
-                          </h1>
-                          <span class="component1-text1">
-                              <fmt:formatNumber value="${mobo.sellingPrice}" var="moboSelling" />
-                              <span>${moboSelling}</span>
-                            <br />
-                          </span>
-                          <div class="component1-container1">
-                            <span class="component1-text4"><span>0.0</span></span>
-                            <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                              <path
-                                d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                              </path>
-                            </svg>
-                            <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                              class="component1-link">
-                              <span>(0 Review)</span>
-                            </a>
-                          </div>
-                        </div>
+                          <a href="/view/detail/product?category=mobo&id=${mobo.id}">
+                              <div class="component1-container component1-root-class-name4">
+                                  <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
+                                  <h1 class="component1-text thq-link">
+                                      <span>
+                                          ${mobo.name}
+                                      </span>
+                                  </h1>
+                                  <span class="component1-text1">
+                                      <fmt:setLocale value="vi_VN" />
+                                      <fmt:formatNumber value="${mobo.sellingPrice}" pattern="###,###,###" var="moboSelling" />
+                                      <span>${moboSelling}<u>đ</u></span>
+                                      <br />
+                                  </span>
+                                  <div class="component1-container1">
+                                      <span class="component1-text4"><span>0.0</span></span>
+                                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                      <path
+                                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                      </path>
+                                      </svg>
+                                      <a href="https://example.com" target="_blank" rel="noreferrer noopener"
+                                         class="component1-link">
+                                          <span>(0 Review)</span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </a>
                       </c:forEach>
                     </div>
                   </div>
@@ -1448,31 +1457,34 @@
                     <div class="component3-container2">
 
                       <c:forEach var="psu" items="${requestScope.psus}" begin="0" end="4">
-                        <div class="component1-container component1-root-class-name4">
-                          <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                          <h1 class="component1-text thq-link">
-                            <span>
-                              <a href="/view/detail/product?category=psu&id=${psu.id}">${psu.name}</a>
-                            </span>
-                          </h1>
-                          <span class="component1-text1">
-                              <fmt:formatNumber value="${psu.sellingPrice}" var="psuSelling" />
-                              <span>${psuSelling}</span>
-                            <br />
-                          </span>
-                          <div class="component1-container1">
-                            <span class="component1-text4"><span>0.0</span></span>
-                            <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                              <path
-                                d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                              </path>
-                            </svg>
-                            <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                              class="component1-link">
-                              <span>(0 Review)</span>
-                            </a>
-                          </div>
-                        </div>
+                          <a href="/view/detail/product?category=psu&id=${psu.id}">
+                              <div class="component1-container component1-root-class-name4">
+                                  <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
+                                  <h1 class="component1-text thq-link">
+                                      <span>
+                                          ${psu.name}
+                                      </span>
+                                  </h1>
+                                  <span class="component1-text1">
+                                      <fmt:setLocale value="vi_VN" /> 
+                                      <fmt:formatNumber value="${psu.sellingPrice}" pattern="###,###,###" var="psuSelling" />
+                                      <span>${psuSelling}<u>đ</u></span>
+                                      <br />
+                                  </span>
+                                  <div class="component1-container1">
+                                      <span class="component1-text4"><span>0.0</span></span>
+                                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                      <path
+                                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                      </path>
+                                      </svg>
+                                      <a href="https://example.com" target="_blank" rel="noreferrer noopener"
+                                         class="component1-link">
+                                          <span>(0 Review)</span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </a>
                       </c:forEach>
 
                     </div>
@@ -1511,31 +1523,34 @@
                       <div class="component3-container2">
 
                         <c:forEach var="ram" items="${requestScope.rams}" begin="0" end="4">
-                          <div class="component1-container component1-root-class-name4">
-                            <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                            <h1 class="component1-text thq-link">
-                              <span>
-                                <a href="/view/detail/product?category=ram&id=${ram.id}">${ram.name}</a>
-                              </span>
-                            </h1>
-                            <span class="component1-text1">
-                              <fmt:formatNumber value="${ram.sellingPrice}" var="ramSelling" />
-                              <span>${ramSelling}</span>
-                              <br />
-                            </span>
-                            <div class="component1-container1">
-                              <span class="component1-text4"><span>0.0</span></span>
-                              <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                                <path
-                                  d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                                </path>
-                              </svg>
-                              <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                                class="component1-link">
-                                <span>(0 Review)</span>
-                              </a>
-                            </div>
-                          </div>
+                            <a href="/view/detail/product?category=ram&id=${ram.id}">
+                                <div class="component1-container component1-root-class-name4">
+                                    <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
+                                    <h1 class="component1-text thq-link">
+                                        <span>
+                                            ${ram.name}
+                                        </span>
+                                    </h1>
+                                    <span class="component1-text1">
+                                        <fmt:setLocale value="vi_VN" />
+                                        <fmt:formatNumber value="${ram.sellingPrice}" pattern="###,###,###"  var="ramSelling" />
+                                        <span>${ramSelling}<u>đ</u></span>
+                                        <br />
+                                    </span>
+                                    <div class="component1-container1">
+                                        <span class="component1-text4"><span>0.0</span></span>
+                                        <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                        <path
+                                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                        </path>
+                                        </svg>
+                                        <a href="https://example.com" target="_blank" rel="noreferrer noopener"
+                                           class="component1-link">
+                                            <span>(0 Review)</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
                         </c:forEach>
 
                       </div>
@@ -1564,31 +1579,34 @@
                     <div class="component3-container2">
 
                       <c:forEach var="ssd" items="${requestScope.ssds}" begin="0" end="4">
-                        <div class="component1-container component1-root-class-name4">
-                          <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                          <h1 class="component1-text thq-link">
-                            <span>
-                              <a href="/view/detail/product?category=ssd&id=${ssd.id}">${ssd.name}</a>
-                            </span>
-                          </h1>
-                          <span class="component1-text1">
-                            <fmt:formatNumber value="${ssd.sellingPrice}" var="ssdSelling" />
-                              <span>${ssdSelling}</span>
-                            <br />
-                          </span>
-                          <div class="component1-container1">
-                            <span class="component1-text4"><span>0.0</span></span>
-                            <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                              <path
-                                d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                              </path>
-                            </svg>
-                            <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                              class="component1-link">
-                              <span>(0 Review)</span>
-                            </a>
-                          </div>
-                        </div>
+                          <a href="/view/detail/product?category=ssd&id=${ssd.id}">
+                              <div class="component1-container component1-root-class-name4">
+                                  <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
+                                  <h1 class="component1-text thq-link">
+                                      <span>
+                                          ${ssd.name}
+                                      </span>
+                                  </h1>
+                                  <span class="component1-text1">
+                                      <fmt:setLocale value="vi_VN" />
+                                      <fmt:formatNumber value="${ssd.sellingPrice}" pattern="###,###,###" var="ssdSelling" />
+                                      <span>${ssdSelling}<u>đ</u></span>
+                                      <br />
+                                  </span>
+                                  <div class="component1-container1">
+                                      <span class="component1-text4"><span>0.0</span></span>
+                                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                      <path
+                                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                      </path>
+                                      </svg>
+                                      <a href="https://example.com" target="_blank" rel="noreferrer noopener"
+                                         class="component1-link">
+                                          <span>(0 Review)</span>
+                                      </a>
+                                  </div>
+                              </div>
+                          </a>
                       </c:forEach>
                     </div>
                   </div>

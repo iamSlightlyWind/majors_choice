@@ -21,10 +21,9 @@ public class RAMServlet extends HttpServlet {
         if (service == null) {
             service = "listAll";
         }
-        Database db = new Database();
 
         if (service.equals("listAll")) {
-            ArrayList<RAM> rams = db.getRAMs("");
+            ArrayList<RAM> rams = Database.getRAMs("");
             request.setAttribute("rams", rams);
             request.setAttribute("titlePage", "Danh sách RAM");
             request.setAttribute("titleTable", "Danh sách RAM");
@@ -40,12 +39,14 @@ public class RAMServlet extends HttpServlet {
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int result = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, null, quantity);
+                int result = Database.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency,
+                        null, quantity);
 
                 if (result != -1) {
-                    int productId = db.getMaxProductId();
-                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, image, quantity);
+                    int productId = Database.getMaxProductId();
+                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = Database.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed,
+                            latency, image, quantity);
                     response.sendRedirect("rams?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm RAM");
@@ -62,7 +63,7 @@ public class RAMServlet extends HttpServlet {
             String submit = request.getParameter("submit");
             if (submit == null) {
                 int id = Integer.parseInt(request.getParameter("id"));
-                 RAM ram = new RAM(id);
+                RAM ram = new RAM(id);
                 if (ram != null) {
                     request.setAttribute("ram", ram);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateRAM.jsp");
@@ -81,10 +82,11 @@ public class RAMServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
-                String image = db.handleFileUpload(request, "image", Integer.toString(id));
+                String image = Database.handleFileUpload(request, "image", Integer.toString(id));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.updateProductRAM(id, sellingPrice, costPrice, name, generation, capacity, speed, latency, image, quantity);
+                int result = Database.updateProductRAM(id, sellingPrice, costPrice, name, generation, capacity, speed,
+                        latency, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("rams?service=listAll");
                 } else {
@@ -95,7 +97,7 @@ public class RAMServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.setQuantity(id);
+            Database.removeRAM(id);
             response.sendRedirect("rams");
         }
     }

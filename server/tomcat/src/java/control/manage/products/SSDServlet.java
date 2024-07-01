@@ -21,9 +21,8 @@ public class SSDServlet extends HttpServlet {
         if (service == null) {
             service = "listAll";
         }
-        Database db = new Database();
         if (service.equals("listAll")) {
-            ArrayList<SSD> ssds = db.getSSDs("");
+            ArrayList<SSD> ssds = Database.getSSDs("");
             request.setAttribute("ssds", ssds);
             request.setAttribute("titlePage", "Danh sách SSD");
             request.setAttribute("titleTable", "Danh sách SSD");
@@ -38,12 +37,14 @@ public class SSDServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int result = db.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache, null, quantity);
+                int result = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache,
+                        null, quantity);
 
                 if (result != -1) {
-                    int productId = db.getMaxProductId();
-                    String image = db.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = db.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache, image, quantity);
+                    int productId = Database.getMaxProductId();
+                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
+                    int result1 = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity,
+                            cache, image, quantity);
                     response.sendRedirect("ssds?service=listAll");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm SSD");
@@ -78,10 +79,11 @@ public class SSDServlet extends HttpServlet {
                 String connectionInterface = request.getParameter("interface");
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
-                String image = db.handleFileUpload(request, "image", Integer.toString(id));
+                String image = Database.handleFileUpload(request, "image", Integer.toString(id));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = db.updateProductSSD(id, sellingPrice, costPrice, name, connectionInterface, capacity, cache, image, quantity);
+                int result = Database.updateProductSSD(id, sellingPrice, costPrice, name, connectionInterface, capacity,
+                        cache, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("ssds?service=listAll");
                 } else {
@@ -92,7 +94,7 @@ public class SSDServlet extends HttpServlet {
             }
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            db.setQuantity(id);
+            Database.setQuantity(id);
             response.sendRedirect("ssds");
         }
     }
