@@ -112,15 +112,6 @@ create table cases
     color nvarchar(50)
 )
 
-create table ratings
-(
-    id int identity(1,1) primary key,
-    userId int references users(id),
-    productId int references products(id),
-    rating int,
-    dateRated date default getdate()
-)
-
 create table carts
 (
     userId int references users(id),
@@ -131,13 +122,14 @@ create table carts
 
 create table orders
 (
-    id int,
+    id int primary key,
     userId int references users(id),
     productId int references products(id),
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
     status nvarchar(50),
-    dateOrdered date default getdate()
+    dateOrdered date default getdate(),
+	rateStatus bit
 )
 
 create table orderInformation
@@ -154,4 +146,13 @@ create table feedback
     userId int references users(id),
     feedback nvarchar(max),
     dateSent date default getdate()
+)
+
+create table ratings
+(
+    id int identity(1,1) primary key,
+	orderId int references orders(id),
+    rating_star int,
+    rating_text nvarchar(max),
+    dateRated date default getdate()
 )
