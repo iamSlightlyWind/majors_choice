@@ -10,7 +10,19 @@ public class Email {
     private final String username = System.getenv("EMAIL_ADDRESS");
     private final String password = System.getenv("EMAIL_PASSWORD");
 
+    public boolean checkLocal() {
+        if (username == null || password == null) {
+            return false;
+        }
+        return true;
+    }
+
     public void sendConfirmCode(String email, String code) {
+
+        if (!checkLocal()) {
+            return;
+        }
+
         String htmlContent = head()
                 + "\n<body>\n" + //
                 "    <div class=\"container\">\n" + //
@@ -34,6 +46,9 @@ public class Email {
     }
 
     public void sendRecoveryPassword(String email, String password) {
+        if (!checkLocal()) {
+            return;
+        }
         String htmlContent = head()
                 + "\n<body>\n" + //
                 "    <div class=\"container\">\n" + //
@@ -60,6 +75,9 @@ public class Email {
     }
 
     public void sendGreet(String email, String username) {
+        if (!checkLocal()) {
+            return;
+        }
         String htmlContent = head()
                 + "\n<body>\n" + //
                 "    <div class=\"container\">\n" + //
@@ -89,6 +107,9 @@ public class Email {
     }
 
     public void sendOrderStatus(String email, String orderID, String status) {
+        if (!checkLocal()) {
+            return;
+        }
         String htmlContent = head()
                 + "\n<body>\n" + //
                 "    <div class=\"container\">\n" + //
@@ -113,6 +134,9 @@ public class Email {
     }
 
     public void sendOrderConfirmation(String email, Order order) {
+        if (!checkLocal()) {
+            return;
+        }
         String products = "";
 
         /*
