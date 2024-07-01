@@ -4,34 +4,49 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update CPU</title>
+        <title>Update Case</title>
     </head>
     <body>
         <%
-Vector<Case> vector = (Vector<Case>) request.getAttribute("vector");
-Case cases = vector.get(0);
+            Case case = (Case) request.getAttribute("case");
         %>
-        <form action="cases" method="post" >
+        <form action="cases" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>ID</td>
                     <td><%=cases.getId()%></td>
                 </tr>
                 <tr>
+                    <td>Selling Price</td>
+                    <td><input type="number" name="sellingPrice" value="<%=cases.getSellingPrice()%>"></td>
+                </tr>
+                <tr>
+                    <td>Cost Price</td>
+                    <td><input type="number" name="costPrice" value="<%=cases.getCostPrice()%>"></td>
+                </tr>
+                <tr>
                     <td>Name</td>
                     <td><input type="text" name="name" value="<%=cases.getName()%>"></td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td><input type="file" name="image" accept="image/*" value="<%=cases.getImage()%>"></td>
                 </tr>
                 <tr>
                     <td>Type</td>
                     <td><input type="text" name="type" value="<%=cases.getType()%>"></td>
                 </tr>
                 <tr>
-                    <td>FormFactor</td>
+                    <td>Form Factor</td>
                     <td><input type="text" name="formFactor" value="<%=cases.getFormFactor()%>"></td>
                 </tr>
                 <tr>
                     <td>Color</td>
                     <td><input type="text" name="color" value="<%=cases.getColor()%>"></td>
+                </tr>
+                <tr>
+                    <td>Quantity</td>
+                    <td><input type="number" name="quantity" value="<%=cases.getQuantity()%>"></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Update Case"></td>

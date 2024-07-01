@@ -8,7 +8,7 @@
     </head>
     <body>
         <p><a href="cpus?service=listAll"> Manage CPU</a>
-        <p><a href="case?service=listAll"> Manage Case</a>
+        <p><a href="cases?service=listAll"> Manage Case</a>
         <p><a href="gpus?service=listAll"> Manage GPU</a>
         <p><a href="motherboards?service=listAll"> Manage Motherboard</a>
         <p><a href="psus?service=listAll"> Manage PSU</a>

@@ -1,11 +1,15 @@
 package packages;
 
+import database.Database;
+import java.util.ArrayList;
 import packages.wrap.Product;
 
 public class Case extends Product {
+
     public String type;
     public String formFactor;
     public String color;
+    public String image;
 
     public Case(Case c) {
         super(c.id, c.sellingPrice, c.costPrice, c.description);
@@ -31,6 +35,34 @@ public class Case extends Product {
         this.type = type;
         this.formFactor = formFactor;
         this.color = color;
+    }
+
+    public Case(String type, String formFactor, String color, String image, String name, int id,
+            double sellingPrice, double costPrice, String description, int quantity) {
+        super(name, id, sellingPrice, costPrice, description, quantity);
+        this.type = type;
+        this.formFactor = formFactor;
+        this.color = color;
+        this.image = image;
+    }
+
+    public Case(int id) {
+        super(id);
+        Database db = new Database();
+        ArrayList<Case> cases = db.getCases("");
+
+        for (Case caseItem : cases) {
+            if (caseItem.getId() == id) {
+                this.sellingPrice = caseItem.getSellingPrice();
+                this.costPrice = caseItem.getCostPrice();
+                this.description = caseItem.getDescription();
+                this.name = caseItem.getName();
+                this.formFactor = caseItem.getFormFactor();
+                this.color = caseItem.getColor();
+                this.quantity = caseItem.getQuantity();
+                return;
+            }
+        }
     }
 
     public String getName() {

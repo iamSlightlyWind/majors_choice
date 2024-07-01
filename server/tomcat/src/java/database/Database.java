@@ -264,10 +264,6 @@ public class Database {
         return null;
     }
 
-    public ArrayList<Case> getCases() {
-        return null;
-    }
-
     public int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String igpu,
             String socket,
             int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
@@ -708,6 +704,95 @@ public class Database {
         }
     }
 
+    public ArrayList<Case> getCases(String inputName) {
+        try {
+            String sql = "{call getCase(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setString(1, inputName);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Case> cases = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                double sellingPrice = resultSet.getDouble("sellingPrice");
+                double costPrice = resultSet.getDouble("costPrice");
+                String description = resultSet.getString("description");
+                String name = resultSet.getString("name");
+                String formFactor = resultSet.getString("formFactor");
+                String color = resultSet.getString("color");
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                cases.add(new Case(name, formFactor, color, image, name, id, sellingPrice,
+                        costPrice, description, quantity));
+            }
+            return cases;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public static void main(String[] args) {
+        Database db = new Database();
+        ArrayList<Case> cases = db.getCases("");
+    }
+
+    public int addProductCase(double sellingPrice, double costPrice, String name, String formFactor, String color, String image, int quantity) {
+        try {
+            Database db = new Database();
+            String sqlGetMaxId = "SELECT MAX(id) AS max_id FROM Products";
+            Statement statement = db.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlGetMaxId);
+            int productId = 0;
+            if (resultSet.next()) {
+                productId = resultSet.getInt("max_id") + 1;
+            }
+            String sql = "{call addProductCase(?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = db.connection.prepareCall(sql);
+
+            callableStatement.setDouble(1, sellingPrice);
+            callableStatement.setDouble(2, costPrice);
+            callableStatement.setString(3, name);
+            callableStatement.setString(4, formFactor);
+            callableStatement.setString(5, color);
+            callableStatement.setString(6, image);
+            callableStatement.setInt(7, quantity);
+            callableStatement.registerOutParameter(8, Types.NVARCHAR);
+
+            callableStatement.execute();
+            return callableStatement.getInt(8);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
+    public int updateProductCase(int id, double sellingPrice, double costPrice, String name, String formFactor, String color, String image, int quantity) {
+        try {
+            String sql = "{call updateProductCase(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setInt(1, id);
+            callableStatement.setDouble(2, sellingPrice);
+            callableStatement.setDouble(3, costPrice);
+            callableStatement.setString(4, name);
+            callableStatement.setString(5, formFactor);
+            callableStatement.setString(6, color);
+            callableStatement.setString(7, image);
+            callableStatement.setInt(8, quantity);
+            callableStatement.registerOutParameter(9, Types.VARCHAR);
+
+            callableStatement.execute();
+            // Get the result from the output parameter
+            String result = callableStatement.getString(9);
+            if ("Update successful".equals(result)) {
+                return 1;
+            } else {
+                return -1;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+
     public int deleteCart(int userID) {
         try {
             String sql = "{call deleteCart(?, ?)}";
@@ -790,7 +875,7 @@ public class Database {
         ArrayList<RAM> rams = getRAMs("");
         ArrayList<SSD> ssds = getSSDs("");
         ArrayList<PSU> psus = getPSUs("");
-        ArrayList<Case> cases = getCases();
+        ArrayList<Case> cases = getCases("");
         ArrayList<Product> products = new ArrayList<>();
 
         try {
@@ -1219,10 +1304,5 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static void main(String[] args) {
-        Database db = new Database();
-        db.setQuantity(1);
     }
 }
