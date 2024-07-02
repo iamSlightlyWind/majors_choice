@@ -498,7 +498,7 @@ BEGIN
     VALUES
         (@id, @formFactor, @color)
 
-    SET @result = 'Add successful'
+    SET @result = 1
 END
 GO
 
