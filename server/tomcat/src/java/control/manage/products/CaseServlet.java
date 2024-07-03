@@ -61,7 +61,7 @@ public class CaseServlet extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("id"));
                 Case caseItem = new Case(id);
                 if (caseItem != null) {
-                    request.setAttribute("case", caseItem);
+                    request.setAttribute("caseItem", caseItem);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateCase.jsp");
                     dispatcher.forward(request, response);
                 } else {

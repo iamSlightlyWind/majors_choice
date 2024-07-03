@@ -7,7 +7,7 @@
         <title>Insert Case</title>
     </head>
     <body>
-        <form action="cases?service=insertCase" method="post" enctype="multipart/form-data">
+        <form action="/cases?service=insertCase" method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>SellingPrice</td>
