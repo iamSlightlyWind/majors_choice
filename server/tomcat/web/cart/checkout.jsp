@@ -8,12 +8,17 @@
         </head>
 
         <body>
+            <form action="/Cart" method="get">
+                <button type="submit" name="action" value="restore">Back to Cart</button>
+            </form>
             <p> confirm your order </p>
             <c:forEach var="ProductCount" items="${ProductCount}">
                 <p> ${ProductCount.name} </p>
                 <p> ${ProductCount.count} x ${ProductCount.pricePer} </p>
             </c:forEach>
             <p>Total: ${cartPrice}</p>
+            <p>Hardware Validation</p>
+            <p>${validation}</p>
 
             <form action="/payment/vnpayajax" id="frmCreateOrder" method="post">
                 <p>Confirm your shipping information: </p>
