@@ -1568,5 +1568,27 @@ begin
     end
 end;
 go
+CREATE PROCEDURE AddProductDescription
+    @ProductId INT,
+    @Description NVARCHAR(MAX)
+AS
+BEGIN
+    -- Update the description in the products table
+    UPDATE products
+    SET description = @Description
+    WHERE id = @ProductId;
+
+    -- Optionally, check if the update was successful
+    IF @@ROWCOUNT = 0
+    BEGIN
+        PRINT 'No product found with the given ID.';
+    END
+    ELSE
+    BEGIN
+        PRINT 'Description added successfully.';
+    END
+END;
+GO
+
 
 
