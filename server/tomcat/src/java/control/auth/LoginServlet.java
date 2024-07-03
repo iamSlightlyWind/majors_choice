@@ -29,8 +29,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("/");
                 break;
             case -1:
-                request.getSession().setAttribute("table", "user");
-                request.getSession().setAttribute("userObject", user);
+                request.getSession().setAttribute("tempUserObject", user);
                 request.setAttribute("user", user.username);
                 request.getRequestDispatcher("/auth/activate.jsp").forward(request, response);
                 break;
