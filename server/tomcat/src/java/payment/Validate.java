@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import database.Database;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,6 +32,11 @@ public class Validate extends HttpServlet {
         if (validate(getParams(request))) {
             String status = request.getParameter("vnp_TransactionStatus");
             if (status.equals("00")) {
+
+                for (ProductCount product : currentUser.cart.quantities) {
+                    Database.productAdjust(product.id, -product.count);
+                }
+
                 currentUser.cart.placeOrder();
                 currentUser.addOrderInformation((OrderInfo) request.getSession().getAttribute("orderInfo"));
 
@@ -41,8 +47,7 @@ public class Validate extends HttpServlet {
                 Email email = new Email();
                 email.sendOrderConfirmation(
                         currentUser.email,
-                        currentOrder
-                        );
+                        currentOrder);
 
                 response.sendRedirect("/Cart");
             } else {
