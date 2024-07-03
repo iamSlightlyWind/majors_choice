@@ -1,7 +1,6 @@
 package packages.wrap;
 
 import java.util.ArrayList;
-import main.User;
 import packages.*;
 
 public class Validation {
@@ -13,7 +12,7 @@ public class Validation {
     static ArrayList<PSU> psus = new ArrayList<PSU>();
     static ArrayList<SSD> storages = new ArrayList<SSD>();
 
-    public static void validate(Cart cart) {
+    public static String validate(Cart cart) {
         for (Product product : cart.products) {
             if (product instanceof CPU) {
                 cpus.add((CPU) product);
@@ -30,13 +29,16 @@ public class Validation {
             }
         }
 
-        System.out.println("Socket: " + socketMatch());
-        System.out.println("Graphics: " + graphicsOutput());
-        System.out.println("RAM Type: " + ramType());
-        System.out.println("RAM Matching: " + ramMatching());
-        System.out.println("RAM Speed: " + ramSpeed());
-        System.out.println("RAM Capacity: " + ramCapacity());
-        System.out.println("Power Budget: " + powerBudget());
+        String result = "";
+        result += "<b>Socket</b>: " + socketMatch() + "<br>";
+        result += "<b>Graphics</b>: " + graphicsOutput() + "<br>";
+        result += "<b>RAM Type</b>: " + ramType() + "<br>";
+        result += "<b>RAM Matching</b>: " + ramMatching() + "<br>";
+        result += "<b>RAM Speed</b>: " + ramSpeed() + "<br>";
+        result += "<b>RAM Capacity</b>: " + ramCapacity() + "<br>";
+        result += "<b>Power Budget</b>: " + powerBudget() + "<br>";
+
+        return result;
     }
 
     @SuppressWarnings("unused")
@@ -62,7 +64,9 @@ public class Validation {
             totalPower += 5;
         }
 
-        return totalPower + 20;
+        totalPower += 20; // Additional peripherals
+
+        return totalPower;
     }
 
     static String powerBudget() {
@@ -71,9 +75,9 @@ public class Validation {
         if (!error.equals("")) {
             return error;
         } else {
-            if (powerConsumption() * 1.3 > psus.get(0).wattage * 0.8) {
+            if (psus.get(0).wattage * 0.8 > powerConsumption() * 1.3) {
                 return pass("powerBudgetOptimal");
-            } else if (powerConsumption() > psus.get(0).wattage) {
+            } else if (psus.get(0).wattage * 0.8 > powerConsumption()) {
                 return error("powerBudgetNotOptimal");
             } else {
                 return error("powerBudgetNotEnough");
@@ -97,7 +101,8 @@ public class Validation {
                 }
                 if (totalCapacity > motherboard.get(0).maxRamCapacity) {
                     return error("ramCapacity");
-                }else return pass("ramCapacity");
+                } else
+                    return pass("ramCapacity");
             }
         }
     }
@@ -230,7 +235,7 @@ public class Validation {
             case "ramSpeed":
                 return "RAM can be used with the motherboard.";
             case "powerBudgetOptimal":
-                return "Power budget is optimal. PSU wattage is 30% more than cart specification power consumption.";
+                return "Power budget is optimal. PSU wattage is 30% or more than cart specification power consumption.";
             case "ramCapacity":
                 return "RAM capacity is within the motherboard's supported capacity.";
             default:
@@ -261,7 +266,8 @@ public class Validation {
             case "powerBudgetNotOptimal":
                 return "Power budget is not optimal. PSU wattage is not 30% more than cart specification power consumption. Consider using a PSU with higher wattage.";
             case "powerBudgetNotEnough":
-                return "Power budget is not enough. PSU wattage is less than cart specification power consumption. Consider using a PSU with higher wattage.";
+                return "Power budget is not enough. PSU wattage is less than cart specification power consumption ("
+                        + powerConsumption() + "w). Consider using a PSU with higher wattage.";
         }
 
         String error = "";
@@ -336,13 +342,5 @@ public class Validation {
             }
         }
         return "";
-    }
-
-    public static void main(String[] args) {
-        User currentUser = new User();
-        currentUser.username = "phong";
-        currentUser.retrieveData("user");
-
-        currentUser.cart.validate();
     }
 }

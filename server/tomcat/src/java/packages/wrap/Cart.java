@@ -20,8 +20,8 @@ public class Cart {
         this.total = cart.total;
     }
 
-    public void validate(){
-        Validation.validate(this);
+    public String getValidate() {
+        return Validation.validate(this);
     }
 
     public void updateQuantity() {

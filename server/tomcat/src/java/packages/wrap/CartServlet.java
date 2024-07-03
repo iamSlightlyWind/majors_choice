@@ -73,9 +73,18 @@ public class CartServlet extends HttpServlet {
                 request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(tempCart.total));
                 request.setAttribute("cartPrice", String.format(Locale.US, "%,.2f", tempCart.total));
                 request.setAttribute("ProductCount", (ArrayList<ProductCount>) tempCart.quantities);
+                request.setAttribute("validation", tempCart.getValidate());
                 request.setAttribute("user", currentUser);
 
                 request.getRequestDispatcher("/cart/checkout.jsp").forward(request, response);
+                break;
+            case "restore":
+                Cart restoreCart = (Cart) request.getSession().getAttribute("tempCart");
+                currentUser.cart = new Cart(restoreCart);
+                currentUser.cart.updateCart();
+
+                response.sendRedirect("/Cart");
+                break;
         }
 
         request.getSession().setAttribute("userObject", currentUser);
