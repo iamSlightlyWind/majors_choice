@@ -26,9 +26,10 @@ public class ActivateServlet extends HttpServlet {
                 break;
             case 1:
                 Email mail = new Email();
-                user.retrieveData((String) request.getSession().getAttribute("table"));
+                user.retrieveData("user");
                 mail.sendGreet(user.email, user.username);
                 request.getSession().setAttribute("userObject", user);
+                request.getSession().setAttribute("table", "user");
                 response.sendRedirect("/");
                 break;
         }
