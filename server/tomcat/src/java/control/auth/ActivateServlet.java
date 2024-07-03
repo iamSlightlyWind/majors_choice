@@ -14,11 +14,12 @@ public class ActivateServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String code = request.getParameter("code");
-        User user = (User) request.getSession().getAttribute("userObject");
+        User user = (User) request.getSession().getAttribute("tempUserObject");
         int result = user.activate(code);
 
         switch (result) {
             case 0:
+                request.getSession().setAttribute("userObject", user);
                 request.setAttribute("user", ((User) request.getSession().getAttribute("userObject")).username);
                 request.setAttribute("activateStatus", "Activation code is incorrect.");
                 request.getRequestDispatcher("/auth/activate.jsp").forward(request, response);
