@@ -128,8 +128,7 @@ create table orders
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
     status nvarchar(50),
-    dateOrdered date default getdate(),
-	rateStatus bit
+    dateOrdered date default getdate()
 )
 
 create table orderInformation
@@ -151,7 +150,8 @@ create table feedback
 create table ratings
 (
     id int identity(1,1) primary key,
-	orderId int references orders(id),
+	productId int references products(id),
+    userId int references users(id),
     rating_star int,
     rating_text nvarchar(max),
     dateRated date default getdate()

@@ -15,6 +15,7 @@ import packages.Rating;
 import packages.SSD;
 import database.Database;
 import main.User;
+import packages.Case;
 import packages.wrap.Order;
 import packages.wrap.Product;
 
@@ -64,6 +65,11 @@ public class ProductDetail extends HttpServlet {
                 request.setAttribute("product", ssd);
                 request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
                 break;
+            case "case":
+                Case case1 = new Case(id);
+                request.setAttribute("product", case1);
+                request.getRequestDispatcher("/view/detail/detailCPU.jsp").forward(request, response);
+                break;
             default:
                 break;
         }
@@ -84,38 +90,28 @@ public class ProductDetail extends HttpServlet {
     
     protected void userViewAllOrders(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User currentUser = (User) request.getSession().getAttribute("userObject");
+         User currentUser = (User) request.getSession().getAttribute("userObject");
         if(currentUser == null){
             return;
         }
         int productId = (request.getParameter("id") == null)||(request.getParameter("id").isEmpty()) ? 0 : Integer.parseInt(request.getParameter("id"));   
        
-        ArrayList<Order> list = new ArrayList<>();
-        ArrayList<Order> orders = Database.getOrders(-6);        
-        for (Order order : orders) {
-            if (order.user.id.equals(currentUser.id)) {
-                for (Product product : order.products) {
-                    if(product.id == productId){
-                        list.add(order);
-                    }
-                }
-            }
+        int result = Database.checkUserRateProduct(productId, Integer.parseInt(currentUser.id));
+        
+        switch(result){
+            case 0:
+                request.setAttribute("userId", currentUser.id);
+                request.setAttribute("rateStatus", "add");
+                break;
+            case 1:
+                Rating rate = new Rating(productId, Integer.parseInt(currentUser.id));
+                request.setAttribute("rate", rate);
+                request.setAttribute("rateStatus", "update");
+                break;
+            default:
+                request.setAttribute("rateStatus", "noAction");
+                break;
         }
-        for (Order order : list) {   
-            
-            if(Database.checkOrderRate(order.id) == 0){
-                request.setAttribute("rateStatus", 0);
-                request.setAttribute("order", order);
-                return;
-            }
-            
-            if( (order.id == list.get(list.size() - 1).id) && Database.checkOrderRate(order.id) == 1){
-                Rating rate = new Rating(order.id, productId);
-                request.setAttribute("rateStatus", 1);               
-                request.setAttribute("rate", rate);   
-                return;
-            }
-        }   
         
     }
 

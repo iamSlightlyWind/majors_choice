@@ -211,22 +211,21 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                       <span class="navbar-whoweare thq-body-small thq-link">
                         <span>Who we are</span>
                       </span>
-                      <span
-                        class="navbar-manager-order thq-body-small thq-link"
-                      >
-                        Manager Order
-                      </span>
+                      <a href="/order">
+                          <span class="navbar-manager-order thq-body-small thq-link">
+                            Manage Order
+                          </span>
+                        </a>
                     </div>
                   </nav>
                   <div class="navbar-buttons">
-                    <svg
-                      viewBox="0 0 1024 1024"
-                      class="navbar-icon thq-button-icon thq-icon-medium"
-                    >
-                      <path
-                        d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z"
-                      ></path></svg
-                    ><svg
+                    <a href="/Cart">
+                        <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium">
+                          <path
+                            d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
+                          </path>
+                        </svg>
+                      </a><svg
                       viewBox="0 0 1024 1024"
                       class="navbar-icon02 thq-button-icon thq-icon-medium"
                     >
@@ -234,16 +233,13 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z"
                       ></path>
                     </svg>
-                    <button class="navbar-account thq-button-filled">
-                      <svg
-                        viewBox="0 0 731.4285714285713 1024"
-                        class="navbar-icon04"
-                      >
-                        <path
-                          d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z"
-                        ></path>
-                      </svg>
-                    </button>
+                    <a href="/profile" class="navbar-account thq-button-filled">
+                        <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
+                          <path
+                            d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
+                          </path>
+                        </svg>
+                      </a>
                   </div>
                 </div>
                 <div data-thq="thq-burger-menu" class="navbar-burger-menu">
@@ -306,36 +302,33 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
               </header>
             </header>
           </div>
-          <div class="menu-function-container menu-function-root-class-name51">
-            <div class="menu-function-manager">
-              <span
-                class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small"
-              >
-                <span>Manager WareHouse</span>
-              </span>
-              <span
-                class="menu-function-mgt-customer text1 thq-link1 thq-body-small"
-              >
-                Manager Customer
-              </span>
-              <span
-                class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small"
-              >
-                <span>Feedback</span>
-                <br />
-              </span>
-              <span
-                class="menu-function-mgt-staff text1 thq-link1 thq-body-small"
-              >
-                Manager Staff
-              </span>
-              <span
-                class="menu-function-mgt-report text1 thq-link1 thq-body-small"
-              >
-                Financial Reports
-              </span>
-            </div>
-          </div>
+          <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+              .equals(role)) { %>
+              <div class="menu-function-container menu-function-root-class-name">
+                <div class="menu-function-manager">
+                  <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
+                    <span>Manage WareHouse</span>
+                  </span>
+                  <a href="/manage/profile?actor=user">
+                    <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                      Manage Customer
+                    </span>
+                  </a>
+                  <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
+                    <span>Manage Order</span>
+                    <br />
+                  </span>
+                  <a href="/manage/profile?actor=staff">
+                    <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                      Manage Staff
+                    </span>
+                  </a>
+                  <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                    Financial Reports
+                  </span>
+                </div>
+              </div>
+        <% } %>
         </div>
         <div class="view-detail-product-body">
           <div class="view-detail-product-link-page">
@@ -359,9 +352,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                    <c:if test="${category == 'ram'}">
                    / <a href="/RAM">RAM -&nbsp;Random-access memory</a>
                 </c:if>
-                   <c:if test="${category == 'ssd'}">
+                <c:if test="${category == 'ssd'}">
                    / <a href="/SSD">SSD -&nbsp;Solid-state drive</a>
                 </c:if>
+                <c:if test="${category == 'case'}">
+                   / <a href="/CASE">Case -&nbsp;Computer case</a>
+                </c:if> 
               </span>
               <span class="view-detail-product-text02 thq-body-small">
                   &nbsp;/ ${product.name}&nbsp;
@@ -395,6 +391,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                           ${product.name}/${product.latency}CL-X
                       </c:if>
                       <c:if test="${category == 'ssd'}">
+                          ${product.name}
+                      </c:if>
+                       <c:if test="${category == 'case'}">
                           ${product.name}
                       </c:if>&nbsp; </span>
                 <br />
@@ -452,7 +451,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           </div>
           <div class="view-detail-product-specifications-vs-description">
             <div class="view-detail-product-specfications">
-              <h1 class="view-detail-product-heading">Specifications</h1>
+                <h1 class="view-detail-product-heading" style="padding-left: 35%">Specifications</h1>
               <c:if test="${category == 'cpu' || category == 'gpu' || category == 'ram'}">
                   <div class="view-detail-product-form-gener">
                       <span class="view-detail-product-text-title">Genernation</span>
@@ -493,7 +492,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                       </span>
                   </div>
               </c:if>
-              <c:if test="${category == 'mobo'}">
+              <c:if test="${category == 'mobo' || category == 'case'}">
                   <div class="view-detail-product-form-socket">
                       <span class="view-detail-product-text-title1">
                           <span>FormFactor</span>
@@ -662,6 +661,15 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                       <span class="view-detail-product-text-value1">${product.latency}CL-X</span>
                   </div>
               </c:if>
+              <c:if test="${category == 'case'}">
+                  <div class="view-detail-product-form-socket">
+                      <span class="view-detail-product-text-title1">
+                          <span>Color</span>
+                          <br />
+                      </span>
+                      <span class="view-detail-product-text-value1">${product.color}</span>
+                  </div>
+              </c:if>
             </div>
             <div class="view-detail-product-description">
               <h1 class="view-detail-product-text26">
@@ -670,36 +678,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
               </h1>
               <span class="view-detail-product-text-value7">
                 <span>
-                  Basically we will have a 2-core/4-thread CPU operating at a
-                  clock speed of 3.5GHz (an increase of 300MHz compared to the
-                  previous generation), L3 Cache capacity of 4MB and integrated
-                  with iGPU Radeon Vega 3. iGPU Radeon Vega 3 has 3 NGCUs (192
-                  processing threads) and operating clock speeds from 100MHz to
-                  1.1GHz. With this iGPU, you can play E-sport games well with
-                  high FPS.
-                </span>
-                <br />
-                <br />
-                <span>
-                  New AMD Athlon™ processor, integrating advanced Radeon™ Vega
-                  graphics processing technology for everyday users. The
-                  highest-end processor combined with integrated Radeon Vega
-                  graphics that AMD has ever created for consumers, has received
-                  high praise for its rapid response, along with advanced
-                  processor architecture. suitable for your daily tasks.
-                </span>
-                <br />
-                <br />
-                <span>
-                  With the AMD Athlon 3000G CPU optimized for gaming, users can
-                  surf the web smoothly and experience high-quality video
-                  processing without lag thanks to integrated Radeon™ Graphics.
-                  Thanks to that, users can admire today's hot games such as
-                  League of Legends, Fifa Online,... at 720p resolution. At the
-                  same time, the quality is improved thanks to the combination
-                  with a FreeSync-enabled screen, providing perfect anti-tearing
-                  ability, peace of mind with fast-moving games such as sports
-                  games, shooting games,...
+                  ${product.description}
                 </span>
                 <br />
               </span>
@@ -726,6 +705,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                 </c:if>
                 <c:if test="${category == 'ssd'}">
                     ${product.name}
+                </c:if>
+                <c:if test="${category == 'case'}">
+                          ${product.name}
                 </c:if>
               </span>
               <br />
@@ -793,8 +775,8 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                                   <span><%=rate.ratingText%></span>
                               </div>
                      <%}%>
-                  </c:if>                
-                <c:if test="${order != null && rateStatus == 0}">
+                  </c:if>                 
+                <c:if test="${rateStatus == 'add'}">
                     <div class="view-detail-product-rating2">
                     <form action="/product/rate" method="post">                       
                         <div class="view-detail-product-average-rating">
@@ -819,7 +801,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                                 &nbsp;reviews &amp; comments
                             </span>
                         </div>
-                        <input type="hidden" name="orderID" value="${order.id}"/>
+                        <input type="hidden" name="userId" value="${userId}"/>
                         <input type="hidden" name="category" value="${category}" /> 
                         <input type="hidden" name="productID" value="${product.id}"/>
                         <button
@@ -840,8 +822,8 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                         </button>                 
                     </form>
                    </div>
-                </c:if>    
-                  <c:if test="${rate != null && rateStatus == 1}">
+                </c:if>   
+                  <c:if test="${rateStatus == 'update'}">
                     <div class="view-detail-product-rating2">
                     <form action="/product/rate" method="post">                       
                         <div class="view-detail-product-average-rating">
