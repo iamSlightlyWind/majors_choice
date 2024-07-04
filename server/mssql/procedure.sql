@@ -911,7 +911,8 @@ GO
 create procedure addOrderInformation
     @fullname nvarchar(50),
     @phoneNumber varchar(15),
-    @address nvarchar(100)
+    @address nvarchar(100),
+    @payment nvarchar(max)
 as
 begin
     declare @orderId int
@@ -919,9 +920,9 @@ begin
     from orders
 
     insert into orderInformation
-        (id, fullname, phoneNumber, address)
+        (id, fullname, phoneNumber, address, payment)
     values
-        (@orderId, @fullname, @phoneNumber, @address)
+        (@orderId, @fullname, @phoneNumber, @address, @payment)
 end
 go
 
@@ -992,7 +993,8 @@ BEGIN
     SELECT
         fullname,
         phoneNumber,
-        address
+        address,
+        payment
     FROM
         orderInformation
     WHERE

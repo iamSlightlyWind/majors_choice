@@ -38,7 +38,9 @@ public class Validate extends HttpServlet {
                 }
 
                 currentUser.cart.placeOrder();
-                currentUser.addOrderInformation((OrderInfo) request.getSession().getAttribute("orderInfo"));
+                OrderInfo info = (OrderInfo) request.getSession().getAttribute("orderInfo");
+                info.addPayment(request.getParameter("vnp_TxnRef"));
+                currentUser.addOrderInformation(info);
 
                 currentUser.getOrders();
                 Order currentOrder = currentUser.orders.get(currentUser.orders.size() - 1);
