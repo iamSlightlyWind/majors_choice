@@ -1596,6 +1596,11 @@ begin
 end;
 go
 
-
-
-
+CREATE PROCEDURE getMostPopular
+AS
+BEGIN
+    SELECT TOP 5 productId, COUNT(productId) AS ProductCount
+    FROM orders
+    GROUP BY productId
+    ORDER BY ProductCount DESC
+END
