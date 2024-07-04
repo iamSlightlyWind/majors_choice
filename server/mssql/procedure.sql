@@ -1,4 +1,5 @@
 use major
+SET NOCOUNT ON;
 go
 
 CREATE PROCEDURE login
@@ -1503,10 +1504,6 @@ BEGIN
     IF @@ROWCOUNT = 0
     BEGIN
         PRINT 'No product found with the given ID.';
-    END
-    ELSE
-    BEGIN
-        PRINT 'Description added successfully.';
     END
 END;
 GO

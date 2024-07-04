@@ -1,4 +1,6 @@
 use major
+SET NOCOUNT ON;
+go
 
 DECLARE @resultInt int
 -- User 1
