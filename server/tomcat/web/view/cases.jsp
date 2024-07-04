@@ -161,7 +161,7 @@
                   <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                     <nav class="navbar-links">
-                      <form action="/CPU" method="post">
+                      <form action="/SSD" method="post">
                         <div class="navbar-container3">
                           <input type="text" placeholder="Search product by name" class="navbar-textinput input"
                             name="searchName" value="${requestScope.searchName}" />
@@ -237,7 +237,7 @@
                         <div class="navbar-container6">
                           <input type="text" placeholder="Search product by name" class="navbar-textinput1 input"
                             name="searchName" value="${requestScope.searchName}" />
-                          <button class="navbar-search1 thq-button-filled thq-button-animated" value="Search">
+                          <button class="navbar-search1 thq-button-filled thq-button-animated">
                             <span class="navbar-text3 thq-body-small">
                               <span>Search</span>
                               <br />
@@ -263,7 +263,7 @@
                 </header>
               </header>
             </div>
-          <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+            <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
               .equals(role)) { %>
               <div class="menu-function-container menu-function-root-class-name">
                 <div class="menu-function-manager">
@@ -294,10 +294,10 @@
           <div class="view-all-product-cpu-body">
             <div class="view-all-product-cpu-link-page">
               <span class="view-all-product-cpu-text thq-body-small thq-link">
-                  <a href="/"> Home&nbsp;</a>
+                  <a href="/">Home&nbsp;</a>
               </span>
               <span class="view-all-product-cpu-text01">
-                  / <a href="/CPU">CPU -&nbsp;Computer processor</a>
+                  <a href="/CASE">/ Case -&nbsp;Computer Case</a>
               </span>
             </div>
             <div class="chats-chats chats-root-class-name">
@@ -324,7 +324,7 @@
                   </h1>
                 </div>
                 <c:set var="name" value="${requestScope.searchName}" scope="page" />
-                <form class="view-all-product-cpu-form" action="/FilterCPU" method="post"
+                <form class="view-all-product-cpu-form" action="/FilterCase" method="post"
                   onsubmit="return validateForm()">
                   <input type="hidden" name="nameSearch" value="${name}" />
                   <span class="view-all-product-cpu-text05">
@@ -348,213 +348,115 @@
                       name="to" value="${requestScope.to}" />
                   </div>
                   <hr>
-                  <c:set var="brands" value="${requestScope.brands}" />
+                  <c:set var="formFactors" value="${requestScope.formFactors}" />
                   <span class="view-all-product-cpu-text14">
-                    <span>Brand</span>
+                    <span>FormFactor</span>
                     <br />
                   </span>
                   <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="brand" value="amd" <c:forEach
-                      var="brand" items="${brands}">
-                    <c:if test="${brand == 'amd'}">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="formFactors" value="Mid Tower"
+                    <c:forEach var="formFactor" items="${formFactors}">
+                    <c:if test="${formFactor == 'Mid Tower' || formFactor == 'MidTower'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
                     <span class="view-all-product-cpu-text17">
-                      <span>AMD</span>
+                      <span>Mid Tower</span>
                       <br />
                     </span>
                   </div>
                   <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="brand" value="intel" <c:forEach
-                      var="brand" items="${brands}">
-                    <c:if test="${brand == 'intel'}">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="formFactors" value="FullTower"
+                      <c:forEach var="formFactor" items="${formFactors}">
+                    <c:if test="${formFactor == 'FullTower'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
                     <span class="view-all-product-cpu-text17">
-                      <span>Intel</span>
+                      <span>Full Tower</span>
                       <br />
                     </span>
                   </div>
-                  <hr>
-                  <c:set var="generations" value="${requestScope.generations}" />
-                  <span class="view-all-product-cpu-text14">
-                    <span>Genernation</span>
+                  <div class="view-all-product-cpu-container05">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="formFactors" value="Mini ITX"
+                      <c:forEach var="formFactor" items="${formFactors}">
+                    <c:if test="${formFactor == 'Mini ITX' || formFactor == 'MiniITX'}">
+                      checked
+                    </c:if>
+                    </c:forEach>
+                    />
+                    <span class="view-all-product-cpu-text17">
+                      <span>Mini ITX</span>
+                      <br />
+                    </span>
+                  </div>
+                  <hr>                 
+                  <c:set var="colors" value="${requestScope.colors}" />
+                  <span class="view-all-product-cpu-text05">
+                    <span>Color</span>
                     <br />
                   </span>
-                  <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="generation" value="Cezanne"
-                      <c:forEach var="generation" items="${generations}">
-                    <c:if test="${generation == 'Cezanne'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text17">
-                      <span>Cezanne</span>
-                      <br />
-                    </span>
-                  </div>
                   <div class="view-all-product-cpu-container06">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="generation" value="Zen 3"
-                      <c:forEach var="generation" items="${generations}">
-                    <c:if test="${generation == 'Zen 3'}">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="colors" value="White" <c:forEach
+                      var="color1" items="${colors}">
+                    <c:if test="${color1 == 'White'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
                     <span class="view-all-product-cpu-text20">
-                      <span>Zen 3</span>
+                      <span>White</span>
                       <br />
                     </span>
                   </div>
-                  <div class="view-all-product-cpu-container07">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox2" name="generation" value="raphael"
-                      <c:forEach var="generation" items="${generations}">
-                    <c:if test="${generation == 'raphael'}">
+                  <div class="view-all-product-cpu-container06">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="colors" value="Black" <c:forEach
+                      var="color1" items="${colors}">
+                    <c:if test="${color1 == 'Black'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
-                    <span class="view-all-product-cpu-text23">
-                      <span>Raphael</span>
+                    <span class="view-all-product-cpu-text20">
+                      <span>Black</span>
                       <br />
                     </span>
-                  </div>
-                  <div class="view-all-product-cpu-container08">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox3" name="generation" value="raptor lake"
-                      <c:forEach var="generation" items="${generations}">
-                    <c:if test="${generation == 'raptor lake' || generation == 'raptorlake'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text26">Raptor Lake</span>
-                  </div>
-                  <hr>
-                  <span class="view-all-product-cpu-text14">
-                    <span>Socket</span>
-                    <br />
-                  </span>
-                  <c:set var="sockets" value="${requestScope.sockets}" />
-                  <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="socket" value="am4" <c:forEach
-                      var="socket" items="${sockets}">
-                    <c:if test="${socket == 'am4'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text17">
-                      <span>AM4</span>
-                      <br />
-                    </span>
-                  </div>
-                  <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="socket" value="am5" <c:forEach
-                      var="socket" items="${sockets}">
-                    <c:if test="${socket == 'am5'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text17">
-                      <span>AM5</span>
-                      <br />
-                    </span>
-                  </div>
-                  <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="socket" value="lga 1700"
-                      <c:forEach var="socket" items="${sockets}">
-                    <c:if test="${socket == 'lga 1700' || socket == 'lga1700'}">
-                      checked
-                    </c:if>
-                    </c:forEach>
-                    />
-                    <span class="view-all-product-cpu-text17">
-                      <span>LGA 1700</span>
-                      <br />
-                    </span>
-                  </div>
-
-                  <hr>
-                  <span class="view-all-product-cpu-text05">
-                    <span>Core</span>
-                    <br />
-                  </span>
-                  <div class="view-all-product-cpu-container03">
-                    <span class="view-all-product-cpu-text08">
-                      <span>From</span>
-                      <br />
-                    </span>
-                    <input type="number" id="from" placeholder="min " class="view-all-product-cpu-textinput input"
-                      name="fromCores" value="${requestScope.fromCore}" />
-                  </div>
-                  <div class="view-all-product-cpu-container04">
-                    <span class="view-all-product-cpu-text11">
-                      <span>To</span>
-                      <br />
-                    </span>
-                    <input type="number" id="to" placeholder="max" class="view-all-product-cpu-textinput1 input"
-                      name="toCores" value="${requestScope.toCore}" />
-                  </div>
-                  <hr><!-- comment -->
-                  <span class="view-all-product-cpu-text05">
-                    <span>TDP</span>
-                    <br />
-                  </span>
-                  <div class="view-all-product-cpu-container03">
-                    <span class="view-all-product-cpu-text08">
-                      <span>From</span>
-                      <br />
-                    </span>
-                    <input type="number" id="from" placeholder="min " class="view-all-product-cpu-textinput input"
-                      name="fromTDP" value="${requestScope.fromTDP}" />
-                  </div>
-                  <div class="view-all-product-cpu-container04">
-                    <span class="view-all-product-cpu-text11">
-                      <span>To</span>
-                      <br />
-                    </span>
-                    <input type="number" id="to" placeholder="max" class="view-all-product-cpu-textinput1 input"
-                      name="toTDP" value="${requestScope.toTDP}" />
                   </div>
                   <button type="submit" value="Filter">Filter</button>
                 </form>
               </div>
               <div class="view-all-product-cpu-container09">
-                <c:forEach var="cpu" items="${requestScope.cpus}">
-                    <a href="/view/detail/product?category=cpu&id=${cpu.id}">
+                <c:forEach var="case1" items="${requestScope.cases}">
+                    <a href="/view/detail/product?category=case&id=${case1.id}">
                         <div class="component1-container component1-root-class-name">
-                    <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                      loading="eager" class="component1-image" />
-                    <h1 class="component1-text thq-link">
-                      <span>
-                        ${cpu.name}
-                      </span>
-                    </h1>
-                    <span class="component1-text1">
-                      <fmt:setLocale value="vi_VN"/>
-                      <fmt:formatNumber value="${cpu.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
-                      <span id="sellingPrice">${formattedSellingPrice}<u>đ</u></span>
-                      <br />
-                    </span>
-                    <div class="component1-container1">
-                      <span class="component1-text4"><span>0.0</span></span>
-                      <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                        <path
-                          d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                        </path>
-                      </svg>
-                      <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component1-link">
-                        <span>(0 Review)</span>
-                      </a>
-                    </div>
-                  </div>
+                            <img alt="image"
+                                 src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
+                                 loading="eager" class="component1-image" />
+                            <h1 class="component1-text thq-link">
+                                <span>
+                                    ${case1.name}
+                                </span>
+                            </h1>
+                            <span class="component1-text1">
+                                <fmt:setLocale value="vi_VN"/>
+                                <fmt:formatNumber value="${case1.sellingPrice}" type="number" pattern="#,###,###" var="formattedSellingPrice" />
+                                <span id="sellingPrice">${formattedSellingPrice}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="component1-container1">
+                                <span class="component1-text4"><span>0.0</span></span>
+                                <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                </path>
+                                </svg>
+                                <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="component1-link">
+                                    <span>(0 Review)</span>
+                                </a>
+                            </div>
+                        </div>
                     </a>
                 </c:forEach>
               </div>
@@ -802,7 +704,6 @@
           return true; // Allow form submission
         }
       </script>
-
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 

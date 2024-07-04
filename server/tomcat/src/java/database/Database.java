@@ -263,10 +263,6 @@ public class Database {
         return null;
     }
 
-    public static ArrayList<Case> getCases() {
-        return null;
-    }
-
     public static int addProductCPU(double sellingPrice, double costPrice, String name, String generation, String igpu,
             String socket,
             int cores, int threads, int baseClock, int boostClock, int tdp, String image, int quantity) {
@@ -1393,93 +1389,6 @@ public class Database {
         return null;
     }
 
-    public static int addRating(int orderID, int ratingStar, String ratingText) {
-        try {
-            String sql = "{call addRating(?, ?, ?, ?)}";
-            CallableStatement statement = connection.prepareCall(sql);
-            statement.setInt(1, orderID);
-            statement.setInt(2, ratingStar);
-            statement.setString(3, ratingText);
-            statement.registerOutParameter(4, Types.INTEGER);
-
-            statement.execute();
-            return statement.getInt(4);
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return -1;
-    }
-
-    public static int updateRating(int id, int ratingStar, String ratingText) {
-        try {
-            String sql = "{call updateRatings(?, ?, ?, ?)}";
-            CallableStatement statement = connection.prepareCall(sql);
-            statement.setInt(1, id);
-            statement.setInt(2, ratingStar);
-            statement.setString(3, ratingText);
-            statement.registerOutParameter(4, Types.INTEGER);
-
-            statement.execute();
-            return statement.getInt(4);
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-    }
-
-    public static ArrayList<Rating> getRating(int productID) {
-        try {
-            String sql = "{call getRatingsByProduct(?)}";
-            CallableStatement statement = connection.prepareCall(sql);
-            statement.setInt(1, productID);
-            ResultSet resultSet = statement.executeQuery();
-            ArrayList<Rating> list = new ArrayList<>();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                int orderId = resultSet.getInt("orderID");
-                int userId = resultSet.getInt("userID");
-                int productId = resultSet.getInt("productID");
-                int rating_star = resultSet.getInt("rating_star");
-                String rating_text = resultSet.getString("rating_text");
-                String dateRated = resultSet.getString("dateRated");
-                Rating rating = new Rating(id, userId, productId, rating_star, rating_text, dateRated, orderId);
-                list.add(rating);
-            }
-            return list;
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-    public static int checkOrderRate(int orderID) {
-        try {
-            String sql = "{call checkUserOrderRate(?, ?)}";
-            CallableStatement statement = connection.prepareCall(sql);
-            statement.setInt(1, orderID);
-            statement.registerOutParameter(2, Types.INTEGER);
-
-            statement.execute();
-            return statement.getInt(2);
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return -1;
-    }
-
-    public static void updateRateInOrder(int orderID) {
-        try {
-            String sql = "UPDATE orders\n"
-                    + "SET rateStatus = 1\n"
-                    + "WHERE id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, orderID);
-            statement.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public static void setQuantity(int id) {
         try {
             String sql = "{call setQuantity(?)}";
@@ -1490,5 +1399,80 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+     public static int addRating(int productId, int userId, int ratingStar, String ratingText){
+        try{
+            String sql = "{call addRating(?, ?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, productId);
+            statement.setInt(2, userId);
+            statement.setInt(3, ratingStar);
+            statement.setString(4, ratingText);
+            statement.registerOutParameter(5, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(5);
+        }catch(SQLException ex){
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+    
+    public static int updateRating(int id, int ratingStar, String ratingText){
+        try{
+            String sql = "{call updateRatings(?, ?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, id);
+            statement.setInt(2, ratingStar);
+            statement.setString(3, ratingText);
+            statement.registerOutParameter(4, Types.INTEGER);
+            
+            statement.execute();
+            return statement.getInt(4);
+        }catch(SQLException ex){
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
+    public static ArrayList<Rating> getRating(int productID){
+        try {
+            String sql = "{call getRatingsByProduct(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, productID);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Rating> list = new ArrayList<>();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int productId = resultSet.getInt("productId");
+                int userId = resultSet.getInt("userId");
+                int rating_star = resultSet.getInt("rating_star");
+                String rating_text = resultSet.getString("rating_text");
+                String dateRated = resultSet.getString("dateRated");
+                Rating rating = new Rating(id, userId, productId, rating_star, rating_text, dateRated);
+                list.add(rating);
+            }
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static int checkUserRateProduct(int productId, int userId){
+        try{
+            String sql = "{call checkUserRateProduct(?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, userId);
+            statement.setInt(2, productId);
+            statement.registerOutParameter(3, Types.INTEGER);
+            
+            statement.execute();
+            return statement.getInt(3);
+        }catch(SQLException ex){
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 }

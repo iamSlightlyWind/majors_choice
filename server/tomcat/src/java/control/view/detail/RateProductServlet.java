@@ -35,14 +35,13 @@ public class RateProductServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("userObject");
         
         int productID = request.getParameter("productID") == null ? 0 : Integer.parseInt(request.getParameter("productID"));
-        int orderID = request.getParameter("orderID") == null ? 0 : Integer.parseInt(request.getParameter("orderID"));
+        int userID = request.getParameter("userId") == null ? 0 : Integer.parseInt(request.getParameter("userId"));
         int rateStar = request.getParameter("rateStar") == null ? 0 : Integer.parseInt(request.getParameter("rateStar"));
         
         String category = request.getParameter("category");
         String rateText = request.getParameter("rateText");
         
-        int result = Database.addRating(orderID,  rateStar, rateText);
-        Database.updateRateInOrder(orderID);
+        int result = Database.addRating(productID, userID, rateStar, rateText);
         switch(result){
             case -1:
                 response.sendRedirect("/");
