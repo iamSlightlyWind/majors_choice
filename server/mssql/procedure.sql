@@ -1489,17 +1489,40 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE AddProductDescription
+    @ProductId INT,
+    @Description NVARCHAR(MAX)
+AS
+BEGIN
+    -- Update the description in the products table
+    UPDATE products
+    SET description = @Description
+    WHERE id = @ProductId;
+
+    -- Optionally, check if the update was successful
+    IF @@ROWCOUNT = 0
+    BEGIN
+        PRINT 'No product found with the given ID.';
+    END
+    ELSE
+    BEGIN
+        PRINT 'Description added successfully.';
+    END
+END;
+GO
+
 create procedure addRating
-    @orderID int,
+    @productID int,
+    @userID int,
     @ratingStar int,
     @ratingText nvarchar(max),
     @result int output
 as
 begin
     insert into ratings
-        (orderId, rating_star, rating_text)
+        (productId, userId, rating_star, rating_text)
     values
-        (@orderID, @ratingStar, @ratingText)
+        (@productID, @userID, @ratingStar, @ratingText)
 
     set @result = 1
 end;
@@ -1534,61 +1557,45 @@ create procedure getRatingsByProduct
     @productID int
 as
 begin
-    select ratings.id as id,
-        ratings.orderId as orderID,
-        orders.userId as userID,
-        orders.productId as productID,
+    select id,
+        productId,
+        userId,
         rating_star,
         rating_text,
         dateRated
-    from orders
-        join ratings on orders.id = ratings.orderId
-    where orders.productId = @productID
+    from ratings
+    where productId = @productID
 end;
 go
 
-create procedure checkUserOrderRate
-    @orderID int,
+create procedure checkUserRateProduct
+    @userID int,
+    @productID int,
     @result int output
 as
 begin
     IF EXISTS (SELECT 1
-    FROM orders
-    WHERE id = @orderID and status = 'Completed' and rateStatus = 0)
+    FROM ratings
+    WHERE userId = @userID and productId = @productID)
 	begin
-        set @result = 0
+        set @result = 1 -- user has rated this product
         return
     end
-    IF EXISTS (SELECT 1
+    else IF EXISTS (SELECT 1
     FROM orders
-    WHERE id = @orderID and status = 'Completed' and rateStatus = 1)
+    WHERE status = 'Completed' and userId = @userID and productId = @productID)
 	begin
-        set @result = 1
+        set @result = 0 -- user has bought this product but not rated
         return
     end
+	else
+	begin
+		set @result = -1 --other
+		return
+	end
 end;
 go
-CREATE PROCEDURE AddProductDescription
-    @ProductId INT,
-    @Description NVARCHAR(MAX)
-AS
-BEGIN
-    -- Update the description in the products table
-    UPDATE products
-    SET description = @Description
-    WHERE id = @ProductId;
 
-    -- Optionally, check if the update was successful
-    IF @@ROWCOUNT = 0
-    BEGIN
-        PRINT 'No product found with the given ID.';
-    END
-    ELSE
-    BEGIN
-        PRINT 'Description added successfully.';
-    END
-END;
-GO
 
 
 

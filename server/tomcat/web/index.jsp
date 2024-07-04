@@ -761,7 +761,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
-                                <a href="/FilterRAM?generation=ddr4"><span>DDR4</span></a>
+                                <a href="/FilterRAM?generations=ddr4"><span>DDR4</span></a>
                               <br />
                             </span>
                           </div>
@@ -769,51 +769,13 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/FilterRAM?generation=ddr5"><span>DDR5</span></a>
+                                <a href="/FilterRAM?generations=ddr5"><span>DDR5</span></a>
                               <br />
                             </span>
                           </div>
                         </li>
                       </ul> 
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown207 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle179">
-                          <span class="home-page-generation list-item" style="color:red">
-                          Capacity
-                        </span>
-                        <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow34">
-                          <svg viewBox="0 0 1024 1024" class="home-page-icon68">
-                            <path d="M426 726v-428l214 214z"></path>
-                          </svg>
-                        </div>
-                      </div>
-                        <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
-                            <span class="home-page-text093">
-                                <a href="/FilterRAM?capacity=16"><span>16</span></a>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
-                            <span class="home-page-text096">
-                                <a href="/FilterRAM?capacity=32"><span>32</span></a>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
-                            <span class="home-page-text096">
-                                <a href="/FilterRAM?capacity=64"><span>64</span></a>
-                              <br />
-                            </span>
-                          </div>
-                        </li>
-                      </ul> 
-                    </li>
+                    </li>                   
                     <li data-thq="thq-dropdown" class="home-page-dropdown211 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle181">
                           <span class="home-page-text437 list-item" style="color:red">Spped</span>
@@ -891,7 +853,7 @@
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
                             <span class="home-page-text093">
                                 
-                                <a href="/FilterRAM?latency=15"><span>15</span></a>
+                                <a href="/FilterRAM?latencys=15"><span>15</span></a>
                               <br />
                             </span>
                           </div>
@@ -899,7 +861,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/FilterRAM?latency=16"><span>16</span></a>
+                                <a href="/FilterRAM?latencys=16"><span>16</span></a>
                               <br />
                             </span>
                           </div>
@@ -907,7 +869,7 @@
                          <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/FilterRAM?latency=18"><span>18</span></a>
+                                <a href="/FilterRAM?latencys=18"><span>18</span></a>
                               <br />
                             </span>
                           </div>
@@ -915,7 +877,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                               <a href="/FilterRAM?latency=36"><span>36</span></a>
+                               <a href="/FilterRAM?latencys=36"><span>36</span></a>
                               <br />
                             </span>
                           </div>
@@ -923,7 +885,7 @@
                         <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
                           <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
                             <span class="home-page-text096">
-                                <a href="/FilterRAM?latency=38"><span>38</span></a>
+                                <a href="/FilterRAM?latencys=38"><span>38</span></a>
                               <br />
                             </span>
                           </div>
@@ -1055,7 +1017,7 @@
                 <div data-thq="thq-dropdown" class="home-page-dropdown-case list-item">
                   <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle191">
                     <span class="home-page-text448">
-                      <span>CASE</span>
+                        <span><a href="/CASE">CASE</a></span>
                       <br />
                     </span>
                     <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow38"></div>
@@ -1066,8 +1028,8 @@
                   <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list39">
                     <li data-thq="thq-dropdown" class="home-page-dropdown227 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle192">
-                        <span class="home-page-text451 list-item">
-                          Sub-menu Item
+                          <span class="home-page-text451 list-item" style="color:red">
+                          FormFactor
                         </span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow39">
                           <svg viewBox="0 0 1024 1024" class="home-page-icon78">
@@ -1075,28 +1037,37 @@
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list40">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown228 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle193">
-                            <span class="home-page-text452">Sub-menu Item</span>
+                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/FilterCase?formFactors=MidTower"><span class="home-page-text443">Mid Tower</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown229 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle194">
-                            <span class="home-page-text453">Sub-menu Item</span>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/FilterCase?formFactors=FullTower"><span class="home-page-text443">Full Tower</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown230 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle195">
-                            <span class="home-page-text454">Sub-menu Item</span>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/FilterCase?formFactors=MiniITX"><span class="home-page-text443">Mini ITX</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                      </ul>
+                      </ul> 
                     </li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown231 list-item">
                       <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle196">
-                        <span class="home-page-text455 list-item">
-                          Sub-menu Item
+                          <span class="home-page-text455 list-item" style="color:red">
+                          Color
                         </span>
                         <div data-thq="thq-dropdown-arrow" class="home-page-dropdown-arrow40">
                           <svg viewBox="0 0 1024 1024" class="home-page-icon80">
@@ -1104,34 +1075,26 @@
                           </svg>
                         </div>
                       </div>
-                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list41">
-                        <li data-thq="thq-dropdown" class="home-page-dropdown232 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle197">
-                            <span class="home-page-text456">Sub-menu Item</span>
+                      <ul data-thq="thq-dropdown-list" class="home-page-dropdown-list09">
+                        <li data-thq="thq-dropdown" class="home-page-dropdown033 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle032">
+                            <span class="home-page-text093">
+                                <a href="/FilterCase?colors=White"><span class="home-page-text443">White</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown233 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle198">
-                            <span class="home-page-text457">Sub-menu Item</span>
-                          </div>
-                        </li>
-                        <li data-thq="thq-dropdown" class="home-page-dropdown234 list-item">
-                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle199">
-                            <span class="home-page-text458">Sub-menu Item</span>
+                        <li data-thq="thq-dropdown" class="home-page-dropdown034 list-item">
+                          <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle033">
+                            <span class="home-page-text096">
+                                <a href="/FilterCase?colors=Black"><span class="home-page-text443">Black</span></a>
+                              <br />
+                            </span>
                           </div>
                         </li>
                       </ul>
                     </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown235 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle200">
-                        <span class="home-page-text459">Sub-menu Item</span>
-                      </div>
-                    </li>
-                    <li data-thq="thq-dropdown" class="home-page-dropdown236 list-item">
-                      <div data-thq="thq-dropdown-toggle" class="home-page-dropdown-toggle201">
-                        <span class="home-page-text460">Sub-menu Item</span>
-                      </div>
-                    </li>
+                    
                     <li data-thq="thq-dropdown" class="home-page-dropdown237 list-item"></li>
                     <li data-thq="thq-dropdown" class="home-page-dropdown238 list-item"></li>
                   </ul>
@@ -1286,7 +1249,7 @@
                   </h1>
                 </div>
                 <div class="home-page-container07">
-                  <a href="view-all-product-cpu.html" class="home-page-navlink thq-link">
+                  <a href="/CPU" class="home-page-navlink thq-link">
                     View all product
                   </a>
                 </div>
@@ -1339,7 +1302,7 @@
                   </h1>
                 </div>
                 <div class="home-page-container09">
-                  <a href="view-all-product-gpu.html" class="home-page-navlink1 thq-link">
+                  <a href="/GPU" class="home-page-navlink1 thq-link">
                     View all product
                   </a>
                 </div>
@@ -1392,7 +1355,7 @@
                   </h1>
                 </div>
                 <div class="home-page-container11">
-                  <a href="view-all-product-mobo.html" class="home-page-navlink2 thq-link">
+                  <a href="/MotherBoard" class="home-page-navlink2 thq-link">
                     View all product
                   </a>
                 </div>
@@ -1446,7 +1409,7 @@
                   </h1>
                 </div>
                 <div class="home-page-container13">
-                  <a href="view-all-product-psu.html" class="home-page-navlink3 thq-link">
+                  <a href="/PSU" class="home-page-navlink3 thq-link">
                     View all product
                   </a>
                 </div>
@@ -1511,7 +1474,7 @@
                   </h1>
                 </div>
                 <div class="home-page-container15">
-                  <a href="view-all-product-ram.html" class="home-page-navlink4 thq-link">
+                  <a href="/RAM" class="home-page-navlink4 thq-link">
                     View all product
                   </a>
                 </div>
@@ -1568,7 +1531,7 @@
                   </h1>
                 </div>
                 <div class="home-page-container18">
-                  <a href="view-all-product-ssd.html" class="home-page-navlink5 thq-link">
+                  <a href="/SSD" class="home-page-navlink5 thq-link">
                     View all product
                   </a>
                 </div>
@@ -1579,8 +1542,8 @@
                     <div class="component3-container2">
 
                       <c:forEach var="ssd" items="${requestScope.ssds}" begin="0" end="4">
-                          <a href="/view/detail/product?category=ssd&id=${ssd.id}">
-                              <div class="component1-container component1-root-class-name4">
+                           <a href="/view/detail/product?category=ssd&id=${ssd.id}"> 
+                          <div class="component1-container component1-root-class-name4">                                                   
                                   <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
                                   <h1 class="component1-text thq-link">
                                       <span>
@@ -1604,9 +1567,9 @@
                                          class="component1-link">
                                           <span>(0 Review)</span>
                                       </a>
-                                  </div>
-                              </div>
-                          </a>
+                                  </div>                                                  
+                            </div>
+                           </a>         
                       </c:forEach>
                     </div>
                   </div>
@@ -1622,7 +1585,7 @@
                   </h1>
                 </div>
                 <div class="home-page-container20">
-                  <a href="view-all-product-case.html" class="home-page-navlink6 thq-link">
+                  <a href="/CASE" class="home-page-navlink6 thq-link">
                     View all product
                   </a>
                 </div>
@@ -1631,131 +1594,38 @@
                 <div class="component3-container component3-root-class-name6">
                   <div class="component3-container1">
                     <div class="component3-container2">
-                      <div class="component1-container component1-root-class-name4">
-                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                            / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                            </path>
-                          </svg>
-                          <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                            class="component1-link">
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="component1-container component1-root-class-name5">
-                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                            / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                            </path>
-                          </svg>
-                          <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                            class="component1-link">
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="component1-container component1-root-class-name6">
-                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                            / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                            </path>
-                          </svg>
-                          <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                            class="component1-link">
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="component1-container component1-root-class-name7">
-                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                            / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                            </path>
-                          </svg>
-                          <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                            class="component1-link">
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="component1-container component1-root-class-name92">
-                        <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
-                        <h1 class="component1-text thq-link">
-                          <span>
-                            Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                            / 5MB / AM4
-                          </span>
-                        </h1>
-                        <span class="component1-text1">
-                          <span>1.290.000₫</span>
-                          <br />
-                        </span>
-                        <div class="component1-container1">
-                          <span class="component1-text4"><span>0.0</span></span>
-                          <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
-                            <path
-                              d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
-                            </path>
-                          </svg>
-                          <a href="https://example.com" target="_blank" rel="noreferrer noopener"
-                            class="component1-link">
-                            <span>(0 Review)</span>
-                          </a>
-                        </div>
-                      </div>
+                      
+                      <c:forEach var="case1" items="${requestScope.cases}" begin="0" end="4">
+                          <a href="/view/detail/product?category=case&id=${case1.id}">
+                                <div class="component1-container component1-root-class-name4">
+                                    <img alt="image" src="./css/image/amd300w.webp" loading="eager" class="component1-image" />
+                                    <h1 class="component1-text thq-link">
+                                        <span>
+                                            ${case1.name}
+                                        </span>
+                                    </h1>
+                                    <span class="component1-text1">
+                                        <fmt:setLocale value="vi_VN" />
+                                        <fmt:formatNumber value="${case1.sellingPrice}" pattern="###,###,###"  var="ramSelling" />
+                                        <span>${ramSelling}<u>đ</u></span>
+                                        <br />
+                                    </span>
+                                    <div class="component1-container1">
+                                        <span class="component1-text4"><span>0.0</span></span>
+                                        <svg viewBox="0 0 950.8571428571428 1024" class="component1-icon">
+                                        <path
+                                            d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
+                                        </path>
+                                        </svg>
+                                        <a href="https://example.com" target="_blank" rel="noreferrer noopener"
+                                           class="component1-link">
+                                            <span>(0 Review)</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </c:forEach>
+                                         
                     </div>
                   </div>
                 </div>

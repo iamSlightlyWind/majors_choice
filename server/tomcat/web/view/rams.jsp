@@ -191,11 +191,13 @@
                       </div>
                     </nav>
                     <div class="navbar-buttons">
-                      <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium">
-                        <path
-                          d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
-                        </path>
-                      </svg><svg viewBox="0 0 1024 1024" class="navbar-icon02 thq-button-icon thq-icon-medium">
+                       <a href="/Cart">
+                        <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium">
+                          <path
+                            d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
+                          </path>
+                        </svg>
+                      </a><svg viewBox="0 0 1024 1024" class="navbar-icon02 thq-button-icon thq-icon-medium">
                         <path
                           d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                         </path>
@@ -345,15 +347,15 @@
                       name="to" value="${requestScope.to}" />
                   </div>
                   <hr>
-                  <c:set var="generss" value="${requestScope.generss}" />
+                  <c:set var="generations" value="${requestScope.generations}" />
                   <span class="view-all-product-cpu-text14">
                     <span>Generation</span>
                     <br />
                   </span>
                   <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="generation" value="ddr4"
-                    <c:forEach var="gener" items="generations">
-                    <c:if test="${gener == 'ddr4'}">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="generations" value="ddr4"
+                    <c:forEach var="generation" items="${generations}">
+                    <c:if test="${generation == 'ddr4'}">
                       checked
                     </c:if>
                     </c:forEach>
@@ -364,9 +366,9 @@
                     </span>
                   </div>
                   <div class="view-all-product-cpu-container05">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="generation" value="ddr5"
-                      <c:forEach var="gener" items="generations">
-                    <c:if test="${gener == 'ddr5'}">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="generations" value="ddr5"
+                      <c:forEach var="generation" items="${generations}">
+                    <c:if test="${generation == 'ddr5'}">
                       checked
                     </c:if>
                     </c:forEach>
@@ -461,28 +463,28 @@
                     </span>
                   </div>
                   <hr>
-                  <c:set var="latess" value="${requestScope.latess}" />
-                  <span class="view-all-product-cpu-text05">
+                  <c:set var="latencys" value="${requestScope.latencys}" />
+                  <span class="view-all-product-cpu-text14">
                     <span>Latency</span>
                     <br />
                   </span>
-                  <div class="view-all-product-cpu-container06">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="latency" value="15" <c:forEach
-                      var="laten" items="latess">
-                    <c:if test="${laten == '15'}">
+                  <div class="view-all-product-cpu-container05">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox" name="speed" value="3000" <c:forEach
+                      var="speed" items="${requestScope.latencys}">
+                    <c:if test="${speed == '15'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
-                    <span class="view-all-product-cpu-text20">
+                    <span class="view-all-product-cpu-text17">
                       <span>15</span>
                       <br />
                     </span>
                   </div>
                   <div class="view-all-product-cpu-container06">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="latency" value="16" <c:forEach
-                      var="laten" items="latess">
-                    <c:if test="${laten == '16'}">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="speed" value="3200" <c:forEach
+                      var="speed" items="${requestScope.latencys}">
+                    <c:if test="${speed == '16'}">
                       checked
                     </c:if>
                     </c:forEach>
@@ -492,46 +494,47 @@
                       <br />
                     </span>
                   </div>
-                  <div class="view-all-product-cpu-container06">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="latency" value="18" <c:forEach
-                      var="laten" items="latess">
-                    <c:if test="${laten == '18'}">
+                  <div class="view-all-product-cpu-container07">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox2" name="speed" value="3600" <c:forEach
+                      var="speed" items="${requestScope.latencys}">
+                    <c:if test="${speed == '18'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
-                    <span class="view-all-product-cpu-text20">
+                    <span class="view-all-product-cpu-text23">
                       <span>18</span>
                       <br />
                     </span>
                   </div>
-                  <div class="view-all-product-cpu-container06">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="latency" value="36" <c:forEach
-                      var="laten" items="latess">
-                    <c:if test="${laten == '36'}">
+                  <div class="view-all-product-cpu-container07">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox2" name="speed" value="5600" <c:forEach
+                      var="speed" items="${requestScope.latencys}">
+                    <c:if test="${speed == '36'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
-                    <span class="view-all-product-cpu-text20">
+                    <span class="view-all-product-cpu-text23">
                       <span>36</span>
                       <br />
                     </span>
                   </div>
-                  <div class="view-all-product-cpu-container06">
-                    <input type="checkbox" class="view-all-product-cpu-checkbox1" name="latency" value="38" <c:forEach
-                      var="laten" items="latess">
-                    <c:if test="${laten == '38'}">
+                  <div class="view-all-product-cpu-container07">
+                    <input type="checkbox" class="view-all-product-cpu-checkbox2" name="speed" value="6000" <c:forEach
+                      var="speed" items="${requestScope.latencys}">
+                    <c:if test="${speed == '38'}">
                       checked
                     </c:if>
                     </c:forEach>
                     />
-                    <span class="view-all-product-cpu-text20">
+                    <span class="view-all-product-cpu-text23">
                       <span>38</span>
                       <br />
                     </span>
                   </div>
-                  <hr><!-- comment -->
+                  
+                  <hr>
                   <c:set var="capacitys" value="${requestScope.capacitys}" />
                   <span class="view-all-product-cpu-text05">
                     <span>Capacity</span>

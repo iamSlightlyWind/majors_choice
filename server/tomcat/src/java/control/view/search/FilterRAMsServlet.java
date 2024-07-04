@@ -19,8 +19,8 @@ public class FilterRAMsServlet extends HttpServlet {
         String name = request.getParameter("nameSearch") == null ? "" : request.getParameter("nameSearch");
         String from_raw = request.getParameter("from");
         String to_raw = request.getParameter("to");
-        String latency[] = request.getParameterValues("latency");
-        String generation[] = request.getParameterValues("generation");
+        String latency[] = request.getParameterValues("latencys");
+        String generation[] = request.getParameterValues("generations");
         String speed[] = request.getParameterValues("speed");
         String capacity[] = request.getParameterValues("capacity");
 
@@ -38,7 +38,7 @@ public class FilterRAMsServlet extends HttpServlet {
         request.setAttribute("searchName", name);
         request.setAttribute("from", from_raw);
         request.setAttribute("to", to_raw);
-        request.setAttribute("latess", latency);
+        request.setAttribute("latencys", latency);
         request.setAttribute("generations", generation);
         request.setAttribute("speeds", speed);
         request.setAttribute("capacitys", capacity);

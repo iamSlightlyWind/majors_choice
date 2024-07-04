@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import packages.CPU;
+import packages.Case;
 import packages.GPU;
 import packages.Motherboard;
 import packages.PSU;
@@ -28,13 +29,15 @@ public class HomePageServlet extends HttpServlet {
         List<Motherboard> motherboards = Database.getMotherboards("");
         List<SSD> ssds = Database.getSSDs("");
         List<PSU> psus = Database.getPSUs("");
-
+        List<Case> cases = Database.getCases("");
+        
         Collections.shuffle(cpus);
         Collections.shuffle(gpus);
         Collections.shuffle(rams);
         Collections.shuffle(motherboards);
         Collections.shuffle(ssds);
         Collections.shuffle(psus);
+        Collections.shuffle(cases);
 
         request.setAttribute("cpus", cpus);
         request.setAttribute("gpus", gpus);
@@ -42,6 +45,7 @@ public class HomePageServlet extends HttpServlet {
         request.setAttribute("mobos", motherboards);
         request.setAttribute("ssds", ssds);
         request.setAttribute("psus", psus);
+        request.setAttribute("cases", cases);
     }
 
     @Override
@@ -62,6 +66,7 @@ public class HomePageServlet extends HttpServlet {
         List<Motherboard> motherboards = Database.getMotherboards(name);
         List<SSD> ssds = Database.getSSDs(name);
         List<PSU> psus = Database.getPSUs(name);
+        List<Case> cases = Database.getCases(name);
 
         List<Product> list = new ArrayList<>();
         list.addAll(cpus);
@@ -70,6 +75,7 @@ public class HomePageServlet extends HttpServlet {
         list.addAll(motherboards);
         list.addAll(ssds);
         list.addAll(psus);
+        list.addAll(cases);
         if (name != null && !name.isEmpty()) {
             request.setAttribute("searchName", name);
         }
