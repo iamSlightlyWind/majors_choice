@@ -25,7 +25,7 @@ public class User {
     }
 
     public void addOrderInformation(OrderInfo info) {
-        Database.addOrderInformation(info.fullName, info.phoneNumber, info.address);
+        Database.addOrderInformation(info);
     }
 
     public void addOrderInformation() {

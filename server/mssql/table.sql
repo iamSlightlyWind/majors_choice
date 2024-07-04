@@ -136,7 +136,8 @@ create table orderInformation
     id int primary key,
     fullname nvarchar(50),
     phoneNumber varchar(15),
-    address nvarchar(100)
+    address nvarchar(100),
+    payment nvarchar(max)
 )
 
 create table feedback

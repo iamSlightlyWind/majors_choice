@@ -37,11 +37,11 @@ public class ajaxServlet extends HttpServlet {
 
         request.getSession().setAttribute("orderInfo", orderInfo);
 
-        makePayment(request, response, (long) cart.total);
+        makePayment(request, response, (long) cart.total, fullName);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    protected void makePayment(HttpServletRequest request, HttpServletResponse response, long amount)
+    protected void makePayment(HttpServletRequest request, HttpServletResponse response, long amount, String CustomerName)
             throws ServletException, IOException {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
@@ -65,7 +65,7 @@ public class ajaxServlet extends HttpServlet {
             vnp_Params.put("vnp_BankCode", bankCode);
         }
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Major's Choice Order #" + vnp_TxnRef);
+        vnp_Params.put("vnp_OrderInfo", CustomerName);
         vnp_Params.put("vnp_OrderType", orderType);
 
         String locate = request.getParameter("language");

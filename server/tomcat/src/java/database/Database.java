@@ -949,13 +949,22 @@ public class Database {
         return 1;
     }
 
-    public static void addOrderInformation(String fullname, String phoneNumber, String address) {
+    public static void addOrderInformation(String name, String phoneNumber, String address) {
+        OrderInfo info = new OrderInfo();
+        info.fullName = name;
+        info.phoneNumber = phoneNumber;
+        info.address = address;
+        addOrderInformation(info);
+    }
+
+    public static void addOrderInformation(OrderInfo info) {
         try {
-            String sql = "{call addOrderInformation(?, ?, ?)}";
+            String sql = "{call addOrderInformation(?, ?, ?, ?)}";
             CallableStatement statement = connection.prepareCall(sql);
-            statement.setString(1, fullname);
-            statement.setString(2, phoneNumber);
-            statement.setString(3, address);
+            statement.setString(1, info.fullName);
+            statement.setString(2, info.phoneNumber);
+            statement.setString(3, info.address);
+            statement.setString(4, info.payment);
 
             statement.execute();
         } catch (SQLException ex) {
@@ -1073,6 +1082,7 @@ public class Database {
                 orderInfo.fullName = resultSet.getString("fullname");
                 orderInfo.phoneNumber = resultSet.getString("phoneNumber");
                 orderInfo.address = resultSet.getString("address");
+                orderInfo.addPayment(resultSet.getString("payment"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
