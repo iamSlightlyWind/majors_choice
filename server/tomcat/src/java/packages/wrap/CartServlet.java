@@ -43,7 +43,7 @@ public class CartServlet extends HttpServlet {
             case "addItem":
                 currentUser.cart.addProduct(request.getParameter("type"),
                         Integer.parseInt(request.getParameter("productID")));
-                response.sendRedirect("/Test");
+                response.sendRedirect("/Cart");
                 break;
             case "removeOne":
             case "removeAll":
