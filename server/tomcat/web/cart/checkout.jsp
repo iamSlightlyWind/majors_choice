@@ -29,6 +29,11 @@
                 <input type="hidden" type="text" name="amount" value="${cartPriceDouble}" />
                 <input type="hidden" name="language" value="vn" />
                 <input type="hidden" name="bankCode" value="" />
+
+                <p>Select Payment Method:</p>
+                <input type="radio" name="paymentMethod" value="Cash"> Cash on Delivery<br>
+                <input type="radio" name="paymentMethod" value="Online Banking" checked> Online Banking<br>
+
                 <input type="submit" value="Continue to Payment" />
             </form>
             <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>

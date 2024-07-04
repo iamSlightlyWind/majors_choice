@@ -2,6 +2,9 @@ package payment;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import database.Database;
+
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -18,8 +21,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.Email;
+import main.User;
 import packages.wrap.Cart;
+import packages.wrap.Order;
 import packages.wrap.OrderInfo;
+import packages.wrap.ProductCount;
 
 public class ajaxServlet extends HttpServlet {
 
@@ -37,11 +44,38 @@ public class ajaxServlet extends HttpServlet {
 
         request.getSession().setAttribute("orderInfo", orderInfo);
 
-        makePayment(request, response, (long) cart.total);
+        String paymentMethod = request.getParameter("paymentMethod");
+
+        if (paymentMethod.equals("Cash")) {
+            User currentUser = (User) request.getSession().getAttribute("userObject");
+            currentUser.cart = (Cart) request.getSession().getAttribute("cartObject");
+            currentUser.cart.updateQuantity();
+
+            for (ProductCount product : currentUser.cart.quantities) {
+                Database.productAdjust(product.id, -product.count);
+            }
+
+            currentUser.cart.placeOrder();
+            currentUser.addOrderInformation((OrderInfo) request.getSession().getAttribute("orderInfo"));
+
+            currentUser.getOrders();
+            Order currentOrder = currentUser.orders.get(currentUser.orders.size() - 1);
+            currentOrder.updateQuantity();
+
+            Email email = new Email();
+            email.sendOrderConfirmation(
+                    currentUser.email,
+                    currentOrder);
+
+            response.sendRedirect("/order");
+            return;
+        } else
+            makePayment(request, response, (long) cart.total, fullName);
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    protected void makePayment(HttpServletRequest request, HttpServletResponse response, long amount)
+    protected void makePayment(HttpServletRequest request, HttpServletResponse response, long amount,
+            String CustomerName)
             throws ServletException, IOException {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
@@ -65,7 +99,7 @@ public class ajaxServlet extends HttpServlet {
             vnp_Params.put("vnp_BankCode", bankCode);
         }
         vnp_Params.put("vnp_TxnRef", vnp_TxnRef);
-        vnp_Params.put("vnp_OrderInfo", "Major's Choice Order #" + vnp_TxnRef);
+        vnp_Params.put("vnp_OrderInfo", CustomerName);
         vnp_Params.put("vnp_OrderType", orderType);
 
         String locate = request.getParameter("language");
