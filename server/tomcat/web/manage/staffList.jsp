@@ -144,6 +144,7 @@
           transform: rotate(90deg);
         }
       </style>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     </head>
 
     <body>
@@ -160,15 +161,17 @@
                   <img alt="pastedImage" src="../css/image/logo.png" class="navbar-pasted-image" />
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                     <nav class="navbar-links">
-                      <div class="navbar-container3">
-                        <input type="text" placeholder="Search product by name" class="navbar-textinput input" />
-                        <button class="navbar-search thq-button-filled">
-                          <span class="navbar-text thq-body-small">
-                            <span>Search</span>
-                            <br />
-                          </span>
-                        </button>
+                      <form action="/" method="post">
+                      <div class="navbar-container3">                        
+                              <input type="text" placeholder="Search product by name" name="searchName" class="navbar-textinput input"/>
+                              <button class="navbar-search thq-button-filled" type="su">
+                                  <span class="navbar-text thq-body-small">
+                                      <span>Search</span>
+                                      <br />
+                                  </span>
+                              </button>                         
                       </div>
+                     </form>
                       <div class="navbar-container4">
                         <a href="/" class="navbar-home thq-body-small thq-link">
                           <span>Home</span>
@@ -179,9 +182,11 @@
                         <span class="navbar-whoweare thq-body-small thq-link">
                           <span>Who we are</span>
                         </span>
-                        <span class="navbar-manager-order thq-body-small thq-link">
-                          Manager Order
-                        </span>
+                        <a href="/order">
+                          <span class="navbar-manager-order thq-body-small thq-link">
+                            Manage Order
+                          </span>
+                        </a>
                       </div>
                     </nav>
                     <div class="navbar-buttons">
@@ -194,13 +199,13 @@
                           d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
                         </path>
                       </svg>
-                      <button class="navbar-account thq-button-filled">
+                      <a href="/profile" class="navbar-account thq-button-filled">
                         <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
                           <path
                             d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
                           </path>
                         </svg>
-                      </button>
+                      </a>
                     </div>
                   </div>
                   <div data-thq="thq-burger-menu" class="navbar-burger-menu">
@@ -254,47 +259,58 @@
                 </header>
               </header>
             </div>
-            <div class="menu-function-container menu-function-root-class-name50">
-              <div class="menu-function-manager">
-                <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                  <span>Manager WareHouse</span>
-                </span>
-                <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                  Manager Customer
-                </span>
-                <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                  <span>Feedback</span>
-                  <br />
-                </span>
-                <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                  Manager Staff
-                </span>
-                <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                  Financial Reports
-                </span>
+            <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+              .equals(role)) { %>
+              <div class="menu-function-container menu-function-root-class-name7">
+                <div class="menu-function-manager">
+                  <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
+                    <span>Manager WareHouse</span>
+                  </span>
+                   <a href="/manage/profile?actor=user">
+                    <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                      Manage Customer
+                    </span>
+                  </a>
+                  <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
+                    <span>Feedback</span>
+                    <br />
+                  </span>
+                  <c:if test="${sessionScope.role == 'manager'}">
+                      <a href="/manage/profile?actor=staff">
+                          <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                              Manage Staff
+                          </span>
+                      </a>
+                      <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                            Financial Reports
+                      </span>
+                  </c:if>                 
+                </div>
               </div>
-            </div>
+              <% } %>
           </div>
           <div class="manage-customer-body">
             <div class="manage-customer-link-page">
               <span class="manage-customer-text thq-body-small thq-link">
-                Home&nbsp;
+                  <a href="/">Home&nbsp;</a>
               </span>
               <span class="manage-customer-text01">/ Manager Customer</span>
             </div>
             <div class="manage-customer-root-form">
               <div class="manage-customer-table">
                 <div class="manage-customer-list-catevs-search">
-                  <div class="manage-customer-search-product">
-                    <input type="text" placeholder="Search  customer by username"
-                      class="manage-customer-textinput input" />
-                    <button class="manage-customer-search thq-button-filled">
-                      <span class="manage-customer-text02 thq-body-small">
-                        <span>Search</span>
-                        <br />
-                      </span>
-                    </button>
-                  </div>
+                  <form action="/manage/profile" method="post">
+                        <div class="manage-customer-search-product">
+                            <input type="text" placeholder="Search  customer by username" name="searchName" value="${searchName}"
+                                   class="manage-customer-textinput input" />
+                            <button type="submit" class="manage-customer-search thq-button-filled" name="searchIN" value="staff"> 
+                                <span class="manage-customer-text02 thq-body-small">
+                                    <span>Search</span>
+                                    <br />
+                                </span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div class="manage-customer-heading-table">
                   <h1 class="manage-customer-text05">List Of Staff</h1>
@@ -326,7 +342,7 @@
                         <br />
                       </span>
                     </div>
-                    <div class="manage-customer-date-joined">
+                   <div class="manage-customer-date-joined">
                       <span class="manage-customer-text18">
                         <span>Add</span>
                         <br />
@@ -377,7 +393,7 @@
                             <button type="submit" name="action" value="Add">Add Staff</button></span>
                           <br />
                         </span>
-                      </form>
+                      </form> 
                       <div class="manage-customer-update1">
                         <span class="manage-customer-text42 thq-link">
                           <span><a
@@ -387,10 +403,13 @@
                       </div>
                       <div class="manage-customer-delete">
                         <span class="manage-customer-text45 thq-link">
-                          <span><a
-                              href="/editprofile?id=${staff.id}&action=delete&actor=staffs&user=${staff.username}">Delete</a></span>
+                          <span>
+                                <a href="#" onclick="confirmDelete('/editprofile?id=${staff.id}&action=delete&actor=staffs&user=${staff.username}');">
+                                    Delete
+                                </a>
+                            </span>
                           <br />
-                        </span>
+                        </span>                       
                       </div>
                     </div>
                   </c:forEach>
@@ -537,5 +556,22 @@
       </div>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        function confirmDelete(url) {
+            Swal.fire({
+                title: 'Are you sure you want to delete this account?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
+        }
+    </script>
     </html>
