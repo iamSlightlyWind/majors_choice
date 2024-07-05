@@ -14,50 +14,38 @@ public class EditProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        String role = (String) request.getSession().getAttribute("table");
         User user = (User) request.getSession().getAttribute("userObject");
-
-        boolean emailFormat = isValidEmail(request.getParameter("email"));
-        if (emailFormat) {
-            user.username = request.getParameter("username");
-            user.password = request.getParameter("password");
-            user.fullName = request.getParameter("fullname");
+        
+        int result = -1;
+        
+        user.username = request.getParameter("username");
+        user.password = request.getParameter("password");
+        user.fullName = request.getParameter("fullname");
+        
+        if (role.equals("user")) {
             user.email = request.getParameter("email");
             user.phoneNumber = request.getParameter("phoneNumber");
             user.address = request.getParameter("address");
             user.dateOfBirth = request.getParameter("dateOfBirth");
-
-            int result = user.updateInformation();
-            request.setAttribute("user", user);
-            switch (result) {
-                case 1:
-//                    request.setAttribute("status", "Update Successful!");
-//                    request.getRequestDispatcher("/profile").forward(request, response);
-//                    break;
-                      response.sendRedirect("/profile?status=1");
-                      break;
-                case -1:
-                    request.setAttribute("status", "Update Failed! Email had existed.");
-                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
-                    break;
-                case -2:
-                    request.setAttribute("status", "Update Failed! Phone had existed.");
-                    request.getRequestDispatcher("editprofile.jsp").forward(request, response);
-                    break;
-            }
-        } else {
-            request.setAttribute("user", user);
-            request.setAttribute("status", "Update Failed!Email format wrong!");
-            request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+            result = user.updateInformation();
+        } else if (role.equals("staff")) {
+            result = user.updateStaff();
+        }    
+        request.setAttribute("user", user);
+        switch (result) {
+            case 1:
+                response.sendRedirect("/profile?status=1");
+                break;
+            case -1:
+                request.setAttribute("status", "Update Failed!");
+                request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+                break;
+            case -2:
+                request.setAttribute("status", "Update Failed! Phone had existed.");
+                request.getRequestDispatcher("editprofile.jsp").forward(request, response);
+                break;
         }
-    }
-
-    private boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        Matcher matcher = pattern.matcher(email);
-
-        return matcher.matches();
     }
 
     @Override

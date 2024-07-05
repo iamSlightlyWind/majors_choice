@@ -18,7 +18,6 @@ public class ManageAccount extends HttpServlet {
 
         String actor = request.getParameter("actor");
         String table = (String) request.getAttribute("table");
-
         if ((actor != null && actor.equals("user")) || (table != null && table.equals("user"))) {
             ArrayList<User> users = Database.getUserDetails("users");
             String status = request.getParameter("status") == null ? "" : request.getParameter("status");
@@ -84,6 +83,32 @@ public class ManageAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        String name = request.getParameter("searchName");
+        String where = request.getParameter("searchIN");
+        
+        if(where.equals("user")){
+            ArrayList<User> list = new ArrayList<>();
+            ArrayList<User> users = Database.getUserDetails("users");
+            for (User user : users) {
+                if(user.fullName.toLowerCase().contains(name.toLowerCase())){
+                    list.add(user);
+                }
+            }
+            request.setAttribute("searchName", name);
+            request.setAttribute("users", list);
+            request.getRequestDispatcher("/manage/userList.jsp").forward(request, response);
+        }else if(where.equals("staff")){
+            ArrayList<User> list = new ArrayList<>();
+            ArrayList<User> staffs = Database.getUserDetails("staffs");
+            for (User user : staffs) {
+                if(user.fullName.toLowerCase().contains(name.toLowerCase())){
+                    list.add(user);
+                }
+            }
+            request.setAttribute("searchName", name);
+            request.setAttribute("staffs", list);
+            request.getRequestDispatcher("/manage/staffList.jsp").forward(request, response);
+        }         
     }
 }
