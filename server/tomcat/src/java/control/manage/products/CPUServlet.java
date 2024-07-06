@@ -161,6 +161,7 @@ public class CPUServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
+            workbook.close();
             response.sendRedirect(request.getContextPath() + "/cpus?service=listAll");
         }
     }

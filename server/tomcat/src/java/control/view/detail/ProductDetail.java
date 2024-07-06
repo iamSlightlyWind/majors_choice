@@ -16,8 +16,6 @@ import packages.SSD;
 import database.Database;
 import main.User;
 import packages.Case;
-import packages.wrap.Order;
-import packages.wrap.Product;
 
 public class ProductDetail extends HttpServlet {
 
