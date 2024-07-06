@@ -48,7 +48,7 @@ public class ManageAccount extends HttpServlet {
             String status = request.getParameter("status") == null ? "" : request.getParameter("status");
             switch (status) {
                 case "1":
-                    status = "Update Staff Success!";
+                    status = "Update Success!";
                     break;
                 case "0":
                     status = "Update Staff Failed! Username already exist.";
@@ -60,7 +60,7 @@ public class ManageAccount extends HttpServlet {
                     status = "Add Staff Failed! Username already exist.";
                     break;
                 case "7":
-                    status = "Delete success!";
+                    status = "Delete Success!";
                     break;
                 default:
                     status = "";

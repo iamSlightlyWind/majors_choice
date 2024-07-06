@@ -143,15 +143,7 @@
           transform: rotate(90deg);
         }
       </style>
-      <script type="text/javascript">
-        function confirmChange() {
-          if (confirm("Are you sure you want to change your profile?")) {
-            return true;
-          } else {
-            return false;
-          }
-        }
-      </script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     </head>
 
     <body>
@@ -311,7 +303,7 @@
                 <div class="edit-profile-component-profile">
                   <h1 class="edit-profile-component-text">Profile</h1>
                 </div>
-                <form action="/editprofile" method="post" onsubmit="return confirmChange();">
+                <form action="/editprofile" method="post" id="profileForm">
                   <c:set var="user" value="${requestScope.user}" />
                   <div class="edit-profile-component-user-name">
                     <span class="edit-profile-component-text01">User Name</span>
@@ -364,11 +356,9 @@
                           </div>
                       </c:if>
                   <div class="edit-profile-component-container1">
-                    <c:if test="${requestScope.status != null}">
-                      <span style="margin-top: 32px; margin-right: 32px; color: red;">
-                        ${requestScope.status}
-                      </span>
-                    </c:if>
+                    
+                    <span id="status-span" style="display:none;">${status}</span>
+                    
                     <button type="button" class="edit-profile-component-button button thq-button-outline">
                       <span>
                         <a href="/auth/login?action=logout"><span>Logout</span></a>
@@ -522,5 +512,68 @@
       </div>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script type="text/javascript">
+        document.getElementById('profileForm').onsubmit = function(event) {
+            event.preventDefault();
+            var action = 'update';
+            confirmChange(action).then(function(isConfirmed) {
+                if (isConfirmed) {
+                    document.getElementById('profileForm').submit();
+                }
+            });
+        };
 
+        function confirmChange(action) {
+            var title, text;
+            if (action === 'update') {
+                title = 'Are you sure you want to update this profile?';
+                text = 'The record will be updated to the system.';
+            }
+
+            return Swal.fire({
+                title: title,
+                text: text,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, done!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                return result.isConfirmed;
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var statusSpan = document.getElementById('status-span');
+            var status = statusSpan.textContent.trim();
+
+            if (status !== "" && status === 'Update Successful.') {
+                Swal.fire({
+                    title: status,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+            if (status !== "" && status === 'Update Failed!') {
+                Swal.fire({
+                    title: status,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }          
+            
+            if (status !== "" && status === 'Update Failed! Phone had existed.') {
+                Swal.fire({
+                    title: status,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+        });
+    </script>
     </html>

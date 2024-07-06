@@ -68,6 +68,7 @@
           transform: rotate(90deg);
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   </head>
   <body>
     <link rel="stylesheet" href="../css/style.css" />
@@ -87,19 +88,17 @@
                 />
                 <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                   <nav class="navbar-links">
-                    <div class="navbar-container3">
-                      <input
-                        type="text"
-                        placeholder="Search product by name"
-                        class="navbar-textinput input"
-                      />
-                      <button class="navbar-search thq-button-filled">
-                        <span class="navbar-text thq-body-small">
-                          <span>Search</span>
-                          <br />
-                        </span>
-                      </button>
-                    </div>
+                    <form action="/" method="post">
+                      <div class="navbar-container3">                        
+                              <input type="text" placeholder="Search product by name" name="searchName" class="navbar-textinput input"/>
+                              <button class="navbar-search thq-button-filled" type="su">
+                                  <span class="navbar-text thq-body-small">
+                                      <span>Search</span>
+                                      <br />
+                                  </span>
+                              </button>                         
+                      </div>
+                     </form>
                     <div class="navbar-container4">
                       <a href="/" class="navbar-home thq-body-small thq-link">
                         <span>Home</span>
@@ -110,11 +109,12 @@
                       <span class="navbar-whoweare thq-body-small thq-link">
                         <span>Who we are</span>
                       </span>
-                      <span
-                        class="navbar-manager-order thq-body-small thq-link"
-                      >
-                        Manager Order
                       </span>
+                        <a href="/order">
+                          <span class="navbar-manager-order thq-body-small thq-link">
+                            Manage Order
+                          </span>
+                        </a>
                     </div>
                   </nav>
                   <div class="navbar-buttons">
@@ -133,16 +133,13 @@
                         d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z"
                       ></path>
                     </svg>
-                    <button class="navbar-account thq-button-filled">
-                      <svg
-                        viewBox="0 0 731.4285714285713 1024"
-                        class="navbar-icon04"
-                      >
-                        <path
-                          d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z"
-                        ></path>
-                      </svg>
-                    </button>
+                    <a href="/profile" class="navbar-account thq-button-filled">
+                        <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
+                          <path
+                            d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
+                          </path>
+                        </svg>
+                      </a>
                   </div>
                 </div>
                 <div data-thq="thq-burger-menu" class="navbar-burger-menu">
@@ -205,45 +202,44 @@
               </header>
             </header>
           </div>
-          <div class="menu-function-container menu-function-root-class-name48">
-            <div class="menu-function-manager">
-              <span
-                class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small"
-              >
-                <span>Manager WareHouse</span>
-              </span>
-              <span
-                class="menu-function-mgt-customer text1 thq-link1 thq-body-small"
-              >
-                Manager Customer
-              </span>
-              <span
-                class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small"
-              >
-                <span>Feedback</span>
-                <br />
-              </span>
-              <span
-                class="menu-function-mgt-staff text1 thq-link1 thq-body-small"
-              >
-                Manager Staff
-              </span>
-              <span
-                class="menu-function-mgt-report text1 thq-link1 thq-body-small"
-              >
-                Financial Reports
-              </span>
-            </div>
-          </div>
+           <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+              .equals(role)) { %>
+              <div class="menu-function-container menu-function-root-class-name7">
+                <div class="menu-function-manager">
+                  <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
+                    <span>Manager WareHouse</span>
+                  </span>
+                   <a href="/manage/profile?actor=user">
+                    <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
+                      Manage Customer
+                    </span>
+                  </a>
+                  <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
+                    <span>Feedback</span>
+                    <br />
+                  </span>
+                  <c:if test="${sessionScope.role == 'manager'}">
+                      <a href="/manage/profile?actor=staff">
+                          <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                              Manage Staff
+                          </span>
+                      </a>
+                      <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                            Financial Reports
+                      </span>
+                  </c:if>                 
+                </div>
+              </div>
+              <% } %>
         </div>
         <div class="edit-customer-body">
           <div class="edit-customer-link-page">
             <div class="edit-customer-container1">
               <span class="edit-customer-text thq-body-small thq-link">
-                Home&nbsp;
+                  <a href="/"> Home&nbsp;</a>
               </span>
               <span class="edit-customer-text01 thq-body-small thq-link">
-                &nbsp;/ Manage Customer
+                  <a href="/manage/profile?actor=staff">&nbsp;/ Manage Customer</a>
               </span>
               <span class="edit-customer-text02 thq-body-small">
                 &nbsp;/ Edit Customer&nbsp;
@@ -255,7 +251,7 @@
               <h1 class="edit-customer-text03">Edit Staff</h1>
             </div>
             <div class="edit-customer-container3">
-               <form action="/manage/profile/staff" method="post" onsubmit="return confirmChange();">
+               <form action="/manage/profile/staff" method="post" id="profileForm">
                          <c:if test="${submitAction=='Update'}">
                         <div class="edit-customer-form">
                             <span class="edit-customer-text04">
@@ -320,13 +316,12 @@
                             </span>
                             <input type="date" class="edit-customer-textinput4 input" name="dob" value="${user.dateOfBirth}" readonly/>
                         </div>--%>
-                        <p>${status}</p>
+                       
                         <input type="hidden" name="actor" value="staffs" />
-                        <input type="hidden" name="id" value="${staff.id}" />
-
+                        <input type="hidden" name="id" value="${staff.id}" />  
+                        <input type="hidden" id="submitAction" name="action" value="${submitAction}">
                             <button class="edit-profile-component-button1 thq-button-filled button"
-                                style="margin-left: 80%" 
-                                type="submit" name="action" value="${submitAction}"
+                                style="margin-left: 80%"                                 
                                 >${submitAction}
                             </button>
                     </form>
@@ -483,5 +478,41 @@
       src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
     ></script>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script type="text/javascript">
+        document.getElementById('profileForm').onsubmit = function(event) {
+            event.preventDefault();
+            var action = document.getElementById('submitAction').value;
+            confirmChange(action).then(function(isConfirmed) {
+                if (isConfirmed) {
+                    document.getElementById('profileForm').submit();
+                }
+            });
+        };
+
+        function confirmChange(action) {
+            var title, text;
+            if (action === 'Add') {
+                title = 'Are you sure you want to add this profile?';
+                text = 'New records will be added to the system.';
+            } else if (action === 'Update') {
+                title = 'Are you sure you want to update this profile?';
+                text = 'The record will be updated to the system.';
+            }
+             return Swal.fire({
+                title: title,
+                text: text,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, done!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                return result.isConfirmed;
+            });
+        }
+    </script>
+
 </html>
 
