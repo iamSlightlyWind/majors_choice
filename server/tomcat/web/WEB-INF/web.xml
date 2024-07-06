@@ -77,6 +77,10 @@
         <servlet-name>FilterCasesServlet</servlet-name>
         <servlet-class>control.view.search.FilterCasesServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Report</servlet-name>
+        <servlet-class>main.Report</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/auth/login</url-pattern>
@@ -327,6 +331,10 @@
     <servlet-mapping>
         <servlet-name>FilterCasesServlet</servlet-name>
         <url-pattern>/FilterCase</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Report</servlet-name>
+        <url-pattern>/report</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
