@@ -12,7 +12,17 @@ public class Validation {
     static ArrayList<PSU> psus = new ArrayList<PSU>();
     static ArrayList<SSD> storages = new ArrayList<SSD>();
 
+    static void clear() {
+        cpus.clear();
+        gpus.clear();
+        rams.clear();
+        motherboard.clear();
+        psus.clear();
+        storages.clear();
+    }
+
     public static String validate(Cart cart) {
+        clear();
         for (Product product : cart.products) {
             if (product instanceof CPU) {
                 cpus.add((CPU) product);
