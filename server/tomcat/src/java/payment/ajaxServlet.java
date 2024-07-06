@@ -2,9 +2,7 @@ package payment;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
 import database.Database;
-
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -67,10 +65,16 @@ public class ajaxServlet extends HttpServlet {
                     currentUser.email,
                     currentOrder);
 
-            response.sendRedirect("/order");
-            return;
-        } else
+            // Send JSON response for redirection
+            JsonObject job = new JsonObject();
+            job.addProperty("code", "00");
+            job.addProperty("message", "success");
+            job.addProperty("redirectUrl", "/order");
+            Gson gson = new Gson();
+            response.getWriter().write(gson.toJson(job));
+        } else {
             makePayment(request, response, (long) cart.total, fullName);
+        }
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })

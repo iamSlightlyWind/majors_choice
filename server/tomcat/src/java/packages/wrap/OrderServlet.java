@@ -51,6 +51,9 @@ public class OrderServlet extends HttpServlet {
             case "ship":
                 shipOrder(request, response);
                 break;
+            case "complete":
+                completeOrder(request, response);
+                break;
             case "viewPending":
                 staffViewOrders(request, response, -1);
                 break;
@@ -76,6 +79,13 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
+    protected void completeOrder(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String orderID = request.getParameter("id");
+        Database.updateOrder(Integer.parseInt(orderID), "complete");
+        response.sendRedirect(request.getHeader("Referer"));
+    }
+
     protected void staffViewOrderDetails(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArrayList<Order> orders = Database.getOrders(0);
@@ -95,7 +105,7 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
         Database.updateOrder(Integer.parseInt(orderID), "forceCancel");
-        response.sendRedirect("/manage/order");
+        response.sendRedirect(request.getHeader("Referer"));
     }
 
     protected void staffViewOrders(HttpServletRequest request, HttpServletResponse response, int list)
@@ -110,21 +120,21 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
         Database.updateOrder(Integer.parseInt(orderID), "ship");
-        response.sendRedirect("/manage/order");
+        response.sendRedirect(request.getHeader("Referer"));
     }
 
     protected void approveRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
         Database.updateOrder(Integer.parseInt(orderID), "approve");
-        response.sendRedirect("/manage/order");
+        response.sendRedirect(request.getHeader("Referer"));
     }
 
     protected void denyRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
         Database.updateOrder(Integer.parseInt(orderID), "deny");
-        response.sendRedirect("/manage/order");
+        response.sendRedirect(request.getHeader("Referer"));
     }
 
     protected void doUser(HttpServletRequest request, HttpServletResponse response, String action)
@@ -164,7 +174,7 @@ public class OrderServlet extends HttpServlet {
 
         Database.updateOrder(orderId, "cancel");
         currentUser.getOrders();
-        response.sendRedirect("/order");
+        response.sendRedirect(request.getHeader("Referer"));
     }
 
     protected void userViewAllOrders(HttpServletRequest request, HttpServletResponse response)

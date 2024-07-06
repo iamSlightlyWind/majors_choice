@@ -6,6 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import main.Report;
 import main.User;
 import packages.*;
 
@@ -44,5 +45,13 @@ public class Test extends HttpServlet {
     }
 
     public static void main(String[] args) {
+        Report.fetchReportData(null, null);
+        System.out.println(Report.PercentageCompletedOrders);
+        System.out.println(Report.TotalExpense);
+        System.out.println(Report.TotalRevenue);
+        System.out.println(Report.Profit);
+        System.out.println(Report.ProfitPercentage);
+        System.out.println(Report.PercentageUsersWithCompletedOrders);
+        System.out.println(Report.AverageOrderValue);
     }
 }
