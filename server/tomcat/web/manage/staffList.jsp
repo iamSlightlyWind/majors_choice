@@ -314,7 +314,7 @@
                 </div>
                 <div class="manage-customer-heading-table">
                   <h1 class="manage-customer-text05">List Of Staff</h1>
-                  <p>${status}</p>
+                  <span id="status-span" style="display:none;">${status}</span>
                 </div>
                 <div class="manage-customer-list-detail">
                   <form class="manage-customer-form-tittle">
@@ -573,5 +573,51 @@
                 }
             })
         }
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var statusSpan = document.getElementById('status-span');
+            var status = statusSpan.textContent.trim();
+
+            if (status !== "" && status === 'Delete Success!') {
+                Swal.fire({
+                    title: status,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+            if (status !== "" && status === 'Update Success!') {
+                Swal.fire({
+                    title: status,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+            if (status !== "" && status === 'Add Staff Success!') {
+                Swal.fire({
+                    title: status,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+            if (status !== "" && status === 'Update Staff Failed! Username already exist.') {
+                Swal.fire({
+                    title: status,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+            if (status !== "" && status === 'Add Staff Failed! Username already exist.') {
+                Swal.fire({
+                    title: status,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
     </script>
     </html>

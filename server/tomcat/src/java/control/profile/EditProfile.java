@@ -30,16 +30,20 @@ public class EditProfile extends HttpServlet {
         } else if (role.equals("staff")) {
             result = user.updateStaff();
         }    
-        request.setAttribute("user", user);
+        
         switch (result) {
             case 1:
                 response.sendRedirect("/profile?status=1");
                 break;
             case -1:
+                user.retrieveData("user");
+                request.setAttribute("user", user);
                 request.setAttribute("status", "Update Failed!");
                 request.getRequestDispatcher("editprofile.jsp").forward(request, response);
                 break;
             case -2:
+                user.retrieveData("user");
+                request.setAttribute("user", user);
                 request.setAttribute("status", "Update Failed! Phone had existed.");
                 request.getRequestDispatcher("editprofile.jsp").forward(request, response);
                 break;
