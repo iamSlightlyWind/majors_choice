@@ -43,6 +43,14 @@
                                 <button type="submit" name="action" value="ship">Ship Order</button>
                             </form>
                         </c:when>
+                        <c:when
+                            test="${Order.status eq 'Shipping'}">
+                            <form action="/manage/order" method="get">
+                                <input type="hidden" name="id" value="${Order.id}" />
+                                <button type="submit" name="action" value="cancel">Cancel Order</button>
+                                <button type="submit" name="action" value="complete">Complete Order</button>
+                            </form>
+                        </c:when>
                         <c:when test="${Order.status eq 'Cancellation Requested'}">
                             <form action="/manage/order" method="get">
                                 <input type="hidden" name="id" value="${Order.id}" />
