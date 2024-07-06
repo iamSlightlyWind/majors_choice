@@ -1603,3 +1603,61 @@ BEGIN
     GROUP BY productId
     ORDER BY ProductCount DESC
 END
+GO
+
+CREATE PROCEDURE GetOrderStatistics
+    @StartDate DATE = NULL, 
+    @EndDate DATE = null
+AS
+BEGIN
+    DECLARE @Sql NVARCHAR(MAX), @Params NVARCHAR(MAX);
+    DECLARE @TotalOrders INT, @CompletedOrders INT, @TotalExpense DECIMAL(18,2), @TotalRevenue DECIMAL(18,2);
+    DECLARE @Profit DECIMAL(18,2), @ProfitPercentage DECIMAL(18,2), @AverageOrderValue DECIMAL(18,2);
+    DECLARE @TotalUsers INT, @UsersWithCompletedOrders INT, @PercentageUsersWithOrders DECIMAL(18,2);
+    DECLARE @PercentageCompletedOrders DECIMAL(18,2);
+
+    DECLARE @WhereClause NVARCHAR(MAX) = ' WHERE 1=1 ';
+    IF @StartDate IS NOT NULL
+        SET @WhereClause += ' AND orderDate >= @StartDate ';
+    IF @EndDate IS NOT NULL
+        SET @WhereClause += ' AND orderDate <= @EndDate ';
+
+    SET @Sql = N'SELECT @TotalOrdersOut = COUNT(*) FROM orders ' + @WhereClause;
+    SET @Params = N'@TotalOrdersOut INT OUTPUT';
+    EXEC sp_executesql @Sql, @Params, @TotalOrdersOut = @TotalOrders OUTPUT;
+
+    SET @Sql = N'SELECT @CompletedOrdersOut = COUNT(*) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
+    SET @Params = N'@CompletedOrdersOut INT OUTPUT';
+    EXEC sp_executesql @Sql, @Params, @CompletedOrdersOut = @CompletedOrders OUTPUT;
+
+    SET @PercentageCompletedOrders = CASE WHEN @TotalOrders > 0 THEN (@CompletedOrders * 100.0) / @TotalOrders ELSE 0 END;
+
+    SET @Sql = N'SELECT @TotalExpenseOut = SUM(costPrice), @TotalRevenueOut = SUM(sellingPrice) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
+    SET @Params = N'@TotalExpenseOut DECIMAL(18,2) OUTPUT, @TotalRevenueOut DECIMAL(18,2) OUTPUT';
+    EXEC sp_executesql @Sql, @Params, @TotalExpenseOut = @TotalExpense OUTPUT, @TotalRevenueOut = @TotalRevenue OUTPUT;
+
+    SET @Profit = @TotalRevenue - @TotalExpense;
+    SET @ProfitPercentage = CASE WHEN @TotalRevenue > 0 THEN (@Profit / @TotalRevenue) * 100 ELSE 0 END;
+
+    SET @Sql = N'SELECT @TotalUsersOut = COUNT(*) FROM users';
+    SET @Params = N'@TotalUsersOut INT OUTPUT';
+    EXEC sp_executesql @Sql, @Params, @TotalUsersOut = @TotalUsers OUTPUT;
+
+    SET @Sql = N'SELECT @UsersWithCompletedOrdersOut = COUNT(DISTINCT userId) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
+    SET @Params = N'@UsersWithCompletedOrdersOut INT OUTPUT';
+    EXEC sp_executesql @Sql, @Params, @UsersWithCompletedOrdersOut = @UsersWithCompletedOrders OUTPUT;
+
+    SET @PercentageUsersWithOrders = CASE WHEN @TotalUsers > 0 THEN (@UsersWithCompletedOrders * 100.0) / @TotalUsers ELSE 0 END;
+
+    SET @AverageOrderValue = CASE WHEN @CompletedOrders > 0 THEN @TotalRevenue / @CompletedOrders ELSE 0 END;
+
+    SELECT 
+        @PercentageCompletedOrders AS PercentageCompletedOrders,
+        @TotalExpense AS TotalExpense,
+        @TotalRevenue AS TotalRevenue,
+        @Profit AS Profit,
+        @ProfitPercentage AS ProfitPercentage,
+        @PercentageUsersWithOrders AS PercentageUsersWithCompletedOrders,
+        @AverageOrderValue AS AverageOrderValue;
+END
+go
