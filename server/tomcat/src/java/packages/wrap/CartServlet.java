@@ -33,7 +33,10 @@ public class CartServlet extends HttpServlet {
         switch (action) {
             case "viewCart":
                 currentUser.retrieveData("user");
-                request.setAttribute("buyable", currentUser.cart.buyable());
+                if (currentUser.cart.products.size() == 0) {
+                    request.setAttribute("buyable", false);
+                } else
+                    request.setAttribute("buyable", currentUser.cart.buyable());
                 request.setAttribute("user", currentUser.fullName);
                 request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
                 request.setAttribute("ProductCount", (ArrayList<ProductCount>) currentUser.cart.quantities);
