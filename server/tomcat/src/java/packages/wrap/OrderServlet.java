@@ -3,9 +3,6 @@ package packages.wrap;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.xml.crypto.Data;
-
 import database.Database;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
