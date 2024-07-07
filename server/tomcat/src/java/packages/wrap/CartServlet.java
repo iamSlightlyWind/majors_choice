@@ -17,8 +17,6 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        System.out.println("Got here");
-
         String action = request.getParameter("action");
         User currentUser = (User) request.getSession().getAttribute("userObject");
 
