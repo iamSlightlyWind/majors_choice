@@ -5,7 +5,6 @@
 
     <head>
       <title>Cart - Major's Choice</title>
-      <script src="/payment/assets/jquery-1.11.3.min.js"></script>
       <meta property="og:title" content="Cart - Major's Choice" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
@@ -148,63 +147,59 @@
           transform: rotate(90deg);
         }
       </style>
+      <script src="/payment/assets/jquery-1.11.3.min.js"></script>
     </head>
 
     <body>
-      <link rel="stylesheet" href="./style.css" />
+      <link rel="stylesheet" href="../css/style.css" />
       <div>
-        <link href="./view-cart.css" rel="stylesheet" />
+        <link href="../css/cart.css" rel="stylesheet" />
 
-        <div class="view-cart-container">
-          <div class="navbar-container navbar-root-class-name20">
-            <header class="navbar-container1"></header>
-            <header class="navbar-container2">
-              <header data-thq="thq-navbar" class="navbar-navbar-interactive">
-                <a href="index.html" class="navbar-link">
-                  <img alt="pastedImage" src="public/external/pastedimage-eh8r-200h.png" class="navbar-pasted-image" />
+        <div class="customer-cart-container">
+          <div class="navmain-container navmain-root-class-name20">
+            <header class="navmain-container1"></header>
+            <header class="navmain-container2">
+              <header data-thq="thq-navbar" class="navmain-navbar-interactive">
+                <a href="/" class="navmain-link">
+                  <img alt="pastedImage" src="../css/image/logo.png" class="navmain-pasted-image" />
                 </a>
-                <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
-                  <nav class="navbar-links">
-                    <div class="navbar-container3">
-                      <input type="text" placeholder="Search for product" class="navbar-textinput input" />
-                      <button class="navbar-search thq-button-filled">
-                        <span class="navbar-text thq-body-small">
+                <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
+                  <nav class="navmain-links">
+                    <div class="navmain-container3">
+                      <input type="text" placeholder="Search for product" class="navmain-textinput input" />
+                      <button class="navmain-search thq-button-filled">
+                        <span class="navmain-text thq-body-small">
                           <span>Search</span>
                           <br />
                         </span>
                       </button>
                     </div>
-                    <div class="navbar-container4">
-                      <a href="index.html" class="navbar-home thq-body-small thq-link">
+                    <div class="navmain-container4">
+                      <a href="/" class="navmain-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
-                      <span class="navbar-contact thq-body-small thq-link">
-                        <span>Contact</span>
+                      <span class="navmain-contact thq-body-small thq-link">
+                        Contact Us
                       </span>
-                      <span class="navbar-whoweare thq-body-small thq-link">
+                      <span class="navmain-whoweare thq-body-small thq-link">
                         <span>Who we are</span>
                       </span>
-                      <a href="Order.html" class="navbar-manager-order thq-body-small thq-link">
-                        Manager Order
+                      <a href="/order" class="navmain-manager-order thq-body-small thq-link">
+                        Manage Order
                       </a>
                     </div>
                   </nav>
-                  <div class="navbar-buttons">
-                    <a href="Cart.html" target="_blank" rel="noreferrer noopener" class="navbar-link1">
-                      <svg viewBox="0 0 1024 1024" class="navbar-icon thq-button-icon thq-icon-medium">
+                  <div class="navmain-buttons">
+                    <a href="/Cart" target="_blank" rel="noreferrer noopener" class="navmain-link1">
+                      <svg viewBox="0 0 1024 1024" class="navmain-icon thq-button-icon thq-icon-medium">
                         <path
                           d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
                         </path>
                       </svg>
                     </a>
-                    <svg viewBox="0 0 1024 1024" class="navbar-icon02 thq-button-icon thq-icon-medium">
-                      <path
-                        d="M768 682l86 86v42h-684v-42l86-86v-212q0-100 51-174t141-96v-30q0-26 18-45t46-19 46 19 18 45v30q90 22 141 96t51 174v212zM512 938q-36 0-61-24t-25-60h172q0 34-26 59t-60 25z">
-                      </path>
-                    </svg>
-                    <a href="profile.html" target="_blank" rel="noreferrer noopener"
-                      class="navbar-account thq-button-filled">
-                      <svg viewBox="0 0 731.4285714285713 1024" class="navbar-icon04">
+                    <a href="/profile" target="_blank" rel="noreferrer noopener"
+                      class="navmain-account thq-button-filled">
+                      <svg viewBox="0 0 731.4285714285713 1024" class="navmain-icon2">
                         <path
                           d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
                         </path>
@@ -212,33 +207,32 @@
                     </a>
                   </div>
                 </div>
-                <div data-thq="thq-burger-menu" class="navbar-burger-menu">
-                  <svg viewBox="0 0 1024 1024" class="navbar-icon06">
+                <div data-thq="thq-burger-menu" class="navmain-burger-menu">
+                  <svg viewBox="0 0 1024 1024" class="navmain-icon4">
                     <path
                       d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z">
                     </path>
                   </svg>
                 </div>
-                <div data-thq="thq-mobile-menu" class="navbar-mobile-menu">
-                  <div class="navbar-nav">
-                    <div class="navbar-top">
-                      <div class="navbar-container5">
-                        <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
-                          class="navbar-pasted-image1" />
+                <div data-thq="thq-mobile-menu" class="navmain-mobile-menu">
+                  <div class="navmain-nav">
+                    <div class="navmain-top">
+                      <div class="navmain-container5">
+                        <img alt="pastedImage" src="../css/image/logo.png" class="navmain-pasted-image1" />
                       </div>
-                      <div data-thq="thq-close-menu" class="navbar-close-menu">
-                        <svg viewBox="0 0 1024 1024" class="navbar-icon08">
+                      <div data-thq="thq-close-menu" class="navmain-close-menu">
+                        <svg viewBox="0 0 1024 1024" class="navmain-icon6">
                           <path
                             d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z">
                           </path>
                         </svg>
                       </div>
                     </div>
-                    <nav class="navbar-links1">
-                      <div class="navbar-container6">
-                        <input type="text" placeholder="Search product by name" class="navbar-textinput1 input" />
-                        <button class="navbar-search1 thq-button-filled thq-button-animated">
-                          <span class="navbar-text3 thq-body-small">
+                    <nav class="navmain-links1">
+                      <div class="navmain-container6">
+                        <input type="text" placeholder="Search product by name" class="navmain-textinput1 input" />
+                        <button class="navmain-search1 thq-button-filled thq-button-animated">
+                          <span class="navmain-text3 thq-body-small">
                             <span>Search</span>
                             <br />
                           </span>
@@ -262,27 +256,6 @@
               </header>
             </header>
           </div>
-          <div class="menu-function-container menu-function-root-class-name22">
-            <div class="menu-function-manager">
-              <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                <span>Manager WareHouse</span>
-              </span>
-              <a href="manage/profile?actor=user.html"
-                class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
-                Manager Customer
-              </a>
-              <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                <span>Feedback</span>
-                <br />
-              </span>
-              <a href="manage/profile?actor=staff.html" class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                Manager Staff
-              </a>
-              <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                Financial Reports
-              </span>
-            </div>
-          </div>
           <div class="view-cart-component-container view-cart-component-root-class-name">
             <div class="view-cart-component-heading">
               <span class="view-cart-component-text">
@@ -297,7 +270,9 @@
                     <span class="view-cart-component-name-product">Item</span>
                   </div>
                   <div class="view-cart-component-container03">
-                    <span class="view-cart-component-selling-price">Price</span>
+                    <span class="view-cart-component-selling-price">
+                      Unit Price
+                    </span>
                   </div>
                   <div class="view-cart-component-container04">
                     <span class="view-cart-component-text03">
@@ -305,79 +280,99 @@
                       <br />
                     </span>
                   </div>
-                  <span class="view-cart-component-text06">Total</span>
+                  <span class="view-cart-component-text06">Subtotal</span>
                 </div>
-                <div class="view-cart-component-product1">
-                  <div class="view-cart-component-container05">
-                    <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                      class="view-cart-component-image" />
-                    <div class="view-cart-component-container06">
-                      <span class="view-cart-component-name-product1">
-                        &lt;ProductName&gt;
+                <c:forEach var="ProductCount" items="${ProductCount}">
+                  <form action="Cart" method="post">
+                    <input type="hidden" name="productID" value="${ProductCount.id}" />
+                    <div class="view-cart-component-product01">
+                      <div class="view-cart-component-container41">
+                        <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+                          class="view-cart-component-image09" />
+                        <div class="view-cart-component-container42">
+                          <span class="view-cart-component-name-product19">
+                            ${ProductCount.name}
+                          </span>
+                          <span class="view-cart-component-name-product20" style="color: #E65103;">
+                            ${ProductCount.error}
+                          </span>
+                        </div>
+                      </div>
+                      <span class="view-cart-component-selling-price10">
+                        <span>${ProductCount.pricePer} VND</span>
                       </span>
-                      <span class="view-cart-component-name-product2">
-                        Product no longer for sale
-                      </span>
+                      <div class="view-cart-component-container43">
+                        <button type="submit" name="action" value="removeOne"
+                          class="view-cart-component-button27 button">
+                          <span>
+                            <span>-</span>
+                            <br />
+                          </span>
+                        </button>
+                        <span class="view-cart-component-text82">
+                          <span>${ProductCount.count}</span>
+                          <br />
+                        </span>
+                        <button button type="submit" name="action" value="addOne"
+                          class="view-cart-component-button28 button">
+                          <span>+</span>
+                        </button>
+                      </div>
+                      <div class="view-cart-component-container44">
+                        <span class="view-cart-component-text86">${ProductCount.totalPrice} VND</span>
+                        <button button type="submit" name="action" value="removeAll"
+                          class="view-cart-component-button29 thq-button-filled button">
+                          X
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <span class="view-cart-component-selling-price1">
-                    <span>58000$</span>
-                  </span>
-                  <div class="view-cart-component-container07">
-                    <button type="button" class="view-cart-component-button button">
+                  </form>
+                </c:forEach>
+              </div>
+              <div class="view-cart-component-container45">
+                <div class="view-cart-component-container46">
+                  <div class="view-cart-component-container47"></div>
+                  <form action="Cart" method="post">
+                    <button type="submit" name="action" value="clear"
+                      class="view-cart-component-button30 button thq-button-outline">
                       <span>
-                        <span>-</span>
+                        <span>Clear Cart</span>
                         <br />
                       </span>
                     </button>
-                    <span class="view-cart-component-text10">
-                      <span>100</span>
-                      <br />
-                    </span>
-                    <button type="button" class="view-cart-component-button1 button">
-                      <span>+</span>
-                    </button>
-                  </div>
-                  <div class="view-cart-component-container08">
-                    <span class="view-cart-component-text14">1360000$</span>
-                    <button type="button" class="view-cart-component-button2 thq-button-filled button">
-                      X
-                    </button>
-                  </div>
+                  </form>
                 </div>
-              </div>
-              <div class="view-cart-component-container09">
-                <div class="view-cart-component-container10">
-                  <div class="view-cart-component-container11"></div>
-                  <button type="button" class="view-cart-component-button3 button thq-button-outline">
-                    <span>Delete All</span>
-                  </button>
-                </div>
-                <div class="view-cart-component-container12">
-                  <div class="view-cart-component-container13">
-                    <span class="view-cart-component-text15">
+                <div class="view-cart-component-container48">
+                  <div class="view-cart-component-container49">
+                    <span class="view-cart-component-text90">
                       <span>Total:&nbsp;</span>
                       <br />
                     </span>
-                    <span class="view-cart-component-text18">
-                      <span>1360000$</span>
+                    <span class="view-cart-component-text93">
+                      <span>${cartPrice} VND</span>
                     </span>
                   </div>
-                  <button type="button" class="view-cart-component-button4 thq-button-filled button">
-                    Order Now
-                  </button>
+                  <form action="/Cart" method="post">
+                    <input type="hidden" name="amount" value="${cartPriceDouble}" />
+                    <input type="hidden" name="language" value="vn" />
+                    <input type="hidden" name="bankCode" value="" />
+                    <c:choose>
+                      <c:when test="${buyable == false}">
+                        <button type="button" disabled class="view-cart-component-button31 thq-button-filled button">
+                          Checkout
+                        </button>
+                      </c:when>
+                      <c:otherwise>
+                        <button type="submit" name="action" value="checkout"
+                          class="view-cart-component-button31 thq-button-filled button">
+                          Checkout
+                        </button>
+                      </c:otherwise>
+                    </c:choose>
+                    <p>${status}</p>
+                  </form>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="chats-chats chats-root-class-name9">
-            <div class="chats-container">
-              <svg viewBox="0 0 1152 1024" class="chats-icon thq-button-icon thq-icon-medium">
-                <path
-                  d="M1088 901.166c0 45.5 26.028 84.908 64 104.184v15.938c-10.626 1.454-21.472 2.224-32.5 2.224-68.008 0-129.348-28.528-172.722-74.264-26.222 6.982-54.002 10.752-82.778 10.752-159.058 0-288-114.616-288-256s128.942-256 288-256c159.058 0 288 114.616 288 256 0 55.348-19.764 106.592-53.356 148.466-6.824 14.824-10.644 31.312-10.644 48.7zM512 0c278.458 0 504.992 180.614 511.836 405.52-49.182-21.92-103.586-33.52-159.836-33.52-95.56 0-185.816 33.446-254.138 94.178-70.846 62.972-109.862 147.434-109.862 237.822 0 44.672 9.544 87.888 27.736 127.788-5.228 0.126-10.468 0.212-15.736 0.212-27.156 0-53.81-1.734-79.824-5.044-109.978 109.978-241.25 129.7-368.176 132.596v-26.916c68.536-33.578 128-94.74 128-164.636 0-9.754-0.758-19.33-2.164-28.696-115.796-76.264-189.836-192.754-189.836-323.304 0-229.75 229.23-416 512-416z">
-                </path>
-              </svg>
-              <span class="chats-text">Chats with support</span>
             </div>
           </div>
           <footer class="footer-footer1 thq-section-padding footer-root-class-name18">
