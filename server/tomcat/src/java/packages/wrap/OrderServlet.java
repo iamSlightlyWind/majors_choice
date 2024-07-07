@@ -101,10 +101,26 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
+    protected void restoreStock(HttpServletRequest request) {
+        User currentUser = (User) request.getSession().getAttribute("userObject");
+        int orderId = Integer.parseInt(request.getParameter("id"));
+        currentUser.getOrders();
+
+        for (Order order : currentUser.orders) {
+            if (order.id == orderId) {
+                for (ProductCount product : order.quantities) {
+                    Database.productAdjust(product.id, product.count);
+                }
+                return;
+            }
+        }
+    }
+
     protected void staffCancelOrder(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
         Database.updateOrder(Integer.parseInt(orderID), "forceCancel");
+        restoreStock(request);
         response.sendRedirect(request.getHeader("Referer"));
     }
 
@@ -127,6 +143,7 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
         String orderID = request.getParameter("id");
         Database.updateOrder(Integer.parseInt(orderID), "approve");
+        restoreStock(request);
         response.sendRedirect(request.getHeader("Referer"));
     }
 
