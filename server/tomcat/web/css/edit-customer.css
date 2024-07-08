@@ -8,7 +8,7 @@
 }
 .navbar-container1 {
   width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
+  border: ;
   height: 11vh;
   display: flex;
   opacity: 1;
@@ -236,7 +236,7 @@
 }
 .navbar-buttons1 {
   gap: var(--dl-space-space-twounits);
-  border: 2px dashed rgba(120, 120, 120, 0.4);
+  border: ;
   display: flex;
   margin-top: var(--dl-space-space-twounits);
   align-items: center;
