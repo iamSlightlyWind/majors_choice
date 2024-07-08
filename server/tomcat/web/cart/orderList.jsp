@@ -4,8 +4,8 @@
     <html lang="en">
 
     <head>
-      <title>CustomerOrderList - Major's Choice1</title>
-      <meta property="og:title" content="CustomerOrderList - Major's Choice1" />
+      <title>Order History - Major's Choice1</title>
+      <meta property="og:title" content="Order History - Major's Choice1" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
       <meta property="twitter:card" content="summary_large_image" />
