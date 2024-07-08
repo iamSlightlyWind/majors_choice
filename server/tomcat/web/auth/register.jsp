@@ -307,7 +307,7 @@
                   </div>
                     <p>${registerStatus}</p>
                  <%-- <a
-                    href="index.html"
+                    href="/"
                     class="register-form-button thq-button-filled"
                   >
                     <span class="register-form-text23 thq-body-small">
