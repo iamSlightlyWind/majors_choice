@@ -320,7 +320,7 @@
                       <br />
                     </span>
                   </div>
-                  <span class="customer-order-list-text26">1360000$</span>
+                  <span class="customer-order-list-text26">${ProductCount.totalPrice} VND</span>
                 </div>
               </c:forEach>
               <div class="customer-order-list-form4">
