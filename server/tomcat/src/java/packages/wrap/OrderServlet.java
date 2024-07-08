@@ -1,4 +1,3 @@
-
 package packages.wrap;
 
 import java.io.IOException;
@@ -55,21 +54,27 @@ public class OrderServlet extends HttpServlet {
                 completeOrder(request, response);
                 break;
             case "viewPending":
+                request.setAttribute("view", "Pending");
                 staffViewOrders(request, response, -1);
                 break;
             case "viewRequested":
+                request.setAttribute("view", "Requested");
                 staffViewOrders(request, response, -2);
                 break;
             case "viewDenied":
+                request.setAttribute("view", "Denied");
                 staffViewOrders(request, response, -3);
                 break;
             case "viewCancelled":
+                request.setAttribute("view", "Cancelled");
                 staffViewOrders(request, response, -4);
                 break;
             case "viewShipping":
+                request.setAttribute("view", "Shipping");
                 staffViewOrders(request, response, -5);
                 break;
             case "viewCompleted":
+                request.setAttribute("view", "Completed");
                 staffViewOrders(request, response, -6);
                 break;
             case "viewAll":
@@ -99,6 +104,9 @@ public class OrderServlet extends HttpServlet {
                 return;
             }
         }
+
+        request.setAttribute("searchError", "Order not found!");
+        staffViewOrders(request, response, 0);
     }
 
     protected void restoreStock(HttpServletRequest request) {
@@ -129,7 +137,7 @@ public class OrderServlet extends HttpServlet {
         ArrayList<Order> orders = Database.getOrders(list);
         request.setAttribute("managing", true);
         request.setAttribute("OrderList", orders);
-        request.getRequestDispatcher("/test/staffViewOrders.jsp").forward(request, response);
+        request.getRequestDispatcher("/cart/orderManage.jsp").forward(request, response);
     }
 
     protected void shipOrder(HttpServletRequest request, HttpServletResponse response)
