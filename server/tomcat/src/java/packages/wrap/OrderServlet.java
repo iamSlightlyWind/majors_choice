@@ -199,7 +199,7 @@ public class OrderServlet extends HttpServlet {
         User currentUser = (User) request.getSession().getAttribute("userObject");
         currentUser.getOrders();
         request.setAttribute("OrderList", currentUser.orders);
-        request.getRequestDispatcher("/test/order.jsp").forward(request, response);
+        request.getRequestDispatcher("/cart/orderList.jsp").forward(request, response);
     }
 
     @Override
