@@ -9,7 +9,6 @@
 
 .navbar-container1 {
   width: 100%;
-  border: ;
   height: 11vh;
   display: flex;
   opacity: 1;
@@ -270,7 +269,6 @@
 
 .navbar-buttons1 {
   gap: var(--dl-space-space-twounits);
-  border: ;
   display: flex;
   margin-top: var(--dl-space-space-twounits);
   align-items: center;
