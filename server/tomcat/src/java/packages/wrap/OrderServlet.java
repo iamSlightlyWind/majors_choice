@@ -182,6 +182,9 @@ public class OrderServlet extends HttpServlet {
                 return;
             }
         }
+
+        request.setAttribute("searchError", "Order not found!");
+        userViewAllOrders(request, response);
     }
 
     protected void cancelOrder(HttpServletRequest request, HttpServletResponse response)

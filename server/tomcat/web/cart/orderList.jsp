@@ -282,14 +282,16 @@
                 <div class="customer-order-list-search-product">
                   <c:choose>
                     <c:when test="${not empty searchError}">
-                      <input type="text" placeholder="${searchError}"
+                      <input type="text" id="orderId" name="id" placeholder="${searchError}"
                         class="customer-order-list-textinput input error-placeholder" />
                     </c:when>
                     <c:otherwise>
-                      <input type="text" placeholder="Order ID" class="customer-order-list-textinput input" />
+                      <input type="text" id="orderId" name="id" placeholder="Order ID"
+                        class="customer-order-list-textinput input" />
                     </c:otherwise>
                   </c:choose>
-                  <button class="customer-order-list-search thq-button-filled">
+                  <button onclick="viewDetails()" name="action" value="viewDetails"
+                    class="customer-order-list-search thq-button-filled">
                     <span class="customer-order-list-text07 thq-body-small">
                       <span>View</span>
                       <br />
@@ -469,6 +471,14 @@
           </footer>
         </div>
       </div>
+      <script>
+        function viewDetails() {
+          var orderId = document.getElementById('orderId').value;
+          if (orderId) {
+            window.location.href = '/order?action=viewDetails&id=' + encodeURIComponent(orderId);
+          }
+        }
+      </script>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 
