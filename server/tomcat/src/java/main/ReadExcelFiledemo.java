@@ -37,6 +37,8 @@ public class ReadExcelFiledemo {
                     case NUMERIC:
                         System.out.print(cell.getNumericCellValue());
                         break;
+                    default:
+                        break;
                 }
                 System.out.print(" , ");
             }

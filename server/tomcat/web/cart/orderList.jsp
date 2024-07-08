@@ -76,6 +76,7 @@
         [type="reset"],
         [type="submit"] {
           -webkit-appearance: button;
+          appearance: button;
         }
 
         button::-moz-focus-inner,
@@ -270,14 +271,32 @@
               </span>
               <div class="customer-order-list-control">
                 <div class="customer-order-list-container03">
-                  <span class="customer-order-list-text01 thq-link">
-                    <span>Ongoing</span>
-                    <br />
-                  </span>
-                  <span class="customer-order-list-text04 thq-link">
-                    <span>Completed</span>
-                    <br />
-                  </span>
+                  <form action="/order" method="post">
+                    <span class="customer-order-list-text01 thq-link">
+                      <button type="submit" name="action" value="viewAll">
+                        <span>
+                          <c:out value="${empty view ? '<b>All</b>' : 'All'}" escapeXml="false" />
+                        </span>
+                        <br />
+                      </button>
+                    </span>
+                    <span class="customer-order-list-text01 thq-link">
+                      <button type="submit" name="action" value="viewOngoing">
+                        <span>
+                          ${view == 'Ongoing' ? '<b>Ongoing</b>' : 'Ongoing'}
+                        </span>
+                        <br />
+                      </button>
+                    </span>
+                    <span class="customer-order-list-text01 thq-link">
+                      <button type="submit" name="action" value="viewCompleted">
+                        <span>
+                          ${view == 'Completed' ? '<b>Completed</b>' : 'Completed'}
+                        </span>
+                        <br />
+                      </button>
+                    </span>
+                  </form>
                 </div>
                 <div class="customer-order-list-search-product">
                   <c:choose>

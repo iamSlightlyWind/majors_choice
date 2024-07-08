@@ -163,8 +163,10 @@ public class OrderServlet extends HttpServlet {
             case "cancel":
                 cancelOrder(request, response);
                 break;
+            case "viewOngoing":
+            case "viewCompleted":
             default:
-                userViewAllOrders(request, response);
+                userViewAllOrders(request, response, action);
                 break;
         }
     }
@@ -184,7 +186,7 @@ public class OrderServlet extends HttpServlet {
         }
 
         request.setAttribute("searchError", "Order not found!");
-        userViewAllOrders(request, response);
+        userViewAllOrders(request, response, "");
     }
 
     protected void cancelOrder(HttpServletRequest request, HttpServletResponse response)
@@ -197,10 +199,31 @@ public class OrderServlet extends HttpServlet {
         response.sendRedirect(request.getHeader("Referer"));
     }
 
-    protected void userViewAllOrders(HttpServletRequest request, HttpServletResponse response)
+    protected void userViewAllOrders(HttpServletRequest request, HttpServletResponse response, String action)
             throws ServletException, IOException {
         User currentUser = (User) request.getSession().getAttribute("userObject");
         currentUser.getOrders();
+
+        if (action.equals("viewOngoing")) {
+            request.setAttribute("view", "Ongoing");
+            for (int i = 0; i < currentUser.orders.size(); i++) {
+                if (currentUser.orders.get(i).status.equals("Completed")
+                        || currentUser.orders.get(i).status.equals("Cancelled")) {
+                    currentUser.orders.remove(i);
+                    i--;
+                }
+            }
+        } else if (action.equals("viewCompleted")) {
+            request.setAttribute("view", "Completed");
+            for (int i = 0; i < currentUser.orders.size(); i++) {
+                if (!currentUser.orders.get(i).status.equals("Completed")
+                        && !currentUser.orders.get(i).status.equals("Cancelled")) {
+                    currentUser.orders.remove(i);
+                    i--;
+                }
+            }
+        }
+
         request.setAttribute("OrderList", currentUser.orders);
         request.getRequestDispatcher("/cart/orderList.jsp").forward(request, response);
     }
