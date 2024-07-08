@@ -958,7 +958,7 @@ BEGIN
 END
 go
 
-CREATE PROCEDURE getOrders
+CREATE or alter PROCEDURE getOrders
     @userId int
 AS
 BEGIN
@@ -983,6 +983,7 @@ BEGIN
         OR (@userId = -4 AND o.status = 'Cancelled')
         OR (@userId = -5 AND o.status = 'Shipping')
         OR (@userId = -6 AND o.status = 'Completed')
+    ORDER BY o.id DESC
 END
 go
 
