@@ -9,7 +9,7 @@ function handleFormSubmission(formID) {
         if (response){
             form.submit();
         } else {
-            error.innerHTML = "Please check reCaptchar";
+            error.innerHTML = "Complete Captcha to continue";
         }
     });
 }

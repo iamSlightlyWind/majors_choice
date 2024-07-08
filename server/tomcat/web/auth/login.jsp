@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AuthLogin - Major's Choice</title>
-    <meta property="og:title" content="AuthLogin - Major's Choice" />
+    <title>Login - Major's Choice</title>
+    <meta property="og:title" content="Login - Major's Choice" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />

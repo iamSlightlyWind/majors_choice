@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AuthRegister - Major's Choice</title>
-    <meta property="og:title" content="AuthRegister - Major's Choice" />
+    <title>Register - Major's Choice</title>
+    <meta property="og:title" content="Register - Major's Choice" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -307,7 +307,7 @@
                   </div>
                     <p>${registerStatus}</p>
                  <%-- <a
-                    href="index.html"
+                    href="/"
                     class="register-form-button thq-button-filled"
                   >
                     <span class="register-form-text23 thq-body-small">
