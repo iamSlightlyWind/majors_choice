@@ -43,6 +43,14 @@
           padding: 0;
         }
 
+        .customer-order-list-textinput::placeholder {
+          color: #757575;
+        }
+
+        .error-placeholder::placeholder {
+          color: #E65103;
+        }
+
         button {
           background-color: transparent;
         }
@@ -272,7 +280,15 @@
                   </span>
                 </div>
                 <div class="customer-order-list-search-product">
-                  <input type="text" placeholder="Order ID" class="customer-order-list-textinput input" />
+                  <c:choose>
+                    <c:when test="${not empty searchError}">
+                      <input type="text" placeholder="${searchError}"
+                        class="customer-order-list-textinput input error-placeholder" />
+                    </c:when>
+                    <c:otherwise>
+                      <input type="text" placeholder="Order ID" class="customer-order-list-textinput input" />
+                    </c:otherwise>
+                  </c:choose>
                   <button class="customer-order-list-search thq-button-filled">
                     <span class="customer-order-list-text07 thq-body-small">
                       <span>View</span>
@@ -292,9 +308,7 @@
               </form>
               <c:forEach var="ProductCount" items="${Order.quantities}">
                 <div class="customer-order-list-form3">
-                  <img alt="image"
-                    src="/image/${ProductCount.id}.png"
-                    class="customer-order-list-image2" />
+                  <img alt="image" src="/image/${ProductCount.id}.png" class="customer-order-list-image2" />
                   <div class="customer-order-list-container08">
                     <h1 class="customer-order-list-text22">
                       ${ProductCount.name}
