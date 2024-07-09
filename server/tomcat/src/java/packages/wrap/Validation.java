@@ -40,13 +40,13 @@ public class Validation {
         }
 
         String result = "";
-        result += "<b>Socket</b>: " + socketMatch() + "<br>";
-        result += "<b>Graphics</b>: " + graphicsOutput() + "<br>";
-        result += "<b>RAM Type</b>: " + ramType() + "<br>";
-        result += "<b>RAM Matching</b>: " + ramMatching() + "<br>";
-        result += "<b>RAM Speed</b>: " + ramSpeed() + "<br>";
-        result += "<b>RAM Capacity</b>: " + ramCapacity() + "<br>";
-        result += "<b>Power Budget</b>: " + powerBudget() + "<br>";
+        result += "Socket: " + socketMatch() + "\n";
+        result += "Graphics: " + graphicsOutput() + "\n";
+        result += "RAM Type: " + ramType() + "\n";
+        result += "RAM Matching: " + ramMatching() + "\n";
+        result += "RAM Speed: " + ramSpeed() + "\n";
+        result += "RAM Capacity: " + ramCapacity() + "\n";
+        result += "Power Budget: " + powerBudget() + "\n";
 
         return result;
     }
@@ -243,7 +243,7 @@ public class Validation {
             case "ramType":
                 return "RAM type matched. RAM and Motherboard are compatible.";
             case "ramSpeed":
-                return "RAM can be used with the motherboard.";
+                return "RAM speed is within the Motherboard's supported speed.";
             case "powerBudgetOptimal":
                 return "Power budget is optimal. PSU wattage is 30% or more than cart specification power consumption.";
             case "ramCapacity":
