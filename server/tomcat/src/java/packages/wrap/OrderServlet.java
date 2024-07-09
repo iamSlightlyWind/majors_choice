@@ -100,7 +100,7 @@ public class OrderServlet extends HttpServlet {
         for (Order order : orders) {
             if (order.id == orderId) {
                 request.setAttribute("Order", order);
-                request.getRequestDispatcher("/test/orderDetails.jsp").forward(request, response);
+                request.getRequestDispatcher("/cart/orderDetails.jsp").forward(request, response);
                 return;
             }
         }
@@ -188,7 +188,7 @@ public class OrderServlet extends HttpServlet {
         for (Order order : currentUser.orders) {
             if (order.id == orderId) {
                 request.setAttribute("Order", order);
-                request.getRequestDispatcher("/test/orderDetails.jsp").forward(request, response);
+                request.getRequestDispatcher("/cart/orderDetails.jsp").forward(request, response);
                 return;
             }
         }
