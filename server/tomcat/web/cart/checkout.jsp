@@ -161,7 +161,7 @@
             <header class="navmain-container2">
               <header data-thq="thq-navbar" class="navmain-navbar-interactive">
                 <a href="/" class="navmain-link">
-                  <img alt="pastedImage" src="public/external/pastedimage-eh8r-200h.png" class="navmain-pasted-image" />
+                  <img alt="pastedImage" src="../css/image/logo.png" class="navmain-pasted-image" />
                 </a>
                 <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                   <nav class="navmain-links">
@@ -280,55 +280,60 @@
                       </span>
                     </div>
                     <span class="cofirm-your-order-componment-text17">
-                      <span>${ProductCount.pricePer}</span>
+                      <span>${ProductCount.pricePer} VND</span>
                     </span>
                   </form>
-                  <div class="cofirm-your-order-componment-total-price">
-                    <span class="cofirm-your-order-componment-title">
-                      <span>Total:&nbsp;</span>
-                      <br />
-                    </span>
-                    <span class="cofirm-your-order-componment-value">
-                      <span>${cartPrice} VND</span>
-                    </span>
-                  </div>
                 </c:forEach>
-              </div>
-              <input type="hidden" type="text" name="amount" value="${cartPriceDouble}" />
-              <input type="hidden" name="language" value="vn" />
-              <input type="hidden" name="bankCode" value="" />
-              <span class="cofirm-your-order-componment-heading1">
-                <span>Confirm your shipping information:</span>
-                <br />
-              </span>
-              <div class="cofirm-your-order-componment-information">
-                <input type="text" required="true" name="fullName" placeholder="Full Name" value="${user.fullName}"
-                  required="true" placeholder="Username" class="cofirm-your-order-componment-user-name input" />
-                <input type="text" required="true" name="address" placeholder="Address" value="${user.address}"
-                  required="true" placeholder="Address" class="cofirm-your-order-componment-address input" />
-                <input type="text" required="true" name="phone" placeholder="Phone Number" value="${user.phoneNumber}"
-                  required="true" placeholder="Phone" class="cofirm-your-order-componment-phone input" />
-              </div>
-              <span class="cofirm-your-order-componment-heading2">
-                Select Payment Method:
-              </span>
-              <div class="cofirm-your-order-componment-method">
-                <div class="cofirm-your-order-componment-cash" style="margin-right: 3vw;">
-                  <input type="radio" name="paymentMethod" value="Cash"
-                    class="cofirm-your-order-componment-radiobutton" />
-                  <span class="cofirm-your-order-componment-text22">
-                    Cash on Delivery
-                  </span>
-                </div>
-                <div class="cofirm-your-order-componment-banking">
-                  <input type="radio" name="paymentMethod" value="Cash"
-                    class="cofirm-your-order-componment-radiobutton1" />
-                  <span class="cofirm-your-order-componment-text23">
-                    <span>Online Banking</span>
+                <div class="cofirm-your-order-componment-total-price">
+                  <span class="cofirm-your-order-componment-title">
+                    <span>Total:&nbsp;</span>
                     <br />
                   </span>
+                  <span class="cofirm-your-order-componment-value">
+                    <span>${cartPrice} VND</span>
+                  </span>
                 </div>
               </div>
+              <form class="cofirm-your-order-componment-shipping-infor">
+                <span class="cofirm-your-order-componment-heading1">
+                  <span>Confirm your shipping information:</span>
+                  <br />
+                </span>
+                <div class="cofirm-your-order-componment-information">
+                  <input type="text" required="true" name="fullName" placeholder="Full Name" value="${user.fullName}"
+                    required="true" placeholder="Username" class="cofirm-your-order-componment-user-name input" />
+                  <input type="text" required="true" name="address" placeholder="Address" value="${user.address}"
+                    required="true" placeholder="Address" class="cofirm-your-order-componment-address input" />
+                  <input type="text" required="true" name="phone" placeholder="Phone Number" value="${user.phoneNumber}"
+                    required="true" placeholder="Phone" class="cofirm-your-order-componment-phone input" />
+                </div>
+              </form>
+              <form action="/payment/vnpayajax" id="frmCreateOrder" method="post"
+                class="cofirm-your-order-componment-payment-method">
+                <input type="hidden" type="text" name="amount" value="${cartPriceDouble}" />
+                <input type="hidden" name="language" value="vn" />
+                <input type="hidden" name="bankCode" value="" />
+                <span class="cofirm-your-order-componment-heading2">
+                  Select Payment Method:
+                </span>
+                <div class="cofirm-your-order-componment-method">
+                  <div class="cofirm-your-order-componment-cash">
+                    <input type="radio" name="paymentMethod" value="Cash"
+                      class="cofirm-your-order-componment-radiobutton" />
+                    <span class="cofirm-your-order-componment-text22">
+                      Cash on Delivery
+                    </span>
+                  </div>
+                  <div class="cofirm-your-order-componment-banking">
+                    <input type="radio" name="paymentMethod" value="Online Banking"
+                      class="cofirm-your-order-componment-radiobutton1" />
+                    <span class="cofirm-your-order-componment-text23">
+                      <span>Online Banking</span>
+                      <br />
+                    </span>
+                  </div>
+                </div>
+              </form>
               <form class="cofirm-your-order-componment-hardware-validation">
                 <span class="cofirm-your-order-componment-text26">
                   <span>Hardware Validation</span>
@@ -396,7 +401,7 @@
                     Back &amp; Restore Cart
                   </button>
                 </form>
-                <button type="submit" class="cofirm-your-order-componment-continue thq-button-filled button">
+                <button type="button" class="confirm-your-order-component-continue thq-button-filled button">
                   Continue to Payment
                 </button>
               </div>
@@ -533,6 +538,44 @@
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
       <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
       <script type="text/javascript">
+        document.querySelector('.confirm-your-order-component-continue').addEventListener('click', function () {
+          var formInputs = document.querySelectorAll('.cofirm-your-order-componment-shipping-infor input');
+          var paymentForm = document.querySelector('#frmCreateOrder');
+
+          formInputs.forEach(function (input) {
+            var newInput = document.createElement('input');
+            newInput.type = 'hidden';
+            newInput.name = input.name;
+            newInput.value = input.value;
+            paymentForm.appendChild(newInput);
+          });
+
+          var postData = $(paymentForm).serialize();
+          var submitUrl = $(paymentForm).attr("action");
+
+          $.ajax({
+            type: "POST",
+            url: submitUrl,
+            data: postData,
+            dataType: 'JSON',
+            success: function (x) {
+              if (x.code === '00') {
+                if (x.redirectUrl) {
+                  window.location.href = x.redirectUrl;
+                } else if (window.vnpay) {
+                  vnpay.open({ width: 768, height: 600, url: x.data });
+                } else {
+                  location.href = x.data;
+                }
+              } else {
+                alert(x.message);
+              }
+            }
+          });
+
+          return false;
+        });
+
         $("#frmCreateOrder").submit(function () {
           var postData = $("#frmCreateOrder").serialize();
           var submitUrl = $("#frmCreateOrder").attr("action");
@@ -557,7 +600,6 @@
           });
           return false;
         });
-
       </script>
     </body>
 
