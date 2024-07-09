@@ -287,7 +287,7 @@
                     <input type="hidden" name="productID" value="${ProductCount.id}" />
                     <div class="view-cart-component-product01">
                       <div class="view-cart-component-container41">
-                        <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
+                        <img alt="image" src="/images/${ProductCount.id}.png"
                           class="view-cart-component-image09" />
                         <div class="view-cart-component-container42">
                           <span class="view-cart-component-name-product19">

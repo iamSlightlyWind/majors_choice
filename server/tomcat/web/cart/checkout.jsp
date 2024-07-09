@@ -268,7 +268,7 @@
                 <c:forEach var="ProductCount" items="${ProductCount}">
                   <form class="cofirm-your-order-componment-form2">
                     <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-200h.webp"
+                      src="/images/${ProductCount.id}.png"
                       class="cofirm-your-order-componment-image2" />
                     <div class="cofirm-your-order-componment-container3">
                       <h1 class="cofirm-your-order-componment-text13">
