@@ -14,26 +14,22 @@ public class EditProfile extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String role = (String) request.getSession().getAttribute("table");
         User user = (User) request.getSession().getAttribute("userObject");
-        
+
         int result = -1;
-        
-        user.username = request.getParameter("username");
-        user.password = request.getParameter("password");
+        String repeatPassword = request.getParameter("repassword");       
+        user.password = request.getParameter("password") != null ?  request.getParameter("password") : user.password;
         user.fullName = request.getParameter("fullname");
-        
-        if (role.equals("user")) {
-            user.email = request.getParameter("email");
-            user.phoneNumber = request.getParameter("phoneNumber");
-            user.address = request.getParameter("address");
-            user.dateOfBirth = request.getParameter("dateOfBirth");
-            result = user.updateInformation();
-        } else if (role.equals("staff")) {
-            result = user.updateStaff();
-        }    
+        user.phoneNumber = request.getParameter("phoneNumber");
+        user.address = request.getParameter("address");
+        user.dateOfBirth = request.getParameter("dateOfBirth");
+        result = user.updateInformation();
         
         switch (result) {
             case 1:
-                response.sendRedirect("/profile?status=1");
+                user.retrieveData("user");
+                request.setAttribute("user", user);
+                request.setAttribute("status", "Update Successful.");
+                request.getRequestDispatcher("editprofile.jsp").forward(request, response);
                 break;
             case -1:
                 user.retrieveData("user");
