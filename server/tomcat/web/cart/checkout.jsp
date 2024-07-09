@@ -4,8 +4,9 @@
     <html lang="en">
 
     <head>
-      <title>CustomerCartCofirmOrder - Major's Choice</title>
-      <meta property="og:title" content="CustomerCartCofirmOrder - Major's Choice" />
+      <title>Checkout - Major's Choice</title>
+      <script src="/payment/assets/jquery-1.11.3.min.js"></script>
+      <meta property="og:title" content="Checkout - Major's Choice" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
       <meta property="twitter:card" content="summary_large_image" />
@@ -150,16 +151,16 @@
     </head>
 
     <body>
-      <link rel="stylesheet" href="./style.css" />
+      <link rel="stylesheet" href="../css/style.css" />
       <div>
-        <link href="./customer-cart-cofirm-order.css" rel="stylesheet" />
+        <link href="../css/checkout.css" rel="stylesheet" />
 
         <div class="customer-cart-cofirm-order-container">
           <div class="navmain-container navmain-root-class-name3">
             <header class="navmain-container1"></header>
             <header class="navmain-container2">
               <header data-thq="thq-navbar" class="navmain-navbar-interactive">
-                <a href="index.html" class="navmain-link">
+                <a href="/" class="navmain-link">
                   <img alt="pastedImage" src="public/external/pastedimage-eh8r-200h.png" class="navmain-pasted-image" />
                 </a>
                 <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
@@ -174,7 +175,7 @@
                       </button>
                     </div>
                     <div class="navmain-container4">
-                      <a href="index.html" class="navmain-home thq-body-small thq-link">
+                      <a href="/" class="navmain-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navmain-contact thq-body-small thq-link">
@@ -183,20 +184,20 @@
                       <span class="navmain-whoweare thq-body-small thq-link">
                         <span>Who we are</span>
                       </span>
-                      <a href="Order.html" class="navmain-manager-order thq-body-small thq-link">
+                      <a href="/order" class="navmain-manager-order thq-body-small thq-link">
                         Manage Order
                       </a>
                     </div>
                   </nav>
                   <div class="navmain-buttons">
-                    <a href="Cart.html" target="_blank" rel="noreferrer noopener" class="navmain-link1">
+                    <a href="/cart" target="_blank" rel="noreferrer noopener" class="navmain-link1">
                       <svg viewBox="0 0 1024 1024" class="navmain-icon thq-button-icon thq-icon-medium">
                         <path
                           d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
                         </path>
                       </svg>
                     </a>
-                    <a href="profile.html" target="_blank" rel="noreferrer noopener"
+                    <a href="/profile" target="_blank" rel="noreferrer noopener"
                       class="navmain-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navmain-icon2">
                         <path
@@ -217,8 +218,7 @@
                   <div class="navmain-nav">
                     <div class="navmain-top">
                       <div class="navmain-container5">
-                        <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
-                          class="navmain-pasted-image1" />
+                        <img alt="pastedImage" src="../css/image/logo.png" class="navmain-pasted-image1" />
                       </div>
                       <div data-thq="thq-close-menu" class="navmain-close-menu">
                         <svg viewBox="0 0 1024 1024" class="navmain-icon6">
@@ -265,104 +265,70 @@
             </div>
             <div class="cofirm-your-order-componment-form-root">
               <div class="cofirm-your-order-componment-product">
-                <form class="cofirm-your-order-componment-form">
-                  <img alt="image"
-                    src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-200h.webp"
-                    class="cofirm-your-order-componment-image" />
-                  <div class="cofirm-your-order-componment-container1">
-                    <h1 class="cofirm-your-order-componment-text03">
-                      Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                      / AM4
-                    </h1>
-                    <span class="cofirm-your-order-componment-text04">
-                      <span><span>x1</span></span>
+                <c:forEach var="ProductCount" items="${ProductCount}">
+                  <form class="cofirm-your-order-componment-form2">
+                    <img alt="image"
+                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-200h.webp"
+                      class="cofirm-your-order-componment-image2" />
+                    <div class="cofirm-your-order-componment-container3">
+                      <h1 class="cofirm-your-order-componment-text13">
+                        ${ProductCount.name}
+                      </h1>
+                      <span class="cofirm-your-order-componment-text14">
+                        <span><span>x${ProductCount.count}</span></span>
+                        <br />
+                      </span>
+                    </div>
+                    <span class="cofirm-your-order-componment-text17">
+                      <span>${ProductCount.pricePer}</span>
+                    </span>
+                  </form>
+                  <div class="cofirm-your-order-componment-total-price">
+                    <span class="cofirm-your-order-componment-title">
+                      <span>Total:&nbsp;</span>
                       <br />
                     </span>
-                  </div>
-                  <span class="cofirm-your-order-componment-text07">
-                    <span>1360000$</span>
-                  </span>
-                </form>
-                <form class="cofirm-your-order-componment-form1">
-                  <img alt="image"
-                    src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-200h.webp"
-                    class="cofirm-your-order-componment-image1" />
-                  <div class="cofirm-your-order-componment-container2">
-                    <h1 class="cofirm-your-order-componment-text08">
-                      Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                      / AM4
-                    </h1>
-                    <span class="cofirm-your-order-componment-text09">
-                      <span><span>x1</span></span>
-                      <br />
+                    <span class="cofirm-your-order-componment-value">
+                      <span>${cartPrice} VND</span>
                     </span>
                   </div>
-                  <span class="cofirm-your-order-componment-text12">
-                    <span>1360000$</span>
+                </c:forEach>
+              </div>
+              <input type="hidden" type="text" name="amount" value="${cartPriceDouble}" />
+              <input type="hidden" name="language" value="vn" />
+              <input type="hidden" name="bankCode" value="" />
+              <span class="cofirm-your-order-componment-heading1">
+                <span>Confirm your shipping information:</span>
+                <br />
+              </span>
+              <div class="cofirm-your-order-componment-information">
+                <input type="text" required="true" name="fullName" placeholder="Full Name" value="${user.fullName}"
+                  required="true" placeholder="Username" class="cofirm-your-order-componment-user-name input" />
+                <input type="text" required="true" name="address" placeholder="Address" value="${user.address}"
+                  required="true" placeholder="Address" class="cofirm-your-order-componment-address input" />
+                <input type="text" required="true" name="phone" placeholder="Phone Number" value="${user.phoneNumber}"
+                  required="true" placeholder="Phone" class="cofirm-your-order-componment-phone input" />
+              </div>
+              <span class="cofirm-your-order-componment-heading2">
+                Select Payment Method:
+              </span>
+              <div class="cofirm-your-order-componment-method">
+                <div class="cofirm-your-order-componment-cash" style="margin-right: 3vw;">
+                  <input type="radio" name="paymentMethod" value="Cash"
+                    class="cofirm-your-order-componment-radiobutton" />
+                  <span class="cofirm-your-order-componment-text22">
+                    Cash on Delivery
                   </span>
-                </form>
-                <form class="cofirm-your-order-componment-form2">
-                  <img alt="image"
-                    src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-200h.webp"
-                    class="cofirm-your-order-componment-image2" />
-                  <div class="cofirm-your-order-componment-container3">
-                    <h1 class="cofirm-your-order-componment-text13">
-                      Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                      / AM4
-                    </h1>
-                    <span class="cofirm-your-order-componment-text14">
-                      <span><span>x1</span></span>
-                      <br />
-                    </span>
-                  </div>
-                  <span class="cofirm-your-order-componment-text17">
-                    <span>1360000$</span>
-                  </span>
-                </form>
-                <div class="cofirm-your-order-componment-total-price">
-                  <span class="cofirm-your-order-componment-title">
-                    <span>Total:&nbsp;</span>
+                </div>
+                <div class="cofirm-your-order-componment-banking">
+                  <input type="radio" name="paymentMethod" value="Cash"
+                    class="cofirm-your-order-componment-radiobutton1" />
+                  <span class="cofirm-your-order-componment-text23">
+                    <span>Online Banking</span>
                     <br />
-                  </span>
-                  <span class="cofirm-your-order-componment-value">
-                    <span>1360000$</span>
                   </span>
                 </div>
               </div>
-              <form class="cofirm-your-order-componment-shipping-infor">
-                <span class="cofirm-your-order-componment-heading1">
-                  <span>Confirm your shipping information:</span>
-                  <br />
-                </span>
-                <div class="cofirm-your-order-componment-information">
-                  <input type="text" required="true" placeholder="Username"
-                    class="cofirm-your-order-componment-user-name input" />
-                  <input type="text" required="true" placeholder="Address"
-                    class="cofirm-your-order-componment-address input" />
-                  <input type="tel" required="true" placeholder="Phone"
-                    class="cofirm-your-order-componment-phone input" />
-                </div>
-              </form>
-              <form class="cofirm-your-order-componment-payment-method">
-                <span class="cofirm-your-order-componment-heading2">
-                  Select Payment Method:
-                </span>
-                <div class="cofirm-your-order-componment-method">
-                  <div class="cofirm-your-order-componment-cash">
-                    <input type="radio" name="radio" class="cofirm-your-order-componment-radiobutton" />
-                    <span class="cofirm-your-order-componment-text22">
-                      Cash on Delivery (COD)
-                    </span>
-                  </div>
-                  <div class="cofirm-your-order-componment-banking">
-                    <input type="radio" name="radio" class="cofirm-your-order-componment-radiobutton1" />
-                    <span class="cofirm-your-order-componment-text23">
-                      <span>Online Banking (OD)</span>
-                      <br />
-                    </span>
-                  </div>
-                </div>
-              </form>
               <form class="cofirm-your-order-componment-hardware-validation">
                 <span class="cofirm-your-order-componment-text26">
                   <span>Hardware Validation</span>
@@ -424,10 +390,13 @@
                 </div>
               </form>
               <div class="cofirm-your-order-componment-button">
-                <button type="button" class="cofirm-your-order-componment-back button thq-button-outline">
-                  Back &amp; Restore Cart
-                </button>
-                <button type="button" class="cofirm-your-order-componment-continue thq-button-filled button">
+                <form action="/Cart" method="get">
+                  <button type="submit" name="action" value="restore"
+                    class="cofirm-your-order-componment-back button thq-button-outline">
+                    Back &amp; Restore Cart
+                  </button>
+                </form>
+                <button type="submit" class="cofirm-your-order-componment-continue thq-button-filled button">
                   Continue to Payment
                 </button>
               </div>
@@ -562,6 +531,34 @@
         </div>
       </div>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+      <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
+      <script type="text/javascript">
+        $("#frmCreateOrder").submit(function () {
+          var postData = $("#frmCreateOrder").serialize();
+          var submitUrl = $("#frmCreateOrder").attr("action");
+          $.ajax({
+            type: "POST",
+            url: submitUrl,
+            data: postData,
+            dataType: 'JSON',
+            success: function (x) {
+              if (x.code === '00') {
+                if (x.redirectUrl) {
+                  window.location.href = x.redirectUrl;
+                } else if (window.vnpay) {
+                  vnpay.open({ width: 768, height: 600, url: x.data });
+                } else {
+                  location.href = x.data;
+                }
+              } else {
+                alert(x.message);
+              }
+            }
+          });
+          return false;
+        });
+
+      </script>
     </body>
 
     </html>
