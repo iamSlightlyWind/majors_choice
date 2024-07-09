@@ -334,35 +334,57 @@
                 </span>
               </form>
               <div class="order-detail-componment-button" id="orderButtons">
-                <button type="submit" name="action" value="cancel"
-                  class="order-detail-componment-cancel-order button thq-button-outline">
-                  Cancel Order
-                </button>
-                <button type="submit" name="action" value="ship"
-                  class="order-detail-componment-ship-order button thq-button-outline">
-                  <span>
-                    <span>Ship Order</span>
-                    <br />
-                  </span>
-                </button>
-                <button type="submit" name="action" value="complete"
-                  class="order-detail-componment-cancel-order button thq-button-outline">
-                  Complete Order
-                </button>
-                <button type="submit" name="action" value="deny"
-                  class="order-detail-componment-deny-requset button thq-button-outline">
-                  <span>
-                    <span>Deny Request</span>
-                    <br />
-                  </span>
-                </button>
-                <button type="submit" name="action" value="approve"
-                  class="order-detail-componment-approve-request button thq-button-outline">
-                  <span>
-                    <span>Approve Request</span>
-                    <br />
-                  </span>
-                </button>
+
+                <c:choose>
+                  <c:when test="${managing}">
+                    <c:choose>
+
+                      <c:when
+                        test="${Order.status eq 'Pending' or Order.status eq 'Cancellation Denied, Shipping Pending'}">
+                        <button type="button" name="action" value="cancel"
+                          class="order-detail-componment-cancel-order button thq-button-outline">
+                          Cancel Order
+                        </button>
+                        <button type="button" name="action" value="ship"
+                          class="order-detail-componment-ship-order button thq-button-outline">
+                          <span>
+                            <span>Ship Order</span>
+                            <br />
+                          </span>
+                        </button>
+                      </c:when>
+
+                      <c:when test="${Order.status eq 'Shipping'}">
+                        <button type="button" name="action" value="cancel"
+                          class="order-detail-componment-cancel-order button thq-button-outline">
+                          Cancel Order
+                        </button>
+                        <button type="button" name="action" value="complete"
+                          class="order-detail-componment-cancel-order button thq-button-outline">
+                          Complete Order
+                        </button>
+                      </c:when>
+
+                      <c:when test="${Order.status eq 'Cancellation Requested'}">
+                        <button type="button" name="action" value="deny"
+                          class="order-detail-componment-deny-requset button thq-button-outline">
+                          <span>
+                            <span>Deny Request</span>
+                            <br />
+                          </span>
+                        </button>
+                        <button type="button" name="action" value="approve"
+                          class="order-detail-componment-approve-request button thq-button-outline">
+                          <span>
+                            <span>Approve Request</span>
+                            <br />
+                          </span>
+                        </button>
+                      </c:when>
+                    </c:choose>
+                  </c:when>
+                </c:choose>
+
                 <c:if test="${Order.status eq 'Pending' and not managing}">
                   <form action="/order" method="get">
                     <input type="hidden" name="id" value="${Order.id}" />
@@ -504,26 +526,52 @@
         </div>
       </div>
       <script>
-        document.querySelectorAll('button[type="submit"]').forEach(button => {
-          button.addEventListener('click', function (event) {
-            event.preventDefault();
+        document.addEventListener('DOMContentLoaded', function () {
+          const orderButtons = document.getElementById('orderButtons');
+          if (orderButtons) {
+            orderButtons.addEventListener('click', function (event) {
+              const button = event.target.closest('button[name="action"]');
+              if (!button) return;
 
-            const formData = new FormData();
-            formData.append('id', '${Order.id}');
-            formData.append('action', this.value);
+              const action = button.value;
+              const orderId = "${Order.id}";
+              switch (action) {
+                case 'cancel':
+                  manageOrder(action, orderId);
+                  break;
+                case 'ship':
+                case 'complete':
+                  manageOrder(action, orderId);
+                  break;
+                case 'approve':
+                case 'deny':
+                  manageOrder(action, orderId);
+                  break;
+                default:
+                  break;
+              }
+            });
+          }
 
-            fetch('/manage/order', {
+          function manageOrder(action, orderId) {
+            const url = '/manage/order?id=' + encodeURIComponent(orderId) + '&action=' + encodeURIComponent(action);
+            fetch(url, {
               method: 'GET',
-              body: formData
-            }).then(response => response.json())
-              .then(data => {
-                if (data.code === '00' && data.redirectUrl) {
-                  window.location.href = data.redirectUrl;
+              headers: {
+                'Content-Type': 'application/json'
+              },
+            })
+              .then(response => {
+                if (response.redirected) {
+                  window.location.href = response.url;
                 } else {
-                  alert(data.message);
+                  console.log('Order management response:', response);
                 }
+              })
+              .catch(error => {
+                console.error('Error managing order:', error);
               });
-          });
+          }
         });
       </script>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
