@@ -19,12 +19,7 @@ public class Profile extends HttpServlet {
             return;
         }
         user.retrieveData((String) request.getSession().getAttribute("table"));
-        String status = request.getParameter("status");
         
-        if(status != null){
-            request.setAttribute("status", "Update Successful.");
-        }
-
         request.setAttribute("user", user);       
         request.getRequestDispatcher("editprofile.jsp").forward(request, response);
     }

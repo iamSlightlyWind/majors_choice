@@ -530,8 +530,8 @@
                     <a href="/view/detail/product?category=cpu&id=${cpu.id}">
                         <div class="component1-container component1-root-class-name">
                     <img alt="image"
-                      src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-1500h.webp"
-                      loading="eager" class="component1-image" />
+                         src="./css/image/amd800h.webp"
+                         loading="eager" class="component1-image" />
                     <h1 class="component1-text thq-link">
                       <span>
                         ${cpu.name}

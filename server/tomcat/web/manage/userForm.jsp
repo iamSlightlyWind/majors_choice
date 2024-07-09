@@ -271,11 +271,7 @@
                     <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
                       Manage Customer
                     </span>
-                  </a>
-                  <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                    <span>Feedback</span>
-                    <br />
-                  </span>
+                  </a>                
                   <c:if test="${sessionScope.role == 'manager'}">
                       <a href="/manage/profile?actor=staff">
                           <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
@@ -283,7 +279,7 @@
                           </span>
                       </a>
                       <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                            Financial Reports
+                            Statistics
                       </span>
                   </c:if>                 
                 </div>
