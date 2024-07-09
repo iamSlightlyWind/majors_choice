@@ -329,7 +329,7 @@
               </form>
               <c:forEach var="ProductCount" items="${Order.quantities}">
                 <div class="customer-order-list-form3">
-                  <img alt="image" src="/image/${ProductCount.id}.png" class="customer-order-list-image2" />
+                  <img alt="image" src="/images/${ProductCount.id}.png" class="customer-order-list-image2" />
                   <div class="customer-order-list-container08">
                     <h1 class="customer-order-list-text22">
                       ${ProductCount.name}
