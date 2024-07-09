@@ -4,8 +4,8 @@
     <html lang="en">
 
     <head>
-      <title>CustomerOrderDetail - Major's Choice</title>
-      <meta property="og:title" content="CustomerOrderDetail - Major's Choice" />
+      <title>Order Details - Major's Choice</title>
+      <meta property="og:title" content="Order Details - Major's Choice" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="utf-8" />
       <meta property="twitter:card" content="summary_large_image" />
@@ -150,17 +150,17 @@
     </head>
 
     <body>
-      <link rel="stylesheet" href="./style.css" />
+      <link rel="stylesheet" href="../css/style.css" />
       <div>
-        <link href="./customer-order-detail.css" rel="stylesheet" />
+        <link href="../css/orderDetails.jsp.css" rel="stylesheet" />
 
         <div class="customer-order-detail-container">
           <div class="navmain-container navmain-root-class-name37">
             <header class="navmain-container1"></header>
             <header class="navmain-container2">
               <header data-thq="thq-navbar" class="navmain-navbar-interactive">
-                <a href="index.html" class="navmain-link">
-                  <img alt="pastedImage" src="public/external/pastedimage-eh8r-200h.png" class="navmain-pasted-image" />
+                <a href="/" class="navmain-link">
+                  <img alt="pastedImage" src="../css/image/logo.png" class="navmain-pasted-image" />
                 </a>
                 <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                   <nav class="navmain-links">
@@ -174,7 +174,7 @@
                       </button>
                     </div>
                     <div class="navmain-container4">
-                      <a href="index.html" class="navmain-home thq-body-small thq-link">
+                      <a href="/" class="navmain-home thq-body-small thq-link">
                         <span>Home</span>
                       </a>
                       <span class="navmain-contact thq-body-small thq-link">
@@ -183,20 +183,20 @@
                       <span class="navmain-whoweare thq-body-small thq-link">
                         <span>Who we are</span>
                       </span>
-                      <a href="Order.html" class="navmain-manager-order thq-body-small thq-link">
+                      <a href="/order" class="navmain-manager-order thq-body-small thq-link">
                         Manage Order
                       </a>
                     </div>
                   </nav>
                   <div class="navmain-buttons">
-                    <a href="Cart.html" target="_blank" rel="noreferrer noopener" class="navmain-link1">
+                    <a href="/cart" target="_blank" rel="noreferrer noopener" class="navmain-link1">
                       <svg viewBox="0 0 1024 1024" class="navmain-icon thq-button-icon thq-icon-medium">
                         <path
                           d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
                         </path>
                       </svg>
                     </a>
-                    <a href="profile.html" target="_blank" rel="noreferrer noopener"
+                    <a href="/profile" target="_blank" rel="noreferrer noopener"
                       class="navmain-account thq-button-filled">
                       <svg viewBox="0 0 731.4285714285713 1024" class="navmain-icon2">
                         <path
@@ -217,8 +217,7 @@
                   <div class="navmain-nav">
                     <div class="navmain-top">
                       <div class="navmain-container5">
-                        <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
-                          class="navmain-pasted-image1" />
+                        <img alt="pastedImage" src="../css/image/logo.png" class="navmain-pasted-image1" />
                       </div>
                       <div data-thq="thq-close-menu" class="navmain-close-menu">
                         <svg viewBox="0 0 1024 1024" class="navmain-icon6">
@@ -259,51 +258,50 @@
           <div class="customer-order-detail-link-page">
             <div class="customer-order-detail-container1">
               <span class="customer-order-detail-text thq-body-small thq-link">
-                &nbsp;Manage&nbsp; Orders
+                &nbsp;Manage Orders
               </span>
               <span class="customer-order-detail-text1 thq-body-small">
-                &nbsp;/ Order Detail&nbsp;
+                &nbsp;/ Order Details&nbsp;
               </span>
             </div>
           </div>
           <div class="order-detail-componment-container order-detail-componment-root-class-name">
             <div class="order-detail-componment-heading">
               <span class="order-detail-componment-text-id">
-                <span>ID: 7</span>
+                <span>Order ID: ${Order.id}</span>
                 <br />
               </span>
               <span class="order-detail-componment-text-status">
                 <span class="order-detail-componment-text02">Status:</span>
-                <span class="order-detail-componment-text03">Pending</span>
+                <span class="order-detail-componment-text03">${Order.status}</span>
               </span>
             </div>
             <div class="order-detail-componment-form-root">
               <div class="order-detail-componment-product">
-                <form class="order-detail-componment-form">
-                  <img alt="image"
-                    src="public/New Folder/gearvn-amd-athlon-3000g_9a96ebfbbf3f43c7a61cdba59b00e5b5_fc7e2a8f09b24c55b154d39cf9ce96a7_grande-200h.webp"
-                    class="order-detail-componment-image" />
-                  <div class="order-detail-componment-container1">
-                    <h1 class="order-detail-componment-name-product">
-                      Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng / 5MB
-                      / AM4
-                    </h1>
-                    <span class="order-detail-componment-quanity">
-                      <span><span>x1</span></span>
-                      <br />
+                <c:forEach var="ProductCount" items="${Order.quantities}">
+                  <form class="order-detail-componment-form">
+                    <img alt="image" src="/images/" class="order-detail-componment-image" />
+                    <div class="order-detail-componment-container1">
+                      <h1 class="order-detail-componment-name-product">
+                        ${ProductCount.name}
+                      </h1>
+                      <span class="order-detail-componment-quanity">
+                        <span><span>x${ProductCount.count}</span></span>
+                        <br />
+                      </span>
+                    </div>
+                    <span class="order-detail-componment-price">
+                      <span>${ProductCount.pricePer} VND</span>
                     </span>
-                  </div>
-                  <span class="order-detail-componment-price">
-                    <span>1360000$</span>
-                  </span>
-                </form>
+                  </form>
+                </c:forEach>
                 <div class="order-detail-componment-total-price">
                   <span class="order-detail-componment-text06">
                     <span>Total:&nbsp;</span>
                     <br />
                   </span>
                   <span class="order-detail-componment-text09">
-                    <span>1360000$</span>
+                    <span>${Order.cartTotal} VND</span>
                   </span>
                 </div>
               </div>
@@ -314,53 +312,67 @@
                 <div class="order-detail-componment-name">
                   <span class="order-detail-componment-title">Name:</span>
                   <span class="order-detail-componment-value">
-                    Phạm Thanh Phong
+                    ${Order.orderInfo.fullName}
                   </span>
                 </div>
                 <div class="order-detail-componment-address">
                   <span class="order-detail-componment-title1">Address:</span>
                   <span class="order-detail-componment-value1">
-                    123 Main St, Anytown, USA.
+                    ${Order.orderInfo.address}
                   </span>
                 </div>
                 <div class="order-detail-componment-phone-number">
                   <span class="order-detail-componment-title2">
                     Phone number:
                   </span>
-                  <span class="order-detail-componment-value2">123-456-7890</span>
+                  <span class="order-detail-componment-value2">${Order.orderInfo.phoneNumber}</span>
                 </div>
               </form>
               <form class="order-detail-componment-payment-method">
                 <span class="order-detail-componment-text10">
-                  Payment Method:&nbsp;Cash on Delivery
+                  Payment Method:&nbsp;${Order.orderInfo.payment}
                 </span>
               </form>
               <div class="order-detail-componment-button">
-                <button type="button" class="order-detail-componment-ship-order button thq-button-outline">
+                <button type="submit" name="action" value="cancel"
+                  class="order-detail-componment-cancel-order button thq-button-outline">
+                  Cancel Order
+                </button>
+                <button type="submit" name="action" value="ship"
+                  class="order-detail-componment-ship-order button thq-button-outline">
                   <span>
                     <span>Ship Order</span>
                     <br />
                   </span>
                 </button>
-                <button type="button" class="order-detail-componment-deny-requset button thq-button-outline">
+                <button type="submit" name="action" value="complete"
+                  class="order-detail-componment-cancel-order button thq-button-outline">
+                  Complete Order
+                </button>
+                <button type="submit" name="action" value="deny"
+                  class="order-detail-componment-deny-requset button thq-button-outline">
                   <span>
                     <span>Deny Request</span>
                     <br />
                   </span>
                 </button>
-                <button type="button" class="order-detail-componment-approve-request button thq-button-outline">
+                <button type="submit" name="action" value="approve"
+                  class="order-detail-componment-approve-request button thq-button-outline">
                   <span>
                     <span>Approve Request</span>
                     <br />
                   </span>
                 </button>
-                <button type="button" class="order-detail-componment-cancel-order button thq-button-outline">
-                  Cancel Order
-                </button>
-                <button type="button" class="order-detail-componment-request-cancel button thq-button-outline">
-                  Request Cancellation
-                </button>
+                <c:if test="${Order.status eq 'Pending' and not managing}">
+                  <form action="/order" method="get">
+                    <input type="hidden" name="id" value="${Order.id}" />
+                    <button type="submit" name="action" value="cancel"
+                      class="order-detail-componment-request-cancel button thq-button-outline">
+                      Request Cancellation
+                    </button>
+                  </form>
               </div>
+              </c:if>
             </div>
           </div>
           <footer class="footer-footer1 thq-section-padding footer-root-class-name54">
@@ -491,6 +503,29 @@
           </footer>
         </div>
       </div>
+      <script>
+        document.querySelectorAll('button[type="submit"]').forEach(button => {
+          button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('id', '${Order.id}');
+            formData.append('action', this.value);
+
+            fetch('/manage/order', {
+              method: 'GET',
+              body: formData
+            }).then(response => response.json())
+              .then(data => {
+                if (data.code === '00' && data.redirectUrl) {
+                  window.location.href = data.redirectUrl;
+                } else {
+                  alert(data.message);
+                }
+              });
+          });
+        });
+      </script>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 
