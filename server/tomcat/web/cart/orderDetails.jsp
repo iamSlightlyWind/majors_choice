@@ -333,7 +333,7 @@
                   Payment Method:&nbsp;${Order.orderInfo.payment}
                 </span>
               </form>
-              <div class="order-detail-componment-button">
+              <div class="order-detail-componment-button" id="orderButtons">
                 <button type="submit" name="action" value="cancel"
                   class="order-detail-componment-cancel-order button thq-button-outline">
                   Cancel Order
