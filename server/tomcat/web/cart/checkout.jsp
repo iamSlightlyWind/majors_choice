@@ -342,7 +342,7 @@
                 <div class="cofirm-your-order-componment-socket">
                   <span class="cofirm-your-order-componment-title1">Socket:</span>
                   <span class="cofirm-your-order-componment-value1">
-                    To validate, there should be a motherboard in the cart.
+                    ${socketMatch}
                   </span>
                 </div>
                 <div class="cofirm-your-order-componment-graphics">
@@ -350,7 +350,7 @@
                     Graphics:
                   </span>
                   <span class="cofirm-your-order-componment-value2">
-                    To validate, there should be a motherboard in the cart.
+                    ${graphicsOutput}
                   </span>
                 </div>
                 <div class="cofirm-your-order-componment-ra-mtype">
@@ -358,7 +358,7 @@
                     RAM Type:
                   </span>
                   <span class="cofirm-your-order-componment-value3">
-                    To validate, there should be a motherboard in the cart.
+                    ${ramType}
                   </span>
                 </div>
                 <div class="cofirm-your-order-componment-ra-mmatching">
@@ -366,7 +366,7 @@
                     RAM Matching:
                   </span>
                   <span class="cofirm-your-order-componment-value4">
-                    To validate, there should be a motherboard in the cart.
+                    ${ramMatching}
                   </span>
                 </div>
                 <div class="cofirm-your-order-componment-ra-mspeed">
@@ -374,7 +374,7 @@
                     RAM Speed:
                   </span>
                   <span class="cofirm-your-order-componment-value5">
-                    To validate, there should be a motherboard in the cart.
+                    ${ramSpeed}
                   </span>
                 </div>
                 <div class="cofirm-your-order-componment-ra-mcapacity">
@@ -382,7 +382,7 @@
                     RAM Capacity:
                   </span>
                   <span class="cofirm-your-order-componment-value6">
-                    To validate, there should be a motherboard in the cart.
+                    ${ramCapacity}
                   </span>
                 </div>
                 <div class="cofirm-your-order-componment-power-budget">
@@ -390,7 +390,7 @@
                     Power Budget:
                   </span>
                   <span class="cofirm-your-order-componment-value7">
-                    To validate, there should be a motherboard in the cart.
+                    ${powerBudget}
                   </span>
                 </div>
               </form>

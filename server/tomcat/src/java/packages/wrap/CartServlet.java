@@ -71,6 +71,7 @@ public class CartServlet extends HttpServlet {
             case "checkout":
                 Cart tempCart = new Cart(currentUser.cart);
                 request.getSession().setAttribute("tempCart", tempCart);
+                currentUser.cart.getValidate();
                 currentUser.cart.clearCart();
 
                 request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(tempCart.total));
@@ -78,6 +79,14 @@ public class CartServlet extends HttpServlet {
                 request.setAttribute("ProductCount", (ArrayList<ProductCount>) tempCart.quantities);
                 request.setAttribute("validation", tempCart.getValidate());
                 request.setAttribute("user", currentUser);
+
+                request.setAttribute("socketMatch", Validation.socketMatch());
+                request.setAttribute("graphicsOutput", Validation.graphicsOutput());
+                request.setAttribute("ramType", Validation.ramType());
+                request.setAttribute("ramMatching", Validation.ramMatching());
+                request.setAttribute("ramSpeed", Validation.ramSpeed());
+                request.setAttribute("ramCapacity", Validation.ramCapacity());
+                request.setAttribute("powerBudget", Validation.powerBudget());
 
                 request.getRequestDispatcher("/cart/checkout.jsp").forward(request, response);
                 break;
