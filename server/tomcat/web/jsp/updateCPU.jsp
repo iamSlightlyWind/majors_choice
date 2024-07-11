@@ -357,13 +357,6 @@
                             </ul>
                         </div>
                         <div class="manage-product-add-root">
-                            <div class="menu-add-product-menu-add-product menu-add-product-root-class-name5">
-                                <div class="menu-add-product-container">
-                                    <h1 class="menu-add-product-text">
-                                        <span>Update product</span>
-                                    </h1>
-                                </div>
-                            </div>
                             <div class="manage-product-add-root-form">
                                 <h1 class="manage-product-add-text03">
                                     <span>Update CPU Product</span>

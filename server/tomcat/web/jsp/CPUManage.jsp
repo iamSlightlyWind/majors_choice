@@ -338,99 +338,113 @@
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-dropdown list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle1"
-                                                    >
-                                                    <span class="manage-list-product-text006">
-                                                        <span>List of CPU</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
+                                                <a href="/cpus">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-dropdown-toggle1"
+                                                        >
+                                                        <span class="manage-list-product-text006">
+                                                            <span>List of CPU</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-dropdown1 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle2"
-                                                    >
-                                                    <span class="manage-list-product-text009">
-                                                        <span>List of GPU</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
+                                                <a href="/gpus">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-dropdown-toggle2"
+                                                        >
+                                                        <span class="manage-list-product-text009">
+                                                            <span>List of GPU</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-dropdown2 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle3"
-                                                    >
-                                                    <span class="manage-list-product-text012">
-                                                        <span>List of Mobo</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
+                                                <a href="/motherboards">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-dropdown-toggle3"
+                                                        >
+                                                        <span class="manage-list-product-text012">
+                                                            <span>List of Mobo</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-dropdown3 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle4"
-                                                    >
-                                                    <span class="manage-list-product-text015">
-                                                        <span>List of PSU</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
+                                                <a href="/psus">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-dropdown-toggle4"
+                                                        >
+                                                        <span class="manage-list-product-text015">
+                                                            <span>List of PSU</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>   
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-dropdown4 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle5"
-                                                    >
-                                                    <span class="manage-list-product-text018">
-                                                        <span>List of RAM</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
+                                                <a href="/rams">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-dropdown-toggle5"
+                                                        >
+                                                        <span class="manage-list-product-text018">
+                                                            <span>List of RAM</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-dropdown5 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle6"
-                                                    >
-                                                    <span class="manage-list-product-text021">
-                                                        <span>List of SSD</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
+                                                <a href="/ssds">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-dropdown-toggle6"
+                                                        >
+                                                        <span class="manage-list-product-text021">
+                                                            <span>List of SSD</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-dropdown6 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle7"
-                                                    >
-                                                    <span class="manage-list-product-text024">
-                                                        <span>List of CASE</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
+                                                <a href="/cases">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-dropdown-toggle7"
+                                                        >
+                                                        <span class="manage-list-product-text024">
+                                                            <span>List of CASE</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
