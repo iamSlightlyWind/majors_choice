@@ -258,7 +258,7 @@
           <div class="customer-order-detail-link-page">
             <div class="customer-order-detail-container1">
               <span class="customer-order-detail-text thq-body-small thq-link">
-                &nbsp;Manage Orders
+                <a href="/order">&nbsp;Manage Orders</a>
               </span>
               <span class="customer-order-detail-text1 thq-body-small">
                 &nbsp;/ Order Details&nbsp;
