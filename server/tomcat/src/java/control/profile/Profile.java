@@ -17,10 +17,15 @@ public class Profile extends HttpServlet {
         if (user == null) {
             response.sendRedirect("/auth/login.jsp");
             return;
+        } else if (((String) request.getSession().getAttribute("table")).equals("staff")) {
+            request.getSession().invalidate();
+            request.setAttribute("loginStatus", "Logged out");
+            request.getRequestDispatcher("/auth/login.jsp").forward(request, response);
+            return;
         }
         user.retrieveData((String) request.getSession().getAttribute("table"));
-        
-        request.setAttribute("user", user);       
+
+        request.setAttribute("user", user);
         request.getRequestDispatcher("editprofile.jsp").forward(request, response);
     }
 
