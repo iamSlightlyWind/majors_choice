@@ -1418,10 +1418,6 @@ public class Database {
         return -1;
     }
     
-    public static void main(String[] args) {
-        Database db = new Database();
-        int n = db.setQuantity(10);
-    }
     public static int addRating(int productId, int userId, int ratingStar, String ratingText) {
         try {
             String sql = "{call addRating(?, ?, ?, ?, ?)}";
