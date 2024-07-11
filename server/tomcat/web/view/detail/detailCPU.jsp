@@ -244,7 +244,7 @@
                         <div class="navmain-nav">
                           <div class="navmain-top">
                             <div class="navmain-container5">
-                              <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
+                              <img alt="pastedImage" src="../../css/image/logo.png"
                                 class="navmain-pasted-image1" />
                             </div>
                             <div data-thq="thq-close-menu" class="navmain-close-menu">

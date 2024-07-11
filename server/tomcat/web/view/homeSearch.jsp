@@ -222,7 +222,7 @@
                     <div class="navbar-nav">
                       <div class="navbar-top">
                         <div class="navbar-container5">
-                          <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
+                          <img alt="pastedImage" src="../css/image/logo.png"
                             class="navbar-pasted-image1" />
                         </div>
                         <div data-thq="thq-close-menu" class="navbar-close-menu">

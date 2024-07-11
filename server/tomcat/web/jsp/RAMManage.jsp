@@ -140,7 +140,7 @@
                                 <a href="index.html" class="navmain-link">
                                     <img
                                         alt="pastedImage"
-                                        src="public/external/pastedimage-eh8r-200h.png"
+                                        src="../css/image/logo.png"
                                         class="navmain-pasted-image"
                                         />
                                 </a>
@@ -228,7 +228,7 @@
                                             <div class="navmain-container5">
                                                 <img
                                                     alt="pastedImage"
-                                                    src="public/external/pastedimage-bdsl-200h.png"
+                                                    src="../css/image/logo.png"
                                                     class="navmain-pasted-image1"
                                                     />
                                             </div>
@@ -276,27 +276,15 @@
                     </div>
                     <div class="navstaff-container navstaff-root-class-name53">
                         <div class="navstaff-manager">
-                            <span
-                                class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small"
-                                >
-                                Manage Warehouse
-                            </span>
-                            <a
-                                href="manage/profile?actor=user.html"
-                                class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
-                                >
-                                Manage Customer
-                            </a>
-                            <a
-                                href="manage/profile?actor=staff.html"
-                                class="navstaff-mgt-staff text1 thq-link1 thq-body-small"
-                                >
-                                Manage Staff
-                            </a>
-                            <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">
-                                Statistics
-                            </a>
-                        </div>
+                            <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                            Warehouse</a>
+                            <a href="/manage/profile?actor=user"
+                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                            <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                            <a href="/manage/profile?actor=staff"
+                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                            <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                          </div>
                     </div>
                 </div>
                 <div class="manage-list-product-ram-body">
@@ -452,20 +440,6 @@
                                                         </span>
                                                     </div>
                                                 </a>
-                                            </li>
-                                            <li
-                                                data-thq="thq-dropdown"
-                                                class="manage-list-product-ram-dropdown7 list-item"
-                                                >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-ram-dropdown-toggle8"
-                                                    >
-                                                    <span class="manage-list-product-ram-text27">
-                                                        <span>Other</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
                                             </li>
                                         </ul>
                                     </div>
