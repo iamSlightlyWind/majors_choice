@@ -175,6 +175,7 @@
                                             <a
                                                 href="Order.html"
                                                 class="navmain-manager-order thq-body-small thq-link"
+                                                style="visibility: hidden;"
                                                 >
                                                 Manage Order
                                             </a>
@@ -186,6 +187,7 @@
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-link1"
+                                            style="visibility: hidden;"
                                             >
                                             <svg
                                                 viewBox="0 0 1024 1024"
@@ -277,7 +279,7 @@
                             <span
                                 class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small"
                                 >
-                                Manage WareHouse
+                                Manage Warehouse
                             </span>
                             <a
                                 href="manage/profile?actor=user.html"
@@ -303,7 +305,7 @@
                             Home&nbsp;
                         </span>
                         <span class="manage-list-product-gpu-text01">
-                            / Manager WareHouse
+                            / Manager Warehouse
                         </span>
                     </div>
                     <div class="manage-list-product-gpu-root-form">
