@@ -168,7 +168,7 @@
                       </a>
                       <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                         <nav class="navmain-links">
-                          <form action="/CPU" method="post">
+                          <form action="/MotherBoard" method="post">
                             <div class="navmain-container3">
                               <input type="text" placeholder="Search for product" name="searchName"
                                 value="${requestScope.searchName}" class="navmain-textinput input" />
@@ -692,6 +692,20 @@
               </div>
             </div>
           </div>
+        <% String chatRole=(String) request.getSession().getAttribute("table"); if (!"staff".equals(chatRole)) { %>
+        <script type="text/javascript">
+          var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+          (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/668271ba9d7f358570d5b9d3/1i1mooh80';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+          })();
+        </script>
+        <% } %>                
+                      
           <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
         </body>
         <script>

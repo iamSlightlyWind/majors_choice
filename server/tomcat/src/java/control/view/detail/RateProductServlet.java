@@ -44,10 +44,10 @@ public class RateProductServlet extends HttpServlet {
         int result = Database.addRating(productID, userID, rateStar, rateText);
         switch(result){
             case -1:
-                response.sendRedirect("/");
+                response.sendRedirect("/view/detail/product?category="+category+"&id="+productID+"&status=-1");
                 break;
             case 1:
-                response.sendRedirect("/view/detail/product?category="+category+"&id="+productID);
+                response.sendRedirect("/view/detail/product?category="+category+"&id="+productID+"&status=1");
                 break;
         }
     }
@@ -63,10 +63,10 @@ public class RateProductServlet extends HttpServlet {
         int result = Database.updateRating(rateID, rateStar, rateText);
         switch(result){
             case 0:
-                response.sendRedirect("/");
+                response.sendRedirect("/view/detail/product?category="+category+"&id="+productID+"&status=-2");
                 break;
             case 1:
-                response.sendRedirect("/view/detail/product?category="+category+"&id="+productID);
+                response.sendRedirect("/view/detail/product?category="+category+"&id="+productID+"&status=2");
                 break;
         }
     }
