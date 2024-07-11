@@ -149,6 +149,12 @@
               transform: rotate(90deg);
             }
           </style>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+           <script type="text/javascript">
+        function confirmSubmit() {
+            return confirm("You definitely want to submit this form?");
+        }
+    </script>
         </head>
 
         <body>
@@ -336,7 +342,7 @@
                 </div>
                 <div class="view-detail-infor-product">
                   <div class="view-detail-image-product">
-                    <img alt="image" src="../../css/image/amd800h.webp" class="view-detail-image" />
+                    <img alt="image" src="../../images/${product.id}.png" class="view-detail-image" />
                   </div>
                   <c:set var="product" value="${requestScope.product}" />
                   <div class="view-detail-name-price">
@@ -728,9 +734,10 @@
                             <%}%>
                       </c:if>
                     </div>
+                     
                     <c:if test="${rateStatus == 'add'}">
                       <div class="view-detail-rating2">
-                        <form action="/product/rate" method="post">
+                          <form action="/product/rate" method="post" id="addForm" onsubmit="return confirmSubmit()">
                           <div class="view-detail-form">
                             <div class="view-detail-container3">
                               <span class="view-detail-average">
@@ -772,7 +779,7 @@
                     </c:if>
                     <c:if test="${rateStatus == 'update'}">
                       <div class="view-detail-rating2">
-                        <form action="/product/rate" method="post">
+                          <form action="/product/rate" method="post" id="updateForm" onsubmit="return confirmSubmit()">
                           <div class="view-detail-form">
                             <div class="view-detail-container3">
                               <span class="view-detail-average">
@@ -944,5 +951,44 @@
           </div>
           <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
         </body>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
 
+        if (status === "1") {
+          Swal.fire({
+            title: "Create Rating Successful!",
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        }
+
+        if (status === '2') {
+          Swal.fire({
+            title: "Update Rating Successful!",
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        }
+
+        if (status === '-1') {
+          Swal.fire({
+            title: "Add Rating Fail.",
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+
+        if (status === '-2') {
+          Swal.fire({
+            title: "Update Rating Fail.",
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+
+      });
+    </script>
         </html>
