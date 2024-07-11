@@ -5,6 +5,7 @@ import jakarta.servlet.http.Part;
 import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import main.Email;
@@ -1490,4 +1491,23 @@ public class Database {
         }
         return -1;
     }
+
+    public static List<Product> getMostPopularProducts() {
+        List<Product> products = new ArrayList<>();
+        try {
+            String sql = "{call getMostPopular()}";
+            CallableStatement statement = connection.prepareCall(sql);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                products.add(new Product(productId));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return products;
+    }
+    
+
 }

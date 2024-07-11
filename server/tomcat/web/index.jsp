@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="packages.Rating" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -1785,40 +1786,274 @@
               </div>
               <div class="index-body1">
                   <div class="index-product">
-                      <c:forEach begin="1" end="4">
-                          <a href="#">
-                              <div class="product1-container product1-root-class-name">
-                                  <img
-                                      alt="image"
-                                      src="./css/image/amd800h.webp"
-                                      loading="eager"
-                                      class="product1-image"
-                                      />
-                                  <h1 class="product1-text thq-link">
-                                      <span>
-                                          Bộ vi xử lý AMD Athlon 3000G / 3.5GHz / 2 nhân 4 luồng
-                                          / 5MB / AM4
-                                      </span>
-                                  </h1>
-                                  <span class="product1-text1">
-                                      <span>1.290.000₫</span>
-                                      <br />
-                                  </span>
-                                  <div class="product1-container1">
-                                      <svg viewBox="0 0 1024 1024" class="product1-icon">
-                                      <path
-                                          d="M321.008 1024c-68.246-142.008-31.902-223.378 20.55-300.044 57.44-83.956 72.244-167.066 72.244-167.066s45.154 58.7 27.092 150.508c79.772-88.8 94.824-230.28 82.782-284.464 180.314 126.012 257.376 398.856 153.522 601.066 552.372-312.532 137.398-780.172 65.154-832.85 24.082 52.676 28.648 141.85-20 185.126-82.352-312.276-285.972-376.276-285.972-376.276 24.082 161.044-87.296 337.144-194.696 468.73-3.774-64.216-7.782-108.528-41.55-169.98-7.58 116.656-96.732 211.748-120.874 328.628-32.702 158.286 24.496 274.18 241.748 396.622z"
-                                          ></path>
-                                      </svg>
-                                      <span class="product1-text4">Đã bán:</span>
-                                      <span class="product1-text5">
-                                          <span>1000</span>
-                                          <br />
-                                      </span>
-                                  </div>
-                              </div>
-                          </a>
-                      </c:forEach> 
+                      <c:forEach var="bcpu" items="${requestScope.Bcpus}">
+                    <a
+                        href="/view/detail/product?category=cpu&id=${bcpu.id}"
+                        rel="noreferrer noopener"
+                        >
+                        <div class="product-container product-root-class-name131">
+                            <img
+                                alt="image"
+                                src="./images/${bcpu.id}.png" 
+                                loading="eager"
+                                class="product-image"
+                                />
+                            <h1 class="product-text thq-link">
+                                <span>
+                                    ${bcpu.name}
+                                </span>
+                            </h1>
+                            <span class="product-text1">
+                                <fmt:setLocale value="vi_VN" />
+                                <fmt:formatNumber value="${bcpu.sellingPrice}" pattern="###,###,###" var="bcpuSelling" />
+                                <span>${bcpuSelling}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="product-container1">
+                                <c:set var="bcpu1" value="${bcpu}" scope="page"/>
+                                <span class="product-text4"><span>0.0</span></span>
+                                <svg
+                                    viewBox="0 0 950.8571428571428 1024"
+                                    class="product-icon"
+                                    >
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                                    ></path>
+                                </svg>
+                                <span class="product-text5"><span>
+                                    </span>(0 Review)</span>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
+                <c:forEach var="Bgpu" items="${requestScope.Bgpus}">
+                    <a
+                        href="/view/detail/product?category=gpu&id=${Bgpu.id}"
+                        rel="noreferrer noopener"
+                        >
+                        <div class="product-container product-root-class-name131">
+                            <img
+                                alt="image"
+                                src="./images/${Bgpu.id}.png" 
+                                loading="eager"
+                                class="product-image"
+                                />
+                            <h1 class="product-text thq-link">
+                                <span>
+                                    ${Bgpu.name}
+                                </span>
+                            </h1>
+                            <span class="product-text1">
+                                <fmt:setLocale value="vi_VN" />
+                                <fmt:formatNumber value="${Bgpu.sellingPrice}" pattern="###,###,###" var="BgpuSelling" />
+                                <span>${BgpuSelling}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="product-container1">
+                                <span class="product-text4"><span>0.0</span></span>
+                                <svg
+                                    viewBox="0 0 950.8571428571428 1024"
+                                    class="product-icon"
+                                    >
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                                    ></path>
+                                </svg>
+                                <span class="product-text5"><span>(0 Review)</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
+                <c:forEach var="bmobo" items="${requestScope.Bmobos}">
+                    <a
+                        href="/view/detail/product?category=mobo&id=${bmobo.id}"
+                        rel="noreferrer noopener"
+                        >
+                        <div class="product-container product-root-class-name131">
+                            <img
+                                alt="image"
+                                src="./images/${bmobo.id}.png" 
+                                loading="eager"
+                                class="product-image"
+                                />
+                            <h1 class="product-text thq-link">
+                                <span>
+                                    ${bmobo.name}
+                                </span>
+                            </h1>
+                            <span class="product-text1">
+                                <fmt:setLocale value="vi_VN" />
+                                <fmt:formatNumber value="${bmobo.sellingPrice}" pattern="###,###,###" var="bmoboSelling" />
+                                <span>${bmoboSelling}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="product-container1">
+                                <span class="product-text4"><span>0.0</span></span>
+                                <svg
+                                    viewBox="0 0 950.8571428571428 1024"
+                                    class="product-icon"
+                                    >
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                                    ></path>
+                                </svg>
+                                <span class="product-text5"><span>(0 Review)</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
+                <c:forEach var="bpsu" items="${requestScope.Bpsus}">
+                    <a
+                        href="/view/detail/product?category=psu&id=${bpsu.id}"
+                        rel="noreferrer noopener"
+                        >
+                        <div class="product-container product-root-class-name131">
+                            <img
+                                alt="image"
+                                src="./images/${bpsu.id}.png" 
+                                loading="eager"
+                                class="product-image"
+                                />
+                            <h1 class="product-text thq-link">
+                                <span>
+                                    ${bpsu.name}
+                                </span>
+                            </h1>
+                            <span class="product-text1">
+                                <fmt:setLocale value="vi_VN" />
+                                <fmt:formatNumber value="${bpsu.sellingPrice}" pattern="###,###,###" var="bpsuSelling" />
+                                <span>${bpsuSelling}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="product-container1">
+                                <span class="product-text4"><span>0.0</span></span>
+                                <svg
+                                    viewBox="0 0 950.8571428571428 1024"
+                                    class="product-icon"
+                                    >
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                                    ></path>
+                                </svg>
+                                <span class="product-text5"><span>(0 Review)</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
+                <c:forEach var="bram" items="${requestScope.Brams}">
+                    <a
+                        href="/view/detail/product?category=ram&id=${bram.id}"
+                        rel="noreferrer noopener"
+                        >
+                        <div class="product-container product-root-class-name131">
+                            <img
+                                alt="image"
+                                src="./images/${bram.id}.png" 
+                                loading="eager"
+                                class="product-image"
+                                />
+                            <h1 class="product-text thq-link">
+                                <span>
+                                    ${bram.name}
+                                </span>
+                            </h1>
+                            <span class="product-text1">
+                                <fmt:setLocale value="vi_VN" />
+                                <fmt:formatNumber value="${bram.sellingPrice}" pattern="###,###,###" var="bramSelling" />
+                                <span>${bramSelling}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="product-container1">
+                                <span class="product-text4"><span>0.0</span></span>
+                                <svg
+                                    viewBox="0 0 950.8571428571428 1024"
+                                    class="product-icon"
+                                    >
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                                    ></path>
+                                </svg>
+                                <span class="product-text5"><span>(0 Review)</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
+                <c:forEach var="bcase" items="${requestScope.Bcases}">
+                    <a
+                        href="/view/detail/product?category=case&id=${bcase.id}"
+                        rel="noreferrer noopener"
+                        >
+                        <div class="product-container product-root-class-name131">
+                            <img
+                                alt="image"
+                                src="./images/${bcase.id}.png" 
+                                loading="eager"
+                                class="product-image"
+                                />
+                            <h1 class="product-text thq-link">
+                                <span>
+                                    ${bcase.name}
+                                </span>
+                            </h1>
+                            <span class="product-text1">
+                                <fmt:setLocale value="vi_VN" />
+                                <fmt:formatNumber value="${bcase.sellingPrice}" pattern="###,###,###" var="bcaseSelling" />
+                                <span>${bcaseSelling}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="product-container1">
+                                <span class="product-text4"><span>0.0</span></span>
+                                <svg
+                                    viewBox="0 0 950.8571428571428 1024"
+                                    class="product-icon"
+                                    >
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                                    ></path>
+                                </svg>
+                                <span class="product-text5"><span>(0 Review)</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
+                <c:forEach var="bssd" items="${requestScope.Bssds}">
+                    <a
+                        href="/view/detail/product?category=ssd&id=${bssd.id}"
+                        rel="noreferrer noopener"
+                        >
+                        <div class="product-container product-root-class-name131">
+                            <img
+                                alt="image"
+                                src="./images/${bssd.id}.png" 
+                                loading="eager"
+                                class="product-image"
+                                />
+                            <h1 class="product-text thq-link">
+                                <span>
+                                    ${bssd.name}
+                                </span>
+                            </h1>
+                            <span class="product-text1">
+                                <fmt:setLocale value="vi_VN" />
+                                <fmt:formatNumber value="${bssd.sellingPrice}" pattern="###,###,###" var="bssdSelling" />
+                                <span>${bssdSelling}<u>đ</u></span>
+                                <br />
+                            </span>
+                            <div class="product-container1">
+                                <span class="product-text4"><span>0.0</span></span>
+                                <svg
+                                    viewBox="0 0 950.8571428571428 1024"
+                                    class="product-icon"
+                                    >
+                                <path
+                                    d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z"
+                                    ></path>
+                                </svg>
+                                <span class="product-text5"><span>(0 Review)</span></span>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
                   </div>
               </div>
             </div>
@@ -1845,7 +2080,7 @@
                         <div class="product-container product-root-class-name131">
                             <img
                                 alt="image"
-                                src="./css/image/amd300w.webp" 
+                                src="./images/${cpu.id}.png" 
                                 loading="eager"
                                 class="product-image"
                                 />
@@ -1899,7 +2134,7 @@
                 <div class="product-container product-root-class-name146">
                   <img
                     alt="image"
-                    src="./css/image/amd300w.webp"
+                    src="./images/${gpu.id}.png"
                     loading="eager"
                     class="product-image"
                   />
@@ -1953,7 +2188,7 @@
                 <div class="product-container product-root-class-name141">
                   <img
                     alt="image"
-                    src="./css/image/amd300w.webp"
+                    src="./images/${mobo.id}.png"
                     loading="eager"
                     class="product-image"
                   />
@@ -2007,7 +2242,7 @@
                 <div class="product-container product-root-class-name136">
                   <img
                     alt="image"
-                    src="./css/image/amd300w.webp"
+                    src="./images/${psu.id}.png"
                     loading="eager"
                     class="product-image"
                   />
@@ -2061,7 +2296,7 @@
                 <div class="product-container product-root-class-name151">
                   <img
                     alt="image"
-                    src="./css/image/amd300w.webp"
+                    src="./images/${ram.id}.png"
                     loading="eager"
                     class="product-image"
                   />
@@ -2114,7 +2349,7 @@
                 <div class="product-container product-root-class-name136">
                   <img
                     alt="image"
-                    src="./css/image/amd300w.webp"
+                    src="./images/${ssd.id}.png"
                     loading="eager"
                     class="product-image"
                   />
@@ -2168,7 +2403,7 @@
                 <div class="product-container product-root-class-name151">
                   <img
                     alt="image"
-                    src="./css/image/amd300w.webp"
+                    src="./images/${case1.id}.png"
                     loading="eager"
                     class="product-image"
                   />
