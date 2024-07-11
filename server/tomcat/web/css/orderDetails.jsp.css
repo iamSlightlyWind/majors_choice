@@ -9,7 +9,6 @@
 
 .navmain-container1 {
   width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
   height: 11vh;
   display: flex;
   opacity: 1;
@@ -23,6 +22,63 @@
   position: relative;
   justify-content: center;
   background-color: var(--dl-color-theme-secondary1);
+}
+
+.navstaff-container {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-color: var(--dl-color-theme-neutral-dark);
+  border-width: 1px;
+  justify-content: center;
+  background-image: linear-gradient(90deg, rgb(192, 36, 37) 0.00%, rgba(42, 42, 39, 0.45) 100.00%);
+}
+
+.navstaff-manager {
+  width: 70vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navstaff-mgt-report {
+  font-size: 0.9rem;
+}
+
+.navstaff-mgt-staff {
+  fill: var(--dl-color-theme-secondary1);
+  color: var(--dl-color-theme-secondary1);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-family: "Noto Sans";
+  font-weight: 600;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.navstaff-mgt-customer {
+  fill: var(--dl-color-theme-secondary1);
+  color: var(--dl-color-theme-secondary1);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-family: "Noto Sans";
+  font-weight: 600;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+}
+
+.navstaff-mgt-ware-house {
+  fill: var(--dl-color-theme-secondary1);
+  color: var(--dl-color-theme-secondary1);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-family: "Noto Sans";
+  font-weight: 600;
 }
 
 .navmain-navbar-interactive {

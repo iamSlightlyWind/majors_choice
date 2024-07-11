@@ -281,13 +281,13 @@ public class Database {
             callableStatement.setDouble(2, costPrice);
             callableStatement.setString(3, name);
             callableStatement.setString(4, generation);
-            callableStatement.setString(5, igpu);
-            callableStatement.setString(6, socket);
-            callableStatement.setInt(7, cores);
-            callableStatement.setInt(8, threads);
-            callableStatement.setInt(9, baseClock);
-            callableStatement.setInt(10, boostClock);
-            callableStatement.setInt(11, tdp);
+            callableStatement.setString(5, socket);
+            callableStatement.setInt(6, cores);
+            callableStatement.setInt(7, threads);
+            callableStatement.setInt(8, baseClock);
+            callableStatement.setInt(9, boostClock);
+            callableStatement.setInt(10, tdp);
+            callableStatement.setString(11, igpu);
             callableStatement.setString(12, image);
             callableStatement.setInt(13, quantity);
             callableStatement.registerOutParameter(14, Types.NVARCHAR);
@@ -1418,10 +1418,6 @@ public class Database {
         return -1;
     }
     
-    public static void main(String[] args) {
-        Database db = new Database();
-        int n = db.setQuantity(10);
-    }
     public static int addRating(int productId, int userId, int ratingStar, String ratingText) {
         try {
             String sql = "{call addRating(?, ?, ?, ?, ?)}";

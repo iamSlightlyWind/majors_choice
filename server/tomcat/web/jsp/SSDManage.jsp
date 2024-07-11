@@ -137,10 +137,10 @@
                         <header class="navmain-container1"></header>
                         <header class="navmain-container2">
                             <header data-thq="thq-navbar" class="navmain-navbar-interactive">
-                                <a href="index.html" class="navmain-link">
+                                <a href="/" class="navmain-link">
                                     <img
                                         alt="pastedImage"
-                                        src="public/external/pastedimage-eh8r-200h.png"
+                                        src="../css/image/logo.png"
                                         class="navmain-pasted-image"
                                         />
                                 </a>
@@ -161,7 +161,7 @@
                                         </div>
                                         <div class="navmain-container4">
                                             <a
-                                                href="index.html"
+                                                href="/"
                                                 class="navmain-home thq-body-small thq-link"
                                                 >
                                                 <span>Home</span>
@@ -173,8 +173,9 @@
                                                 <span>Who we are</span>
                                             </span>
                                             <a
-                                                href="Order.html"
+                                                href="/order"
                                                 class="navmain-manager-order thq-body-small thq-link"
+                                                style="visibility: hidden;"
                                                 >
                                                 Manage Order
                                             </a>
@@ -182,10 +183,11 @@
                                     </nav>
                                     <div class="navmain-buttons">
                                         <a
-                                            href="Cart.html"
+                                            href="/cart"
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-link1"
+                                            style="visibility: hidden;"
                                             >
                                             <svg
                                                 viewBox="0 0 1024 1024"
@@ -197,7 +199,7 @@
                                             </svg>
                                         </a>
                                         <a
-                                            href="profile.html"
+                                            href="/profile"
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-account thq-button-filled"
@@ -226,7 +228,7 @@
                                             <div class="navmain-container5">
                                                 <img
                                                     alt="pastedImage"
-                                                    src="public/external/pastedimage-bdsl-200h.png"
+                                                    src="../css/image/logo.png"
                                                     class="navmain-pasted-image1"
                                                     />
                                             </div>
@@ -274,27 +276,15 @@
                     </div>
                     <div class="navstaff-container navstaff-root-class-name43">
                         <div class="navstaff-manager">
-                            <span
-                                class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small"
-                                >
-                                Manage WareHouse
-                            </span>
-                            <a
-                                href="manage/profile?actor=user.html"
-                                class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
-                                >
-                                Manage Customer
-                            </a>
-                            <a
-                                href="manage/profile?actor=staff.html"
-                                class="navstaff-mgt-staff text1 thq-link1 thq-body-small"
-                                >
-                                Manage Staff
-                            </a>
-                            <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
-                                Statistics
-                            </span>
-                        </div>
+                            <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                            Warehouse</a>
+                            <a href="/manage/profile?actor=user"
+                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                            <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                            <a href="/manage/profile?actor=staff"
+                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                            <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                          </div>
                     </div>
                 </div>
                 <div class="manage-list-product-ssd-body">
@@ -303,7 +293,7 @@
                             Home&nbsp;
                         </span>
                         <span class="manage-list-product-ssd-text01">
-                            / Manager WareHouse
+                            / Manager Warehouse
                         </span>
                     </div>
                     <div class="manage-list-product-ssd-root-form">
@@ -423,15 +413,17 @@
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-ssd-dropdown5 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-ssd-dropdown-toggle6"
-                                                    >
+                                                <a href="/ssds"
+                                                   <div
+                                                   data-thq="thq-dropdown-toggle"
+                                                   class="manage-list-product-ssd-dropdown-toggle6"
+                                                   >
                                                     <span class="manage-list-product-ssd-text21">
                                                         <span>List of SSD</span>
                                                         <br />
                                                     </span>
-                                                </div>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
@@ -443,20 +435,6 @@
                                                     >
                                                     <span class="manage-list-product-ssd-text24">
                                                         <span>List of CASE</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
-                                            </li>
-                                            <li
-                                                data-thq="thq-dropdown"
-                                                class="manage-list-product-ssd-dropdown7 list-item"
-                                                >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-ssd-dropdown-toggle8"
-                                                    >
-                                                    <span class="manage-list-product-ssd-text27">
-                                                        <span>Other</span>
                                                         <br />
                                                     </span>
                                                 </div>

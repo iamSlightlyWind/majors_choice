@@ -288,20 +288,20 @@
                   <div class="navstaff-container navstaff-root-class-name">
                     <div class="navstaff-manager">
                       <span class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">
-                        Manage WareHouse
+                        Manage Warehouse
                       </span>
-                      <a href="manage/profile?actor=user.html"
+                      <a href="/manage/profile?actor=user"
                         class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
                         Manage Customer
                       </a>
                       <c:if test="${sessionScope.role == 'manager'}">
-                        <a href="manage/profile?actor=staff.html"
+                        <a href="/manage/profile?actor=staff"
                           class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
                           Manage Staff
                         </a>
-                        <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
+                        <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">
                           Statistics
-                        </span>
+                        </a>
                       </c:if>
                     </div>
                   </div>

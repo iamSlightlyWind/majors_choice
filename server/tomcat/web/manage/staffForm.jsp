@@ -266,7 +266,7 @@
               <div class="menu-function-container menu-function-root-class-name7">
                 <div class="menu-function-manager">
                   <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                    <span>Manager WareHouse</span>
+                    <span>Manager Warehouse</span>
                   </span>
                   <a href="/manage/profile?actor=user">
                     <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">

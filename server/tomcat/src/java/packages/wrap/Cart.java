@@ -127,6 +127,9 @@ public class Cart {
             case "motherboard":
                 newProduct = new Motherboard(id);
                 break;
+            case "case":
+                newProduct = new Case(id);
+                break;
         }
         products.add(newProduct);
         updateQuantity();
