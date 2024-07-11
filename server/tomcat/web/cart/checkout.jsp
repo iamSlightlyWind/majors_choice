@@ -267,9 +267,7 @@
               <div class="cofirm-your-order-componment-product">
                 <c:forEach var="ProductCount" items="${ProductCount}">
                   <form class="cofirm-your-order-componment-form2">
-                    <img alt="image"
-                      src="/images/${ProductCount.id}.png"
-                      class="cofirm-your-order-componment-image2" />
+                    <img alt="image" src="/images/${ProductCount.id}.png" class="cofirm-your-order-componment-image2" />
                     <div class="cofirm-your-order-componment-container3">
                       <h1 class="cofirm-your-order-componment-text13">
                         ${ProductCount.name}
@@ -600,6 +598,17 @@
           });
           return false;
         });
+      </script>
+      <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+          var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+          s1.async = true;
+          s1.src = 'https://embed.tawk.to/668271ba9d7f358570d5b9d3/1i1mooh80';
+          s1.charset = 'UTF-8';
+          s1.setAttribute('crossorigin', '*');
+          s0.parentNode.insertBefore(s1, s0);
+        })();
       </script>
     </body>
 
