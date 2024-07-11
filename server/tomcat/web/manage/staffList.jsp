@@ -188,20 +188,30 @@
                         <span class="navmain-whoweare thq-body-small thq-link">
                           <span>Who we are</span>
                         </span>
-                        <a href="/order" class="navmain-manager-order thq-body-small thq-link">
-                          Manage Order
-                        </a>
+                        <% if (!"staff".equals(request.getSession().getAttribute("table"))) { %>
+                          <a href="/order" class="navmain-manager-order thq-body-small thq-link">
+                            Manage Order
+                          </a>
+                          <% } %>
+                            <% if ("staff".equals(request.getSession().getAttribute("table"))) { %>
+                              <a href="/order" class="navmain-manager-order thq-body-small thq-link"
+                                style="visibility: hidden;">
+                                Manage Order
+                              </a>
+                              <% } %>
                       </div>
                     </nav>
                     <div class="navmain-buttons">
-                      <a href="#" target="_blank" rel="noreferrer noopener" class="navmain-link1">
+                      <a href="#" target="_blank" rel="noreferrer noopener" class="navmain-link1"
+                        style="visibility: hidden;">
                         <svg viewBox="0 0 1024 1024" class="navmain-icon thq-button-icon thq-icon-medium">
                           <path
                             d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
                           </path>
                         </svg>
                       </a>
-                      <a href="/" target="_blank" rel="noreferrer noopener" class="navmain-account thq-button-filled">
+                      <a href="/profile" target="_blank" rel="noreferrer noopener"
+                        class="navmain-account thq-button-filled">
                         <svg viewBox="0 0 731.4285714285713 1024" class="navmain-icon2">
                           <path
                             d="M731.429 799.429c0 83.429-54.857 151.429-121.714 151.429h-488c-66.857 0-121.714-68-121.714-151.429 0-150.286 37.143-324 186.857-324 46.286 45.143 109.143 73.143 178.857 73.143s132.571-28 178.857-73.143c149.714 0 186.857 173.714 186.857 324zM585.143 292.571c0 121.143-98.286 219.429-219.429 219.429s-219.429-98.286-219.429-219.429 98.286-219.429 219.429-219.429 219.429 98.286 219.429 219.429z">
@@ -261,20 +271,16 @@
             </div>
             <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
               .equals(role)) { %>
-              <div class="navstaff-container navstaff-root-class-name4">
+              <div class="navstaff-container">
                 <div class="navstaff-manager">
-                  <span class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">
-                    Manage WareHouse
-                  </span>
-                  <a href="/manage/profile?actor=user" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
-                    Manage Customer
-                  </a>
-                  <a href="/manage/profile?actor=staff" class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
-                    Manage Staff
-                  </a>
-                  <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
-                    Statistics
-                  </span>
+                  <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                    Warehouse</a>
+                  <a href="/manage/profile?actor=user"
+                    class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                  <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                  <a href="/manage/profile?actor=staff" class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage
+                    Staff</a>
+                  <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
                 </div>
               </div>
               <% } %>

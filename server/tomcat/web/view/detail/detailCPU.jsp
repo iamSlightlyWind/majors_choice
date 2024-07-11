@@ -244,7 +244,7 @@
                         <div class="navmain-nav">
                           <div class="navmain-top">
                             <div class="navmain-container5">
-                              <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
+                              <img alt="pastedImage" src="../../css/image/logo.png"
                                 class="navmain-pasted-image1" />
                             </div>
                             <div data-thq="thq-close-menu" class="navmain-close-menu">
@@ -295,7 +295,7 @@
                       <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
                       <a href="/manage/profile?actor=staff"
                         class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
-                      <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</span>
+                      <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
                     </div>
                   </div>
                   <% } %>
