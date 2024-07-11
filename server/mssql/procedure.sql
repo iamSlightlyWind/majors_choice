@@ -1578,50 +1578,59 @@ begin
     FROM ratings
     WHERE userId = @userID and productId = @productID)
 	begin
-        set @result = 1 -- user has rated this product
+        set @result = 1
+        -- user has rated this product
         return
     end
     else IF EXISTS (SELECT 1
     FROM orders
     WHERE status = 'Completed' and userId = @userID and productId = @productID)
 	begin
-        set @result = 0 -- user has bought this product but not rated
+        set @result = 0
+        -- user has bought this product but not rated
         return
     end
 	else
 	begin
-		set @result = -1 --other
-		return
-	end
+        set @result = -1
+        --other
+        return
+    end
 end;
 go
 
 CREATE PROCEDURE getMostPopular
 AS
 BEGIN
-    SELECT TOP 4 productId, COUNT(productId) AS ProductCount
+    SELECT TOP 4
+        productId, COUNT(productId) AS ProductCount
     FROM orders
     GROUP BY productId
     ORDER BY ProductCount DESC
 END
 GO
 
-CREATE PROCEDURE GetOrderStatistics
-    @StartDate DATE = null, 
-    @EndDate DATE = null
+CREATE OR ALTER PROCEDURE GetOrderStatistics
+    @StartDate DATE = NULL,
+    @EndDate DATE = NULL
 AS
 BEGIN
     DECLARE @Sql NVARCHAR(MAX), @Params NVARCHAR(MAX);
     DECLARE @TotalOrders INT, @CompletedOrders INT, @TotalExpense DECIMAL(18,2), @TotalRevenue DECIMAL(18,2);
     DECLARE @Profit DECIMAL(18,2), @ProfitPercentage DECIMAL(18,2), @AverageOrderValue DECIMAL(18,2);
     DECLARE @TotalUsers INT, @UsersWithCompletedOrders INT, @PercentageUsersWithOrders DECIMAL(18,2);
-    DECLARE @PercentageCompletedOrders DECIMAL(18,2);
+    DECLARE @PercentageCompletedOrders DECIMAL(18,2), @PercentageCashOrders DECIMAL(18,2);
+    DECLARE @UniqueCompletedOrders INT, @TotalCashOrders INT;
 
     DECLARE @WhereClause NVARCHAR(MAX) = ' WHERE 1=1 ';
     IF @StartDate IS NOT NULL
-        SET @WhereClause += ' AND orderDate >= @StartDate ';
+        SET @WhereClause += ' AND dateOrdered >= @StartDate ';
     IF @EndDate IS NOT NULL
-        SET @WhereClause += ' AND orderDate <= @EndDate ';
+        SET @WhereClause += ' AND dateOrdered <= @EndDate ';
+
+    SET @Sql = N'SELECT @UniqueCompletedOrdersOut = COUNT(DISTINCT id) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
+    SET @Params = N'@UniqueCompletedOrdersOut INT OUTPUT';
+    EXEC sp_executesql @Sql, @Params, @UniqueCompletedOrdersOut = @UniqueCompletedOrders OUTPUT;
 
     SET @Sql = N'SELECT @TotalOrdersOut = COUNT(*) FROM orders ' + @WhereClause;
     SET @Params = N'@TotalOrdersOut INT OUTPUT';
@@ -1652,13 +1661,22 @@ BEGIN
 
     SET @AverageOrderValue = CASE WHEN @CompletedOrders > 0 THEN @TotalRevenue / @CompletedOrders ELSE 0 END;
 
-    SELECT 
+    SET @Sql = N'SELECT @TotalCashOrdersOut = COUNT(*) FROM orders o
+                 JOIN orderInformation oi ON o.id = oi.id ' + @WhereClause + ' AND oi.payment IS NULL';
+    SET @Params = N'@TotalCashOrdersOut INT OUTPUT';
+    EXEC sp_executesql @Sql, @Params, @TotalCashOrdersOut = @TotalCashOrders OUTPUT;
+
+    SET @PercentageCashOrders = CASE WHEN @TotalOrders > 0 THEN (@TotalCashOrders * 100.0) / @TotalOrders ELSE 0 END;
+
+    SELECT
         @PercentageCompletedOrders AS PercentageCompletedOrders,
         @TotalExpense AS TotalExpense,
         @TotalRevenue AS TotalRevenue,
         @Profit AS Profit,
         @ProfitPercentage AS ProfitPercentage,
         @PercentageUsersWithOrders AS PercentageUsersWithCompletedOrders,
-        @AverageOrderValue AS AverageOrderValue;
+        @AverageOrderValue AS AverageOrderValue,
+        @UniqueCompletedOrders AS UniqueCompletedOrders,
+        @PercentageCashOrders AS PercentageCashOrders;
 END
-go
+GO
