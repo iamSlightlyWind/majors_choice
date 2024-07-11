@@ -1599,7 +1599,7 @@ go
 CREATE PROCEDURE getMostPopular
 AS
 BEGIN
-    SELECT TOP 5 productId, COUNT(productId) AS ProductCount
+    SELECT TOP 4 productId, COUNT(productId) AS ProductCount
     FROM orders
     GROUP BY productId
     ORDER BY ProductCount DESC
@@ -1607,7 +1607,7 @@ END
 GO
 
 CREATE PROCEDURE GetOrderStatistics
-    @StartDate DATE = NULL, 
+    @StartDate DATE = null, 
     @EndDate DATE = null
 AS
 BEGIN

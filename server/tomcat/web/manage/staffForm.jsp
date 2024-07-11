@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>EditCustomer - Major's Choice</title>
+    <title>Customer - Major's Choice</title>
     <meta property="og:title" content="EditCustomer - Major's Choice" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -214,10 +214,7 @@
                       Manage Customer
                     </span>
                   </a>
-                  <span class="menu-function-mgt-feebcack text1 thq-link1 thq-body-small">
-                    <span>Feedback</span>
-                    <br />
-                  </span>
+
                   <c:if test="${sessionScope.role == 'manager'}">
                       <a href="/manage/profile?actor=staff">
                           <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
@@ -225,7 +222,7 @@
                           </span>
                       </a>
                       <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                            Financial Reports
+                            Statistics
                       </span>
                   </c:if>                 
                 </div>

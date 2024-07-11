@@ -287,8 +287,7 @@
                     <input type="hidden" name="productID" value="${ProductCount.id}" />
                     <div class="view-cart-component-product01">
                       <div class="view-cart-component-container41">
-                        <img alt="image" src="https://play.teleporthq.io/static/svg/default-img.svg"
-                          class="view-cart-component-image09" />
+                        <img alt="image" src="/images/${ProductCount.id}.png" class="view-cart-component-image09" />
                         <div class="view-cart-component-container42">
                           <span class="view-cart-component-name-product19">
                             ${ProductCount.name}
@@ -529,6 +528,17 @@
           });
           return false;
         });
+      </script>
+      <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+          var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+          s1.async = true;
+          s1.src = 'https://embed.tawk.to/668271ba9d7f358570d5b9d3/1i1mooh80';
+          s1.charset = 'UTF-8';
+          s1.setAttribute('crossorigin', '*');
+          s0.parentNode.insertBefore(s1, s0);
+        })();
       </script>
     </body>
 
