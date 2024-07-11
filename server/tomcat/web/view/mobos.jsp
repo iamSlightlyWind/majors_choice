@@ -299,9 +299,9 @@
                           class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
                           Manage Staff
                         </a>
-                        <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
+                        <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">
                           Statistics
-                        </span>
+                        </a>
                       </c:if>
                     </div>
                   </div>
