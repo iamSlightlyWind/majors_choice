@@ -11,12 +11,15 @@ import database.Database;
 public class Report {
 
     public static double PercentageCompletedOrders = 0;
+    public static int completedOrders = 0;
     public static double TotalExpense = 0;
     public static double TotalRevenue = 0;
     public static double Profit = 0;
     public static double ProfitPercentage = 0;
     public static double PercentageUsersWithCompletedOrders = 0;
     public static double AverageOrderValue = 0;
+    public static double cashPercentage = 0;
+    public static double cardPercentage = 0;
     static Connection connection;
 
     static {
@@ -51,6 +54,9 @@ public class Report {
                     ProfitPercentage = rs.getDouble("ProfitPercentage");
                     PercentageUsersWithCompletedOrders = rs.getDouble("PercentageUsersWithCompletedOrders");
                     AverageOrderValue = rs.getDouble("AverageOrderValue");
+                    completedOrders = rs.getInt("UniqueCompletedOrders");
+                    cashPercentage = rs.getDouble("PercentageCashOrders");
+                    cardPercentage = 100 - cashPercentage;
                 }
             }
         } catch (SQLException ex) {
