@@ -423,15 +423,17 @@
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-ssd-dropdown5 list-item"
                                                 >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-ssd-dropdown-toggle6"
-                                                    >
+                                                <a href="/ssds"
+                                                   <div
+                                                   data-thq="thq-dropdown-toggle"
+                                                   class="manage-list-product-ssd-dropdown-toggle6"
+                                                   >
                                                     <span class="manage-list-product-ssd-text21">
                                                         <span>List of SSD</span>
                                                         <br />
                                                     </span>
-                                                </div>
+                                                    </div>
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"

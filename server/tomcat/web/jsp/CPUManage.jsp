@@ -476,16 +476,28 @@
                                         <span class="manage-list-product-text030">Add Product</span>
                                     </div>
                                 </a>
-                                <div
-                                    id="fromup"
-                                    onclick="openForm"
-                                    class="manage-list-product-import-file thq-button-filled"
-                                    >
-                                    <span class="manage-list-product-text031">
-                                        <span>Import Excel File</span>
-                                        <br />
-                                    </span>
-                                </div>
+                                <body>
+                                    <form id="importExcelForm" action="cpus?service=importExcel" method="post" enctype="multipart/form-data" style="display: none;">
+                                        <input type="file" name="excel" id="excel" accept=".xlsx" onchange="submitForm()">
+                                    </form>
+
+                                    <div
+                                        id="fromup"
+                                        onclick="document.getElementById('excel').click();"
+                                        class="manage-list-product-import-file thq-button-filled"
+                                        >
+                                        <span class="manage-list-product-text031">
+                                            <span>Import Excel File</span>
+                                            <br />
+                                        </span>
+                                    </div>
+
+                                    <script>
+                                        function submitForm() {
+                                            document.getElementById('importExcelForm').submit();
+                                        }
+                                    </script>
+                                </body>
                                 <div class="manage-list-product-search-product">
                                     <input
                                         type="text"
