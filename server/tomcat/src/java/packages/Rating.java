@@ -90,4 +90,17 @@ public class Rating {
     public void setDateRated(String dateRated) {
         this.dateRated = dateRated;
     }   
+    
+    public static double percentRate(int id){
+        ArrayList<Rating> rates = Database.getRating(id);
+        double percent = 0;
+        int sumStar = 0;
+        
+        for (Rating rate : rates) {
+            sumStar += rate.ratingStar;
+        }
+        
+        percent = (double) sumStar/rates.size();
+        return percent;                       
+    }
 }
