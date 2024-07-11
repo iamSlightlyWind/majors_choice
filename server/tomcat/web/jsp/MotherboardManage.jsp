@@ -137,7 +137,7 @@
                         <header class="navmain-container1"></header>
                         <header class="navmain-container2">
                             <header data-thq="thq-navbar" class="navmain-navbar-interactive">
-                                <a href="index.html" class="navmain-link">
+                                <a href="/" class="navmain-link">
                                     <img
                                         alt="pastedImage"
                                         src="../css/image/logo.png"
@@ -161,7 +161,7 @@
                                         </div>
                                         <div class="navmain-container4">
                                             <a
-                                                href="index.html"
+                                                href="/"
                                                 class="navmain-home thq-body-small thq-link"
                                                 >
                                                 <span>Home</span>
@@ -173,7 +173,7 @@
                                                 <span>Who we are</span>
                                             </span>
                                             <a
-                                                href="Order.html"
+                                                href="/order"
                                                 class="navmain-manager-order thq-body-small thq-link"
                                                 style="visibility: hidden;"
                                                 >
@@ -183,7 +183,7 @@
                                     </nav>
                                     <div class="navmain-buttons">
                                         <a
-                                            href="Cart.html"
+                                            href="/cart"
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-link1"
@@ -199,7 +199,7 @@
                                             </svg>
                                         </a>
                                         <a
-                                            href="profile.html"
+                                            href="/profile"
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-account thq-button-filled"

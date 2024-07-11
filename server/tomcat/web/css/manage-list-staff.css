@@ -8,8 +8,7 @@
 }
 .navmain-container1 {
   width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: 11vh;
+  height: 9vh;
   display: flex;
   opacity: 1;
   align-items: stretch;
@@ -1957,7 +1956,7 @@
 }
 .manage-list-staff-heading-table {
   width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
+
   display: flex;
   box-shadow: 0px 0px 6px 0px #d4d4d4;
   margin-top: 0px;
