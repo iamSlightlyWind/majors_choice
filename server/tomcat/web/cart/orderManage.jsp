@@ -173,15 +173,18 @@
                   </a>
                   <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                     <nav class="navmain-links">
-                      <div class="navmain-container3">
-                        <input type="text" placeholder="Search for product" class="navmain-textinput input" />
-                        <button class="navmain-search thq-button-filled">
-                          <span class="navmain-text thq-body-small">
-                            <span>Search</span>
-                            <br />
-                          </span>
-                        </button>
-                      </div>
+                      <form action="/" method="post">
+                        <div class="navmain-container3">
+                          <input type="text" name="searchName" placeholder="Search for product"
+                            class="navmain-textinput input" />
+                          <button class="navmain-search thq-button-filled" type="submit">
+                            <span class="navmain-text thq-body-small">
+                              <span>Search</span>
+                              <br />
+                            </span>
+                          </button>
+                        </div>
+                      </form>
                       <div class="navmain-container4">
                         <a href="/" class="navmain-home thq-body-small thq-link">
                           <span>Home</span>
