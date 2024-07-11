@@ -222,7 +222,7 @@
                     <div class="navbar-nav">
                       <div class="navbar-top">
                         <div class="navbar-container5">
-                          <img alt="pastedImage" src="public/external/pastedimage-bdsl-200h.png"
+                          <img alt="pastedImage" src="../css/image/logo.png"
                             class="navbar-pasted-image1" />
                         </div>
                         <div data-thq="thq-close-menu" class="navbar-close-menu">
@@ -267,7 +267,7 @@
               <div class="menu-function-container menu-function-root-class-name">
                 <div class="menu-function-manager">
                   <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
-                    <span>Manage WareHouse</span>
+                    <span>Manage Warehouse</span>
                   </span>
                   <a href="/manage/profile?actor=user">
                     <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">

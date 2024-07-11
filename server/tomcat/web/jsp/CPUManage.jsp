@@ -137,7 +137,7 @@
                                 <a href="index.html" class="navmain-link">
                                     <img
                                         alt="pastedImage"
-                                        src="public/external/pastedimage-eh8r-200h.png"
+                                        src="../css/image/logo.png"
                                         class="navmain-pasted-image"
                                         />
                                 </a>
@@ -172,6 +172,7 @@
                                             <a
                                                 href="Order.html"
                                                 class="navmain-manager-order thq-body-small thq-link"
+                                                style="visibility: hidden;"
                                                 >
                                                 Manage Order
                                             </a>
@@ -183,6 +184,7 @@
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-link1"
+                                            style="visibility: hidden;"
                                             >
                                             <svg
                                                 viewBox="0 0 1024 1024"
@@ -223,7 +225,7 @@
                                             <div class="navmain-container5">
                                                 <img
                                                     alt="pastedImage"
-                                                    src="public/external/pastedimage-bdsl-200h.png"
+                                                    src="../css/image/logo.png"
                                                     class="navmain-pasted-image1"
                                                     />
                                             </div>
@@ -271,27 +273,15 @@
                     </div>
                     <div class="navstaff-container navstaff-root-class-name15">
                         <div class="navstaff-manager">
-                            <span
-                                class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small"
-                                >
-                                Manage WareHouse
-                            </span>
-                            <a
-                                href="manage/profile?actor=user.html"
-                                class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
-                                >
-                                Manage Customer
-                            </a>
-                            <a
-                                href="manage/profile?actor=staff.html"
-                                class="navstaff-mgt-staff text1 thq-link1 thq-body-small"
-                                >
-                                Manage Staff
-                            </a>
-                            <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
-                                Statistics
-                            </span>
-                        </div>
+                            <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                            Warehouse</a>
+                            <a href="/manage/profile?actor=user"
+                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                            <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                            <a href="/manage/profile?actor=staff"
+                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                            <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                          </div>
                     </div>
                 </div>
                 <div class="manage-list-product-body">
@@ -299,7 +289,7 @@
                         <span class="manage-list-product-text thq-body-small thq-link">
                             Home&nbsp;
                         </span>
-                        <span class="manage-list-product-text001">/ Manager WareHouse</span>
+                        <span class="manage-list-product-text001">/ Manager Warehouse</span>
                     </div>
                     <div class="manage-list-product-root-form">
                         <div class="manage-list-product-table">
@@ -445,20 +435,6 @@
                                                         </span>
                                                     </div>
                                                 </a>
-                                            </li>
-                                            <li
-                                                data-thq="thq-dropdown"
-                                                class="manage-list-product-dropdown7 list-item"
-                                                >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-dropdown-toggle8"
-                                                    >
-                                                    <span class="manage-list-product-text027">
-                                                        <span>Other</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
                                             </li>
                                         </ul>
                                     </div>

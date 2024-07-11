@@ -288,7 +288,7 @@
                   <div class="navstaff-container navstaff-root-class-name">
                     <div class="navstaff-manager">
                       <span class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">
-                        Manage WareHouse
+                        Manage Warehouse
                       </span>
                       <a href="manage/profile?actor=user.html"
                         class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
@@ -299,9 +299,9 @@
                           class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
                           Manage Staff
                         </a>
-                        <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
+                        <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">
                           Statistics
-                        </span>
+                        </a>
                       </c:if>
                     </div>
                   </div>
