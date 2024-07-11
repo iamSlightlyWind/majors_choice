@@ -281,22 +281,16 @@
               </div>
               <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
                 .equals(role)) { %>
-                <div class="navstaff-container navstaff-root-class-name">
+                <div class="navstaff-container">
                   <div class="navstaff-manager">
-                    <span class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">
-                      Manage WareHouse
-                    </span>
-                    <a href="/manage/profile?actor=user" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
-                      Manage Customer
-                    </a>
-                    <c:if test="${sessionScope.role == 'manager'}">
-                      <a href="/manage/profile?actor=staff" class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
-                        Manage Staff
-                      </a>
-                      <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
-                        Statistics
-                      </span>
-                    </c:if>
+                    <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                      Warehouse</a>
+                    <a href="/manage/profile?actor=user"
+                      class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                    <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                    <a href="/manage/profile?actor=staff"
+                      class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                    <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</span>
                   </div>
                 </div>
                 <% } %>
