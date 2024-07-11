@@ -436,7 +436,7 @@ create PROCEDURE addProductPSU
     @costPrice decimal(18,2),
     @name nvarchar(50),
     @wattage int,
-    @efficiency nvarchar(10),
+    @efficiency nvarchar(20),
     @image nvarchar(max),
     @quantity int,
     @result varchar(50) output
