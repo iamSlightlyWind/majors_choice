@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>EditCustomer - Major's Choice</title>
+    <title>Customer - Major's Choice</title>
     <meta property="og:title" content="EditCustomer - Major's Choice" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />

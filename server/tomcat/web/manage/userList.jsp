@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ManageListCustomer - Major's Choice1</title>
-    <meta property="og:title" content="ManageListCustomer - Major's Choice1" />
+    <title>Customer List - Major's Choice1</title>
+    <meta property="og:title" content="Customer List - Major's Choice1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
