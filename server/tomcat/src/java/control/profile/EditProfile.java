@@ -12,11 +12,9 @@ public class EditProfile extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String role = (String) request.getSession().getAttribute("table");
         User user = (User) request.getSession().getAttribute("userObject");
 
         int result = -1;
-        String repeatPassword = request.getParameter("repassword");       
         user.password = request.getParameter("password") != null ?  request.getParameter("password") : user.password;
         user.fullName = request.getParameter("fullname");
         user.phoneNumber = request.getParameter("phoneNumber");
