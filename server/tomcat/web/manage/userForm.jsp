@@ -162,16 +162,17 @@
                   <div data-thq="thq-navbar-nav" class="navbar-desktop-menu">
                     <nav class="navbar-links">
                       <form action="/" method="post">
-                      <div class="navbar-container3">                        
-                              <input type="text" placeholder="Search product by name" name="searchName" class="navbar-textinput input"/>
-                              <button class="navbar-search thq-button-filled" type="su">
-                                  <span class="navbar-text thq-body-small">
-                                      <span>Search</span>
-                                      <br />
-                                  </span>
-                              </button>                         
-                      </div>
-                     </form>
+                        <div class="navbar-container3">
+                          <input type="text" placeholder="Search product by name" name="searchName"
+                            class="navbar-textinput input" />
+                          <button class="navbar-search thq-button-filled" type="su">
+                            <span class="navbar-text thq-body-small">
+                              <span>Search</span>
+                              <br />
+                            </span>
+                          </button>
+                        </div>
+                      </form>
                       <div class="navbar-container4">
                         <a href="/" class="navbar-home thq-body-small thq-link">
                           <span>Home</span>
@@ -260,28 +261,28 @@
                 </header>
               </header>
             </div>
-             <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
+            <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
               .equals(role)) { %>
               <div class="menu-function-container menu-function-root-class-name7">
                 <div class="menu-function-manager">
                   <span class="menu-function-mgt-ware-house text1 thq-link1 thq-body-small">
                     <span>Manager WareHouse</span>
                   </span>
-                   <a href="/manage/profile?actor=user">
+                  <a href="/manage/profile?actor=user">
                     <span class="menu-function-mgt-customer text1 thq-link1 thq-body-small">
                       Manage Customer
                     </span>
-                  </a>                
+                  </a>
                   <c:if test="${sessionScope.role == 'manager'}">
-                      <a href="/manage/profile?actor=staff">
-                          <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
-                              Manage Staff
-                          </span>
-                      </a>
-                      <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
-                            Statistics
+                    <a href="/manage/profile?actor=staff">
+                      <span class="menu-function-mgt-staff text1 thq-link1 thq-body-small">
+                        Manage Staff
                       </span>
-                  </c:if>                 
+                    </a>
+                    <span class="menu-function-mgt-report text1 thq-link1 thq-body-small">
+                      Statistics
+                    </span>
+                  </c:if>
                 </div>
               </div>
               <% } %>
@@ -290,10 +291,10 @@
             <div class="edit-customer-link-page">
               <div class="edit-customer-container1">
                 <span class="edit-customer-text thq-body-small thq-link">
-                    <a href="/">Home&nbsp;</a>
+                  <a href="/">Home&nbsp;</a>
                 </span>
                 <span class="edit-customer-text01 thq-body-small thq-link">
-                    <a href="/manage/profile?actor=user">&nbsp;/ Manage Customer</a>
+                  <a href="/manage/profile?actor=user">&nbsp;/ Manage Customer</a>
                 </span>
                 <span class="edit-customer-text02 thq-body-small">
                   &nbsp;/ Edit Customer&nbsp;
@@ -355,7 +356,7 @@
                     </span>
                     <input type="date" class="edit-customer-textinput4 input" name="dob" value="${user.dateOfBirth}"
                       readonly />
-                  </div>                
+                  </div>
                   <input type="hidden" name="username" value="${user.username}" />
                   <input type="hidden" name="actor" value="users" />
                   <button type="submit" class="edit-profile-component-button1 thq-button-filled button"
@@ -503,34 +504,35 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
-        document.getElementById('profileForm').onsubmit = function(event) {
-            event.preventDefault();
-            var action = 'update';
-            confirmChange(action).then(function(isConfirmed) {
-                if (isConfirmed) {
-                    document.getElementById('profileForm').submit();
-                }
-            });
-        };
+      document.getElementById('profileForm').onsubmit = function (event) {
+        event.preventDefault();
+        var action = 'update';
+        confirmChange(action).then(function (isConfirmed) {
+          if (isConfirmed) {
+            document.getElementById('profileForm').submit();
+          }
+        });
+      };
 
-        function confirmChange(action) {
-            var title, text;
-            if (action === 'update') {
-                title = 'Are you sure you want to update this profile?';
-                text = 'The record will be updated to the system.';
-            }
-             return Swal.fire({
-                title: title,
-                text: text,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, done!',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                return result.isConfirmed;
-            });
+      function confirmChange(action) {
+        var title, text;
+        if (action === 'update') {
+          title = 'Are you sure you want to update this profile?';
+          text = 'The record will be updated to the system.';
         }
+        return Swal.fire({
+          title: title,
+          text: text,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, done!',
+          cancelButtonText: 'Cancel'
+        }).then((result) => {
+          return result.isConfirmed;
+        });
+      }
     </script>
+
     </html>
