@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ManageListStaff - Major's Choice1</title>
-    <meta property="og:title" content="ManageListStaff - Major's Choice1" />
+    <title>Manage Staff - Major's Choice</title>
+    <meta property="og:title" content="Manage Staff - Major's Choice1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
