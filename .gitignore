@@ -38,4 +38,3 @@ server/tomcat/nb-configuration.xml
 
 # Package Files #
 *.ear
-/server/tomcat/dist/
