@@ -382,7 +382,7 @@
                                         <br />
                                     </span>
                                     <div class="manage-product-add-container02">
-                                        <input type="text" placeholder="Name Product" name="name" class="manage-product-add-textinput03 input" />
+                                        <input type="text" placeholder="Text" name="name" class="manage-product-add-textinput03 input" />
                                     </div>
                                 </div>
                                 <div class="manage-product-add-form04">
@@ -476,7 +476,7 @@
                                     </div>
                                 </div>
                                 <div class="manage-product-add-container13">
-                                    <input type="submit" name="submit" value="Add Motherboard" class="manage-product-add-button thq-button-filled button" />
+                                    <input type="submit" name="submit" value="Add Mobo" class="manage-product-add-button thq-button-filled button" />
                                     <input type="reset" value="Reset" class="manage-product-add-button1 button thq-button-outline" />
                                 </div>
                             </form>

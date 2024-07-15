@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList,packages.CPU"%>
+<%@page import="java.util.ArrayList,packages.Motherboard"%>
 <%
      Motherboard motherboard = (Motherboard) request.getAttribute("motherboard");
 %>
@@ -364,7 +364,7 @@
                                     <span>Update Motherboard Product</span>
                                     <br />
                                 </h1>
-                                <form action="/cpus" method="post" enctype="multipart/form-data">
+                                <form action="/motherboards" method="post" enctype="multipart/form-data">
                                     <div class="manage-product-add-form">
                                         <span class="manage-product-add-text06">Selling Price</span>
                                         <input type="number" name="sellingPrice" value="<%=motherboard.getSellingPrice()%>" class="manage-product-add-textinput input" />
@@ -378,7 +378,7 @@
                                             <span>Image</span>
                                             <br />
                                         </span>
-                                        <input type="file" name="image" accept="image/*" class="manage-product-add-textinput02 input" />
+                                        <input type="file" name="image" accept="image/*" value="<%=motherboard.getImage()%>" class="manage-product-add-textinput02 input" />
                                     </div>
                                     <div class="manage-product-add-form03">
                                         <span class="manage-product-add-text11">
@@ -388,25 +388,7 @@
                                         <div class="manage-product-add-container02">
                                             <input type="text" name="name" value="<%=motherboard.getName()%>" class="manage-product-add-textinput03 input" />
                                         </div>
-                                    </div>
-                                    <div class="manage-product-add-form04">
-                                        <span class="manage-product-add-text14">
-                                            <span>IGPU</span>
-                                            <br />
-                                        </span>
-                                        <div class="manage-product-add-container03">
-                                            <input type="text" name="igpu" value="<%=motherboard.getIgpu()%>" class="manage-product-add-textinput04 input" />
-                                        </div>
-                                    </div>
-                                    <div class="manage-product-add-form05">
-                                        <span class="manage-product-add-text17">
-                                            <span>Generation</span>
-                                            <br />
-                                        </span>
-                                        <div class="manage-product-add-container04">
-                                            <input type="text" name="generation" value="<%=motherboard.getGeneration()%>" class="manage-product-add-textinput05 input" />
-                                        </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="manage-product-add-form06">
                                         <span class="manage-product-add-text20">
                                             <span>Socket</span>
@@ -416,49 +398,76 @@
                                             <input type="text" name="socket" value="<%=motherboard.getSocket()%>" class="manage-product-add-textinput06 input" />
                                         </div>
                                     </div>
+                                    <div class="manage-product-add-form05">
+                                        <span class="manage-product-add-text17">
+                                            <span>Chipset</span>
+                                            <br />
+                                        </span>
+                                        <div class="manage-product-add-container04">
+                                            <input type="text" name="chipset" value="<%=motherboard.getChipset()%>" class="manage-product-add-textinput05 input" />
+                                        </div>
+                                    </div>
+                                    <div class="manage-product-add-form04">
+                                        <span class="manage-product-add-text14">
+                                            <span>IGPU</span>
+                                            <br />
+                                        </span>
+                                        <div class="manage-product-add-container03">
+                                            <input type="number" name="igpu" value="<%=motherboard.getIgpu()%>" class="manage-product-add-textinput04 input" />
+                                        </div>
+                                    </div>
                                     <div class="manage-product-add-form07">
                                         <span class="manage-product-add-text23">
-                                            <span>Cores</span>
+                                            <span>FormFactor</span>
                                             <br />
                                         </span>
                                         <div class="manage-product-add-container06">
-                                            <input type="number" name="cores" value="<%=motherboard.getCores()%>" class="manage-product-add-textinput07 input" />
+                                            <input type="text" name="formFactor" value="<%=motherboard.getFormFactor()%>" class="manage-product-add-textinput07 input" />
                                         </div>
                                     </div>
                                     <div class="manage-product-add-form08">
                                         <span class="manage-product-add-text26">
-                                            <span>Threads</span>
+                                            <span>RamType</span>
                                             <br />
                                         </span>
                                         <div class="manage-product-add-container07">
-                                            <input type="number" name="threads" value="<%=cpu.getThreads()%>" class="manage-product-add-textinput08 input" />
+                                            <input type="text" name="ramType" value="<%=motherboard.getRamType()%>" class="manage-product-add-textinput08 input" />
                                         </div>
                                     </div>
                                     <div class="manage-product-add-form09">
                                         <span class="manage-product-add-text29">
-                                            <span>BaseClock</span>
+                                            <span>MaxRamCapacity</span>
                                             <br />
                                         </span>
                                         <div class="manage-product-add-container08">
-                                            <input type="number" name="baseClock" value="<%=cpu.getBaseClock()%>" class="manage-product-add-textinput09 input" />
+                                            <input type="number" name="maxRamCapacity" value="<%=motherboard.getMaxRamCapacity()%>" class="manage-product-add-textinput09 input" />
                                         </div>
                                     </div>
                                     <div class="manage-product-add-form10">
                                         <span class="manage-product-add-text32">
-                                            <span>BoostClock</span>
+                                            <span>MaxRamSpeed</span>
                                             <br />
                                         </span>
                                         <div class="manage-product-add-container09">
-                                            <input type="number" name="boostClock" value="<%=cpu.getBoostClock()%>" class="manage-product-add-textinput10 input" />
+                                            <input type="number" name="maxRamSpeed" value="<%=motherboard.getMaxRamSpeed()%>" class="manage-product-add-textinput10 input" />
                                         </div>
                                     </div>
                                     <div class="manage-product-add-form11">
                                         <span class="manage-product-add-text35">
-                                            <span>TDP</span>
+                                            <span>RamSlots</span>
                                             <br />
                                         </span>
                                         <div class="manage-product-add-container10">
-                                            <input type="number" name="tdp" value="<%=cpu.getTdp()%>" class="manage-product-add-textinput11 input" />
+                                            <input type="number" name="ramSlots" value="<%=motherboard.getRamSlots()%>" class="manage-product-add-textinput11 input" />
+                                        </div>
+                                    </div>
+                                    <div class="manage-product-add-form12">
+                                        <span class="manage-product-add-text38">
+                                            <span>Wifi</span>
+                                            <br />
+                                        </span>
+                                        <div class="manage-product-add-container11">
+                                            <input type="number" name="wifi" value="<%=motherboard.getWifi()%>" class="manage-product-add-textinput12 input" />
                                         </div>
                                     </div>
                                     <div class="manage-product-add-form12">
@@ -467,15 +476,15 @@
                                             <br />
                                         </span>
                                         <div class="manage-product-add-container11">
-                                            <input type="number" name="quantity" value="<%=cpu.getQuantity()%>" class="manage-product-add-textinput12 input" />
+                                            <input type="number" name="quantity" value="<%=motherboard.getQuantity()%>" class="manage-product-add-textinput12 input" />
                                         </div>
                                     </div>
                                     <div class="manage-product-add-container13">
-                                        <input type="submit" name="submit" value="Update CPU" class="manage-product-add-button thq-button-filled button" />
+                                        <input type="submit" name="submit" value="Update Mobo" class="manage-product-add-button thq-button-filled button" />
                                         <input type="reset" value="Reset" class="manage-product-add-button1 button thq-button-outline" />
                                     </div>
                                     <input type="hidden" name="service" value="update">
-                                    <input type="hidden" name="id" value="<%=cpu.getId()%>">
+                                    <input type="hidden" name="id" value="<%=motherboard.getId()%>">
                                 </form>
                             </div>
                         </div>
