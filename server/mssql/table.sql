@@ -125,6 +125,7 @@ create table orders
     id int,
     userId int references users(id),
     productId int references products(id),
+    productName nvarchar(50),
     sellingPrice decimal(18,2),
     costPrice decimal(18,2),
     status nvarchar(50),
