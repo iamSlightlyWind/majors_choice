@@ -57,6 +57,15 @@ public class RAM extends Product {
         this.image = image;
     }
 
+    public RAM(String generation, int capacity, int speed, int latency, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity, double rateStar, int RateSize) {
+        super(name, id, sellingPrice, costPrice, description, quantity, rateStar, RateSize);
+        this.generation = generation;
+        this.capacity = capacity;
+        this.speed = speed;
+        this.latency = latency;
+        this.image = image;
+    }    
+
     public RAM(int id) {
         super(id);
         ArrayList<RAM> rams = Database.getRAMs("");

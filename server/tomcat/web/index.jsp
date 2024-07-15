@@ -204,7 +204,7 @@
                         </nav>
                         <div class="navmain-buttons">
                           <% if (!"staff".equals(request.getSession().getAttribute("table"))) { %>
-                            <a href="/Cart" target="_blank" rel="noreferrer noopener" class="navmain-link1">
+                            <a href="/Cart" rel="noreferrer noopener" class="navmain-link1">
                               <svg viewBox="0 0 1024 1024" class="navmain-icon thq-button-icon thq-icon-medium">
                                 <path
                                   d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
@@ -213,7 +213,7 @@
                             </a>
                             <% } %>
                               <% if ("staff".equals(request.getSession().getAttribute("table"))) { %>
-                                <a href="/Cart" target="_blank" rel="noreferrer noopener" class="navmain-link1">
+                                <a href="/Cart" rel="noreferrer noopener" class="navmain-link1">
                                   <svg viewBox="0 0 1024 1024" class="navmain-icon thq-button-icon thq-icon-medium"
                                     style="visibility: hidden;">
                                     <path
@@ -222,7 +222,7 @@
                                   </svg>
                                 </a>
                                 <% } %>
-                                  <a href="/profile" target="_blank" rel="noreferrer noopener"
+                                  <a href="/profile" rel="noreferrer noopener"
                                     class="navmain-account thq-button-filled">
                                     <svg viewBox="0 0 731.4285714285713 1024" class="navmain-icon2">
                                       <path
@@ -1347,13 +1347,13 @@
                             <br />
                           </span>
                           <div class="product-container1">
-                            <span class="product-text4"><span>0.0</span></span>
+                            <span class="product-text4"><span>${cpu.rateStar}</span></span>
                             <svg viewBox="0 0 950.8571428571428 1024" class="product-icon">
                               <path
                                 d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                               </path>
                             </svg>
-                            <span class="product-text5"><span>(0 Review)</span></span>
+                            <span class="product-text5"><span>(${cpu.rateSize} Review)</span></span>
                           </div>
                         </div>
                       </a>
@@ -1390,13 +1390,13 @@
                             <br />
                           </span>
                           <div class="product-container1">
-                            <span class="product-text4"><span>0.0</span></span>
+                            <span class="product-text4"><span>${gpu.rateStar}</span></span>
                             <svg viewBox="0 0 950.8571428571428 1024" class="product-icon">
                               <path
                                 d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                               </path>
                             </svg>
-                            <span class="product-text5"><span>(0 Review)</span></span>
+                            <span class="product-text5"><span>(${gpu.rateSize} Review)</span></span>
                           </div>
                         </div>
                       </a>
@@ -1433,13 +1433,13 @@
                             <br />
                           </span>
                           <div class="product-container1">
-                            <span class="product-text4"><span>0.0</span></span>
+                            <span class="product-text4"><span>${mobo.rateStar}</span></span>
                             <svg viewBox="0 0 950.8571428571428 1024" class="product-icon">
                               <path
                                 d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                               </path>
                             </svg>
-                            <span class="product-text5"><span>(0 Review)</span></span>
+                            <span class="product-text5"><span>(${mobo.rateSize} Review)</span></span>
                           </div>
                         </div>
                       </a>
@@ -1476,13 +1476,13 @@
                             <br />
                           </span>
                           <div class="product-container1">
-                            <span class="product-text4"><span>0.0</span></span>
+                            <span class="product-text4"><span>${psu.rateStar}</span></span>
                             <svg viewBox="0 0 950.8571428571428 1024" class="product-icon">
                               <path
                                 d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                               </path>
                             </svg>
-                            <span class="product-text5"><span>(0 Review)</span></span>
+                            <span class="product-text5"><span>(${psu.rateSize} Review)</span></span>
                           </div>
                         </div>
                       </a>
@@ -1519,13 +1519,13 @@
                             <br />
                           </span>
                           <div class="product-container1">
-                            <span class="product-text4"><span>0.0</span></span>
+                            <span class="product-text4"><span>${ram.rateStar}</span></span>
                             <svg viewBox="0 0 950.8571428571428 1024" class="product-icon">
                               <path
                                 d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                               </path>
                             </svg>
-                            <span class="product-text5"><span>(0 Review)</span></span>
+                            <span class="product-text5"><span>(${ram.rateSize} Review)</span></span>
                           </div>
                         </div>
                       </a>
@@ -1562,13 +1562,13 @@
                             <br />
                           </span>
                           <div class="product-container1">
-                            <span class="product-text4"><span>0.0</span></span>
+                            <span class="product-text4"><span>${ssd.rateStar}</span></span>
                             <svg viewBox="0 0 950.8571428571428 1024" class="product-icon">
                               <path
                                 d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                               </path>
                             </svg>
-                            <span class="product-text5"><span>(0 Review)</span></span>
+                            <span class="product-text5"><span>(${ssd.rateSize} Review)</span></span>
                           </div>
                         </div>
                       </a>
@@ -1605,13 +1605,13 @@
                             <br />
                           </span>
                           <div class="product-container1">
-                            <span class="product-text4"><span>0.0</span></span>
+                            <span class="product-text4"><span>${case1.rateStar}</span></span>
                             <svg viewBox="0 0 950.8571428571428 1024" class="product-icon">
                               <path
                                 d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                               </path>
                             </svg>
-                            <span class="product-text5"><span>(0 Review)</span></span>
+                            <span class="product-text5"><span>(${case1.rateSize} Review)</span></span>
                           </div>
                         </div>
                       </a>
