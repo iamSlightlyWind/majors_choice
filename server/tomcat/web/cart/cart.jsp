@@ -506,7 +506,7 @@
         </div>
       </div>
       <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-      <script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
+      <script src="../js/vnpay.js"></script>
       <script type="text/javascript">
         $("#frmCreateOrder").submit(function () {
           var postData = $("#frmCreateOrder").serialize();
