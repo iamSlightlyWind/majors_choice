@@ -874,7 +874,7 @@ begin
 end
 go
 
-CREATE PROCEDURE placeOrder
+CREATE or alter PROCEDURE placeOrder
     @userID int,
     @result int OUTPUT
 AS
@@ -884,17 +884,19 @@ BEGIN
     WHERE id = @userID)
     BEGIN
         INSERT INTO orders
-            (id, userId, productId, sellingPrice, costPrice, status)
+            (id, userId, productId, productName, sellingPrice, costPrice, status)
         SELECT
             (SELECT ISNULL(MAX(id), 0) + 1
             FROM orders),
-            userID,
-            productID,
-            sellingPrice,
-            costPrice,
+            c.userID,
+            c.productID,
+            p.name,
+            c.sellingPrice,
+            c.costPrice,
             'Pending'
-        FROM carts
-        WHERE userID = @userID
+        FROM carts c
+            JOIN products p ON c.productId = p.id
+        WHERE c.userID = @userID
 
         DELETE FROM carts
         WHERE userID = @userID
@@ -966,14 +968,13 @@ BEGIN
         o.id,
         o.userId,
         o.productId,
+        o.productName,
         o.sellingPrice,
         o.costPrice,
         o.status,
-        o.dateOrdered,
-        p.name AS productName
+        o.dateOrdered
     FROM
         orders o
-        INNER JOIN products p ON o.productId = p.id
     WHERE 
         (@userId = 0)
         OR (@userId > 0 AND o.userId = @userId)
