@@ -46,6 +46,15 @@ public class SSD extends Product {
         this.image = image;
     }
 
+    public SSD(String connectionInterface, int capacity, int cache, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity, double rateStar, int RateSize) {
+        super(name, id, sellingPrice, costPrice, description, quantity, rateStar, RateSize);
+        this.connectionInterface = connectionInterface;
+        this.capacity = capacity;
+        this.cache = cache;
+        this.image = image;
+    }
+
+    
     public SSD(int id) {
         super(id);
         ArrayList<SSD> ssds = Database.getSSDs("");

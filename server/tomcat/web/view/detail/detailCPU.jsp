@@ -175,7 +175,7 @@
                       </a>
                       <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                         <nav class="navmain-links">
-                          <form action="/CPU" method="post">
+                          <form action="/" method="post">
                             <div class="navmain-container3">
                               <input type="text" placeholder="Search for product" class="navmain-textinput input" />
                               <button class="navmain-search thq-button-filled">

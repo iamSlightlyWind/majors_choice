@@ -104,8 +104,11 @@ public class Database {
                 String igpu = resultSet.getString("igpu");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
+                ArrayList<Rating> rates = getRating(id);
+                int rateSize = rates.size();
+                double rateStar = Rating.percentRate(id);
                 cpus.add(new CPU(generation, socket, cores, threads, baseClock, boostClock, tdp, image, igpu, name,
-                        id, sellingPrice, costPrice, description, quantity));
+                        id, sellingPrice, costPrice, description, quantity, rateStar, rateSize));
             }
             return cpus;
         } catch (SQLException ex) {
@@ -134,9 +137,12 @@ public class Database {
                 int tdp = resultSet.getInt("tdp");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
+                ArrayList<Rating> rates = getRating(id);
+                int rateSize = rates.size();
+                double rateStar = Rating.percentRate(id);
                 gpus.add(
                         new GPU(generation, vram, baseClock, boostClock, tdp, image, name,
-                                id, sellingPrice, costPrice, description, quantity));
+                                id, sellingPrice, costPrice, description, quantity, rateStar, rateSize));
             }
             return gpus;
         } catch (SQLException ex) {
@@ -164,8 +170,11 @@ public class Database {
                 int latency = resultSet.getInt("latency");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
+                ArrayList<Rating> rates = getRating(id);
+                int rateSize = rates.size();
+                double rateStar = Rating.percentRate(id);
                 rams.add(new RAM(generation, capacity, speed, latency, image, name, id,
-                        sellingPrice, costPrice, description, quantity));
+                        sellingPrice, costPrice, description, quantity, rateStar, rateSize));
             }
             return rams;
         } catch (SQLException ex) {
@@ -198,9 +207,12 @@ public class Database {
                 int wifi = resultSet.getInt("wifi");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
+                ArrayList<Rating> rates = getRating(id);
+                int rateSize = rates.size();
+                double rateStar = Rating.percentRate(id);
                 motherboards
                         .add(new Motherboard(socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity,
-                                ramSlots, wifi, image, name, id, sellingPrice, costPrice, description, quantity));
+                                ramSlots, wifi, image, name, id, sellingPrice, costPrice, description, quantity, rateStar, rateSize));
             }
             return motherboards;
         } catch (SQLException ex) {
@@ -227,8 +239,11 @@ public class Database {
                 int cache = resultSet.getInt("cache");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
+                ArrayList<Rating> rates = getRating(id);
+                int rateSize = rates.size();
+                double rateStar = Rating.percentRate(id);
                 ssds.add(new SSD(interfaceType, capacity, cache, image, name, id,
-                        sellingPrice, costPrice, description, quantity));
+                        sellingPrice, costPrice, description, quantity, rateStar, rateSize));
             }
             return ssds;
         } catch (SQLException ex) {
@@ -254,8 +269,11 @@ public class Database {
                 String efficiency = resultSet.getString("efficiency");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
+                ArrayList<Rating> rates = getRating(id);
+                int rateSize = rates.size();
+                double rateStar = Rating.percentRate(id);
                 psus.add(new PSU(wattage, efficiency, image, name, id,
-                        sellingPrice, costPrice, description, quantity));
+                        sellingPrice, costPrice, description, quantity, rateStar, rateSize));
             }
             return psus;
         } catch (SQLException ex) {
@@ -819,8 +837,11 @@ public class Database {
                 String color = resultSet.getString("color");
                 String image = resultSet.getString("image");
                 int quantity = resultSet.getInt("quantity");
+                ArrayList<Rating> rates = getRating(id);
+                int rateSize = rates.size();
+                double rateStar = Rating.percentRate(id);
                 cases.add(new Case(name, formFactor, color, image, name, id, sellingPrice,
-                        costPrice, description, quantity));
+                        costPrice, description, quantity, rateStar, rateSize));
             }
             return cases;
         } catch (SQLException ex) {

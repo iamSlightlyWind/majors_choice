@@ -57,6 +57,16 @@ public class GPU extends Product {
         this.image = image;
     }
 
+    public GPU(String generation, int vram, int baseClock, int boostClock, int tdp, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity, double rateStar, int RateSize) {
+        super(name, id, sellingPrice, costPrice, description, quantity, rateStar, RateSize);
+        this.generation = generation;
+        this.vram = vram;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+        this.tdp = tdp;
+        this.image = image;
+    }
+   
     public GPU(int id) {
         super(id);
         ArrayList<GPU> gpus = Database.getGPUs("");
