@@ -86,6 +86,21 @@ public class Motherboard extends Product {
         this.image = image;
     }
 
+    public Motherboard(String socket, String chipset, int igpu, String formFactor, String ramType, int maxRamSpeed, int maxRamCapacity, int ramSlots, int wifi, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity, double rateStar, int RateSize) {
+        super(name, id, sellingPrice, costPrice, description, quantity, rateStar, RateSize);
+        this.socket = socket;
+        this.chipset = chipset;
+        this.igpu = igpu;
+        this.formFactor = formFactor;
+        this.ramType = ramType;
+        this.maxRamSpeed = maxRamSpeed;
+        this.maxRamCapacity = maxRamCapacity;
+        this.ramSlots = ramSlots;
+        this.wifi = wifi;
+        this.image = image;
+    }
+       
+
     public Motherboard(int id) {
         super(id);
         ArrayList<Motherboard> motherboards = Database.getMotherboards("");

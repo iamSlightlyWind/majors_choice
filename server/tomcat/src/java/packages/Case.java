@@ -46,6 +46,14 @@ public class Case extends Product {
         this.image = image;
     }
 
+    public Case(String type, String formFactor, String color, String image, String name, int id, double sellingPrice, double costPrice, String description, int quantity, double rateStar, int RateSize) {
+        super(name, id, sellingPrice, costPrice, description, quantity, rateStar, RateSize);
+        this.type = type;
+        this.formFactor = formFactor;
+        this.color = color;
+        this.image = image;
+    }
+
     public Case(int id) {
         super(id);
         ArrayList<Case> cases = Database.getCases("");
