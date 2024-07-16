@@ -164,7 +164,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <div class="navmain-container navmain-root-class-name36">
             <header class="navmain-container1"></header>
             <header class="navmain-container2">
-              <header data-thq="thq-navbar" class="navmain-navbar-interactive">
+              <header data-thq="thq-navbar" class="navmain-navbar-interactive" style="overflow:hidden">
                 <a href="/" class="navmain-link">
                   <img
                     alt="pastedImage"
