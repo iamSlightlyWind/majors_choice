@@ -1,3 +1,16 @@
+.manage-list-product-import-file {
+    height: 4vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-left: var(--dl-space-space-oneandhalfunits);
+    border-color: var(--dl-color-theme-neutral-dark);
+    padding-left: var(--dl-space-space-unit);
+    border-radius: var(--dl-radius-radius-cardradius);
+    padding-right: var(--dl-space-space-unit);
+    justify-content: flex-start;
+}
+
 .navmain-container {
     width: 100%;
     display: flex;
