@@ -161,7 +161,7 @@
                 <div class="navmain-container">
                   <header class="navmain-container1"></header>
                   <header class="navmain-container2">
-                    <header data-thq="thq-navbar" class="navmain-navbar-interactive">
+                    <header data-thq="thq-navbar" class="navmain-navbar-interactive" style="overflow:hidden" style="overflow:hidden">
                       <a href="/" class="navmain-link">
                         <img alt="pastedImage" src="./css/image/logo.png" class="navmain-pasted-image" />
                       </a>
