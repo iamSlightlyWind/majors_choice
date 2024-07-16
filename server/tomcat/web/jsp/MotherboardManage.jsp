@@ -277,14 +277,14 @@
                     <div class="navstaff-container navstaff-root-class-name22">
                         <div class="navstaff-manager">
                             <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
-                            Warehouse</a>
+                                Warehouse</a>
                             <a href="/manage/profile?actor=user"
-                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                               class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
                             <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
                             <a href="/manage/profile?actor=staff"
-                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                               class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
                             <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="manage-list-product-motherboard-body">
@@ -465,16 +465,28 @@
                                         </span>
                                     </div>
                                 </a>
-                                <div
-                                    id="fromup"
-                                    onclick="openForm"
-                                    class="manage-list-product-motherboard-import-file thq-button-filled"
-                                    >
-                                    <span class="manage-list-product-motherboard-text031">
-                                        <span>Import Excel File</span>
-                                        <br />
-                                    </span>
-                                </div>
+                                <body>
+                                    <form id="importExcelForm" action="motherboards?service=importExcel" method="post" enctype="multipart/form-data" style="display: none;">
+                                        <input type="file" name="excel" id="excel" accept=".xlsx" onchange="submitForm()">
+                                    </form>
+
+                                    <div
+                                        id="fromup"
+                                        onclick="document.getElementById('excel').click();"
+                                        class="manage-list-product-import-file thq-button-filled"
+                                        >
+                                        <span class="manage-list-product-text031">
+                                            <span>Import Excel File</span>
+                                            <br />
+                                        </span>
+                                    </div>
+
+                                    <script>
+                                        function submitForm() {
+                                            document.getElementById('importExcelForm').submit();
+                                        }
+                                    </script>
+                                </body>
                                 <div class="manage-list-product-motherboard-search-product">
                                     <input
                                         type="text"

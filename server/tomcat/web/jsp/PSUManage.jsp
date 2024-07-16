@@ -277,14 +277,14 @@
                     <div class="navstaff-container navstaff-root-class-name40">
                         <div class="navstaff-manager">
                             <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
-                            Warehouse</a>
+                                Warehouse</a>
                             <a href="/manage/profile?actor=user"
-                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                               class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
                             <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
                             <a href="/manage/profile?actor=staff"
-                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                               class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
                             <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="manage-list-product-psu-body">
@@ -444,31 +444,45 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div
-                                    class="manage-list-product-psu-add-product thq-button-filled"
-                                    >
-                                    <svg
-                                        viewBox="0 0 1024 1024"
-                                        class="manage-list-product-psu-icon2"
+                                <a href="/jsp/insertPSU.jsp">
+                                    <div
+                                        class="manage-list-product-psu-add-product thq-button-filled"
                                         >
-                                    <path
-                                        d="M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
-                                        ></path>
-                                    </svg>
-                                    <span class="manage-list-product-psu-text30">
-                                        Add Product
-                                    </span>
-                                </div>
-                                <div
-                                    id="fromup"
-                                    onclick="openForm"
-                                    class="manage-list-product-psu-import-file thq-button-filled"
-                                    >
-                                    <span class="manage-list-product-psu-text31">
-                                        <span>Import Excel File</span>
-                                        <br />
-                                    </span>
-                                </div>
+                                        <svg
+                                            viewBox="0 0 1024 1024"
+                                            class="manage-list-product-psu-icon2"
+                                            >
+                                        <path
+                                            d="M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
+                                            ></path>
+                                        </svg>
+                                        <span class="manage-list-product-psu-text30">
+                                            Add Product
+                                        </span>
+                                    </div>
+                                </a>
+                                <body>
+                                    <form id="importExcelForm" action="psus?service=importExcel" method="post" enctype="multipart/form-data" style="display: none;">
+                                        <input type="file" name="excel" id="excel" accept=".xlsx" onchange="submitForm()">
+                                    </form>
+
+                                    <div
+                                        id="fromup"
+                                        onclick="document.getElementById('excel').click();"
+                                        class="manage-list-product-import-file thq-button-filled"
+                                        >
+                                        <span class="manage-list-product-text031">
+                                            <span>Import Excel File</span>
+                                            <br />
+                                        </span>
+                                    </div>
+
+                                    <script>
+                                        function submitForm() {
+                                            document.getElementById('importExcelForm').submit();
+                                        }
+                                    </script>
+                                </body>
                                 <div class="manage-list-product-psu-search-product">
                                     <input
                                         type="text"

@@ -378,7 +378,7 @@
                                             <span>Image</span>
                                             <br />
                                         </span>
-                                        <input type="file" name="image" accept="image/*" class="manage-product-add-textinput02 input" />
+                                        <input type="file" name="image" accept="image/*" value="<%=caseItem.getImage()%>" class="manage-product-add-textinput02 input" />
                                     </div>
                                     <div class="manage-product-add-form03">
                                         <span class="manage-product-add-text11">
