@@ -187,13 +187,13 @@
                                                 <span class="navmain-whoweare thq-body-small thq-link">
                                                     <span>Who we are</span>
                                                 </span>
-                                                <a href="/order" class="navmain-manager-order thq-body-small thq-link">
+                                                <a href="/order" class="navmain-manager-order thq-body-small thq-link" style="visibility: hidden;">
                                                     Manage Order
                                                 </a>
                                             </div>
                                         </nav>
                                         <div class="navmain-buttons">
-                                            <a href="/cart" target="_blank" rel="noreferrer noopener"
+                                            <a href="/cart" target="_blank" rel="noreferrer noopener" style="visibility: hidden;"
                                                 class="navmain-link1">
                                                 <svg viewBox="0 0 1024 1024"
                                                     class="navmain-icon thq-button-icon thq-icon-medium">
@@ -272,6 +272,10 @@
                                 <a href="/manage/profile?actor=user"
                                     class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
                                     Manage Customer
+                                </a>
+                                <a href="/order"
+                                    class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
+                                    Manage Order
                                 </a>
                                 <a href="/manage/profile?actor=staff"
                                     class="navstaff-mgt-staff text1 thq-link1 thq-body-small">

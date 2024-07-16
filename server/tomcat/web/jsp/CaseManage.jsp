@@ -187,7 +187,7 @@
                                                 <span class="navmain-whoweare thq-body-small thq-link">
                                                     <span>Who we are</span>
                                                 </span>
-                                                <a href="/order" class="navmain-manager-order thq-body-small thq-link"
+                                                <a href="/order" class="navmain-manager-order thq-body-small thq-link" style="visibility: hidden;" style="visibility: hidden;"
                                                     style="visibility: hidden;">
                                                     Manage Order
                                                 </a>
