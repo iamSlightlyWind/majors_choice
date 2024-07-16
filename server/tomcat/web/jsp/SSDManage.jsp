@@ -161,7 +161,7 @@
                             <header class="navmain-container2">
                                 <header data-thq="thq-navbar" class="navmain-navbar-interactive"
                                     style="overflow:hidden">
-                                    <a href="index.html" class="navmain-link">
+                                    <a href="/" class="navmain-link">
                                         <img alt="pastedImage" src="../css/image/logo.png"
                                             class="navmain-pasted-image" />
                                     </a>
@@ -178,7 +178,7 @@
                                                 </button>
                                             </div>
                                             <div class="navmain-container4">
-                                                <a href="index.html" class="navmain-home thq-body-small thq-link">
+                                                <a href="/" class="navmain-home thq-body-small thq-link">
                                                     <span>Home</span>
                                                 </a>
                                                 <span class="navmain-contact thq-body-small thq-link">
@@ -187,14 +187,14 @@
                                                 <span class="navmain-whoweare thq-body-small thq-link">
                                                     <span>Who we are</span>
                                                 </span>
-                                                <a href="Order.html"
+                                                <a href="/order"
                                                     class="navmain-manager-order thq-body-small thq-link" style="visibility: hidden;">
                                                     Manage Order
                                                 </a>
                                             </div>
                                         </nav>
                                         <div class="navmain-buttons">
-                                            <a href="Cart.html" target="_blank" rel="noreferrer noopener" style="visibility: hidden;"
+                                            <a href="/cart" target="_blank" rel="noreferrer noopener" style="visibility: hidden;"
                                                 class="navmain-link1">
                                                 <svg viewBox="0 0 1024 1024"
                                                     class="navmain-icon thq-button-icon thq-icon-medium">
@@ -203,7 +203,7 @@
                                                     </path>
                                                 </svg>
                                             </a>
-                                            <a href="profile.html" target="_blank" rel="noreferrer noopener"
+                                            <a href="/profile" target="_blank" rel="noreferrer noopener"
                                                 class="navmain-account thq-button-filled">
                                                 <svg viewBox="0 0 731.4285714285713 1024" class="navmain-icon2">
                                                     <path
@@ -271,7 +271,7 @@
                                 <span class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">
                                     Manage WareHouse
                                 </span>
-                                <a href="manage/profile?actor=user.html"
+                                <a href="manage/profile?actor=user"
                                     class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
                                     Manage Customer
                                 </a>
@@ -279,7 +279,7 @@
                                     class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
                                     Manage Order
                                 </a>
-                                <a href="manage/profile?actor=staff.html"
+                                <a href="manage/profile?actor=staff"
                                     class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
                                     Manage Staff
                                 </a>
