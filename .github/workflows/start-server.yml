@@ -23,7 +23,7 @@ jobs:
         curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
         sudo apt update 
-        sudo apt install ngrok cloudflare-warp
+        sudo apt install ngrok cloudflare-warp fish
         ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
         warp-cli --accept-tos connect
 
@@ -36,6 +36,21 @@ jobs:
     #  with:
     #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
     #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+
+    - name: Reverse proxy
+      run: |
+        #Cloudflare
+        ################
+        curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+        sudo dpkg -i cloudflared.deb
+        cd server/cloudflare
+        unzip -P "${{ secrets.CLOUDFLARE_ZIP_PASSWORD }}" .cloudflared.zip
+        mv .cloudflared ~/
+        cd ~/.cloudflared
+        sudo mkdir -p /etc/cloudflared
+        sudo cp * /etc/cloudflared/
+        sudo cloudflared service install
+        sudo service cloudflared start
 
     - name: Set up Docker Build
       uses: docker/setup-buildx-action@v1
@@ -70,17 +85,6 @@ jobs:
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/procedure.sql
         echo "inserting data"
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
-
-    - name: Reverse proxy
-      run: |
-        mkdir -p ~/.ssh
-        touch ~/.ssh/known_hosts
-        touch ~/.ssh/id_ed25519
-        touch ~/.ssh/id_ed25519.pub
-        echo "${{ secrets.SERVEO_KEY }}" > ~/.ssh/id_ed25519
-        echo "${{ secrets.SERVEO_PUBLIC_KEY }}" > ~/.ssh/id_ed25519.pub
-        echo "${{ secrets.SERVEO_HOST}}" > ~/.ssh/known_hosts
-        ssh -R choice.themajorones.dev:80:localhost:8080 serveo.net &
 
     - name: Show tomcat Logs
       timeout-minutes: 60
