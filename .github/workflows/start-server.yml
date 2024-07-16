@@ -44,8 +44,10 @@ jobs:
         ################
         curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
         sudo dpkg -i cloudflared.deb
+        echo ">>> Installed Cloudflare"
         cd .server/cloudflare
         unzip -P 'CLOUDFLARE_ZIP_PASSWORD' .cloudflared.zip
+        echo ">>> Unzipped Cloudflare"
         mv .cloudflared ~/
         cd ~/.cloudflared
         sudo mkdir -p /etc/cloudflared
