@@ -277,14 +277,14 @@
                     <div class="navstaff-container navstaff-root-class-name53">
                         <div class="navstaff-manager">
                             <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
-                            Warehouse</a>
+                                Warehouse</a>
                             <a href="/manage/profile?actor=user"
-                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                               class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
                             <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
                             <a href="/manage/profile?actor=staff"
-                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                               class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
                             <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="manage-list-product-ram-body">
@@ -444,31 +444,45 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div
-                                    class="manage-list-product-ram-add-product thq-button-filled"
-                                    >
-                                    <svg
-                                        viewBox="0 0 1024 1024"
-                                        class="manage-list-product-ram-icon2"
+                                <a href="/jsp/insertRAM.jsp">
+                                    <div
+                                        class="manage-list-product-ram-add-product thq-button-filled"
                                         >
-                                    <path
-                                        d="M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
-                                        ></path>
-                                    </svg>
-                                    <span class="manage-list-product-ram-text30">
-                                        Add Product
-                                    </span>
-                                </div>
-                                <div
-                                    id="fromup"
-                                    onclick="openForm"
-                                    class="manage-list-product-ram-import-file thq-button-filled"
-                                    >
-                                    <span class="manage-list-product-ram-text31">
-                                        <span>Import Excel File</span>
-                                        <br />
-                                    </span>
-                                </div>
+                                        <svg
+                                            viewBox="0 0 1024 1024"
+                                            class="manage-list-product-ram-icon2"
+                                            >
+                                        <path
+                                            d="M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
+                                            ></path>
+                                        </svg>
+                                        <span class="manage-list-product-ram-text30">
+                                            Add Product
+                                        </span>
+                                    </div>
+                                </a>
+                                <body>
+                                    <form id="importExcelForm" action="rams?service=importExcel" method="post" enctype="multipart/form-data" style="display: none;">
+                                        <input type="file" name="excel" id="excel" accept=".xlsx" onchange="submitForm()">
+                                    </form>
+
+                                    <div
+                                        id="fromup"
+                                        onclick="document.getElementById('excel').click();"
+                                        class="manage-list-product-import-file thq-button-filled"
+                                        >
+                                        <span class="manage-list-product-text031">
+                                            <span>Import Excel File</span>
+                                            <br />
+                                        </span>
+                                    </div>
+
+                                    <script>
+                                        function submitForm() {
+                                            document.getElementById('importExcelForm').submit();
+                                        }
+                                    </script>
+                                </body>
                                 <div class="manage-list-product-ram-search-product">
                                     <input
                                         type="text"
@@ -613,21 +627,16 @@
                                         </span>
                                     </div>
                                     <div class="manage-list-product-ram-update">
-                                        <svg
-                                            viewBox="0 0 1024 1024"
-                                            class="manage-list-product-ram-icon4 thq-button-icon"
-                                            >
-                                        <path
-                                            d="M864 0c88.364 0 160 71.634 160 160 0 36.020-11.91 69.258-32 96l-64 64-224-224 64-64c26.742-20.090 59.978-32 96-32zM64 736l-64 288 288-64 592-592-224-224-592 592zM715.578 363.578l-448 448-55.156-55.156 448-448 55.156 55.156z"
-                                            ></path></svg
-                                        ><svg
-                                            viewBox="0 0 1024 1024"
-                                            class="manage-list-product-ram-icon6 thq-button-icon"
-                                            >
-                                        <path
-                                            d="M298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26zM664 554l-384-384h574q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44zM316 640h216l-86-86h-100l-38 70-2 6q0 10 10 10zM970 970l-54 54-122-122q-26 36-68 36-34 0-60-25t-26-59q0-44 36-70l-60-58h-318q-34 0-59-26t-25-60q0-20 10-40l58-106-94-198-188-188 54-54z"
-                                            ></path>
-                                        </svg>
+                                        <a href="rams?service=update&id=<%= ram.getId() %>">
+                                            <svg viewBox="0 0 1024 1024" class="manage-list-product-ram-icon4 thq-button-icon">
+                                            <path d="M864 0c88.364 0 160 71.634 160 160 0 36.020-11.91 69.258-32 96l-64 64-224-224 64-64c26.742-20.090 59.978-32 96-32zM64 736l-64 288 288-64 592-592-224-224-592 592zM715.578 363.578l-448 448-55.156-55.156 448-448 55.156 55.156z"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="rams?service=delete&id=<%= ram.getId() %>">
+                                            <svg viewBox="0 0 1024 1024" class="manage-list-product-ram-icon6 thq-button-icon">
+                                            <path d="M298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26zM664 554l-384-384h574q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44zM316 640h216l-86-86h-100l-38 70-2 6q0 10 10 10zM970 970l-54 54-122-122q-26 36-68 36-34 0-60-25t-26-59q0-44 36-70l-60-58h-318q-34 0-59-26t-25-60q0-20 10-40l58-106-94-198-188-188 54-54z"></path>
+                                            </svg>
+                                        </a>
                                     </div>
                                 </form>
                                 <% } %>

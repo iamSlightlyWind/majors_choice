@@ -382,7 +382,7 @@
                                         <br />
                                     </span>
                                     <div class="manage-product-add-container02">
-                                        <input type="text" placeholder="Name Product" name="name" class="manage-product-add-textinput03 input" />
+                                        <input type="text" placeholder="Text" name="name" class="manage-product-add-textinput03 input" />
                                     </div>
                                 </div>
                                 <div class="manage-product-add-form04">
@@ -391,7 +391,7 @@
                                         <br />
                                     </span>
                                     <div class="manage-product-add-container03">
-                                        <input type="text" placeholder="IGPU" name="igpu" class="manage-product-add-textinput04 input" />
+                                        <input type="text" placeholder="Text" name="igpu" class="manage-product-add-textinput04 input" />
                                     </div>
                                 </div>
                                 <div class="manage-product-add-form05">
@@ -400,7 +400,7 @@
                                         <br />
                                     </span>
                                     <div class="manage-product-add-container04">
-                                        <input type="number" placeholder="Text" name="generation" class="manage-product-add-textinput05 input" />
+                                        <input type="text" placeholder="Text" name="generation" class="manage-product-add-textinput05 input" />
                                     </div>
                                 </div>
                                 <div class="manage-product-add-form06">

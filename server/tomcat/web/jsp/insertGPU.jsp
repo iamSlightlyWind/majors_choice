@@ -391,7 +391,7 @@
                                         <br />
                                     </span>
                                     <div class="manage-product-add-container04">
-                                        <input type="number" placeholder="Text" name="generation" class="manage-product-add-textinput05 input" />
+                                        <input type="text" placeholder="Text" name="generation" class="manage-product-add-textinput05 input" />
                                     </div>
                                 </div>
                                 <div class="manage-product-add-form07">

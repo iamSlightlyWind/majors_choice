@@ -137,10 +137,10 @@
                         <header class="navmain-container1"></header>
                         <header class="navmain-container2">
                             <header data-thq="thq-navbar" class="navmain-navbar-interactive">
-                                <a href="/" class="navmain-link">
+                                <a href="index.html" class="navmain-link">
                                     <img
                                         alt="pastedImage"
-                                        src="../css/image/logo.png"
+                                        src="public/external/pastedimage-eh8r-200h.png"
                                         class="navmain-pasted-image"
                                         />
                                 </a>
@@ -161,7 +161,7 @@
                                         </div>
                                         <div class="navmain-container4">
                                             <a
-                                                href="/"
+                                                href="index.html"
                                                 class="navmain-home thq-body-small thq-link"
                                                 >
                                                 <span>Home</span>
@@ -173,9 +173,8 @@
                                                 <span>Who we are</span>
                                             </span>
                                             <a
-                                                href="/order"
+                                                href="Order.html"
                                                 class="navmain-manager-order thq-body-small thq-link"
-                                                style="visibility: hidden;"
                                                 >
                                                 Manage Order
                                             </a>
@@ -183,11 +182,10 @@
                                     </nav>
                                     <div class="navmain-buttons">
                                         <a
-                                            href="/cart"
+                                            href="Cart.html"
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-link1"
-                                            style="visibility: hidden;"
                                             >
                                             <svg
                                                 viewBox="0 0 1024 1024"
@@ -199,7 +197,7 @@
                                             </svg>
                                         </a>
                                         <a
-                                            href="/profile"
+                                            href="profile.html"
                                             target="_blank"
                                             rel="noreferrer noopener"
                                             class="navmain-account thq-button-filled"
@@ -228,7 +226,7 @@
                                             <div class="navmain-container5">
                                                 <img
                                                     alt="pastedImage"
-                                                    src="../css/image/logo.png"
+                                                    src="public/external/pastedimage-bdsl-200h.png"
                                                     class="navmain-pasted-image1"
                                                     />
                                             </div>
@@ -276,15 +274,27 @@
                     </div>
                     <div class="navstaff-container navstaff-root-class-name43">
                         <div class="navstaff-manager">
-                            <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
-                            Warehouse</a>
-                            <a href="/manage/profile?actor=user"
-                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
-                            <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
-                            <a href="/manage/profile?actor=staff"
-                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
-                            <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
-                          </div>
+                            <span
+                                class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small"
+                                >
+                                Manage WareHouse
+                            </span>
+                            <a
+                                href="manage/profile?actor=user.html"
+                                class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
+                                >
+                                Manage Customer
+                            </a>
+                            <a
+                                href="manage/profile?actor=staff.html"
+                                class="navstaff-mgt-staff text1 thq-link1 thq-body-small"
+                                >
+                                Manage Staff
+                            </a>
+                            <span class="navstaff-mgt-report text1 thq-link1 thq-body-small">
+                                Statistics
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="manage-list-product-ssd-body">
@@ -293,7 +303,7 @@
                             Home&nbsp;
                         </span>
                         <span class="manage-list-product-ssd-text01">
-                            / Manager Warehouse
+                            / Manager WareHouse
                         </span>
                     </div>
                     <div class="manage-list-product-ssd-root-form">
@@ -343,7 +353,7 @@
                                                             <br />
                                                         </span>
                                                     </div>
-                                                </a>     
+                                                </a>
                                             </li>
                                             <li
                                                 data-thq="thq-dropdown"
@@ -413,15 +423,15 @@
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-ssd-dropdown5 list-item"
                                                 >
-                                                <a href="/ssds"
-                                                   <div
-                                                   data-thq="thq-dropdown-toggle"
-                                                   class="manage-list-product-ssd-dropdown-toggle6"
-                                                   >
-                                                    <span class="manage-list-product-ssd-text21">
-                                                        <span>List of SSD</span>
-                                                        <br />
-                                                    </span>
+                                                <a href="/ssds">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-ssd-dropdown-toggle6"
+                                                        >
+                                                        <span class="manage-list-product-ssd-text21">
+                                                            <span>List of SSD</span>
+                                                            <br />
+                                                        </span>
                                                     </div>
                                                 </a>
                                             </li>
@@ -429,12 +439,28 @@
                                                 data-thq="thq-dropdown"
                                                 class="manage-list-product-ssd-dropdown6 list-item"
                                                 >
+                                                <a href="/cases">
+                                                    <div
+                                                        data-thq="thq-dropdown-toggle"
+                                                        class="manage-list-product-ssd-dropdown-toggle7"
+                                                        >
+                                                        <span class="manage-list-product-ssd-text24">
+                                                            <span>List of CASE</span>
+                                                            <br />
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li
+                                                data-thq="thq-dropdown"
+                                                class="manage-list-product-ssd-dropdown7 list-item"
+                                                >
                                                 <div
                                                     data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-ssd-dropdown-toggle7"
+                                                    class="manage-list-product-ssd-dropdown-toggle8"
                                                     >
-                                                    <span class="manage-list-product-ssd-text24">
-                                                        <span>List of CASE</span>
+                                                    <span class="manage-list-product-ssd-text27">
+                                                        <span>Other</span>
                                                         <br />
                                                     </span>
                                                 </div>
@@ -442,31 +468,45 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div
-                                    class="manage-list-product-ssd-add-product thq-button-filled"
-                                    >
-                                    <svg
-                                        viewBox="0 0 1024 1024"
-                                        class="manage-list-product-ssd-icon2"
+                                <a href="/jsp/insertSSD.jsp">
+                                    <div
+                                        class="manage-list-product-ssd-add-product thq-button-filled"
                                         >
-                                    <path
-                                        d="M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
-                                        ></path>
-                                    </svg>
-                                    <span class="manage-list-product-ssd-text30">
-                                        Add Product
-                                    </span>
-                                </div>
-                                <div
-                                    id="fromup"
-                                    onclick="openForm"
-                                    class="manage-list-product-ssd-import-file thq-button-filled"
-                                    >
-                                    <span class="manage-list-product-ssd-text31">
-                                        <span>Import Excel File</span>
-                                        <br />
-                                    </span>
-                                </div>
+                                        <svg
+                                            viewBox="0 0 1024 1024"
+                                            class="manage-list-product-ssd-icon2"
+                                            >
+                                        <path
+                                            d="M992 384h-352v-352c0-17.672-14.328-32-32-32h-192c-17.672 0-32 14.328-32 32v352h-352c-17.672 0-32 14.328-32 32v192c0 17.672 14.328 32 32 32h352v352c0 17.672 14.328 32 32 32h192c17.672 0 32-14.328 32-32v-352h352c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32z"
+                                            ></path>
+                                        </svg>
+                                        <span class="manage-list-product-ssd-text30">
+                                            Add Product
+                                        </span>
+                                    </div>
+                                </a>
+                                <body>
+                                    <form id="importExcelForm" action="cpus?service=importExcel" method="post" enctype="multipart/form-data" style="display: none;">
+                                        <input type="file" name="excel" id="excel" accept=".xlsx" onchange="submitForm()">
+                                    </form>
+
+                                    <div
+                                        id="fromup"
+                                        onclick="document.getElementById('excel').click();"
+                                        class="manage-list-product-import-file thq-button-filled"
+                                        >
+                                        <span class="manage-list-product-text031">
+                                            <span>Import Excel File</span>
+                                            <br />
+                                        </span>
+                                    </div>
+
+                                    <script>
+                                        function submitForm() {
+                                            document.getElementById('importExcelForm').submit();
+                                        }
+                                    </script>
+                                </body>
                                 <div class="manage-list-product-ssd-search-product">
                                     <input
                                         type="text"
