@@ -162,7 +162,7 @@
                                 <header data-thq="thq-navbar" class="navmain-navbar-interactive"
                                     style="overflow:hidden">
                                     <a href="index.html" class="navmain-link">
-                                        <img alt="pastedImage" src="public/external/pastedimage-eh8r-200h.png"
+                                        <img alt="pastedImage" src="../css/image/logo.png"
                                             class="navmain-pasted-image" />
                                     </a>
                                     <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
@@ -188,13 +188,13 @@
                                                     <span>Who we are</span>
                                                 </span>
                                                 <a href="Order.html"
-                                                    class="navmain-manager-order thq-body-small thq-link">
+                                                    class="navmain-manager-order thq-body-small thq-link" style="visibility: hidden;">
                                                     Manage Order
                                                 </a>
                                             </div>
                                         </nav>
                                         <div class="navmain-buttons">
-                                            <a href="Cart.html" target="_blank" rel="noreferrer noopener"
+                                            <a href="Cart.html" target="_blank" rel="noreferrer noopener" style="visibility: hidden;"
                                                 class="navmain-link1">
                                                 <svg viewBox="0 0 1024 1024"
                                                     class="navmain-icon thq-button-icon thq-icon-medium">
@@ -225,7 +225,7 @@
                                             <div class="navmain-top">
                                                 <div class="navmain-container5">
                                                     <img alt="pastedImage"
-                                                        src="public/external/pastedimage-bdsl-200h.png"
+                                                        src="../css/image/logo.png"
                                                         class="navmain-pasted-image1" />
                                                 </div>
                                                 <div data-thq="thq-close-menu" class="navmain-close-menu">
@@ -274,6 +274,10 @@
                                 <a href="manage/profile?actor=user.html"
                                     class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
                                     Manage Customer
+                                </a>
+                                <a href="/order"
+                                    class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
+                                    Manage Order
                                 </a>
                                 <a href="manage/profile?actor=staff.html"
                                     class="navstaff-mgt-staff text1 thq-link1 thq-body-small">
