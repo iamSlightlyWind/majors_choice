@@ -162,7 +162,7 @@
                                 <header data-thq="thq-navbar" class="navmain-navbar-interactive"
                                     style="overflow:hidden">
                                     <a href="index.html" class="navmain-link">
-                                        <img alt="pastedImage" src="public/external/pastedimage-eh8r-200h.png"
+                                        <img alt="pastedImage" src="../css/image/logo.png"
                                             class="navmain-pasted-image" />
                                     </a>
                                     <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
@@ -225,7 +225,7 @@
                                             <div class="navmain-top">
                                                 <div class="navmain-container5">
                                                     <img alt="pastedImage"
-                                                        src="public/external/pastedimage-bdsl-200h.png"
+                                                        src="../css/image/logo.png"
                                                         class="navmain-pasted-image1" />
                                                 </div>
                                                 <div data-thq="thq-close-menu" class="navmain-close-menu">

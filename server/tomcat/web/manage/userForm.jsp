@@ -191,7 +191,7 @@
                       <div class="navmain-container5">
                         <img
                           alt="pastedImage"
-                          src="public/external/pastedimage-bdsl-200h.png"
+                          src="../css/image/logo.png"
                           class="navmain-pasted-image1"
                         />
                       </div>
