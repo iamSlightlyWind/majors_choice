@@ -27,6 +27,19 @@ jobs:
         ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
         warp-cli --accept-tos connect
 
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Build
+      uses: docker/setup-buildx-action@v1
+
+    #- name: Run ngrok SSH
+    #  id: ngrok
+    #  uses: tmshkr/ngrok-ssh@latest
+    #  with:
+    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
+
     - name: Reverse proxy
       run: |
         #Cloudflare
@@ -41,19 +54,6 @@ jobs:
         sudo cp * /etc/cloudflared/
         sudo cloudflared service install
         sudo service cloudflared start
-
-    - name: Run ngrok SSH
-      id: ngrok
-      uses: tmshkr/ngrok-ssh@latest
-      with:
-        SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
-        NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Docker Build
-      uses: docker/setup-buildx-action@v1
 
     - name: Set up Docker
       run: |
