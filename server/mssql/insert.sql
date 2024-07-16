@@ -3542,3 +3542,28 @@ EXEC AddProductDescription
     @ProductId = 181,
     @Description = '';
 
+
+DECLARE @i INT = 1;
+DECLARE @rating_star INT;
+DECLARE @rating_text NVARCHAR(MAX);
+DECLARE @userID INT;
+
+WHILE @i <= 198
+BEGIN
+
+    SET @rating_star = 3 + ABS(CHECKSUM(NEWID())) % 3;
+
+    IF @rating_star = 3
+        SET @rating_text = 'The product is quite good';
+    ELSE IF @rating_star = 4
+        SET @rating_text = 'The product is good with the price';
+    ELSE IF @rating_star = 5
+        SET @rating_text = 'The product is perfect. We should buy and try it';
+
+    SET @userID = 1 + ABS(CHECKSUM(NEWID())) % 3;
+
+    INSERT INTO ratings(productID, userID, rating_star, rating_text)
+    VALUES (@i, @userID, @rating_star, @rating_text);
+
+    SET @i = @i + 1;
+END;
