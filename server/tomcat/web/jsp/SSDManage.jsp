@@ -451,20 +451,6 @@
                                                     </div>
                                                 </a>
                                             </li>
-                                            <li
-                                                data-thq="thq-dropdown"
-                                                class="manage-list-product-ssd-dropdown7 list-item"
-                                                >
-                                                <div
-                                                    data-thq="thq-dropdown-toggle"
-                                                    class="manage-list-product-ssd-dropdown-toggle8"
-                                                    >
-                                                    <span class="manage-list-product-ssd-text27">
-                                                        <span>Other</span>
-                                                        <br />
-                                                    </span>
-                                                </div>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
