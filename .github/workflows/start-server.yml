@@ -29,25 +29,12 @@ jobs:
 
     - name: Reverse proxy
       run: |
-        #Serveo - Deprecated
-        ################
-        #mkdir -p ~/.ssh
-        #touch ~/.ssh/known_hosts
-        #touch ~/.ssh/id_ed25519
-        #touch ~/.ssh/id_ed25519.pub
-        #echo "${{ secrets.SERVEO_KEY }}" > ~/.ssh/id_ed25519
-        #echo "${{ secrets.SERVEO_PUBLIC_KEY }}" > ~/.ssh/id_ed25519.pub
-        #echo "${{ secrets.SERVEO_HOST}}" > ~/.ssh/known_hosts
-        #ssh -R choice.themajorones.dev:80:localhost:8080 serveo.net &
-
         #Cloudflare
         ################
         curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
         sudo dpkg -i cloudflared.deb
-        echo ">>> Installed Cloudflare"
         cd .server/cloudflare
         unzip -P 'CLOUDFLARE_ZIP_PASSWORD' .cloudflared.zip
-        echo ">>> Unzipped Cloudflare"
         mv .cloudflared ~/
         cd ~/.cloudflared
         sudo mkdir -p /etc/cloudflared
