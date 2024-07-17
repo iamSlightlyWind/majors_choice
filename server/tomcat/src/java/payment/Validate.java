@@ -43,7 +43,7 @@ public class Validate extends HttpServlet {
                 currentUser.addOrderInformation(info);
 
                 currentUser.getOrders();
-                Order currentOrder = currentUser.orders.get(currentUser.orders.size() - 1);
+                Order currentOrder = currentUser.orders.get(0);
                 currentOrder.updateQuantity();
 
                 Email email = new Email();

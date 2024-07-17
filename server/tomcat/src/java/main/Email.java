@@ -139,14 +139,6 @@ public class Email {
         }
         String products = "";
 
-        /*
-         * <tr>\n" + //
-         * "                <td>Product 1</td>\n" + //
-         * "                <td>1</td>\n" + //
-         * "                <td>$50.00</td>\n" + //
-         * "            </tr>\n" + //
-         */
-
         for (ProductCount productCount : order.quantities) {
             products += "            <tr>\n" + //
                     "                <td>" + productCount.name + "</td>\n" + //

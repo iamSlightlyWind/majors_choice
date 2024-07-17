@@ -57,7 +57,7 @@ public class ajaxServlet extends HttpServlet {
             currentUser.addOrderInformation((OrderInfo) request.getSession().getAttribute("orderInfo"));
 
             currentUser.getOrders();
-            Order currentOrder = currentUser.orders.get(currentUser.orders.size() - 1);
+            Order currentOrder = currentUser.orders.get(0);
             currentOrder.updateQuantity();
 
             Email email = new Email();
