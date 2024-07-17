@@ -3540,5 +3540,97 @@ EXEC AddProductDescription
 
 EXEC AddProductDescription
     @ProductId = 181,
-    @Description = '';
+    @Description = 'The Crucial MX300 2TB SATA 2.5-inch SSD is a solid-state drive known for its balance of performance, reliability, and affordability. It offers good read and write speeds, making it suitable for various computing tasks such as gaming, multimedia editing, and general productivity. While it is slightly older compared to newer models like the MX500 series, it still provides a significant upgrade in speed and responsiveness compared to traditional hard drives, making it a practical choice for users looking to boost their system performance without exceeding their budget.';
 
+EXEC AddProductDescription
+    @ProductId = 182,
+    @Description = 'Thermaltake Tower 300 is a micro-tower computer case designed to support high-performance systems. It accommodates various motherboard sizes, from ATX to mATX and ITX, providing ample space for easy hardware installation. Constructed with sturdy steel and equipped with cable management solutions inside, it ensures a neat and organized build. With optimal cooling capabilities, this case is tailored to meet the demands of users seeking high performance and stability for their systems.';
+
+EXEC AddProductDescription
+    @ProductId = 183,
+    @Description = 'The Corsair 3000D Airflow is a compact ATX mid-tower case designed for optimal airflow. It features a minimalist exterior with a spacious interior layout that supports ATX, mATX, and mini-ITX motherboards. The case emphasizes efficient cooling with a focus on airflow, incorporating mesh front panels and strategic ventilation points. It also includes features for easy cable management and tool-free installation, making it suitable for users looking to build a balanced and cool-running gaming or professional workstation PC.';
+
+EXEC AddProductDescription
+    @ProductId = 184,
+    @Description = 'The Corsair 5000D Core Airflow is a mid-tower ATX case known for its excellent airflow and spacious interior design. It features a minimalist yet functional exterior with a mesh front panel for optimal ventilation. The case supports ATX, mATX, and mini-ITX motherboards, offering ample room for high-performance components and advanced cooling solutions. It includes features such as easy cable management, tool-free drive installation, and multiple radiator mounting options, catering to enthusiasts and professionals seeking robust airflow and versatility in PC builds.';
+
+EXEC AddProductDescription
+    @ProductId = 185,
+    @Description = 'The CORSAIR 2500D AIRFLOW Mid-Tower Dual Chamber PC Case delivers exceptional airflow and cooling with fully mesh panelling and a dual chamber design for an organized, stunning build, dual chambers for a streamlined look, lots of customization options, Compatible with reverse connector mATX & mITX motherboards, Unrivaled airflow performance, Wide cooling flexibility';
+
+EXEC AddProductDescription
+    @ProductId = 186,
+    @Description = 'The Cooler Master MasterCase H500P is a high-performance mid-tower case known for its distinctive design and excellent cooling capabilities. It features a dual 200mm RGB fans at the front, which provide ample airflow while adding a vibrant lighting effect. The case supports ATX, micro-ATX, and mini-ITX motherboards and offers ample room for high-end graphics cards and custom cooling solutions.';
+
+EXEC AddProductDescription
+    @ProductId = 187,
+    @Description = 'The Lian Li V3000 PLUS Black computer case has a simple appearance but is not close to modern with a series of RGB lights that stand out on a luxurious black tone. Lian Li V3000 PLUS Black promises to cause a storm in the user community in the near future.';
+
+EXEC AddProductDescription
+    @ProductId = 188,
+    @Description = 'The Lian Li O11 Dynamic (O11D) is a sleek mid-tower PC case renowned for its premium build quality and minimalist design. Constructed from aluminum and tempered glass, it offers durability and a modern aesthetic. The case supports various motherboard sizes, including E-ATX and ATX, and provides ample room for high-performance components. With excellent airflow capabilities and support for multiple fan and radiator configurations, the O11 Dynamic is ideal for users looking to showcase their hardware with stylish tempered glass panels and efficient cable management options.';
+
+EXEC AddProductDescription
+    @ProductId = 189,
+    @Description = 'The ASUS ROG Hyperion GR701 is an E-ATX case built for high-performance PCs, featuring dual 420mm radiator support, four 140mm fans, and an ARGB fan hub for superior airflow. It offers ample space for powerful GPUs, extensive cable management options, and modern conveniences like USB Type-C ports and 60W fast charging. With articulating side windows, integrated storage, and a sleek aluminum frame with Aura Sync lighting, it combines style with functionality for an exceptional build experience.';
+
+EXEC AddProductDescription
+    @ProductId = 190,
+    @Description = 'MIK LV12 M Black brings a somewhat monotonous appearance when completed with a rectangular block design accompanied by simple lines. But what MIK LV12 M Black brings is much more than that with enhanced show off ability when the front and side are transparent tempered glass. In addition, the meticulously finished angular lines bring perfection to a computer case.';
+
+EXEC AddProductDescription
+    @ProductId = 191,
+    @Description = 'The Cooler Master MasterBox NR200P is a versatile mini-ITX PC case renowned for its compact size and robust build quality. Featuring a mesh front panel for enhanced airflow and support for multiple fan configurations, it ensures efficient cooling for high-performance components. Its tempered glass side panel allows for a stylish showcase of your build, while modular design elements facilitate easy installation and customization. With ample space for large graphics cards and thoughtful features like tool-free installation and removable dust filters, the NR200P is perfect for building a powerful and visually appealing mini-ITX system.';
+
+EXEC AddProductDescription
+    @ProductId = 192,
+    @Description = 'The INWIN N515 Nebula is a striking mid-tower PC case known for its eye-catching design and premium build quality. Its standout feature is the nebula-inspired front panel, which adds a futuristic and artistic touch to any gaming or professional setup. Built with high-quality materials, the N515 Nebula ensures durability and a luxurious feel. It supports efficient cooling with options for multiple fans and radiators, catering to high-performance builds. Inside, it offers ample space for ATX and smaller motherboards, along with thoughtful features like tool-less drive installation and removable dust filters for easy maintenance.';
+
+EXEC AddProductDescription
+    @ProductId = 193,
+    @Description = 'The Lian Li Lancool 3 RGB is a mid-tower chassis designed for optimal airflow and high performance. It features a sleek design with tempered glass panels and pre-installed RGB fans, providing vibrant and customizable lighting. The case supports various motherboard sizes, including E-ATX, and offers ample space for multiple GPUs, large radiators, and extensive storage options. Enhanced cable management and tool-less features make building and maintaining the system easy and efficient. With its sturdy build and modern aesthetics, the Lancool 3 RGB is an excellent choice for gamers and PC enthusiasts.';
+
+EXEC AddProductDescription
+    @ProductId = 194,
+    @Description = 'The MSI MAG Vampiric 010M is a mid-tower gaming case that combines stylish aesthetics with practical design. It features a tempered glass side panel to showcase your components and comes with a pre-installed ARGB fan that adds vibrant, customizable lighting effects. The case supports a variety of motherboard sizes, including ATX, Micro-ATX, and Mini-ITX, and offers ample room for high-performance components and efficient cooling solutions. With multiple drive bays and versatile cable management options, the Vampiric 010M ensures a clean and organized build. This case is an excellent choice for gamers seeking both functionality and visual appeal.';
+
+EXEC AddProductDescription
+    @ProductId = 195,
+    @Description = 'The InWin N127 Nebula is a mid-tower chassis that boasts a futuristic design and advanced functionality. It features an eye-catching Nebula front panel with customizable ARGB lighting, creating a striking visual effect. The case supports various motherboard sizes, including ATX, Micro-ATX, and Mini-ITX, and provides ample space for high-end components and efficient cooling solutions. With tempered glass side panels, the N127 Nebula allows users to display their builds in style. Enhanced cable management, multiple drive bays, and tool-less features ensure a clean and easy building experience, making it an ideal choice for gamers and PC enthusiasts.';
+
+EXEC AddProductDescription
+    @ProductId = 196,
+    @Description = 'The InWin B1 Pure is a compact and stylish mini-ITX case designed for small form factor builds. Its sleek and minimalistic design features a curved front panel and a tempered glass side panel, providing a modern aesthetic while allowing a glimpse of the internal components. Despite its compact size, the B1 Pure supports essential components and includes a 200W 80 PLUS Gold certified power supply, ensuring efficient power delivery. The case also features an innovative stand that can be used horizontally or vertically, offering versatile placement options. Ideal for minimalist setups, the B1 Pure combines elegance and functionality, making it perfect for space-conscious users.';
+
+EXEC AddProductDescription
+    @ProductId = 197,
+    @Description = 'The NZXT H7 Elite is a premium mid-tower case designed for high-performance gaming and aesthetic appeal. It features a sleek, modern design with tempered glass front and side panels, showcasing the interior components and RGB lighting. The H7 Elite comes with pre-installed RGB fans and an RGB controller, allowing for vibrant, customizable lighting effects. It supports a wide range of motherboard sizes, including ATX, Micro-ATX, and Mini-ITX, and offers ample space for large GPUs, multiple storage drives, and extensive cooling solutions. With a focus on cable management, tool-less features, and optimized airflow, the H7 Elite ensures a clean and efficient build process, making it an excellent choice for gamers and PC enthusiasts.';
+
+EXEC AddProductDescription
+    @ProductId = 198,
+    @Description = 'The Cougar Cratus is a high-end, mid-tower gaming case designed for enthusiasts seeking both style and performance. It features an innovative, open-frame design with sturdy metal construction and tempered glass panels, providing a unique and aggressive aesthetic. The Cratus supports a variety of motherboard sizes, including E-ATX, ATX, Micro-ATX, and Mini-ITX, and offers extensive cooling options with support for multiple radiators and fans. It includes features like ample cable management, tool-less drive installation, and customizable RGB lighting, ensuring both a visually stunning and practical build. Ideal for showcasing high-performance components, the Cougar Cratus is a top choice for gamers and PC builders who want a standout, high-performance case.';
+ 
+DECLARE @i INT = 1;
+DECLARE @rating_star INT;
+DECLARE @rating_text NVARCHAR(MAX);
+DECLARE @userID INT;
+
+WHILE @i <= 198
+BEGIN
+
+    SET @rating_star = 3 + ABS(CHECKSUM(NEWID())) % 3;
+
+    IF @rating_star = 3
+        SET @rating_text = 'The product is quite good';
+    ELSE IF @rating_star = 4
+        SET @rating_text = 'The product is good with the price';
+    ELSE IF @rating_star = 5
+        SET @rating_text = 'The product is perfect. We should buy and try it';
+
+    SET @userID = 1 + ABS(CHECKSUM(NEWID())) % 3;
+
+    INSERT INTO ratings(productID, userID, rating_star, rating_text)
+    VALUES (@i, @userID, @rating_star, @rating_text);
+
+    SET @i = @i + 1;
+END;
