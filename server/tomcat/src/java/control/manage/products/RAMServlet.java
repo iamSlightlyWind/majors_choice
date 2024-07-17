@@ -27,6 +27,7 @@ public class RAMServlet extends HttpServlet {
             request.setAttribute("rams", rams);
             request.setAttribute("titlePage", "Danh sách RAM");
             request.setAttribute("titleTable", "Danh sách RAM");
+            request.setAttribute("status", (String)request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/RAMManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertRAM")) {
@@ -47,7 +48,7 @@ public class RAMServlet extends HttpServlet {
                     String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = Database.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed,
                             latency, image, quantity);
-                    response.sendRedirect("rams?service=listAll");
+                    response.sendRedirect("rams?service=listAll&status=1");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm RAM");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertRAM.jsp");
@@ -88,7 +89,7 @@ public class RAMServlet extends HttpServlet {
                 int result = Database.updateProductRAM(id, sellingPrice, costPrice, name, generation, capacity, speed,
                         latency, image, quantity);
                 if (result == 1) {
-                    response.sendRedirect("rams?service=listAll");
+                    response.sendRedirect("rams?service=listAll&status=10");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi cập nhật RAM");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateRAM.jsp");
@@ -98,7 +99,7 @@ public class RAMServlet extends HttpServlet {
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.removeRAM(id);
-            response.sendRedirect("rams");
+            response.sendRedirect("rams?status=110");
         }
     }
 

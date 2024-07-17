@@ -27,6 +27,7 @@ public class CaseServlet extends HttpServlet {
             request.setAttribute("cases", cases);
             request.setAttribute("titlePage", "Danh sách Case");
             request.setAttribute("titleTable", "Danh sách Case");
+            request.setAttribute("status", (String)request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/CaseManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertCase")) {
@@ -43,7 +44,7 @@ public class CaseServlet extends HttpServlet {
                     int productId = Database.getMaxProductId();
                     String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = Database.addProductCase(sellingPrice, costPrice, name, formFactor, color, image, quantity);
-                    response.sendRedirect("cases?service=listAll");
+                    response.sendRedirect("cases?service=listAll&status=1");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm Case");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertCase.jsp");
@@ -82,7 +83,7 @@ public class CaseServlet extends HttpServlet {
                 int result = Database.updateProductCase(id, sellingPrice, costPrice, name, formFactor, color, image, quantity);
 
                 if (result == 1) {
-                    response.sendRedirect("cases?service=listAll");
+                    response.sendRedirect("cases?service=listAll&status=10");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi cập nhật Case");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateCase.jsp");
@@ -92,7 +93,7 @@ public class CaseServlet extends HttpServlet {
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
-            response.sendRedirect("cases");
+            response.sendRedirect("cases?status=110");
         }
 
     }

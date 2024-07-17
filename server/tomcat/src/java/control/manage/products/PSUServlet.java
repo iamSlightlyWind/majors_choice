@@ -27,6 +27,7 @@ public class PSUServlet extends HttpServlet {
             request.setAttribute("psus", psus);
             request.setAttribute("titlePage", "Danh sách PSU");
             request.setAttribute("titleTable", "Danh sách PSU");
+            request.setAttribute("status", (String)request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/PSUManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertPSU")) {
@@ -45,7 +46,7 @@ public class PSUServlet extends HttpServlet {
                     String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image,
                             quantity);
-                    response.sendRedirect("psus?service=listAll");
+                    response.sendRedirect("psus?service=listAll&status=1");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm PSU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertPSU.jsp");
@@ -84,7 +85,7 @@ public class PSUServlet extends HttpServlet {
                 int result = Database.updateProductPSU(id, sellingPrice, costPrice, name, wattage, efficiency, image,
                         quantity);
                 if (result == 1) {
-                    response.sendRedirect("psus?service=listAll");
+                    response.sendRedirect("psus?service=listAll&status=10");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi cập nhật PSU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updatePSU.jsp");
@@ -94,7 +95,7 @@ public class PSUServlet extends HttpServlet {
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
-            response.sendRedirect("psus");
+            response.sendRedirect("psus?status=110");
         }
     }
 

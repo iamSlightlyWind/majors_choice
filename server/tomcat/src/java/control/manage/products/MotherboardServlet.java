@@ -27,6 +27,7 @@ public class MotherboardServlet extends HttpServlet {
             request.setAttribute("motherboards", motherboards);
             request.setAttribute("titlePage", "Danh sách Motherboard");
             request.setAttribute("titleTable", "Danh sách Motherboard");
+            request.setAttribute("status", (String)request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MotherboardManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertMotherboard")) {
@@ -53,7 +54,7 @@ public class MotherboardServlet extends HttpServlet {
 
                     int result1 = Database.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu,
                             formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
-                    response.sendRedirect("motherboards?service=listAll");
+                    response.sendRedirect("motherboards?service=listAll&status=1");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm Motherboard");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertMotherboard.jsp");
@@ -99,7 +100,7 @@ public class MotherboardServlet extends HttpServlet {
                 int result = Database.updateProductMotherboard(id, sellingPrice, costPrice, name, socket, chipset, igpu,
                         formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
                 if (result == 1) {
-                    response.sendRedirect("motherboards?service=listAll");
+                    response.sendRedirect("motherboards?service=listAll&status=10");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi cập nhật GPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
@@ -109,7 +110,7 @@ public class MotherboardServlet extends HttpServlet {
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
-            response.sendRedirect("motherboards");
+            response.sendRedirect("motherboards?status=110");
         }
 
     }

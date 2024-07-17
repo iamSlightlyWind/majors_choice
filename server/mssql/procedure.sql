@@ -1473,24 +1473,12 @@ CREATE PROCEDURE setQuantity
     @id int
 AS
 BEGIN
-    IF NOT EXISTS (SELECT 1
-    FROM products
-    WHERE id = @id)
+    IF EXISTS (SELECT 1 FROM products WHERE id = @id)
     BEGIN
-        RETURN
-    END
-
-    BEGIN TRANSACTION
-    BEGIN TRY
         UPDATE products
         SET quantity = -1
         WHERE id = @id
-
-        COMMIT TRANSACTION
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION
-    END CATCH
+    END
 END
 GO
 
