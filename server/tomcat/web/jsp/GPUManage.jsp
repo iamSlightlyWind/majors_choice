@@ -147,6 +147,7 @@
                     transform: rotate(90deg);
                 }
             </style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
         </head>
 
         <body>
@@ -511,6 +512,7 @@
                                             </span>
                                         </div>
                                     </form>
+                                    <span id="status-span" style="display:none;">${status}</span>
                                     <% ArrayList<GPU> gpus = (ArrayList<GPU>) request.getAttribute("gpus");
                                             for (GPU gpu : gpus) {
                                             String costPrice = String.format(Locale.US, "%,.0f", gpu.getCostPrice());
@@ -608,7 +610,7 @@
                                                             </path>
                                                         </svg>
                                                     </a>
-                                                    <a href="gpus?service=delete&id=<%= gpu.getId() %>">
+                                                    <a href="#"  onclick="confirmDelete('gpus?service=delete&id=<%= gpus.getId() %>');">
                                                         <svg viewBox="0 0 1024 1024"
                                                             class="manage-list-product-gpu-icon6 thq-button-icon">
                                                             <path
@@ -756,5 +758,60 @@
             </div>
             <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
         </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+    function confirmDelete(url) {
+        Swal.fire({
+            title: 'Are you sure you want to stop selling this product?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, stop it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        })
+    }
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var statusSpan = document.getElementById('status-span');
+            var status = statusSpan.textContent.trim();
 
+            if (status !== "" && status === '1') {
+                Swal.fire({
+                    title: "Add the successful!",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            if (status !== "" && status === '10') {
+                Swal.fire({
+                    title: "Update Successful!",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+            if (status !== "" && status === '111') {
+                Swal.fire({
+                    title: "Import Successful!",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            if (status !== "" && status === '110') {
+                Swal.fire({
+                    title: "Delete Successfull",
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    </script>
         </html>

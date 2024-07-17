@@ -27,6 +27,7 @@ public class GPUServlet extends HttpServlet {
             request.setAttribute("gpus", gpus);
             request.setAttribute("titlePage", "Danh sách GPU");
             request.setAttribute("titleTable", "Danh sách GPU");
+            request.setAttribute("status", (String)request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/GPUManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertGPU")) {
@@ -48,7 +49,7 @@ public class GPUServlet extends HttpServlet {
                     String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = Database.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock,
                             boostClock, tdp, image, quantity);
-                    response.sendRedirect("gpus?service=listAll");
+                    response.sendRedirect("gpus?service=listAll&status=1");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm GPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertGPU.jsp");
@@ -89,7 +90,7 @@ public class GPUServlet extends HttpServlet {
                 int result = Database.updateProductGPU(id, sellingPrice, costPrice, name, generation, vram, baseClock,
                         boostClock, tdp, image, quantity);
                 if (result == 1) {
-                    response.sendRedirect("gpus?service=listAll");
+                    response.sendRedirect("gpus?service=listAll&status=10");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi cập nhật GPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateGPU.jsp");
@@ -99,7 +100,7 @@ public class GPUServlet extends HttpServlet {
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
-            response.sendRedirect("gpus");
+            response.sendRedirect("gpus?status=110");
         }
 
     }
