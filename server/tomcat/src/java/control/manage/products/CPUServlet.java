@@ -35,6 +35,7 @@ public class CPUServlet extends HttpServlet {
             request.setAttribute("path", request.getServletContext().getRealPath(""));
             request.setAttribute("titlePage", "Danh sách CPU");
             request.setAttribute("titleTable", "Danh sách CPU");
+            request.setAttribute("status", (String)request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/CPUManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertCPU")) {
@@ -58,7 +59,7 @@ public class CPUServlet extends HttpServlet {
                     String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = Database.addProductCPU(sellingPrice, costPrice, name, generation,
                             ipgu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
-                    response.sendRedirect("cpus?service=listAll");
+                    response.sendRedirect("cpus?service=listAll&status=1");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm CPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertCPU.jsp");
@@ -104,7 +105,7 @@ public class CPUServlet extends HttpServlet {
                         igpu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
 
                 if (result == 1) {
-                    response.sendRedirect("cpus?service=listAll");
+                    response.sendRedirect("cpus?service=listAll&status=10");
                 } else {
                     request.setAttribute("errorMessage", "  Lỗi khi cập nhật CPU");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateCPU.jsp");
@@ -114,7 +115,7 @@ public class CPUServlet extends HttpServlet {
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
-            response.sendRedirect("cpus");
+            response.sendRedirect("cpus?status=110");
         } else if (service.equals("importExcel")) {
             Part excelFilePart = request.getPart("excel");
             InputStream fileContent = excelFilePart.getInputStream();
@@ -162,7 +163,7 @@ public class CPUServlet extends HttpServlet {
             }
 
             workbook.close();
-            response.sendRedirect(request.getContextPath() + "/cpus?service=listAll");
+            response.sendRedirect(request.getContextPath() + "/cpus?service=listAll&status=111");
         }
     }
 

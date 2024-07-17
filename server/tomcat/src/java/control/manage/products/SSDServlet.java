@@ -26,6 +26,7 @@ public class SSDServlet extends HttpServlet {
             request.setAttribute("ssds", ssds);
             request.setAttribute("titlePage", "Danh sách SSD");
             request.setAttribute("titleTable", "Danh sách SSD");
+            request.setAttribute("status", (String)request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/SSDManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertSSD")) {
@@ -45,7 +46,7 @@ public class SSDServlet extends HttpServlet {
                     String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
                     int result1 = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity,
                             cache, image, quantity);
-                    response.sendRedirect("ssds?service=listAll");
+                    response.sendRedirect("ssds?service=listAll&status=1");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi thêm SSD");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertSSD.jsp");
@@ -85,7 +86,7 @@ public class SSDServlet extends HttpServlet {
                 int result = Database.updateProductSSD(id, sellingPrice, costPrice, name, connectionInterface, capacity,
                         cache, image, quantity);
                 if (result == 1) {
-                    response.sendRedirect("ssds?service=listAll");
+                    response.sendRedirect("ssds?service=listAll&status=10");
                 } else {
                     request.setAttribute("errorMessage", "Lỗi khi cập nhật SSD");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateSSD.jsp");
@@ -95,7 +96,7 @@ public class SSDServlet extends HttpServlet {
         } else if (service.equals("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
-            response.sendRedirect("ssds");
+            response.sendRedirect("ssds?status=110");
         }
     }
 

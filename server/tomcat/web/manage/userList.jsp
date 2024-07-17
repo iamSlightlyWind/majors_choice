@@ -514,7 +514,7 @@
     <script type="text/javascript">
       function confirmDelete(url) {
         Swal.fire({
-          title: 'Are you sure you want to delete this account?',
+          title: 'Are you sure you want to stop selling this product?',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
