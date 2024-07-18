@@ -3614,23 +3614,35 @@ DECLARE @i INT = 1;
 DECLARE @rating_star INT;
 DECLARE @rating_text NVARCHAR(MAX);
 DECLARE @userID INT;
+DECLARE @reviewCount INT;
+DECLARE @userIDs TABLE (ID INT);
+DECLARE @currentUserID INT;
 
 WHILE @i <= 198
 BEGIN
+    DELETE FROM @userIDs;
+    INSERT INTO @userIDs VALUES (1), (2), (3);
+    SET @reviewCount = 1 + ABS(CHECKSUM(NEWID())) % 3;
 
-    SET @rating_star = 3 + ABS(CHECKSUM(NEWID())) % 3;
+    WHILE @reviewCount > 0
+    BEGIN
+        SELECT TOP 1 @currentUserID = ID FROM @userIDs ORDER BY NEWID();
+        DELETE FROM @userIDs WHERE ID = @currentUserID;
 
-    IF @rating_star = 3
-        SET @rating_text = 'The product is quite good';
-    ELSE IF @rating_star = 4
-        SET @rating_text = 'The product is good with the price';
-    ELSE IF @rating_star = 5
-        SET @rating_text = 'The product is perfect. We should buy and try it';
+        SET @rating_star = 3 + ABS(CHECKSUM(NEWID())) % 3;
 
-    SET @userID = 1 + ABS(CHECKSUM(NEWID())) % 3;
+        IF @rating_star = 3
+            SET @rating_text = CASE ABS(CHECKSUM(NEWID())) % 3 WHEN 0 THEN 'Decent performance for basic tasks but struggles under heavy loads' WHEN 1 THEN 'Adequate for everyday tasks, not suitable for high-end gaming' ELSE 'Meets expectations for the price, but not without its flaws' END;
+        ELSE IF @rating_star = 4
+            SET @rating_text = CASE ABS(CHECKSUM(NEWID())) % 3 WHEN 0 THEN 'Smooth performance overall, with minor setup issues' WHEN 1 THEN 'Great value for the money, though lacking in some areas' ELSE 'Performs well for most tasks, though not perfect' END;
+        ELSE IF @rating_star = 5
+            SET @rating_text = CASE ABS(CHECKSUM(NEWID())) % 3 WHEN 0 THEN 'Outstanding performance and seamless integration' WHEN 1 THEN 'Exceeds expectations in every area, highly recommended' ELSE 'Top of the line performance, well worth the investment' END;
 
-    INSERT INTO ratings(productID, userID, rating_star, rating_text)
-    VALUES (@i, @userID, @rating_star, @rating_text);
+        INSERT INTO ratings(productID, userID, rating_star, rating_text)
+        VALUES (@i, @currentUserID, @rating_star, @rating_text);
+
+        SET @reviewCount = @reviewCount - 1;
+    END
 
     SET @i = @i + 1;
 END;
