@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package packages;
 
 import database.Database;
 import java.util.ArrayList;
 
-/**
- *
- * @author thang
- */
 public class Rating {
     public int id;
     public int userID;
@@ -89,7 +81,7 @@ public class Rating {
 
     public void setDateRated(String dateRated) {
         this.dateRated = dateRated;
-    }   
+    }
     
     public static double percentRate(int id){
         ArrayList<Rating> rates = Database.getRating(id);
@@ -101,6 +93,7 @@ public class Rating {
         }
         
         percent = (double) sumStar/rates.size();
+        percent = Math.round(percent * 10) / 10.0;
         return percent;                       
     }
 }
