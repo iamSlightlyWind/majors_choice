@@ -5,6 +5,7 @@
 package packages;
 
 import database.Database;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -101,6 +102,8 @@ public class Rating {
         }
         
         percent = (double) sumStar/rates.size();
+        DecimalFormat df = new DecimalFormat("#.#");
+        percent = Double.parseDouble(df.format(percent));
         return percent;                       
     }
 }
