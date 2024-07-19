@@ -81,6 +81,8 @@ public class RAM extends Product {
                 this.speed = ram.speed;
                 this.latency = ram.latency;
                 this.quantity = ram.quantity;
+                 this.rateSize = ram.getRateSize();
+                this.rateStar = ram.getRateStar();
                 return;
             }
         }

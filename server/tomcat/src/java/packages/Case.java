@@ -67,6 +67,8 @@ public class Case extends Product {
                 this.formFactor = caseItem.getFormFactor();
                 this.color = caseItem.getColor();
                 this.quantity = caseItem.getQuantity();
+                this.rateSize = caseItem.getRateSize();
+                this.rateStar = caseItem.getRateStar();
                 return;
             }
         }
