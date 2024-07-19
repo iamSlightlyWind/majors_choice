@@ -374,13 +374,13 @@
                       <br />
                     </span>
                     <div class="view-detail-rating">
-                      <span class="view-detail-text06">0.0</span>
+                        <span class="view-detail-text06">${requestScope.product.rateStar}</span>
                       <svg viewBox="0 0 950.8571428571428 1024" class="view-detail-icon">
                         <path
                           d="M950.857 369.714c0 10.286-7.429 20-14.857 27.429l-207.429 202.286 49.143 285.714c0.571 4 0.571 7.429 0.571 11.429 0 14.857-6.857 28.571-23.429 28.571-8 0-16-2.857-22.857-6.857l-256.571-134.857-256.571 134.857c-7.429 4-14.857 6.857-22.857 6.857-16.571 0-24-13.714-24-28.571 0-4 0.571-7.429 1.143-11.429l49.143-285.714-208-202.286c-6.857-7.429-14.286-17.143-14.286-27.429 0-17.143 17.714-24 32-26.286l286.857-41.714 128.571-260c5.143-10.857 14.857-23.429 28-23.429s22.857 12.571 28 23.429l128.571 260 286.857 41.714c13.714 2.286 32 9.143 32 26.286z">
                         </path>
                       </svg>
-                      <a href="https://example.com" target="_blank" rel="noreferrer noopener" class="view-detail-link">
+                      <a href="#" rel="noreferrer noopener" class="view-detail-link">
                         See reviews
                       </a>
                     </div>
@@ -401,7 +401,15 @@
                             <input type="hidden" name="type" value="motherboard" />
                           </c:if>
                           <input type="hidden" name="action" value="addItem" />
-                          <button type="submit"><span>Buy Now</span></button>
+                          <c:if test="${product.quantity >= '1'}">
+                              <button type="submit"><span>Buy Now</span></button>
+                          </c:if>
+                          <c:if test="${product.quantity == '0'}">
+                              <span>Product not in stock</span>
+                          </c:if>
+                          <c:if test="${product.quantity == '-1'}">
+                              <span>Product no longer for sale</span>
+                          </c:if>
                           <br />
                         </span>
                       </form>
@@ -751,7 +759,7 @@
                               </svg>
                             </div>
                             <div class="view-detail-container4">
-                              <strong class="view-detail-number-review">(3)</strong>
+                              <strong class="view-detail-number-review">(${product.rateSize})</strong>
                               <span class="view-detail-text44">
                                 &nbsp;reviews &amp; comments
                               </span>
@@ -793,7 +801,7 @@
                               </svg>
                             </div>
                             <div class="view-detail-container4">
-                              <strong class="view-detail-number-review">(3)</strong>
+                              <strong class="view-detail-number-review">(${product.rateSize})</strong>
                               <span class="view-detail-text44">
                                 &nbsp;reviews &amp; comments
                               </span>

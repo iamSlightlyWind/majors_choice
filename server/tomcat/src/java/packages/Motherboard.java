@@ -121,6 +121,8 @@ public class Motherboard extends Product {
                 this.ramSlots = motherboard.ramSlots;
                 this.wifi = motherboard.wifi;
                 this.quantity = motherboard.quantity;
+                this.rateSize = motherboard.getRateSize();
+                this.rateStar = motherboard.getRateStar();
                 return;
             }
         }

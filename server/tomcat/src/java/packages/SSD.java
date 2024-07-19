@@ -69,6 +69,8 @@ public class SSD extends Product {
                 this.capacity = ssd.capacity;
                 this.cache = ssd.cache;
                 this.quantity = ssd.quantity;
+                 this.rateSize = ssd.getRateSize();
+                this.rateStar = ssd.getRateStar();
                 return;
             }
         }
