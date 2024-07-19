@@ -116,6 +116,8 @@ public class CPU extends Product {
                 this.boostClock = cpu.boostClock;
                 this.tdp = cpu.tdp;
                 this.quantity = cpu.quantity;
+                 this.rateSize = cpu.getRateSize();
+                this.rateStar = cpu.getRateStar();
                 return;
             }
         }

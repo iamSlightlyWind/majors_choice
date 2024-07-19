@@ -62,6 +62,8 @@ public class PSU extends Product {
                 this.wattage = psu.wattage;
                 this.efficiency = psu.efficiency;
                 this.quantity = psu.quantity;
+                this.rateSize = psu.getRateSize();
+                this.rateStar = psu.getRateStar();
                 return;
             }
         }

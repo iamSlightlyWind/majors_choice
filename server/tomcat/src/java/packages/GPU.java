@@ -83,6 +83,8 @@ public class GPU extends Product {
                 this.boostClock = gpu.boostClock;
                 this.tdp = gpu.tdp;
                 this.quantity = gpu.quantity;
+                this.rateSize = gpu.getRateSize();
+                this.rateStar = gpu.getRateStar();
                 return;
             }
         }
