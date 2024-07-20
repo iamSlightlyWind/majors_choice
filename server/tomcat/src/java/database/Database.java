@@ -744,16 +744,21 @@ public class Database {
         try {
             Part filePart = request.getPart(inputName);
             String fileName = productID + ".png";
-
+    
             String uploadPath = request.getServletContext().getRealPath("/images");
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
             }
+    
+            File file = new File(uploadPath, fileName);
+    
+            if (file.exists()) {
+                file.delete();
+            }
 
-            filePart.write(uploadPath + File.separator + fileName);
-            return uploadPath + File.separator + fileName;
-
+            filePart.write(file.getAbsolutePath());
+            return file.getAbsolutePath();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
