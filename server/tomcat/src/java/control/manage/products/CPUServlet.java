@@ -35,7 +35,7 @@ public class CPUServlet extends HttpServlet {
             request.setAttribute("path", request.getServletContext().getRealPath(""));
             request.setAttribute("titlePage", "Danh sách CPU");
             request.setAttribute("titleTable", "Danh sách CPU");
-            request.setAttribute("status", (String)request.getParameter("status"));
+            request.setAttribute("status", (String) request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/CPUManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertCPU")) {
@@ -140,10 +140,9 @@ public class CPUServlet extends HttpServlet {
                     Cell quantityCell = row.getCell(9);
                     Cell costPriceCell = row.getCell(10);
                     Cell sellingPriceCell = row.getCell(11);
-
                     String name = nameCell.getStringCellValue();
                     String generation = generationCell.getStringCellValue();
-                    String igpu = igpuCell.getStringCellValue();
+                    String igpu = (igpuCell != null) ? igpuCell.getStringCellValue() : "";
                     String socket = socketCell.getStringCellValue();
                     int cores = (int) coresCell.getNumericCellValue();
                     int threads = (int) threadsCell.getNumericCellValue();
