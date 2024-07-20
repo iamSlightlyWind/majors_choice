@@ -262,7 +262,7 @@
           <div class="view-cart-component-container view-cart-component-root-class-name">
             <div class="view-cart-component-heading">
               <span class="view-cart-component-text">
-                <span>Phạm Thanh Phong's Cart</span>
+                <span>${user}'s Cart</span>
                 <br />
               </span>
             </div>
