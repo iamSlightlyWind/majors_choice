@@ -610,7 +610,7 @@
                                                             </path>
                                                         </svg>
                                                     </a>
-                                                    <a href="#"  onclick="confirmDelete('gpus?service=delete&id=<%= gpus.getId() %>');">
+                                                    <a href="#"  onclick="confirmDelete('gpus?service=delete&id=<%= gpu.getId() %>');">
                                                         <svg viewBox="0 0 1024 1024"
                                                             class="manage-list-product-gpu-icon6 thq-button-icon">
                                                             <path
