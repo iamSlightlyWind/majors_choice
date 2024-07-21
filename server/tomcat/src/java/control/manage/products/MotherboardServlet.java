@@ -8,7 +8,14 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.InputStream;
 import java.util.ArrayList;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import packages.Motherboard;
 
 @MultipartConfig
@@ -27,7 +34,7 @@ public class MotherboardServlet extends HttpServlet {
             request.setAttribute("motherboards", motherboards);
             request.setAttribute("titlePage", "Danh sách Motherboard");
             request.setAttribute("titleTable", "Danh sách Motherboard");
-            request.setAttribute("status", (String)request.getParameter("status"));
+            request.setAttribute("status", (String) request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/MotherboardManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertMotherboard")) {
@@ -111,8 +118,54 @@ public class MotherboardServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
             response.sendRedirect("motherboards?status=110");
-        }
+        } else if (service.equals("importExcel")) {
+            Part excelFilePart = request.getPart("excel");
+            InputStream fileContent = excelFilePart.getInputStream();
+            Workbook workbook = new XSSFWorkbook(fileContent);
+            Sheet sheet = workbook.getSheetAt(0);
 
+            try {
+                for (Row row : sheet) {
+                    if (row.getRowNum() == 0) {
+                        continue;
+                    }
+
+                    Cell nameCell = row.getCell(0);
+                    Cell socketCell = row.getCell(1);
+                    Cell chipsetCell = row.getCell(2);
+                    Cell igpuCell = row.getCell(3);
+                    Cell formFactorCell = row.getCell(4);
+                    Cell ramTypeCell = row.getCell(5);
+                    Cell maxRamSpeedCell = row.getCell(6);
+                    Cell maxRamCapacityCell = row.getCell(7);
+                    Cell ramSlotsCell = row.getCell(8);
+                    Cell wifiCell = row.getCell(9);
+                    Cell quantityCell = row.getCell(10);
+                    Cell costPriceCell = row.getCell(11);
+                    Cell sellingPriceCell = row.getCell(12);
+
+                    String name = nameCell.getStringCellValue();
+                    String socket = socketCell.getStringCellValue();
+                    String chipset = chipsetCell.getStringCellValue();
+                    int igpu = (int) igpuCell.getNumericCellValue();
+                    String formFactor = formFactorCell.getStringCellValue();
+                    String ramType = ramTypeCell.getStringCellValue();
+                    int maxRamSpeed = (int) maxRamSpeedCell.getNumericCellValue();
+                    int maxRamCapacity = (int) maxRamCapacityCell.getNumericCellValue();
+                    int ramSlots = (int) ramSlotsCell.getNumericCellValue();
+                    int wifi = (int) wifiCell.getNumericCellValue();
+                    int quantity = (int) quantityCell.getNumericCellValue();
+                    double costPrice = costPriceCell.getNumericCellValue();
+                    double sellingPrice = sellingPriceCell.getNumericCellValue();
+
+                    int result = Database.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, null, quantity);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            workbook.close();
+            response.sendRedirect(request.getContextPath() + "/motherboards?service=listAll&status=111");
+        }
     }
 
     @Override

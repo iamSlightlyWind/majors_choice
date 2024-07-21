@@ -762,7 +762,7 @@
 
             if (status !== "" && status === '110') {
                 Swal.fire({
-                    title: "Delete Successfull",
+                    title: "Stop Successfull",
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
