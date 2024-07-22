@@ -168,16 +168,18 @@
                                 </a>
                                 <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                                     <nav class="navmain-links">
-                                        <div class="navmain-container3">
-                                            <input type="text" placeholder="Search for product"
-                                                   class="navmain-textinput input" />
-                                            <button class="navmain-search thq-button-filled">
-                                                <span class="navmain-text thq-body-small">
-                                                    <span>Search</span>
-                                                    <br />
-                                                </span>
-                                            </button>
-                                        </div>
+                                        <form action="cpus" method="post">  
+                                            <div class="navmain-container3">
+                                                <input type="text" placeholder="Search for product" name="searchName" value="${requestScope.searchName}"
+                                                       class="navmain-textinput input" />
+                                                <button class="navmain-search thq-button-filled" type="submit" value="Search" >
+                                                    <span class="navmain-text thq-body-small">
+                                                        <span>Search</span>
+                                                        <br />
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </form>
                                         <div class="navmain-container4">
                                             <a href="/" class="navmain-home thq-body-small thq-link">
                                                 <span>Home</span>
@@ -238,28 +240,29 @@
                                         </div>
                                         <nav class="navmain-links1">
                                             <div class="navmain-container6">
-                                                <input type="text" placeholder="Search product by name"
-                                                       class="navmain-textinput1 input" />
-                                                <button
-                                                    class="navmain-search1 thq-button-filled thq-button-animated">
-                                                    <span class="navmain-text3 thq-body-small">
-                                                        <span>Search</span>
-                                                        <br />
-                                                    </span>
-                                                </button>
+                                                <form action="cpus" method="post">                               
+                                                    <input type="text" placeholder="Search product by name" name="searchName" value="${requestScope.searchName}" class="navmain-textinput1 input" />
+                                                    <button class="navmain-search1 thq-button-filled thq-button-animated" type="submit" value="Search">
+                                                        <span class="navmain-text3 thq-body-small">
+                                                            <span>Search</span>
+                                                            <br />
+                                                        </span>
+                                                    </button>
+                                                </form>
                                             </div>
-                                            <span class="thq-body-small thq-link">
-                                                <span>Home</span>
-                                            </span>
-                                            <span class="thq-body-small thq-link">
-                                                <span>Contact</span>
-                                            </span>
-                                            <span class="thq-body-small thq-link">
-                                                <span>Who we are</span>
-                                            </span>
-                                            <span class="thq-body-small thq-link">
-                                                <span>Manager Order</span>
-                                            </span>
+                                        </nav>
+                                        <span class="thq-body-small thq-link">
+                                            <span>Home</span>
+                                        </span>
+                                        <span class="thq-body-small thq-link">
+                                            <span>Contact</span>
+                                        </span>
+                                        <span class="thq-body-small thq-link">
+                                            <span>Who we are</span>
+                                        </span>
+                                        <span class="thq-body-small thq-link">
+                                            <span>Manager Order</span>
+                                        </span>
                                         </nav>
                                     </div>
                                 </div>
@@ -425,16 +428,16 @@
                                             document.getElementById('importExcelForm').submit();
                                         }
                                     </script>
-                                </body>
-                                <div class="manage-list-product-search-product">
-                                    <input type="text" class="manage-list-product-textinput input" />
-                                    <button class="manage-list-product-search thq-button-filled">
+                                </body>                                                         
+                                <form action="cpus" method="post" class="manage-list-product-search-product">
+                                    <input type="text" name="searchName" value="${requestScope.searchName}" class="manage-list-product-textinput input" />
+                                    <button class="manage-list-product-search thq-button-filled" type="submit" value="Search" >
                                         <span class="manage-list-product-text034 thq-body-small">
                                             <span>Search</span>
                                             <br />
                                         </span>
                                     </button>
-                                </div>
+                                </form>
                             </div>
                             <div class="manage-list-product-list-detail">
                                 <form class="manage-list-product-form-tittle">
@@ -760,21 +763,21 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
-    function confirmDelete(url) {
-        Swal.fire({
-            title: 'Are you sure you want to stop selling this product?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, stop it!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = url;
-            }
-        })
-    }
+                                            function confirmDelete(url) {
+                                                Swal.fire({
+                                                    title: 'Are you sure you want to stop selling this product?',
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#3085d6',
+                                                    cancelButtonColor: '#d33',
+                                                    confirmButtonText: 'Yes, stop it!',
+                                                    cancelButtonText: 'Cancel'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        window.location.href = url;
+                                                    }
+                                                })
+                                            }
     </script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
@@ -796,7 +799,7 @@
                     confirmButtonText: 'OK'
                 });
             }
-            
+
             if (status !== "" && status === '111') {
                 Swal.fire({
                     title: "Import Successful!",

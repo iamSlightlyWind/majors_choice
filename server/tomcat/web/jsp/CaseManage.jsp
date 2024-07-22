@@ -168,16 +168,18 @@
                                 </a>
                                 <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                                     <nav class="navmain-links">
-                                        <div class="navmain-container3">
-                                            <input type="text" placeholder="Search for product"
-                                                   class="navmain-textinput input" />
-                                            <button class="navmain-search thq-button-filled">
-                                                <span class="navmain-text thq-body-small">
-                                                    <span>Search</span>
-                                                    <br />
-                                                </span>
-                                            </button>
-                                        </div>
+                                        <form action="cases" method="post"> 
+                                            <div class="navmain-container3">
+                                                <input type="text" placeholder="Search for product" name="searchName" value="${requestScope.searchName}"
+                                                       class="navmain-textinput input" />
+                                                <button class="navmain-search thq-button-filled" type="submit" value="Search">
+                                                    <span class="navmain-text thq-body-small">
+                                                        <span>Search</span>
+                                                        <br />
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </form>
                                         <div class="navmain-container4">
                                             <a href="/" class="navmain-home thq-body-small thq-link">
                                                 <span>Home</span>
@@ -433,15 +435,15 @@
                                         }
                                     </script>
                                 </body>
-                                <div class="manage-list-product-case-search-product">
-                                    <input type="text" class="manage-list-product-case-textinput input" />
-                                    <button class="manage-list-product-case-search thq-button-filled">
+                                <form action="cases" method="post" class="manage-list-product-case-search-product">                               
+                                    <input type="text" name="searchName" value="${requestScope.searchName}" class="manage-list-product-case-textinput input" />
+                                    <button class="manage-list-product-case-search thq-button-filled" type="submit" value="Search">
                                         <span class="manage-list-product-case-text34 thq-body-small">
                                             <span>Search</span>
                                             <br />
                                         </span>
                                     </button>
-                                </div>
+                                </form>
                             </div>
                             <div class="manage-list-product-case-list-detail">
                                 <form class="manage-list-product-case-form-tittle">
