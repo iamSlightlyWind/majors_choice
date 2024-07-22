@@ -1,0 +1,16 @@
+{
+  "name": "majors_choice",
+  "version": "1.0.0",
+  "description": "Major's Choice is a SWP391 project that lists computer components as a website selling them",
+  "main": "index.js",
+  "devDependencies": {},
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
