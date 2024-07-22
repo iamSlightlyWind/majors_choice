@@ -4,7 +4,8 @@ Major's Choice is a SWP391 project that lists computer components as a website s
 
 ## Trigger GitHub Action
 
-[![Run Workflow](https://img.shields.io/badge/Run%20Workflow-blue)](https://your-vercel-function-url/api/trigger)
+[![Run Workflow](https://img.shields.io/badge/Run%20Workflow-blue)](https://majors-choice.vercel.app/api/trigger)
+
 Everyone can test the website at https://choice.themajorones.dev by pressing the "Run Workflow" button.
 
 Note that the server takes up to 5 minutes to start, and will not run again unless the previous run has expired (1 hour).
