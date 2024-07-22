@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
   const owner = 'iamSlightlyWind';
   const repo = 'majors_choice';
   const workflow_id = 'start-server.yml';
-  const branch = 'vercel';
+  const branch = 'main';
 
   const workflowsUrl = `https://api.github.com/repos/${owner}/${repo}/actions/runs`;
 
