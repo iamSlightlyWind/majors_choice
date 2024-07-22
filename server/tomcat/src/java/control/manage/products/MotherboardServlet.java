@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -177,6 +178,12 @@ public class MotherboardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String searchName = request.getParameter("searchName");
+
+        List<Motherboard> motherboards = Database.getMotherboards(searchName);
+
+        request.setAttribute("searchName", searchName);
+        request.setAttribute("motherboards", motherboards);
+        request.getRequestDispatcher("/jsp/MotherboardManage.jsp").forward(request, response);
     }
 }
