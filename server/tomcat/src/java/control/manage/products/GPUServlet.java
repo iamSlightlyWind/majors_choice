@@ -8,7 +8,14 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.InputStream;
 import java.util.ArrayList;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import packages.GPU;
 
 @MultipartConfig
@@ -27,7 +34,7 @@ public class GPUServlet extends HttpServlet {
             request.setAttribute("gpus", gpus);
             request.setAttribute("titlePage", "Danh sách GPU");
             request.setAttribute("titleTable", "Danh sách GPU");
-            request.setAttribute("status", (String)request.getParameter("status"));
+            request.setAttribute("status", (String) request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/GPUManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertGPU")) {
@@ -101,6 +108,46 @@ public class GPUServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
             response.sendRedirect("gpus?status=110");
+        } else if (service.equals("importExcel")) {
+            Part excelFilePart = request.getPart("excel");
+            InputStream fileContent = excelFilePart.getInputStream();
+            Workbook workbook = new XSSFWorkbook(fileContent);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            try {
+                for (Row row : sheet) {
+                    if (row.getRowNum() == 0) {
+                        continue;
+                    }
+
+                    Cell nameCell = row.getCell(0);
+                    Cell generationCell = row.getCell(1);
+                    Cell vramCell = row.getCell(2);
+                    Cell baseClockCell = row.getCell(3);
+                    Cell boostClockCell = row.getCell(4);
+                    Cell tdpCell = row.getCell(5);
+                    Cell quantityCell = row.getCell(6);
+                    Cell costPriceCell = row.getCell(7);
+                    Cell sellingPriceCell = row.getCell(8);
+
+                    String name = nameCell.getStringCellValue();
+                    String generation = generationCell.getStringCellValue();
+                    int vram = (int) vramCell.getNumericCellValue();
+                    int baseClock = (int) baseClockCell.getNumericCellValue();
+                    int boostClock = (int) boostClockCell.getNumericCellValue();
+                    int tdp = (int) tdpCell.getNumericCellValue();
+                    int quantity = (int) quantityCell.getNumericCellValue();
+                    double costPrice = costPriceCell.getNumericCellValue();
+                    double sellingPrice = sellingPriceCell.getNumericCellValue();
+
+                    int result = Database.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock, boostClock, tdp, null, quantity);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            workbook.close();
+            response.sendRedirect(request.getContextPath() + "/gpus?service=listAll&status=111");
         }
 
     }
