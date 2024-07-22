@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -149,6 +150,12 @@ public class PSUServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String searchName = request.getParameter("searchName");
+
+        List<PSU> psus = Database.getPSUs(searchName);
+
+        request.setAttribute("searchName", searchName);
+        request.setAttribute("psus", psus);
+        request.getRequestDispatcher("/jsp/PSUManagage.jsp").forward(request, response);
     }
 }

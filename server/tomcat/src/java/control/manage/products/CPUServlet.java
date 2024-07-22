@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -28,14 +29,13 @@ public class CPUServlet extends HttpServlet {
         if (service == null) {
             service = "listAll";
         }
-
         if (service.equals("listAll")) {
             ArrayList<CPU> cpus = Database.getCPUs("");
             request.setAttribute("cpus", cpus);
             request.setAttribute("path", request.getServletContext().getRealPath(""));
             request.setAttribute("titlePage", "Danh sách CPU");
             request.setAttribute("titleTable", "Danh sách CPU");
-            request.setAttribute("status", (String) request.getParameter("status"));
+            request.setAttribute("status", request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/CPUManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertCPU")) {
@@ -175,6 +175,11 @@ public class CPUServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String searchName = request.getParameter("searchName");
+
+        List<CPU> cpus = Database.getCPUs(searchName);
+        request.setAttribute("cpus", cpus);
+        request.setAttribute("searchName", searchName);
+        request.getRequestDispatcher("/jsp/CPUManage.jsp").forward(request, response);
     }
 }

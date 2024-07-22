@@ -168,16 +168,18 @@
                                     </a>
                                     <div data-thq="thq-navbar-nav" class="navmain-desktop-menu">
                                         <nav class="navmain-links">
+                                            <form action="rams" method="post"> 
                                             <div class="navmain-container3">
-                                                <input type="text" placeholder="Search for product"
+                                                <input type="text" placeholder="Search for product" name="searchName" value="${requestScope.searchName}"
                                                     class="navmain-textinput input" />
-                                                <button class="navmain-search thq-button-filled">
+                                                <button class="navmain-search thq-button-filled" type="submit" value="Search">
                                                     <span class="navmain-text thq-body-small">
                                                         <span>Search</span>
                                                         <br />
                                                     </span>
                                                 </button>
                                             </div>
+                                            </form>
                                             <div class="navmain-container4">
                                                 <a href="/" class="navmain-home thq-body-small thq-link">
                                                     <span>Home</span>
@@ -433,15 +435,15 @@
                                             }
                                         </script>
                                     </body>
-                                    <div class="manage-list-product-ram-search-product">
-                                        <input type="text" class="manage-list-product-ram-textinput input" />
-                                        <button class="manage-list-product-ram-search thq-button-filled">
+                                    <form action="rams" method="post" class="manage-list-product-ram-search-product">  
+                                        <input type="text" name="searchName" value="${requestScope.searchName}" class="manage-list-product-ram-textinput input" />
+                                        <button class="manage-list-product-ram-search thq-button-filled" type="submit" value="Search">
                                             <span class="manage-list-product-ram-text34 thq-body-small">
                                                 <span>Search</span>
                                                 <br />
                                             </span>
                                         </button>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div class="manage-list-product-ram-list-detail">
                                     <form class="manage-list-product-ram-form-tittle">
