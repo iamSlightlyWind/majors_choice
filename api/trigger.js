@@ -15,26 +15,18 @@ module.exports = async (req, res) => {
 
     const runsData = await runsResponse.json();
 
-    if (!runsData.workflow_runs) {
-      throw new Error('workflow_runs is undefined');
-    }
-
-    const inProgressRun = runsData.workflow_runs.find(run => run.status === 'in_progress');
-
-    if (!inProgressRun) {
-      await fetch(dispatchUrl, {
-        method: 'POST',
-        headers: {
-          'Authorization': `token ${GITHUB_TOKEN}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          event_type: 'custom-event',
-          client_payload: { branch: 'vercel' }
-        })
-      });
-    }
+    await fetch(dispatchUrl, {
+      method: 'POST',
+      headers: {
+        'Authorization': `token ${GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        event_type: 'custom-event',
+        client_payload: { branch: 'vercel' }
+      })
+    });
 
     res.status(200).send('Workflow handled.');
   } catch (error) {
