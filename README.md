@@ -2,6 +2,13 @@
 
 Major's Choice is a SWP391 project that lists computer components as a website selling them
 
+## Trigger GitHub Action
+
+[![Run Workflow](https://img.shields.io/badge/Run%20Workflow-blue)](https://your-vercel-function-url/api/trigger)
+Everyone can test the website at https://choice.themajorones.dev by pressing the "Run Workflow" button.
+
+Note that the server takes up to 5 minutes to start, and will not run again unless the previous run has expired (1 hour).
+
 ## Project Overview
 
 The rough idea is to sell the latest generations of PC parts, including the most basic components used to build a PC: CPU, GPU, RAM, SSD, PSU, and case. The website will list the most common and popular PC hardware from the last 3 generations. Optional features of the website will be a build your PC which checks for parts compatibility and a comparison feature that compares the 2 hardware from the same category for performance and price-to-performance ratio.
