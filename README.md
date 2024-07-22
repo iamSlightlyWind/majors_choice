@@ -8,7 +8,7 @@ Major's Choice is a SWP391 project that lists computer components as a website s
 
 Everyone can test the website at https://choice.themajorones.dev by pressing the "Run Workflow" button.
 
-Note that the server takes up to 5 minutes to start, and will not run again unless the previous run has expired (1 hour).
+Note that the server takes up to 5 minutes to start, and will not run again unless the previous run has expired (max: 1 hour).
 
 ## Project Overview
 
