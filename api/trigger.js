@@ -1,5 +1,5 @@
 module.exports = async (req, res) => {
-  const { default: fetch } = await import('node-fetch');
+  const fetch = (await import('node-fetch')).default;
 
   const { GITHUB_TOKEN, REPO_OWNER, REPO_NAME } = process.env;
   const workflowRunsUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/runs`;
