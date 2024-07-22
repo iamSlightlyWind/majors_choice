@@ -8,7 +8,14 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.InputStream;
 import java.util.ArrayList;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import packages.SSD;
 
 @MultipartConfig
@@ -26,7 +33,7 @@ public class SSDServlet extends HttpServlet {
             request.setAttribute("ssds", ssds);
             request.setAttribute("titlePage", "Danh sách SSD");
             request.setAttribute("titleTable", "Danh sách SSD");
-            request.setAttribute("status", (String)request.getParameter("status"));
+            request.setAttribute("status", (String) request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/SSDManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertSSD")) {
@@ -97,6 +104,42 @@ public class SSDServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.setQuantity(id);
             response.sendRedirect("ssds?status=110");
+        } else if (service.equals("importExcel")) {
+            Part excelFilePart = request.getPart("excel");
+            InputStream fileContent = excelFilePart.getInputStream();
+            Workbook workbook = new XSSFWorkbook(fileContent);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            try {
+                for (Row row : sheet) {
+                    if (row.getRowNum() == 0) {
+                        continue;
+                    }
+
+                    Cell nameCell = row.getCell(0);
+                    Cell connectionInterfaceCell = row.getCell(1);
+                    Cell capacityCell = row.getCell(2);
+                    Cell cacheCell = row.getCell(3);
+                    Cell quantityCell = row.getCell(4);
+                    Cell costPriceCell = row.getCell(5);
+                    Cell sellingPriceCell = row.getCell(6);
+
+                    String name = nameCell.getStringCellValue();
+                    String connectionInterface = connectionInterfaceCell.getStringCellValue();
+                    int capacity = (int) capacityCell.getNumericCellValue();
+                    int cache = (int) cacheCell.getNumericCellValue();
+                    int quantity = (int) quantityCell.getNumericCellValue();
+                    double costPrice = costPriceCell.getNumericCellValue();
+                    double sellingPrice = sellingPriceCell.getNumericCellValue();
+
+                    int result = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache, null, quantity);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            workbook.close();
+            response.sendRedirect(request.getContextPath() + "/ssds?service=listAll&status=111");
         }
     }
 

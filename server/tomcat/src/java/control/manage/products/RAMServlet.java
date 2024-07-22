@@ -8,7 +8,14 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.InputStream;
 import java.util.ArrayList;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import packages.RAM;
 
 @MultipartConfig
@@ -27,7 +34,7 @@ public class RAMServlet extends HttpServlet {
             request.setAttribute("rams", rams);
             request.setAttribute("titlePage", "Danh sách RAM");
             request.setAttribute("titleTable", "Danh sách RAM");
-            request.setAttribute("status", (String)request.getParameter("status"));
+            request.setAttribute("status", (String) request.getParameter("status"));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/RAMManage.jsp");
             dispatcher.forward(request, response);
         } else if (service.equals("insertRAM")) {
@@ -100,7 +107,45 @@ public class RAMServlet extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             Database.removeRAM(id);
             response.sendRedirect("rams?status=110");
+        } else if (service.equals("importExcel")) {
+            Part excelFilePart = request.getPart("excel");
+            InputStream fileContent = excelFilePart.getInputStream();
+            Workbook workbook = new XSSFWorkbook(fileContent);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            try {
+                for (Row row : sheet) {
+                    if (row.getRowNum() == 0) {
+                        continue;
+                    }
+
+                    Cell nameCell = row.getCell(0);
+                    Cell generationCell = row.getCell(1);
+                    Cell capacityCell = row.getCell(2);
+                    Cell speedCell = row.getCell(3);
+                    Cell latencyCell = row.getCell(4);
+                    Cell quantityCell = row.getCell(5);
+                    Cell costPriceCell = row.getCell(6);
+                    Cell sellingPriceCell = row.getCell(7);
+
+                    String name = nameCell.getStringCellValue();
+                    String generation = generationCell.getStringCellValue();
+                    int capacity = (int) capacityCell.getNumericCellValue();
+                    int speed = (int) speedCell.getNumericCellValue();
+                    int latency = (int) latencyCell.getNumericCellValue();
+                    int quantity = (int) quantityCell.getNumericCellValue();
+                    double costPrice = costPriceCell.getNumericCellValue();
+                    double sellingPrice = sellingPriceCell.getNumericCellValue();
+
+                    int result = Database.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency, null, quantity);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            workbook.close();
+            response.sendRedirect(request.getContextPath() + "/rams?service=listAll&status=111");
         }
+
     }
 
     @Override
