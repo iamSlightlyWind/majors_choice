@@ -29,12 +29,15 @@ module.exports = async (req, res) => {
       })
     });
 
-    const dispatchData = await dispatchResponse.json();
-    console.log('GitHub API response for dispatch:', dispatchData);
-
-    if (!dispatchResponse.ok) {
+    let dispatchData;
+    if (dispatchResponse.ok) {
+      const text = await dispatchResponse.text();
+      dispatchData = text ? JSON.parse(text) : {};
+    } else {
       throw new Error(`GitHub API responded with status ${dispatchResponse.status}`);
     }
+
+    console.log('GitHub API response for dispatch:', dispatchData);
 
     res.status(200).send('Workflow handled.');
   } catch (error) {
