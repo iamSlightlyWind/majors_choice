@@ -3,7 +3,7 @@ module.exports = async (req, res) => {
     const fetch = (await import('node-fetch')).default;
 
     const { GITHUB_TOKEN, REPO_OWNER, REPO_NAME } = process.env;
-    const workflowRunsUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/runs`;
+    const workflowRunsUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/actions/workflows/start-server.yml/runs`;
     const dispatchUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`;
 
     const runsResponse = await fetch(workflowRunsUrl, {
@@ -14,8 +14,9 @@ module.exports = async (req, res) => {
     });
 
     const runsData = await runsResponse.json();
+    console.log('GitHub API response for workflow runs:', runsData);
 
-    await fetch(dispatchUrl, {
+    const dispatchResponse = await fetch(dispatchUrl, {
       method: 'POST',
       headers: {
         'Authorization': `token ${GITHUB_TOKEN}`,
@@ -27,6 +28,13 @@ module.exports = async (req, res) => {
         client_payload: { branch: 'vercel' }
       })
     });
+
+    const dispatchData = await dispatchResponse.json();
+    console.log('GitHub API response for dispatch:', dispatchData);
+
+    if (!dispatchResponse.ok) {
+      throw new Error(`GitHub API responded with status ${dispatchResponse.status}`);
+    }
 
     res.status(200).send('Workflow handled.');
   } catch (error) {
