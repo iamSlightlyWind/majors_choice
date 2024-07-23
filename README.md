@@ -1,6 +1,6 @@
 # Major's Choice
 
-A project focused on the DevOps automation and auto-deployment of a professional e-commerce platform for computer components.
+A project focused on DevOps automation and auto-deployment of a professional e-commerce platform for computer components.
 
 ## Trigger GitHub Action
 
