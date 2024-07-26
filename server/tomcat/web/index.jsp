@@ -161,7 +161,8 @@
                 <div class="navmain-container">
                   <header class="navmain-container1"></header>
                   <header class="navmain-container2">
-                    <header data-thq="thq-navbar" class="navmain-navbar-interactive" style="overflow:hidden" style="overflow:hidden">
+                    <header data-thq="thq-navbar" class="navmain-navbar-interactive" style="overflow:hidden"
+                      style="overflow:hidden">
                       <a href="/" class="navmain-link">
                         <img alt="pastedImage" src="./css/image/logo.png" class="navmain-pasted-image" />
                       </a>
@@ -243,8 +244,7 @@
                         <div class="navmain-nav">
                           <div class="navmain-top">
                             <div class="navmain-container5">
-                              <img alt="pastedImage" src="./css/image/logo.png"
-                                class="navmain-pasted-image1" />
+                              <img alt="pastedImage" src="./css/image/logo.png" class="navmain-pasted-image1" />
                             </div>
                             <div data-thq="thq-close-menu" class="navmain-close-menu">
                               <svg viewBox="0 0 1024 1024" class="navmain-icon6">
@@ -286,45 +286,53 @@
                     </header>
                   </header>
                 </div>
-                <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role)
-                  || "manager" .equals(role)) { %>
+                <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role)) { %>
                   <div class="navstaff-container">
                     <div class="navstaff-manager">
-                      <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
-                        Warehouse</a>
                       <a href="/manage/profile?actor=user"
-                        class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
-                      <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
-                      <a href="/manage/profile?actor=staff"
-                        class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
-                      <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                        class="navstaff-mgt-customer text1 thq-link1 thq-body-small" style="margin-left: 10vw;">Manage Customer</a>
+                      <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small" style="margin-right: 10vw;">Manage Order</a>
                     </div>
                   </div>
                   <% } %>
-                    <div class="index-welcome">
-                      <div class="index-container1">
-                        <h1 class="index-text thq-heading-1">
-                          Welcome to Major's Choice
-                        </h1>
-                        <span class="index-text0001">
-                          Your one-stop shop for high-quality computer components
-                        </span>
-                        <div class="index-container2">
-                          <button type="button" class="index-button button thq-button-outline">
-                            <span class="index-text0002">
-                              <span>Who we are</span>
-                              <br />
-                            </span>
-                          </button>
-                          <button type="button" class="index-button1 thq-button-filled button">
-                            <span class="index-text0005">
-                              <span>Shop now</span>
-                              <br />
-                            </span>
-                          </button>
+                    <% String role1=(String) request.getSession().getAttribute("role"); if ("manager".equals(role1)) { %>
+                      <div class="navstaff-container">
+                        <div class="navstaff-manager">
+                          <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                            Warehouse</a>
+                          <a href="/manage/profile?actor=user"~
+                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                          <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                          <a href="/manage/profile?actor=staff"
+                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                          <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
                         </div>
                       </div>
-                    </div>
+                      <% } %>
+                        <div class="index-welcome">
+                          <div class="index-container1">
+                            <h1 class="index-text thq-heading-1">
+                              Welcome to Major's Choice
+                            </h1>
+                            <span class="index-text0001">
+                              Your one-stop shop for high-quality computer components
+                            </span>
+                            <div class="index-container2">
+                              <button type="button" class="index-button button thq-button-outline">
+                                <span class="index-text0002">
+                                  <span>Who we are</span>
+                                  <br />
+                                </span>
+                              </button>
+                              <button type="button" class="index-button1 thq-button-filled button">
+                                <span class="index-text0005">
+                                  <span>Shop now</span>
+                                  <br />
+                                </span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
               </header>
               <div class="index-body">
                 <div class="index-category-and-best-seller">
@@ -1747,20 +1755,20 @@
               </footer>
             </div>
           </div>
-        <% String chatRole=(String) request.getSession().getAttribute("table"); if (!"staff".equals(chatRole)) { %>
-        <script type="text/javascript">
-          var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-          (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/668271ba9d7f358570d5b9d3/1i1mooh80';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-          })();
-        </script>
-        <% } %>              
-          <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+          <% String chatRole=(String) request.getSession().getAttribute("table"); if (!"staff".equals(chatRole)) { %>
+            <script type="text/javascript">
+              var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+              (function () {
+                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/668271ba9d7f358570d5b9d3/1i1mooh80';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+              })();
+            </script>
+            <% } %>
+              <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
         </body>
 
         </html>
