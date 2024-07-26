@@ -281,7 +281,7 @@
                 placeholder="placeholder"
                 class="input page-textinput1"
               />
-              <button type="submit" class="button page-button">Button</button>
+              <button type="submit" class="button page-button">Fetch</button>
             </form>
           </div>
           <div class="page-control">
