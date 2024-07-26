@@ -53,16 +53,14 @@ public class CaseServlet extends HttpServlet {
                 String color = request.getParameter("color");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = Database.addProductCase(sellingPrice, costPrice, name, formFactor, color, null, quantity);
-                if (result != -1) {
+                int result1 = Database.addProductCase(sellingPrice, costPrice, name, formFactor, color, null, quantity);
+                if (result1 == 1) {
                     int productId = Database.getMaxProductId();
                     String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = Database.addProductCase(sellingPrice, costPrice, name, formFactor, color, image, quantity);
+                    int result = Database.addProductCase(sellingPrice, costPrice, name, formFactor, color, image, quantity);
                     response.sendRedirect("cases?service=listAll&status=1");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi thêm Case");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertCase.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("cases?service=listAll&status=12");
                 }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
@@ -99,9 +97,7 @@ public class CaseServlet extends HttpServlet {
                 if (result == 1) {
                     response.sendRedirect("cases?service=listAll&status=10");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi cập nhật Case");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateCase.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("cases?service=listAll&status=11");
                 }
             }
         } else if (service.equals("delete")) {

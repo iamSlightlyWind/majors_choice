@@ -785,7 +785,7 @@
 
             if (status !== "" && status === '1') {
                 Swal.fire({
-                    title: "Add the successful!",
+                    title: "Add successful!",
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
@@ -802,6 +802,14 @@
             if (status !== "" && status === '11') {
                 Swal.fire({
                     title: "Update Unsuccessful!",
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+            
+            if (status !== "" && status === '12') {
+                Swal.fire({
+                    title: "Add Unsuccessful!",
                     icon: 'error',
                     confirmButtonText: 'OK'
                 });
