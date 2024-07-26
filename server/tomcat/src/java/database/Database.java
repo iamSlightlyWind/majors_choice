@@ -312,10 +312,10 @@ public class Database {
             callableStatement.registerOutParameter(14, Types.NVARCHAR);
 
             callableStatement.execute();
-            return productId;
+            return resultSet.getInt("result");
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            return -1;
+            return 555555;
         }
     }
 

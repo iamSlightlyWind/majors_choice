@@ -58,18 +58,14 @@ public class CPUServlet extends HttpServlet {
                 int boostClock = Integer.parseInt(request.getParameter("boostClock"));
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
                 int result = Database.addProductCPU(sellingPrice, costPrice, name, generation,
-                        ipgu, socket, cores, threads, baseClock, boostClock, tdp, null, quantity);
-                if (result != -1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = Database.addProductCPU(sellingPrice, costPrice, name, generation,
-                            ipgu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
+                        ipgu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
+                if (result == 1) {
                     response.sendRedirect("cpus?service=listAll&status=1");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi thêm CPU");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertCPU.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("cpus?service=listAll&status=12");
                 }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
