@@ -301,7 +301,7 @@
                   <a href="/"> Home&nbsp;</a>
                 </span>
                 <span class="view-category-text01">
-                  / <a href="/PSU">PSU -&nbsp;Computer processor</a>
+                  / <a href="/PSU">PSU</a>
                 </span>
               </div>
               <div class="view-category-product">
@@ -329,7 +329,7 @@
                         <span>From</span>
                         <br />
                       </span>
-                      <input placeholder="min " type="number" id="from" name="from" value="${requestScope.from}"
+                      <input placeholder="VND " type="number" id="from" name="from" value="${requestScope.from}"
                         class="view-category-textinput input" />
                     </div>
                     <div class="view-category-container04">
@@ -337,7 +337,7 @@
                         <span>To</span>
                         <br />
                       </span>
-                      <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="max "
+                      <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="VND "
                         class="view-category-textinput1 input" />
                     </div>
                     <div class="view-category-form">
@@ -350,7 +350,7 @@
                           <span>From</span>
                           <br />
                         </span>
-                        <input placeholder="min " type="number" id="Wfrom" name="fromWattage"
+                        <input placeholder="Watt " type="number" id="Wfrom" name="fromWattage"
                           value="${requestScope.fromWattages}" class="view-category-textinput input" />
                       </div>
                       <div class="view-category-container04">
@@ -359,7 +359,7 @@
                           <br />
                         </span>
                         <input type="number" id="Wto" name="toWattage" value="${requestScope.toWattages}"
-                          placeholder="max " class="view-category-textinput1 input" />
+                          placeholder="Watt " class="view-category-textinput1 input" />
                       </div>
                     </div>
                     <c:set var="efficiencys" value="${requestScope.efficiencys}" />
@@ -550,7 +550,7 @@
                             </svg>
                             <a href="mailto:support@themajorones.dev?subject=Support"
                               class="footer-social-link5 thq-body-small">
-                              Email : support@themajorones.dev
+                              Email: support@themajorones.dev
                             </a>
                           </div>
                           <div class="footer-link3">
@@ -560,7 +560,7 @@
                               </path>
                             </svg>
                             <span class="thq-body-small">
-                              Phone ( +84 929199387 )
+                              Phone: (+84) 929-199-387
                             </span>
                           </div>
                         </div>

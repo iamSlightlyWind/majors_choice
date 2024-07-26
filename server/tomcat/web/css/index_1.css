@@ -501,7 +501,7 @@
   height: 6vh;
   font-size: 1.2rem;
   margin-top: var(--dl-space-space-halfunit);
-  text-align: left;
+  text-align: center;
   margin-left: 0px;
   border-color: var(--dl-color-theme-secondary1);
   border-width: 0px;
@@ -663,7 +663,7 @@
   height: 6vh;
   font-size: 1rem;
   margin-top: var(--dl-space-space-halfunit);
-  text-align: left;
+  text-align: center;
   margin-left: 0px;
   border-color: var(--dl-color-theme-secondary1);
   border-width: 0px;
@@ -793,6 +793,7 @@
 
 @media(max-width: 1200px) {
   .product-text {
+    text-align: center;
     height: auto;
     font-size: 0.7rem;
   }
@@ -817,6 +818,7 @@
 
 @media(max-width: 767px) {
   .product-text {
+    text-align: center;
     font-size: 0.5rem;
   }
 
@@ -836,6 +838,7 @@
 
 @media(max-width: 479px) {
   .product-text {
+    text-align: center;
     font-size: 0.3rem;
   }
 
