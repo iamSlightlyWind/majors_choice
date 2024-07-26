@@ -269,9 +269,9 @@
             </div>
             <div class="navstaff-container navstaff-root-class-name54">
               <div class="navstaff-manager">
-                <span class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">
+                <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">
                   Manage Warehouse
-                </span>
+                </a>
                 <a href="/manage/profile?actor=user" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">
                   Manage Customer
                 </a>
