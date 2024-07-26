@@ -30,8 +30,15 @@ public class CPUServlet extends HttpServlet {
             service = "listAll";
         }
         if (service.equals("listAll")) {
-            ArrayList<CPU> cpus = Database.getCPUs("");
+            ArrayList<CPU> cpus;
+            String searchName = request.getParameter("searchName");
+            if (searchName != null) {
+                cpus = Database.getCPUs(searchName);
+            } else {
+                cpus = Database.getCPUs("");
+            }
             request.setAttribute("cpus", cpus);
+            request.setAttribute("searchName", searchName);
             request.setAttribute("path", request.getServletContext().getRealPath(""));
             request.setAttribute("titlePage", "Danh sách CPU");
             request.setAttribute("titleTable", "Danh sách CPU");
@@ -175,11 +182,6 @@ public class CPUServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String searchName = request.getParameter("searchName");
-
-        List<CPU> cpus = Database.getCPUs(searchName);
-        request.setAttribute("cpus", cpus);
-        request.setAttribute("searchName", searchName);
-        request.getRequestDispatcher("/jsp/CPUManage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 }

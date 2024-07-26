@@ -31,8 +31,15 @@ public class PSUServlet extends HttpServlet {
         }
 
         if (service.equals("listAll")) {
-            ArrayList<PSU> psus = Database.getPSUs("");
+            ArrayList<PSU> psus;
+            String searchName = request.getParameter("searchName");
+            if (searchName != null) {
+                psus = Database.getPSUs(searchName);
+            } else {
+                psus = Database.getPSUs("");
+            }
             request.setAttribute("psus", psus);
+            request.setAttribute("searchName", searchName);
             request.setAttribute("titlePage", "Danh sách PSU");
             request.setAttribute("titleTable", "Danh sách PSU");
             request.setAttribute("status", (String) request.getParameter("status"));
@@ -150,12 +157,6 @@ public class PSUServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String searchName = request.getParameter("searchName");
-
-        List<PSU> psus = Database.getPSUs(searchName);
-
-        request.setAttribute("searchName", searchName);
-        request.setAttribute("psus", psus);
-        request.getRequestDispatcher("/jsp/PSUManagage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 }
