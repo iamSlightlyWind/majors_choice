@@ -842,6 +842,14 @@
                 });
             }
 
+            if (status !== "" && status === '11') {
+                Swal.fire({
+                    title: "Update Unsuccessful!",
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+
             if (status !== "" && status === '111') {
                 Swal.fire({
                     title: "Import Successful!",

@@ -1121,7 +1121,7 @@ BEGIN
 END
 go
 
-CREATE PROCEDURE updateProductCPU
+CREATE or alter PROCEDURE updateProductCPU
     @id int,
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1139,6 +1139,14 @@ CREATE PROCEDURE updateProductCPU
     @result varchar(50) output
 AS
 BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists:' + @name
+        RETURN
+    END
+
     IF NOT EXISTS (SELECT 1
     FROM cpus
     WHERE id = @id)
@@ -1169,7 +1177,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE updateProductGPU
+CREATE or alter PROCEDURE updateProductGPU
     @id int,
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1184,6 +1192,14 @@ CREATE PROCEDURE updateProductGPU
     @result varchar(50) output
 AS
 BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists:' + @name
+        RETURN
+    END
+
     IF NOT EXISTS (SELECT 1
     FROM gpus
     WHERE id = @id)
@@ -1211,7 +1227,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE updateProductMotherboard
+CREATE or alter PROCEDURE updateProductMotherboard
     @id int,
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1230,6 +1246,14 @@ CREATE PROCEDURE updateProductMotherboard
     @result varchar(50) output
 AS
 BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists:' + @name
+        RETURN
+    END
+
     IF NOT EXISTS (SELECT 1
     FROM motherboards
     WHERE id = @id)
@@ -1261,7 +1285,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE updateProductPSU
+CREATE or alter PROCEDURE updateProductPSU
     @id int,
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1273,6 +1297,14 @@ CREATE PROCEDURE updateProductPSU
     @result varchar(50) output
 AS
 BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists:' + @name
+        RETURN
+    END
+
     IF NOT EXISTS (SELECT 1
     FROM psus
     WHERE id = @id)
@@ -1297,7 +1329,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE updateProductRAM
+CREATE or alter PROCEDURE updateProductRAM
     @id int,
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1311,6 +1343,14 @@ CREATE PROCEDURE updateProductRAM
     @result varchar(50) OUTPUT
 AS
 BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists:' + @name
+        RETURN
+    END
+
     IF NOT EXISTS (SELECT 1
     FROM rams
     WHERE id = @id)
@@ -1337,7 +1377,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE updateProductSSD
+CREATE or alter PROCEDURE updateProductSSD
     @id int,
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1350,6 +1390,14 @@ CREATE PROCEDURE updateProductSSD
     @result varchar(50) OUTPUT
 AS
 BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists:' + @name
+        RETURN
+    END
+
     IF NOT EXISTS (SELECT 1
     FROM ssds
     WHERE id = @id)
@@ -1375,7 +1423,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE updateProductCase
+CREATE or alter PROCEDURE updateProductCase
     @id int,
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
@@ -1387,6 +1435,14 @@ CREATE PROCEDURE updateProductCase
     @result nvarchar(50) OUTPUT
 AS
 BEGIN
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE name = @name)
+    BEGIN
+        SET @result = 'Already exists:' + @name
+        RETURN
+    END
+
     IF NOT EXISTS (SELECT 1
     FROM cases
     WHERE id = @id)
