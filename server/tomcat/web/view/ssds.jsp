@@ -301,7 +301,7 @@
                   <a href="/"> Home&nbsp;</a>
                 </span>
                 <span class="view-category-text01">
-                  / <a href="/SSD">SSD -&nbsp;Computer processor</a>
+                  / <a href="/SSD">SSD</a>
                 </span>
               </div>
               <div class="view-category-product">

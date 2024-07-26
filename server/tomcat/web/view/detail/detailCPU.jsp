@@ -314,13 +314,13 @@
                     </span>
                     <span class="view-detail-text01 thq-body-small thq-link">
                       <c:if test="${category == 'cpu'}">
-                        / <a href="/CPU">CPU -&nbsp;Computer processor</a>
+                        / <a href="/CPU">CPU</a>
                       </c:if>
                       <c:if test="${category == 'gpu'}">
                         / <a href="/GPU">GPU -&nbsp;Graphics processing unit</a>
                       </c:if>
                       <c:if test="${category == 'mobo'}">
-                        / <a href="/MotherBoard">MotherBoard -&nbsp;Main circuit board</a>
+                        / <a href="/MotherBoard">Motherboard -&nbsp;Main circuit board</a>
                       </c:if>
                       <c:if test="${category == 'psu'}">
                         / <a href="/PSU">PSU -&nbsp;Power Supply Unit</a>

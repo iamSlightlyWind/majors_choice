@@ -313,7 +313,7 @@
                     <a href="/"> Home&nbsp;</a>
                   </span>
                   <span class="view-category-text01">
-                    / <a href="/CPU">CPU -&nbsp;Computer processor</a>
+                    / <a href="/CPU">CPU</a>
                   </span>
                 </div>
                 <div class="view-category-product">
