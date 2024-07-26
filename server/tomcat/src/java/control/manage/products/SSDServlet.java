@@ -30,8 +30,15 @@ public class SSDServlet extends HttpServlet {
             service = "listAll";
         }
         if (service.equals("listAll")) {
-            ArrayList<SSD> ssds = Database.getSSDs("");
+            ArrayList<SSD> ssds;
+            String searchName = request.getParameter("searchName");
+            if (searchName != null) {
+                ssds = Database.getSSDs(searchName);
+            } else {
+                ssds = Database.getSSDs("");
+            }
             request.setAttribute("ssds", ssds);
+            request.setAttribute("searchName", searchName);
             request.setAttribute("titlePage", "Danh sách SSD");
             request.setAttribute("titleTable", "Danh sách SSD");
             request.setAttribute("status", (String) request.getParameter("status"));
@@ -153,12 +160,6 @@ public class SSDServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String searchName = request.getParameter("searchName");
-
-        List<SSD> ssds = Database.getSSDs(searchName);
-
-        request.setAttribute("searchName", searchName);
-        request.setAttribute("ssds", ssds);
-        request.getRequestDispatcher("/jsp/SSDManage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 }

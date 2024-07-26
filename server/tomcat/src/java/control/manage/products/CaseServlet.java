@@ -31,8 +31,15 @@ public class CaseServlet extends HttpServlet {
         }
 
         if (service.equals("listAll")) {
-            ArrayList<Case> cases = Database.getCases("");
+            ArrayList<Case> cases;
+            String searchName = request.getParameter("searchName");
+            if (searchName != null) {
+                cases = Database.getCases(searchName);
+            } else {
+                cases = Database.getCases("");
+            }
             request.setAttribute("cases", cases);
+            request.setAttribute("searchName", searchName);
             request.setAttribute("titlePage", "Danh sách Case");
             request.setAttribute("titleTable", "Danh sách Case");
             request.setAttribute("status", (String) request.getParameter("status"));
@@ -148,11 +155,6 @@ public class CaseServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String searchName = request.getParameter("searchName");
-        
-        List<Case> cases = Database.getCases(searchName);
-        request.setAttribute("searchName", searchName);
-        request.setAttribute("cases", cases);
-        request.getRequestDispatcher("/jsp/CaseManage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 }
