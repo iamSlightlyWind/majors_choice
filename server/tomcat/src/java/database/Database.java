@@ -212,7 +212,8 @@ public class Database {
                 double rateStar = Rating.percentRate(id);
                 motherboards
                         .add(new Motherboard(socket, chipset, igpu, formFactor, ramType, maxRamSpeed, maxRamCapacity,
-                                ramSlots, wifi, image, name, id, sellingPrice, costPrice, description, quantity, rateStar, rateSize));
+                                ramSlots, wifi, image, name, id, sellingPrice, costPrice, description, quantity,
+                                rateStar, rateSize));
             }
             return motherboards;
         } catch (SQLException ex) {
@@ -743,16 +744,20 @@ public class Database {
     public static String handleFileUpload(HttpServletRequest request, String inputName, String productID) {
         try {
             Part filePart = request.getPart(inputName);
+            if (filePart == null || filePart.getSize() == 0) {
+                return null;
+            }
+
             String fileName = productID + ".png";
-    
+
             String uploadPath = request.getServletContext().getRealPath("/images");
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
             }
-    
+
             File file = new File(uploadPath, fileName);
-    
+
             if (file.exists()) {
                 file.delete();
             }
@@ -1443,7 +1448,7 @@ public class Database {
         }
         return -1;
     }
-    
+
     public static int addRating(int productId, int userId, int ratingStar, String ratingText) {
         try {
             String sql = "{call addRating(?, ?, ?, ?, ?)}";
@@ -1535,6 +1540,5 @@ public class Database {
         }
         return products;
     }
-    
 
 }
