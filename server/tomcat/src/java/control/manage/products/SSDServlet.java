@@ -52,19 +52,15 @@ public class SSDServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int result = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache,
-                        null, quantity);
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
+                int result = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity,
+                        cache, image, quantity);
 
-                if (result != -1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity,
-                            cache, image, quantity);
+                if (result == 1) {
                     response.sendRedirect("ssds?service=listAll&status=1");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi thêm SSD");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertSSD.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("ssds?service=listAll&status=12");
                 }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
@@ -102,9 +98,7 @@ public class SSDServlet extends HttpServlet {
                 if (result == 1) {
                     response.sendRedirect("ssds?service=listAll&status=10");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi cập nhật SSD");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateSSD.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("ssds?service=listAll&status=11");
                 }
             }
         } else if (service.equals("delete")) {
