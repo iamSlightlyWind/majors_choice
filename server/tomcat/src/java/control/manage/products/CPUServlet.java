@@ -113,9 +113,7 @@ public class CPUServlet extends HttpServlet {
                 if (result == 1) {
                     response.sendRedirect("cpus?service=listAll&status=10");
                 } else {
-                    request.setAttribute("errorMessage", "  Lỗi khi cập nhật CPU");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateCPU.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("cpus?service=listAll&status=11");
                 }
             }
         } else if (service.equals("delete")) {
