@@ -301,7 +301,7 @@
                   <a href="/"> Home&nbsp;</a>
                 </span>
                 <span class="view-category-text01">
-                  / <a href="/RAM">RAM -&nbsp;Computer processor</a>
+                  / <a href="/RAM">RAM</a>
                 </span>
               </div>
               <div class="view-category-product">

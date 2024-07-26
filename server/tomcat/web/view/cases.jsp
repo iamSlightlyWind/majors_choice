@@ -301,7 +301,7 @@
                   <a href="/"> Home&nbsp;</a>
                 </span>
                 <span class="view-category-text01">
-                  / <a href="/CASE">CASE -&nbsp;Computer processor</a>
+                  / <a href="/CASE">CASE</a>
                 </span>
               </div>
               <div class="view-category-product">

@@ -313,7 +313,7 @@
                     <a href="/"> Home&nbsp;</a>
                   </span>
                   <span class="view-category-text01">
-                    / <a href="/MotherBoard">MotherBoard -&nbsp;Computer processor</a>
+                    / <a href="/MotherBoard">Motherboard</a>
                   </span>
                 </div>
                 <div class="view-category-product">
