@@ -52,14 +52,12 @@ public class SSDServlet extends HttpServlet {
                 int capacity = Integer.parseInt(request.getParameter("capacity"));
                 int cache = Integer.parseInt(request.getParameter("cache"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int result1 = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity, cache,
-                        null, quantity);
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
+                int result = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity,
+                        cache, image, quantity);
 
-                if (result1 == 1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result = Database.addProductSSD(sellingPrice, costPrice, name, connectionInterface, capacity,
-                            cache, image, quantity);
+                if (result == 1) {
                     response.sendRedirect("ssds?service=listAll&status=1");
                 } else {
                     response.sendRedirect("ssds?service=listAll&status=12");

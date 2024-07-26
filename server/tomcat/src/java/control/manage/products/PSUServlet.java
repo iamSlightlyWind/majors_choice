@@ -53,13 +53,12 @@ public class PSUServlet extends HttpServlet {
                 String efficiency = request.getParameter("efficiency");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result1 = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, null, quantity);
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
+                int result = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image,
+                        quantity);
 
-                if (result1 == 1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image,
-                            quantity);
+                if (result == 1) {
                     response.sendRedirect("psus?service=listAll&status=1");
                 } else {
                     response.sendRedirect("psus?service=listAll&status=12");

@@ -59,14 +59,14 @@ public class CPUServlet extends HttpServlet {
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
                 int productId = Database.getMaxProductId();
-                String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
                 int result = Database.addProductCPU(sellingPrice, costPrice, name, generation,
                         ipgu, socket, cores, threads, baseClock, boostClock, tdp, image, quantity);
                 if (result == 1) {
                     response.sendRedirect("cpus?service=listAll&status=1");
                 } else {
                     response.sendRedirect("cpus?service=listAll&status=12");
-                } 
+                }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
                 request.setAttribute("errorMessage", "Lỗi khi chuyển đổi kiểu dữ liệu");
