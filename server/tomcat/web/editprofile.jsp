@@ -469,7 +469,7 @@
                         href="mailto:support@themajorones.dev?subject=Support"
                         class="footer-social-link5 thq-body-small"
                       >
-                        Email : support@themajorones.dev
+                        Email: support@themajorones.dev
                       </a>
                     </div>
                     <div class="footer-link3">
@@ -479,7 +479,7 @@
                         ></path>
                       </svg>
                       <span class="thq-body-small">
-                        Phone ( +84 929199387 )
+                        Phone: (+84) 929-199-387
                       </span>
                     </div>
                   </div>
