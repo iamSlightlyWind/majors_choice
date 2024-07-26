@@ -1139,8 +1139,8 @@ CREATE or alter PROCEDURE updateProductCPU
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM products
-    WHERE name = @name)
+               FROM products
+               WHERE name = @name AND id != @id)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -1192,8 +1192,8 @@ CREATE or alter PROCEDURE updateProductGPU
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM products
-    WHERE name = @name)
+               FROM products
+               WHERE name = @name AND id != @id)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -1246,8 +1246,8 @@ CREATE or alter PROCEDURE updateProductMotherboard
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM products
-    WHERE name = @name)
+               FROM products
+               WHERE name = @name AND id != @id)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -1297,8 +1297,8 @@ CREATE or alter PROCEDURE updateProductPSU
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM products
-    WHERE name = @name)
+               FROM products
+               WHERE name = @name AND id != @id)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -1343,8 +1343,8 @@ CREATE or alter PROCEDURE updateProductRAM
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM products
-    WHERE name = @name)
+               FROM products
+               WHERE name = @name AND id != @id)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -1390,8 +1390,8 @@ CREATE or alter PROCEDURE updateProductSSD
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM products
-    WHERE name = @name)
+               FROM products
+               WHERE name = @name AND id != @id)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
@@ -1435,8 +1435,8 @@ CREATE or alter PROCEDURE updateProductCase
 AS
 BEGIN
     IF EXISTS (SELECT 1
-    FROM products
-    WHERE name = @name)
+               FROM products
+               WHERE name = @name AND id != @id)
     BEGIN
         SET @result = 'Already exists:' + @name
         RETURN
