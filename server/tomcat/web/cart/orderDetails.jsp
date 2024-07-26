@@ -197,7 +197,8 @@
                   </nav>
                   <div class="navmain-buttons">
                     <% table=(String) request.getSession().getAttribute("table"); if ("staff".equals(table)) { %>
-                      <a href="/cart" target="_blank" rel="noreferrer noopener" class="navmain-link1" style="visibility: hidden;">
+                      <a href="/cart" target="_blank" rel="noreferrer noopener" class="navmain-link1"
+                        style="visibility: hidden;">
                         <svg viewBox="0 0 1024 1024" class="navmain-icon thq-button-icon thq-icon-medium">
                           <path
                             d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z">
@@ -264,289 +265,303 @@
               </header>
             </header>
           </div>
-          <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
-            .equals(role)) { %>
+          <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role)) { %>
             <div class="navstaff-container">
               <div class="navstaff-manager">
-                <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
-                  Warehouse</a>
-                <a href="/manage/profile?actor=user" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage
+                <a href="/manage/profile?actor=user" class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
+                  style="margin-left: 10vw;">Manage
                   Customer</a>
-                <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
-                <a href="/manage/profile?actor=staff" class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage
-                  Staff</a>
-                <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
+                  style="margin-right: 10vw;">Manage Order</a>
               </div>
             </div>
             <% } %>
-              <div class="customer-order-detail-link-page">
-                <div class="customer-order-detail-container1">
-                  <span class="customer-order-detail-text thq-body-small thq-link">
-                    <a href="/order" style="margin-left: 10vw;">&nbsp;Manage Orders</a>
-                  </span>
-                  <span class="customer-order-detail-text1 thq-body-small">
-                    &nbsp;/ Order Details&nbsp;
-                  </span>
+              <% role=(String) request.getSession().getAttribute("role"); if ("manager".equals(role)) { %>
+                <div class="navstaff-container">
+                  <div class="navstaff-manager">
+                    <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                      Warehouse</a>
+                    <a href="/manage/profile?actor=user"
+                      class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage
+                      Customer</a>
+                    <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                    <a href="/manage/profile?actor=staff"
+                      class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage
+                      Staff</a>
+                    <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                  </div>
                 </div>
-              </div>
-              <div class="order-detail-componment-container order-detail-componment-root-class-name">
-                <div class="order-detail-componment-heading">
-                  <span class="order-detail-componment-text-id">
-                    <span>Order ID: ${Order.id}</span>
-                    <br />
-                  </span>
-                  <span class="order-detail-componment-text-status">
-                    <span class="order-detail-componment-text02">Status:</span>
-                    <span class="order-detail-componment-text03">${Order.status}</span>
-                  </span>
-                </div>
-                <div class="order-detail-componment-form-root">
-                  <div class="order-detail-componment-product">
-                    <c:forEach var="ProductCount" items="${Order.quantities}">
-                      <form class="order-detail-componment-form">
-                        <img alt="image" src="/images/${ProductCount.id}.png" class="order-detail-componment-image" />
-                        <div class="order-detail-componment-container1">
-                          <h1 class="order-detail-componment-name-product">
-                            ${ProductCount.name}
-                          </h1>
-                          <span class="order-detail-componment-quanity">
-                            <span><span>x${ProductCount.count}</span></span>
-                            <br />
-                          </span>
-                        </div>
-                        <span class="order-detail-componment-price">
-                          <span>${ProductCount.pricePer} VND</span>
-                        </span>
-                      </form>
-                    </c:forEach>
-                    <div class="order-detail-componment-total-price">
-                      <span class="order-detail-componment-text06">
-                        <span>Total:&nbsp;</span>
+                <% } %>
+                  <div class="customer-order-detail-link-page">
+                    <div class="customer-order-detail-container1">
+                      <span class="customer-order-detail-text thq-body-small thq-link">
+                        <a href="/order" style="margin-left: 10vw;">&nbsp;Manage Orders</a>
+                      </span>
+                      <span class="customer-order-detail-text1 thq-body-small">
+                        &nbsp;/ Order Details&nbsp;
+                      </span>
+                    </div>
+                  </div>
+                  <div class="order-detail-componment-container order-detail-componment-root-class-name">
+                    <div class="order-detail-componment-heading">
+                      <span class="order-detail-componment-text-id">
+                        <span>Order ID: ${Order.id}</span>
                         <br />
                       </span>
-                      <span class="order-detail-componment-text09">
-                        <span>${Order.cartTotal} VND</span>
+                      <span class="order-detail-componment-text-status">
+                        <span class="order-detail-componment-text02">Status:</span>
+                        <span class="order-detail-componment-text03">${Order.status}</span>
                       </span>
                     </div>
-                  </div>
-                  <form class="order-detail-componment-shipping-infor">
-                    <span class="order-detail-componment-heading1">
-                      Shipping information
-                    </span>
-                    <div class="order-detail-componment-name">
-                      <span class="order-detail-componment-title">Name:</span>
-                      <span class="order-detail-componment-value">
-                        ${Order.orderInfo.fullName}
-                      </span>
-                    </div>
-                    <div class="order-detail-componment-address">
-                      <span class="order-detail-componment-title1">Address:</span>
-                      <span class="order-detail-componment-value1">
-                        ${Order.orderInfo.address}
-                      </span>
-                    </div>
-                    <div class="order-detail-componment-phone-number">
-                      <span class="order-detail-componment-title2">
-                        Phone number:
-                      </span>
-                      <span class="order-detail-componment-value2">${Order.orderInfo.phoneNumber}</span>
-                    </div>
-                  </form>
-                  <form class="order-detail-componment-payment-method">
-                    <span class="order-detail-componment-text10">
-                      Payment Method:&nbsp;${Order.orderInfo.payment}
-                    </span>
-                  </form>
-                  <div class="order-detail-componment-button" id="orderButtons">
+                    <div class="order-detail-componment-form-root">
+                      <div class="order-detail-componment-product">
+                        <c:forEach var="ProductCount" items="${Order.quantities}">
+                          <form class="order-detail-componment-form">
+                            <img alt="image" src="/images/${ProductCount.id}.png"
+                              class="order-detail-componment-image" />
+                            <div class="order-detail-componment-container1">
+                              <h1 class="order-detail-componment-name-product">
+                                ${ProductCount.name}
+                              </h1>
+                              <span class="order-detail-componment-quanity">
+                                <span><span>x${ProductCount.count}</span></span>
+                                <br />
+                              </span>
+                            </div>
+                            <span class="order-detail-componment-price">
+                              <span>${ProductCount.pricePer} VND</span>
+                            </span>
+                          </form>
+                        </c:forEach>
+                        <div class="order-detail-componment-total-price">
+                          <span class="order-detail-componment-text06">
+                            <span>Total:&nbsp;</span>
+                            <br />
+                          </span>
+                          <span class="order-detail-componment-text09">
+                            <span>${Order.cartTotal} VND</span>
+                          </span>
+                        </div>
+                      </div>
+                      <form class="order-detail-componment-shipping-infor">
+                        <span class="order-detail-componment-heading1">
+                          Shipping information
+                        </span>
+                        <div class="order-detail-componment-name">
+                          <span class="order-detail-componment-title">Name:</span>
+                          <span class="order-detail-componment-value">
+                            ${Order.orderInfo.fullName}
+                          </span>
+                        </div>
+                        <div class="order-detail-componment-address">
+                          <span class="order-detail-componment-title1">Address:</span>
+                          <span class="order-detail-componment-value1">
+                            ${Order.orderInfo.address}
+                          </span>
+                        </div>
+                        <div class="order-detail-componment-phone-number">
+                          <span class="order-detail-componment-title2">
+                            Phone number:
+                          </span>
+                          <span class="order-detail-componment-value2">${Order.orderInfo.phoneNumber}</span>
+                        </div>
+                      </form>
+                      <form class="order-detail-componment-payment-method">
+                        <span class="order-detail-componment-text10">
+                          Payment Method:&nbsp;${Order.orderInfo.payment}
+                        </span>
+                      </form>
+                      <div class="order-detail-componment-button" id="orderButtons">
 
-                    <c:choose>
-                      <c:when test="${managing}">
                         <c:choose>
+                          <c:when test="${managing}">
+                            <c:choose>
 
-                          <c:when
-                            test="${Order.status eq 'Pending' or Order.status eq 'Cancellation Denied, Shipping Pending'}">
-                            <button type="button" name="action" value="cancel"
-                              class="order-detail-componment-cancel-order button thq-button-outline">
-                              Cancel Order
-                            </button>
-                            <button type="button" name="action" value="ship"
-                              class="order-detail-componment-ship-order button thq-button-outline">
-                              <span>
-                                <span>Ship Order</span>
-                                <br />
-                              </span>
-                            </button>
-                          </c:when>
+                              <c:when
+                                test="${Order.status eq 'Pending' or Order.status eq 'Cancellation Denied, Shipping Pending'}">
+                                <button type="button" name="action" value="cancel"
+                                  class="order-detail-componment-cancel-order button thq-button-outline">
+                                  Cancel Order
+                                </button>
+                                <button type="button" name="action" value="ship"
+                                  class="order-detail-componment-ship-order button thq-button-outline">
+                                  <span>
+                                    <span>Ship Order</span>
+                                    <br />
+                                  </span>
+                                </button>
+                              </c:when>
 
-                          <c:when test="${Order.status eq 'Shipping'}">
-                            <button type="button" name="action" value="cancel"
-                              class="order-detail-componment-cancel-order button thq-button-outline">
-                              Cancel Order
-                            </button>
-                            <button type="button" name="action" value="complete"
-                              class="order-detail-componment-cancel-order button thq-button-outline">
-                              Complete Order
-                            </button>
-                          </c:when>
+                              <c:when test="${Order.status eq 'Shipping'}">
+                                <button type="button" name="action" value="cancel"
+                                  class="order-detail-componment-cancel-order button thq-button-outline">
+                                  Cancel Order
+                                </button>
+                                <button type="button" name="action" value="complete"
+                                  class="order-detail-componment-cancel-order button thq-button-outline">
+                                  Complete Order
+                                </button>
+                              </c:when>
 
-                          <c:when test="${Order.status eq 'Cancellation Requested'}">
-                            <button type="button" name="action" value="deny"
-                              class="order-detail-componment-deny-requset button thq-button-outline">
-                              <span>
-                                <span>Deny Request</span>
-                                <br />
-                              </span>
-                            </button>
-                            <button type="button" name="action" value="approve"
-                              class="order-detail-componment-approve-request button thq-button-outline">
-                              <span>
-                                <span>Approve Request</span>
-                                <br />
-                              </span>
-                            </button>
+                              <c:when test="${Order.status eq 'Cancellation Requested'}">
+                                <button type="button" name="action" value="deny"
+                                  class="order-detail-componment-deny-requset button thq-button-outline">
+                                  <span>
+                                    <span>Deny Request</span>
+                                    <br />
+                                  </span>
+                                </button>
+                                <button type="button" name="action" value="approve"
+                                  class="order-detail-componment-approve-request button thq-button-outline">
+                                  <span>
+                                    <span>Approve Request</span>
+                                    <br />
+                                  </span>
+                                </button>
+                              </c:when>
+                            </c:choose>
                           </c:when>
                         </c:choose>
-                      </c:when>
-                    </c:choose>
 
-                    <c:if test="${Order.status eq 'Pending' and not managing}">
-                      <form action="/order" method="get">
-                        <input type="hidden" name="id" value="${Order.id}" />
-                        <button type="submit" name="action" value="cancel"
-                          class="order-detail-componment-request-cancel button thq-button-outline">
-                          Request Cancellation
-                        </button>
-                      </form>
-                  </div>
-                  </c:if>
-                </div>
-              </div>
-              <footer class="footer-footer1 thq-section-padding footer-root-class-name54">
-                <div class="footer-max-width thq-section-max-width">
-                  <div class="footer-content">
-                    <div class="footer-newsletter">
-                      <div class="footer-container">
-                        <h1><span>Major's Choice</span></h1>
+                        <c:if test="${Order.status eq 'Pending' and not managing}">
+                          <form action="/order" method="get">
+                            <input type="hidden" name="id" value="${Order.id}" />
+                            <button type="submit" name="action" value="cancel"
+                              class="order-detail-componment-request-cancel button thq-button-outline">
+                              Request Cancellation
+                            </button>
+                          </form>
                       </div>
-                      <span class="thq-body-small">
-                        Subscribe to our newsletter for the latest updates on new
-                        features and product releases.
-                      </span>
-                      <div class="footer-actions">
-                        <div class="footer-form">
-                          <div class="footer-container1">
-                            <input type="email" placeholder="Enter your email" class="footer-text-input thq-input" />
-                          </div>
-                          <button class="thq-button-outline footer-button">
-                            <span class="thq-body-small"><span>Subscribe</span></span>
-                          </button>
-                        </div>
-                        <span class="footer-content2 thq-body-small">
-                          <span>
-                            By subscribing you agree to with our Privacy Policy and
-                            provide consent to receive updates from our company.
-                          </span>
-                        </span>
-                      </div>
+                      </c:if>
                     </div>
-                    <div class="footer-links">
-                      <div class="footer-column1">
-                        <strong class="thq-body-large footer-column1-title">
-                          <span>Company</span>
-                        </strong>
-                        <div class="footer-footer-links">
-                          <span class="thq-body-small"><span>About Us</span></span>
-                          <span class="thq-body-small"><span>Contact Us</span></span>
-                          <span class="thq-body-small"><span>Careers</span></span>
+                  </div>
+                  <footer class="footer-footer1 thq-section-padding footer-root-class-name54">
+                    <div class="footer-max-width thq-section-max-width">
+                      <div class="footer-content">
+                        <div class="footer-newsletter">
+                          <div class="footer-container">
+                            <h1><span>Major's Choice</span></h1>
+                          </div>
+                          <span class="thq-body-small">
+                            Subscribe to our newsletter for the latest updates on new
+                            features and product releases.
+                          </span>
+                          <div class="footer-actions">
+                            <div class="footer-form">
+                              <div class="footer-container1">
+                                <input type="email" placeholder="Enter your email"
+                                  class="footer-text-input thq-input" />
+                              </div>
+                              <button class="thq-button-outline footer-button">
+                                <span class="thq-body-small"><span>Subscribe</span></span>
+                              </button>
+                            </div>
+                            <span class="footer-content2 thq-body-small">
+                              <span>
+                                By subscribing you agree to with our Privacy Policy and
+                                provide consent to receive updates from our company.
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="footer-links">
+                          <div class="footer-column1">
+                            <strong class="thq-body-large footer-column1-title">
+                              <span>Company</span>
+                            </strong>
+                            <div class="footer-footer-links">
+                              <span class="thq-body-small"><span>About Us</span></span>
+                              <span class="thq-body-small"><span>Contact Us</span></span>
+                              <span class="thq-body-small"><span>Careers</span></span>
+                            </div>
+                          </div>
+                          <div class="footer-column2">
+                            <strong class="thq-body-large footer-column2-title">
+                              <span>Support</span>
+                            </strong>
+                            <div class="footer-footer-links1">
+                              <span class="thq-body-small">
+                                <span>Shipping Information</span>
+                              </span>
+                              <span class="thq-body-small">
+                                <span>Returns &amp; Exchanges</span>
+                              </span>
+                              <span class="thq-body-small">
+                                <span>Warranty Policy</span>
+                              </span>
+                              <span class="thq-body-small">
+                                <span>Customer Reviews</span>
+                              </span>
+                              <span class="thq-body-small">
+                                <span>Tech Support</span>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="footer-column3">
+                            <strong class="thq-body-large footer-social-link1-title">
+                              <span>Connect with Us</span>
+                            </strong>
+                            <div class="footer-social-links">
+                              <div class="footer-link">
+                                <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
+                                  <path
+                                    d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z">
+                                  </path>
+                                </svg>
+                                <span class="thq-body-small">Facebook</span>
+                              </div>
+                              <div class="footer-link1">
+                                <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
+                                  <path
+                                    d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z">
+                                  </path>
+                                </svg>
+                                <span class="thq-body-small">Instagram</span>
+                              </div>
+                              <div class="footer-link2">
+                                <svg viewBox="0 0 1024 1024" class="footer-icon4">
+                                  <path
+                                    d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
+                                  </path>
+                                </svg>
+                                <a href="mailto:support@themajorones.dev?subject=Support"
+                                  class="footer-social-link5 thq-body-small">
+                                  Email: support@themajorones.dev
+                                </a>
+                              </div>
+                              <div class="footer-link3">
+                                <svg viewBox="0 0 1024 1024" class="footer-icon6">
+                                  <path
+                                    d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
+                                  </path>
+                                </svg>
+                                <span class="thq-body-small">
+                                  Phone: (+84) 929-199-387
+                                </span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div class="footer-column2">
-                        <strong class="thq-body-large footer-column2-title">
-                          <span>Support</span>
-                        </strong>
-                        <div class="footer-footer-links1">
-                          <span class="thq-body-small">
-                            <span>Shipping Information</span>
-                          </span>
-                          <span class="thq-body-small">
-                            <span>Returns &amp; Exchanges</span>
-                          </span>
-                          <span class="thq-body-small">
-                            <span>Warranty Policy</span>
-                          </span>
-                          <span class="thq-body-small">
-                            <span>Customer Reviews</span>
-                          </span>
-                          <span class="thq-body-small">
-                            <span>Tech Support</span>
-                          </span>
-                        </div>
-                      </div>
-                      <div class="footer-column3">
-                        <strong class="thq-body-large footer-social-link1-title">
-                          <span>Connect with Us</span>
-                        </strong>
-                        <div class="footer-social-links">
-                          <div class="footer-link">
-                            <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
-                              <path
-                                d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z">
-                              </path>
-                            </svg>
-                            <span class="thq-body-small">Facebook</span>
-                          </div>
-                          <div class="footer-link1">
-                            <svg viewBox="0 0 877.7142857142857 1024" class="thq-icon-small">
-                              <path
-                                d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z">
-                              </path>
-                            </svg>
-                            <span class="thq-body-small">Instagram</span>
-                          </div>
-                          <div class="footer-link2">
-                            <svg viewBox="0 0 1024 1024" class="footer-icon4">
-                              <path
-                                d="M854 342v-86l-342 214-342-214v86l342 212zM854 170q34 0 59 26t25 60v512q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-512q0-34 25-60t59-26h684z">
-                              </path>
-                            </svg>
-                            <a href="mailto:support@themajorones.dev?subject=Support"
-                              class="footer-social-link5 thq-body-small">
-                              Email: support@themajorones.dev
-                            </a>
-                          </div>
-                          <div class="footer-link3">
-                            <svg viewBox="0 0 1024 1024" class="footer-icon6">
-                              <path
-                                d="M282 460q96 186 282 282l94-94q20-20 44-10 72 24 152 24 18 0 30 12t12 30v150q0 18-12 30t-30 12q-300 0-513-213t-213-513q0-18 12-30t30-12h150q18 0 30 12t12 30q0 80 24 152 8 26-10 44z">
-                              </path>
-                            </svg>
+                      <div class="footer-credits">
+                        <div class="thq-divider-horizontal"></div>
+                        <div class="footer-row">
+                          <span class="thq-body-small"></span>
+                          <div class="footer-footer-links2">
                             <span class="thq-body-small">
-                              Phone: (+84) 929-199-387
+                              <span>Privacy Policy</span>
+                            </span>
+                            <span class="thq-body-small">
+                              <span>Terms &amp; Conditions</span>
+                            </span>
+                            <span class="thq-body-small">
+                              <span>Cookies Policy</span>
                             </span>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="footer-credits">
-                    <div class="thq-divider-horizontal"></div>
-                    <div class="footer-row">
-                      <span class="thq-body-small"></span>
-                      <div class="footer-footer-links2">
-                        <span class="thq-body-small">
-                          <span>Privacy Policy</span>
-                        </span>
-                        <span class="thq-body-small">
-                          <span>Terms &amp; Conditions</span>
-                        </span>
-                        <span class="thq-body-small">
-                          <span>Cookies Policy</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </footer>
+                  </footer>
         </div>
       </div>
       <script>
@@ -611,7 +626,7 @@
           })();
         </script>
         <% } %>
-      <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+          <script defer="" src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     </body>
 
     </html>
