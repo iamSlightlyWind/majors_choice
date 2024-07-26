@@ -539,7 +539,7 @@
   height: 6vh;
   font-size: 1rem;
   margin-top: var(--dl-space-space-halfunit);
-  text-align: left;
+  text-align: center;
   margin-left: 0px;
   border-color: var(--dl-color-theme-secondary1);
   border-width: 0px;

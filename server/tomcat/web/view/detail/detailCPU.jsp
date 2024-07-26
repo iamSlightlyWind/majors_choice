@@ -314,13 +314,13 @@
                     </span>
                     <span class="view-detail-text01 thq-body-small thq-link">
                       <c:if test="${category == 'cpu'}">
-                        / <a href="/CPU">CPU -&nbsp;Computer processor</a>
+                        / <a href="/CPU">CPU</a>
                       </c:if>
                       <c:if test="${category == 'gpu'}">
                         / <a href="/GPU">GPU -&nbsp;Graphics processing unit</a>
                       </c:if>
                       <c:if test="${category == 'mobo'}">
-                        / <a href="/MotherBoard">MotherBoard -&nbsp;Main circuit board</a>
+                        / <a href="/MotherBoard">Motherboard -&nbsp;Main circuit board</a>
                       </c:if>
                       <c:if test="${category == 'psu'}">
                         / <a href="/PSU">PSU -&nbsp;Power Supply Unit</a>
@@ -919,7 +919,7 @@
                             </svg>
                             <a href="mailto:support@themajorones.dev?subject=Support"
                               class="footer-social-link5 thq-body-small">
-                              Email : support@themajorones.dev
+                              Email: support@themajorones.dev
                             </a>
                           </div>
                           <div class="footer-link3">
@@ -929,7 +929,7 @@
                               </path>
                             </svg>
                             <span class="thq-body-small">
-                              Phone ( +84 929199387 )
+                              Phone: (+84) 929-199-387
                             </span>
                           </div>
                         </div>

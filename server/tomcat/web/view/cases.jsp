@@ -301,7 +301,7 @@
                   <a href="/"> Home&nbsp;</a>
                 </span>
                 <span class="view-category-text01">
-                  / <a href="/CASE">CASE -&nbsp;Computer processor</a>
+                  / <a href="/CASE">CASE</a>
                 </span>
               </div>
               <div class="view-category-product">
@@ -329,7 +329,7 @@
                         <span>From</span>
                         <br />
                       </span>
-                      <input placeholder="min " type="number" id="from" name="from" value="${requestScope.from}"
+                      <input placeholder="VND " type="number" id="from" name="from" value="${requestScope.from}"
                         class="view-category-textinput input" />
                     </div>
                     <div class="view-category-container04">
@@ -337,7 +337,7 @@
                         <span>To</span>
                         <br />
                       </span>
-                      <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="max "
+                      <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="VND "
                         class="view-category-textinput1 input" />
                     </div>
                     <c:set var="formFactors" value="${requestScope.formFactors}" />
@@ -563,7 +563,7 @@
                             </svg>
                             <a href="mailto:support@themajorones.dev?subject=Support"
                               class="footer-social-link5 thq-body-small">
-                              Email : support@themajorones.dev
+                              Email: support@themajorones.dev
                             </a>
                           </div>
                           <div class="footer-link3">
@@ -573,7 +573,7 @@
                               </path>
                             </svg>
                             <span class="thq-body-small">
-                              Phone ( +84 929199387 )
+                              Phone: (+84) 929-199-387
                             </span>
                           </div>
                         </div>
