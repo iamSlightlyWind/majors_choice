@@ -342,7 +342,7 @@
                           <span>From</span>
                           <br />
                         </span>
-                        <input placeholder="min " type="number" id="from" name="from" value="${requestScope.from}"
+                        <input placeholder="VND " type="number" id="from" name="from" value="${requestScope.from}"
                           class="view-category-textinput input" />
                       </div>
                       <div class="view-category-container04">
@@ -350,7 +350,7 @@
                           <span>To</span>
                           <br />
                         </span>
-                        <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="max "
+                        <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="VND "
                           class="view-category-textinput1 input" />
                       </div>
                       <c:set var="sockets" value="${requestScope.sockets}" />

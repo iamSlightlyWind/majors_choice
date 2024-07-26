@@ -329,7 +329,7 @@
                         <span>From</span>
                         <br />
                       </span>
-                      <input placeholder="min " type="number" id="from" name="from" value="${requestScope.from}"
+                      <input placeholder="VND " type="number" id="from" name="from" value="${requestScope.from}"
                         class="view-category-textinput input" />
                     </div>
                     <div class="view-category-container04">
@@ -337,7 +337,7 @@
                         <span>To</span>
                         <br />
                       </span>
-                      <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="max "
+                      <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="VND "
                         class="view-category-textinput1 input" />
                     </div>
                     <c:set var="interfaces" value="${requestScope.interfaces}" />
@@ -396,7 +396,7 @@
                           <span>From</span>
                           <br />
                         </span>
-                        <input placeholder="min " type="number" id="Cfrom" name="fromCapacity"
+                        <input placeholder="GB " type="number" id="Cfrom" name="fromCapacity"
                           value="${requestScope.fromCapacity}" class="view-category-textinput input" />
                       </div>
                       <div class="view-category-container04">
@@ -405,7 +405,7 @@
                           <br />
                         </span>
                         <input type="number" id="Cto" name="toCapacity" value="${requestScope.toCapacity}"
-                          placeholder="max " class="view-category-textinput1 input" />
+                          placeholder="GB " class="view-category-textinput1 input" />
                       </div>
                     </div>
                     <c:set var="caches" value="${requestScope.caches}" />
