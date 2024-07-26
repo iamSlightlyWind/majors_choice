@@ -341,7 +341,7 @@
                           <span>From</span>
                           <br />
                         </span>
-                        <input placeholder="min " type="number" id="from" name="from" value="${requestScope.from}"
+                        <input placeholder="VND " type="number" id="from" name="from" value="${requestScope.from}"
                           class="view-category-textinput input" />
                       </div>
                       <div class="view-category-container04">
@@ -349,7 +349,7 @@
                           <span>To</span>
                           <br />
                         </span>
-                        <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="max "
+                        <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="VND"
                           class="view-category-textinput1 input" />
                       </div>
                       <c:set var="brands" value="${requestScope.brands}" />
@@ -500,7 +500,7 @@
                             <span>From</span>
                             <br />
                           </span>
-                          <input placeholder="min " type="number" id="Corefrom" name="fromCores"
+                          <input placeholder="Core" type="number" id="Corefrom" name="fromCores"
                             value="${requestScope.fromCore}" class="view-category-textinput input" />
                         </div>
                         <div class="view-category-container04">
@@ -509,7 +509,7 @@
                             <br />
                           </span>
                           <input type="number" id="Coreto" name="toCores" value="${requestScope.toCore}"
-                            placeholder="max " class="view-category-textinput1 input" />
+                            placeholder="Core " class="view-category-textinput1 input" />
                         </div>
                       </div>
                       <div class="view-category-form">
@@ -522,7 +522,7 @@
                             <span>From</span>
                             <br />
                           </span>
-                          <input placeholder="min " type="number" id="TDPfrom" name="fromTDP"
+                          <input placeholder="Watt" type="number" id="TDPfrom" name="fromTDP"
                             value="${requestScope.fromTDP}" class="view-category-textinput input" />
                         </div>
                         <div class="view-category-container04">
@@ -530,7 +530,7 @@
                             <span>To</span>
                             <br />
                           </span>
-                          <input type="number" id="TDPto" name="toTDP" value="${requestScope.toTDP}" placeholder="max "
+                          <input type="number" id="TDPto" name="toTDP" value="${requestScope.toTDP}" placeholder="Watt"
                             class="view-category-textinput1 input" />
                         </div>
                       </div>

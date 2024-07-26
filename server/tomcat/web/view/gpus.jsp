@@ -341,7 +341,7 @@
                           <span>From</span>
                           <br />
                         </span>
-                        <input placeholder="min " type="number" id="from" name="from" value="${requestScope.from}"
+                        <input placeholder="VND " type="number" id="from" name="from" value="${requestScope.from}"
                           class="view-category-textinput input" />
                       </div>
                       <div class="view-category-container04">
@@ -349,7 +349,7 @@
                           <span>To</span>
                           <br />
                         </span>
-                        <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="max "
+                        <input type="number" id="to" name="to" value="${requestScope.to}" placeholder="VND "
                           class="view-category-textinput1 input" />
                       </div>
                       <c:set var="brands" value="${requestScope.brands}" />
@@ -372,7 +372,7 @@
                           </span>
                         </div>
                         <div class="view-category-container06">
-                          <input type="checkbox" name="brand" value="intel" class="view-category-checkbox1" <c:forEach
+                          <input type="checkbox" name="brand" value="nvidia" class="view-category-checkbox1" <c:forEach
                             var="brand" items="${brands}">
                           <c:if test="${brand == 'nvidia'}">
                             checked
@@ -442,7 +442,7 @@
                             <span>From</span>
                             <br />
                           </span>
-                          <input placeholder="min " id="Vramfrom" name="fromVRAM" value="${requestScope.fromVRAM}"
+                          <input placeholder="GB " id="Vramfrom" name="fromVRAM" value="${requestScope.fromVRAM}"
                             class="view-category-textinput input" />
                         </div>
                         <div class="view-category-container04">
@@ -451,7 +451,7 @@
                             <br />
                           </span>
                           <input type="number" id="Vramto" name="toVRAM" value="${requestScope.toVRAM}"
-                            placeholder="max " class="view-category-textinput1 input" />
+                            placeholder="GB " class="view-category-textinput1 input" />
                         </div>
                       </div>
                       <div class="view-category-form">
@@ -464,7 +464,7 @@
                             <span>From</span>
                             <br />
                           </span>
-                          <input placeholder="min " type="number" id="TDPfrom" name="fromTDP"
+                          <input placeholder="Watt " type="number" id="TDPfrom" name="fromTDP"
                             value="${requestScope.fromTDP}" class="view-category-textinput input" />
                         </div>
                         <div class="view-category-container04">
@@ -472,7 +472,7 @@
                             <span>To</span>
                             <br />
                           </span>
-                          <input type="number" id="TDPto" name="toTDP" value="${requestScope.toTDP}" placeholder="max "
+                          <input type="number" id="TDPto" name="toTDP" value="${requestScope.toTDP}" placeholder="Watt "
                             class="view-category-textinput1 input" />
                         </div>
                       </div>
