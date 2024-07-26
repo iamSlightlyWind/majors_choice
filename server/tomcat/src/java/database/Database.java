@@ -310,12 +310,13 @@ public class Database {
             callableStatement.setString(12, image);
             callableStatement.setInt(13, quantity);
             callableStatement.registerOutParameter(14, Types.NVARCHAR);
-
+            
             callableStatement.execute();
-            return resultSet.getInt("result");
+            String result = callableStatement.getString(14);
+            return Integer.parseInt(result);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            return 555555;
+            return -1;
         }
     }
 
