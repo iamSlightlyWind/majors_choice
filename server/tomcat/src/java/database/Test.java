@@ -10,24 +10,10 @@ import main.Report;
 public class Test extends HttpServlet {
     Database database = new Database();
 
-    /* protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    } */
-
     public static void main(String[] args) {
-        Report.fetchReportData(null, null);
+        String date1 = null;
+        String date2 = null;
+        Report.fetchReportData(date1, date2);
         System.out.println(Report.PercentageCompletedOrders);
         System.out.println(Report.TotalExpense);
         System.out.println(Report.TotalRevenue);

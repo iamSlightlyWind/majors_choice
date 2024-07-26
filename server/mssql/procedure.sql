@@ -1473,7 +1473,9 @@ CREATE PROCEDURE setQuantity
     @id int
 AS
 BEGIN
-    IF EXISTS (SELECT 1 FROM products WHERE id = @id)
+    IF EXISTS (SELECT 1
+    FROM products
+    WHERE id = @id)
     BEGIN
         UPDATE products
         SET quantity = -1
@@ -1618,22 +1620,22 @@ BEGIN
         SET @WhereClause += ' AND dateOrdered <= @EndDate ';
 
     SET @Sql = N'SELECT @UniqueCompletedOrdersOut = COUNT(DISTINCT id) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
-    SET @Params = N'@UniqueCompletedOrdersOut INT OUTPUT';
-    EXEC sp_executesql @Sql, @Params, @UniqueCompletedOrdersOut = @UniqueCompletedOrders OUTPUT;
+    SET @Params = N'@UniqueCompletedOrdersOut INT OUTPUT, @StartDate DATE, @EndDate DATE';
+    EXEC sp_executesql @Sql, @Params, @UniqueCompletedOrdersOut = @UniqueCompletedOrders OUTPUT, @StartDate = @StartDate, @EndDate = @EndDate;
 
     SET @Sql = N'SELECT @TotalOrdersOut = COUNT(*) FROM orders ' + @WhereClause;
-    SET @Params = N'@TotalOrdersOut INT OUTPUT';
-    EXEC sp_executesql @Sql, @Params, @TotalOrdersOut = @TotalOrders OUTPUT;
+    SET @Params = N'@TotalOrdersOut INT OUTPUT, @StartDate DATE, @EndDate DATE';
+    EXEC sp_executesql @Sql, @Params, @TotalOrdersOut = @TotalOrders OUTPUT, @StartDate = @StartDate, @EndDate = @EndDate;
 
     SET @Sql = N'SELECT @CompletedOrdersOut = COUNT(*) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
-    SET @Params = N'@CompletedOrdersOut INT OUTPUT';
-    EXEC sp_executesql @Sql, @Params, @CompletedOrdersOut = @CompletedOrders OUTPUT;
+    SET @Params = N'@CompletedOrdersOut INT OUTPUT, @StartDate DATE, @EndDate DATE';
+    EXEC sp_executesql @Sql, @Params, @CompletedOrdersOut = @CompletedOrders OUTPUT, @StartDate = @StartDate, @EndDate = @EndDate;
 
     SET @PercentageCompletedOrders = CASE WHEN @TotalOrders > 0 THEN (@CompletedOrders * 100.0) / @TotalOrders ELSE 0 END;
 
     SET @Sql = N'SELECT @TotalExpenseOut = SUM(costPrice), @TotalRevenueOut = SUM(sellingPrice) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
-    SET @Params = N'@TotalExpenseOut DECIMAL(18,2) OUTPUT, @TotalRevenueOut DECIMAL(18,2) OUTPUT';
-    EXEC sp_executesql @Sql, @Params, @TotalExpenseOut = @TotalExpense OUTPUT, @TotalRevenueOut = @TotalRevenue OUTPUT;
+    SET @Params = N'@TotalExpenseOut DECIMAL(18,2) OUTPUT, @TotalRevenueOut DECIMAL(18,2) OUTPUT, @StartDate DATE, @EndDate DATE';
+    EXEC sp_executesql @Sql, @Params, @TotalExpenseOut = @TotalExpense OUTPUT, @TotalRevenueOut = @TotalRevenue OUTPUT, @StartDate = @StartDate, @EndDate = @EndDate;
 
     SET @Profit = @TotalRevenue - @TotalExpense;
     SET @ProfitPercentage = CASE WHEN @TotalRevenue > 0 THEN (@Profit / @TotalRevenue) * 100 ELSE 0 END;
@@ -1643,8 +1645,8 @@ BEGIN
     EXEC sp_executesql @Sql, @Params, @TotalUsersOut = @TotalUsers OUTPUT;
 
     SET @Sql = N'SELECT @UsersWithCompletedOrdersOut = COUNT(DISTINCT userId) FROM orders ' + @WhereClause + ' AND status = ''Completed''';
-    SET @Params = N'@UsersWithCompletedOrdersOut INT OUTPUT';
-    EXEC sp_executesql @Sql, @Params, @UsersWithCompletedOrdersOut = @UsersWithCompletedOrders OUTPUT;
+    SET @Params = N'@UsersWithCompletedOrdersOut INT OUTPUT, @StartDate DATE, @EndDate DATE';
+    EXEC sp_executesql @Sql, @Params, @UsersWithCompletedOrdersOut = @UsersWithCompletedOrders OUTPUT, @StartDate = @StartDate, @EndDate = @EndDate;
 
     SET @PercentageUsersWithOrders = CASE WHEN @TotalUsers > 0 THEN (@UsersWithCompletedOrders * 100.0) / @TotalUsers ELSE 0 END;
 
@@ -1652,8 +1654,8 @@ BEGIN
 
     SET @Sql = N'SELECT @TotalCashOrdersOut = COUNT(*) FROM orders o
                  JOIN orderInformation oi ON o.id = oi.id ' + @WhereClause + ' AND oi.payment IS NULL';
-    SET @Params = N'@TotalCashOrdersOut INT OUTPUT';
-    EXEC sp_executesql @Sql, @Params, @TotalCashOrdersOut = @TotalCashOrders OUTPUT;
+    SET @Params = N'@TotalCashOrdersOut INT OUTPUT, @StartDate DATE, @EndDate DATE';
+    EXEC sp_executesql @Sql, @Params, @TotalCashOrdersOut = @TotalCashOrders OUTPUT, @StartDate = @StartDate, @EndDate = @EndDate;
 
     SET @PercentageCashOrders = CASE WHEN @TotalOrders > 0 THEN (@TotalCashOrders * 100.0) / @TotalOrders ELSE 0 END;
 
@@ -1668,4 +1670,4 @@ BEGIN
         @UniqueCompletedOrders AS UniqueCompletedOrders,
         @PercentageCashOrders AS PercentageCashOrders;
 END
-GO
+go
