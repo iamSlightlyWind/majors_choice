@@ -290,21 +290,29 @@
                     </header>
                   </header>
                 </div>
-                <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role)
-                  || "manager" .equals(role)) { %>
+                <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role)) { %>
                   <div class="navstaff-container">
                     <div class="navstaff-manager">
-                      <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
-                        Warehouse</a>
                       <a href="/manage/profile?actor=user"
-                        class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
-                      <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
-                      <a href="/manage/profile?actor=staff"
-                        class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
-                      <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                        class="navstaff-mgt-customer text1 thq-link1 thq-body-small" style="margin-left: 10vw;">Manage Customer</a>
+                      <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small" style="margin-right: 10vw;">Manage Order</a>
                     </div>
                   </div>
                   <% } %>
+                    <% String role1=(String) request.getSession().getAttribute("role"); if ("manager".equals(role1)) { %>
+                      <div class="navstaff-container">
+                        <div class="navstaff-manager">
+                          <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
+                            Warehouse</a>
+                          <a href="/manage/profile?actor=user"~
+                            class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                          <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
+                          <a href="/manage/profile?actor=staff"
+                            class="navstaff-mgt-staff text1 thq-link1 thq-body-small">Manage Staff</a>
+                          <a href="/stats" class="navstaff-mgt-report text1 thq-link1 thq-body-small">Statistics</a>
+                        </div>
+                      </div>
+                      <% } %>
               </div>
               <div class="view-detail-body">
                 <div class="view-detail-link-page">
