@@ -260,8 +260,16 @@
                 </header>
               </header>
             </div>
-            <% String role=(String) request.getSession().getAttribute("table"); if ("staff".equals(role) || "manager"
-              .equals(role)) { %>
+            <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role)) { %>
+              <div class="navstaff-container">
+                <div class="navstaff-manager">
+                  <a href="/manage/profile?actor=user"
+                    class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
+                  <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>                 
+                </div>
+              </div>
+              <% } %>  
+            <% String role1=(String) request.getSession().getAttribute("role"); if ("manager".equals(role1)) { %>
               <div class="navstaff-container">
                 <div class="navstaff-manager">
                   <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
