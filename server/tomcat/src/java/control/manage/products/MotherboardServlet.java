@@ -59,18 +59,14 @@ public class MotherboardServlet extends HttpServlet {
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int result1 = Database.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu,
-                        formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, null, quantity);
-
-                if (result1 == 1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-
-                    int result = Database.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu,
-                            formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
+                int result = Database.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu,
+                        formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
+                if (result == 1) {
                     response.sendRedirect("motherboards?service=listAll&status=1");
                 } else {
-                   response.sendRedirect("motherboards?service=listAll&status=12");
+                    response.sendRedirect("motherboards?service=listAll&status=12");
                 }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();

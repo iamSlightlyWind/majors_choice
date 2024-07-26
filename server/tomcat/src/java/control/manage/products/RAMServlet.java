@@ -54,14 +54,12 @@ public class RAMServlet extends HttpServlet {
                 int speed = Integer.parseInt(request.getParameter("speed"));
                 int latency = Integer.parseInt(request.getParameter("latency"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
-                int result1 = Database.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed, latency,
-                        null, quantity);
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
+                int result = Database.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed,
+                        latency, image, quantity);
 
-                if (result1 == 1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result = Database.addProductRAM(sellingPrice, costPrice, name, generation, capacity, speed,
-                            latency, image, quantity);
+                if (result == 1) {
                     response.sendRedirect("rams?service=listAll&status=1");
                 } else {
                     response.sendRedirect("rams?service=listAll&status=12");

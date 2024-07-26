@@ -310,7 +310,7 @@ public class Database {
             callableStatement.setString(12, image);
             callableStatement.setInt(13, quantity);
             callableStatement.registerOutParameter(14, Types.NVARCHAR);
-            
+
             callableStatement.execute();
             String result = callableStatement.getString(14);
             return Integer.parseInt(result);
@@ -431,7 +431,8 @@ public class Database {
             callableStatement.registerOutParameter(11, Types.NVARCHAR);
 
             callableStatement.execute();
-            return productId;
+            String result = callableStatement.getString(11);
+            return Integer.parseInt(result);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
@@ -516,7 +517,8 @@ public class Database {
             callableStatement.registerOutParameter(15, Types.NVARCHAR);
 
             callableStatement.execute();
-            return productId;
+            String result = callableStatement.getString(15);
+            return Integer.parseInt(result);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
@@ -617,7 +619,8 @@ public class Database {
             callableStatement.registerOutParameter(10, Types.INTEGER);
 
             callableStatement.execute();
-            return callableStatement.getInt(10); // Get the product ID from the output parameter
+            String result = callableStatement.getString(10);
+            return Integer.parseInt(result);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
@@ -691,7 +694,8 @@ public class Database {
             callableStatement.registerOutParameter(9, Types.NVARCHAR);
 
             callableStatement.execute();
-            return productId;
+            String result = callableStatement.getString(9);
+            return Integer.parseInt(result);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
@@ -824,7 +828,8 @@ public class Database {
             callableStatement.registerOutParameter(8, Types.NVARCHAR);
 
             callableStatement.execute();
-            return callableStatement.getInt(8);
+            String result = callableStatement.getString(8);
+            return Integer.parseInt(result);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
@@ -885,7 +890,8 @@ public class Database {
             callableStatement.registerOutParameter(8, Types.NVARCHAR);
 
             callableStatement.execute();
-            return callableStatement.getInt(8);
+            String result = callableStatement.getString(8);
+            return Integer.parseInt(result);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             return -1;
