@@ -59,20 +59,14 @@ public class MotherboardServlet extends HttpServlet {
                 int ramSlots = Integer.parseInt(request.getParameter("ramSlots"));
                 int wifi = Integer.parseInt(request.getParameter("wifi"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
                 int result = Database.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu,
-                        formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, null, quantity);
-
-                if (result != -1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-
-                    int result1 = Database.addProductMotherboard(sellingPrice, costPrice, name, socket, chipset, igpu,
-                            formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
+                        formFactor, ramType, maxRamSpeed, maxRamCapacity, ramSlots, wifi, image, quantity);
+                if (result == 1) {
                     response.sendRedirect("motherboards?service=listAll&status=1");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi thêm Motherboard");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertMotherboard.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("motherboards?service=listAll&status=12");
                 }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
@@ -116,9 +110,7 @@ public class MotherboardServlet extends HttpServlet {
                 if (result == 1) {
                     response.sendRedirect("motherboards?service=listAll&status=10");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi cập nhật GPU");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateMotherboard.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("motherboards?service=listAll&status=11");
                 }
             }
         } else if (service.equals("delete")) {

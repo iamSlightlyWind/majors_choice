@@ -232,7 +232,7 @@ BEGIN
 END
 go
 
-create PROCEDURE addProductCPU
+create or alter PROCEDURE addProductCPU
     @sellingPrice decimal(18,2),
     @costPrice decimal(18,2),
     @name nvarchar(50),
@@ -253,7 +253,7 @@ BEGIN
     FROM products
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = '-1'
         RETURN
     END
 
@@ -292,7 +292,7 @@ BEGIN
     FROM products
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = '-1'
         RETURN
     END
 
@@ -330,7 +330,7 @@ BEGIN
     FROM products
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = '-1'
         RETURN
     END
 
@@ -373,8 +373,7 @@ BEGIN
     FROM products
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
-        RETURN
+        SET @result = '-1'
     END
 
     INSERT INTO products
@@ -410,7 +409,7 @@ BEGIN
     FROM products
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = '-1'
         RETURN
     END
 
@@ -446,7 +445,7 @@ BEGIN
     FROM products
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists:' + @name
+        SET @result = '-1'
         RETURN
     END
 
@@ -482,7 +481,7 @@ BEGIN
     FROM products
     WHERE name = @name)
     BEGIN
-        SET @result = 'Already exists: ' + @name
+        SET @result = '-1'
         RETURN
     END
 

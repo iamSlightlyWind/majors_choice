@@ -53,18 +53,15 @@ public class PSUServlet extends HttpServlet {
                 String efficiency = request.getParameter("efficiency");
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, null, quantity);
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
+                int result = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image,
+                        quantity);
 
-                if (result != -1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = Database.addProductPSU(sellingPrice, costPrice, name, wattage, efficiency, image,
-                            quantity);
+                if (result == 1) {
                     response.sendRedirect("psus?service=listAll&status=1");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi thêm PSU");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertPSU.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("psus?service=listAll&status=12");
                 }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
@@ -101,9 +98,7 @@ public class PSUServlet extends HttpServlet {
                 if (result == 1) {
                     response.sendRedirect("psus?service=listAll&status=10");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi cập nhật PSU");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updatePSU.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("psus?service=listAll&status=11");
                 }
             }
         } else if (service.equals("delete")) {

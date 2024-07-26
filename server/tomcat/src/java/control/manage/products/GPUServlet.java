@@ -56,18 +56,14 @@ public class GPUServlet extends HttpServlet {
                 int tdp = Integer.parseInt(request.getParameter("tdp"));
                 int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-                int result = Database.addProductGPU(sellingPrice, costPrice, name,
-                        generation, vram, baseClock, boostClock, tdp, null, quantity);
-                if (result != -1) {
-                    int productId = Database.getMaxProductId();
-                    String image = Database.handleFileUpload(request, "image", String.valueOf(productId));
-                    int result1 = Database.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock,
-                            boostClock, tdp, image, quantity);
+                int productId = Database.getMaxProductId();
+                String image = Database.handleFileUpload(request, "image", String.valueOf(productId + 1));
+                int result = Database.addProductGPU(sellingPrice, costPrice, name, generation, vram, baseClock,
+                        boostClock, tdp, image, quantity);
+                if (result == 1) {
                     response.sendRedirect("gpus?service=listAll&status=1");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi thêm GPU");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/insertGPU.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("gpus?service=listAll&status=12");
                 }
             } catch (NumberFormatException ex) {
                 ex.printStackTrace();
@@ -106,9 +102,7 @@ public class GPUServlet extends HttpServlet {
                 if (result == 1) {
                     response.sendRedirect("gpus?service=listAll&status=10");
                 } else {
-                    request.setAttribute("errorMessage", "Lỗi khi cập nhật GPU");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/updateGPU.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect("gpus?service=listAll&status=11");;
                 }
             }
         } else if (service.equals("delete")) {

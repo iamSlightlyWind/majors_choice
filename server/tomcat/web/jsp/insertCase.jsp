@@ -409,7 +409,7 @@
                                         <br />
                                     </span>
                                     <div class="manage-product-add-container04">
-                                        <input type="number" placeholder="Text" name="color"
+                                        <input type="text" placeholder="Text" name="color"
                                                class="manage-product-add-textinput05 input" />
                                     </div>
                                 </div>
