@@ -31,8 +31,15 @@ public class MotherboardServlet extends HttpServlet {
         }
 
         if (service.equals("listAll")) {
-            ArrayList<Motherboard> motherboards = Database.getMotherboards("");
+            ArrayList<Motherboard> motherboards;
+            String searchName = request.getParameter("searchName");
+            if (searchName != null) {
+                motherboards = Database.getMotherboards(searchName);
+            } else {
+                motherboards = Database.getMotherboards("");
+            }
             request.setAttribute("motherboards", motherboards);
+            request.setAttribute("searchName", searchName);
             request.setAttribute("titlePage", "Danh sách Motherboard");
             request.setAttribute("titleTable", "Danh sách Motherboard");
             request.setAttribute("status", (String) request.getParameter("status"));
@@ -178,12 +185,6 @@ public class MotherboardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String searchName = request.getParameter("searchName");
-
-        List<Motherboard> motherboards = Database.getMotherboards(searchName);
-
-        request.setAttribute("searchName", searchName);
-        request.setAttribute("motherboards", motherboards);
-        request.getRequestDispatcher("/jsp/MotherboardManage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 }
