@@ -31,8 +31,15 @@ public class GPUServlet extends HttpServlet {
         }
 
         if (service.equals("listAll")) {
-            ArrayList<GPU> gpus = Database.getGPUs("");
+            ArrayList<GPU> gpus;
+            String searchName = request.getParameter("searchName");
+            if (searchName != null) {
+                gpus = Database.getGPUs(searchName);
+            } else {
+                gpus = Database.getGPUs("");
+            }
             request.setAttribute("gpus", gpus);
+            request.setAttribute("searchName", searchName);
             request.setAttribute("titlePage", "Danh sách GPU");
             request.setAttribute("titleTable", "Danh sách GPU");
             request.setAttribute("status", (String) request.getParameter("status"));
@@ -162,12 +169,6 @@ public class GPUServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String searchName = request.getParameter("searchName");
-
-        List<GPU> gpus = Database.getGPUs(searchName);
-
-        request.setAttribute("searchName", searchName);
-        request.setAttribute("gpus", gpus);
-        request.getRequestDispatcher("/jsp/GPUManage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 }

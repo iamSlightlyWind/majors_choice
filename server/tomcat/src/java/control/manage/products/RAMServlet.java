@@ -31,8 +31,15 @@ public class RAMServlet extends HttpServlet {
         }
 
         if (service.equals("listAll")) {
-            ArrayList<RAM> rams = Database.getRAMs("");
+            ArrayList<RAM> rams;
+            String searchName = request.getParameter("searchName");
+            if (searchName != null) {
+                rams = Database.getRAMs(searchName);
+            } else {
+                rams = Database.getRAMs("");
+            }
             request.setAttribute("rams", rams);
+            request.setAttribute("searchName", searchName);
             request.setAttribute("titlePage", "Danh sách RAM");
             request.setAttribute("titleTable", "Danh sách RAM");
             request.setAttribute("status", (String) request.getParameter("status"));
@@ -158,12 +165,6 @@ public class RAMServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String searchName = request.getParameter("searchName");
-
-        List<RAM> rams = Database.getRAMs(searchName);
-
-        request.setAttribute("searchName", searchName);
-        request.setAttribute("rams", rams);
-        request.getRequestDispatcher("/jsp/RAMManage.jsp").forward(request, response);
+        processRequest(request, response);
     }
 }
