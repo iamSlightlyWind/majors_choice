@@ -410,7 +410,7 @@
                           </c:if>
                           <input type="hidden" name="action" value="addItem" />
                           <c:if test="${product.quantity >= '1'}">
-                              <button type="submit"><span>Buy Now</span></button>
+                              <button type="submit"><span>Add To Cart</span></button>
                           </c:if>
                           <c:if test="${product.quantity == '0'}">
                               <span>Product not in stock</span>
