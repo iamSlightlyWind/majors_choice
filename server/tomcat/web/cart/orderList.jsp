@@ -270,7 +270,7 @@
             </div>
             <div class="customer-order-list-container02">
               <span class="customer-order-list-text">
-                Phạm Thanh Phong's Orders
+                ${userFullname}'s Orders
               </span>
               <div class="customer-order-list-control">
                 <div class="customer-order-list-container03">
