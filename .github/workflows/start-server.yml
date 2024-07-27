@@ -87,5 +87,5 @@ jobs:
         sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
 
     - name: Show tomcat Logs
-      timeout-minutes: 60
+      timeout-minutes: 300
       run: docker logs -f `docker ps -q --filter ancestor=tomcat`
