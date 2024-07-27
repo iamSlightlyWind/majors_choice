@@ -51,7 +51,7 @@ public class Validate extends HttpServlet {
                         currentUser.email,
                         currentOrder);
 
-                response.sendRedirect("/Cart");
+                response.sendRedirect("/Order");
             } else {
                 request.setAttribute("cartPriceDouble", new DecimalFormat("#").format(currentUser.cart.total));
                 request.setAttribute("user", currentUser.fullName);

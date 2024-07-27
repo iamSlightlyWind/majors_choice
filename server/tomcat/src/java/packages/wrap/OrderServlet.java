@@ -231,7 +231,7 @@ public class OrderServlet extends HttpServlet {
                 }
             }
         }
-
+        request.setAttribute("userFullname", currentUser.fullName);
         request.setAttribute("OrderList", currentUser.orders);
         request.getRequestDispatcher("/cart/orderList.jsp").forward(request, response);
     }
