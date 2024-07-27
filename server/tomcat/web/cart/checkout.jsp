@@ -301,12 +301,12 @@
                   <br />
                 </span>
                 <div class="cofirm-your-order-componment-information">
-                  <input type="text" required="true" name="fullName" placeholder="Full Name" value="${user.fullName}"
-                    required="true" placeholder="Username" class="cofirm-your-order-componment-user-name input" />
-                  <input type="text" required="true" name="address" placeholder="Address" value="${user.address}"
-                    required="true" placeholder="Address" class="cofirm-your-order-componment-address input" />
-                  <input type="text" required="true" name="phone" placeholder="Phone Number" value="${user.phoneNumber}"
-                    required="true" placeholder="Phone" class="cofirm-your-order-componment-phone input" />
+                  <input type="text" name="fullName" placeholder="Full Name" value="${user.fullName}"
+                    placeholder="Username" class="cofirm-your-order-componment-user-name input" required />
+                  <input type="text" name="address" placeholder="Address" value="${user.address}" placeholder="Address"
+                    class="cofirm-your-order-componment-address input" required />
+                  <input type="text" name="phone" placeholder="Phone Number" value="${user.phoneNumber}"
+                    placeholder="Phone" class="cofirm-your-order-componment-phone input" required />
                 </div>
               </form>
               <form action="/payment/vnpayajax" id="frmCreateOrder" method="post"
@@ -320,7 +320,7 @@
                 <div class="cofirm-your-order-componment-method">
                   <div class="cofirm-your-order-componment-cash">
                     <input type="radio" name="paymentMethod" value="Cash"
-                      class="cofirm-your-order-componment-radiobutton" />
+                      class="cofirm-your-order-componment-radiobutton" checked/>
                     <span class="cofirm-your-order-componment-text22">
                       Cash on Delivery
                     </span>
@@ -542,14 +542,27 @@
         document.querySelector('.confirm-your-order-component-continue').addEventListener('click', function () {
           var formInputs = document.querySelectorAll('.cofirm-your-order-componment-shipping-infor input');
           var paymentForm = document.querySelector('#frmCreateOrder');
+          var isValid = true;
 
           formInputs.forEach(function (input) {
+            if (input.hasAttribute('required') && !input.value) {
+              isValid = false;
+              input.classList.add('error');
+            } else {
+              input.classList.remove('error');
+            }
+
             var newInput = document.createElement('input');
             newInput.type = 'hidden';
             newInput.name = input.name;
             newInput.value = input.value;
             paymentForm.appendChild(newInput);
           });
+
+          if (!isValid) {
+            alert('Please fill in all required fields.');
+            return false;
+          }
 
           var postData = $(paymentForm).serialize();
           var submitUrl = $(paymentForm).attr("action");
@@ -608,7 +621,7 @@
           (function () {
             var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
-            s1.src = 'https://embed.tawk.to/668271ba9d7f358570d5b9d3/1i1mooh80';
+            s1.src = 'https://embed.tawk.to/667ec76aeaf3bd8d4d158277/1i1fjlugj';
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);

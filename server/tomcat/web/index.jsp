@@ -289,18 +289,20 @@
                 <% String role=(String) request.getSession().getAttribute("role"); if ("staff".equals(role)) { %>
                   <div class="navstaff-container">
                     <div class="navstaff-manager">
-                      <a href="/manage/profile?actor=user"
-                        class="navstaff-mgt-customer text1 thq-link1 thq-body-small" style="margin-left: 10vw;">Manage Customer</a>
-                      <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small" style="margin-right: 10vw;">Manage Order</a>
+                      <a href="/manage/profile?actor=user" class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
+                        style="margin-left: 10vw;">Manage Customer</a>
+                      <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small"
+                        style="margin-right: 10vw;">Manage Order</a>
                     </div>
                   </div>
                   <% } %>
-                    <% String role1=(String) request.getSession().getAttribute("role"); if ("manager".equals(role1)) { %>
+                    <% String role1=(String) request.getSession().getAttribute("role"); if ("manager".equals(role1)) {
+                      %>
                       <div class="navstaff-container">
                         <div class="navstaff-manager">
                           <a href="/cpus" class="navstaff-mgt-ware-house text1 thq-link1 thq-body-small">Manage
                             Warehouse</a>
-                          <a href="/manage/profile?actor=user"~
+                          <a href="/manage/profile?actor=user" ~
                             class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Customer</a>
                           <a href="/order" class="navstaff-mgt-customer text1 thq-link1 thq-body-small">Manage Order</a>
                           <a href="/manage/profile?actor=staff"
@@ -1761,7 +1763,7 @@
               (function () {
                 var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
                 s1.async = true;
-                s1.src = 'https://embed.tawk.to/668271ba9d7f358570d5b9d3/1i1mooh80';
+                s1.src = 'https://embed.tawk.to/667ec76aeaf3bd8d4d158277/1i1fjlugj';
                 s1.charset = 'UTF-8';
                 s1.setAttribute('crossorigin', '*');
                 s0.parentNode.insertBefore(s1, s0);
