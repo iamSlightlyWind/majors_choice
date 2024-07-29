@@ -132,13 +132,25 @@ create table orders
     dateOrdered date default getdate()
 )
 
+create table coupons
+(
+    id int identity(1,1) primary key,
+    description nvarchar(max),
+    discount decimal(18,2),
+    code nvarchar(10),
+    expiry date,
+    minPurchase decimal(18,2),
+    maxDiscount decimal(18,2)
+)
+
 create table orderInformation
 (
     id int primary key,
     fullname nvarchar(50),
     phoneNumber varchar(15),
     address nvarchar(100),
-    payment nvarchar(max)
+    payment nvarchar(max),
+    coupons nvarchar(10)
 )
 
 create table feedback
