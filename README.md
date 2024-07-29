@@ -4,11 +4,11 @@ A project focused on DevOps automation and auto-deployment of a professional e-c
 
 ## Trigger GitHub Action
 
-[![Run Workflow](https://img.shields.io/badge/Run%20Workflow-blue)](https://majors-choice.vercel.app/api/trigger)
+[![Deploy Server](https://img.shields.io/badge/Deploy%20Server-blue)](https://themajorones-deploy-choice.vercel.app/api/trigger)
 
-Everyone can test the website at https://choice.themajorones.dev by pressing the "Run Workflow" button.
-
-Note that the server takes up to 5 minutes to start, and will not run again unless the previous run has expired (max: 1 hour).
+Everyone can test the website at https://choice.themajorones.dev by pressing the "Deploy Server" button.
+> [!NOTE]  
+> The server takes up to 3 minutes to deploy, and will not start again unless the previous run has expired (1 hour, configurable in workflow).
 
 ## Project Overview
 
@@ -16,7 +16,7 @@ The rough idea is to sell the latest generations of PC parts, including the most
 
 ## Proof of concept
 
-While the backend of things seems simple enough, having the server run on the open web is an order of magnitude more knowledge than what I currently have right now. What I have in mind is to have GitHub runner run the server, preferably having it runs a docker image that I created, so it doesn't have to start over whenever I boot it up. or even better, have it run on GitHub codespace, if I understand correctly, is the same as GitHub Runner, but I will have GUI access to a port forwarding terminal. This will have to be successfully tested working, as well as deployed to the server before starting the project.
+While the backend of things seems simple enough, having the server run on the open web is an order of magnitude more knowledge than what I currently have right now. What I have in mind is to have GitHub runner run the server, preferably having it run a docker image that I created, so it doesn't have to start over whenever I boot it up. or even better, have it run on GitHub codespace, if I understand correctly, is the same as GitHub Runner, but I will have GUI access to a port forwarding terminal. This will have to be successfully tested working, as well as deployed to the server before starting the project.
 
 **Remote Server Workflow:**
 
