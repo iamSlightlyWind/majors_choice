@@ -140,7 +140,8 @@ create table coupons
     code nvarchar(10),
     expiry date,
     minPurchase decimal(18,2),
-    maxDiscount decimal(18,2)
+    maxDiscount decimal(18,2),
+    uses int
 )
 
 create table orderInformation

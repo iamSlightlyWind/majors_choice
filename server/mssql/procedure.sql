@@ -1765,3 +1765,127 @@ BEGIN
     delete from favorites
     where userId = @userId and productId = @productId
 end
+GO
+
+create or alter procedure createCoupon
+    @description nvarchar(max),
+    @discount decimal(18,2),
+    @code nvarchar(10),
+    @expiry date,
+    @minPurchase decimal(18,2),
+    @maxDiscount decimal(18,2),
+    @uses int,
+    @result int output
+as
+begin
+    if exists (select 1
+    from coupons
+    where code = @code)
+    begin
+        set @result = -1
+        return
+    end
+    else
+    begin
+        insert into coupons
+            (description, discount, code, expiry, minPurchase, maxDiscount, uses)
+        values
+            (@description, @discount, @code, @expiry, @minPurchase, @maxDiscount, @uses)
+        set @result = 1
+    end
+end
+go
+
+create or alter procedure getCoupons
+as
+begin
+    select *
+    from coupons
+end
+go
+
+create or alter procedure checkCoupon
+    @code nvarchar(10),
+    @result int output
+as
+begin
+    if not exists (select 1
+    from coupons
+    where code = @code)
+    begin
+        set @result = -1
+        return
+    end
+    else
+    begin
+        declare @uses int
+        select @uses = uses
+        from coupons
+        where code = @code
+
+        if @uses = 0
+        begin
+            set @result = -1
+            return
+        end
+        else
+        begin
+            set @result = 1
+        end
+    end
+end
+go
+
+create or alter procedure disableCoupon
+    @code nvarchar(10)
+as
+begin
+    update coupons
+    set uses = 0
+    where code = @code
+end
+go
+
+create or alter procedure updateCoupon
+    @code nvarchar(10),
+    @description nvarchar(max),
+    @discount decimal(18,2),
+    @expiry date,
+    @minPurchase decimal(18,2),
+    @maxDiscount decimal(18,2),
+    @uses int,
+    @result int output
+as
+begin
+    if not exists (select 1
+    from coupons
+    where code = @code)
+    begin
+        set @result = -1
+        return
+    end
+    else
+    begin
+        update coupons
+        set description = @description,
+            discount = @discount,
+            expiry = @expiry,
+            minPurchase = @minPurchase,
+            maxDiscount = @maxDiscount,
+            uses = @uses
+        where code = @code
+        set @result = 1
+    end
+end
+go
+
+create or alter procedure adjustCouponUses
+    @code nvarchar(10),
+    @uses int
+as
+begin
+    update coupons
+    set uses = uses + @uses
+    where code = @code
+end
+go
