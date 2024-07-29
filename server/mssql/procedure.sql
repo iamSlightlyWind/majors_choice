@@ -1734,3 +1734,34 @@ BEGIN
     SELECT * from favorites
     WHERE userId = @userId
 END
+go
+
+create or alter procedure addFavorite
+    @userId int,
+    @productId int
+as
+BEGIN
+    if exists (select 1
+    from favorites
+    where userId = @userId and productId = @productId)
+    begin
+        return
+    end
+    else
+    begin
+        insert into favorites
+            (userId, productId)
+        values
+            (@userId, @productId)
+    end
+end
+go
+
+create or alter procedure removeFavorite
+    @userId int,
+    @productId int
+as
+BEGIN
+    delete from favorites
+    where userId = @userId and productId = @productId
+end
