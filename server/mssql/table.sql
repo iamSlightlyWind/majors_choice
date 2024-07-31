@@ -158,3 +158,9 @@ create table ratings
     rating_text nvarchar(max),
     dateRated date default getdate()
 )
+
+create table favorites
+(
+    userId int references users(id),
+    productId int references products(id)
+)

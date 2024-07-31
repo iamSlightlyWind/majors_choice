@@ -1726,3 +1726,11 @@ BEGIN
         @PercentageCashOrders AS PercentageCashOrders;
 END
 go
+
+CREATE or alter PROCEDURE getFavoriteProducts
+    @userId INT
+AS
+BEGIN
+    SELECT * from favorites
+    WHERE userId = @userId
+END
