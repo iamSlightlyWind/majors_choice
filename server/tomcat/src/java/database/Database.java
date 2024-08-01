@@ -1547,5 +1547,54 @@ public class Database {
         }
         return products;
     }
+    
+    public static List<Favor> getFavors(int userId) {
+        List<Favor> favors = new ArrayList<>();
+        try {
+            String sql = "{call getFavoriteProducts(?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(1, userId);
+            ResultSet rs = statement.executeQuery();
 
+            while (rs.next()) {
+                int productId = rs.getInt("productId");
+                favors.add(new Favor(userId, productId));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return favors;
+    }
+    
+    public static int addFavor(int userId, int productId) {
+        try {
+            String sql = "{call addFavorite(?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(2, productId);
+            statement.setInt(1, userId);
+            statement.registerOutParameter(3, Types.INTEGER);
+
+            statement.execute();
+            return statement.getInt(3);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+    
+    public static int deleteFavor(int userId, int productId) {
+        try {
+            String sql = "{call removeFavorite(?, ?)}";
+            CallableStatement statement = connection.prepareCall(sql);
+            statement.setInt(2, productId);
+            statement.setInt(1, userId);
+
+            statement.execute();
+            return 1;
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+    
 }

@@ -22,10 +22,26 @@ public class ProductDetail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        userViewAllOrders(request, response);
-        String category = request.getParameter("category");        
-        int id = (request.getParameter("id") == null)||(request.getParameter("id").isEmpty()) ? 0 : Integer.parseInt(request.getParameter("id"));         
-           
+       String category = request.getParameter("category");        
+       int id = (request.getParameter("id") == null)||(request.getParameter("id").isEmpty()) ? 0 : Integer.parseInt(request.getParameter("id")); 
+       viewDetailProduct(request, response, category, id);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+    
+    public static void viewDetailProduct(HttpServletRequest request, HttpServletResponse response, String category, int id)
+            throws ServletException, IOException {
+        userViewAllOrders(request, response);                         
         ArrayList<Rating> ratings = Database.getRating(id);
       
         if(ratings != null && !ratings.isEmpty()){
@@ -71,22 +87,9 @@ public class ProductDetail extends HttpServlet {
             default:
                 break;
         }
-
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+    }           
     
-    protected void userViewAllOrders(HttpServletRequest request, HttpServletResponse response)
+    protected static void userViewAllOrders(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          User currentUser = (User) request.getSession().getAttribute("userObject");
         if(currentUser == null){

@@ -1738,13 +1738,15 @@ go
 
 create or alter procedure addFavorite
     @userId int,
-    @productId int
+    @productId int,
+    @output int output
 as
 BEGIN
     if exists (select 1
     from favorites
     where userId = @userId and productId = @productId)
     begin
+        set @output = -1
         return
     end
     else
@@ -1889,3 +1891,4 @@ begin
     where code = @code
 end
 go
+  

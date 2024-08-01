@@ -391,14 +391,24 @@
                       <a href="#" rel="noreferrer noopener" class="view-detail-link">
                         See reviews
                       </a>
+                      <a href="/editFavor?action=add&productId=${product.id}&category=${category}">
+                          <svg
+                              viewBox="0 0 1024 1024"
+                              class="view-detail-icon02 thq-button-icon"
+                              >
+                          <path
+                              d="M950.857 340.571c0-160.571-108.571-194.286-200-194.286-85.143 0-181.143 92-210.857 127.429-13.714 16.571-42.286 16.571-56 0-29.714-35.429-125.714-127.429-210.857-127.429-91.429 0-200 33.714-200 194.286 0 104.571 105.714 201.714 106.857 202.857l332 320 331.429-319.429c1.714-1.714 107.429-98.857 107.429-203.429zM1024 340.571c0 137.143-125.714 252-130.857 257.143l-356 342.857c-6.857 6.857-16 10.286-25.143 10.286s-18.286-3.429-25.143-10.286l-356.571-344c-4.571-4-130.286-118.857-130.286-256 0-167.429 102.286-267.429 273.143-267.429 100 0 193.714 78.857 238.857 123.429 45.143-44.571 138.857-123.429 238.857-123.429 170.857 0 273.143 100 273.143 267.429z"
+                              ></path>
+                          </svg> 
+                      </a> 
                     </div>
                     <fmt:setLocale value="vi_VN" />
                     <fmt:formatNumber value="${product.sellingPrice}" pattern="###,###,###" var="productSelling" />
                     <span class="view-detail-text07">
                       <span class="view-detail-text08">${productSelling}<u>đ</u></span>
                       <br />
-                    </span>
-                    <div class="view-detail-container2 thq-button-filled button">
+                    </span>                    
+                    <div class="view-detail-container2 thq-button-filled button">                       
                       <form action="/Cart" method="post">
                         <span class="view-detail-text10">
                           <input type="hidden" name="productID" value="${product.id}" />
@@ -1004,7 +1014,23 @@
             confirmButtonText: 'OK'
           });
         }
+        
+        if (status === 'successFavor') {
+          Swal.fire({
+            title: "Add Favor Product Successful!",
+            icon: 'success',
+            confirmButtonText: 'OK'
+          });
+        }
 
+        if (status === 'failFavor') {
+          Swal.fire({
+            title: "Product already existed in Favor Product List.",
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+        
       });
     </script>
         </html>
