@@ -12,11 +12,11 @@ Everyone can test the website at https://choice.themajorones.dev by pressing the
 
 ## Project Overview
 
-The rough idea is to sell the latest generations of PC parts, including the most basic components used to build a PC: CPU, GPU, RAM, SSD, PSU, and case. The website will list the most common and popular PC hardware from the last 3 generations. Optional features of the website will be a build your PC which checks for parts compatibility and a comparison feature that compares the 2 hardware from the same category for performance and price-to-performance ratio.
+The rough idea is to sell the latest generations of PC parts, including the most basic components used to build a PC: CPU, GPU, RAM, SSD, PSU, and case. The website will list the most common and popular PC hardware from the last three generations. Optional features of the website will be a "build your PC" feature that checks for parts compatibility and a comparison feature that compares two hardware components from the same category for performance and price-to-performance ratio.
 
 ## Proof of concept
 
-While the backend of things seems simple enough, having the server run on the open web is an order of magnitude more knowledge than what I currently have right now. What I have in mind is to have GitHub runner run the server, preferably having it run a docker image that I created, so it doesn't have to start over whenever I boot it up. or even better, have it run on GitHub codespace, if I understand correctly, is the same as GitHub Runner, but I will have GUI access to a port forwarding terminal. This will have to be successfully tested working, as well as deployed to the server before starting the project.
+While the backend seems simple enough, having the server run on the open web is an order of magnitude more knowledge than I currently have. What I have in mind is to use GitHub Runner to run the server, ideally by running a Docker image I created so that it doesn't have to restart every time I boot it up. Alternatively, I could run it on GitHub Codespace, which, if I understand correctly, is similar to GitHub Runner but provides GUI access to a port forwarding terminal. This will have to be successfully tested working before starting the project.
 
 **Remote Server Workflow:**
 
