@@ -9,3 +9,5 @@ BEGIN
 END
 
 create database major
+
+use major
