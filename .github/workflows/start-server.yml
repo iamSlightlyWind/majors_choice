@@ -48,3 +48,19 @@ jobs:
           -e "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" \
           -e "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" \
           tomcat:majors_choice
+
+    - name: Reverse proxy
+      run: |
+        curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+        sudo dpkg -i cloudflared.deb
+        cd server/cloudflare
+        unzip -P "${{ secrets.CLOUDFLARE_ZIP_PASSWORD }}" .cloudflared.zip
+        mv .cloudflared ~/
+        cd ~/.cloudflared
+        sudo mkdir -p /etc/cloudflared
+        sudo cp * /etc/cloudflared/
+        sudo cloudflared service install
+        sudo service cloudflared start
+    
+    - name: Show tomcat Logs
+      run: timeout 5m docker logs -f tomcat || true
