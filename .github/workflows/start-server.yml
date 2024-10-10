@@ -1,4 +1,4 @@
-name: Start Server
+name: Test Docker
 
 concurrency:
   group: ${{ github.workflow }}
@@ -6,86 +6,17 @@ concurrency:
 
 on: 
   workflow_dispatch:
-  #push:
-  #pull_request:
+  push:
 
 jobs:
   start-server:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install dependencies
-      run: |
-        curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
-        | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
-        && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" \
-        | sudo tee /etc/apt/sources.list.d/ngrok.list
-        curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
-        echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
-        sudo apt update 
-        sudo apt install ngrok cloudflare-warp fish
-        ngrok config add-authtoken ${{ secrets.NGROK_AUTHTOKEN }}
-        warp-cli --accept-tos connect
-
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    #- name: Run ngrok SSH
-    #  id: ngrok
-    #  uses: tmshkr/ngrok-ssh@latest
-    #  with:
-    #    SSH_CLIENT_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
-    #    NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}
-
-    - name: Reverse proxy
+    - name: Build & Run Tomcat server
       run: |
-        #Cloudflare
-        ################
-        curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
-        sudo dpkg -i cloudflared.deb
-        cd server/cloudflare
-        unzip -P "${{ secrets.CLOUDFLARE_ZIP_PASSWORD }}" .cloudflared.zip
-        mv .cloudflared ~/
-        cd ~/.cloudflared
-        sudo mkdir -p /etc/cloudflared
-        sudo cp * /etc/cloudflared/
-        sudo cloudflared service install
-        sudo service cloudflared start
-
-    - name: Set up Docker Build
-      uses: docker/setup-buildx-action@v1
-
-    - name: Set up Docker
-      run: |
-        docker pull mcr.microsoft.com/mssql/server
-        docker pull tomcat:latest
-
-    - name: Run MSSQL container
-      run: |
-        docker run --network host -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=YourStrong@Passw0rd" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest
-        sleep 10
-        sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -Q "ALTER LOGIN [sa] WITH PASSWORD= '${{ secrets.SQLPASSWORD }}', CHECK_POLICY = OFF"
-        
-    - name: Run Tomcat container
-      run: |
-        docker run --network host -d --name tomcat -p 8080:8080 -e "PAYMENT_CODE=${{ secrets.PAYMENT_CODE }}" -e "PAYMENT_SECRET=${{ secrets.PAYMENT_SECRET }}" -e "SQLPASSWORD=${{ secrets.SQLPASSWORD }}" -e "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" -e "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" -e "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" tomcat:latest
-        mv ./server/tomcat/dist/*.war ./server/tomcat/dist/ROOT.war
-        docker cp ./server/tomcat/dist/ROOT.war `docker ps -q --filter ancestor=tomcat`:/usr/local/tomcat/webapps/
-        docker restart `docker ps -q --filter ancestor=tomcat`
-      env:
-        SQLPASSWORD: ${{ secrets.SQLPASSWORD }}
-
-    - name: Create database
-      run: | 
-        echo "creating database"
-        sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/reset.sql
-        echo "creating tables"
-        sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/table.sql
-        echo "creating procedures"
-        sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/procedure.sql
-        echo "inserting data"
-        sqlcmd -S localhost -d major -U sa -P ${{ secrets.SQLPASSWORD }} -i ./server/mssql/insert.sql
-
-    - name: Show tomcat Logs
-      timeout-minutes: 60
-      run: docker logs -f `docker ps -q --filter ancestor=tomcat`
+        mv server/tomcat server/docker/tomcat
+        docker build -t tomcat:majors_choice server/docker/tomcat
