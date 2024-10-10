@@ -23,7 +23,7 @@ jobs:
           -e "MSSQL_SA_PASSWORD=YourStrong@Passw0rd" \
           mcr.microsoft.com/mssql/server:latest
         sleep 10
-        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -C -Q "ALTER LOGIN [sa] WITH PASSWORD= '123', CHECK_POLICY = OFF"
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -C -Q "ALTER LOGIN [sa] WITH PASSWORD= '${{ secrets.SQLPASSWORD }}', CHECK_POLICY = OFF"
 
     - name: Setup MSSQL database
       run: | 
