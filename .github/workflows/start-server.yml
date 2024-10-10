@@ -16,22 +16,22 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Run MSSQL container
+    - name: Pull MSSQL container
       run: |
         docker run --network host -p 1433:1433 -d --name mssql \
           -e "ACCEPT_EULA=Y" \
           -e "MSSQL_SA_PASSWORD=YourStrong@Passw0rd" \
           mcr.microsoft.com/mssql/server:latest
         sleep 10
-        docker exec -it mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -C -Q "ALTER LOGIN [sa] WITH PASSWORD= '123', CHECK_POLICY = OFF"
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -C -Q "ALTER LOGIN [sa] WITH PASSWORD= '123', CHECK_POLICY = OFF"
 
     - name: Setup MSSQL database
       run: | 
         docker cp server/mssql/* mssql:/root
-        docker exec -it mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/reset.sql
-        docker exec -it mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/table.sql
-        docker exec -it mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/procedure.sql
-        docker exec -it mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/insert.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/reset.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/table.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/procedure.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /root/insert.sql
 
     - name: Build Tomcat Docker Image
       run: |
