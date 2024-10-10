@@ -28,10 +28,10 @@ jobs:
     - name: Setup MSSQL database
       run: | 
         docker cp server/mssql/. mssql:/tmp
-        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/reset.sql
-        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/table.sql
-        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/procedure.sql
-        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/insert.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/reset.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/table.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/procedure.sql
+        docker exec mssql /opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P ${{ secrets.SQLPASSWORD }} -i /tmp/insert.sql
 
     - name: Build Tomcat Docker Image
       run: |
