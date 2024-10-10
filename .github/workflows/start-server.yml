@@ -1,4 +1,4 @@
-name: Test Docker
+name: Start Server
 
 concurrency:
   group: ${{ github.workflow }}
@@ -6,7 +6,7 @@ concurrency:
 
 on: 
   workflow_dispatch:
-  push:
+  #push:
 
 jobs:
   start-server:
@@ -63,4 +63,4 @@ jobs:
         sudo service cloudflared start
     
     - name: Show tomcat Logs
-      run: timeout 5m docker logs -f tomcat || true
+      run: timeout 60m docker logs -f tomcat || true
