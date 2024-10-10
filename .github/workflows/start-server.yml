@@ -16,7 +16,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Build & Run Tomcat server
+    - name: Build Server Docker Image
       run: |
         mv server/tomcat server/docker/tomcat
         docker build -t tomcat:majors_choice server/docker/tomcat
+
+    - name: Run Server Docker Container
+      run: |
+        docker run --network host -d --name server -p 8080:8080 \
+          -e "PAYMENT_CODE=${{ secrets.PAYMENT_CODE }}" \
+          -e "PAYMENT_SECRET=${{ secrets.PAYMENT_SECRET }}" \
+          -e "SQLPASSWORD=${{ secrets.SQLPASSWORD }}" \
+          -e "EMAIL_ADDRESS=${{ secrets.EMAIL_ADDRESS }}" \
+          -e "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" \
+          -e "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" \
+          tomcat:majors_choice

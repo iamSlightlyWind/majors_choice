@@ -7,3 +7,4 @@ COPY tomcat tomcat
 WORKDIR /root/tomcat
 
 RUN ant -Dj2ee.server.home=/usr/local/tomcat/ -Dlibs.CopyLibs.classpath=copylibs
+RUN mv dist/*.war /usr/local/tomcat/webapps/ROOT.war
