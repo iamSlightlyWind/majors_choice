@@ -16,6 +16,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Run MSSQL container
+      run: |
+        docker run --network host -p 1433:1433 -d \
+          -e "ACCEPT_EULA=Y" \
+          -e "MSSQL_SA_PASSWORD=YourStrong@Passw0rd" \
+          mcr.microsoft.com/mssql/server:latest
+        sleep 10
+        sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -Q "ALTER LOGIN [sa] WITH PASSWORD= '${{ secrets.SQLPASSWORD }}', CHECK_POLICY = OFF"
+
     - name: Build Server Docker Image
       run: |
         mv server/tomcat server/docker/tomcat
@@ -23,7 +32,7 @@ jobs:
 
     - name: Run Server Docker Container
       run: |
-        docker run --network host -d --name server -p 8080:8080 \
+        docker run --network host -d -p 8080:8080 \
           -e "PAYMENT_CODE=${{ secrets.PAYMENT_CODE }}" \
           -e "PAYMENT_SECRET=${{ secrets.PAYMENT_SECRET }}" \
           -e "SQLPASSWORD=${{ secrets.SQLPASSWORD }}" \
