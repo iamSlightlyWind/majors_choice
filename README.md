@@ -4,11 +4,14 @@ A project focused on DevOps automation and auto-deployment of a professional e-c
 
 ## Trigger GitHub Action
 
-[![Deploy Server](https://img.shields.io/badge/Deploy%20Server-blue)](https://themajorones-deploy-choice.vercel.app/api/trigger)
+<a href="https://themajorones-deploy-choice.vercel.app/api/trigger">
+  <img src="https://github.com/iamSlightlyWind/majors_choice/actions/workflows/start-server.yml/badge.svg" alt="Build Status" />
+</a>
 
-Everyone can test the website at https://choice.themajorones.dev by pressing the "Deploy Server" button.
-> [!NOTE]  
-> The server takes up to 3 minutes to deploy, and will not start again unless the previous run has expired (1 hour, configurable in workflow).
+Anyone can test the website at https://choice.themajorones.dev by pressing the "Deploy Server" button.
+
+> [!NOTE]
+> The server should boots in 1 minute once triggered, and will not start again unless the previous run has expired (1 hour, configurable in workflow).
 
 ## Project Overview
 
