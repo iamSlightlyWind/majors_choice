@@ -4,7 +4,7 @@ A project focused on DevOps automation and auto-deployment of a professional e-c
 
 ## Trigger GitHub Action
 
-[![Deploy Server](https://img.shields.io/badge/Deploy%20Server-blue)](https://themajorones-deploy-choice.vercel.app/api/trigger)
+[![Deploy Server](https://img.shields.io/badge/Deploy%20Server-blue)](https://themajorones-deploy-choice.vercel.app/api/trigger) ![Build Status](https://github.com/iamSlightlyWind/majors_choice/actions/workflows/start-server.yml/badge.svg)
 
 Anyone can test the website at https://choice.themajorones.dev by pressing the "Deploy Server" button.
 
